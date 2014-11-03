@@ -1,0 +1,440 @@
+
+.cabecalho {
+	position: relative;
+	width: 100%;
+	height: 20%;
+	background-image: url('/static/imagens/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+ 	background-color: white;
+}
+
+.menu{
+	position: relative;
+	width: 100%;
+	height: 7%;
+}
+.conteudo{
+	position: relative;
+ 	width: 100%;
+ 	height: 71%;
+ 	background-color: white;
+ 	font-color: #4a5b62;
+}
+
+.conteudo-left{
+	position:relative;
+	left: -3%;
+	width: 105.5%;
+	height: 100%;
+ 	background-color: #FCFFCD;
+ 	overflow-y:auto;
+	overflow: -moz-scrollbars-vertical;
+}
+.conteudo-right{
+	position:relative;
+	left: -1%;
+	width: 103%;
+	height: 100%;
+ 	background-color:  #f7f6f3;
+ 	overflow-y:auto;
+	overflow: -moz-scrollbars-vertical;
+}
+
+.rodape{
+	position:relative;
+	width: 100%;
+	height: 2%;
+	background-color: #428bca; 	
+  	border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-login{
+	position: relative;
+	margin-top: 5%;
+	width:20%;
+}
+
+.form-contato{
+	position: relative;
+	width:50%;
+}
+
+.font-dconteudo{
+	position:relative;
+	text-align: justify;
+	font-size:17px;
+	font-family: Georgia;
+}
+
+.font-metro{
+	position: relative;
+	top: 35%;
+	text-align: center;
+	float: center;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+.botao{
+	color: #FFFFFF;
+  	background-color: #428bca;
+  	border-color: #357ebd;
+	font-style:normal;
+}
+
+.botao:hover{
+	cursor:pointer;
+	position:relative;
+	top: -1px;
+	bottom:2px;
+	background: #ADD8E6;;
+	border:0px solid #ffffff;
+	box-shadow: 1px 3px 1px;
+}
+
+.botao-conteudo{
+	position: relative;
+	width:100%;
+	height:10%;
+}
+
+#comecar{
+	position: relative;
+	top: 40%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navbar-navigation{
+	position: relative;
+	background:#E5E5E5;
+}
+
+#barra-avancar{
+	position: relative;
+	width: 100%;
+	height: 6%;
+}
+
+.barra-menu{
+	position: relative;
+	left: -1.1%;
+	right: -1.1%;
+	width: 102.2%;
+	height: 100%;
+	background-color: #FFFFFF;
+	border: 0px 0px 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navbar-inner {
+background: rgb(59,103,158); /* Old browsers */
+background: -moz-linear-gradient(top,  rgb(59,103,158) 8%, rgb(32,124,202) 50%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,rgb(59,103,158)), color-stop(50%,rgb(32,124,202))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* IE10+ */
+background: linear-gradient(to bottom,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
+
+
+
+
+
+    border: 1px solid yellow;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: red;
+    border-radius: 6px 6px 6px 6px;
+    display: none;
+    float: left;
+    left: 0;
+    list-style: none outside none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    padding: 5px 0;
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+}
+
+.btn-group.open .btn.dropdown-toggle {
+  background-color: red;
+}
+
+.btn-group.open .btn.dropdown-toggle {
+  background-color:lime;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  color:white;
+  background-color:Teal;
+}
+
+.navbar .nav > li > a {
+    color: white;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-shadow: 0 0px 0 #ffffff;
+}
+
+.navbar .brand {
+  display: block;
+  float: left;
+  padding: 10px 20px 10px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: white;
+  text-shadow: 0 0px 0 #ffffff;
+}
+
+.navbar-brand {
+	color:#FFFFFF;
+	font-style: justify;
+}
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #ADD8E6;
+}
+
+.navbar-text {
+  margin-bottom: 0;
+  line-height: 40px;
+  color: white;
+}
+
+.dropdown-menu li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: white;
+  white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+.titulo-pergunta{
+	position: relative;
+	width:100%;
+	height:3%;
+	font-size:32px;
+	color: #4a5b62;
+}
+
+.texto-descricao{
+	position: relative;
+	margin-right: 4%;
+	margin-left: 4%;
+	height: 75%;
+}
+
+
+.conteudo-all{
+	position: relative;
+	top:28%;
+	left:0%;
+	right: 0%;
+	bottom:4%;
+	background:#E6E6FA;
+}
+
+.pergunta-itens{
+	position:relative;
+	top: 10%;
+	text-align: justify;
+	font-size:18px;
+}
+
+.espacamento{
+	margin-left:2%;
+	margin-right:2%;
+}
+
+.espacamento-right{
+	margin-right:4%;
+}
+.espacamento-left{
+	margin-right:4%;
+}
+
+
+.descricao-conteudo{
+	width:100%;
+	height:100%;
+}
+
+
+
+.teal-light{
+	background: #00A0B1;
+}
+
+.blue-light{
+	background: #FFCC00;
+}
+
+.purple-light{
+	background: #FF6666;
+}
+
+.dark-purple-light{
+	background: #643EBF;
+}
+
+.red-light{
+	background: #FF9933;
+}
+
+.orange-light{
+	background: #DC572E;
+}
+
+.green-light{
+	background: #009933;
+}
+
+.sky-blue-light{
+	background: #0A5BC4;
+}
+
+
+.selecionado{
+	background: #ADD8E6;
+	color:#000000;
+}
+
+
+
+
+.metro{
+	position: relative;
+	top: 0px;
+	left: -1.2%;
+	right: -1.2%;
+	width:102.3%;
+	height:100%;
+	background-color: #FCFFCD;
+	overflow-x:auto;
+	overflow: -moz-scrollbars-horizontal;
+}
+
+.linha{
+	width:100%;
+	height: 100%;
+	padding: 5px;
+	display:inline-flex;
+}
+
+.tile{
+	width:150px;
+	height:100%;
+
+	float:left;
+	margin: 0 5px 0 5px;
+	padding:2px;
+	box-shadow: 5px 5px 5px #4D4D4D;
+}
+
+.tileLargo{
+	width:305px;
+}
+
+.form-centro{
+	position: relative;
+	width: 40%;
+	left: 30%;
+	right: 70%;
+}
+
+#cont{
+	color: #FFFFFF;
+}
+
+#container-metro{
+	position: relative;
+	height: 96%;
+	top: 2%;
+	bottom: 2%;
+}
+
+#linha-metro{
+	position: relative;
+	height: 30%;
+}
+
+.caixa-face{
+	position:relative;
+	right: 1%;
+}

@@ -1,0 +1,23 @@
+administrador: 
+    aqui é onde será colocado os Templates referentes unicamente ao Administrador
+
+telaInicial:
+    contem a primeira tela do sistema, antes mesmo do login
+
+usuario:
+    serão os arquivos referentes ao usuarios(Alunos) que serão beneficiados com
+    o sistema
+
+cadastro:
+    aqui terá os arquivos referentes aos templates de cadastros dos usuarios e
+    dos administradores, sendo que serão  diferentes já que as entidades terão
+    formas diferentes de cadastro ou não
+    
+login:
+    terá os arquivos que tanto o usuario quanto o administrador usarão pra entrar
+    no sistema
+
+estatisticas:
+    mostrara as estatisticas tanto pra o usuario quanto para o administrador
+    
+

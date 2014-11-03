@@ -1,0 +1,11 @@
+principal:
+    basicamente todos os arquivos que não se encaixar nas outras pastas
+
+adicionar:
+    o administrador poderá adicionar novos conteudo, perguntas e itens
+
+editar:
+    os arquivos usados para ele poder editar os dados ja cadastrados
+    
+remover:
+    para ele deletar dados existentes    

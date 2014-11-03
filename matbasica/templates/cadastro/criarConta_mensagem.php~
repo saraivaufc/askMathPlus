@@ -1,0 +1,8 @@
+{% extends 'basico.php' %}
+
+{% block conteudo %}
+    <h1>Usuário Criado com Sucessor</h1>
+    
+    <button onclick="document.location='/login/'">Fazer Login</button>
+    <button onclick="document.location='/criarConta/'">Nova Conta</button>
+{% endblock %}

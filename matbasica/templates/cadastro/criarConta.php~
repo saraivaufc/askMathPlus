@@ -1,0 +1,25 @@
+{% extends 'basico.php' %}
+
+{% block titulo %}
+Criar Conta
+{% endblock %}
+
+{% block cabecalho %}
+    <h1 aling="center">Criar Conta</h1>
+{% endblock %}
+
+{% block conteudo %}
+    <form action="." method="POST">{% csrf_token %}
+        <label>Usuário</label>
+        <input type="text" name="usuario" required/><br>
+        <label>Nome Completo</label>
+        <input type="text" name="nome" required/><br>
+        <label>Email</label>
+        <input type="email" name="email" required/><br>
+        <label>Senha</label>
+        <input type="password" name="senha" required/><br>
+        <button type="submit">Criar Conta</button>
+    </form>
+    
+    <button onclick="document.location='/login/'">Fazer Login</button>
+{% endblock %}

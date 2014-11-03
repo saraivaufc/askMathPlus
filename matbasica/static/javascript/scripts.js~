@@ -1,0 +1,11 @@
+function verificaResposta(f){
+	return false;
+}
+
+function ativarBotao(f){
+	if(f.disabled){
+		f.disabled = false;
+	}else{
+		f.disabled = true;
+	}
+}
