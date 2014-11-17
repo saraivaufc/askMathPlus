@@ -38,8 +38,8 @@
         	<li><a href={% block voltar %}{% endblock %}>Voltar</a></li>
         	{% endblock %}
 
-			<li><a data-toggle="modal" data-target="#myModal">Contato</a></li>
-			<li><a href="/sobre/">Sobre</a></li>
+			<li><a data-toggle="modal" data-target="#contato">Contato</a></li>
+			<li><a data-toggle="modal" data-target="#sobre">Sobre</a></li>
 
 			{% block sair_all %}
         	<li><a href="/logout/">Sair</a></li>
@@ -50,7 +50,7 @@
 </nav>
 
 <!-- Modal Contato -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="contato" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,6 +91,27 @@
 					</div>
 				</div>
 			</form>
+		</div>
+		
+		</center>
+		</div>
+	</div>
+  </div>
+</div>
+
+
+<!-- Modal Soobre -->
+<div class="modal fade" id="sobre" tabindex="-1" role="dialog" aria-labelledby="sobreLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="sobreLabel">Sobre</h4>
+      </div>
+      <div class="modal-body">
+		<center>
+		<div class="form-contato">
+			<p>Bem, aqui é onde será deixado a descrição do projeto do Administrador para os unusario :P</p>
 		</div>
 		
 		</center>
