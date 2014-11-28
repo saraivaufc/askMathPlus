@@ -2,8 +2,9 @@ function sleep(millis)
  {
   var date = new Date();
   var curDate = null;
-  do { curDate = new Date(); }
-  while(curDate-date < millis);
+  do { 
+  	curDate = new Date(); 
+  }while(curDate-date < millis);
 }
 
 
@@ -85,17 +86,21 @@ function verificarAcerto(){
 	var pergunta = document.forms.perguntas.pergunta_atual.value;
 	var conteudo = document.forms.perguntas.conteudo_atual.value;
 	var myURL = "/" + conteudo + "/" + pergunta + "/" + opcao;
+	var res = false;
 	$.ajax({
 		"url": myURL,
 		"type": "get",
 		"dataType": "html",
 		"success": function(data) {
 			alert(data);
+			res = true;
 		},
 		"error": function(jqXHR, status, error) {
 			alert("status:" + status + "error:" + error);
 		}
 	});
+	alert(res);
+	return false;
 };
 
 $("#voltar-contato").click(function(){ 

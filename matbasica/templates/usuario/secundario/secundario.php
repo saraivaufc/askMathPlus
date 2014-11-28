@@ -39,8 +39,8 @@
         <center> <button class="btn btn-success botao" type="submit">Responder</button>
         </center>
         <ul class="pager">
-          <li class="previous"><a href="#">? Anterior</a></li>
-          <li class="next"><a href="#">Próxima ?</a></li>
+          <li class="previous"><a href="#">Anterior</a></li>
+          <li class="next"><a href="#">Próxima</a></li>
         </ul>
       </form>
     </div>

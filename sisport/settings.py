@@ -31,6 +31,7 @@ TEMPLATE_DEBUG = True
 
 INSTALLED_APPS = (
     'matbasica',
+    'forum',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

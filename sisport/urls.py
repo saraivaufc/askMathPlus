@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^contato/$', contato),
     
     
-    url(r'^(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/(?P<id_item>\d+)$', verifica_respostas),
+    url(r'^(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/(?P<id_item>\d+)', verifica_respostas),
 
     url(r'^is_logado$', is_logado),
 
