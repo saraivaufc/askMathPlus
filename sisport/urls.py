@@ -28,4 +28,5 @@ urlpatterns = patterns('',
     url(r'^is_logado$', is_logado),
 
     url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^forum/', include('forum.urls')),
+)	

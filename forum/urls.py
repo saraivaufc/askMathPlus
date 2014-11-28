@@ -5,7 +5,7 @@ Usage in your base urls.py:
     (r'^forum/', include('forum.urls')),
 
 """
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url, include
 
 from forum.feeds import RssForumFeed, AtomForumFeed
 from forum.models import Forum
