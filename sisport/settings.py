@@ -50,6 +50,7 @@ MIDDLEWARE_CLASSES = (
 )
 TEMPLATE_DIRS = (
     'matbasica/templates',
+    'forum/templates',
 )
 
 ROOT_URLCONF = 'sisport.urls'
