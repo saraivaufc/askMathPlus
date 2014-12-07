@@ -86,21 +86,24 @@ function verificarAcerto(){
 	var pergunta = document.forms.perguntas.pergunta_atual.value;
 	var conteudo = document.forms.perguntas.conteudo_atual.value;
 	var myURL = "/" + conteudo + "/" + pergunta + "/" + opcao;
-	var res = false;
+	var res;
 	$.ajax({
 		"url": myURL,
 		"type": "get",
 		"dataType": "html",
 		"success": function(data) {
-			alert(data);
-			res = true;
+			if(data === "TRUE"){
+				res = true;
+			}else if(data === "FALSE"){
+				res = false;
+			}
 		},
 		"error": function(jqXHR, status, error) {
 			alert("status:" + status + "error:" + error);
+			res = false;
 		}
 	});
-	alert(res);
-	return false;
+	return res;
 };
 
 $("#voltar-contato").click(function(){ 
@@ -119,4 +122,19 @@ $("#voltar-contato").click(function(){
 			alert("status:" + status + "error:" + error);
 		}
 	});	
+});
+
+
+
+$(document).ready(function(){
+
+	$("#proxima").click(function(){
+		alert(verificarAcerto());
+		// if(verificarAcerto()){
+		// 	$("#proxima").text("Proxima");
+		// 	alert("dsd");
+		// }else{
+
+		// };
+	});
 });

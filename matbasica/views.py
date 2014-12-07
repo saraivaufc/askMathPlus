@@ -177,11 +177,11 @@ def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
 			pergunta = Pergunta.objects.get(id = id_pergunta, conteudo_pertence_id = id_conteudo)
 			item = Item.objects.get(id = id_item)
 		except:
-			return HttpResponse("Você Errou!!!")
+			return HttpResponse("FALSE")
 		if(pergunta.item_correto_id == item.id):
-			return HttpResponse("Você Acertou!!!")
+			return HttpResponse("TRUE")
 		else:
-			return HttpResponse("Você Errou!!!")
+			return HttpResponse("FALSE")
 	else:
 		return HttpResponseRedirect('/login/')
 

@@ -98,3 +98,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../matbasica/static'),)
 
 STATIC_URL = '/static/'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

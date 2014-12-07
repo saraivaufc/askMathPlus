@@ -21,7 +21,7 @@
         </center>
         <p class="espacamento"> {{ pergunta.descricao | capfirst }} </p>
       </div>
-      <form method="POST" id="perguntas" name="resposta" onsubmit="return verificarAcerto();">
+      <form method="POST" id="perguntas" name="resposta">
       {%csrf_token %} 
       	   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
       	   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
@@ -36,13 +36,12 @@
           <br>
           {% endfor %}
         </ol>
-        <center> <button class="btn btn-success botao" type="submit">Responder</button>
-        </center>
-        <ul class="pager">
-          <li class="previous"><a href="#">Anterior</a></li>
-          <li class="next"><a href="#">Próxima</a></li>
-        </ul>
       </form>
+      <div id="barra-responder" >
+          <button id="anterior" class="btn botao">Anterior</button>
+          <button id="proxima"  class="btn botao">Responder</button>
+      </div>
+
     </div>
 {% endblock %}
 {% block voltar %}'/principal/'{% endblock %}

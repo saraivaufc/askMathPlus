@@ -131,6 +131,14 @@
 }
 
 
+#anterior{
+	position: absolute;
+	left: 1%;
+}
+#proxima{
+	position: absolute;
+	right: 1%;
+}
 
 
 
@@ -142,7 +150,7 @@
 
 
 
-
+	
 
 
 .navbar-navigation{
@@ -154,6 +162,12 @@
 	position: relative;
 	width: 100%;
 	height: 6%;
+}
+#barra-responder{
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	bottom: 0%;
 }
 
 .barra-menu{
