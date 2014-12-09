@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from matbasica.models import *
 from django.core.mail import send_mail
 import md5
+import re
 import smtplib
 from email.mime.text import MIMEText
 
@@ -109,6 +110,7 @@ def secundario(request, tema_conteudo):
 	if 'usuario' in request.session:
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"]);
 		conteudo = Conteudo.objects.get(tema = tema);
+		conteudo.descricao = transforma_strings(conteudo.descricao)
 
 		if request.method == 'POST':
 			atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] )
@@ -255,3 +257,35 @@ def is_logado(request):
 		return HttpResponse("1")
 	else:
 		return HttpResponse("0")
+
+def transforma_strings(s):
+	s+="."
+	site = "http://latex.codecogs.com/gif.latex?"
+	res = ""
+	index = 0;
+	temp = ""
+	iniciou = False
+	terminou = False
+	for i in s:
+		if i == '<':
+			iniciou = True
+			terminou = False
+			continue
+		if i == '>':
+			iniciou = False
+			terminou = True
+			continue
+		if terminou:
+			res += "<img src='" + site + temp +"'/>"
+			terminou = False
+			iniciou = False
+			temp = ""
+
+		if iniciou:
+			temp +=i
+		else:
+			res += i
+
+	print res
+		
+	return res

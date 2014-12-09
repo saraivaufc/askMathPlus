@@ -7,7 +7,7 @@
           <center>
             <h3>{{ conteudo.tema }}</h3>
           </center>
-          <div class="espacamento"> {{ conteudo.descricao }} </div>
+          <div class="espacamento"> {{ conteudo.descricao|safe }} </div>
           <br>
         </div>
       </div>
