@@ -126,18 +126,12 @@ def secundario(request, tema_conteudo):
 						print "Pergunta ja respondida e esta certa"
 						perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 						if(len(perguntas_erradas) == 0 ):
-							pergunta.descricao = transforma_strings(pergunta.descricao)
-							for it in items:
-								it.descricao = transforma_strings(it.descricao)
 							return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 						else:
 							pergunta = perguntas_erradas.pop();
 				else:
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					if(len(perguntas_erradas) == 0 ):
-						pergunta.descricao = transforma_strings(pergunta.descricao)
-						for it in items:
-							it.descricao = transforma_strings(it.descricao)
 						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 					else:
 						pergunta = perguntas_erradas.pop();	
@@ -164,22 +158,19 @@ def secundario(request, tema_conteudo):
 					pergunta = perguntas_erradas.pop()
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				else:
-					pergunta.descricao = transforma_strings(pergunta.descricao)
-					for it in items:
-						it.descricao = transforma_strings(it.descricao)
 					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 		else:
 			try:
 				estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
 				pergunta = Pergunta.objects.get(id = estado.pergunta_id)
 			except:
-				pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+				try:
+					pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+				except:
+					return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 			if acertouPergunta(usuario.id, pergunta.id):
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					if(len(perguntas_erradas) == 0 ):
-						pergunta.descricao = transforma_strings(pergunta.descricao)
-						for it in items:
-							it.descricao = transforma_strings(it.descricao)
 						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 					else:
 						pergunta = perguntas_erradas.pop();
