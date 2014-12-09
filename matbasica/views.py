@@ -281,15 +281,16 @@ def transforma_strings(s):
 	iniciou = False
 	terminou = False
 	for i in s:
-		if i == '<':
+		if i == '&':
 			iniciou = True
 			terminou = False
 			continue
-		if i == '>':
+		if i == '#':
 			iniciou = False
 			terminou = True
 			continue
 		if terminou:
+			temp = temp.replace(" ", "&space;")
 			res += "<img src='" + site + temp +"'/>"
 			terminou = False
 			iniciou = False
