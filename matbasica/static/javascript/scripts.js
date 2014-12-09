@@ -91,15 +91,11 @@ function verificarAcerto(){
 		"url": myURL,
 		"type": "get",
 		"dataType": "html",
-		"success": function(data) {
-			if(data === "TRUE"){
-				res = true;
-			}else if(data === "FALSE"){
-				res = false;
-			}
-		},
-		"error": function(jqXHR, status, error) {
-			alert("status:" + status + "error:" + error);
+		async: false
+	}).done(function(data){
+		if(data === "TRUE"){
+			res = true;
+		}else if(data === "FALSE"){
 			res = false;
 		}
 	});
@@ -128,13 +124,28 @@ $("#voltar-contato").click(function(){
 
 $(document).ready(function(){
 
-	$("#proxima").click(function(){
-		alert(verificarAcerto());
-		// if(verificarAcerto()){
-		// 	$("#proxima").text("Proxima");
-		// 	alert("dsd");
-		// }else{
+	$("#verificar").attr('disabled', 'disabled');	
 
-		// };
+	$("#verificar").click(function(){
+		var res = verificarAcerto();
+		if(res){
+			$("#barra-responder").css("background-color","#DEF0A5");
+		}else{
+			$("#barra-responder").css("background-color", "#FFD4CC");
+		};
+
+		$(this).text("Continuar");
+			$(this).attr('id',"continuar");
+			$("#continuar").click(function(){
+				$("#perguntas").submit();
+			});
+	});
+
+	$("#desistir").click(function(){
+		window.location.href= "/principal/";
+	});
+
+	$("input[name='opcao']").click(function(){
+			$("#verificar").removeAttr('disabled');
 	});
 });

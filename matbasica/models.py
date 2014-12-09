@@ -4,6 +4,20 @@ from django.db import models
 from datetime import datetime
 import unicodedata
 
+
+
+class Turma(models.Model):
+	nome = models.CharField(max_length=255 , verbose_name="Nome")
+	semestre = models.FloatField(verbose_name="Semestre");
+
+
+	def __unicode__(self):
+		return self.nome
+
+	class Meta:
+		ordering = ['semestre']
+
+
 class Usuario(models.Model):
 	nome_usuario = models.CharField(max_length=255 , unique=True, verbose_name="Usuário")
 	nome = models.CharField(max_length=255, verbose_name="Nome")
@@ -16,17 +30,6 @@ class Usuario(models.Model):
 		return self.nome_usuario
 	class Meta:
 		ordering = ['nome']
-
-class Turma(models.Model):
-	nome = models.CharField(max_length=255 , verbose_name="Nome")
-	semestre = models.FloatField(verbose_name="Semestre");
-
-
-	def __unicode__(self):
-		return self.nome
-
-	class Meta:
-		ordering = ['semestre']
 
 class Conteudo(models.Model):
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")
@@ -48,17 +51,36 @@ class Pergunta(models.Model):
 	class Meta:
 		ordering = ['descricao']
 
+class Ajuda(models.Model):
+	descricao = models.TextField(verbose_name="Descrição")
+	conteudo_pertence = models.ForeignKey(Conteudo , null=True , blank=True, verbose_name="Conteúdo Proximo")
+	def __unicode__(self):
+		return self.descricao
+	class Meta:
+		ordering = ['descricao']
+
 class Item(models.Model):
 	descricao = models.TextField(verbose_name="Descrição")
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
-	tipo_proximo = models.BooleanField(default=True, verbose_name="Tipo Proximo")
+	tipo_proximo = models.IntegerField(default=1, verbose_name="Tipo Proximo")
 	pergunta_proximo = models.ForeignKey(Pergunta ,related_name="proximo" , null=True , blank=True, verbose_name="Pergunta Proximo")
-	conteudo_proximo = models.ForeignKey(Conteudo , null=True , blank=True, verbose_name="Conteúdo Proximo")
+	ajuda_proximo = models.ForeignKey(Ajuda, null=True , blank=True, verbose_name="Ajuda Proximo")
 
 	def __unicode__(self):
 		return self.descricao
 	class Meta:
 		ordering = ['descricao']
+
+class Busca_Ajuda(models.Model):
+	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
+	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
+	ajuda = models.ForeignKey(Ajuda, verbose_name="Ajuda")
+
+	def __unicode__(self):
+		return self.usuario  + self.pergunta
+	class Meta:
+		ordering = ['usuario']
+
 
 class Historico(models.Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")

@@ -29,8 +29,9 @@
           {% for item in itens %}
           <li type="A">
             <div class="font-dconteudo">
-              <div class="espacamento-right"> <input id="opcao" name="opcao" value="{{item.id}}"
-                  required="" type="radio"> {{ item.descricao | capfirst }} </div>
+              <div class="espacamento-right">
+                <input name="opcao" value="{{item.id}}" required="" type="radio"> {{ item.descricao | capfirst }} 
+              </div>
             </div>
           </li>
           <br>
@@ -38,8 +39,8 @@
         </ol>
       </form>
       <div id="barra-responder" >
-          <button id="anterior" class="btn botao">Anterior</button>
-          <button id="proxima"  class="btn botao">Responder</button>
+          <button id="desistir" class="btn botao">Desistir</button>
+          <button id="verificar"  class="btn botao">Verificar</button>
       </div>
 
     </div>

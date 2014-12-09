@@ -67,7 +67,6 @@
 			{% block conteudo %}
 				<div class="col-md-5 col-xs-12">
 					{% block conteudo-left %}
-					
 					{% endblock %}
 				</div>
 				<div class="col-md-7 col-xs-12">

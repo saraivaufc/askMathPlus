@@ -1,18 +1,8 @@
-{% extends 'basico.php' %}
+{% extends 'usuario/cabecalhoUser.php' %}
 
-{% block titulo %}
-    Falha Login
-{% endblock %}
-
-{% block cabecalhoall %}
-		<div class="titulo-sistema">
-			<div class="title-container">
-				<center><h1>Falha ao Adicionar Usuário</h1>
-			</div>
-		</div>
-{% endblock %}
-{% block menuall %}
+{% block conteudo %}
 	<center>
-		<button class="botao caixa botao-1" onClick="document.location='/login/' ">Tentar Novamente</button>
+		<h1>Falha ao criar Usuario!!!</h1>
+		<button class="btn botao caixa botao-1" onClick="document.location='/criarConta/'">Tentar Novamente</button>
 	</center>
 {% endblock %}

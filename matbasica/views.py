@@ -63,7 +63,7 @@ def principal(request):
 	if "usuario" in request.session:
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		if request.method == 'POST':
-			Usuario.objects.filter(id = usuario.id).update(turma_id = request.POST['opcao'])
+			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
 			return HttpResponseRedirect('/principal/')
 		else:
 			try:
@@ -78,6 +78,26 @@ def principal(request):
 			return render(request , 'usuario/principal/principal.php' ,locals())
 	else:
 		return HttpResponseRedirect('/login/')
+
+def acertouPergunta(usuario_id, pergunta_id):
+	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
+	for i in perguntas_certas:
+		if i.pergunta_id == pergunta_id:
+			return True
+	return False
+
+def getPerguntasErradas(usuario_id, conteudo_id):
+	perguntas = Pergunta.objects.filter(conteudo_pertence = conteudo_id)
+	perguntas_erradas = []
+	for i in perguntas:
+		enc = False
+		for k in Historico.objects.filter(usuario_id = usuario_id, conteudo_id = conteudo_id, acertou = True): 
+			if i.id == k.pergunta_id:
+				enc = True
+		if enc == False:
+			perguntas_erradas.append(i)
+	return perguntas_erradas 
+		
 
 def secundario(request, tema_conteudo):
 	tema =""
@@ -96,8 +116,25 @@ def secundario(request, tema_conteudo):
 			item  = Item.objects.get(id = request.POST['opcao'])
 
 			#se o proximo for uma pergunta
-			if item.tipo_proximo:
-				pergunta = Pergunta.objects.get(id = item.pergunta_proximo_id);
+			if item.tipo_proximo == 1:
+				if item.pergunta_proximo_id != None:
+					pergunta = Pergunta.objects.get(id = item.pergunta_proximo_id);
+					print "Entrou ja que e uma pergunta"
+					if acertouPergunta(usuario.id, pergunta.id):
+						print "Pergunta ja respondida e esta certa"
+						perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+						if(len(perguntas_erradas) == 0 ):
+							return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+						else:
+							pergunta = perguntas_erradas.pop();
+				else:
+					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					if(len(perguntas_erradas) == 0 ):
+						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+					else:
+						pergunta = perguntas_erradas.pop();	
+
+
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
 				try:
@@ -113,23 +150,26 @@ def secundario(request, tema_conteudo):
 					estado_usuario.save()
 
 			#agora se for um conteudo
-			else:
-				conteudo = Conteudo.objects.get(id = item.conteudo_proximo_id);
-				try:
-					estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
-					pergunta = Pergunta.objects.get(id = estado.pergunta_id)
-				except:
-					pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-				finally:
+			elif item.tipo_proximo == 2:
+				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+				if(len(perguntas_erradas) > 0):
+					pergunta = perguntas_erradas.pop()
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+				else:
+					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 		else:
 			try:
 				estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
 				pergunta = Pergunta.objects.get(id = estado.pergunta_id)
 			except:
 				pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-			finally:
-				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+			if acertouPergunta(usuario.id, pergunta.id):
+					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					if(len(perguntas_erradas) == 0 ):
+						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+					else:
+						pergunta = perguntas_erradas.pop();
+			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 		
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
@@ -139,7 +179,7 @@ def secundario(request, tema_conteudo):
 def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item):
 	item = Item.objects.get(id = id_item)
 	item_correto = (Pergunta.objects.get(id = id_pergunta) ).item_correto_id 
-	if int(id_item) == item_correto:
+	if item.id == item_correto:
 		resposta = True
 	else:
 		resposta = False

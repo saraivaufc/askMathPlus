@@ -29,7 +29,7 @@
 			<button class="form-control btn  btn-primary" type="submit">Criar</button>
 			</div>
 			<div class="form-group">
-				<button class="form-control btn  btn-primary" onClick="document.location='/login/'">Voltar</button>
+				<button class="form-control btn  btn-primary" onClick="document.location='/login/'">Tentar Fazer Login</button>
 			</div>
 		</form>
 	</div>
