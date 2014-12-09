@@ -19,7 +19,7 @@
         <center>
           <h3>Pergunta</h3>
         </center>
-        <p class="espacamento"> {{ pergunta.descricao | capfirst }} </p>
+        <p class="espacamento"> {{ pergunta.descricao|safe }} </p>
       </div>
       <form method="POST" id="perguntas" name="resposta">
       {%csrf_token %} 
@@ -30,7 +30,7 @@
           <li type="A">
             <div class="font-dconteudo">
               <div class="espacamento-right">
-                <input name="opcao" value="{{item.id}}" required="" type="radio"> {{ item.descricao | capfirst }} 
+                <input name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
               </div>
             </div>
           </li>
