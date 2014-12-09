@@ -265,7 +265,7 @@ def is_logado(request):
 
 def transforma_strings(s):
 	s+="."
-	site = "http://latex.codecogs.com/gif.latex?"
+	site = "http://latex.codecogs.com/png.latex?"
 	res = ""
 	index = 0;
 	temp = ""
