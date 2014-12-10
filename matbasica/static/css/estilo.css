@@ -490,6 +490,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	position: relative;
 	font-size: 300%;
 }
+
+.visible{
+	visibility: visible;
+}
+.hidden{
+	visibility: hidden;
+}
+
 #resultado_positivo{
 	color: green;
 }

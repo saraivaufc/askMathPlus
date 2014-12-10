@@ -41,10 +41,10 @@
       <div id="barra-responder" >
           <button id="desistir" class="btn botao">Desistir</button>
           <center>
-            <div id="resultado_positivo" class="resultado">
+            <div id="resultado_positivo" class="resultado hidden">
               Acertou!!!
             </div>
-            <div id="resultado_negativo" class="resultado">
+            <div id="resultado_negativo" class="resultado hidden">
               Errou!!!
             </div>
           </center>

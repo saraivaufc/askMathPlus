@@ -125,18 +125,14 @@ $(document).ready(function(){
 
 	$("#verificar").attr('disabled', 'disabled');	
 
-
-	$("#resultado_positivo").hide();
-	$("#resultado_negativo").hide();
-
 	$("#verificar").click(function(){
 		var res = verificarAcerto();
 		if(res){
 			$("#barra-responder").css("background-color","#DEF0A5");
-			$("#resultado_positivo").show();
+			$("#resultado_positivo").removeClass("hidden");
 		}else{
 			$("#barra-responder").css("background-color", "#FFD4CC");
-			$("#resultado_negativo").show();
+			$("#resultado_negativo").removeClass("hidden");
 		};
 
 		$(this).text("Continuar");
