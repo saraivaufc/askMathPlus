@@ -156,7 +156,7 @@ $(document).ready(function(){
 			"type": "get",
 			"dataType": "html",
 			"success": function(){
-				location.reload();
+				window.location.href=window.location.href;
 			},
 			"error": function(jqXHR, status, error) {
 				alert("status:" + status + "error:" + error);

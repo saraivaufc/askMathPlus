@@ -6,6 +6,7 @@ from matbasica.models import *
 from django.core.mail import send_mail
 import md5
 import re
+from random import randrange
 import smtplib
 from email.mime.text import MIMEText
 
@@ -145,7 +146,8 @@ def secundario(request, tema_conteudo):
 			elif item.tipo_proximo == 2:
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) > 0):
-					pergunta = perguntas_erradas.pop()
+					index = randrange(len(perguntas_erradas));
+					pergunta = perguntas_erradas.pop(index)
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				else:
 					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
@@ -185,7 +187,8 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 		if item.tipo_proximo == 2:
 			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 			if(len(perguntas_erradas) > 0):
-				pergunta = perguntas_erradas.pop()
+				index = randrange(len(perguntas_erradas))
+				pergunta = perguntas_erradas.pop(index)
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
 				return HttpResponse(request)
