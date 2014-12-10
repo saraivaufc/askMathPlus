@@ -71,7 +71,7 @@
       </div>
       <div class="modal-body">
     <center>
-    <div class="form-contato">
+    <div>
       <div id="ajuda_text">
         
       </div>

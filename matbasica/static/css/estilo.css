@@ -368,6 +368,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	font-size:18px;
 }
 
+#ajuda_text{
+	text-align: justify;
+	font-size:18px;	
+}
+
 .espacamento{
 	margin-left:2%;
 	margin-right:2%;
