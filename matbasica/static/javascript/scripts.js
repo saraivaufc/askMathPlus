@@ -134,6 +134,7 @@ $(document).ready(function(){
 			$("#barra-responder").css("background-color", "#FFD4CC");
 			$("#resultado_negativo").removeClass("hidden");
 		};
+		document.getElementById("opcao").disabled = true;
 
 		$(this).text("Continuar");
 			$(this).attr('id',"continuar");

@@ -25,12 +25,13 @@
       {%csrf_token %} 
       	   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
       	   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
+        
         <ol>
           {% for item in itens %}
           <li type="A">
             <div class="font-dconteudo">
               <div class="espacamento-right">
-                <input name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
+                <input id="opcao" name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
               </div>
             </div>
           </li>
