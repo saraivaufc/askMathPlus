@@ -146,7 +146,8 @@ $(document).ready(function(){
 			$(this).attr('id',"continuar");
 			$("#continuar").click(function(){
 				$("#perguntas").submit();
-			});
+		});
+		$("#pular").attr('disabled', 'disabled');
 	});
 
 	$("#pular").click(function(){
