@@ -188,6 +188,9 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 			if(len(perguntas_erradas) > 0):
 				index = randrange(len(perguntas_erradas))
+				while (perguntas_erradas[index].id == pergunta.id):
+					index = randrange(len(perguntas_erradas))
+				
 				pergunta = perguntas_erradas.pop(index)
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
