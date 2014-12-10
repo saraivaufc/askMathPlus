@@ -139,18 +139,8 @@ def secundario(request, tema_conteudo):
 
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
-				try:
-					estado = Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id)
-					Estado_Usuario.objects.filter(id = estado.id).update(pergunta = pergunta.id)
-				except:
-					estado_usuario = Estado_Usuario.objects.create(
-									usuario_id = usuario.id,
-									turma_id = usuario.turma_id,
-									conteudo_id = conteudo.id,
-									pergunta_id = pergunta.id,
-								);
-					estado_usuario.save()
 
+				atualiza_estado(usuario.id,conteudo.id, pergunta.id);
 			#agora se for um conteudo
 			elif item.tipo_proximo == 2:
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
@@ -175,6 +165,7 @@ def secundario(request, tema_conteudo):
 					else:
 						pergunta = perguntas_erradas.pop();
 			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+
 		pergunta.descricao = transforma_strings(pergunta.descricao)
 		for it in itens:
 			it.descricao = transforma_strings(it.descricao)
@@ -182,6 +173,45 @@ def secundario(request, tema_conteudo):
 	else:
 		return HttpResponseRedirect('/login/')
 
+
+def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
+	if 'usuario' in request.session:
+		print "Conteudo Id = " + conteudo_id;
+		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		conteudo = Conteudo.objects.get(id = conteudo_id)
+		pergunta = Pergunta.objects.get(id = pergunta_id);
+		item = Item.objects.get(id = pergunta.item_correto_id)
+
+		if item.tipo_proximo == 2:
+			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+			if(len(perguntas_erradas) > 0):
+				pergunta = perguntas_erradas.pop()
+				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
+				return HttpResponse(request)
+			else:
+				return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+		else:
+			pergunta.id = item.pergunta_proximo_id;
+			atualiza_estado(usuario.id, conteudo.id, pergunta.id)
+			return secundario(request, conteudo.tema);
+	else:
+		return HttpResponseRedirect("/login/")
+
+
+def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
+	usuario = Usuario.objects.get(id = usuario_id);
+	try:
+		estado = Estado_Usuario.objects.get(usuario_id = usuario_id , conteudo_id = conteudo_id)
+		Estado_Usuario.objects.filter(id = estado.id).update(pergunta = pergunta_id)
+	except:
+		estado_usuario = Estado_Usuario.objects.create(
+			usuario_id = usuario.id,
+			turma_id = usuario.turma_id,
+			conteudo_id = conteudo_id,
+			pergunta_id = pergunta_id,
+		);
+		estado_usuario.save()
 
 def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item):
 	item = Item.objects.get(id = id_item)

@@ -149,8 +149,19 @@ $(document).ready(function(){
 			});
 	});
 
-	$("#desistir").click(function(){
-		window.location.href= "/principal/";
+	$("#pular").click(function(){
+		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+		$.ajax({
+			"url": url,
+			"type": "get",
+			"dataType": "html",
+			"success": function(){
+				location.reload();
+			},
+			"error": function(jqXHR, status, error) {
+				alert("status:" + status + "error:" + error);
+			}
+		});
 	});
 
 	$("input[name='opcao']").click(function(){

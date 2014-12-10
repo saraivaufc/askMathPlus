@@ -14,7 +14,7 @@
     </div>
     {% endblock %}
 
-    
+
     {% block conteudo-right %}
     <div class="conteudo-right">
       <div class="font-dconteudo">
@@ -42,7 +42,7 @@
         </ol>
       </form>
       <div id="barra-responder" >
-          <button id="desistir" class="btn botao">Desistir</button>
+          <button id="pular" class="btn botao">Pular</button>
           <center>
             <div id="resultado_positivo" class="resultado hidden">
               Acertou!!!
