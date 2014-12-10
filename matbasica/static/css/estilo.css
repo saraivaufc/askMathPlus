@@ -130,13 +130,17 @@
 	top: 40%;
 }
 
-
+#botao_concluido{
+	position: relative;
+}
 
 #desistir{
 	position: absolute;
 	left: 1%;
 	width: 15%;
 	height: 60%;
+	background-color: #D0D0D0;
+	border-color: #bfb5b5;
 	top: 20%;
 	border-radius: 15px;
 }
@@ -480,10 +484,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 .caixa-face{
 	position:relative;
 	right: 1%;
-}
-
-#botao_concluido{
-	position: relative;
 }
 
 .resultado{
