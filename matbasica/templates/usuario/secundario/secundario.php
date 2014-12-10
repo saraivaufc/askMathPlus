@@ -31,7 +31,7 @@
           <li type="A">
             <div class="font-dconteudo">
               <div class="espacamento-right">
-                <input id="opcao" name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
+                <input  name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
               </div>
             </div>
           </li>
