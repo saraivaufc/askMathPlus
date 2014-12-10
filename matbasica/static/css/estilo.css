@@ -1,5 +1,5 @@
 .body{
-	font-family: Ubuntu;
+	font-family: Ubuntu, Arial;
 }
 .cabecalho {
 	position: relative;
@@ -480,4 +480,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 .caixa-face{
 	position:relative;
 	right: 1%;
+}
+
+#botao_concluido{
+	position: relative;
+}
+
+.resultado{
+	position: relative;
+	font-size: 300%;
+}
+#resultado_positivo{
+	color: green;
+}
+
+#resultado_negativo{
+	color: red;
 }

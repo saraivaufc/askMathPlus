@@ -40,6 +40,14 @@
       </form>
       <div id="barra-responder" >
           <button id="desistir" class="btn botao">Desistir</button>
+          <center>
+            <div id="resultado_positivo" class="resultado">
+              Acertou!!!
+            </div>
+            <div id="resultado_negativo" class="resultado">
+              Errou!!!
+            </div>
+          </center>
           <button id="verificar"  class="btn botao">Verificar</button>
       </div>
 

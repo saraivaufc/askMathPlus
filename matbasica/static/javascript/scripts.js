@@ -16,7 +16,6 @@ $(function () {
 			larguraLinha += $(this).width();
 			larguraLinha += 2*parseInt($(this).css("margin-right").toString().replace("px", ""));
 		});
-
 		if (larguraLinha > maiorLinha)
 			maiorLinha = larguraLinha+5;
 		});
@@ -126,12 +125,18 @@ $(document).ready(function(){
 
 	$("#verificar").attr('disabled', 'disabled');	
 
+
+	$("#resultado_positivo").hide();
+	$("#resultado_negativo").hide();
+
 	$("#verificar").click(function(){
 		var res = verificarAcerto();
 		if(res){
 			$("#barra-responder").css("background-color","#DEF0A5");
+			$("#resultado_positivo").show();
 		}else{
 			$("#barra-responder").css("background-color", "#FFD4CC");
+			$("#resultado_negativo").show();
 		};
 
 		$(this).text("Continuar");
