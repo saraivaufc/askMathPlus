@@ -184,6 +184,7 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
+			$("#ajuda_text").empty(); 
 			$("#ajuda_text").append("<p>" + data + "</p>");
 		});
 	});
