@@ -16,7 +16,10 @@
 
 
     {% block conteudo-right %}
+
     <div class="conteudo-right">
+    
+    <div id="form-perguntas">
       <div class="font-dconteudo">
         <center>
           <h3>Pergunta</h3>
@@ -41,6 +44,7 @@
           {% endfor %}
         </ol>
       </form>
+      </div>
       <div id="barra-responder" >
           <button id="pular" class="btn botao">Pular</button>
           <center>
