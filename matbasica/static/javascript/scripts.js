@@ -138,7 +138,7 @@ $(document).ready(function(){
 			nElements = form.length;
 			for (i=0; i<nElements; i++){
 				if (form[i].type == "radio"){
-					form[i].disabled = true;
+					//form[i].disabled = true;
 				}
 			} 
 

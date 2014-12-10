@@ -1,14 +1,7 @@
-{% extends 'usuario/principal/principal.php' %}
+{% extends 'usuario/secundario/secundario.php' %}
 
-{% block conteudo %}
+{% block conteudo-right %}
 	<center>
 		<h1>Conteudo Concluido com Sucesso!!!</h1>
 	</center>
-	<br>
-	<br>
-	<div id="botao_concluido">
-		<center>
-			<button class="btn botao" onclick="window.location='/principal/'" >Voltar ao Inicio</button>
-		</center>
-	</div>
 {% endblock %}

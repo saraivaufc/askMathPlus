@@ -2,6 +2,6 @@
 
 {% block conteudo-right %}
 	<center>
-		<h1>Sem Perguntas</h1>
+		<h1>Esse conteudo nao possui perguntas!!!</h1>
 	</center>
 {% endblock %}
