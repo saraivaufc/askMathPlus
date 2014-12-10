@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^principal/estatisticas/$' , estatisticas),
 
     url(r'^contato/$', contato),
+
+    url(r'^ajuda/(?P<item_id>\d+)$', getAjuda),
     
     url(r'^atualiza_estado/(?P<conteudo_id>\d+)/(?P<pergunta_id>\d+)/', atualiza_estado_usuario),
     

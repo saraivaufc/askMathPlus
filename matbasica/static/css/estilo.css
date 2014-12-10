@@ -161,17 +161,21 @@
 	background-color: #94C501;
 	border-radius: 15px;
 }
-#ir_ajuda{
+
+#ajuda{
 	position: absolute;
-	right: 1%;
-	width: 15%;
-	height: 60%;
 	top: 20%;
-	background-color: #2add2d;
-	border-radius: 15px;	
+	right: 30%;
+	
+	height: 55%;
+	width: 5%;
+	border-radius: 10px;
+
+	background-image: url('/static/imagens/duvida.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #f5f907;
 }
-
-
 
 
 

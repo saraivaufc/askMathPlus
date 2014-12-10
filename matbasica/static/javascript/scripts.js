@@ -123,7 +123,8 @@ $("#voltar-contato").click(function(){
 
 $(document).ready(function(){
 
-	$("#verificar").attr('disabled', 'disabled');	
+	$("#verificar").attr('disabled', 'disabled');
+	$("#ajuda").hide();	
 
 	$("#verificar").click(function(){
 		var res = verificarAcerto();
@@ -133,6 +134,7 @@ $(document).ready(function(){
 		}else{
 			$("#barra-responder").css("background-color", "#FFD4CC");
 			$("#resultado_negativo").removeClass("hidden");
+			$("#ajuda").show(1000);
 		};
 
 		$(this).text("Continuar");
@@ -171,5 +173,18 @@ $(document).ready(function(){
 
 	$("input[name='opcao']").click(function(){
 			$("#verificar").removeAttr('disabled');
+	});
+
+	$("#ajuda").click(function(){
+		var valor = $('input[name=opcao]:checked', '#perguntas').val();
+		var url = "/ajuda/" + valor;
+		$.ajax({
+			"url": url,
+			"type": "get",
+			"dataType": "html",
+			async: false
+		}).done(function(data){
+			$("#ajuda_text").append("<p>" + data + "</p>");
+		});
 	});
 });

@@ -53,7 +53,6 @@ class Pergunta(models.Model):
 
 class Ajuda(models.Model):
 	descricao = models.TextField(verbose_name="Descrição")
-	conteudo_pertence = models.ForeignKey(Conteudo , null=True , blank=True, verbose_name="Conteúdo Proximo")
 	def __unicode__(self):
 		return self.descricao
 	class Meta:

@@ -268,8 +268,6 @@ def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
 	else:
 		return HttpResponseRedirect('/login/')
 
-		return HttpResponseRedirect('/login/')
-
 def send_email(nome, email, msg):
 	send_mail('AskMath', msg , email , ['saraiva.ufc@gmail.com'], fail_silently=False)
 
@@ -331,3 +329,11 @@ def transforma_strings(s):
 	print res
 		
 	return res
+
+def getAjuda(request, item_id):
+	if "usuario" in request.session:
+		item = Item.objects.get(id = item_id);
+		ajuda = Ajuda.objects.get(id = item.ajuda_proximo_id);
+		return HttpResponse(ajuda.descricao);
+	else:
+		return HttpResponseRedirect('/login/')

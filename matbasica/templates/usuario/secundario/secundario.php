@@ -54,11 +54,35 @@
             <div id="resultado_negativo" class="resultado hidden">
               Errou!!!
             </div>
+            <a id="ajuda" data-toggle="modal" data-target="#ajuda_modal"></a>
           </center>
           <button id="verificar"  class="btn botao">Verificar</button>
       </div>
 
     </div>
+
+
+<!-- Modal Ajuda -->
+<div class="modal fade" id="ajuda_modal" tabindex="-1" role="dialog" aria-labelledby="sobreLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+    <center>
+    <div class="form-contato">
+      <div id="ajuda_text">
+        
+      </div>
+    </div>
+    
+    </center>
+    </div>
+  </div>
+  </div>
+</div>
+
 {% endblock %}
 {% block voltar_all%}
 {% endblock %}
