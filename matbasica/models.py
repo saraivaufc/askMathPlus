@@ -37,6 +37,7 @@ class Conteudo(models.Model):
 	pergunta_inicial = models.ForeignKey('Pergunta' , null=True , blank=True , verbose_name="Pergunta Inicial")
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
+	turma = models.ForeignKey('Turma', verbose_name="Turma")
 	def __unicode__(self):
 		return self.tema
 	class Meta:
@@ -66,7 +67,8 @@ class Item(models.Model):
 	ajuda_proximo = models.ForeignKey(Ajuda, null=True , blank=True, verbose_name="Ajuda Proximo")
 
 	def __unicode__(self):
-		return self.descricao
+		return self.descricao  
+	
 	class Meta:
 		ordering = ['descricao']
 

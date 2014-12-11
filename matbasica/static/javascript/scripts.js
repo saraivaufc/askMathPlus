@@ -185,7 +185,7 @@ $(document).ready(function(){
 			async: false
 		}).done(function(data){
 			$("#ajuda_text").empty(); 
-			$("#ajuda_text").append("<p>" + data + "</p>");
+			$("#ajuda_text").append("<p>{{" + data + "| safe}}</p>");
 		});
 	});
 });
