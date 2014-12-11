@@ -142,7 +142,7 @@
 	left: 1%;
 	width: 15%;
 	height: 60%;
-	background-color: #D0D0D0;
+	background-color: #428bca;
 	border-color: #bfb5b5;
 	top: 20%;
 }
@@ -151,6 +151,7 @@
 	right: 1%;
 	width: 15%;
 	height: 60%;
+	background-color: #27ae60;
 	top: 20%;
 }
 #continuar{
@@ -159,7 +160,7 @@
 	width: 15%;
 	height: 60%;
 	top: 20%;
-	background-color: #94C501;
+	background-color: #2ecc71;
 }
 
 #ajuda{
@@ -446,10 +447,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	background: #e74c3c;
 }
 
-.clouds{
-	background: #ecf0f1;
-}
-
 .concrete{
 	background: #95a5a6;
 }
@@ -508,13 +505,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	float:left;
 	margin: 0 5px 0 5px;
 	padding:2px;
-	mouse: pointer;
 	box-shadow: 5px 5px 5px #4D4D4D;
 }
 
 .tileLargo{
 	width:305px;
-	mouse: pointer;
 }
 
 .form-centro{
@@ -565,3 +560,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 #resultado_negativo{
 	color: red;
 }
+

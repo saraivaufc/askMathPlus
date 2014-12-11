@@ -26,7 +26,7 @@ $(function () {
 
 
 $(document).ready(function (){
-		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.clouds.concrete.orange.pumpkin.pomegranate.silver.asbestos";
+		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.concrete.orange.pumpkin.pomegranate.silver.asbestos";
 		var coresLista = cores.split(".");
 		$(".tile").each(function(){
 			var corIndex = Math.floor((Math.random() * coresLista.length));
@@ -108,6 +108,7 @@ $(document).ready(function(){
 
 	$("#verificar").click(function(){
 		var res = verificarAcerto();
+		var corContinuar;
 		if(res){
 			$("#barra-responder").css("background-color","#DEF0A5");
 			$("#resultado_positivo").removeClass("hidden");
@@ -142,7 +143,6 @@ $(document).ready(function(){
 
 		$("#form-perguntas").fadeTo('slow',.6);
 		$("#form-perguntas").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
-
 	});
 
 	$("#pular").click(function(){
