@@ -111,7 +111,7 @@ def secundario(request, tema_conteudo):
 	if 'usuario' in request.session:
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"]);
 		conteudo = Conteudo.objects.get(tema = tema);
-		conteudo.descricao = transforma_strings(conteudo.descricao)
+		conteudo.descricao = conteudo.descricao
 
 		if request.method == 'POST':
 			atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] )
@@ -168,9 +168,9 @@ def secundario(request, tema_conteudo):
 						pergunta = perguntas_erradas.pop();
 			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
-		pergunta.descricao = transforma_strings(pergunta.descricao)
+		pergunta.descricao = pergunta.descricao
 		for it in itens:
-			it.descricao = transforma_strings(it.descricao)
+			it.descricao = it.descricao
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -192,7 +192,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 					index = randrange(len(perguntas_erradas))
 				
 				pergunta = perguntas_erradas.pop(index)
-	
+
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
 				return HttpResponse(request)
@@ -298,43 +298,10 @@ def is_logado(request):
 	else:
 		return HttpResponse("0")
 
-def transforma_strings(s):
-	s+="."
-	site = "http://latex.codecogs.com/png.latex?"
-	res = ""
-	index = 0;
-	temp = ""
-	iniciou = False
-	terminou = False
-	for i in s:
-		if i == '&':
-			iniciou = True
-			terminou = False
-			continue
-		if i == '#':
-			iniciou = False
-			terminou = True
-			continue
-		if terminou:
-			temp = temp.replace(" ", "&space;")
-			res += "<img src='" + site + temp +"'/>"
-			terminou = False
-			iniciou = False
-			temp = ""
-
-		if iniciou:
-			temp +=i
-		else:
-			res += i
-
-	print res
-		
-	return res
-
 def getAjuda(request, item_id):
 	if "usuario" in request.session:
 		item = Item.objects.get(id = item_id);
 		ajuda = Ajuda.objects.get(id = item.ajuda_proximo_id);
-		return HttpResponse( transforma_strings(ajuda.descricao));
+		return HttpResponse( ajuda.descricao);
 	else:
 		return HttpResponseRedirect('/login/')

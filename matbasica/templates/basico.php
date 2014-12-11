@@ -96,6 +96,7 @@
 {% endblock %}
 </body>
 	<script type="text/javascript" src="/static/javascript/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/static/javascript/latexit.js"></script>
 	<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
 	<script type="text/javascript" src="/static/javascript/jquery-2.1.1.min.js" ></script>
 	<script type="text/javascript" src="/static/javascript/editor.js"></script>

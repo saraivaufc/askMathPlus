@@ -1,3 +1,4 @@
+
 function sleep(millis)
  {
   var date = new Date();
@@ -122,6 +123,7 @@ $("#voltar-contato").click(function(){
 
 
 $(document).ready(function(){
+	LatexIT.add('t',true);
 
 	$("#verificar").attr('disabled', 'disabled');
 	$("#ajuda").hide();	
@@ -185,7 +187,7 @@ $(document).ready(function(){
 			async: false
 		}).done(function(data){
 			$("#ajuda_text").empty(); 
-			$("#ajuda_text").append("<p>{{" + data + "| safe}}</p>");
+			$("#ajuda_text").append(data);
 		});
 	});
 });

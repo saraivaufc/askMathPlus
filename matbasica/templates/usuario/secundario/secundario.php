@@ -7,7 +7,7 @@
           <center>
             <h3>{{ conteudo.tema }}</h3>
           </center>
-          <div class="espacamento"> {{ conteudo.descricao|safe }} </div>
+          <div class="espacamento"><t> {{ conteudo.descricao|safe }}<t> </div>
           <br>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <center>
           <h3>Pergunta</h3>
         </center>
-        <p class="espacamento"> {{ pergunta.descricao|safe }} </p>
+        <t class="espacamento"> {{ pergunta.descricao|safe }} </t>
       </div>
       <form method="POST" id="perguntas" name="resposta">
       {%csrf_token %} 
@@ -36,7 +36,7 @@
           <li type="A">
             <div class="font-dconteudo">
               <div class="espacamento-right">
-                <input name="opcao" value="{{item.id|safe}}" required="" type="radio"> {{ item.descricao | safe }} 
+                <input name="opcao" value="{{item.id|safe}}" required="" type="radio"><t>{{ item.descricao | safe }}</t> 
               </div>
             </div>
           </li>
@@ -72,9 +72,8 @@
       <div class="modal-body">
     <center>
     <div>
-      <div id="ajuda_text">
-        
-      </div>
+      <t id="ajuda_text">
+      </t>
     </div>
     
     </center>
