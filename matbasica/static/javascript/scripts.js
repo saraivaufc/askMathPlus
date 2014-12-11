@@ -23,37 +23,15 @@ $(function () {
 		$(".container").css("width", maiorLinha.toString() + "px");
 });
 
-$(".tile").each(function (){
-		var ran =  Math.floor((Math.random() * 8) + 1);
-		switch(ran) {
-		case 1:
-			$(this).addClass("teal-light");
-			break;
-		case 2:
-			$(this).addClass("blue-light");
-			break;
-		case 3:
-			$(this).addClass("purple-light");
-			break;
-		case 4:
-			$(this).addClass("dark-purple-light");
-			break;
-		case 5:
-			$(this).addClass("red-light");
-			break;
-		case 6:
-			$(this).addClass("green-light");
-			break;
-		case 7:
-			$(this).addClass("orange-light");
-			break;
-		case 8:
-			$(this).addClass("sky-blue-light");
-			break;
-		default:
-			$(this).addClass("red");
-		}
-		sleep(10);
+
+
+$(document).ready(function (){
+		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.clouds.concrete.orange.pumpkin.pomegranate.silver.asbestos";
+		var coresLista = cores.split(".");
+		$(".tile").each(function(){
+			var corIndex = Math.floor((Math.random() * coresLista.length));
+			$(this).addClass(coresLista[corIndex]);
+		});
 });
 
 $(".tile").each(function () {

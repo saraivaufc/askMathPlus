@@ -393,36 +393,85 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 
 
 
-.teal-light{
-	background: #00A0B1;
+
+
+.turquoise{
+	background: #1abc9c;
 }
 
-.blue-light{
-	background: #FFCC00;
+.emerald{
+	background: #2ecc71;
 }
 
-.purple-light{
-	background: #FF6666;
+.peter-river{
+	background: #3498db;
 }
 
-.dark-purple-light{
-	background: #643EBF;
+.amethyst{
+	background: #9b59b6;
 }
 
-.red-light{
-	background: #FF9933;
+.wet-asphalt{
+	background: #34495e;
+}
+.green-sea{
+	background: #16a085;
 }
 
-.orange-light{
-	background: #DC572E;
+.nephritis{
+	background: #27ae60;
 }
 
-.green-light{
-	background: #009933;
+.belize-hole{
+	background: #2980b9;
 }
 
-.sky-blue-light{
-	background: #0A5BC4;
+.wisteria{
+	background: #8e44ad;
+}
+
+.midnight-blue{
+	background: #2c3e50;
+}
+
+.sun-flower{
+	background: #f1c40f;
+}
+
+.carrot{
+	background:#e67e22;
+}
+
+.alizarin{
+	background: #e74c3c;
+}
+
+.clouds{
+	background: #ecf0f1;
+}
+
+.concrete{
+	background: #95a5a6;
+}
+
+.orange{
+	background: #f39c12;
+}
+
+.pumpkin{
+	background: #d35400;
+}
+
+.pomegranate{
+	background: #c0392b;
+}
+
+.silver{
+	background: #bdc3c7;
+}
+
+.asbestos{
+	background: #7f8c8d;
 }
 
 
