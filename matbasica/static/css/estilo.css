@@ -456,15 +456,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 .tile{
 	width:150px;
 	height:100%;
-
 	float:left;
 	margin: 0 5px 0 5px;
 	padding:2px;
+	mouse: pointer;
 	box-shadow: 5px 5px 5px #4D4D4D;
 }
 
 .tileLargo{
 	width:305px;
+	mouse: pointer;
 }
 
 .form-centro{
