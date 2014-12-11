@@ -8,8 +8,8 @@
       <ExibirLog Valor="False"/>&#13;
     </Configuracoes>&#13;
     <Arquivos>&#13;
-      <Arq01 Valor="D:\HOME\USER\DROPBOX\UNIVERSIDADE FEDERAL DO CEARA\MEUS_SISTEMAS\ASKMATH\LIXO\ASKMATH.BRM"/>&#13;
-      <Arq02 Valor=""/>&#13;
+      <Arq01 Valor="D:\HOME\USER\DESKTOP\ASKMATH\LIXO\ASKMATH.BRM"/>&#13;
+      <Arq02 Valor="D:\HOME\USER\DROPBOX\UNIVERSIDADE FEDERAL DO CEARA\MEUS_SISTEMAS\ASKMATH\LIXO\ASKMATH.BRM"/>&#13;
       <Arq03 Valor=""/>&#13;
       <Arq04 Valor=""/>&#13;
       <Arq05 Valor=""/>&#13;
@@ -108,5 +108,5 @@ DDL ansi 2003: em caso de update na tabela pai, o que deverá acontecer.&#13;
 [OnDelete]&#13;
 DDL ansi 2003: em caso de exclusão na tabela pai, o que deverá acontecer.&#13;
 [TBcOrdem]&#13;
-Ordem de conversão da tabela para o modelo físico.&#13;</Flash>&#13;
+Ordem de conversão da tabela para o modelo físico.</Flash>&#13;
   </AJUDA></APP>
