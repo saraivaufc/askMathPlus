@@ -158,6 +158,7 @@ $(document).ready(function(){
 
 	$("#pular").click(function(){
 		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+		alert(url);
 		$.ajax({
 			"url": url,
 			"type": "get",

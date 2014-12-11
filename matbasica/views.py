@@ -192,6 +192,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 					index = randrange(len(perguntas_erradas))
 				
 				pergunta = perguntas_erradas.pop(index)
+	
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
 				return HttpResponse(request)
