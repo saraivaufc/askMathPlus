@@ -300,8 +300,15 @@ def is_logado(request):
 
 def getAjuda(request, item_id):
 	if "usuario" in request.session:
-		item = Item.objects.get(id = item_id);
-		ajuda = Ajuda.objects.get(id = item.ajuda_proximo_id);
-		return HttpResponse( ajuda.descricao);
+		try:
+			item = Item.objects.get(id = item_id);
+		except:
+			return HttpResponse("None");
+		try:
+			ajuda = Ajuda.objects.get(id = item.ajuda_proximo_id);
+		except:
+			return HttpResponse("None");
+
+		return HttpResponse(ajuda.descricao);
 	else:
 		return HttpResponseRedirect('/login/')

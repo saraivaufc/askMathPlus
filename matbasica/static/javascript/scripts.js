@@ -136,7 +136,23 @@ $(document).ready(function(){
 		}else{
 			$("#barra-responder").css("background-color", "#FFD4CC");
 			$("#resultado_negativo").removeClass("hidden");
-			$("#ajuda").show(1000);
+			var mostra = true;
+			var valor = $('input[name=opcao]:checked', '#perguntas').val();
+			var url = "/ajuda/" + valor;
+			$.ajax({
+				"url": url,
+				"type": "get",
+				"dataType": "html",
+				async: false
+			}).done(function(data){
+				if (data == "None"){
+					mostra = false;
+				}		
+			});
+			if(mostra){
+				$("#ajuda").show(1000);
+			}
+				
 		};
 
 		$(this).text("Continuar");
@@ -179,7 +195,6 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
-			alert(data);
 			$("#ajuda_text").empty();
 			$("#ajuda_text").append(data);
 		});
