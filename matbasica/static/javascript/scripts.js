@@ -146,13 +146,6 @@ $(document).ready(function(){
 		});
 		$("#pular").attr('disabled', 'disabled');
 
-		var form =  document.forms.perguntas;
-		nElements = form.length;
-		for (i=0; i<nElements; i++){
-			if (form[i].type == "radio"){
-				//form[i].disabled = true;
-			}
-		} 
 		$("#form-perguntas").fadeTo('slow',.6);
 		$("#form-perguntas").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
 
@@ -186,7 +179,8 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
-			$("#ajuda_text").empty(); 
+			alert(data);
+			$("#ajuda_text").empty();
 			$("#ajuda_text").append(data);
 		});
 	});
