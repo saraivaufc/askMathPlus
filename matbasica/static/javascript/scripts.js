@@ -158,7 +158,6 @@ $(document).ready(function(){
 
 	$("#pular").click(function(){
 		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
-		alert(url);
 		$.ajax({
 			"url": url,
 			"type": "get",
@@ -167,7 +166,7 @@ $(document).ready(function(){
 				window.location.href=window.location.href;
 			},
 			"error": function(jqXHR, status, error) {
-				alert("status:" + status + "error:" + error);
+				//adicionar algo aqui
 			}
 		});
 	});
