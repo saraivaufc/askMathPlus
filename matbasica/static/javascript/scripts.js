@@ -175,6 +175,14 @@ $(document).ready(function(){
 		}).done(function(data){
 			$("#ajuda_text").empty();
 			$("#ajuda_text").append(data);
+			var pergunta = $("#pergunta_atual").val();
+			url = "/busca_ajuda/" + pergunta + "/"  + valor;
+			$.ajax({
+					"url": url,
+					"type": "get",
+					"dataType": "html",
+					async: false
+				}).done(function(data){});
 		});
 	});
 });

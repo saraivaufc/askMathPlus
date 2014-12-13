@@ -38,8 +38,8 @@
         	<li><a href={% block voltar %}{% endblock %}>Voltar</a></li>
         	{% endblock %}
 
-			<li><a data-toggle="modal" data-target="#contato">Contato</a></li>
-			<li><a data-toggle="modal" data-target="#sobre">Sobre</a></li>
+			<li><a data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
+			<li><a data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
 
 			{% block sair_all %}
         	<li><a href="/logout/">Sair</a></li>

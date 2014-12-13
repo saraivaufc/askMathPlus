@@ -145,6 +145,7 @@
 	left: 1%;
 	width: 15%;
 	height: 60%;
+	font-size: 100%;
 	background-color: #428bca;
 	border-color: #bfb5b5;
 	top: 20%;
@@ -154,6 +155,7 @@
 	right: 1%;
 	width: 15%;
 	height: 60%;
+	font-size: 100%;
 	background-color: #27ae60;
 	top: 20%;
 }
@@ -162,6 +164,7 @@
 	right: 1%;
 	width: 15%;
 	height: 60%;
+	font-size: 100%;
 	top: 20%;
 	background-color: #2ecc71;
 }
@@ -179,6 +182,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: #f5f907;
+	visibility: none;
 }
 
 
@@ -514,10 +518,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	margin: 0 5px 0 5px;
 	padding:2px;
 	box-shadow: 5px 5px 5px #4D4D4D;
+	cursor: pointer;
 }
 
 .tileLargo{
 	width:305px;
+	cursor: pointer;
 }
 
 .form-centro{

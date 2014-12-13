@@ -100,17 +100,14 @@ def getPerguntasErradas(usuario_id, conteudo_id):
 			perguntas_erradas.append(i)
 	return perguntas_erradas 
 		
-
 def secundario(request, tema_conteudo):
-	tema =""
-	for i in tema_conteudo:
-		if i == '_':
-			tema = tema + " "
-		else:
-			tema = tema + i
+	tema = transform_tema(tema_conteudo)
 	if 'usuario' in request.session:
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"]);
-		conteudo = Conteudo.objects.get(tema = tema);
+		try:
+			conteudo = Conteudo.objects.get(tema = tema);
+		except:
+			return HttpResponseRedirect('/principal/')
 		conteudo.descricao = conteudo.descricao
 
 		if request.method == 'POST':
@@ -303,6 +300,17 @@ def is_logado(request):
 	else:
 		return HttpResponse("0")
 
+
+def transform_tema(t):
+	tema =""
+	for i in t:
+		if i == '_':
+			tema = tema + " "
+		else:
+			tema = tema + i
+	return tema
+
+
 def getAjuda(request, item_id):
 	if "usuario" in request.session:
 		try:
@@ -315,5 +323,19 @@ def getAjuda(request, item_id):
 			return HttpResponse("None");
 
 		return HttpResponse(ajuda.descricao);
+	else:
+		return HttpResponseRedirect('/login/')
+
+def busca_ajuda(request, id_pergunta, id_item):
+	if "usuario" in request.session:
+		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		busca = Busca_Ajuda.objects.create(
+			usuario_id = usuario.id,
+			pergunta_id = id_pergunta,
+			item_id = id_item
+		)
+		busca.save()
+		return HttpResponse("200")
+		
 	else:
 		return HttpResponseRedirect('/login/')
