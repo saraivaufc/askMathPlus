@@ -31,7 +31,6 @@
 	height: 100%;
  	background-color: #FCFFCD;
  	overflow-y:auto;
-	overflow: -moz-scrollbars-vertical;
 }
 .conteudo-right{
 	position:relative;
@@ -39,8 +38,12 @@
 	width: 103%;
 	height: 100%;
  	background-color:  #f7f6f3;
- 	overflow-y:auto;
-	overflow: -moz-scrollbars-vertical;
+}
+
+.conteudo-center{
+	position:relative;
+	width: 100%;
+	height: 98%;
 }
 
 .rodape{
@@ -200,10 +203,10 @@
 	height: 6%;
 }
 #barra-responder{
-	position: absolute;
+	position: relative;
 	width: 100%;
 	height: 15%;
-	bottom: 0%;
+	margin-bottom: 0%;
 	background-color: #DBDBDB;
 }
 
@@ -250,7 +253,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
     padding-left: 20px;
     padding-right: 20px;
 }
-
 .dropdown-menu {
     background-clip: padding-box;
     background-color: red;
@@ -383,13 +385,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	margin-right:4%;
 }
 .espacamento-left{
-	margin-right:4%;
+	margin-left:4%;
 }
 
 
 .descricao-conteudo{
+	position: relative;
 	width:100%;
-	height:100%;
+	height:95%;
+}
+
+.descricao-pergunta{
+	position: relative;
+	width:100%;
+	height:86%;	
+ 	overflow-y:auto;
 }
 
 
@@ -489,7 +499,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	height:100%;
 	background-color: #FCFFCD;
 	overflow-x:auto;
-	overflow: -moz-scrollbars-horizontal;
 }
 
 .linha{
