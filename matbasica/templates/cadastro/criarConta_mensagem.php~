@@ -1,4 +1,4 @@
-{% extends 'basico.php' %}
+{% extends 'login/login.php' %}
 
 {% block conteudo %}
     <h1>Usuário Criado com Sucessor</h1>

@@ -84,7 +84,6 @@ class Busca_Ajuda(Model):
 	class Meta:
 		ordering = ['usuario']
 
-
 class Historico(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
 	turma = models.ForeignKey(Turma, verbose_name="Turma")

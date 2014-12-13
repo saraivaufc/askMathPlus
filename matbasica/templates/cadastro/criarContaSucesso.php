@@ -1,4 +1,4 @@
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'login/login.php' %}
 
 {% block conteudo %}
 	<center>

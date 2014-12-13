@@ -114,7 +114,8 @@ def secundario(request, tema_conteudo):
 		conteudo.descricao = conteudo.descricao
 
 		if request.method == 'POST':
-			atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] )
+			if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] ) == False:
+				return render(request, 'usuario/avisos/sem_item_correto.php', locals())
 			cont_all = Conteudo.objects.all()
 			item  = Item.objects.get(id = request.POST['opcao'])
 
@@ -223,6 +224,9 @@ def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
 def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item):
 	item = Item.objects.get(id = id_item)
 	item_correto = (Pergunta.objects.get(id = id_pergunta) ).item_correto_id 
+	if(item_correto == None):
+		return False;
+	resposta = None
 	if item.id == item_correto:
 		resposta = True
 	else:
@@ -237,6 +241,7 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 			acertou = resposta,
 	)
 	historico.save()
+	return True
 
 
 def forum(request):

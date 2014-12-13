@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block conteudo %}
-
+<div class="conteudo">
 <center>
 	<div class="form-login">
 		<form class="form-horizontal" role="form" method="post">{% csrf_token %}
@@ -34,5 +34,6 @@
 		</form>
 	</div>
 </center>	
+</div>
 
 {% endblock %}
