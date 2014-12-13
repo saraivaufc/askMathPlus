@@ -64,7 +64,7 @@ class Ajuda(Model):
 class Item(Model):
 	descricao = models.TextField(verbose_name="Descrição")
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
-	tipo_proximo = models.IntegerField(default=1, verbose_name="Tipo Proximo")
+	possui_proxima_pergunta = models.BooleanField(default=False, verbose_name="Possui Proxima Pergunta")
 	pergunta_proximo = models.ForeignKey(Pergunta ,related_name="proximo" , null=True , blank=True, verbose_name="Pergunta Proximo")
 	ajuda_proximo = models.ForeignKey(Ajuda, null=True , blank=True, verbose_name="Ajuda Proximo")
 

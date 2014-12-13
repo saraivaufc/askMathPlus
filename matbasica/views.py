@@ -120,7 +120,7 @@ def secundario(request, tema_conteudo):
 			item  = Item.objects.get(id = request.POST['opcao'])
 
 			#se o proximo for uma pergunta
-			if item.tipo_proximo == 1:
+			if item.possui_proxima_pergunta == True:
 				if item.pergunta_proximo_id != None:
 					pergunta = Pergunta.objects.get(id = item.pergunta_proximo_id);
 					print "Entrou ja que e uma pergunta"
@@ -144,7 +144,7 @@ def secundario(request, tema_conteudo):
 
 				atualiza_estado(usuario.id,conteudo.id, pergunta.id);
 			#agora se for um conteudo
-			elif item.tipo_proximo == 2:
+			else:
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) > 0):
 					index = randrange(len(perguntas_erradas));
@@ -185,7 +185,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 		pergunta = Pergunta.objects.get(id = pergunta_id);
 		item = Item.objects.get(id = pergunta.item_correto_id)
 
-		if item.tipo_proximo == 2:
+		if item.possui_proxima_pergunta == False:
 			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 			if(len(perguntas_erradas) > 0):
 				index = randrange(len(perguntas_erradas))
