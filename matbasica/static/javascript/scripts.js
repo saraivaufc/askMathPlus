@@ -28,9 +28,17 @@ $(function () {
 $(document).ready(function (){
 		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.concrete.orange.pumpkin.pomegranate.silver.asbestos";
 		var coresLista = cores.split(".");
+		var selecionadas = []
 		$(".tile").each(function(){
-			var corIndex = Math.floor((Math.random() * coresLista.length));
-			$(this).addClass(coresLista[corIndex]);
+			var cor = coresLista.pop();
+			$(this).addClass(cor);
+			selecionadas.push(cor);
+			if(coresLista.length == 0){
+				for(var i=0; i< selecionadas.length; i++){
+					coresLista.push(selecionadas[i]);
+				}
+				selecionadas = [];
+			}
 		});
 });
 
@@ -141,8 +149,8 @@ $(document).ready(function(){
 		});
 		$("#pular").attr('disabled', 'disabled');
 
-		$("#form-perguntas").fadeTo('slow',.6);
-		$("#form-perguntas").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
+		$("#perguntas").fadeTo('slow',.6);
+		$("#perguntas").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
 	});
 
 	$("#pular").click(function(){

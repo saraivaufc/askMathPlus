@@ -4,9 +4,14 @@
 	<div class="conteudo-right">
 		<div class="font-dconteudo">
 			<div class="descricao-pergunta">
+				<div class="avisos-conteudo">
 				<center>
-					<h1>Conteudo Concluido com Sucesso!!!</h1>
+					<h1>Conteudo Concluido!!!</h1>
 				</center>
+				<center>
+					<button class="btn botao" onclick="document.location ='/principal/'">Voltar</button>
+				</center>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -39,7 +39,7 @@ class Conteudo(Model):
 	pergunta_inicial = models.ForeignKey('Pergunta' , null=True , blank=True , verbose_name="Pergunta Inicial")
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
-	turma = models.ManyToManyField('Turma', null= True, blank= True, verbose_name="Turma")
+	turma = models.ManyToManyField('Turma', verbose_name="Turma")
 	def __unicode__(self):
 		return format(self.criacao, "%d/%m/%Y %H:%M:%S") +" - "+ self.tema
 	class Meta:
