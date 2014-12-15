@@ -25,9 +25,9 @@ $(function () {
 
 
 $(document).ready(function() {
-    $('.metro').jScrollPane();
-    $('.conteudo-left').jScrollPane();
-    $('.descricao-pergunta').jScrollPane();
+    $('.metro').jScrollPane({showArrows: true});
+    $('.conteudo-left').jScrollPane({showArrows: true});
+    $('.descricao-pergunta').jScrollPane({showArrows: true});
 });
 
 $(document).ready(function (){
