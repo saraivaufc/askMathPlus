@@ -20,10 +20,6 @@
         {% block estilo %}
         {% endblock %}
     </style>
-    <script type="text/javascript">
-        {% block funcoes %}
-        {% endblock %}
-    </script>
     
 {% endblock %}
 </head>
@@ -102,4 +98,9 @@
 	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/static/javascript/jquery.jscrollpane.min.js"></script>
 	<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
+
+	<script type="text/javascript">
+        {% block funcoes %}
+        {% endblock %}
+    </script>
 </html>

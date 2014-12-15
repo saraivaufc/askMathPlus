@@ -11,25 +11,27 @@
     {% block conteudo-left %}
       	
     <div class="conteudo-left">
-    	<div class="font-dconteudo">
-        	<div class="descricao-conteudo">
-        		<div class="panel-heading">
-        		<div class="panel panel-info">
-				 	<div class="panel-title">
-						<center>
-			            	<h3>{{ conteudo.tema }}</h3>
-			          	</center>
-				  	</div>
-				 	<div class="panel-footer">
-				  		<div class="espacamento">
-				  			<t> {{ conteudo.descricao|safe }}<t>
-				  		</div>
-				  	</div>
-				</div>
-				</div>
-          		<br>
-        	</div>
-      	</div>
+	    	<div class="font-dconteudo">
+	        	<div class="descricao-conteudo">
+		        		<div class="panel-heading">
+		        		<div class="panel panel-info">
+							<div class="container-fluid">
+						 	<div class="panel-title">
+								<center>
+					            	<h3>{{ conteudo.tema }}</h3>
+					          	</center>
+						  	</div>
+						 	<div class="panel-footer">
+						  		<div class="espacamento">
+						  			<t> {{ conteudo.descricao|safe }}<t>
+						  		</div>
+						  	</div>
+						  	</div>
+						</div>
+						</div>
+	          		<br>
+	        	</div>
+	      	</div>
     </div>
     {% endblock %}
 

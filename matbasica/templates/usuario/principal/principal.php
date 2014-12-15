@@ -7,6 +7,12 @@
 {% block titulo %}Principal{% endblock %}
 
 
+{%  block funcoes %}
+	$(document).ready(function(){
+		$(".jspPane").css("height","95%");
+	});
+{%  endblock %}
+
 {% block conteudo %}
 
 
