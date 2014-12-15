@@ -2,6 +2,13 @@
 
 {% block voltar %}document.location{% endblock %}
 
+
+{%  block funcoes %}
+	$(document).ready(function(){
+		$(".jspPane").css("height","100%");
+	});
+{%  endblock %}
+
 {% block conteudo-right %}
 	<div class="conteudo-right bg-warning">
 		<div class="font-dconteudo">

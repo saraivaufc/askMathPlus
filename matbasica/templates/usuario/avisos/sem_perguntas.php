@@ -1,5 +1,10 @@
 {% extends 'usuario/secundario/secundario.php' %}
 
+{%  block funcoes %}
+	$(document).ready(function(){
+		$(".jspPane").css("height","100%");
+	});
+{%  endblock %}
 
 {% block conteudo-right %}
 	<div class="conteudo-right bg-info">
