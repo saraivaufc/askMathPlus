@@ -127,13 +127,19 @@ def secundario(request, tema_conteudo):
 						if(len(perguntas_erradas) == 0 ):
 							return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 						else:
+							pergunta_atual_id = pergunta.id;
 							pergunta = perguntas_erradas.pop();
+							while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+								pergunta = perguntas_erradas.pop();
 				else:
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					if(len(perguntas_erradas) == 0 ):
 						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
 					else:
-						pergunta = perguntas_erradas.pop();	
+						pergunta_atual_id = pergunta.id;
+						pergunta = perguntas_erradas.pop();
+						while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+							pergunta = perguntas_erradas.pop();
 
 
 				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
@@ -142,10 +148,14 @@ def secundario(request, tema_conteudo):
 				atualiza_estado(usuario.id,conteudo.id, pergunta.id);
 			#agora se for um conteudo
 			else:
+				pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual']);
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) > 0):
-					index = randrange(len(perguntas_erradas));
-					pergunta = perguntas_erradas.pop(index)
+					pergunta_atual_id = pergunta.id;
+					pergunta = perguntas_erradas.pop()
+					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+						pergunta = perguntas_erradas.pop();
+
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				else:
 					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
@@ -159,11 +169,15 @@ def secundario(request, tema_conteudo):
 				except:
 					return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 			if acertouPergunta(usuario.id, pergunta.id):
-					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-					if(len(perguntas_erradas) == 0 ):
-						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
-					else:
+				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+				if(len(perguntas_erradas) == 0 ):
+					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+				else:
+					pergunta_atual_id = pergunta.id;
+					pergunta = perguntas_erradas.pop();
+					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
 						pergunta = perguntas_erradas.pop();
+
 			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
 		pergunta.descricao = pergunta.descricao
@@ -180,13 +194,26 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		conteudo = Conteudo.objects.get(id = conteudo_id)
 		pergunta = Pergunta.objects.get(id = pergunta_id);
-		item = Item.objects.get(id = pergunta.item_correto_id)
+		try:
+			item = Item.objects.get(id = pergunta.item_correto_id)
+		except:
+			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+			if(len(perguntas_erradas) == 0 ):
+				return HttpResponse("Conteudo Concluido!!!")
+			else:
+				pergunta_atual_id = pergunta.id;
+				pergunta = perguntas_erradas.pop();
+				while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+					pergunta = perguntas_erradas.pop();
+				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
+			return HttpResponse("Nao exite item correto na pergunta!!!")
 
 		if item.possui_proxima_pergunta == False:
 			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 			if(len(perguntas_erradas) > 0):
 				index = randrange(len(perguntas_erradas))
-				while (perguntas_erradas[index].id == pergunta.id):
+				while perguntas_erradas[index].id == pergunta.id and len(perguntas_erradas) != 1 :
+					print "casa"
 					index = randrange(len(perguntas_erradas))
 				
 				pergunta = perguntas_erradas.pop(index)
@@ -335,6 +362,24 @@ def busca_ajuda(request, id_pergunta, id_item):
 			item_id = id_item
 		)
 		busca.save()
+		return HttpResponse("200")
+		
+	else:
+		return HttpResponseRedirect('/login/')
+
+def pulo(request,id_conteudo, id_pergunta):
+	if "usuario" in request.session:
+		try:
+			usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		except:
+			return HttpResponse("500");
+		pulo = Pulo.objects.create(
+			turma_id = usuario.turma_id,
+			usuario_id = usuario.id,
+			conteudo_id = id_conteudo,
+			pergunta_id = id_pergunta
+		)
+		pulo.save()
 		return HttpResponse("200")
 		
 	else:

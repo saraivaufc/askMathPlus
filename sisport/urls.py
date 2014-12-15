@@ -15,22 +15,23 @@ urlpatterns = patterns('',
     url(r'^criarConta/$' , criarConta),
     
     url(r'^principal/$' , principal),
-    url(r'^principal/(?P<tema_conteudo>\w+)$' , secundario),
-    url(r'^principal/forum/$' , forum),
-   
-    url(r'^principal/estatisticas/$' , estatisticas),
+    url(r'^principal/(?P<tema_conteudo>\w+)/$' , secundario),
+    url(r'^principal/forum$' , forum),
+    url(r'^principal/estatisticas$' , estatisticas),
 
     url(r'^contato/$', contato),
 
-    url(r'^ajuda/(?P<item_id>\d+)$', getAjuda),
+    url(r'^ajuda/(?P<item_id>\d+)/$', getAjuda),
     
-    url(r'^atualiza_estado/(?P<conteudo_id>\d+)/(?P<pergunta_id>\d+)/', atualiza_estado_usuario),
+    url(r'^atualiza_estado/(?P<conteudo_id>\d+)/(?P<pergunta_id>\d+)/$', atualiza_estado_usuario),
     
-    url(r'^busca_ajuda/(?P<id_pergunta>\d+)/(?P<id_item>\d+)', busca_ajuda),
+    url(r'^busca_ajuda/(?P<id_pergunta>\d+)/(?P<id_item>\d+)/$', busca_ajuda),
 
-    url(r'^(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/(?P<id_item>\d+)', verifica_respostas),
+    url(r'^(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/(?P<id_item>\d+)/$', verifica_respostas),
 
-    url(r'^is_logado$', is_logado),
+    url(r'^pulo/(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/$', pulo),
+
+    url(r'^is_logado/$', is_logado),
 
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^forum/', include('forum.urls')),

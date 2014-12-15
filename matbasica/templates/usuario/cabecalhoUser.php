@@ -3,46 +3,30 @@
 {% block menu %}
 <div class="barra-menu">
 
-<nav class="navbar navbar-inner" role="navigation">
+<nav class="navbar bg-primary" role="navigation">
   <div class="container-fluid">
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-        <li><a href="/principal/">Principal</a></li>
+        <li><a class="nav-item" href="/principal/">Principal</a></li>
         {% block botoes_adicionais_esq %}
-        <li><a href="/principal/forum/">Fórum</a></li>
-		<li><a href="/principal/estatisticas/">Estatisticas</a></li>
+        <li><a class="nav-item" href="/principal/forum">Fórum</a></li>
+		<li><a class="nav-item"  href="/principal/estatisticas">Estatisticas</a></li>
         {% endblock %}
-        <!--
-        <li class="dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
-	        </ul>
-        </li>
-       !/>
-       -->
        
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
 
 			{% block voltar_all %}
-        	<li><a href={% block voltar %}{% endblock %}>Voltar</a></li>
+        	<li  id="voltar"><a  class="nav-item" onclick="document.location = {% block voltar %}/principal/{% endblock %}" href="#">Voltar</a></li>
         	{% endblock %}
 
-			<li><a data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
-			<li><a data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
+			<li><a class="nav-item" data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
+			<li><a class="nav-item" data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
 
 			{% block sair_all %}
-        	<li><a href="/logout/">Sair</a></li>
+        	<li><a class="nav-item" href="/logout/">Sair</a></li>
         	{% endblock %}
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -84,7 +68,7 @@
 				</div>
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					</div>
 					<div class="btn-group">
 						<button type="submit" class="btn btn-primary" >Enviar</button>
@@ -100,7 +84,7 @@
 </div>
 
 
-<!-- Modal Soobre -->
+<!-- Modal Sobre -->
 <div class="modal fade" id="sobre" tabindex="-1" role="dialog" aria-labelledby="sobreLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

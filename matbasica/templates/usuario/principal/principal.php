@@ -3,6 +3,10 @@
 {% block voltar_all %}
 {% endblock %}
 
+
+{% block titulo %}Principal{% endblock %}
+
+
 {% block conteudo %}
 
 
@@ -75,6 +79,7 @@
 			</tr>
 		</table>
 	</div>
+
 </div>
 
 {% endblock %}

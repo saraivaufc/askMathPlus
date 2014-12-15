@@ -24,13 +24,20 @@ $(function () {
 });
 
 
+$(document).ready(function() {
+    $('.conteudo-left').jScrollPane({showArrows: true});
+    $('.descricao-pergunta').jScrollPane({showArrows: true});
+    $('.metro').jScrollPane({showArrows: true});
+});
 
 $(document).ready(function (){
-		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.concrete.orange.pumpkin.pomegranate.silver.asbestos";
+		var cores = "turquoise.emerald.peter-river.amethyst.wet-asphalt.green-sea.nephritis.belize-hole.wisteria.midnight-blue.sun-flower.carrot.alizarin.concrete.orange.pumpkin.pomegranate.asbestos";
 		var coresLista = cores.split(".");
-		var selecionadas = []
+		coresLista.reverse();
+		var selecionadas = [];
 		$(".tile").each(function(){
 			var cor = coresLista.pop();
+			console.log(cor);
 			$(this).addClass(cor);
 			selecionadas.push(cor);
 			if(coresLista.length == 0){
@@ -55,7 +62,7 @@ $("#li-botao").css({"margin-left": "5px" });
 $(".tile").click(function() {
 	var text =  $(this).children(".font-metro").children("#text-quadrado").children("#cont").text();
 	var text2 = text.split(" ").join("_");
-	window.location.href= "/principal/".concat(text2);
+	window.location.href= "/principal/"+ text2+"/";
 	$(this).addClass("selecionado");
 });
 
@@ -71,7 +78,7 @@ function verificarAcerto(){
 	var opcao = document.forms.perguntas.opcao.value;
 	var pergunta = document.forms.perguntas.pergunta_atual.value;
 	var conteudo = document.forms.perguntas.conteudo_atual.value;
-	var myURL = "/" + conteudo + "/" + pergunta + "/" + opcao;
+	var myURL = "/" + conteudo + "/" + pergunta + "/" + opcao+"/";
 	var res;
 	$.ajax({
 		"url": myURL,
@@ -90,7 +97,7 @@ function verificarAcerto(){
 
 $("#voltar-contato").click(function(){ 
 	$.ajax({
-		"url": "/is_logado",
+		"url": "/is_logado/",
 		"type": "get",
 		"dataType": "html",
 		"success": function(data) {
@@ -111,34 +118,32 @@ $("#voltar-contato").click(function(){
 $(document).ready(function(){
 	LatexIT.add('t',true);
 
-	$("#verificar").attr('disabled', 'disabled');
-	$("#ajuda").hide();	
+	$("#verificar").attr('disabled', 'disabled');	
 
 	$("#verificar").click(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
-			$("#barra-responder").css("background-color","#DEF0A5");
+			$(".barra-responder").addClass("bg-success");
+			$(".conteudo-right").addClass("bg-success");
 			$("#resultado_positivo").removeClass("hidden");
 		}else{
-			$("#barra-responder").css("background-color", "#FFD4CC");
+			$(".barra-responder").addClass("bg-danger");
+			$(".conteudo-right").addClass("bg-danger");
 			$("#resultado_negativo").removeClass("hidden");
-			var mostra = true;
+			
 			var valor = $('input[name=opcao]:checked', '#perguntas').val();
-			var url = "/ajuda/" + valor;
+			var url = "/ajuda/" + valor+"/";
 			$.ajax({
 				"url": url,
 				"type": "get",
 				"dataType": "html",
 				async: false
 			}).done(function(data){
-				if (data == "None"){
-					mostra = false;
+				if (data != "None"){
+					$("#ajuda").css("visibility","visible");
 				}		
 			});
-			if(mostra){
-				$("#ajuda").show(1000);
-			}
 				
 		};
 
@@ -148,9 +153,13 @@ $(document).ready(function(){
 				$("#perguntas").submit();
 		});
 		$("#pular").attr('disabled', 'disabled');
+		$("#voltar").hide();
 
-		$("#perguntas").fadeTo('slow',.6);
-		$("#perguntas").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
+		$(".descricao-pergunta").fadeTo('slow',.6);
+		$(".descricao-pergunta").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
+
+
+
 	});
 
 	$("#pular").click(function(){
@@ -159,11 +168,27 @@ $(document).ready(function(){
 			"url": url,
 			"type": "get",
 			"dataType": "html",
+			async: false,
 			"success": function(){
-				window.location.href=window.location.href;
+				url = "/pulo/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+				$.ajax({
+					"url": url,
+					"type": "get",
+					"dataType": "html",
+					async: false,
+					"success": function(){
+
+					},
+					"error": function(jqXHR, status, error) {
+						alert(error);
+						alert(url);
+					}
+				});
+				window.location = window.location;
 			},
 			"error": function(jqXHR, status, error) {
-				//adicionar algo aqui
+				alert(error);
+				alert(url);
 			}
 		});
 	});
@@ -174,7 +199,7 @@ $(document).ready(function(){
 
 	$("#ajuda").click(function(){
 		var valor = $('input[name=opcao]:checked', '#perguntas').val();
-		var url = "/ajuda/" + valor;
+		var url = "/ajuda/" + valor+"/";
 		$.ajax({
 			"url": url,
 			"type": "get",
@@ -184,7 +209,7 @@ $(document).ready(function(){
 			$("#ajuda_text").empty();
 			$("#ajuda_text").append(data);
 			var pergunta = $("#pergunta_atual").val();
-			url = "/busca_ajuda/" + pergunta + "/"  + valor;
+			url = "/busca_ajuda/" + pergunta + "/"  + valor+"/";
 			$.ajax({
 					"url": url,
 					"type": "get",

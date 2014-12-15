@@ -10,5 +10,6 @@ admin.site.register(Historico)
 admin.site.register(Estado_Usuario)
 admin.site.register(Ajuda)
 admin.site.register(Busca_Ajuda)
+admin.site.register(Pulo)
 
 

@@ -17,7 +17,7 @@
 				<form class="form-vertical" method="post" role="form">{% csrf_token %}
 					<div class="form-group">
 						<label>Usuário</label>
-						<input type="text" class="form-control" name="usuario" required autofocus>
+						<input type="text" class="form-control" name="usuario" required autofocus autocomplete="on">
 					</div>
 					<div class="form-group">
 						<label>Senha</label>

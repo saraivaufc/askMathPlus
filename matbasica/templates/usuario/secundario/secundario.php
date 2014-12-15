@@ -1,16 +1,35 @@
 {% extends 'usuario/cabecalhoUser.php' %}
 
+	{% block titulo %}{{conteudo.tema}}{% endblock %}
+
+	{% block estilo %}
+		.conteudo{
+			background-color: #428bca;
+		}
+	{% endblock %}
+
     {% block conteudo-left %}
+      	
     <div class="conteudo-left">
-      <div class="font-dconteudo">
-        <div class="descricao-conteudo">
-          <center>
-            <h3>{{ conteudo.tema }}</h3>
-          </center>
-          <div class="espacamento"><t> {{ conteudo.descricao|safe }}<t> </div>
-          <br>
-        </div>
-      </div>
+    	<div class="font-dconteudo">
+        	<div class="descricao-conteudo">
+        		<div class="panel-heading">
+        		<div class="panel panel-info">
+				 	<div class="panel-title">
+						<center>
+			            	<h3>{{ conteudo.tema }}</h3>
+			          	</center>
+				  	</div>
+				 	<div class="panel-footer">
+				  		<div class="espacamento">
+				  			<t> {{ conteudo.descricao|safe }}<t>
+				  		</div>
+				  	</div>
+				</div>
+				</div>
+          		<br>
+        	</div>
+      	</div>
     </div>
     {% endblock %}
 
@@ -20,43 +39,56 @@
 	<div class="conteudo-right">
 		<div class="font-dconteudo">
 			<div class="descricao-pergunta">
-				<center>
-				  <h3>Pergunta</h3>
-				</center>
-				<div class="espacamento-right espacamento-left">
-				  <t> {{ pergunta.descricao|safe }} </t>
-				</div>
-				<form method="POST" id="perguntas" name="resposta">
-				{%csrf_token %} 
-					   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
-					   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
-					
-					<ol>
-					{% for item in itens %}
-						<li type="A">
-							<div class="font-dconteudo">
-								<div class="espacamento-right">
-									<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-									<t>{{ item.descricao | safe }}</t> 
-								</div>
+				<div class="panel-heading">
+        		<div class="panel panel-info">
+				 	<div class="panel-title">
+						<center>
+						  	<h3>Pergunta</h3>
+						</center>
+				  	</div>
+				 	<div class="panel-footer">
+				  		<div class="espacamento">
+				  			<div class="espacamento-right espacamento-left">
+							  <t> {{ pergunta.descricao|safe }} </t>
 							</div>
-						</li>
-						<br>
-					{% endfor %}
-					</ol>
-				</form>
+							<hr/>
+							<form method="POST" id="perguntas" name="resposta">
+							{%csrf_token %} 
+								   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
+								   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
+								
+								<ol>
+								{% for item in itens %}
+									<li type="A">
+										<div class="font-dconteudo">
+											<div class="espacamento-right">
+												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
+												<t>{{ item.descricao | safe }}</t> 
+											</div>
+										</div>
+									</li>
+									<br>
+								{% endfor %}
+								</ol>
+							</form>
+				  		</div>
+				  	</div>
+				</div>
+				</div>
+				</div>
+
 			</div>
 			
-			<div id="barra-responder" >
+			<div class="barra-responder" >
 				<button id="pular" class="btn botao">Pular</button>
 				<center>
-					<div id="resultado_positivo" class="resultado hidden">
+					<div id="resultado_positivo" class="resultado hidden alert-success">
 						Acertou!!!
 					</div>
-					<div id="resultado_negativo" class="resultado hidden">
+					<div id="resultado_negativo" class="resultado hidden alert-danger">
 						Errou!!!
 					</div>
-					<a id="ajuda" data-toggle="modal" data-target="#ajuda_modal"></a>
+					<a id="ajuda"  data-toggle="modal" data-target="#ajuda_modal"></a>
 				</center>
 				<button id="verificar"  class="btn botao">Verificar</button>
 			</div>
@@ -83,6 +115,4 @@
   	</div>
 </div>
 
-{% endblock %}
-{% block voltar_all%}
 {% endblock %}

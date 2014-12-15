@@ -1,6 +1,7 @@
 .body{
 	font-family: Ubuntu, Arial;
 }
+
 .cabecalho {
 	position: relative;
 	width: 100%;
@@ -9,6 +10,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
  	background-color: white;
+ 	background-position: center;
 }
 
 .menu{
@@ -19,7 +21,7 @@
 .conteudo{
 	position: relative;
  	width: 100%;
- 	height: 71%;
+ 	height: 69%;
   	background-color:  #FFFFFF;
  	font-color: #4a5b62;
 }
@@ -27,9 +29,9 @@
 .conteudo-left{
 	position:relative;
 	left: -3%;
-	width: 105.5%;
+	width: 105%;
 	height: 100%;
- 	background-color: #FCFFCD;
+	background-color: #FCFFCD;
  	overflow-y:auto;
 }
 .conteudo-right{
@@ -37,7 +39,7 @@
 	left: -1%;
 	width: 103%;
 	height: 100%;
- 	background-color:  #f7f6f3;
+	background-color: #D9EDF7;
 }
 
 .conteudo-center{
@@ -49,16 +51,13 @@
 .rodape{
 	position:relative;
 	width: 100%;
-	height: 2%;
-	background-color: #428bca; 	
-  	border-radius: 3px;
+	height: 4%;
+	background-color: #428bca;
 }
 
 .t{
 	text-align: justify;
 }
-
-
 
 
 
@@ -145,7 +144,7 @@
 	left: 1%;
 	width: 15%;
 	height: 60%;
-	font-size: 100%;
+	font-size: 130%;
 	background-color: #428bca;
 	border-color: #bfb5b5;
 	top: 20%;
@@ -155,7 +154,7 @@
 	right: 1%;
 	width: 15%;
 	height: 60%;
-	font-size: 100%;
+	font-size: 130%;
 	background-color: #27ae60;
 	top: 20%;
 }
@@ -165,7 +164,7 @@
 	width: 15%;
 	height: 60%;
 	top: 20%;
-	font-size: 100%;
+	font-size: 130%;
 	background-color: #2ecc71;
 }
 
@@ -173,14 +172,15 @@
 	position: absolute;
 	top: 20%;
 	right: 30%;
-	
+	cursor: pointer;
 	height: 55%;
 	width: 5%;
+	visibility: hidden;
 	border-radius: 10px;
-
 	background-image: url('/static/imagens/duvida.png');
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 	background-color: #f5f907;
 }
 
@@ -192,7 +192,9 @@
 
 
 
-	
+.navbar {
+	margin: 0;
+}
 
 
 .navbar-navigation{
@@ -205,12 +207,14 @@
 	width: 100%;
 	height: 6%;
 }
-#barra-responder{
+.barra-responder{
 	position: relative;
 	width: 100%;
 	height: 15%;
+	bottom: 0%;
 	margin-bottom: 0%;
-	background-color: #DBDBDB;
+	background-color: #D9EDF7;
+	border-radius: 6px;
 }
 
 .barra-menu{
@@ -223,54 +227,17 @@
 	border: 0px 0px 0px 0px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-.navbar-inner {
-background: rgb(59,103,158); /* Old browsers */
-background: -moz-linear-gradient(top,  rgb(59,103,158) 8%, rgb(32,124,202) 50%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,rgb(59,103,158)), color-stop(50%,rgb(32,124,202))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* IE10+ */
-background: linear-gradient(to bottom,  rgb(59,103,158) 8%,rgb(32,124,202) 50%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
-
-
-
-
-
-    border: 1px solid yellow;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
-    min-height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+.nav-item{
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+	font-size: 120%;
+	text-align: center;
+	margin-top: auto;
+	margin-bottom: auto;
 }
-.dropdown-menu {
-    background-clip: padding-box;
-    background-color: red;
-    border-radius: 6px 6px 6px 6px;
-    display: none;
-    float: left;
-    left: 0;
-    list-style: none outside none;
-    margin: 2px 0 0;
-    min-width: 160px;
-    padding: 5px 0;
-    position: absolute;
-    top: 100%;
-    z-index: 1000;
-}
+
+
 
 .btn-group.open .btn.dropdown-toggle {
   background-color: red;
@@ -475,10 +442,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	background: #c0392b;
 }
 
-.silver{
-	background: #bdc3c7;
-}
-
 .asbestos{
 	background: #7f8c8d;
 }
@@ -514,6 +477,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 	width:150px;
 	height:100%;
 	float:left;
+	cursor: pointer;
 	margin: 0 5px 0 5px;
 	padding:2px;
 	box-shadow: 5px 5px 5px #4D4D4D;
@@ -521,6 +485,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 
 .tileLargo{
 	width:305px;
+	cursor: pointer;
 }
 
 .form-centro{
@@ -563,17 +528,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 .hidden{
 	visibility: hidden;
 }
-
-#resultado_positivo{
-	color: green;
-}
-
-#resultado_negativo{
-	color: red;
-}
-
 .avisos-conteudo{
 	position: relative;
 	top: 30%;
 
+}
+
+#creditos{
+	color: #FFFFFF;
+	font-style: italic;
+	font-size: 110%;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.jspPane{
+	height: 100%;
 }

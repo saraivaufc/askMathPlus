@@ -7,6 +7,8 @@ import unicodedata
 
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
+	def __unicode__(self):
+		return format(self.criacao, "%d/%m/%Y %H:%M:%S")
 
 
 class Turma(Model):
@@ -107,3 +109,14 @@ class Estado_Usuario(Model):
 		return format(self.criacao, "%d/%m/%Y %H:%M:%S") +" - "+ str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
+
+class Pulo(Model):
+	turma  = models.ForeignKey(Turma, verbose_name="Turma")
+	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
+	conteudo = models.ForeignKey(Conteudo , verbose_name="Conteudo")
+	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
+
+	def __unicode__(self):
+		return format(self.criacao, "%d/%m/%Y %H:%M:%S") +" - "+ str(self.usuario)
+	class Meta:
+		ordering = ['usuario']	
