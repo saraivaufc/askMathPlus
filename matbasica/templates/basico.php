@@ -81,7 +81,7 @@
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 				{% block rodape %}
-					<center><div id="creditos">AskMath | Copyright © 2014-2015 - PET Conexao de Saberes - UFC - (88) 9316-4340 - saraiva@alu.ufc.br</div></center>
+					<center><div id="creditos">AskMath | Copyright © 2014-2015 - Universidade Federal do Ceara - UFC - (88) 9316-4340 - saraiva@alu.ufc.br</div></center>
 				{% endblock %}
 				</div>
 			</div>
