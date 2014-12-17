@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% extends 'usuario/cabecalhoUser.php' %}
+
+{% block titulo%}
+{% block title %}
+{% endblock %}
+{% endblock %}
+
+{% block conteudo %}
   {% block breadcrumb %}{% endblock %}
 
   {% block content %}{% endblock %}
-</body>
-</html>
+
+{% endblock %}

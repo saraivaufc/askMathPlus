@@ -32,7 +32,7 @@ urlpatterns = patterns('',
 
     url(r'^is_logado/$', is_logado),
     
-    url(r'^forum/$', include('forums.urls', namespace='forums')),
+    url(r'^forum/', include('forums.urls', namespace='forums')),
 
     url(r'^admin/', include(admin.site.urls)),
 )	
