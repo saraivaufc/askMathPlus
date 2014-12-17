@@ -167,7 +167,12 @@ def secundario(request, tema_conteudo):
 				try:
 					pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
 				except:
-					return render(request, 'usuario/avisos/sem_perguntas.php', locals())
+					#caso nao exista uma pergunta iniciao no conteudo
+					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					if len(perguntas_erradas) == 0:
+						return render(request, 'usuario/avisos/sem_perguntas.php', locals())
+					else:
+						pergunta = perguntas_erradas.pop();
 			if acertouPergunta(usuario.id, pergunta.id):
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) == 0 ):
