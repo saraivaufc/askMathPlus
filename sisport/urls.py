@@ -16,7 +16,6 @@ urlpatterns = patterns('',
     
     url(r'^principal/$' , principal),
     url(r'^principal/(?P<tema_conteudo>\w+)/$' , secundario),
-    url(r'^principal/forum$' , forum),
     url(r'^principal/estatisticas$' , estatisticas),
 
     url(r'^contato/$', contato),
@@ -32,7 +31,8 @@ urlpatterns = patterns('',
     url(r'^pulo/(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/$', pulo),
 
     url(r'^is_logado/$', is_logado),
+    
+    url(r'^forum/$', include('forums.urls', namespace='forums')),
 
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^forum/', include('forum.urls')),
 )	

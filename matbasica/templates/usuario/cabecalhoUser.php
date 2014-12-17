@@ -10,7 +10,7 @@
         
         <li><a class="nav-item" href="/principal/">Principal</a></li>
         {% block botoes_adicionais_esq %}
-        <li><a class="nav-item" href="/principal/forum">Fórum</a></li>
+        <li><a class="nav-item" href="/forum">Fórum</a></li>
 		<li><a class="nav-item"  href="/principal/estatisticas">Estatisticas</a></li>
         {% endblock %}
        

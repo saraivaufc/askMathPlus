@@ -31,7 +31,7 @@ TEMPLATE_DEBUG = True
 
 INSTALLED_APPS = (
     'matbasica',
-    'forum',
+    'forums',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,7 +50,6 @@ MIDDLEWARE_CLASSES = (
 )
 TEMPLATE_DIRS = (
     'matbasica/templates',
-    'forum/templates',
 )
 
 ROOT_URLCONF = 'sisport.urls'

@@ -272,14 +272,6 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 	historico.save()
 	return True
 
-
-def forum(request):
-	if "usuario" in request.session:
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
-		return render(request, 'forum/forum.php', locals())
-	else:
-		return HttpResponseRedirect('/login/')
-
 def estatisticas(request):
 	if "usuario" in request.session:
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
