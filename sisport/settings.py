@@ -68,9 +68,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Sao_Paulo'
-
-FORUM_BASE = '/forum'
+TIME_ZONE = 'America/Fortaleza'
 
 
 # Static files (CSS, JavaScript, Images)
