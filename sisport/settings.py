@@ -33,6 +33,7 @@ TEMPLATE_DEBUG = True
 
 INSTALLED_APPS += (
     'matbasica',
+    'spirit',
 )
 
 TEMPLATE_DIRS = (
@@ -69,6 +70,7 @@ LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
+FORUM_BASE = '/forum'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -77,6 +79,8 @@ TIME_ZONE = 'America/Sao_Paulo'
 PROJECT_DIR = os.path.dirname(__file__)
 
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../matbasica/static'),)
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 
 STATIC_URL = '/static/'
 
