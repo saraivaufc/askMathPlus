@@ -11,7 +11,7 @@
 {% endblock %}
 
 
-{% block conteudo_all %}
+{% block conteudo %}
 <div class="conteudo">
 <center>
 	<div class="form-login">
