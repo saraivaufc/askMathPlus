@@ -15,13 +15,15 @@
 		<center>
 			<div class="form-login">
 				<form class="form-vertical" method="post" role="form">{% csrf_token %}
+					<input name="next" value="/principal/" type="hidden">
+
 					<div class="form-group">
-						<label>Usuário</label>
-						<input type="text" class="form-control" name="usuario" required autofocus autocomplete="on">
+						<label>Usuário ou Email</label>
+						<input id="id_username" class="form-control" maxlength="254" name="username" type="text" required autofocus autocomplete="on">
 					</div>
 					<div class="form-group">
 						<label>Senha</label>
-						<input type="password" class="form-control" name="senha" required >
+						<input id="id_password" class="form-control" name="password" type="password" required>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="form-control btn btn-primary" >Entrar</button>

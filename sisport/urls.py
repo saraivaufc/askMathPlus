@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^is_logado/$', is_logado),
     
     url(r'^forum/', include('spirit.urls', namespace="spirit", app_name="spirit")),
+    url(r'^user/', include('spirit_user_profile.urls', namespace="spirit_user_profile", app_name="spirit_user_profile")),
 
     url(r'^admin/', include(admin.site.urls)),
 )	

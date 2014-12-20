@@ -1,6 +1,8 @@
 # -*- encoding=utf-8 -*-
 
-from django.shortcuts import render
+from __future__ import unicode_literals
+
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from matbasica.models import *
 from django.core.mail import send_mail
@@ -9,7 +11,9 @@ import re
 from random import randrange
 import smtplib
 from email.mime.text import MIMEText
-
+from django.contrib.auth.views import login as login_view
+from spirit.forms.user import LoginForm
+from django.contrib.auth.views import logout as logout_sys
 
 def index(request):
 	if "usuario" in request.session:
@@ -18,52 +22,29 @@ def index(request):
 		return HttpResponseRedirect('/login/')
 
 def login(request):
-	if request.method == 'POST':
-		usuario = request.POST['usuario']
-		senha   = md5.new( request.POST['senha'] ).hexdigest()
-		try:
-			user = Usuario.objects.get(nome_usuario = usuario)
-		except:
-			return HttpResponseRedirect('/login/falha/')
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/principal/')
 
-		if user.senha == senha:
-			request.session["usuario"] = usuario
-			return HttpResponseRedirect('/principal/')
-		else:
-			return HttpResponseRedirect('/login/falha/')
+	if request.method == 'POST':
+		return login_view(request, authentication_form=LoginForm)
+
 	else:
-		if "usuario" in request.session:
-			return HttpResponseRedirect('/principal/')
-		else:
-			return render(request,'login/login.php', locals())
+		return render(request,'login/login.php', locals())
+
 
 def login_falha(request):
 	return render(request , 'login/login_falha.php' , locals())
 
 def logout(request):
-    del request.session["usuario"]
-    return HttpResponseRedirect('/login/')
+	logout_sys(request)
+	return HttpResponseRedirect('/login/')
 
 def criarConta(request):
-    if request.method == 'POST':
-		try:
-			usuario = Usuario.objects.create(
-			nome_usuario = request.POST['usuario'],
-				nome = request.POST['nome'],
-			email = request.POST['email'],
-			tipo = False ,
-			senha =  md5.new(request.POST['senha']).hexdigest(),
-		)
-			usuario.save()
-		except:
-			return render(request , 'cadastro/criarContaFalha.php', locals())
-		return render(request , 'cadastro/criarContaSucesso.php', locals())
-    else:
-        return render(request , 'cadastro/criarConta.php' , locals())
+	return render(request , 'cadastro/criarConta.php' , locals())
 
 def principal(request):
-	if "usuario" in request.session:
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+	if request.user.is_authenticated():
+		usuario = Usuario.objects.get(username = request.session["usuario"])
 		if request.method == 'POST':
 			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
 			return HttpResponseRedirect('/principal/')
@@ -101,8 +82,8 @@ def getPerguntasErradas(usuario_id, conteudo_id):
 	return perguntas_erradas 
 		
 def secundario(request, tema_conteudo):
-	tema = transform_tema(tema_conteudo)
-	if 'usuario' in request.session:
+	if request.user.is_authenticated():
+		tema = transform_tema(tema_conteudo)
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"]);
 		try:
 			conteudo = Conteudo.objects.get(tema = tema);
@@ -194,7 +175,7 @@ def secundario(request, tema_conteudo):
 
 
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
-	if 'usuario' in request.session:
+	if request.user.is_authenticated():
 		print "Conteudo Id = " + conteudo_id;
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		conteudo = Conteudo.objects.get(id = conteudo_id)
@@ -273,7 +254,7 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 	return True
 
 def estatisticas(request):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		return render(request, 'estatisticas/estatisticas.php', locals())
 	else:
@@ -281,7 +262,7 @@ def estatisticas(request):
 
 
 def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		try:
 			conteudo = Conteudo.objects.get(id = id_conteudo)
 			pergunta = Pergunta.objects.get(id = id_pergunta, conteudo_pertence_id = id_conteudo)
@@ -319,7 +300,7 @@ def contato(request):
 
 
 def is_logado(request):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		return HttpResponse("1")
 	else:
 		return HttpResponse("0")
@@ -336,7 +317,7 @@ def transform_tema(t):
 
 
 def getAjuda(request, item_id):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		try:
 			item = Item.objects.get(id = item_id);
 		except:
@@ -351,7 +332,7 @@ def getAjuda(request, item_id):
 		return HttpResponseRedirect('/login/')
 
 def busca_ajuda(request, id_pergunta, id_item):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		busca = Busca_Ajuda.objects.create(
 			usuario_id = usuario.id,
@@ -365,7 +346,7 @@ def busca_ajuda(request, id_pergunta, id_item):
 		return HttpResponseRedirect('/login/')
 
 def pulo(request,id_conteudo, id_pergunta):
-	if "usuario" in request.session:
+	if request.user.is_authenticated():
 		try:
 			usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
 		except:

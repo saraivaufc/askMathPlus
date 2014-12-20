@@ -32,6 +32,7 @@ TEMPLATE_DEBUG = True
 
 
 INSTALLED_APPS += (
+    'spirit_user_profile',
     'matbasica',
     'spirit',
 )
@@ -69,6 +70,8 @@ DATABASES = {
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Fortaleza'
+
+AUTH_USER_MODEL = 'spirit_user_profile.User'
 
 
 # Static files (CSS, JavaScript, Images)

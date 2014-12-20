@@ -24,6 +24,7 @@
  	height: 69%;
   	background-color:  #FFFFFF;
  	font-color: #4a5b62;
+ 	overflow: auto;
 }
 
 .conteudo-left{
