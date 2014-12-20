@@ -15,7 +15,7 @@
 <div class="conteudo">
 <center>
 	<div class="form-login">
-		<form  action="/user/register/" class="form-horizontal" role="form" method="post">{% csrf_token %}
+		<form class="form-horizontal" role="form" method="post">{% csrf_token %}
 			
 			<div class="form-group">
 				<label>Nome de Usuário</label>
