@@ -15,7 +15,6 @@
 	        	<div class="descricao-conteudo">
 		        		<div class="panel-heading">
 		        		<div class="panel panel-info">
-							<div class="container-fluid">
 						 	<div class="panel-title">
 								<center>
 					            	<h3>{{ conteudo.tema }}</h3>
@@ -27,7 +26,6 @@
 						  		</div>
 						  	</div>
 						  	</div>
-						</div>
 						</div>
 	          		<br>
 	        	</div>

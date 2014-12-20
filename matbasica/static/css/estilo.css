@@ -24,7 +24,6 @@
  	height: 69%;
   	background-color:  #FFFFFF;
  	font-color: #4a5b62;
- 	overflow: auto;
 }
 
 .conteudo-left{
@@ -540,4 +539,8 @@
 	font-size: 110%;
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+.panel-info .panel-footer{
+	height: 100%;
 }
