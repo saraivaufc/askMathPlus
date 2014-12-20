@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
+from matbasica.models import Usuario
 import md5
 
 def register(request):
 	try:
-		user = User.objects.create(
+		user = Usuario.objects.create(
 			username = request.POST['username'],
 			email = request.POST['email'],
 			first_name = request.POST['first_name'],

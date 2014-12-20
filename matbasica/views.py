@@ -22,7 +22,7 @@ def index(request):
 		return HttpResponseRedirect('/login/')
 
 def login(request):
-	if request.user.is_authenticated():
+	if request.user.is_authenticated() and request.user.is_moderator == False:
 		return HttpResponseRedirect('/principal/')
 
 	if request.method == 'POST':
@@ -44,7 +44,11 @@ def criarConta(request):
 
 def principal(request):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.session["usuario"])
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
+
 		if request.method == 'POST':
 			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
 			return HttpResponseRedirect('/principal/')
@@ -84,7 +88,7 @@ def getPerguntasErradas(usuario_id, conteudo_id):
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
 		tema = transform_tema(tema_conteudo)
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"]);
+		usuario = Usuario.objects.get(username = request.user);
 		try:
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
@@ -177,7 +181,7 @@ def secundario(request, tema_conteudo):
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():
 		print "Conteudo Id = " + conteudo_id;
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		usuario = Usuario.objects.get(username = request.user)
 		conteudo = Conteudo.objects.get(id = conteudo_id)
 		pergunta = Pergunta.objects.get(id = pergunta_id);
 		try:
@@ -255,7 +259,7 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 
 def estatisticas(request):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		usuario = Usuario.objects.get(username = request.user)
 		return render(request, 'estatisticas/estatisticas.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -333,7 +337,7 @@ def getAjuda(request, item_id):
 
 def busca_ajuda(request, id_pergunta, id_item):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+		usuario = Usuario.objects.get(username = request.user)
 		busca = Busca_Ajuda.objects.create(
 			usuario_id = usuario.id,
 			pergunta_id = id_pergunta,
@@ -348,7 +352,7 @@ def busca_ajuda(request, id_pergunta, id_item):
 def pulo(request,id_conteudo, id_pergunta):
 	if request.user.is_authenticated():
 		try:
-			usuario = Usuario.objects.get(nome_usuario = request.session["usuario"])
+			usuario = Usuario.objects.get(username = request.user)
 		except:
 			return HttpResponse("500");
 		pulo = Pulo.objects.create(

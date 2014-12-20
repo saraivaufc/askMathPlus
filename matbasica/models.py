@@ -3,6 +3,7 @@
 from django.db import models
 from datetime import datetime
 import unicodedata
+from spirit_user_profile.models import User
 
 
 class Model(models.Model):	
@@ -21,19 +22,21 @@ class Turma(Model):
 	class Meta:
 		ordering = ['-semestre']
 
+# class Usuario(Model):
+# 	nome_usuario = models.CharField(max_length=255 , unique=True, verbose_name="Usuário")
+# 	nome = models.CharField(max_length=255, verbose_name="Nome")
+# 	email = models.EmailField(unique=True , verbose_name="Email")
+# 	tipo  = models.BooleanField( default=True, verbose_name = "Tipo de Usuário")
+# 	senha = models.CharField(max_length=255 , verbose_name="Senha")
+# 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
 
-class Usuario(Model):
-	nome_usuario = models.CharField(max_length=255 , unique=True, verbose_name="Usuário")
-	nome = models.CharField(max_length=255, verbose_name="Nome")
-	email = models.EmailField(unique=True , verbose_name="Email")
-	tipo  = models.BooleanField( default=True, verbose_name = "Tipo de Usuário")
-	senha = models.CharField(max_length=255 , verbose_name="Senha")
+# 	def __unicode__(self):
+# 		return format(self.criacao, "%d/%m/%Y %H:%M:%S") +" - "+ self.nome_usuario
+# 	class Meta:
+# 		ordering = ['nome']
+
+class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
-
-	def __unicode__(self):
-		return format(self.criacao, "%d/%m/%Y %H:%M:%S") +" - "+ self.nome_usuario
-	class Meta:
-		ordering = ['nome']
 
 class Conteudo(Model):
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")

@@ -24,6 +24,7 @@ $(function () {
 
 
 $(document).ready(function() {
+    //$('.conteudo').jScrollPane({showArrows: true});
     $('.metro').jScrollPane({showArrows: true});
     $('.conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true});
