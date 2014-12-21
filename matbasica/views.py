@@ -98,7 +98,7 @@ def getPerguntasErradas(usuario_id, conteudo_id):
 				enc = True
 		if enc == False:
 			perguntas_erradas.append(i)
-	return perguntas_erradas 
+	return perguntas_erradas
 		
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
@@ -149,12 +149,17 @@ def secundario(request, tema_conteudo):
 			#agora se for um conteudo
 			else:
 				pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual']);
+				print pergunta.id
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) > 0):
 					pergunta_atual_id = pergunta.id;
 					pergunta = perguntas_erradas.pop()
-					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>0 :
 						pergunta = perguntas_erradas.pop();
+
+					print pergunta.id
+					atualiza_estado(usuario.id,conteudo.id, pergunta.id);
+
 
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				else:
@@ -185,9 +190,6 @@ def secundario(request, tema_conteudo):
 
 			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
-		pergunta.descricao = pergunta.descricao
-		for it in itens:
-			it.descricao = it.descricao
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
 		return HttpResponseRedirect('/login/')

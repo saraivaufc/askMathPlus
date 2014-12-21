@@ -4,7 +4,21 @@ from models import *
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-	exclude = ('criacao',)
+	fieldsets = (
+        (None,{'fields':('username',
+        				 'first_name',
+        				 'last_name',
+        	             'email',
+        	             'password',
+        	             'turma',
+        				)
+        	  }
+        ),
+	)
+	raw_id_fields = ('turma',)
+	list_display = ('username','first_name','last_name' ,'email',)
+	save_as = True
+	search_fields = ['nome'] 
 
 
 @admin.register(Turma)
