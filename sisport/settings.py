@@ -34,7 +34,6 @@ TEMPLATE_DEBUG = True
 INSTALLED_APPS += (
     'spirit_user_profile',
     'matbasica',
-    'spirit',
 )
 
 TEMPLATE_DIRS = (
@@ -79,7 +78,7 @@ AUTH_USER_MODEL = 'spirit_user_profile.User'
 
 PROJECT_DIR = os.path.dirname(__file__)
 
-STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../matbasica/static'),)
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../matbasica/static'),os.path.join(PROJECT_DIR, '../spirit/'),)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 

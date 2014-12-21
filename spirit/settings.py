@@ -6,6 +6,9 @@
 from __future__ import unicode_literals
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+
 ST_COMMENTS_PER_PAGE = 20
 ST_COMMENTS_PAGE_VAR = 'page'
 
@@ -41,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'spirit',
     # 'spirit.tests'
 )
 
@@ -135,3 +139,7 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -76,7 +76,7 @@
     };
 
     Editor.prototype.addImage = function() {
-      this.wrapSelection("![", "](" + this.options.imageUrlText + ")", this.options.imageText);
+      this.wrapSelection("![", "](" +this.options.imageUrlText + ")", this.options.imageText);
       return false;
     };
 

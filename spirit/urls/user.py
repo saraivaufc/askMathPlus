@@ -6,7 +6,6 @@ from django.conf.urls import patterns, url
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.views import *
 
-
 urlpatterns = patterns('spirit.views.user',
                        url(r'^login/$', 'custom_login', {'template_name': 'spirit/user/login.html'}, name='user-login'),
                        url(r'^logout/$', 'custom_logout', {'next_page': '/', }, name='user-logout'),
