@@ -21,9 +21,7 @@
 					          	</center>
 						  	</div>
 						 	<div class="panel-footer">
-						  		<div class="espacamento">
-						  			<t> {{ conteudo.descricao|safe }}<t>
-						  		</div>
+						  		<t> {{ conteudo.descricao|safe }}<t>
 						  	</div>
 						  	</div>
 						</div>
@@ -48,9 +46,7 @@
 				  	</div>
 				 	<div class="panel-footer">
 				  		<div class="espacamento">
-				  			<div class="espacamento-right espacamento-left">
 							  <t> {{ pergunta.descricao|safe }} </t>
-							</div>
 							<hr/>
 							<form method="POST" id="perguntas" name="resposta">
 							{%csrf_token %} 
@@ -61,10 +57,8 @@
 								{% for item in itens %}
 									<li type="A">
 										<div class="font-dconteudo">
-											<div class="espacamento-right">
-												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-												<t>{{ item.descricao | safe }}</t> 
-											</div>
+											<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
+											<t>{{ item.descricao | safe }}</t>
 										</div>
 									</li>
 									<br>

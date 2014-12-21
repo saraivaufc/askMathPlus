@@ -1,5 +1,6 @@
-.body{
-	font-family: Ubuntu, Arial;
+
+.html{
+	font-family: Arial;
 }
 
 .cabecalho {
@@ -478,6 +479,11 @@
 	width:305px;
 	cursor: pointer;
 }
+
+.tile .tileLargo{
+	text-align: center;
+}
+
 
 .form-centro{
 	position: relative;
