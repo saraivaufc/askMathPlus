@@ -3,7 +3,7 @@
 {% block menu %}
 <div class="barra-menu">
 
-<nav class="navbar bg-primary" role="navigation">
+<nav class="navbar bg-primary">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">

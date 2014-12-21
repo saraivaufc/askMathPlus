@@ -39,7 +39,6 @@
 	</div>
 	{% endblock %}
 
-	<div class="nav">
 	{% block menu_all %}
 	<div class="menu">
 		<div class="container-fluid">
@@ -52,7 +51,6 @@
 		</div>
 	</div>
 	{% endblock %}
-	</div>
 
 	{% block conteudo_all %}
 	<div class="conteudo">

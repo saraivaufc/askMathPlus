@@ -140,6 +140,7 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
