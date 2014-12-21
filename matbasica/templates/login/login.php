@@ -13,8 +13,8 @@
 {% block conteudo %}
 	<div class="conteudo">
 		<center>
-			<div class="form-login">
-				<form class="form-vertical" method="post" role="form">{% csrf_token %}
+			<div class="form-login login">
+				<form class="form-vertical" method="post" role="form" action=".">{% csrf_token %}
 					<input name="next" value="/principal/" type="hidden">
 
 					<div class="form-group">
@@ -26,7 +26,7 @@
 						<input id="id_password" class="form-control" name="password" type="password" required placeholder="Digite sua senha">
 					</div>
 					<div class="form-group">
-						<button type="submit" class="form-control btn btn-primary" >Entrar</button>
+						<input class="button form-control btn btn-primary" name="post" value="Entrar" type="submit">
 					</div>
 					<div class="form-group">
 						<button type="button" class="form-control btn  btn-primary"  onClick="document.location='/criarConta/'">Criar Conta</button>

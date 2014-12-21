@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^$' , index),
-    url(r'^login/$' , login ),
+    url(r'^login/$' , login, {'template_name': 'login/login.php'}, name='user-login' ),
     url(r'^logout/$' , logout),
     url(r'^login/falha/$' , login_falha),
     

@@ -14,6 +14,8 @@ from email.mime.text import MIMEText
 from django.contrib.auth.views import login as login_view
 from spirit.forms.user import LoginForm
 from django.contrib.auth.views import logout as logout_sys
+from spirit.utils.ratelimit.decorators import ratelimit
+from django.test import Client
 
 def index(request):
 	if "usuario" in request.session:
@@ -21,15 +23,15 @@ def index(request):
 	else:
 		return HttpResponseRedirect('/login/')
 
-def login(request):
+def login(request, **kwargs):
 	if request.user.is_authenticated() and request.user.is_moderator == False:
 		return HttpResponseRedirect('/principal/')
 
-	if request.method == 'POST':
-		return login_view(request, authentication_form=LoginForm)
-
-	else:
-		return render(request,'login/login.php', locals())
+	if request.method == "POST":
+		c = Client()
+		c.login(username = 'id_username', password = 'id_password')
+	
+	return login_view(request, authentication_form=LoginForm, **kwargs)
 
 
 def login_falha(request):
