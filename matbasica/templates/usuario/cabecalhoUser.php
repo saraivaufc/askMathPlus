@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav navbar-right">
 
 			{% block voltar_all %}
-        	<li  id="voltar"><a  class="nav-item" onclick="document.location = {% block voltar %}/principal/{% endblock %}">Voltar</a></li>
+        	<li  id="voltar"><a  class="nav-item" onclick="document.location = {% block voltar %}/principal/{% endblock %}" href="#">Voltar</a></li>
         	{% endblock %}
 
 			<li><a class="nav-item" data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
