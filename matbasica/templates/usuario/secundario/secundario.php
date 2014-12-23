@@ -3,38 +3,33 @@
 	{% block titulo %}{{conteudo.tema}}{% endblock %}
 
 	{% block estilo %}
-		.conteudo{
+		#conteudo{
 			background-color: #428bca;
 		}
 	{% endblock %}
 
     {% block conteudo-left %}
-      	
-    <div class="conteudo-left">
-	    	<div class="font-dconteudo">
-	        	<div class="descricao-conteudo">
-		        		<div class="panel-heading">
-		        		<div class="panel panel-info">
-						 	<div class="panel-title">
-								<center>
-					            	<h3>{{ conteudo.tema }}</h3>
-					          	</center>
-						  	</div>
-						 	<div class="panel-footer">
-						  		<t> {{ conteudo.descricao|safe }}<t>
-						  	</div>
-						  	</div>
-						</div>
-	          		<br>
-	        	</div>
-	      	</div>
-    </div>
+    	<div class="font-dconteudo">
+        	<div class="descricao-conteudo">
+	        		<div class="panel-heading">
+	        		<div class="panel panel-info">
+					 	<div class="panel-title">
+							<center>
+				            	<h3>{{ conteudo.tema }}</h3>
+				          	</center>
+					  	</div>
+					 	<div class="panel-footer">
+					  		<t> {{ conteudo.descricao|safe }}<t>
+					  	</div>
+					  	</div>
+					</div>
+          		<br>
+        	</div>
+      	</div>
     {% endblock %}
 
 
     {% block conteudo-right %}
-
-	<div class="conteudo-right">
 		<div class="font-dconteudo">
 			<div class="descricao-pergunta">
 				<div class="panel-heading">
@@ -87,7 +82,6 @@
 				<button id="verificar"  class="btn botao">Verificar</button>
 			</div>
 		</div>
-	</div>
 
 
 <!-- Modal Ajuda -->

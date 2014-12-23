@@ -1,9 +1,9 @@
 
-.html{
+html{
 	font-family: Arial;
 }
 
-.cabecalho {
+#cabecalho {
 	position: relative;
 	width: 100%;
 	height: 20%;
@@ -14,12 +14,12 @@
  	background-position: center;
 }
 
-.menu{
+#menu{
 	position: relative;
 	width: 100%;
 	height: 7%;
 }
-.conteudo{
+#conteudo{
 	position: relative;
  	width: 100%;
  	height: 69%;
@@ -27,7 +27,7 @@
  	color: #4a5b62;
 }
 
-.conteudo-left{
+#conteudo-left{
 	position:relative;
 	left: -3%;
 	width: 105%;
@@ -35,7 +35,7 @@
 	background-color: #D9EDF7;
  	overflow-y:auto;
 }
-.conteudo-right{
+#conteudo-right{
 	position:relative;
 	left: -1%;
 	width: 103%;
@@ -49,7 +49,7 @@
 	height: 98%;
 }
 
-.rodape{
+#rodape{
 	position:relative;
 	width: 100%;
 	height: 4%;
@@ -472,7 +472,7 @@
 	cursor: pointer;
 	margin: 0 5px 0 5px;
 	padding:2px;
-	box-shadow: 5px 5px 5px #4D4D4D;
+	box-shadow: inset 10 0 10px black;
 }
 
 .tileLargo{
@@ -482,6 +482,10 @@
 
 .tile .tileLargo{
 	text-align: center;
+}
+
+.tile:hover{
+	box-shadow: 5px 5px 5px #4D4D4D;
 }
 
 
@@ -504,7 +508,6 @@
 }
 
 #linha-metro{
-	position: relative;
 	height: 30%;
 }
 

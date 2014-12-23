@@ -49,7 +49,7 @@ class ConteudoAdmin(admin.ModelAdmin):
         ),
 	)
 	list_display = ('tema','pergunta_inicial','criacao')
-	raw_id_fields = ('turma',)
+	raw_id_fields = ('turma','pergunta_inicial')
 	save_as = True
 	search_fields = ['tema'] 
 
