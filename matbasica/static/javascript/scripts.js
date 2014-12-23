@@ -26,6 +26,12 @@ $(document).ready(function(){
 	});
 
 	$("#verificar").click(function(){
+		var radios = $('input[name=opcao]', '#perguntas');
+		for(var i=0; i< radios.length; i++){
+			if(!radios[i].checked){
+				radios[i].disabled = true;
+			}
+		}
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
@@ -60,14 +66,12 @@ $(document).ready(function(){
 		$("#pular").attr('disabled', 'disabled');
 		$("#voltar").hide();
 
-		$(".descricao-pergunta").fadeTo('slow',.6);
-		$(".descricao-pergunta").append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
-
-
-
 	});
 
 	$("#pular").click(function(){
+		if(confirmPular() == false){
+			return;
+		}
 		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
 		$.ajax({
 			"url": url,
@@ -171,3 +175,16 @@ function verificarAcerto(){
 	});
 	return res;
 };
+
+function confirmPular(){
+	return window.confirm("Deseja Pular a Pergunta?");
+}
+
+
+function sleep(millis){
+	var date = new Date();
+	var curDate = null;
+  	do { 
+  		curDate = new Date(); 
+  	}while(curDate-date < millis);
+}

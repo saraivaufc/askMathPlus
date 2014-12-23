@@ -49,6 +49,7 @@
 								   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 								
 								<ol>
+								
 								{% for item in itens %}
 									<li type="A">
 										<div class="font-dconteudo">

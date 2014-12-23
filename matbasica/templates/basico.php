@@ -3,7 +3,7 @@
 <html lang="pt">
 <head>
 	<meta charset="UTF-8"/>
-	<link xmlns="http://www.w3.org/1999/xhtml" rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
+	<link rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
 	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">

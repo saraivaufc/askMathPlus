@@ -307,8 +307,7 @@ html{
 	height:3%;
 	font-size:32px;
 	color: #4a5b62;
-}
-
+} 
 .texto-descricao{
 	position: relative;
 	margin-right: 4%;
@@ -543,4 +542,8 @@ html{
 
 .panel-info .panel-footer{
 	height: 100%;
+}
+
+.panel-title h3{
+	color: black;
 }
