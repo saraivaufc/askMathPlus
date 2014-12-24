@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from matbasica.views import *
+from Ask.views import *
 
 
 admin.autodiscover()
