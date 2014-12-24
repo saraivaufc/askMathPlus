@@ -78,13 +78,13 @@ class ItemAdmin(admin.ModelAdmin):
         			      'descricao',
         			      'possui_proxima_pergunta',
         				  'pergunta_proximo',
-        				  'ajuda_proximo',
+        				  'ajuda',
         				)
         	  }
         ),
 	)
-	list_display = ('pergunta_pertence','descricao','possui_proxima_pergunta','pergunta_proximo', 'ajuda_proximo','criacao',  )
-	raw_id_fields = ('pergunta_pertence','pergunta_proximo','ajuda_proximo')
+	list_display = ('pergunta_pertence','descricao','possui_proxima_pergunta','pergunta_proximo', 'ajuda','criacao',  )
+	raw_id_fields = ('pergunta_pertence','pergunta_proximo','ajuda')
 	save_as = True
 	search_fields = ['descricao']
 

@@ -18,7 +18,7 @@ from spirit.utils.ratelimit.decorators import ratelimit
 from django.test import Client
 
 def index(request):
-	if "usuario" in request.session:
+	if request.user.is_authenticated() and request.user.is_moderator == False:
 		return HttpResponseRedirect('/principal/')
 	else:
 		return HttpResponseRedirect('/login/')

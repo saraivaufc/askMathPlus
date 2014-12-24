@@ -71,7 +71,7 @@ class Item(Model):
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
 	possui_proxima_pergunta = models.BooleanField(default=False, verbose_name="Possui Proxima Pergunta")
 	pergunta_proximo = models.ForeignKey(Pergunta ,related_name="proximo" , null=True , blank=True, verbose_name="Pergunta Proximo")
-	ajuda_proximo = models.ForeignKey(Ajuda, null=True , blank=True, verbose_name="Ajuda Proximo")
+	ajuda = models.ForeignKey(Ajuda, null=True , blank=True, verbose_name="Ajuda")
 
 	def __unicode__(self):
 		return self.descricao 

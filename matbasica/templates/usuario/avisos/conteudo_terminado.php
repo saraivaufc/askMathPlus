@@ -8,7 +8,7 @@
 {%  endblock %}
 
 {% block conteudo-right %}
-	<div class="conteudo-right bg-success">
+	<div class="conteudo-right bg-info">
 		<div class="font-dconteudo">
 			<div class="descricao-pergunta">
 				<div class="avisos-conteudo">

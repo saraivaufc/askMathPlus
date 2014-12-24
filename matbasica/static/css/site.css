@@ -1,5 +1,5 @@
 
-body{
+html,body{
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -540,9 +540,6 @@ body{
 	margin-bottom: auto;
 }
 
-.panel-info .panel-footer{
-	height: 100%;
-}
 
 .panel-title h3{
 	color: black;
