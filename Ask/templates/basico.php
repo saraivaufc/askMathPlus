@@ -107,7 +107,7 @@
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 				{% block rodape %}
-					<center><div id="creditos">AskMath | Copyright &copy; 2014-2015 - Programa De Educaçao Tutorial - Tecnologia Da Informaçao - PET-TI</div></center>
+					<center><div id="creditos">AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</div></center>
 				{% endblock %}
 				</div>
 			</div>

@@ -15,7 +15,7 @@
 			<div class="descricao-pergunta">
 				<div class="avisos-conteudo">
 				<center>
-					<h1>Pergunta nao possui item correto, contactar Administrador!!!</h1>
+					<h1>Pergunta não possui item correto, contactar Administrador!!!</h1>
 				</center>
 				</div>
 			</div>

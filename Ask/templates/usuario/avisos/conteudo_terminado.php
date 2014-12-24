@@ -13,7 +13,7 @@
 			<div class="descricao-pergunta">
 				<div class="avisos-conteudo">
 				<center>
-					<h1>Conteudo Concluido!!!</h1>
+					<h1>Conteúdo Concluido!!!</h1>
 				</center>
 				</div>
 			</div>

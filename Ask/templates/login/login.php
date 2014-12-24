@@ -19,11 +19,11 @@
 
 					<div class="form-group">
 						<label>Usuário ou Email</label>
-						<input id="id_username" class="form-control" maxlength="254" name="username" type="text" required autofocus autocomplete="on" placeholder="Digite seu nome de usuario ou email">
+						<input id="id_username" class="form-control" maxlength="254" name="username" type="text" required autofocus autocomplete="on">
 					</div>
 					<div class="form-group">
 						<label>Senha</label>
-						<input id="id_password" class="form-control" name="password" type="password" required placeholder="Digite sua senha">
+						<input id="id_password" class="form-control" name="password" type="password" required>
 					</div>
 					<div class="form-group">
 						<input class="button form-control btn btn-primary" name="post" value="Entrar" type="submit">
