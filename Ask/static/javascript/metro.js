@@ -83,5 +83,5 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	//$('.conteudo').jScrollPane({showArrows: true});
-    $('.metro').jScrollPane(); 	
+    $('.metro').jScrollPane({showArrows: true}); 	
 });

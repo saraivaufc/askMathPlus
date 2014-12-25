@@ -148,8 +148,8 @@ $(document).ready(function(){
 $(document).ready(function(){
 	LatexIT.add('t',true);
 	//$('.conteudo').jScrollPane({showArrows: true});
-    $('#conteudo-left').jScrollPane();
-    $('.descricao-pergunta').jScrollPane();
+    $('#conteudo-left').jScrollPane({showArrows: true});
+    $('.descricao-pergunta').jScrollPane({showArrows: true});
 
 	$("#verificar").attr('disabled', 'disabled');
 	$("#li-botao").css({"margin-left": "5px" }); 	

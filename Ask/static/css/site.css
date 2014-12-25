@@ -1,6 +1,6 @@
 
 html body{
-	font-family: "Ubuntu", "Times New Roman", Times, serif;
+	font-family: Arial, Times, serif;
 	background-color: #ADD8E6;
 }
 
@@ -250,8 +250,8 @@ html body{
 	color: #FFFFFF;
 }
 
-.navbar a:hover{
-
+.navbar-nav a:hover{
+	color: #428bca;
 }
 
 
