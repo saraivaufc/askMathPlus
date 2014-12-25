@@ -344,7 +344,7 @@ def getAjuda(request, item_id):
 		except:
 			return HttpResponse("None");
 		try:
-			ajuda = Ajuda.objects.get(id = item.ajuda_proximo_id);
+			ajuda = Ajuda.objects.get(id = item.ajuda_id);
 		except:
 			return HttpResponse("None");
 

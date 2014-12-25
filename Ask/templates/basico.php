@@ -42,7 +42,6 @@
 <body>
 <div class="container-fluid">
 {% block body %}
-
 	<header>
 	<div class="container-fluid">
 	{% block cabecalho_all %}

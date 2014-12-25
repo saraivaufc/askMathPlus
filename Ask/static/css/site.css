@@ -1,7 +1,7 @@
 
 html body{
 	font-family: "Ubuntu", "Times New Roman", Times, serif;
-	background-color: #BFBFBF;
+	background-color: #ADD8E6;
 }
 
 #cabecalho {
@@ -12,9 +12,9 @@ html body{
 
 #logo{
 	position: relative;
-	width: 102.1%;
+	width: 102.5%;
 	height: 100%;
-	margin-left: -1.1%;
+	margin-left: -1.2%;
 
 	background-image: url('/static/imagens/background.jpg');
 	background-repeat: no-repeat;
@@ -31,8 +31,8 @@ html body{
 
 #barra-menu{
 	position: relative;
-	margin-left: -1.1%;
-	width: 102.1%;
+	margin-left: -1.2%;
+	width: 102.5%;
 	height: 100%;
 	background-color: #428bca;
 }
@@ -165,7 +165,7 @@ html body{
 	left: 1%;
 	width: 15%;
 	height: 60%;
-	font-size: 130%;
+	font-size: 120%;
 	background-color: #428bca;
 	border-color: #bfb5b5;
 	top: 20%;
@@ -175,7 +175,7 @@ html body{
 	right: 1%;
 	width: 15%;
 	height: 60%;
-	font-size: 130%;
+	font-size: 120%;
 	background-color: #27ae60;
 	top: 20%;
 }
@@ -185,7 +185,7 @@ html body{
 	width: 15%;
 	height: 60%;
 	top: 20%;
-	font-size: 130%;
+	font-size: 120%;
 	background-color: #2ecc71;
 }
 
