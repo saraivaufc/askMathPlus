@@ -99,7 +99,7 @@
 	<footer id="rodape">
 		<div class="container-fluid">
 		{% block rodape %}
-			<center>AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</center>
+			<center id="creditos">AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</center>
 		{% endblock %}
 		</div>
 	</footer>
