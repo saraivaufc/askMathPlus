@@ -1,37 +1,34 @@
 {% extends 'basico.php' %}
 
 {% block menu %}
-<div class="barra-menu">
-
-<nav class="navbar bg-primary">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-left">
-        
-        <li><a class="nav-item" href="/principal/">Principal</a></li>
-        {% block botoes_adicionais_esq %}
-        <li><a class="nav-item"  onclick="window.open('/forum')"  href="#">Fórum</a></li>
-		<li><a class="nav-item"  href="/principal/estatisticas">Estatisticas</a></li>
-        {% endblock %}
-       
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-
-			{% block voltar_all %}
-        	<li  id="voltar"><a  class="nav-item" onclick="document.location = {% block voltar %}/principal/{% endblock %}" href="#">Voltar</a></li>
-        	{% endblock %}
-
-			<li><a class="nav-item" data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
-			<li><a class="nav-item" data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
-
-			{% block sair_all %}
-        	<li><a class="nav-item" href="/logout/">Sair</a></li>
-        	{% endblock %}
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<div id="barra-menu">
+    <div class="nav navbar bg-primary">
+        <div class="container-fluid">
+          	<div class="navbar-header">
+            	<a class="navbar-brand" href="/principal/">AskMath</a>
+          	</div>
+	        <div>
+	            <ul class="nav navbar-nav">
+	            	{% block botoes_adicionais_esq %}
+			            <li><a onclick="window.open('/forum')"  href="#">Forum</a></li>
+			            <li><a href="/principal/estatisticas">Estatisticas</a></li>
+	            	{% endblock %}
+	            </ul>
+	            
+	            <ul class="nav navbar-nav navbar-right">
+	        	  	{% block voltar_all %}
+	             		<li id="voltar"><a onclick="document.location = {% block voltar %}/principal/{% endblock %}" href="#">Voltar</a></li>
+	              	{% endblock %}
+	              	<li><a data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
+	             	 <li><a data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
+	              	{% block sair_all %}
+	              		<li><a  href="/logout/">Sair</a></li>
+	              	{% endblock %}
+	            </ul>
+	        </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </div><!--/.nav navbar -->
+</div><!-- /.barra-menu -->
 
 <!-- Modal Contato -->
 <div class="modal fade" id="contato" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
@@ -107,6 +104,4 @@
   </div>
 </div>
 
-
-</div>
 {% endblock %}

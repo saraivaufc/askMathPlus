@@ -5,9 +5,9 @@
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
-	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 
 {% block head %}
     
@@ -43,59 +43,53 @@
 {% block body %}
 
 	<header>
+	<div class="container-fluid">
 	{% block cabecalho_all %}
 	<div id="cabecalho">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 col-xs-12">
-				{% block cabecalho %}
-				{% endblock %}
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+			{% block cabecalho %}
+				<div id="logo">
+
 				</div>
+			{% endblock %}
 			</div>
 		</div>
 	</div>
 	{% endblock %}
 
 	{% block menu_all %}
-	<nav id="menu">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 col-xs-12">
-				{% block menu %}
-				{% endblock %}
-				</div>
+	<div id="menu">
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+			{% block menu %}
+			{% endblock %}
 			</div>
 		</div>
-	</nav>
+	</div>
 	{% endblock %}
-
+	</div>
 	</header>
 
 	{% block conteudo_all %}
 	<section id="conteudo">
 		<div class="container-fluid">
 			<div class="row">
-
-			{% block conteudo %}
-				
-				<div class="col">
-					<div class="col-md-5 col-xs-12">
-						<div id="conteudo-left">
-							{% block conteudo-left %}
-							{% endblock %}
+				{% block conteudo %}
+						<div class="col-md-5 col-xs-12">
+							<div id="conteudo-left">
+								{% block conteudo-left %}
+								{% endblock %}
+							</div>
 						</div>
-					</div>
-				</div>
 
-				<div class="col">
-					<div class="col-md-7 col-xs-12">
-						<div id="conteudo-right">
-							{% block conteudo-right %}
-							{% endblock %}
+						<div class="col-md-7 col-xs-12">
+							<div id="conteudo-right">
+								{% block conteudo-right %}
+								{% endblock %}
+							</div>
 						</div>
-					</div>
-				</div>
-			{% endblock %}
+				{% endblock %}
 			</div>
 		</div>
 	</section>
@@ -104,13 +98,9 @@
 	{% block rodape_all %}
 	<footer id="rodape">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 col-xs-12">
-				{% block rodape %}
-					<center><div id="creditos">AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</div></center>
-				{% endblock %}
-				</div>
-			</div>
+		{% block rodape %}
+			<center>AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</center>
+		{% endblock %}
 		</div>
 	</footer>
 	{% endblock %}

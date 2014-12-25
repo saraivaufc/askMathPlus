@@ -35,13 +35,13 @@ $(document).ready(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
+			$("#resultado_positivo").removeClass("hidden");
 			$(".barra-responder").addClass("bg-success");
 			$(".conteudo-right").addClass("bg-success");
-			$("#resultado_positivo").removeClass("hidden");
 		}else{
+			$("#resultado_negativo").removeClass("hidden");
 			$(".barra-responder").addClass("bg-danger");
 			$(".conteudo-right").addClass("bg-danger");
-			$("#resultado_negativo").removeClass("hidden");
 			
 			var valor = $('input[name=opcao]:checked', '#perguntas').val();
 			var url = "/ajuda/" + valor+"/";

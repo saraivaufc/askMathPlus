@@ -1,12 +1,21 @@
 
-html,body{
-	font-family: Georgia, "Times New Roman", Times, serif;
+html body{
+	font-family: "Ubuntu", "Times New Roman", Times, serif;
 }
 
 #cabecalho {
 	position: relative;
 	width: 100%;
 	height: 20%;
+}
+
+#logo{
+	position: relative;
+	left: -1.1%;
+	right: -1.1%;
+	width: 102.2%;
+	height: 100%;
+
 	background-image: url('/static/imagens/background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -23,7 +32,7 @@ html,body{
 	position: relative;
  	width: 100%;
  	height: 69%;
-  	background-color:  #FFFFFF;
+ 	background-color: #FFFFFF;
  	color: #4a5b62;
 }
 
@@ -60,8 +69,9 @@ html,body{
 	text-align: justify;
 }
 
-
-
+.container-fluid{
+	width: 100%;
+}
 
 
 
@@ -186,24 +196,6 @@ html,body{
 }
 
 
-
-
-
-
-
-
-
-.navbar {
-	margin: 0;
-	width: 100%;
-}
-
-
-.navbar-navigation{
-	position: relative;
-	background:#E5E5E5;
-}
-
 #barra-avancar{
 	position: relative;
 	width: 100%;
@@ -215,29 +207,32 @@ html,body{
 	height: 15%;
 	bottom: 0%;
 	margin-bottom: 0%;
-	background-color: #D9EDF7;
 	border-radius: 6px;
 }
 
-.barra-menu{
+
+
+.jsPane{
+	margin-top: 1px;
+	margin-bottom: 1px;
+	height: 100%;
+}
+
+.jspContainer{
+	height: 100%;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+#barra-menu{
 	position: relative;
 	left: -1.1%;
 	right: -1.1%;
 	width: 102.2%;
 	height: 100%;
-	background-color: #FFFFFF;
+	background-color: #428bca;
+	font-size: 130%;
 }
-
-.nav-item{
-	width: 100%;
-	height: 100%;
-	color: #FFFFFF;
-	font-size: 120%;
-	text-align: center;
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
 
 
 .btn-group.open .btn.dropdown-toggle {
@@ -248,55 +243,19 @@ html,body{
   background-color:lime;
 }
 
-.navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  color:white;
-  background-color:Teal;
+.nav{
+	height: 100%;
 }
 
-.navbar .nav > li > a {
-    color: white;
-    float: none;
-    padding: 10px 15px;
-    text-decoration: none;
-    text-shadow: 0 0px 0 #ffffff;
+.navbar a{
+	
+	height: 100%;
+	color: #FFFFFF;
 }
 
-.navbar .brand {
-  display: block;
-  float: left;
-  padding: 10px 20px 10px;
-  margin-left: -20px;
-  font-size: 20px;
-  font-weight: 200;
-  color: white;
-  text-shadow: 0 0px 0 #ffffff;
+.navbar a:hover{
+
 }
-
-.navbar-brand {
-	color:#FFFFFF;
-	text-align: justify;
-}
-.navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover {
-  color: white;
-  text-decoration: none;
-  background-color: #ADD8E6;
-}
-
-.navbar-text {
-  margin-bottom: 0;
-  line-height: 40px;
-  color: white;
-}
-
-.nav-item{
-	font-size: 130%;
-}
-
-
-
 
 
 
@@ -438,6 +397,7 @@ html,body{
 }
 
 
+
 .selecionado{
 	background: #ADD8E6;
 	color:#000000;
@@ -448,7 +408,6 @@ html,body{
 
 .metro{
 	position: relative;
-	top: 0px;
 	left: -1.2%;
 	right: -1.2%;
 	width:102.3%;
@@ -501,12 +460,13 @@ html,body{
 
 #container-metro{
 	position: relative;
-	height: 96%;
+	height: 100%;
 	top: 2%;
 	bottom: 2%;
 }
 
 #linha-metro{
+	position: relative;
 	height: 30%;
 }
 
@@ -531,13 +491,6 @@ html,body{
 	position: relative;
 	top: 30%;
 
-}
-
-#creditos{
-	color: #FFFFFF;
-	font-size: 110%;
-	margin-top: auto;
-	margin-bottom: auto;
 }
 
 
