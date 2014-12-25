@@ -17,6 +17,7 @@
 
 <div class="col-md-12 col-xs-12">
 	<div class="metro">
+
 		<table id="container-metro">
 			<tr id="linha-metro">
 			<td>

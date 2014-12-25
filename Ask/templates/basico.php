@@ -40,6 +40,7 @@
 </head>
 
 <body>
+<div class="container-fluid">
 {% block body %}
 
 	<header>
@@ -106,5 +107,6 @@
 	{% endblock %}
 
 {% endblock %}
+</div>
 </body>
 </html>

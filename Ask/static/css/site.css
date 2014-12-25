@@ -1,6 +1,7 @@
 
 html body{
 	font-family: "Ubuntu", "Times New Roman", Times, serif;
+	background-color: #BFBFBF;
 }
 
 #cabecalho {
@@ -11,10 +12,9 @@ html body{
 
 #logo{
 	position: relative;
-	left: -1.1%;
-	right: -1.1%;
-	width: 102.2%;
+	width: 102.1%;
 	height: 100%;
+	margin-left: -1.1%;
 
 	background-image: url('/static/imagens/background.jpg');
 	background-repeat: no-repeat;
@@ -28,6 +28,16 @@ html body{
 	width: 100%;
 	height: 7%;
 }
+
+#barra-menu{
+	position: relative;
+	margin-left: -1.1%;
+	width: 102.1%;
+	height: 100%;
+	background-color: #428bca;
+}
+
+
 #conteudo{
 	position: relative;
  	width: 100%;
@@ -224,16 +234,6 @@ html body{
 	margin-bottom: 1px;
 }
 
-#barra-menu{
-	position: relative;
-	left: -1.1%;
-	right: -1.1%;
-	width: 102.2%;
-	height: 100%;
-	background-color: #428bca;
-	font-size: 130%;
-}
-
 
 .btn-group.open .btn.dropdown-toggle {
   background-color: red;
@@ -248,7 +248,7 @@ html body{
 }
 
 .navbar a{
-	
+	font-size: 130%;
 	height: 100%;
 	color: #FFFFFF;
 }
