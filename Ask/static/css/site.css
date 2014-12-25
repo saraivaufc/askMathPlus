@@ -15,12 +15,9 @@ html body{
 	width: 102.5%;
 	height: 100%;
 	margin-left: -1.2%;
-
 	background-image: url('/static/imagens/background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
- 	background-color: white;
- 	background-position: center;
 }
 
 #menu{
