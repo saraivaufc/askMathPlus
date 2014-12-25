@@ -70,16 +70,14 @@
 		<div class="barra-responder" >
 			<button id="pular" class="btn botao">Pular</button>
 			<center>
-				<div id="resultado_positivo" class="resultado hidden alert-success">
-					Acertou!!!
+				<div class="resultado">
+
 				</div>
-				<div id="resultado_negativo" class="resultado hidden alert-danger">
-					Errou!!!
-				</div>
-				<a id="ajuda"  data-toggle="modal" data-target="#ajuda_modal"></a>
+				<a id="ajuda" data-toggle="modal" data-target="#ajuda_modal"></a>
 			</center>
 			<button id="verificar"  class="btn botao">Verificar</button>
 		</div>
+					
 
 
 		<!-- Modal Ajuda -->

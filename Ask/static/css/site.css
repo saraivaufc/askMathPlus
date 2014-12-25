@@ -198,8 +198,6 @@ html body{
 	background-image: url('/static/imagens/duvida.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
-	background-color: #f5f907;
 }
 
 
@@ -229,15 +227,6 @@ html body{
 	height: 100%;
 	margin-top: 1px;
 	margin-bottom: 1px;
-}
-
-
-.btn-group.open .btn.dropdown-toggle {
-  background-color: red;
-}
-
-.btn-group.open .btn.dropdown-toggle {
-  background-color:lime;
 }
 
 .nav{
@@ -427,7 +416,6 @@ html body{
 	cursor: pointer;
 	margin: 0 5px 0 5px;
 	padding:2px;
-	box-shadow: inset 10 0 10px black;
 }
 
 .tileLargo{
@@ -476,14 +464,10 @@ html body{
 	position: relative;
 	font-size: 300%;
 	width: 30%;
-}
-
-.visible{
-	visibility: visible;
-}
-.hidden{
 	visibility: hidden;
 }
+
+
 .avisos-conteudo{
 	position: relative;
 	top: 30%;

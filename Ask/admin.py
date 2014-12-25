@@ -18,7 +18,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 	raw_id_fields = ('turma',)
 	list_display = ('username','first_name','last_name' ,'email',)
 	save_as = True
-	search_fields = ['nome'] 
+	search_fields = ['nome']
 
 
 @admin.register(Turma)

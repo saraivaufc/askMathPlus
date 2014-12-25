@@ -6,7 +6,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from Ask.models import *
 from django.core.mail import send_mail
-import md5
+try:
+	from hashlib import md5
+except:
+	from md5 import new as md5
+
 import re
 from random import randrange
 import smtplib
@@ -348,7 +352,7 @@ def getAjuda(request, item_id):
 		except:
 			return HttpResponse("None");
 
-		return HttpResponse(ajuda.descricao);
+		return HttpResponse( string_to_latex(ajuda.descricao));
 	else:
 		return HttpResponseRedirect('/login/')
 
@@ -383,3 +387,35 @@ def pulo(request,id_conteudo, id_pergunta):
 		
 	else:
 		return HttpResponseRedirect('/login/')
+
+def string_to_latex(s):
+	s+="."
+	site = "http://latex.codecogs.com/png.latex?"
+	res = ""
+	index = 0;
+	temp = ""
+	iniciou = False
+	terminou = False
+	for i in s:
+		if i == '$':
+			if iniciou == True:
+				iniciou = False;
+				terminou = True
+			else:
+				iniciou = True
+				continue
+		if terminou:
+			res += "<img src='" + site + temp +"'/>"
+			terminou = False
+			iniciou = False
+			temp = ""
+			continue
+
+		if iniciou:
+			temp +=i
+		else:
+			res += i
+
+	print res
+		
+	return res

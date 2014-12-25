@@ -35,11 +35,12 @@ $(document).ready(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
-			$("#resultado_positivo").removeClass("hidden");
+			$(".resultado").append("Acertou!!!").css("visibility","visible").addClass("alert-success").fadeIn(1000);
 			$(".barra-responder").addClass("bg-success");
 			$(".conteudo-right").addClass("bg-success");
 		}else{
-			$("#resultado_negativo").removeClass("hidden");
+			$(".resultado").append("Errou!!!").css("visibility","visible").addClass("alert-danger").fadeIn(1000);
+			$("#resultado-negativo").fadeIn(1000);
 			$(".barra-responder").addClass("bg-danger");
 			$(".conteudo-right").addClass("bg-danger");
 			
@@ -53,6 +54,7 @@ $(document).ready(function(){
 			}).done(function(data){
 				if (data != "None"){
 					$("#ajuda").css("visibility","visible");
+					$("#ajuda").fadeIn(1000);
 				}		
 			});
 				
@@ -123,8 +125,10 @@ $(document).ready(function(){
 					"url": url,
 					"type": "get",
 					"dataType": "html",
-					async: false
-				}).done(function(data){});
+					async: true
+				}).done(function(data){
+
+				});
 		});
 	});
 
@@ -147,6 +151,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	LatexIT.add('t',true);
+	$("#ajuda").fadeOut('speed');
 	//$('.conteudo').jScrollPane({showArrows: true});
     $('#conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true});
