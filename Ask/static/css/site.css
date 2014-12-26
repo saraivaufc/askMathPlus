@@ -483,3 +483,12 @@ html body{
 .panel-title h3{
 	color: black;
 }
+
+#table-estatisticas{
+	background-color: #E5E5E5;
+}
+
+#table-est{
+	border-color: #FFFFFF;
+	width: 100%;
+}

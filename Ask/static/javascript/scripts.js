@@ -53,8 +53,7 @@ $(document).ready(function(){
 				async: false
 			}).done(function(data){
 				if (data != "None"){
-					$("#ajuda").css("visibility","visible");
-					$("#ajuda").fadeIn(1000);
+					$("#ajuda").css("visibility","visible").fadeIn(1000);
 				}		
 			});
 				
