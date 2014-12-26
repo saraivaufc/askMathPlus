@@ -290,9 +290,12 @@ def estOption(request, est_id):
 	if request.user.is_authenticated():
 		usuario = Usuario.objects.get(username = request.user)
 		if est_id == "1":
-			list = getEst_1(usuario.turma)
+			list = getEst_1(usuario)
 			return render(request, 'estatisticas/estRespostas.php', locals())
-		else:
+		elif est_id == "2":
+			list = getEst_2(usuario)
+			return render(request, 'estatisticas/estPulos.php', locals())
+
 			return render(request, 'estatisticas/estatisticas.php', locals())	
 	else:
 		return HttpResponseRedirect('/login/')
@@ -430,29 +433,6 @@ def string_to_latex(s):
 	print res
 		
 	return res
-
-
-def getEst_1(turma):
-	conteudo = Conteudo.objects.filter(turma = turma)
-	list = []
-
-	for i in conteudo:
-		tema = i.tema
-		total = len( Pergunta.objects.filter(conteudo_pertence = i.id))
-		respondidas = 0
-		for k in Pergunta.objects.filter(conteudo_pertence = i.id):
-			for t in Historico.objects.filter(pergunta = k.id):
-				respondidas +=1
-		certas = 0
-		for k in Pergunta.objects.filter(conteudo_pertence = i.id):
-			for t in Historico.objects.filter(pergunta = k.id, acertou = True):
-				certas +=1
-		erradas = respondidas - certas
-
-		dic = Est1(tema,total,respondidas, certas,erradas)
-		list.append(dic)		
-
-	return list
 
 
 

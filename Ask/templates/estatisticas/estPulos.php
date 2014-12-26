@@ -6,15 +6,12 @@
 {% block table_estatistica %}
 
 	<tr class="bg-success">
-		<td>Conteudo</td><td>Total</td><td>Respondidas</td><td>Certas</td><td>Erradas</td>
+		<td>Conteudo</td><td>Quantidade de Pulos</td>
 	</tr>
 	{% for l in list %}
 		<tr>
 		<td>{{ l.tema }}</td>
-		<td>{{ l.total }}</td>
-		<td>{{ l.respondidas }}</td>
-		<td>{{ l.certas }}</td>
-		<td>{{ l.erradas }}</td>
+		<td>{{ l.pulos }}</td>
 		</tr>
 	{% endfor %}
 {% endblock %}
