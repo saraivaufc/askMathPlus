@@ -39,17 +39,21 @@ class TurmaAdmin(admin.ModelAdmin):
 class ConteudoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('tema',
+        (None,{'fields':('turma',
+        				 'tema',
         	             'descricao', 
         				  'pergunta_inicial', 
-        				  'turma' ,
-        				  ('linha_metro','tamanho_metro',),
-        				)
+        				  'requisitos',
+        				  'sugestao_estudo',
+        				  'max_pulos',
+        				  'linha_metro',
+        				  'tamanho_metro',
+        				 )
         	  }
         ),
 	)
-	list_display = ('tema','pergunta_inicial','criacao')
-	raw_id_fields = ('turma','pergunta_inicial')
+	list_display = ('tema','pergunta_inicial','max_pulos',)
+	raw_id_fields = ('turma','pergunta_inicial', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
 
@@ -61,12 +65,16 @@ class PerguntaAdmin(admin.ModelAdmin):
         (None,{'fields':('conteudo_pertence',
         			      'descricao',
         				  'item_correto',
+        				  'pergunta_proximo_acertou',
+        				  'pergunta_proximo_errou',
+        				  'ajuda',
+        				  'pontos',
         				)
         	  }
         ),
 	)
-	list_display = ('conteudo_pertence','descricao', 'item_correto','criacao', )
-	raw_id_fields = ('item_correto','conteudo_pertence',)
+	list_display = ('conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo_acertou','pergunta_proximo_errou', 'ajuda','pontos' )
+	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo_acertou','pergunta_proximo_errou','ajuda')
 	save_as = True
 	search_fields = ['descricao']
 
@@ -76,15 +84,12 @@ class ItemAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('pergunta_pertence',
         			      'descricao',
-        			      'possui_proxima_pergunta',
-        				  'pergunta_proximo',
-        				  'ajuda',
         				)
         	  }
         ),
 	)
-	list_display = ('pergunta_pertence','descricao','possui_proxima_pergunta','pergunta_proximo', 'ajuda','criacao',  )
-	raw_id_fields = ('pergunta_pertence','pergunta_proximo','ajuda')
+	list_display = ('pergunta_pertence','descricao','criacao',  )
+	raw_id_fields = ('pergunta_pertence',)
 	save_as = True
 	search_fields = ['descricao']
 
@@ -161,18 +166,15 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('usuario',
         				  'pergunta',
-        			      'item',
         				)
         	  }
         ),
 	)
 	list_display = ('usuario',
 				  	'pergunta',
-				  	'item',
 				  	'criacao',)
 	raw_id_fields = ('usuario',
-				  	'pergunta',
-				  	'item',)
+				  	'pergunta',)
 	save_as = True
 	search_fields = ['pergunta']
 
@@ -200,6 +202,57 @@ class PuloAdmin(admin.ModelAdmin):
 	save_as = True
 	search_fields = ['usuario']
 
+@admin.register(Requisito)
+class RequisitoAdmin(admin.ModelAdmin):
+	date_hierarchy = 'criacao'
+	fieldsets = (
+		(None,{'fields':('conteudo',)
+        	  }
+        ),
+	)
+	list_display = ('conteudo','criacao',)
+
+	raw_id_fields = ('conteudo',)
+
+	save_as = True
+
+@admin.register(SugestaoEstudo)
+class SugestaoEstudoAdmin(admin.ModelAdmin):
+	date_hierarchy = 'criacao'
+	fieldsets = (
+        (None,{'fields':('conteudo',
+        				)
+        	  }
+        ),
+	)
+	list_display = ('conteudo','criacao',)
+
+	raw_id_fields = ('conteudo',)
+
+	save_as = True
 
 
+@admin.register(UsuarioPontuacao)
+class UsuarioPontuacaoAdmin(admin.ModelAdmin):
+	date_hierarchy = 'criacao'
+	fieldsets = (
+        (None,{'fields':('usuario',
+        			      'conteudo',
+        				  'questoes_total',
+        				  'questoes_corretas',
+        				  'questoes_saltadas',
+        				  'pontos',
+        				  'max_saltos',
+        				  'saltos',
+        				)
+        	  }
+        ),
+	)
+	list_display = ('usuario',
+			      	'conteudo',
+				  	'pergunta',)
 
+	raw_id_fields = ('usuario',
+    			     'conteudo',)
+	save_as = True
+	search_fields = ['usuario']
