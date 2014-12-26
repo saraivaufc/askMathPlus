@@ -48,18 +48,18 @@ def logout(request):
 
 def criarConta(request):
 	if request.method == 'POST':
-		try:
-			user = Usuario.objects.create(
-				username = request.POST['username'],
-				email = request.POST['email'],
-				first_name = request.POST['first_name'],
-				last_name = request.POST['last_name'],
-				password = md5.new( request.POST['password'] ).hexdigest(),
-			)
-			user.save()
-			return render(request , 'cadastro/criarContaSucesso.php', locals())
-		except:
-			return render(request , 'cadastro/criarContaFalha.php', locals())
+		#try:
+		user = Usuario.objects.create(
+			username = request.POST['username'],
+			email = request.POST['email'],
+			first_name = request.POST['first_name'],
+			last_name = request.POST['last_name'],
+			password = md5(request.POST['password'] ).hexdigest(),
+		)
+		user.save()
+		return render(request , 'cadastro/criarContaSucesso.php', locals())
+		#except:
+		#	return render(request , 'cadastro/criarContaFalha.php', locals())
 	return render(request , 'cadastro/criarConta.php' , locals())
 
 def principal(request):
