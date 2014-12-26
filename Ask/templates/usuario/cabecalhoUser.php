@@ -11,7 +11,6 @@
 	            <ul class="nav navbar-nav">
 	            	{% block botoes_adicionais_esq %}
 			            <li><a onclick="window.open('/forum')"  href="#">Forum</a></li>
-			            <li><a href="/principal/estatisticas">Estatisticas</a></li>
 	            	{% endblock %}
 	            </ul>
 	            

@@ -279,27 +279,6 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 	historico.save()
 	return True
 
-def estatisticas(request):
-	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user)
-		return render(request, 'estatisticas/estatisticas.php', locals())
-	else:
-		return HttpResponseRedirect('/login/')
-
-def estOption(request, est_id):
-	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user)
-		if est_id == "1":
-			list = getEst_1(usuario)
-			return render(request, 'estatisticas/estRespostas.php', locals())
-		elif est_id == "2":
-			list = getEst_2(usuario)
-			return render(request, 'estatisticas/estPulos.php', locals())
-
-			return render(request, 'estatisticas/estatisticas.php', locals())	
-	else:
-		return HttpResponseRedirect('/login/')
-
 def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
 	if request.user.is_authenticated():
 		try:

@@ -16,8 +16,6 @@ urlpatterns = patterns('',
     
     url(r'^principal/$' , principal),
     url(r'^principal/(?P<tema_conteudo>\w+)/$' , secundario),
-    url(r'^principal/estatisticas$' , estatisticas),
-    url(r'^principal/estatisticas/(?P<est_id>\d+)/$' , estOption),
 
     url(r'^contato/$', contato),
 
