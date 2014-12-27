@@ -141,9 +141,8 @@ def secundario(request, tema_conteudo):
 			
 			cont_all = Conteudo.objects.all()
 			item  = Item.objects.get(id = request.POST['opcao'])
-
 			# Se Ele Respondeu a Pergunta Corretamente
-			if pergunta.item_correto == item.id:
+			if pergunta.item_correto_id == item.id:
 				print 'acertou'
 				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
 				if pergunta.pergunta_proximo_acertou == None:
@@ -166,7 +165,20 @@ def secundario(request, tema_conteudo):
 				#Mas se Ele tiver uma Pergunta Proxima
 				else:
 					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
-
+					if len(conteudo.getPerguntasRestantes) == 0:
+						print 'Conteudo Terminado Com Exito : linha 169'
+						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+					else:
+						#Se a pergunta ja estiver sido respondidade corretaente
+						try:
+							his = Historico.objects.get(usuario = usuario.id,
+											 	 conteudo = conteudo.id,
+											 	 pergunta = pergunta.id,
+												  acertou = True,)
+							pergunta = c.getPerguntasRestantes(usuario)[0]
+						#se a pergunta ainda nao tiver sido respondidade corretamente
+						except:
+							print "Pulei para a proxima"
 
 			#Se Ele Nao Respondeu A Pergunta Corretamente
 			else:
@@ -219,11 +231,8 @@ def secundario(request, tema_conteudo):
 			print 'Conteguiu Econtrar o Estado_Usuario linha 220'
 		except:
 			print 'Erro ao buscar Estado_Usuario linha 222'
-			estado = Estado_Usuario.objects.create(turma_id = usuario.turma_id,
-												   usuario_id = usuario.id,
-												   conteudo_id = conteudo.id,
-												   pergunta_id = pergunta.id,)
-			estado.save()
+
+			atualiza_estado(usuario.id,conteudo.id, pergunta.id)
 
 		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 		print 'Response Padrao Caso nao Entre no Post : linha 227'
@@ -236,6 +245,7 @@ def secundario(request, tema_conteudo):
 		print 'Pulos Restantes',conteudo.getQuantPulosRestantes(usuario)
 		print 'Perguntas Respondidas',len(conteudo.getPerguntasRespondidas(usuario))
 		print 'Perguntas Nao Respondidas',len(conteudo.getPerguntasNaoRespondidas(usuario))
+		print 'Perguntas que Faltam Responder e acertar', len(conteudo.getPerguntasRestantes(usuario))
 		print 'Perguntas Certas',len(conteudo.getPerguntasCertas(usuario))
 		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
 		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
@@ -302,6 +312,21 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 
 
 def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
+	usuario = Usuario.objects.get(id = usuario_id)
+	c = Conteudo.objects.get(id = conteudo_id)
+
+	if len(c.getPerguntasRestantes) == 0:
+		return None
+
+	certo = False
+	for i in c.getPerguntasCertas(usuario):
+		if i.id == pergunta_id:
+			certo = True
+
+	if certo:
+		return
+
+
 	usuario = Usuario.objects.get(id = usuario_id);
 	try:
 		estado = Estado_Usuario.objects.get(usuario_id = usuario_id , conteudo_id = conteudo_id)
