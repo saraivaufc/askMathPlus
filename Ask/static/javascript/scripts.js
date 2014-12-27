@@ -73,6 +73,7 @@ $(document).ready(function(){
 		if(confirmPular() == false){
 			return;
 		}
+
 		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
 		$.ajax({
 			"url": url,
@@ -87,11 +88,11 @@ $(document).ready(function(){
 					"dataType": "html",
 					async: false,
 					"success": function(){
-
 					},
 					"error": function(jqXHR, status, error) {
-						alert(error);
 						alert(url);
+						alert(error);
+						
 					}
 				});
 				window.location = window.location;

@@ -165,7 +165,7 @@ def secundario(request, tema_conteudo):
 
 				#Mas se Ele tiver uma Pergunta Proxima
 				else:
-					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou)
+					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
 
 
 			#Se Ele Nao Respondeu A Pergunta Corretamente
@@ -182,7 +182,7 @@ def secundario(request, tema_conteudo):
 
 				#Mas se Ele tiver uma Pergunta Proxima
 				else:
-					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_errou)
+					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_errou_id)
 
 
 		# Se o Metodo nao for Post
@@ -250,43 +250,53 @@ def secundario(request, tema_conteudo):
 
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():
-		print "Conteudo Id = " + conteudo_id;
 		usuario = Usuario.objects.get(username = request.user)
 		conteudo = Conteudo.objects.get(id = conteudo_id)
 		pergunta = Pergunta.objects.get(id = pergunta_id);
+		
+		#tento pegar o item correto da questao
 		try:
 			item = Item.objects.get(id = pergunta.item_correto_id)
+		
+		#Se a questao nao tiver um item correto
 		except:
-			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+			perguntas_erradas = conteudo.getPerguntasNaoRespondidas(usuario)
 			if(len(perguntas_erradas) == 0 ):
 				return HttpResponse("Conteudo Concluido!!!")
 			else:
 				pergunta_atual_id = pergunta.id;
-				pergunta = perguntas_erradas.pop();
-				while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
+				while len(perguntas_erradas)>1 :
 					pergunta = perguntas_erradas.pop();
+					if pergunta.id != pergunta_atual_id:
+						break
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
 			return HttpResponse("Nao exite item correto na pergunta!!!")
 
-		if item.possui_proxima_pergunta == False:
+		#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
+		if pergunta.pergunta_proximo_acertou == None:
 			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-			if(len(perguntas_erradas) > 0):
-				index = randrange(len(perguntas_erradas))
-				while perguntas_erradas[index].id == pergunta.id and len(perguntas_erradas) != 1 :
-					print "casa"
-					index = randrange(len(perguntas_erradas))
-				
-				pergunta = perguntas_erradas.pop(index)
 
-				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
-				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
-				return HttpResponse(request)
+			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
+			if len(perguntas_erradas) == 0:
+				print 'Conteudo Terminado Com Exito : linha 154'
+				return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
+			# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 			else:
-				return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+				while len(perguntas_erradas) > 1:
+					p = perguntas_erradas.pop()
+					if p.id != pergunta.id:
+						pergunta = p
+						break
+
+
+		#Mas se Ele tiver uma Pergunta Proxima
 		else:
-			pergunta.id = item.pergunta_proximo_id;
-			atualiza_estado(usuario.id, conteudo.id, pergunta.id)
-			return secundario(request, conteudo.tema);
+			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
+
+		atualiza_estado(usuario.id, conteudo.id, pergunta.id)
+		return HttpResponseRedirect("/principal/" +  transform_tema_revert(conteudo.tema))
+
 	else:
 		return HttpResponseRedirect("/login/")
 
@@ -381,6 +391,15 @@ def transform_tema(t):
 			tema = tema + i
 	return tema
 
+def transform_tema_revert(t):
+	tema =""
+	for i in t:
+		if i == ' ':
+			tema = tema + "_"
+		else:
+			tema = tema + i
+	return tema
+
 
 def getAjuda(request, item_id):
 	if request.user.is_authenticated():
@@ -413,10 +432,8 @@ def busca_ajuda(request, id_pergunta, id_item):
 
 def pulo(request,id_conteudo, id_pergunta):
 	if request.user.is_authenticated():
-		try:
-			usuario = Usuario.objects.get(username = request.user)
-		except:
-			return HttpResponse("500");
+		usuario = Usuario.objects.get(username = request.user)
+		
 		pulo = Pulo.objects.create(
 			turma_id = usuario.turma_id,
 			usuario_id = usuario.id,
@@ -424,10 +441,12 @@ def pulo(request,id_conteudo, id_pergunta):
 			pergunta_id = id_pergunta
 		)
 		pulo.save()
+		conteudo = Conteudo.objects.get(id = id_conteudo)
+		conteudo.declementaPulosRestantes(usuario)
 		return HttpResponse("200")
 		
 	else:
-		return HttpResponseRedirect('/login/')
+		return HttpResponse("500")
 
 def string_to_latex(s):
 	s+="."
