@@ -33,11 +33,11 @@
 <div class="font-dconteudo">
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
-    		<div class="panel panel-info">
+    		<div class="">
 			 	<div class="panel-title">
 					<div id="pontuacao" class="table-responsive">
-					<table class="table table-hover">
-						<tr>
+					<table class="table table-hover table-bordered">
+						<tr class="active">
 							<td>
 								<div class="text-center">Pontos = {{ pontos }}</div>
 							</td>
@@ -48,7 +48,7 @@
 								<div class="text-center">Saltos Disponiveis = {{ pulosDisponiveis }}</div>
 							</td>
 							<td class="center">
-								<div class="text-center">Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
+								<div class="text-center">Questoes = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
 							</td>
 						</tr>
 					</table>
