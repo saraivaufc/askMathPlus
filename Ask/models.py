@@ -27,19 +27,13 @@ class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
 
 
-
-class Conteudo_Requisito(Model):
-	conteudo = models.ForeignKey('Conteudo')
-	requisito = models.ForeignKey('Conteudo', related_name="Requisito")
-
-
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")
 	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição")
 	pergunta_inicial = models.ForeignKey('Pergunta' , null=True , blank=True , verbose_name="Pergunta Inicial")
-	requisitos = models.ManyToManyField('self',through='Conteudo_Requisito', through_fields=('conteudo','requisito',),related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
-	sugestao_estudo = models.ManyToManyField('self',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
+	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
+	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos")
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
@@ -56,11 +50,8 @@ class Conteudo(Model):
 		return len(p)
 
 	def getRequisitos(self):
-		req = []
-		for r in self.requisitos:
-			req.append(Conteudo.objects.get(id = r.id))
-		print len(req)
-		return req
+		cont = self.requisitos.all();
+		return list(cont)
 
 	def getSugestoes(self):
 		sug = []
