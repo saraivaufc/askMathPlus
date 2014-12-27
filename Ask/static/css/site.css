@@ -158,7 +158,11 @@ html body{
 }
 
 .btn-group .btn{
-	font-size: 110%;
+	font-size: 100%;
+	text-align: center;
+}
+
+.navbar a{
 	text-align: center;
 }
 
