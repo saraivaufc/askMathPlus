@@ -94,10 +94,10 @@
 					<button  type="button" id="rever"	  class="btn btn-primary">Rever Questoes Puladas</button>
 				</div>
 				<div id="ajuda" class="btn-group">	
-					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
+					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
 				</div>
 				<div class="btn-group">
-					<button  type="button" id="verificar" class="btn btn-success ">Verificar</button>
+					<button  type="button" id="responder" class="btn btn-success ">Responder</button>
 				</div>
 			</div>
 		</div>

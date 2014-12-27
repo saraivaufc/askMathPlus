@@ -25,7 +25,7 @@ $(document).ready(function(){
 		});	
 	});
 
-	$("#verificar").click(function(){
+	$("#responder").click(function(){
 		var radios = $('input[name=opcao]', '#perguntas');
 		for(var i=0; i< radios.length; i++){
 			if(!radios[i].checked){
@@ -35,37 +35,12 @@ $(document).ready(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
-			$(".resultado").empty().append("Acertou!!!").css("visibility","visible").addClass("alert-success").fadeIn(1000);
-			$(".barra-responder").addClass("bg-success");
-			$(".conteudo-right").addClass("bg-success");
+			alert("Voce Acertou!!!");
 		}else{
-			$(".resultado").empty().append("Errou!!!").css("visibility","visible").addClass("alert-danger").fadeIn(1000);
-			$("#resultado-negativo").fadeIn(1000);
-			$(".barra-responder").addClass("bg-danger");
-			$(".conteudo-right").addClass("bg-danger");
-			
-			var valor = $('input[name=opcao]:checked', '#perguntas').val();
-			var url = "/ajuda/" + valor+"/";
-			$.ajax({
-				"url": url,
-				"type": "get",
-				"dataType": "html",
-				async: false
-			}).done(function(data){
-				if (data != "None"){
-					$("#ajuda").css("visibility","visible").fadeIn(1000);
-				}		
-			});
-				
+			alert("Voce Errou!!!");
 		};
 
-		$(this).text("Continuar");
-			$(this).attr('id',"continuar");
-			$("#continuar").click(function(){
-				$("#perguntas").submit();
-		});
-		$("#pular").attr('disabled', 'disabled');
-		$("#voltar").hide();
+		$("#perguntas").submit();
 
 	});
 
@@ -109,31 +84,11 @@ $(document).ready(function(){
 	});
 
 	$("input[name='opcao']").click(function(){
-			$("#verificar").removeAttr('disabled');
+			$("#responder").removeAttr('disabled');
 	});
 
 	$("#ajuda").click(function(){
-		var valor = $('input[name=opcao]:checked', '#perguntas').val();
-		var url = "/ajuda/" + valor+"/";
-		$.ajax({
-			"url": url,
-			"type": "get",
-			"dataType": "html",
-			async: false
-		}).done(function(data){
-			$("#ajuda_text").empty();
-			$("#ajuda_text").append(data);
-			var conteudo = $("#conteudo_atual").val();
-			url = "/busca_ajuda/" + conteudo + "/";
-			$.ajax({
-					"url": url,
-					"type": "get",
-					"dataType": "html",
-					async: true
-				}).done(function(data){
-
-				});
-		});
+		
 	});
 
 });
@@ -155,12 +110,40 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	LatexIT.add('t',true);
-	$("#ajuda").hide();
+
+	//Verificar se axisteajuda
+	var valor = $("#pergunta_atual").val();
+	var url = "/ajuda/" + valor+"/";
+	$.ajax({
+		"url": url,
+		"type": "get",
+		"dataType": "html",
+		async: false
+	}).done(function(data){
+		if(data != "None"){
+			$("#ajuda").show();
+		}else{
+			$("#ajuda").hide();
+		}
+		$("#ajuda_text").empty();
+		$("#ajuda_text").append(data);
+		var conteudo = $("#conteudo_atual").val();
+		url = "/busca_ajuda/" + conteudo + "/";
+		$.ajax({
+				"url": url,
+				"type": "get",
+				"dataType": "html",
+				async: true
+			}).done(function(data){
+
+			});
+	});
+
 	//$('.conteudo').jScrollPane({showArrows: true});
     $('#conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true});
 
-	$("#verificar").attr('disabled', 'disabled');
+	$("#responder").attr('disabled', 'disabled');
 	$("#li-botao").css({"margin-left": "5px" }); 	
 });
 

@@ -425,14 +425,14 @@ def transform_tema_revert(t):
 	return tema
 
 
-def getAjuda(request, item_id):
+def getAjuda(request, pergunta_id):
 	if request.user.is_authenticated():
 		try:
-			item = Item.objects.get(id = item_id);
+			pergunta = Pergunta.objects.get(id = pergunta_id);
 		except:
 			return HttpResponse("None");
 		try:
-			ajuda = Ajuda.objects.get(id = item.ajuda_id);
+			ajuda = Ajuda.objects.get(id = pergunta.ajuda_id);
 		except:
 			return HttpResponse("None");
 
