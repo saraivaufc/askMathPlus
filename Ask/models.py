@@ -38,11 +38,85 @@ class Conteudo(Model):
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
 	
-
 	def __unicode__(self):
 		return self.tema
 	class Meta:
 		ordering = ['tema']
+
+
+	#GETS
+	def getQuantPerguntasTotal(self):
+		p = Pergunta.objects.filter(conteudo_pertence = self.id)
+		return len(p)
+
+	def getRequisitos(self):
+		req = []
+		for i in Conteudo.objects.all():
+			for k in self.requisitos:
+				if i.id == k:
+					req.append(i)
+		return req
+
+	def getSugestoes(self):
+		sug = []
+		for i in Conteudo.objects.all():
+			for k in self.sugestao_estudo:
+				if i.id == k:
+					sug.append(i)
+		return sug
+
+	def getQuantPulosRealizados(self, usuario):
+		pulos = Pulos.objects.filter(usuario = usuario.id, conteudo = self.id)
+		if pulos != None:
+			return len(pulos)
+		else:
+			return 0
+
+	def getQuantPulosRestantes(self, usuario):
+		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		if pulos == None:
+			return self.max_pulos
+		else:
+			return pulos.pulosRestantes
+
+	def inclementaPulosRestantes(self, usuario):
+		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		pulos.inclementaPulos()
+
+	def declementaPulosRestantes(self, usuario):
+		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		pulos.declementaPulos()
+
+	def getPerguntasRespondidas(self, usuario):
+		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id)
+		per = []
+		for i in his:
+			per.append(Pergunta.objects.get(id = i.pergunta))
+		return per
+
+
+	def getPerguntasCertas(self, usuario):
+		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = True)
+		per = []
+		for i in his:
+			per.append(Pergunta.objects.get(id = i.pergunta))
+		return per
+	def getPerguntasErradas(self, usuario):
+		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = False)
+		per = []
+		for i in his:
+			per.append(Pergunta.objects.get(id = i.pergunta))
+		return per
+
+
+	def getPerguntasPuladas(self, usuario):
+		pulos = Pulos.objects.filter(usuario = usuario.id, conteudo = self.id)
+		res = []
+		for p in pulos:
+			res.append(Pergunta.objects.get(id = p.pergunta))
+		return res
+
+
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence")
@@ -57,6 +131,32 @@ class Pergunta(Model):
 		return self.descricao
 	class Meta:
 		ordering = ['-criacao']
+
+	def pediuAjuda(self, usuario):
+		b = Busca_Ajuda.objects.create(
+				usuario = usuario.id,
+				pergunta = self.id,
+			)
+		b.save()
+
+	def acertou(self, usuario):
+		pontuacao = None
+		try:
+			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.conteudo_pertence )
+		except:
+			pontuacao = UsuarioPontuacao.objects.create(
+				usuario = usuario.id,
+				conteudo = self.conteudo_pertence,
+				pulosRestantes = (Conteudo.objects.get(id = self.conteudo_pertence)).max_pulos,
+			)
+			pontuacao.save()
+		finally:
+			pontuacao.inclementaPontos(self.pontos)
+
+
+
+
+
 
 
 class Item(Model):
@@ -131,13 +231,31 @@ class SugestaoEstudo(Model):
 class UsuarioPontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo")
-	
-	questoes_total = models.IntegerField(verbose_name="Questoes Total",null=True , blank=True,)
-	questoes_corretas = models.IntegerField(verbose_name="Questoes Corretas",null=True , blank=True,)
-	questoes_saltadas = models.IntegerField(verbose_name="Questoes Corretas",null=True , blank=True,)
-	
-	pontos = models.IntegerField(verbose_name="Pontos",null=True , blank=True,)
+	pontos = models.IntegerField(default=0, verbose_name="Pontos",null=True , blank=True)
+	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos", null= True, blank=True)
 
-	max_saltos = models.IntegerField(verbose_name="Maximo de Saltos",null=True , blank=True,)
-	saltos = models.IntegerField(verbose_name="Saltos",null=True , blank=True,)
+	def __unicode__(self):
+		return str(usuario)
 
+	def inclementaPontos(valor):
+		self.pontos += valor
+		self.update(pontos = self.pontos)
+
+	def inclementaPulos():
+		self.pulosRestantes += 1 
+		self.update(pulos = self.pulosRestantes)
+
+	def declementaPontos(valor):
+		self.pontos -= valor
+		if self.pontos < 0:
+			self.pontos = 0
+		self.update(pontos = self.pontos)
+
+	def declementaPulos():
+		self.pulosRestantes -= 1
+		if self.pulosRestantes < 0:
+			self.pulosRestantes = 0 
+		self.update(pulosRestantes = self.pulosRestantes)
+
+
+		

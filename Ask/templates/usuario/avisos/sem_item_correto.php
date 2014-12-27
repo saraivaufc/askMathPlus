@@ -1,6 +1,6 @@
 {% extends 'usuario/secundario/secundario.php' %}
 
-{% block voltar %}document.location{% endblock %}
+{% block voltar %}{% endblock %}
 
 
 {%  block funcoes %}
