@@ -250,6 +250,9 @@ def secundario(request, tema_conteudo):
 		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
 		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
 
+		his = Historico.objects.all()[0]
+		print 'Historico Recente', len(his.getRecente())
+
 		
 		
 

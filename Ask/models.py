@@ -95,7 +95,6 @@ class Conteudo(Model):
 
 	def getPerguntasNaoRespondidas(self, usuario):
 		respondidas = self.getPerguntasRespondidas(usuario)
-		print "\n\nPergunta que foram respondidas", len(respondidas)
 		nao_respondidas = []
 		for i in Pergunta.objects.filter(conteudo_pertence = self.id):
 			existe = False
@@ -104,7 +103,6 @@ class Conteudo(Model):
 					existe = True			
 			if existe == False:
 				nao_respondidas.append(i)
-		print "Perguntas nao respondiasassaa", len(nao_respondidas)
 		return nao_respondidas
 
 
@@ -148,19 +146,12 @@ class Conteudo(Model):
 	def getPerguntasRestantes(self, usuario):
 		nao_respondidas = self.getPerguntasNaoRespondidas(usuario)
 		erradas = self.getPerguntasErradas(usuario)
-		print "\n\nDetalhe getPerguntasRestantes\n"
-		print "Pergunta nao respondidas", len(nao_respondidas)
-		print "Pergunta erradas", len(erradas)
-		print "\n\n"
 
 		todas = []
 		for i in nao_respondidas:
 			todas.append(i)
 		for i in erradas:
 			todas.append(i)
-
-		print "Perguntas Restantes", len(todas)
-		
 		return todas
 
 
@@ -246,6 +237,22 @@ class Historico(Model):
 		return  str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
+
+	def getRecente(self):
+		todo = Historico.objects.all().order_by('-criacao')
+		recente = []
+		for i in todo:
+			existe = False
+			for k in recente:
+				if i.pergunta_id == k.pergunta_id:
+					existe = True
+			if existe == False:
+				print i.acertou
+				recente.append(i)
+		return recente
+
+
+
 
 class Estado_Usuario(Model):
 	turma  = models.ForeignKey(Turma, verbose_name="Turma")
