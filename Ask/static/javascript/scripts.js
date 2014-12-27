@@ -119,8 +119,8 @@ $(document).ready(function(){
 		}).done(function(data){
 			$("#ajuda_text").empty();
 			$("#ajuda_text").append(data);
-			var pergunta = $("#pergunta_atual").val();
-			url = "/busca_ajuda/" + pergunta + "/"  + valor+"/";
+			var conteudo = $("#conteudo_atual").val();
+			url = "/busca_ajuda/" + conteudo + "/";
 			$.ajax({
 					"url": url,
 					"type": "get",

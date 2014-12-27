@@ -119,7 +119,10 @@ class Conteudo(Model):
 		return per
 
 	def getPerguntasErradas(self, usuario):
-		his = Historico.objects.all()[0]
+		try:
+			his = Historico.objects.all()[0]
+		except:
+			return []
 		conteudo = Conteudo.objects.get(id = self.id)
 		his = his.getRecente(usuario, conteudo)
 		per = []
@@ -155,6 +158,9 @@ class Conteudo(Model):
 		for i in erradas:
 			todas.append(i)
 		return todas
+
+	def getVezesPediuAjuda(self, usuario):
+		return Busca_Ajuda.objects.filter(usuario=usuario.id, conteudo= self.id).count()
 
 	
 class Pergunta(Model):
@@ -219,7 +225,7 @@ class Ajuda(Model):
 
 class Busca_Ajuda(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
-	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Pergunta")
 
 	def __unicode__(self):
 		return str(self.usuario)

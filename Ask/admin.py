@@ -165,18 +165,18 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
         (None,{'fields':('usuario',
-        				  'pergunta',
+        				  'conteudo',
         				)
         	  }
         ),
 	)
 	list_display = ('usuario',
-				  	'pergunta',
+				  	'conteudo',
 				  	'criacao',)
 	raw_id_fields = ('usuario',
-				  	'pergunta',)
+				  	'conteudo',)
 	save_as = True
-	search_fields = ['pergunta']
+	search_fields = ['conteudo']
 
 @admin.register(Pulo)
 class PuloAdmin(admin.ModelAdmin):

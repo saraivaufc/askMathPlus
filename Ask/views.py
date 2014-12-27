@@ -249,9 +249,13 @@ def secundario(request, tema_conteudo):
 		print 'Perguntas Certas',len(conteudo.getPerguntasCertas(usuario))
 		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
 		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
+		print 'Vezes que pediu ajuda', conteudo.getVezesPediuAjuda(usuario)
 
-		his = Historico.objects.all()[0]
-		print 'Historico Recente', len(his.getRecente(usuario, conteudo))
+		try:
+			his = Historico.objects.all()[0]
+			print 'Historico Recente', len(his.getRecente(usuario, conteudo))
+		except:
+			pass
 
 		
 		
@@ -318,7 +322,7 @@ def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
 	usuario = Usuario.objects.get(id = usuario_id)
 	c = Conteudo.objects.get(id = conteudo_id)
 
-	if len(c.getPerguntasRestantes) == 0:
+	if len(c.getPerguntasRestantes(usuario)) == 0:
 		return None
 
 	certo = False
@@ -444,13 +448,12 @@ def getAjuda(request, item_id):
 	else:
 		return HttpResponseRedirect('/login/')
 
-def busca_ajuda(request, id_pergunta, id_item):
+def busca_ajuda(request, id_conteudo):
 	if request.user.is_authenticated():
 		usuario = Usuario.objects.get(username = request.user)
 		busca = Busca_Ajuda.objects.create(
 			usuario_id = usuario.id,
-			pergunta_id = id_pergunta,
-			item_id = id_item
+			conteudo_id = id_conteudo,
 		)
 		busca.save()
 		return HttpResponse("200")
