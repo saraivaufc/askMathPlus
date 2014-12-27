@@ -132,6 +132,10 @@ def secundario(request, tema_conteudo):
 			item  = Item.objects.get(id = request.POST['opcao'])
 			# Se Ele Respondeu a Pergunta Corretamente
 			if pergunta.item_correto_id == item.id:
+
+				#atualizando a pontuacao
+				pergunta.acertou(usuario)
+
 				print 'acertou'
 				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
 				if pergunta.pergunta_proximo_acertou == None:
@@ -239,6 +243,7 @@ def secundario(request, tema_conteudo):
 		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
 		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
 		print 'Vezes que pediu ajuda', conteudo.getVezesPediuAjuda(usuario)
+		print 'Pontos', conteudo.getQuantPontos(usuario)
 
 		try:
 			his = Historico.objects.all()[0]

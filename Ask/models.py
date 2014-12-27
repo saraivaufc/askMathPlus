@@ -162,6 +162,19 @@ class Conteudo(Model):
 	def getVezesPediuAjuda(self, usuario):
 		return Busca_Ajuda.objects.filter(usuario=usuario.id, conteudo= self.id).count()
 
+	def getQuantPontos(self, usuario):
+		try:
+			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id,
+													 conteudo = self.id,
+													 )
+		except:
+			pontuacao = UsuarioPontuacao.objects.create(usuario = usuario.id,
+														conteudo = self.id,
+														pulosRestantes = self.getQuantPulosRestantes(),)
+			pontuacao.save()
+		return pontuacao.pontos
+
+
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence")
