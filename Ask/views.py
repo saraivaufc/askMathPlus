@@ -215,7 +215,7 @@ def secundario(request, tema_conteudo):
 				except:
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					
-					if len(perguntas_erradas) == 0:
+					if len(conteudo.getPerguntasRestantes(usuario)) == 0:
 						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 					else:
 						pergunta = perguntas_erradas.pop()
@@ -251,7 +251,7 @@ def secundario(request, tema_conteudo):
 		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
 
 		his = Historico.objects.all()[0]
-		print 'Historico Recente', len(his.getRecente())
+		print 'Historico Recente', len(his.getRecente(usuario, conteudo))
 
 		
 		

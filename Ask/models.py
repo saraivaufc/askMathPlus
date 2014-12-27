@@ -119,14 +119,17 @@ class Conteudo(Model):
 		return per
 
 	def getPerguntasErradas(self, usuario):
-		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = False)
+		his = Historico.objects.all()[0]
+		conteudo = Conteudo.objects.get(id = self.id)
+		his = his.getRecente(usuario, conteudo)
 		per = []
 		for i in his:
 			existe = False
 			for k in per:
 				if k.id == i.pergunta_id:
 					existe = True
-			if existe == False:
+					break
+			if (existe == False) and (i.acertou == False) :
 				per.append(Pergunta.objects.get(id = i.pergunta_id))
 		return per
 
@@ -146,14 +149,12 @@ class Conteudo(Model):
 	def getPerguntasRestantes(self, usuario):
 		nao_respondidas = self.getPerguntasNaoRespondidas(usuario)
 		erradas = self.getPerguntasErradas(usuario)
-
 		todas = []
 		for i in nao_respondidas:
 			todas.append(i)
 		for i in erradas:
 			todas.append(i)
 		return todas
-
 
 	
 class Pergunta(Model):
@@ -238,8 +239,8 @@ class Historico(Model):
 	class Meta:
 		ordering = ['-criacao']
 
-	def getRecente(self):
-		todo = Historico.objects.all().order_by('-criacao')
+	def getRecente(self, usuario, conteudo):
+		todo = Historico.objects.filter(usuario = usuario.id, conteudo = conteudo.id).order_by('-criacao')
 		recente = []
 		for i in todo:
 			existe = False
@@ -247,7 +248,6 @@ class Historico(Model):
 				if i.pergunta_id == k.pergunta_id:
 					existe = True
 			if existe == False:
-				print i.acertou
 				recente.append(i)
 		return recente
 
