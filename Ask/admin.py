@@ -16,7 +16,7 @@ class UsuarioAdmin(admin.ModelAdmin):
         ),
 	)
 	raw_id_fields = ('turma',)
-	list_display = ('username','first_name','last_name' ,'email',)
+	list_display = ('id','username','first_name','last_name' ,'email',)
 	save_as = True
 	search_fields = ['nome']
 
@@ -31,7 +31,7 @@ class TurmaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('nome','semestre','criacao')
+	list_display = ('id','nome','semestre','criacao')
 	save_as = True
 	search_fields = ['nome'] 
 
@@ -52,7 +52,7 @@ class ConteudoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('tema','pergunta_inicial','max_pulos',)
+	list_display = ('id','tema','pergunta_inicial','max_pulos',)
 	raw_id_fields = ('turma','pergunta_inicial', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
@@ -73,7 +73,7 @@ class PerguntaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo_acertou','pergunta_proximo_errou', 'ajuda','pontos' )
+	list_display = ('id','conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo_acertou','pergunta_proximo_errou', 'ajuda','pontos' )
 	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo_acertou','pergunta_proximo_errou','ajuda')
 	save_as = True
 	search_fields = ['descricao']
@@ -88,7 +88,7 @@ class ItemAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('pergunta_pertence','descricao','criacao',  )
+	list_display = ('id','pergunta_pertence','descricao','criacao',  )
 	raw_id_fields = ('pergunta_pertence',)
 	save_as = True
 	search_fields = ['descricao']
@@ -107,7 +107,7 @@ class HistoricoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('usuario',
+	list_display = ('id','usuario',
 			      	'turma',
 			      	'conteudo',
 				  	'pergunta',
@@ -134,7 +134,7 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('turma',
+	list_display = ('id','turma',
 		   			'usuario',
 			      	'conteudo',
 				  	'pergunta',
@@ -155,7 +155,7 @@ class AjudaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('descricao', 'criacao',
+	list_display = ('id','descricao', 'criacao',
 					)
 	save_as = True
 	search_fields = ['descricao']
@@ -170,7 +170,8 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('usuario',
+	list_display = ('id',
+                    'usuario',
 				  	'conteudo',
 				  	'criacao',)
 	raw_id_fields = ('usuario',
@@ -190,7 +191,7 @@ class PuloAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('turma',
+	list_display = ('id','turma',
 		   			'usuario',
 			      	'conteudo',
 				  	'pergunta',
@@ -215,7 +216,7 @@ class UsuarioPontuacaoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('usuario',
+	list_display = ('id','usuario',
 			      	'conteudo',
 				  	'pergunta',)
 

@@ -287,22 +287,23 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 					if pergunta.id != pergunta_atual_id:
 						break
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
-			return HttpResponse("Nao exite item correto na pergunta!!!")
+			return HttpResponse("None")
 
 		#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
 		if pergunta.pergunta_proximo_acertou == None:
-			perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+			perguntas_erradas =  conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
 			if len(perguntas_erradas) == 0:
-				print 'Conteudo Terminado Com Exito : linha 154'
+				print 'Conteudo Terminado Com Exito : linha 298'
 				return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 
 			# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 			else:
-				while len(perguntas_erradas) > 1:
+				while len(perguntas_erradas) > 0:
 					p = perguntas_erradas.pop()
 					if p.id != pergunta.id:
+						print 'buceta'
 						pergunta = p
 						break
 

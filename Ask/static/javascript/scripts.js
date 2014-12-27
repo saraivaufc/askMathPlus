@@ -75,12 +75,16 @@ $(document).ready(function(){
 		}
 
 		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+		alert(url);
 		$.ajax({
 			"url": url,
 			"type": "get",
 			"dataType": "html",
 			async: false,
-			"success": function(){
+			"success": function(data){
+				if(data == "None"){
+					alert("Pergunta nao Possui item Correto, contactar o Administrador...");	
+				}
 				url = "/pulo/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
 				$.ajax({
 					"url": url,
@@ -88,6 +92,7 @@ $(document).ready(function(){
 					"dataType": "html",
 					async: false,
 					"success": function(){
+
 					},
 					"error": function(jqXHR, status, error) {
 						alert(url);

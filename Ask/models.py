@@ -17,7 +17,7 @@ class Turma(Model):
 	semestre = models.FloatField(verbose_name="Semestre");
 
 	def __unicode__(self):
-		return self.nome
+		return str(self.id) + ": " + self.nome
 
 	class Meta:
 		ordering = ['-semestre']
@@ -27,7 +27,7 @@ class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
 
 	def __unicode__(self):
-		return self.first_name +" " + self.last_name
+		return str(self.id) + ": " +  self.first_name +" " + self.last_name
 
 
 class Conteudo(Model):
@@ -42,7 +42,7 @@ class Conteudo(Model):
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
 	
 	def __unicode__(self):
-		return self.tema
+		return  str(self.id) + ": " +  self.tema
 	class Meta:
 		ordering = ['tema']
 
@@ -173,7 +173,7 @@ class Pergunta(Model):
 	pontos = models.IntegerField(verbose_name="Pontos Valem")
 
 	def __unicode__(self):
-		return self.descricao
+		return str(self.id) + ": " +  self.descricao
 	class Meta:
 		ordering = ['-criacao']
 
@@ -209,7 +209,7 @@ class Item(Model):
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
 
 	def __unicode__(self):
-		return self.descricao 
+		return str(self.id) + ": " +  self.descricao 
 	
 	class Meta:
 		ordering = ['-criacao']
@@ -219,7 +219,7 @@ class Item(Model):
 class Ajuda(Model):
 	descricao = models.TextField(verbose_name="Descrição")
 	def __unicode__(self):
-		return self.descricao
+		return str(self.id) + ": " +  self.descricao
 	class Meta:
 		ordering = ['-criacao']
 
@@ -228,7 +228,7 @@ class Busca_Ajuda(Model):
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Pergunta")
 
 	def __unicode__(self):
-		return str(self.usuario)
+		return str(self.id) + str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
 
@@ -241,7 +241,7 @@ class Historico(Model):
 	acertou = models.BooleanField(default=False, verbose_name="Acertou")
 
 	def __unicode__(self):
-		return  str(self.usuario)
+		return  str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
 
@@ -267,7 +267,7 @@ class Estado_Usuario(Model):
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
 
 	def __unicode__(self):
-		return str(self.usuario)
+		return str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
 
@@ -278,7 +278,7 @@ class Pulo(Model):
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
 
 	def __unicode__(self):
-		return str(self.usuario)
+		return str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
 
@@ -290,7 +290,7 @@ class UsuarioPontuacao(Model):
 	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos Restantes", null= True, blank=True)
 
 	def __unicode__(self):
-		return str(self.usuario)
+		return str(self.id) + ": " + str(self.usuario)
 
 	def inclementaPontos(self,valor):
 		self.pontos += valor
