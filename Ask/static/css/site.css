@@ -492,3 +492,8 @@ html body{
 	border-color: #FFFFFF;
 	width: 100%;
 }
+
+
+#pontuacao table{
+	font-weight: bold;
+}

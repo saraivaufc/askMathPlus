@@ -120,6 +120,7 @@ def secundario(request, tema_conteudo):
 														pulosRestantes = conteudo.max_pulos)
 			pontuacao.save()
 
+
 		if request.method == 'POST':
 			pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual'])
 
@@ -230,21 +231,6 @@ def secundario(request, tema_conteudo):
 		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 		print 'Response Padrao Caso nao Entre no Post : linha 227'
 
-		print 'Detalhe'
-		print 'Total de Pergutas',(conteudo.getQuantPerguntasTotal())
-		print 'Requisitos',len(conteudo.getRequisitos())
-		print 'Sugestoes',len(conteudo.getSugestoes())
-		print 'Pulos Realizados',conteudo.getQuantPulosRealizados(usuario)
-		print 'Pulos Restantes',conteudo.getQuantPulosRestantes(usuario)
-		print 'Perguntas Respondidas',len(conteudo.getPerguntasRespondidas(usuario))
-		print 'Perguntas Nao Respondidas',len(conteudo.getPerguntasNaoRespondidas(usuario))
-		print 'Perguntas que Faltam Responder e acertar', len(conteudo.getPerguntasRestantes(usuario))
-		print 'Perguntas Certas',len(conteudo.getPerguntasCertas(usuario))
-		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
-		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
-		print 'Vezes que pediu ajuda', conteudo.getVezesPediuAjuda(usuario)
-		print 'Pontos', conteudo.getQuantPontos(usuario)
-
 		try:
 			his = Historico.objects.all()[0]
 			print 'Historico Recente', len(his.getRecente(usuario, conteudo))
@@ -252,7 +238,18 @@ def secundario(request, tema_conteudo):
 			pass
 
 		
-		
+		print 'Detalhe'
+		perguntasTotal = (conteudo.getQuantPerguntasTotal())
+		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
+		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
+		perguntasRespondidas = len(conteudo.getPerguntasRespondidas(usuario))
+		perguntasNaoRespondidas = len(conteudo.getPerguntasNaoRespondidas(usuario))
+		perguntasRestantes = len(conteudo.getPerguntasRestantes(usuario))
+		perguntasCertas = len(conteudo.getPerguntasCertas(usuario))
+		perguntasErradas = len(conteudo.getPerguntasErradas(usuario))
+		perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
+		vezPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
+		pontos = conteudo.getQuantPontos(usuario)
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:

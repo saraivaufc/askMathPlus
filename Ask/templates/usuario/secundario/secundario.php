@@ -16,7 +16,6 @@
 				 	<div class="panel-title">
 						<center>
 			            	<h3>{{ conteudo.tema }}</h3>
-			    			Casa={{ teste }}
 			          	</center>
 				  	</div>
 				 	<div class="panel-footer">
@@ -36,9 +35,24 @@
 			<div class="panel-heading">
     		<div class="panel panel-info">
 			 	<div class="panel-title">
-					<center>
-					  	<h3>Pergunta</h3>
-					</center>
+					<div id="pontuacao" class="table-responsive">
+					<table class="table table-hover">
+						<tr>
+							<td>
+								<div class="text-center">Pontos = {{ pontos }}</div>
+							</td>
+							<td>
+								<div class="text-center">Saltos = {{ pulosRealizados }}</div>
+							</td>
+							<td>
+								<div class="text-center">Saltos Disponiveis = {{ pulosDisponiveis }}</div>
+							</td>
+							<td class="center">
+								<div class="text-center">Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
+							</td>
+						</tr>
+					</table>
+					</div> 
 			  	</div>
 			 	<div class="panel-footer">
 			  		<div class="espacamento">
