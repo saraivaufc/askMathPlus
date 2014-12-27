@@ -93,17 +93,6 @@ def acertouPergunta(usuario_id, pergunta_id):
 			return True
 	return False
 
-def getPerguntasErradas(usuario_id, conteudo_id):
-	perguntas = Pergunta.objects.filter(conteudo_pertence = conteudo_id)
-	perguntas_erradas = []
-	for i in perguntas:
-		enc = False
-		for k in Historico.objects.filter(usuario_id = usuario_id, conteudo_id = conteudo_id, acertou = True): 
-			if i.id == k.pergunta_id:
-				enc = True
-		if enc == False:
-			perguntas_erradas.append(i)
-	return perguntas_erradas
 		
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
@@ -146,7 +135,7 @@ def secundario(request, tema_conteudo):
 				print 'acertou'
 				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
 				if pergunta.pergunta_proximo_acertou == None:
-					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
 					# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
 					if len(perguntas_erradas) == 0:
@@ -155,7 +144,7 @@ def secundario(request, tema_conteudo):
 
 					# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 					else:
-						while len(perguntas_erradas) > 1:
+						while len(perguntas_erradas) > 0:
 							p = perguntas_erradas.pop()
 							if p.id != pergunta.id:
 								pergunta = p
@@ -213,7 +202,7 @@ def secundario(request, tema_conteudo):
 				
 				#caso nao exista uma pergunta iniciao no conteudo(Nao foi setada)
 				except:
-					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 					
 					if len(conteudo.getPerguntasRestantes(usuario)) == 0:
 						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
@@ -281,10 +270,10 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 			if(len(perguntas_erradas) == 0 ):
 				return HttpResponse("Conteudo Concluido!!!")
 			else:
-				pergunta_atual_id = pergunta.id;
-				while len(perguntas_erradas)>1 :
-					pergunta = perguntas_erradas.pop();
-					if pergunta.id != pergunta_atual_id:
+				while len(perguntas_erradas)>0 :
+					p = perguntas_erradas.pop();
+					if p.id != pergunta.id:
+						pergunta = p
 						break
 				atualiza_estado(usuario.id, conteudo_id, pergunta.id)
 			return HttpResponse("None")
