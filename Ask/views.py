@@ -113,7 +113,6 @@ def secundario(request, tema_conteudo):
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
 			return HttpResponseRedirect('/principal/')
-		conteudo.descricao = conteudo.descricao
 
 		if request.method == 'POST':
 			if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] ) == False:
@@ -183,6 +182,10 @@ def secundario(request, tema_conteudo):
 						return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 					else:
 						pergunta = perguntas_erradas.pop();
+
+
+
+
 			if acertouPergunta(usuario.id, pergunta.id):
 				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 				if(len(perguntas_erradas) == 0 ):
@@ -192,6 +195,7 @@ def secundario(request, tema_conteudo):
 					pergunta = perguntas_erradas.pop();
 					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
 						pergunta = perguntas_erradas.pop();
+
 
 			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 

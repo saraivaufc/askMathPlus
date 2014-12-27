@@ -202,35 +202,6 @@ class PuloAdmin(admin.ModelAdmin):
 	save_as = True
 	search_fields = ['usuario']
 
-@admin.register(Requisito)
-class RequisitoAdmin(admin.ModelAdmin):
-	date_hierarchy = 'criacao'
-	fieldsets = (
-		(None,{'fields':('conteudo',)
-        	  }
-        ),
-	)
-	list_display = ('conteudo','criacao',)
-
-	raw_id_fields = ('conteudo',)
-
-	save_as = True
-
-@admin.register(SugestaoEstudo)
-class SugestaoEstudoAdmin(admin.ModelAdmin):
-	date_hierarchy = 'criacao'
-	fieldsets = (
-        (None,{'fields':('conteudo',
-        				)
-        	  }
-        ),
-	)
-	list_display = ('conteudo','criacao',)
-
-	raw_id_fields = ('conteudo',)
-
-	save_as = True
-
 
 @admin.register(UsuarioPontuacao)
 class UsuarioPontuacaoAdmin(admin.ModelAdmin):

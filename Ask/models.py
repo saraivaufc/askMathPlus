@@ -27,13 +27,19 @@ class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
 
 
+
+class Conteudo_Requisito(Model):
+	conteudo = models.ForeignKey('Conteudo')
+	requisito = models.ForeignKey('Conteudo', related_name="Requisito")
+
+
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")
 	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição")
 	pergunta_inicial = models.ForeignKey('Pergunta' , null=True , blank=True , verbose_name="Pergunta Inicial")
-	requisitos = models.ManyToManyField('Requisito',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
-	sugestao_estudo = models.ManyToManyField('SugestaoEstudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
+	requisitos = models.ManyToManyField('self',through='Conteudo_Requisito', through_fields=('conteudo','requisito',),related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
+	sugestao_estudo = models.ManyToManyField('self',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos")
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
@@ -51,18 +57,15 @@ class Conteudo(Model):
 
 	def getRequisitos(self):
 		req = []
-		for i in Conteudo.objects.all():
-			for k in self.requisitos:
-				if i.id == k:
-					req.append(i)
+		for r in self.requisitos:
+			req.append(Conteudo.objects.get(id = r.id))
+		print len(req)
 		return req
 
 	def getSugestoes(self):
 		sug = []
-		for i in Conteudo.objects.all():
-			for k in self.sugestao_estudo:
-				if i.id == k:
-					sug.append(i)
+		for i in sugestao_estudo:
+			sug.append(Conteudo.objects.get(id = i.id))
 		return sug
 
 	def getQuantPulosRealizados(self, usuario):
@@ -220,13 +223,8 @@ class Pulo(Model):
 	def __unicode__(self):
 		return str(self.usuario)
 	class Meta:
-		ordering = ['usuario']	
+		ordering = ['usuario']
 
-class Requisito(Model):
-	conteudo = models.ForeignKey(Conteudo,related_name="Requisitos", verbose_name="Conteudo")
-
-class SugestaoEstudo(Model):
-	conteudo = models.ForeignKey(Conteudo,related_name="Sugestoes" , verbose_name="Conteudo")
 
 class UsuarioPontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
