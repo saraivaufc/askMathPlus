@@ -157,50 +157,6 @@ html body{
 	position: relative;
 }
 
-#pular{
-	position: absolute;
-	left: 1%;
-	width: 15%;
-	height: 60%;
-	font-size: 120%;
-	background-color: #428bca;
-	border-color: #bfb5b5;
-	top: 20%;
-}
-#verificar{
-	position: absolute;
-	right: 1%;
-	width: 15%;
-	height: 60%;
-	font-size: 120%;
-	background-color: #27ae60;
-	top: 20%;
-}
-#continuar{
-	position: absolute;
-	right: 1%;
-	width: 15%;
-	height: 60%;
-	top: 20%;
-	font-size: 120%;
-	background-color: #2ecc71;
-}
-
-#ajuda{
-	position: absolute;
-	top: 20%;
-	right: 30%;
-	cursor: pointer;
-	height: 55%;
-	width: 5%;
-	visibility: hidden;
-	border-radius: 10px;
-	background-image: url('/static/imagens/duvida.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-
 #barra-avancar{
 	position: relative;
 	width: 100%;
@@ -308,6 +264,24 @@ html body{
 }
 
 
+
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.invisible {
+  visibility: hidden;
+}
+
+.element {
+  .show();
+}
+.another-element {
+  .hidden();
+}
 
 
 
@@ -474,6 +448,11 @@ html body{
 
 }
 
+.fixer-bottom{
+	position: absolute;
+	bottom: 5px;
+
+}
 
 #creditos{
 	color: #FFFFFF;
@@ -496,4 +475,24 @@ html body{
 
 #pontuacao table{
 	font-weight: bold;
+}
+
+
+#pular{
+}
+#verificar{
+
+}
+
+#continuar{
+
+}
+#ajuda{
+	visibility: hidden;
+}
+#rever{
+
+}
+#encerrar{
+
 }

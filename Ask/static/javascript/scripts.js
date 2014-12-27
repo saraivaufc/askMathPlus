@@ -155,7 +155,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	LatexIT.add('t',true);
-	$("#ajuda").fadeOut('speed');
+	$("#ajuda").hide();
 	//$('.conteudo').jScrollPane({showArrows: true});
     $('#conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true});

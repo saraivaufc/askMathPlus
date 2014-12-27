@@ -82,15 +82,24 @@
 		</div>
 
 		
-		<div class="barra-responder" >
-			<button id="pular" class="btn botao">Pular</button>
-			<center>
-				<div class="resultado">
-
+		<div class="barra-responder">
+			<div class="btn-group btn-group-justified fixer-bottom">
+				<div class="btn-group">
+					<button  type="button" id="encerrar"  class="btn btn-danger">Encerrar Licao</button>
 				</div>
-				<a id="ajuda" data-toggle="modal" data-target="#ajuda_modal"></a>
-			</center>
-			<button id="verificar"  class="btn botao">Verificar</button>
+				<div class="btn-group">
+					<button  type="button" id="pular"     class="btn btn-info">Pular</button>
+				</div>
+				<div class="btn-group">	
+					<button  type="button" id="rever"	  class="btn btn-primary">Rever Questoes Puladas</button>
+				</div>
+				<div id="ajuda" class="btn-group">	
+					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
+				</div>
+				<div class="btn-group">
+					<button  type="button" id="verificar" class="btn btn-success ">Verificar</button>
+				</div>
+			</div>
 		</div>
 					
 
