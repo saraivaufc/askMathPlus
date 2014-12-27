@@ -48,7 +48,7 @@
 								<div class="text-center">Saltos Disponiveis = {{ pulosDisponiveis }}</div>
 							</td>
 							<td class="center">
-								<div class="text-center">Questoes = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
+								<div class="text-center">Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
 							</td>
 						</tr>
 					</table>
@@ -88,10 +88,10 @@
 					<button  type="button" id="encerrar"  class="btn btn-danger">Encerrar Licao</button>
 				</div>
 				<div class="btn-group">
-					<button  type="button" id="pular"     class="btn btn-info">Pular</button>
+					<button  type="button" id="pular"     class="btn btn-info">Saltar</button>
 				</div>
 				<div class="btn-group">	
-					<button  type="button" id="rever"	  class="btn btn-primary">Rever Questoes Puladas</button>
+					<button  type="button" id="rever"	  class="btn btn-primary">Rever Saltos</button>
 				</div>
 				<div id="ajuda" class="btn-group">	
 					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
