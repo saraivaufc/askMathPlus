@@ -8,6 +8,8 @@
 	}
 {% endblock %}
 
+{% block voltar_all %}{% endblock %}
+
 {% block conteudo-left %}
 	<div class="font-dconteudo">
     	<div class="descricao-conteudo">
@@ -85,7 +87,7 @@
 		<div class="barra-responder">
 			<div class="btn-group btn-group-justified fixer-bottom">
 				<div class="btn-group">
-					<button  type="button" id="encerrar"  class="btn btn-danger">Encerrar Licao</button>
+					<button  type="button" id="encerrar"  onclick="window.location = '/principal/' "  class="btn btn-danger">Encerrar Licao</button>
 				</div>
 				<div class="btn-group">
 					<button  type="button" id="pular"     class="btn btn-info">Saltar</button>
