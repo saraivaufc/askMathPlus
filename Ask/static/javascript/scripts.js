@@ -35,7 +35,7 @@ $(document).ready(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
-			$(".resultado").append("Acertou!!!").css("visibility","visible").addClass("alert-success").fadeIn(1000);
+			$(".resultado").empty().append("Acertou!!!").css("visibility","visible").addClass("alert-success").fadeIn(1000);
 			$(".barra-responder").addClass("bg-success");
 			$(".conteudo-right").addClass("bg-success");
 		}else{

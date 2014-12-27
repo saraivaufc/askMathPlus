@@ -114,6 +114,15 @@ def secundario(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
+		#Se nao existir nenhuma pergunta no conteudo
+		if conteudo.getQuantPerguntasTotal == 0:
+			print 'Sem Perguntas: linha 129'
+			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
+
+		if len(conteudo.getPerguntasNaoRespondidas(usuario)) == 0:
+			print 'Conteudo Terminado Com Exito: linha 123'
+			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
 		try:
 			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = conteudo.id)
 		except:
@@ -123,92 +132,105 @@ def secundario(request, tema_conteudo):
 			pontuacao.save()
 
 		if request.method == 'POST':
-			print 'Secundario.Method == POST '
-			if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] ) == False:
+			pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual'])
+
+			#Caso a Pergunta nao tenha um item Correto(Falha do Administrador)
+			if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,pergunta.id , request.POST['opcao'] ) == False:
+				print 'Sem Item Correto : linha 139'
 				return render(request, 'usuario/avisos/sem_item_correto.php', locals())
+			
 			cont_all = Conteudo.objects.all()
 			item  = Item.objects.get(id = request.POST['opcao'])
 
-			#se o proximo for uma pergunta
-			if item.possui_proxima_pergunta == True:
-				if item.pergunta_proximo_id != None:
-					pergunta = Pergunta.objects.get(id = item.pergunta_proximo_id);
-					print "Entrou ja que e uma pergunta"
-					if acertouPergunta(usuario.id, pergunta.id):
-						print "Pergunta ja respondida e esta certa"
-						perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-						if(len(perguntas_erradas) == 0 ):
-							return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
-						else:
-							pergunta_atual_id = pergunta.id;
-							pergunta = perguntas_erradas.pop();
-							while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
-								pergunta = perguntas_erradas.pop();
-				else:
+			# Se Ele Respondeu a Pergunta Corretamente
+			if pergunta.item_correto == item.id:
+				print 'acertou'
+				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
+				if pergunta.pergunta_proximo_acertou == None:
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-					if(len(perguntas_erradas) == 0 ):
-						return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+
+					# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
+					if len(perguntas_erradas) == 0:
+						print 'Conteudo Terminado Com Exito : linha 154'
+						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
+					# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 					else:
-						pergunta_atual_id = pergunta.id;
-						pergunta = perguntas_erradas.pop();
-						while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
-							pergunta = perguntas_erradas.pop();
+						while len(perguntas_erradas) > 1:
+							p = perguntas_erradas.pop()
+							if p.id != pergunta.id:
+								pergunta = p
+								break
 
 
-				itens = Item.objects.filter(pergunta_pertence = pergunta.id)
-
-
-				atualiza_estado(usuario.id,conteudo.id, pergunta.id);
-			#agora se for um conteudo
-			else:
-				pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual']);
-				print pergunta.id
-				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-				if(len(perguntas_erradas) > 0):
-					pergunta_atual_id = pergunta.id;
-					pergunta = perguntas_erradas.pop()
-					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>0 :
-						pergunta = perguntas_erradas.pop();
-
-					print pergunta.id
-					atualiza_estado(usuario.id,conteudo.id, pergunta.id);
-
-
-					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+				#Mas se Ele tiver uma Pergunta Proxima
 				else:
-					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
-		
+					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou)
+
+
+			#Se Ele Nao Respondeu A Pergunta Corretamente
+			else:
+				#Se Mesmo Errando, a pergunta nao tiver uma proxima pergunta
+				if pergunta.pergunta_proximo_errou == None:
+					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+
+					while len(perguntas_erradas) > 1:
+						p = perguntas_erradas.pop()
+						if p.id != pergunta.id:
+							pergunta = p
+							break
+
+				#Mas se Ele tiver uma Pergunta Proxima
+				else:
+					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_errou)
+
+
+		# Se o Metodo nao for Post
 		else:
+			#Ele tenta ir para a ultima pergunta que nao tinha respondido
 			try:
 				estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
 				pergunta = Pergunta.objects.get(id = estado.pergunta_id)
+			
+			#caso ele nao consiga(seja porque nunca tenha respondido nenhuma questao)
 			except:
+				
+				#Ele tenta ir para a primeira pergunta que esta setada no conteudo
 				try:
 					pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+				
+				#caso nao exista uma pergunta iniciao no conteudo(Nao foi setada)
 				except:
-					#caso nao exista uma pergunta iniciao no conteudo
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					
 					if len(perguntas_erradas) == 0:
-						teste = conteudo.getPerguntasRespondidas(usuario)
-						teste = len(teste)
-						return render(request, 'usuario/avisos/sem_perguntas.php', locals())
+						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 					else:
-						pergunta = perguntas_erradas.pop();
+						pergunta = perguntas_erradas.pop()
 
-
-
-
-			if acertouPergunta(usuario.id, pergunta.id):
-				perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
-				if(len(perguntas_erradas) == 0 ):
-					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
-				else:
-					pergunta_atual_id = pergunta.id;
-					pergunta = perguntas_erradas.pop();
-					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
-						pergunta = perguntas_erradas.pop();
+		#Isso Sempre e executa
+		if len(conteudo.getPerguntasNaoRespondidas(usuario)) == 0:
+			print 'Conteudo Terminado Com Exito : linha 215'
+			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+		
+		try:
+			estado = Estado_Usuario.objects.filter(usuario = usuario.id, conteudo = conteudo.id)[0]
+			Estado_Usuario.objects.filter(id = estado.id).update(pergunta = pergunta.id)
+			print 'Conteguiu Econtrar o Estado_Usuario linha 220'
+		except:
+			print 'Erro ao buscar Estado_Usuario linha 222'
+			estado = Estado_Usuario.objects.create(turma_id = usuario.turma_id,
+												   usuario_id = usuario.id,
+												   conteudo_id = conteudo.id,
+												   pergunta_id = pergunta.id,)
+			estado.save()
 
 		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+		print 'Response Padrao Caso nao Entre no Post : linha 227'
+
+		#apagar issso depos
+		teste = len(conteudo.getPerguntasErradas(usuario))
+		
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:

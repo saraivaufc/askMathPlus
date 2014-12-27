@@ -79,14 +79,28 @@ class Conteudo(Model):
 	def declementaPulosRestantes(self, usuario):
 		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		pulos.declementaPulos()
-	
+
 
 	def getPerguntasRespondidas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta))
+			per.append(Pergunta.objects.get(id = i.pergunta_id))
+		print 'Respondidas = ', len(per)
 		return per
+
+	def getPerguntasNaoRespondidas(self, usuario):
+		respondidas = self.getPerguntasRespondidas(usuario)
+		nao_respondidas = []
+		for i in Pergunta.objects.filter(conteudo_pertence = self.id):
+			existe = False
+			for k in respondidas:
+				if i.id == k.id:
+					existe = True			
+			if existe == False:
+				nao_respondidas.append(i)
+		print 'Nao respondidas =',len(nao_respondidas)
+		return nao_respondidas
 
 
 	def getPerguntasCertas(self, usuario):
@@ -94,23 +108,24 @@ class Conteudo(Model):
 		per = []
 		for i in his:
 			per.append(Pergunta.objects.get(id = i.pergunta))
+		print "Perguntas Certas=", len(per)
 		return per
 	def getPerguntasErradas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = False)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta))
+			per.append(Pergunta.objects.get(id = i.pergunta_id))
+		print 'Perguntas Erradas', len(per)
 		return per
 
 
 	def getPerguntasPuladas(self, usuario):
-		pulos = Pulos.objects.filter(usuario = usuario.id, conteudo = self.id)
+		pulos = Pulo.objects.filter(usuario = usuario.id, conteudo = self.id)
 		res = []
 		for p in pulos:
-			res.append(Pergunta.objects.get(id = p.pergunta))
+			res.append(Pergunta.objects.get(id = p.pergunta_id))
+		print 'Perguntas Puladas', len(res)
 		return res
-
-
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence")
