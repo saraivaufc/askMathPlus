@@ -209,12 +209,8 @@ class UsuarioPontuacaoAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('usuario',
         			      'conteudo',
-        				  'questoes_total',
-        				  'questoes_corretas',
-        				  'questoes_saltadas',
         				  'pontos',
-        				  'max_saltos',
-        				  'saltos',
+        				  'pulosRestantes',
         				)
         	  }
         ),

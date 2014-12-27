@@ -16,11 +16,7 @@
 				 	<div class="panel-title">
 						<center>
 			            	<h3>{{ conteudo.tema }}</h3>
-			       				{% for i in conteudo.getRequisitos %}
-			       					<h3>
-			       						{{i.tema}}
-			       					</h3>
-			       				{% endfor %}
+			    			Casa={{ teste }}
 			          	</center>
 				  	</div>
 				 	<div class="panel-footer">

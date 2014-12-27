@@ -114,7 +114,16 @@ def secundario(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
+		try:
+			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = conteudo.id)
+		except:
+			pontuacao = UsuarioPontuacao.objects.create(usuario_id = usuario.id,
+														conteudo_id = conteudo.id,
+														pulosRestantes = conteudo.max_pulos)
+			pontuacao.save()
+
 		if request.method == 'POST':
+			print 'Secundario.Method == POST '
 			if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,request.POST['pergunta_atual'] , request.POST['opcao'] ) == False:
 				return render(request, 'usuario/avisos/sem_item_correto.php', locals())
 			cont_all = Conteudo.objects.all()
@@ -168,6 +177,7 @@ def secundario(request, tema_conteudo):
 					itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 				else:
 					return render(request , 'usuario/avisos/conteudo_terminado.php' ,locals())
+		
 		else:
 			try:
 				estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
@@ -179,6 +189,8 @@ def secundario(request, tema_conteudo):
 					#caso nao exista uma pergunta iniciao no conteudo
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					if len(perguntas_erradas) == 0:
+						teste = conteudo.getQuantPulosRestantes(usuario)
+						print teste
 						return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 					else:
 						pergunta = perguntas_erradas.pop();
@@ -196,8 +208,7 @@ def secundario(request, tema_conteudo):
 					while pergunta_atual_id == pergunta.id and len(perguntas_erradas)>1 :
 						pergunta = perguntas_erradas.pop();
 
-
-			itens = Item.objects.filter(pergunta_pertence = pergunta.id)
+		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:

@@ -26,6 +26,9 @@ class Turma(Model):
 class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
 
+	def __unicode__(self):
+		return self.first_name +" " + self.last_name
+
 
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma")
@@ -50,28 +53,24 @@ class Conteudo(Model):
 		return len(p)
 
 	def getRequisitos(self):
-		cont = self.requisitos.all();
-		return list(cont)
+		return self.requisitos.all()
 
 	def getSugestoes(self):
-		sug = []
-		for i in sugestao_estudo:
-			sug.append(Conteudo.objects.get(id = i.id))
-		return sug
+		return self.sugestao_estudo.all()
 
 	def getQuantPulosRealizados(self, usuario):
-		pulos = Pulos.objects.filter(usuario = usuario.id, conteudo = self.id)
+		pulos = Pulo.objects.filter(usuario = usuario.id, conteudo = self.id)
 		if pulos != None:
 			return len(pulos)
 		else:
 			return 0
 
 	def getQuantPulosRestantes(self, usuario):
-		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
-		if pulos == None:
+		try:
+			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		except:
 			return self.max_pulos
-		else:
-			return pulos.pulosRestantes
+		return  pulos.pulosRestantes
 
 	def inclementaPulosRestantes(self, usuario):
 		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
@@ -221,10 +220,10 @@ class UsuarioPontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo")
 	pontos = models.IntegerField(default=0, verbose_name="Pontos",null=True , blank=True)
-	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos", null= True, blank=True)
+	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos Restantes", null= True, blank=True)
 
 	def __unicode__(self):
-		return str(usuario)
+		return str(self.usuario)
 
 	def inclementaPontos(valor):
 		self.pontos += valor
