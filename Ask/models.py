@@ -110,13 +110,24 @@ class Conteudo(Model):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = True)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta_id))
+			existe = False
+			for k in per:
+				if k.id == i.pergunta_id:
+					existe = True
+			if existe == False:
+				per.append(Pergunta.objects.get(id = i.pergunta_id))
 		return per
+
 	def getPerguntasErradas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = False)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta_id))
+			existe = False
+			for k in per:
+				if k.id == i.pergunta_id:
+					existe = True
+			if existe == False:
+				per.append(Pergunta.objects.get(id = i.pergunta_id))
 		return per
 
 
@@ -124,7 +135,12 @@ class Conteudo(Model):
 		pulos = Pulo.objects.filter(usuario = usuario.id, conteudo = self.id)
 		res = []
 		for p in pulos:
-			res.append(Pergunta.objects.get(id = p.pergunta_id))
+			existe = False
+			for k in res:
+				if k.id == p.pergunta_id:
+					existe = True
+			if existe == False:
+				res.append(Pergunta.objects.get(id = p.pergunta_id))
 		return res
 	
 class Pergunta(Model):
