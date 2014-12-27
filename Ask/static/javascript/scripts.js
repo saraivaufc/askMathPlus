@@ -39,7 +39,7 @@ $(document).ready(function(){
 			$(".barra-responder").addClass("bg-success");
 			$(".conteudo-right").addClass("bg-success");
 		}else{
-			$(".resultado").append("Errou!!!").css("visibility","visible").addClass("alert-danger").fadeIn(1000);
+			$(".resultado").empty().append("Errou!!!").css("visibility","visible").addClass("alert-danger").fadeIn(1000);
 			$("#resultado-negativo").fadeIn(1000);
 			$(".barra-responder").addClass("bg-danger");
 			$(".conteudo-right").addClass("bg-danger");

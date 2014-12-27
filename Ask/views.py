@@ -228,8 +228,19 @@ def secundario(request, tema_conteudo):
 		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 		print 'Response Padrao Caso nao Entre no Post : linha 227'
 
-		#apagar issso depos
-		teste = len(conteudo.getPerguntasErradas(usuario))
+		print 'Detalhe'
+		print 'Total de Pergutas',(conteudo.getQuantPerguntasTotal())
+		print 'Requisitos',len(conteudo.getRequisitos())
+		print 'Sugestoes',len(conteudo.getSugestoes())
+		print 'Pulos Realizados',conteudo.getQuantPulosRealizados(usuario)
+		print 'Pulos Restantes',conteudo.getQuantPulosRestantes(usuario)
+		print 'Perguntas Respondidas',len(conteudo.getPerguntasRespondidas(usuario))
+		print 'Perguntas Nao Respondidas',len(conteudo.getPerguntasNaoRespondidas(usuario))
+		print 'Perguntas Certas',len(conteudo.getPerguntasCertas(usuario))
+		print 'Perguntas Erradas',len(conteudo.getPerguntasErradas(usuario))
+		print 'Perguntas Puladas',len(conteudo.getPerguntasPuladas(usuario))
+
+		
 		
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())

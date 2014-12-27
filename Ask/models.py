@@ -85,8 +85,12 @@ class Conteudo(Model):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta_id))
-		print 'Respondidas = ', len(per)
+			existe = False
+			for k in per:
+				if k.id == i.pergunta_id:
+					existe = True
+			if existe == False:
+				per.append(Pergunta.objects.get(id = i.pergunta_id))
 		return per
 
 	def getPerguntasNaoRespondidas(self, usuario):
@@ -99,7 +103,6 @@ class Conteudo(Model):
 					existe = True			
 			if existe == False:
 				nao_respondidas.append(i)
-		print 'Nao respondidas =',len(nao_respondidas)
 		return nao_respondidas
 
 
@@ -107,15 +110,13 @@ class Conteudo(Model):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = True)
 		per = []
 		for i in his:
-			per.append(Pergunta.objects.get(id = i.pergunta))
-		print "Perguntas Certas=", len(per)
+			per.append(Pergunta.objects.get(id = i.pergunta_id))
 		return per
 	def getPerguntasErradas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = False)
 		per = []
 		for i in his:
 			per.append(Pergunta.objects.get(id = i.pergunta_id))
-		print 'Perguntas Erradas', len(per)
 		return per
 
 
@@ -124,7 +125,6 @@ class Conteudo(Model):
 		res = []
 		for p in pulos:
 			res.append(Pergunta.objects.get(id = p.pergunta_id))
-		print 'Perguntas Puladas', len(res)
 		return res
 	
 class Pergunta(Model):
