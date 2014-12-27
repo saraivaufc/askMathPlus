@@ -189,8 +189,8 @@ def secundario(request, tema_conteudo):
 					#caso nao exista uma pergunta iniciao no conteudo
 					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
 					if len(perguntas_erradas) == 0:
-						teste = conteudo.getQuantPulosRestantes(usuario)
-						print teste
+						teste = conteudo.getPerguntasRespondidas(usuario)
+						teste = len(teste)
 						return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 					else:
 						pergunta = perguntas_erradas.pop();

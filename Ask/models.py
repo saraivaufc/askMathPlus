@@ -79,6 +79,7 @@ class Conteudo(Model):
 	def declementaPulosRestantes(self, usuario):
 		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		pulos.declementaPulos()
+	
 
 	def getPerguntasRespondidas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id)
@@ -225,25 +226,27 @@ class UsuarioPontuacao(Model):
 	def __unicode__(self):
 		return str(self.usuario)
 
-	def inclementaPontos(valor):
+	def inclementaPontos(self,valor):
 		self.pontos += valor
-		self.update(pontos = self.pontos)
+		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
 
-	def inclementaPulos():
+	def inclementaPulos(self):
 		self.pulosRestantes += 1 
-		self.update(pulos = self.pulosRestantes)
+		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
 
-	def declementaPontos(valor):
+	def declementaPontos(self,valor):
 		self.pontos -= valor
 		if self.pontos < 0:
 			self.pontos = 0
-		self.update(pontos = self.pontos)
 
-	def declementaPulos():
+		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
+
+	def declementaPulos(self):
 		self.pulosRestantes -= 1
 		if self.pulosRestantes < 0:
-			self.pulosRestantes = 0 
-		self.update(pulosRestantes = self.pulosRestantes)
+			self.pulosRestantes = 0
+		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
+
 
 
 		
