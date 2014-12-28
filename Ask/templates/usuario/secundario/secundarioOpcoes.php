@@ -7,12 +7,15 @@
 	        		<div class="panel panel-info">
 					 	<div class="panel-title">
 							<center>
-				            	<h3>Sobre esta Licao</h3>
+								{%  block titulo-inicial %}
+				            		<h3>Sobre esta Licao</h3>
+								{% endblock %}
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">
 					 		<div class="table-responsive">
 								<table class="table table-hover table-bordered">
+									{%  block table-pontuacao %}
 									<tr class="success">
 										<td class="text-center">
 											NUMERO DE QUESTOES = {{ conteudo.getQuantPerguntasTotal }}
@@ -21,17 +24,20 @@
 											SALTOS DISPONIVEIS = {{ conteudo.max_pulos }}
 										</td>
 									</tr>
+									{% endblock %}
 								</table>
 							</div>
 							<br>
 							<div id="requisitos">
 								<div class="list-group">
-									<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
-									    REQUISITOS(*)
-									</a>
-									{% for c in conteudo.getRequisitos %}
-										<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="/principal/opcoes/{{ c.getTema }}" class="list-group-item">{{ c.tema }}</a>
-									{% endfor %}
+									{% block outros-conteudos %}
+										<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
+										    REQUISITOS(*)
+										</a>
+										{% for c in conteudo.getRequisitos %}
+											<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
+										{% endfor %}
+									{% endblock %}
 								</div>
 							</div>
 						</div>
@@ -40,6 +46,7 @@
 		</div>
 
     	<center>
+    		{%  block barra-inferior %}
     		{% if existePulos == False %}
 	    		<div class="barra-responder tela-opcoes-1">
 	    	{% else %}
@@ -63,8 +70,9 @@
 						
 					</div>
 			</div>
+			{% endblock %}
 		</center>
-
+		{% block modal-outros-conteudos %}
 		<!-- Modal Requisitos -->
 		<div class="modal fade" id="requisitos_modal" tabindex="-1" role="dialog" aria-labelledby="requisitosLabel" aria-hidden="true">
 		  	<div class="modal-dialog">
@@ -94,6 +102,7 @@
 		  	</div>
 		</div>
 		<!-- Fim do Modal Rquisitos-->
+		{% endblock %}
 
 	</div>
 {% endblock %}
