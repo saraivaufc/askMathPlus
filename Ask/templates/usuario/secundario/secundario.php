@@ -35,25 +35,25 @@
 <div class="font-dconteudo">
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
-    		<div class="">
+    		<div>
 			 	<div class="panel-title">
 					<div id="pontuacao" class="table-responsive">
-					<table class="table table-hover table-bordered">
-						<tr class="active">
-							<td>
-								<div class="text-center">Pontos = {{ pontos }}</div>
-							</td>
-							<td>
-								<div class="text-center">Saltos = {{ pulosRealizados }}</div>
-							</td>
-							<td>
-								<div class="text-center">Saltos Disponiveis = {{ pulosDisponiveis }}</div>
-							</td>
-							<td class="center">
-								<div class="text-center">Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}</div>
-							</td>
-						</tr>
-					</table>
+						<table class="table table-hover table-bordered">
+							<tr class="active">
+								<td class="text-center">
+									Pontos = {{ pontos }}
+								</td>
+								<td class="text-center">
+									Saltos = {{ pulosRealizados }}
+								</td>
+								<td class="text-center">
+									Saltos Disponiveis = {{ pulosDisponiveis }}
+								</td>
+								<td class="text-center">
+									Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}
+								</td>
+							</tr>
+						</table>
 					</div> 
 			  	</div>
 			 	<div class="panel-footer">
@@ -103,25 +103,32 @@
 				</div>
 			</div>
 		</div>
-					
-
 
 		<!-- Modal Ajuda -->
-		<div class="modal fade" id="ajuda_modal" tabindex="-1" role="dialog" aria-labelledby="sobreLabel" aria-hidden="true">
+		<div class="modal fade" id="ajuda_modal" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
 		  	<div class="modal-dialog">
-			    <div class="modal-content">
+				<div class="modal-content">
 				    <div class="modal-header">
-				    	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Sobre os Requisitos</h4>
 				    </div>
-			      	<div class="modal-body">
-			    		<center>
-			    			<div>
-			      				<t id="ajuda_text">
-			      				</t>
-			    			</div>
-			    		</center>
-			    	</div>
-			  	</div>
+				    <div class="modal-body">
+						<t id="ajuda_text">
+			      		</t>
+					</div>
+
+					<div class="modal-footer">
+						<center>
+							<div class="tela-opcoes-1">
+								<div class="btn-group btn-group-justified ">
+									<div class="btn-group">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Sair</button>
+									</div>
+								</div>
+							</div>
+						</center>
+					</div>
+				</div>
 		  	</div>
 		</div>
 		<!-- end modal  -->

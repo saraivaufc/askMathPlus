@@ -4,6 +4,7 @@ from django.db import models
 from datetime import datetime
 import unicodedata
 from spirit_user_profile.models import User
+from utils import *
 
 
 class Model(models.Model):	
@@ -45,6 +46,9 @@ class Conteudo(Model):
 		return  str(self.id) + ": " +  self.tema
 	class Meta:
 		ordering = ['tema']
+
+	def getTema(self):
+		return transform_tema_revert(self.tema)
 
 
 	#GETS

@@ -21,6 +21,7 @@ from django.contrib.auth.views import logout as logout_sys
 from spirit.utils.ratelimit.decorators import ratelimit
 from django.test import Client
 from classes import *
+from utils import *
 
 def index(request):
 	if request.user.is_authenticated() and request.user.is_moderator == False:
@@ -270,6 +271,10 @@ def secundarioOpcoes(request, tema_conteudo):
 		if request.method == 'POST':
 			pass
 		else:
+			existePulos = False
+			if len(conteudo.getPerguntasPuladas(usuario)) > 0:
+				existePulos = True
+
 			return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -422,25 +427,6 @@ def is_logado(request):
 		return HttpResponse("1")
 	else:
 		return HttpResponse("0")
-
-
-def transform_tema(t):
-	tema =""
-	for i in t:
-		if i == '_':
-			tema = tema + " "
-		else:
-			tema = tema + i
-	return tema
-
-def transform_tema_revert(t):
-	tema =""
-	for i in t:
-		if i == ' ':
-			tema = tema + "_"
-		else:
-			tema = tema + i
-	return tema
 
 
 def getAjuda(request, pergunta_id):

@@ -490,6 +490,9 @@ html body{
 	overflow: auto;
 }
 
-.tela-opcoes{
-	width: 70%;
+.tela-opcoes-1{
+	width: 20%;
+}
+.tela-opcoes-2{
+	width: 50%;
 }
