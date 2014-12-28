@@ -259,6 +259,9 @@ def secundarioOpcoes(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
+		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
+			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
 
 		if request.method == 'POST':
 			pass
@@ -296,7 +299,7 @@ def secundarioEncerrar(request, tema_conteudo):
 			questoesErradas = len(conteudo.getPerguntasErradas(usuario))
 
 			vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
-			
+
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')

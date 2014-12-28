@@ -17,6 +17,17 @@
 				</center>
 				</div>
 			</div>
+			<center>
+				<div class="barra-responder tela-opcoes-1">	
+					<div class="btn-group btn-group-justified fixer-bottom">
+						<div class="btn-group">
+							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-info">
+								Voltar Inicio
+							</button>
+						</div>
+					</div>
+				</div>
+			</center>
 		</div>
 	</div>
 {% endblock %}

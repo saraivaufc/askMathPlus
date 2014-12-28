@@ -13,6 +13,7 @@
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">
+					 		{%  block table-pontuacao-all %}
 					 		<div class="table-responsive">
 								<table class="table table-hover table-bordered">
 									{%  block table-pontuacao %}
@@ -27,7 +28,9 @@
 									{% endblock %}
 								</table>
 							</div>
+							{% endblock %}
 							<br>
+							{% block outros-conteudos-all %}
 							<div id="requisitos">
 								<div class="list-group">
 									{% block outros-conteudos %}
@@ -40,6 +43,7 @@
 									{% endblock %}
 								</div>
 							</div>
+							{% endblock %}
 						</div>
 					</div>
 				</div>
