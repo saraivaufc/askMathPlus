@@ -35,11 +35,12 @@
 <div class="font-dconteudo">
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
-    		<div>
-			 	<div class="panel-title">
-					<div id="pontuacao" class="table-responsive">
+				<div class="panel panel-info">
+			 	<div class="panel-title pontuacao">
+
+					<div  class="table-responsive">
 						<table class="table table-hover table-bordered">
-							<tr class="active">
+							<tr class="success">
 								<td class="text-center">
 									Pontos = {{ pontos }}
 								</td>
@@ -54,8 +55,14 @@
 								</td>
 							</tr>
 						</table>
-					</div> 
+					</div>
+
+					<center>
+				    	<h3>Pergunta</h3>
+				    </center>
+
 			  	</div>
+
 			 	<div class="panel-footer">
 			  		<div class="espacamento">
 						  <t> {{ pergunta.descricao|safe }} </t>
@@ -79,7 +86,7 @@
 						</form>
 			  		</div>
 			  	</div>
-			</div>
+			  	</div>
 			</div>
 		</div>
 
@@ -110,11 +117,13 @@
 				<div class="modal-content">
 				    <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Sobre os Requisitos</h4>
+				        <h4 class="modal-title" id="myModalLabel">Ajuda</h4>
 				    </div>
 				    <div class="modal-body">
-						<t id="ajuda_text">
-			      		</t>
+				    	<div class="text-justify">
+							<t id="ajuda_text">
+				      		</t>
+			      		</div>
 					</div>
 
 					<div class="modal-footer">

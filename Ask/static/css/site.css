@@ -480,8 +480,9 @@ html body{
 }
 
 
-#pontuacao table{
+.pontuacao table{
 	font-weight: bold;
+	background-color: #FFFFFF;
 }
 
 
