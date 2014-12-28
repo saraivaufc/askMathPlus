@@ -484,3 +484,12 @@ html body{
 	font-weight: bold;
 }
 
+
+#requisitos{
+	height: 60%;
+	overflow: auto;
+}
+
+.tela-opcoes{
+	width: 70%;
+}

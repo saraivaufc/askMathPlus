@@ -56,7 +56,7 @@ $(document).ready(function(){
 	$(".tile").click(function() {
 		var text =  $(this).children(".font-metro").children("#text-quadrado").children("#cont").text();
 		var text2 = text.split(" ").join("_");
-		window.location.href= "/principal/"+ text2+"/";
+		window.location.href= "/principal/opcoes/"+ text2+"/";
 		$(this).addClass("selecionado");
 	});
 });

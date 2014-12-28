@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^criarConta/$' , criarConta),
     
     url(r'^principal/$' , principal),
+
+    url(r'^principal/opcoes/(?P<tema_conteudo>\w+)/$' , secundarioOpcoes),
     url(r'^principal/(?P<tema_conteudo>\w+)/$' , secundario),
 
     url(r'^contato/$', contato),

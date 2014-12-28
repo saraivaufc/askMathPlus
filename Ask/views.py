@@ -256,6 +256,24 @@ def secundario(request, tema_conteudo):
 		return HttpResponseRedirect('/login/')
 
 
+def secundarioOpcoes(request, tema_conteudo):
+	if request.user.is_authenticated():
+
+		tema = transform_tema(tema_conteudo)
+		usuario = Usuario.objects.get(username = request.user);
+		try:
+			conteudo = Conteudo.objects.get(tema = tema);
+		except:
+			return HttpResponseRedirect('/principal/')
+
+
+		if request.method == 'POST':
+			pass
+		else:
+			return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
+	else:
+		return HttpResponseRedirect('/login/')
+
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():
 		usuario = Usuario.objects.get(username = request.user)
