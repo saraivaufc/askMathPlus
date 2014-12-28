@@ -46,14 +46,18 @@
 		</div>
 
     	<center>
-	    	<div class="barra-responder tela-opcoes-1">
+	    	<div class="barra-responder tela-opcoes-2">
 				<div class="btn-group btn-group-justified fixer-bottom">
 					<div class="btn-group">
 						<button  type="button"  onclick="window.location='/principal/'" class="btn btn-danger">
-							Sair
+							Voltar Inicio
 						</button>
 					</div>
-					
+					<div class="btn-group">
+						<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
+							Continuar com Licao
+						</button>
+					</div>
 				</div>
 			</div>
 		</center>

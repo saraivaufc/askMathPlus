@@ -88,7 +88,29 @@ $(document).ready(function(){
 	});
 
 	$("#ajuda").click(function(){
-		
+		var valor = $("#pergunta_atual").val();
+		var url = "/ajuda/" + valor+"/";
+		$.ajax({
+			"url": url,
+			"type": "get",
+			"dataType": "html",
+			async: false
+		}).done(function(data){
+			$("#ajuda_text").empty();
+			$("#ajuda_text").append(data);
+			var conteudo = $("#conteudo_atual").val();
+			url = "/busca_ajuda/" + conteudo + "/";
+			$.ajax({
+				"url": url,
+				"type": "get",
+				"dataType": "html",
+				async: true
+			}).done(function(data){
+				
+			});		
+		});
+
+
 	});
 
 });
@@ -125,18 +147,6 @@ $(document).ready(function(){
 		}else{
 			$("#ajuda").hide();
 		}
-		$("#ajuda_text").empty();
-		$("#ajuda_text").append(data);
-		var conteudo = $("#conteudo_atual").val();
-		url = "/busca_ajuda/" + conteudo + "/";
-		$.ajax({
-				"url": url,
-				"type": "get",
-				"dataType": "html",
-				async: true
-			}).done(function(data){
-
-			});
 	});
 
 	//$('.conteudo').jScrollPane({showArrows: true});
