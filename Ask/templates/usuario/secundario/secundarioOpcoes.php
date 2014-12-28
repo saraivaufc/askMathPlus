@@ -52,7 +52,13 @@
 							</div>
 						{% endif %}
 						<div class="btn-group">
-							<button  type="button"  onclick="window.location = '/principal/{{ conteudo.getTema }}'" class="btn btn-success">Iniciar Secao</button>
+							<button  type="button"  onclick="window.location = '/principal/{{ conteudo.getTema }}'" class="btn btn-success">
+								{% if respondeuPergunta %}
+									Refazer Licao
+								{% else %}
+									Iniciar Licao
+								{% endif %}
+							</button>
 						</div>
 						
 					</div>

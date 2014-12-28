@@ -86,14 +86,6 @@ def principal(request):
 			return render(request , 'usuario/principal/principal.php' ,locals())
 	else:
 		return HttpResponseRedirect('/login/')
-
-def acertouPergunta(usuario_id, pergunta_id):
-	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
-	for i in perguntas_certas:
-		if i.pergunta_id == pergunta_id:
-			return True
-	return False
-
 		
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
@@ -274,10 +266,20 @@ def secundarioOpcoes(request, tema_conteudo):
 			existePulos = False
 			if len(conteudo.getPerguntasPuladas(usuario)) > 0:
 				existePulos = True
+			respondeuPergunta = False
+			if len(conteudo.getPerguntasRespondidas(usuario)) > 0:
+				respondeuPergunta = True
 
 			return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
+
+def acertouPergunta(usuario_id, pergunta_id):
+	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
+	for i in perguntas_certas:
+		if i.pergunta_id == pergunta_id:
+			return True
+	return False
 
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():

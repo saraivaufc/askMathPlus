@@ -100,7 +100,7 @@
 					<button  type="button" id="pular"     class="btn btn-info">Saltar</button>
 				</div>
 				<div class="btn-group">	
-					<button  type="button" id="rever"	  class="btn btn-primary">Rever Saltos</button>
+					<button  type="button" id="rever"	  class="btn btn-info">Rever Saltos</button>
 				</div>
 				<div id="ajuda" class="btn-group">	
 					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
