@@ -96,14 +96,11 @@ def secundario(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
-		#Se nao existir nenhuma pergunta no conteudo
-		if conteudo.getQuantPerguntasTotal == 0:
-			print 'Sem Perguntas: linha 129'
-			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
-
-		if len(conteudo.getPerguntasNaoRespondidas(usuario)) == 0:
-			print 'Conteudo Terminado Com Exito: linha 123'
+		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
+		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
+			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 
 		try:
 			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = conteudo.id)
@@ -261,6 +258,10 @@ def secundarioOpcoes(request, tema_conteudo):
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+
+		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
+			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
+
 
 
 		if request.method == 'POST':
