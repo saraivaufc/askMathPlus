@@ -37,8 +37,13 @@
 			<div class="panel-heading">
 				<div class="panel panel-info">
 			 	<div class="panel-title pontuacao">
+			 		<center>
+				    		<h3>Pergunta</h3>
+				    </center>
+			  	</div>
 
-					<div  class="table-responsive">
+			 	<div class="panel-footer">
+			 		<div  class="table-responsive">
 						<table class="table table-hover table-bordered">
 							<tr class="success">
 								<td class="text-center">
@@ -56,14 +61,7 @@
 							</tr>
 						</table>
 					</div>
-
-					<center>
-				    	<h3>Pergunta</h3>
-				    </center>
-
-			  	</div>
-
-			 	<div class="panel-footer">
+			 	
 			  		<div class="espacamento">
 						  <t> {{ pergunta.descricao|safe }} </t>
 						<hr/>
