@@ -274,6 +274,33 @@ def secundarioOpcoes(request, tema_conteudo):
 	else:
 		return HttpResponseRedirect('/login/')
 
+
+def secundarioEncerrar(request, tema_conteudo):
+	if request.user.is_authenticated():
+
+		tema = transform_tema(tema_conteudo)
+		usuario = Usuario.objects.get(username = request.user);
+		try:
+			conteudo = Conteudo.objects.get(tema = tema);
+		except:
+			return HttpResponseRedirect('/principal/')
+
+
+		if request.method == 'POST':
+			pass
+		else:
+			questoesPuladas = len(conteudo.getPerguntasPuladas(usuario))
+
+			questoesCorretas = len(conteudo.getPerguntasCertas(usuario))
+
+			questoesErradas = len(conteudo.getPerguntasErradas(usuario))
+
+			vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
+			
+			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
+	else:
+		return HttpResponseRedirect('/login/')
+
 def acertouPergunta(usuario_id, pergunta_id):
 	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
 	for i in perguntas_certas:

@@ -118,7 +118,7 @@
 						<div class="tela-opcoes-1">
 							<div class="btn-group btn-group-justified ">
 								<div class="btn-group">
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Sair</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
 								</div>
 							</div>
 						</div>

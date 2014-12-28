@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 
     url(r'^principal/opcoes/(?P<tema_conteudo>\w+)/$' , secundarioOpcoes),
     url(r'^principal/(?P<tema_conteudo>\w+)/$' , secundario),
+    url(r'^principal/encerrar/(?P<tema_conteudo>\w+)/$' , secundarioEncerrar),
 
     url(r'^contato/$', contato),
 

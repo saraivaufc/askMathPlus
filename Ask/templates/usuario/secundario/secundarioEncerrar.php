@@ -7,7 +7,7 @@
 	        		<div class="panel panel-info">
 					 	<div class="panel-title">
 							<center>
-				            	<h3>Sobre esta Licao</h3>
+				            	<h3>Seu Andamento na Liçao</h3>
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">
@@ -15,10 +15,16 @@
 								<table class="table table-hover table-bordered">
 									<tr class="success">
 										<td class="text-center">
-											NUMERO DE QUESTOES = {{ conteudo.getQuantPerguntasTotal }}
+											QUESTOES SALTADAS = {{ questoesPuladas }}
 										</td>
 										<td class="text-center">
-											SALTOS DISPONIVEIS = {{ conteudo.max_pulos }}
+											QUESTOES CORRETAS = {{ questoesCorretas }}
+										</td>
+										<td class="text-center">
+											QUESTOES ERRADAS = {{ questoesErradas }}
+										</td>
+										<td class="text-center">
+											VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
 										</td>
 									</tr>
 								</table>
@@ -26,10 +32,10 @@
 							<br>
 							<div id="requisitos">
 								<div class="list-group">
-									<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
-									    REQUISITOS(*)
+									<a data-toggle="modal" href="#" data-target="#sugestoes_modal" class="list-group-item active">
+									    SUGESTOES DE ESTUDOS(*)
 									</a>
-									{% for c in conteudo.getRequisitos %}
+									{% for c in conteudo.getSugestoes %}
 										<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="/principal/opcoes/{{ c.getTema }}" class="list-group-item">{{ c.tema }}</a>
 									{% endfor %}
 								</div>
@@ -40,38 +46,25 @@
 		</div>
 
     	<center>
-    		{% if existePulos == False %}
-	    		<div class="barra-responder tela-opcoes-1">
-	    	{% else %}
-	    		<div class="barra-responder tela-opcoes-2">
-	    	{% endif %}
-					<div class="btn-group btn-group-justified fixer-bottom">
-						{% if existePulos %}
-							<div class="btn-group">
-								<button  type="button" class="btn btn-primary">Rever Questoes Saltadas</button>
-							</div>
-						{% endif %}
-						<div class="btn-group">
-							<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
-								{% if respondeuPergunta %}
-									Refazer Licao
-								{% else %}
-									Iniciar Licao
-								{% endif %}
-							</button>
-						</div>
-						
+	    	<div class="barra-responder tela-opcoes-1">
+				<div class="btn-group btn-group-justified fixer-bottom">
+					<div class="btn-group">
+						<button  type="button"  onclick="window.location='/principal/'" class="btn btn-danger">
+							Sair
+						</button>
 					</div>
+					
+				</div>
 			</div>
 		</center>
 
 		<!-- Modal Requisitos -->
-		<div class="modal fade" id="requisitos_modal" tabindex="-1" role="dialog" aria-labelledby="requisitosLabel" aria-hidden="true">
+		<div class="modal fade" id="sugestoes_modal" tabindex="-1" role="dialog" aria-labelledby="requisitosLabel" aria-hidden="true">
 		  	<div class="modal-dialog">
 				<div class="modal-content">
 				    <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Sobre a escolha dos Requisitos</h4>
+				        <h4 class="modal-title" id="myModalLabel">Sobre a escolha das Sugestoes</h4>
 				    </div>
 				    <div class="modal-body">
 						<div class="text-justify">
