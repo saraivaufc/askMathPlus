@@ -42,16 +42,16 @@
 						<table class="table table-hover table-bordered">
 							<tr class="success">
 								<td class="text-center">
-									Pontos = {{ pontos }}
+									PONTOS = {{ pontos }}
 								</td>
 								<td class="text-center">
-									Saltos = {{ pulosRealizados }}
+									SALTOS = {{ pulosRealizados }}
 								</td>
 								<td class="text-center">
-									Saltos Disponiveis = {{ pulosDisponiveis }}
+									SALTOS DISPONIVEIS = {{ pulosDisponiveis }}
 								</td>
 								<td class="text-center">
-									Questoes Corretas = {{ perguntasCertas }}/{{ perguntasTotal }}
+									QUESTOES CORRETAS = {{ perguntasCertas }}/{{ perguntasTotal }}
 								</td>
 							</tr>
 						</table>

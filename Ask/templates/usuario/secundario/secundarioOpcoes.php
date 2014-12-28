@@ -30,7 +30,7 @@
 									    Requisitos(*)
 									</a>
 									{% for c in conteudo.getRequisitos %}
-										<a href="/principal/opcoes/{{ c.tema }}" class="list-group-item">{{ c.tema }}</a>
+										<a href="/principal/opcoes/{{ c.getTema }}" class="list-group-item">{{ c.tema }}</a>
 									{% endfor %}
 								</div>
 							</div>
