@@ -200,7 +200,7 @@ class Pergunta(Model):
 	pontos = models.IntegerField(verbose_name="Pontos Valem")
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.descricao
+		return str(self.id) + ": " +  self.getDescricao()
 	class Meta:
 		ordering = ['-criacao']
 

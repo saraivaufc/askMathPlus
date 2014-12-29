@@ -100,7 +100,7 @@ def secundario(request, tema_conteudo):
 		#DETALHES
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
-		pontosAcumulados = conteudo.getQuantPontos(usuario)
+		pontos = conteudo.getQuantPontos(usuario)
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
@@ -129,9 +129,9 @@ def secundario(request, tema_conteudo):
 			item  = Item.objects.get(id = request.POST['opcao'])
 			# Se Ele Respondeu a Pergunta Corretamente
 			if pergunta.item_correto_id == item.id:
-
 				#atualizando a pontuacao
 				pergunta.acertou(usuario)
+				pontos = conteudo.getQuantPontos(usuario)
 
 				print 'acertou'
 				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
@@ -205,7 +205,7 @@ def secundario(request, tema_conteudo):
 				except:
 					perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 					
-					if len(conteudo.getPerguntasRestantes(usuario)) == 0:
+					if len(perguntas_erradas) == 0:
 						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 					else:
 						pergunta = perguntas_erradas.pop()
@@ -267,12 +267,10 @@ def secundarioOpcoes(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
-
 		#DETALHES
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
-
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 
