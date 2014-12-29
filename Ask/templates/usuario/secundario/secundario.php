@@ -98,7 +98,7 @@
 					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
 				</div>
 				<div class="btn-group">	
-					<button  type="button" id="rever"	  class="btn btn-primary">Rever Saltos</button>
+					<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
 				</div>
 				<div id="ajuda" class="btn-group">	
 					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
@@ -108,6 +108,8 @@
 				</div>
 			</div>
 		</div>
+
+		{% include 'usuario/modals/questoesSaltadas.php' %}
 
 		<!-- Modal Ajuda -->
 		<div class="modal fade" id="ajuda_modal" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">

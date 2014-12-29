@@ -54,7 +54,7 @@
     	<center>
     		{%  block barra-inferior %}
     		{% if existePulos == False %}
-	    		<div class="barra-responder tela-opcoes-1">
+	    		<div class="barra-responder tela-opcoes-2">
 	    	{% else %}
 	    		<div class="barra-responder tela-opcoes-3">
 	    	{% endif %}
@@ -75,7 +75,7 @@
 						</div>
 						{% if existePulos %}
 							<div class="btn-group">
-								<button  type="button" class="btn btn-primary">Rever Questoes Saltadas</button>
+								<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn btn-primary">Rever Questoes Saltadas</button>
 							</div>
 						{% endif %}
 						
@@ -83,6 +83,9 @@
 			</div>
 			{% endblock %}
 		</center>
+
+		{% include 'usuario/modals/questoesSaltadas.php' %}
+
 		{% block modal-outros-conteudos %}
 		<!-- Modal Requisitos -->
 		<div class="modal fade" id="requisitos_modal" tabindex="-1" role="dialog" aria-labelledby="requisitosLabel" aria-hidden="true">

@@ -21,7 +21,7 @@
 				<div class="barra-responder tela-opcoes-1">	
 					<div class="btn-group btn-group-justified fixer-bottom">
 						<div class="btn-group">
-							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-info">
+							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
 								Voltar Inicio
 							</button>
 						</div>

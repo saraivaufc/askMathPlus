@@ -201,6 +201,20 @@ class Pergunta(Model):
 			)
 		b.save()
 
+	def getDescricao(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 255:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
+
+
+
 	def acertou(self, usuario):
 		pontuacao = None
 		try:

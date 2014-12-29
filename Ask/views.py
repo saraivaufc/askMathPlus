@@ -240,6 +240,7 @@ def secundario(request, tema_conteudo):
 		perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
 		vezPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 		pontos = conteudo.getQuantPontos(usuario)
+		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
@@ -274,6 +275,8 @@ def secundarioOpcoes(request, tema_conteudo):
 			if len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 				respondeuPergunta = True
 
+			perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
+
 			return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -306,6 +309,23 @@ def secundarioEncerrar(request, tema_conteudo):
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
+
+
+def irPergunta(request, pergunta_id):
+	if request.user.is_authenticated():
+		usuario = Usuario.objects.get(username = request.user);
+		try:
+			pergunta = Pergunta.objects.get(id = pergunta_id)
+			conteudo = Conteudo.objects.get(id = pergunta.conteudo_pertence_id)
+		except:
+			return HttpResponseRedirect('/principal/')
+
+		atualiza_estado(usuario.id, conteudo.id, pergunta.id)
+		return HttpResponseRedirect("/principal/" + transform_tema_revert(conteudo.tema))
+
+	else:
+		return HttpResponseRedirect('/login/')
+
 
 def acertouPergunta(usuario_id, pergunta_id):
 	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
