@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<td class="text-center">
-			PONTOS ACUMULADOS = {{ pontos }}
+			PONTOS ACUMULADOS = {{ pontosAcumulados }}
 		</td>
 	</tr>
 {% endblock %}

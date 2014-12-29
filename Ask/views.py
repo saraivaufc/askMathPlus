@@ -100,7 +100,7 @@ def secundario(request, tema_conteudo):
 		#DETALHES
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
-		pontos = conteudo.getQuantPontos(usuario)
+		pontosAcumulados = conteudo.getQuantPontos(usuario)
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
@@ -131,7 +131,7 @@ def secundario(request, tema_conteudo):
 			if pergunta.item_correto_id == item.id:
 				#atualizando a pontuacao
 				pergunta.acertou(usuario)
-				pontos = conteudo.getQuantPontos(usuario)
+				pontosAcumulados = conteudo.getQuantPontos(usuario)
 
 				print 'acertou'
 				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
@@ -245,7 +245,7 @@ def secundario(request, tema_conteudo):
 		perguntasErradas = len(conteudo.getPerguntasErradas(usuario))
 		perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
 		vezPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
-		pontos = conteudo.getQuantPontos(usuario)
+		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
 
 		existePulos = False

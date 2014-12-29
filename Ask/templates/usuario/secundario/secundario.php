@@ -47,10 +47,10 @@
 						<table class="table table-hover table-bordered">
 							<tr class="success">
 								<td class="text-center">
-									PONTOS = {{ pontos }}
+									PONTOS ACUMULADOS = {{ pontosAcumulados }}
 								</td>
 								<td class="text-center">
-									SALTOS = {{ pulosRealizados }}
+									SALTOS REALIZADOS = {{ pulosRealizados }}
 								</td>
 								<td class="text-center">
 									SALTOS DISPONIVEIS = {{ pulosDisponiveis }}
