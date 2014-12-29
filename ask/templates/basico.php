@@ -1,5 +1,7 @@
 {% load staticfiles %}
 
+</html>
+
 <html lang="pt">
 <head>
 	<meta charset="UTF-8"/>

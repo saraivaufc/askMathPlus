@@ -12,7 +12,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		    	<a class="navbar-brand" href="/principal/">Inicio</a>
+		    	<a class="navbar-brand" href="/principal/"><div id="title-system">AskMath</div></a>
 		    </div>
 
 

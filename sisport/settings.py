@@ -33,11 +33,11 @@ TEMPLATE_DEBUG = True
 
 INSTALLED_APPS += (
     'spirit_user_profile',
-    'Ask',
+    'ask',
 )
 
 TEMPLATE_DIRS = (
-    'Ask/templates',
+    'ask/templates',
 )
 
 ROOT_URLCONF = 'sisport.urls'
@@ -78,7 +78,7 @@ AUTH_USER_MODEL = 'spirit_user_profile.User'
 
 PROJECT_DIR = os.path.dirname(__file__)
 
-STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../Ask/static'),os.path.join(PROJECT_DIR, '../spirit/'),)
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../ask/static'),os.path.join(PROJECT_DIR, '../spirit/'),)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 

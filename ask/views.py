@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from Ask.models import *
+from ask.models import *
 from django.core.mail import send_mail
 try:
 	from hashlib import md5

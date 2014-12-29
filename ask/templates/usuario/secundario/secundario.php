@@ -45,7 +45,7 @@
 			 	<div class="panel-footer">
 			 		<div  class="table-responsive">
 						<table class="table table-hover table-bordered">
-							<tr class="success">
+							<tr>
 								<td class="text-center">
 									PONTOS ACUMULADOS = {{ pontosAcumulados }}
 								</td>
@@ -61,7 +61,6 @@
 							</tr>
 						</table>
 					</div>
-			 	
 			  		<div class="espacamento">
 						  <t> {{ pergunta.descricao|safe }} </t>
 						<hr/>

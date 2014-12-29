@@ -4,6 +4,11 @@ html body{
 	background-color: #ADD8E6;
 }
 
+#title-system{
+	font-size: 120%;
+}
+
+
 #cabecalho {
 	position: relative;
 	width: 100%;
@@ -282,14 +287,6 @@ html body{
 .invisible {
   visibility: hidden;
 }
-
-.element {
-  .show();
-}
-.another-element {
-  .hidden();
-}
-
 
 
 .turquoise{

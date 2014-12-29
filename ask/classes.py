@@ -1,5 +1,5 @@
 #-*- encoding=utf-8 -*-
-from Ask.models import *
+from ask.models import *
 
 
 class Est1():
