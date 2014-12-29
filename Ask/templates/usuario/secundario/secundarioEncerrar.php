@@ -5,21 +5,28 @@
 {% endblock %}
 
 {% block table-pontuacao %}
-	<tr class="success">
+	<tr>
 		<td class="text-center">
 			QUESTOES TOTAL = {{ conteudo.getQuantPerguntasTotal }}
 		</td>
 		<td class="text-center">
 			QUESTOES CORRETAS = {{ questoesCorretas }}
 		</td>
+	</tr>
+	<tr>
 		<td class="text-center">
 			QUESTOES ERRADAS = {{ questoesErradas }}
 		</td>
 		<td class="text-center">
 			QUESTOES SALTADAS = {{ questoesPuladas }}
 		</td>
+	</tr>
+	<tr>
 		<td class="text-center">
 			VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
+		</td>
+		<td class="text-center">
+			PONTOS ACUMULADOS = {{ pontosAcumulados }}
 		</td>
 	</tr>
 {% endblock %}
@@ -37,9 +44,9 @@
 	<div class="barra-responder tela-opcoes-2">
 				<div class="btn-group btn-group-justified fixer-bottom">
 					<div class="btn-group">
-						<button  type="button"  onclick="window.location='/principal/'" class="btn btn-danger">
-							Encerrar Inicio
-						</button>
+							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
+								Voltar Inicio
+							</button>
 					</div>
 					<div class="btn-group">
 						<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">

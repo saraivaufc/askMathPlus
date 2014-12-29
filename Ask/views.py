@@ -301,6 +301,8 @@ def secundarioEncerrar(request, tema_conteudo):
 
 			vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 
+			pontosAcumulados = conteudo.getQuantPontos(usuario)
+
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')

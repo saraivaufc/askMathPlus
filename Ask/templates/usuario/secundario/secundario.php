@@ -95,10 +95,10 @@
 					<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
 				</div>
 				<div class="btn-group">
-					<button  type="button" id="pular"     class="btn btn-info">Saltar</button>
+					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
 				</div>
 				<div class="btn-group">	
-					<button  type="button" id="rever"	  class="btn btn-info">Rever Saltos</button>
+					<button  type="button" id="rever"	  class="btn btn-primary">Rever Saltos</button>
 				</div>
 				<div id="ajuda" class="btn-group">	
 					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>

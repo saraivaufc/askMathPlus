@@ -17,10 +17,12 @@
 					 		<div class="table-responsive">
 								<table class="table table-hover table-bordered">
 									{%  block table-pontuacao %}
-									<tr class="success">
+									<tr>
 										<td class="text-center">
 											NUMERO DE QUESTOES = {{ conteudo.getQuantPerguntasTotal }}
 										</td>
+									</tr>
+									<tr>
 										<td class="text-center">
 											SALTOS DISPONIVEIS = {{ conteudo.max_pulos }}
 										</td>
@@ -54,14 +56,14 @@
     		{% if existePulos == False %}
 	    		<div class="barra-responder tela-opcoes-1">
 	    	{% else %}
-	    		<div class="barra-responder tela-opcoes-2">
+	    		<div class="barra-responder tela-opcoes-3">
 	    	{% endif %}
 					<div class="btn-group btn-group-justified fixer-bottom">
-						{% if existePulos %}
-							<div class="btn-group">
-								<button  type="button" class="btn btn-primary">Rever Questoes Saltadas</button>
-							</div>
-						{% endif %}
+						<div class="btn-group">
+							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
+								Voltar Inicio
+							</button>
+						</div>
 						<div class="btn-group">
 							<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
 								{% if respondeuPergunta %}
@@ -71,6 +73,11 @@
 								{% endif %}
 							</button>
 						</div>
+						{% if existePulos %}
+							<div class="btn-group">
+								<button  type="button" class="btn btn-primary">Rever Questoes Saltadas</button>
+							</div>
+						{% endif %}
 						
 					</div>
 			</div>

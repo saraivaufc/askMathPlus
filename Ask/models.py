@@ -172,9 +172,9 @@ class Conteudo(Model):
 													 conteudo = self.id,
 													 )
 		except:
-			pontuacao = UsuarioPontuacao.objects.create(usuario = usuario.id,
-														conteudo = self.id,
-														pulosRestantes = self.getQuantPulosRestantes(),)
+			pontuacao = UsuarioPontuacao.objects.create(usuario_id = usuario.id,
+														conteudo_id = self.id,
+														pulosRestantes = self.getQuantPulosRestantes(usuario))
 			pontuacao.save()
 		return pontuacao.pontos
 
