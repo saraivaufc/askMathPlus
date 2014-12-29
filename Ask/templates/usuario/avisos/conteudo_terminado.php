@@ -12,7 +12,7 @@
 	</tr>
 	<tr>
 		<td class="text-center">
-			QUESTOES SALTADAS = {{ questoesPuladas }}
+			PULOS REALIZADOS = {{ pulosRealizados }}
 		</td>
 	</tr>
 	<tr>

@@ -151,15 +151,25 @@ class Conteudo(Model):
 					existe = True
 			if existe == False:
 				res.append(Pergunta.objects.get(id = p.pergunta_id))
-		return res
+
+		resFinal = []
+		for i in res:
+			respondida = False
+			for k in self.getPerguntasRespondidas(usuario):
+				if i.id == k.id:
+					respondida = True
+			if respondida == False:
+				resFinal.append(i)
+
+		return resFinal
 
 	def getPerguntasRestantes(self, usuario):
 		nao_respondidas = self.getPerguntasNaoRespondidas(usuario)
 		erradas = self.getPerguntasErradas(usuario)
 		todas = []
-		for i in nao_respondidas:
-			todas.append(i)
 		for i in erradas:
+			todas.append(i)
+		for i in nao_respondidas:
 			todas.append(i)
 		return todas
 

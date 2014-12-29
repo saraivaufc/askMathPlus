@@ -96,6 +96,12 @@ def secundario(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect('/principal/')
 
+
+		#DETALHES
+		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
+		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
+		pontosAcumulados = conteudo.getQuantPontos(usuario)
+
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 
@@ -242,6 +248,10 @@ def secundario(request, tema_conteudo):
 		pontos = conteudo.getQuantPontos(usuario)
 		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
 
+		existePulos = False
+		if len(conteudo.getPerguntasPuladas(usuario)) > 0:
+			existePulos = True
+
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -256,6 +266,12 @@ def secundarioOpcoes(request, tema_conteudo):
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
 			return HttpResponseRedirect('/principal/')
+
+
+		#DETALHES
+		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
+		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
+		pontosAcumulados = conteudo.getQuantPontos(usuario)
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
@@ -296,7 +312,7 @@ def secundarioEncerrar(request, tema_conteudo):
 		if request.method == 'POST':
 			pass
 		else:
-			questoesPuladas = len(conteudo.getPerguntasPuladas(usuario))
+			pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 
 			questoesCorretas = len(conteudo.getPerguntasCertas(usuario))
 

@@ -18,7 +18,7 @@
 			QUESTOES ERRADAS = {{ questoesErradas }}
 		</td>
 		<td class="text-center">
-			QUESTOES SALTADAS = {{ questoesPuladas }}
+			SALTOS REALIZADOS = {{ pulosRealizados }}
 		</td>
 	</tr>
 	<tr>

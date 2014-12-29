@@ -97,11 +97,13 @@
 				<div class="btn-group">
 					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
 				</div>
+				{% if existePulos %}
 				<div class="btn-group">	
 					<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
 				</div>
+				{% endif %}
 				<div id="ajuda" class="btn-group">	
-					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Ajuda</button>
+					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
 				</div>
 				<div class="btn-group">
 					<button  type="button" id="responder" class="btn btn-success ">Responder</button>
