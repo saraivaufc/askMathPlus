@@ -1,9 +1,13 @@
 
-html body{
+body{
 	font-family: Arial, Times, serif;
 	background-color: #ADD8E6;
 	width: 100%;
 	height: 100%;
+}
+
+.container{
+	height: 100%;	
 }
 
 #title-system{

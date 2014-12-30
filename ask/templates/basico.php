@@ -42,35 +42,35 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
 {% block body %}
 	<header>
-	<div class="container-fluid">
-	{% block cabecalho_all %}
-	<div id="cabecalho">
-		<div class="row">
-			<div class="col-md-12 col-xs-12">
-			{% block cabecalho %}
-				<div id="logo">
+		<div class="container-fluid">
+			{% block cabecalho_all %}
+			<div id="cabecalho">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+					{% block cabecalho %}
+						<div id="logo">
 
+						</div>
+					{% endblock %}
+					</div>
 				</div>
-			{% endblock %}
 			</div>
-		</div>
-	</div>
-	{% endblock %}
+			{% endblock %}
 
-	{% block menu_all %}
-	<div id="menu">
-		<div class="row">
-			<div class="col-md-12 col-xs-12">
-			{% block menu %}
-			{% endblock %}
+			{% block menu_all %}
+			<div id="menu">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+					{% block menu %}
+					{% endblock %}
+					</div>
+				</div>
 			</div>
+			{% endblock %}
 		</div>
-	</div>
-	{% endblock %}
-	</div>
 	</header>
 
 	{% block conteudo_all %}
@@ -104,7 +104,6 @@
 		{% endblock %}
 	</footer>
 	{% endblock %}
-
 {% endblock %}
 </div>
 </body>
