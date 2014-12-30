@@ -83,6 +83,9 @@ def principal(request):
 			conteudos1 = Conteudo.objects.filter(linha_metro = 1, turma = usuario.turma).order_by("tema");
 			conteudos2 = Conteudo.objects.filter(linha_metro = 2,turma = usuario.turma).order_by("tema");
 			conteudos3 = Conteudo.objects.filter(linha_metro = 3,turma = usuario.turma).order_by("tema");
+
+			fecharSecaoaberta(usuario)
+			
 			return render(request , 'usuario/principal/principal.php' ,locals())
 	else:
 		return HttpResponseRedirect('/login/')
@@ -323,28 +326,26 @@ def secundarioEncerrar(request, tema_conteudo):
 			vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 
 			pontosAcumulados = conteudo.getQuantPontos(usuario)
-			try:
-				secao = Secao.objects.filter(usuario = usuario.id, conteudo = conteudo.id);
-				if len(secao) > 0:
-					print "Secao Fechada"
-					if secao[0].fim == None:
-						secao[0].terminou()
-			except:
-				print "Falha ao fechar a secao"
+			
+			fecharSecaoaberta(usuario)
+
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
 
 
-def conteudoTerminado(request, vars):
+def fecharSecaoaberta(usuario):
 	try:
-		secao = Secao.objects.filter(usuario = vars['usuario'].id, conteudo = vars['conteudo'].id);
+		secao = Secao.objects.filter(usuario = usuario.id).order_by('-inicio');
 		if len(secao) > 0:
-			print "Secao Fechada"
 			if secao[0].fim == None:
+				print "Secao Fechada"
 				secao[0].terminou()
 	except:
-		print "Nenhuma Secao Foi Aberta"
+		print "Falha ao fechar a secao"
+
+def conteudoTerminado(request, vars):
+	fecharSecaoaberta(vars['usuario'])
 	return render(request, 'usuario/avisos/conteudo_terminado.php', vars)
 
 
