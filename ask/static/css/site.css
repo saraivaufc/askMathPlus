@@ -492,9 +492,17 @@ html body{
 	width: 20%;
 }
 .tela-opcoes-2{
-	width: 50%;
+	width: 40%;
 }
 
 .tela-opcoes-3{
-	width: 70%;
+	width: 60%;
+}
+
+.tela-opcoes-4{
+	width: 80%;
+}
+
+.tela-opcoes-5{
+	width: 100%;
 }

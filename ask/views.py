@@ -147,7 +147,7 @@ def secundario(request, tema_conteudo):
 				#Mas se Ele tiver uma Pergunta Proxima
 				else:
 					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
-					if len(conteudo.getPerguntasRestantes) == 0:
+					if len(conteudo.getPerguntasRestantes(usuario)) <= 0:
 						print 'Conteudo Terminado Com Exito : linha 169'
 						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 					else:
@@ -157,7 +157,7 @@ def secundario(request, tema_conteudo):
 											 	 conteudo = conteudo.id,
 											 	 pergunta = pergunta.id,
 												  acertou = True,)
-							pergunta = c.getPerguntasRestantes(usuario)[0]
+							pergunta = conteudo.getPerguntasRestantes(usuario)[0]
 						#se a pergunta ainda nao tiver sido respondidade corretamente
 						except:
 							print "Pulei para a proxima"

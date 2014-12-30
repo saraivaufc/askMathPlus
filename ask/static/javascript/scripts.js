@@ -133,22 +133,6 @@ $(document).ready(function(){
 $(document).ready(function(){
 	LatexIT.add('t',true);
 
-	//Verificar se axisteajuda
-	var valor = $("#pergunta_atual").val();
-	var url = "/ajuda/" + valor+"/";
-	$.ajax({
-		"url": url,
-		"type": "get",
-		"dataType": "html",
-		async: false
-	}).done(function(data){
-		if(data != "None"){
-			$("#ajuda").show();
-		}else{
-			$("#ajuda").hide();
-		}
-	});
-
 	//$('.conteudo').jScrollPane({showArrows: true});
     $('#conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true});
