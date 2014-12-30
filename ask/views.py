@@ -240,6 +240,10 @@ def secundario(request, tema_conteudo):
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
 
+		disponibilizarPular = False
+		if pulosDisponiveis > 0:
+			disponibilizarPular	= True		
+
 		existePulos = False
 		if len(conteudo.getPerguntasPuladas(usuario)) > 0:
 			existePulos = True

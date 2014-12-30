@@ -93,9 +93,11 @@
 				<div class="btn-group">
 					<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
 				</div>
+				{% if disponibilizarPular %}
 				<div class="btn-group">
 					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
 				</div>
+				{% endif %}
 				{% if existePulos %}
 				<div class="btn-group">	
 					<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
