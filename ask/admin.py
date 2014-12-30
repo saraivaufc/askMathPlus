@@ -224,3 +224,24 @@ class UsuarioPontuacaoAdmin(admin.ModelAdmin):
     			     'conteudo',)
 	save_as = True
 	search_fields = ['usuario']
+
+@admin.register(Secao)
+class SecaoAdmin(admin.ModelAdmin):
+	fieldsets = (
+        (None,{'fields':('usuario',
+        			     'conteudo',
+        			     'inicio',
+        			     'fim',
+        				)
+        	  }
+        ),
+	)
+	list_display = ('id','usuario',
+			      	'conteudo',
+				  	'inicio',
+				  	'fim',)
+
+	raw_id_fields = ('usuario',
+    			     'conteudo',)
+	save_as = True
+	search_fields = ['usuario']

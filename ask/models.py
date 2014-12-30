@@ -296,7 +296,7 @@ class Busca_Ajuda(Model):
 	def __unicode__(self):
 		return str(self.id) + str(self.usuario)
 	class Meta:
-		ordering = ['criacao']
+		ordering = ['-criacao']
 
 class Historico(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
@@ -392,7 +392,22 @@ class UsuarioPontuacao(Model):
 		UsuarioPontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
 		self.declementaPulosRestantes()
 
+class Secao(models.Model):
+	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
+	conteudo = models.ForeignKey(Conteudo , verbose_name="Conteudo")
+	
+	inicio = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Inicio")
+	fim = models.DateTimeField(blank=True,null = True, verbose_name="Fim")
 
+	class Meta:
+		ordering = ['-inicio']
 
+	def iniciou(self):
+		self.inicio = datetime.now()
+		Secao.objects.filter(id = self.id).update(inicio = self.inicio)
+
+	def terminou(self):
+		self.fim = datetime.now()
+		Secao.objects.filter(id = self.id).update(fim = self.fim)
 
 		

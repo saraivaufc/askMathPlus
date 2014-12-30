@@ -249,7 +249,10 @@ def secundario(request, tema_conteudo):
 
 		existeAjuda = False
 		if pergunta.ajuda != None:
-			existeAjuda = True 
+			existeAjuda = True
+
+		secao = Secao.objects.create(usuario_id = usuario.id, conteudo_id = conteudo.id)
+		secao.save()
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
@@ -318,7 +321,13 @@ def secundarioEncerrar(request, tema_conteudo):
 			vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 
 			pontosAcumulados = conteudo.getQuantPontos(usuario)
-
+			try:
+				secao = Secao.objects.filter(usuario = usuario.id, conteudo = conteudo.id);
+				if len(secao) > 0:
+					print "Secao Fechada"
+					secao[0].terminou()
+			except:
+				print "Falha ao fechar a secao"
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
