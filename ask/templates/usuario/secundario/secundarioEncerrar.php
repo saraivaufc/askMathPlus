@@ -11,34 +11,6 @@
 		</td>
 		<td class="text-center">
 			{{ conteudo.getQuantPerguntasTotal }}
-		</td>	
-		<td class="text-center">
-			QUESTOES CORRETAS
-		</td>
-		<td class="text-center">
-			{{ questoesCorretas }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			QUESTOES ERRADAS
-		</td>
-		<td class="text-center">
-			{{ questoesErradas }}
-		</td>
-		<td class="text-center">
-			SALTOS REALIZADOS
-		</td>
-		<td class="text-center">
-			{{ pulosRealizados }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			VEZES QUE PEDIU AJUDA
-		</td>
-		<td class="text-center">
-			{{ vezesPediuAjuda }}
 		</td>
 		<td class="text-center">
 			PONTOS ACUMULADOS
@@ -46,6 +18,35 @@
 		<td class="text-center">
 			{{ pontosAcumulados }}
 		</td>
+	</tr>
+	<tr>
+		<td class="text-center">
+			QUESTOES CORRETAS
+		</td>
+		<td class="text-center">
+			{{ questoesCorretas }}
+		</td>
+		<td class="text-center">
+			QUESTOES ERRADAS
+		</td>
+		<td class="text-center">
+			{{ questoesErradas }}
+		</td>
+	</tr>
+	<tr>
+		<td class="text-center">
+			SALTOS REALIZADOS
+		</td>
+		<td class="text-center">
+			{{ pulosRealizados }}
+		</td>
+		<td class="text-center">
+			VEZES QUE PEDIU AJUDA
+		</td>
+		<td class="text-center">
+			{{ vezesPediuAjuda }}
+		</td>
+		
 	</tr>
 {% endblock %}
 

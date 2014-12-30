@@ -19,12 +19,18 @@
 									{%  block table-pontuacao %}
 									<tr>
 										<td class="text-center">
-											NUMERO DE QUESTOES = {{ conteudo.getQuantPerguntasTotal }}
+											NUMERO DE QUESTOES
+										</td>
+										<td class="text-center">
+											{{ conteudo.getQuantPerguntasTotal }}
 										</td>
 									</tr>
 									<tr>
 										<td class="text-center">
-											SALTOS DISPONIVEIS = {{ conteudo.max_pulos }}
+											SALTOS DISPONIVEIS
+										</td>
+										<td class="text-center">
+											{{ conteudo.max_pulos }}
 										</td>
 									</tr>
 									{% endblock %}
