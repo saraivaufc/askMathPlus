@@ -42,7 +42,7 @@
 </head>
 
 <body>
-<div class="container-fluid">
+<div class="container">
 {% block body %}
 	<header>
 		<div class="container-fluid">
