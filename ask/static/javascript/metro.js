@@ -19,11 +19,11 @@ function createMetro(){
 function setSizeMetro(){
 	$(document).ready(function(){
 		$(".tile").each(function () {
-					$(this).css("width", $(this).height());
+					$(this).css("width", ($(this).height()) + "px" );
 		});
 
 		$(".tileLargo").each(function () {
-					$(this).css("width", ($(this).height() * 2) + 10);
+					$(this).css("width", (($(this).height() * 2) + 10) + "px");
 		});
 	});
 }
@@ -54,7 +54,7 @@ $(document).ready(function (){
 
 $(document).ready(function(){
 	$(".tile").click(function() {
-		var text =  $(this).children(".font-metro").children("#text-quadrado").children("#cont").text();
+		var text =  $(this).children(".font-metro").text();
 		var text2 = text.split(" ").join("_");
 		window.location.href= "/principal/opcoes/"+ text2+"/";
 		$(this).addClass("selecionado");

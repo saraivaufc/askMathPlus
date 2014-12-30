@@ -2,14 +2,14 @@
 <div class="modal fade" id="questoes_saltadas_modal" tabindex="-1" role="dialog" aria-labelledby="requisitosLabel" aria-hidden="true">
   	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-		        <h4 class="modal-title" id="myModalLabel">{{ conteudo.tema }}</h4>
+			<div class="modal-header text-center">
+		        <h3 class="modal-title" id="myModalLabel">{{ conteudo.tema }}</h3>
 		    </div>
 
 		    <div class="modal-body">
 				<div class="text-justify">
 					<div class="list-group">
-						<a class="list-group-item active">
+						<a class="list-group-item active text-center ">
 							    Questoes Saltadas
 						</a>
 							{% for p in perguntasSaltadas %}

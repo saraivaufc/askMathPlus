@@ -30,11 +30,9 @@
 					{% if i.tamanho_metro == 2 %}
 						<div class="tile tileLargo">
 					{% endif %}
-							<center class="font-metro">
-								<div id="text-quadrado">
-									<p id="cont">{{i.tema}}</p>
-								</div>
-							</center>
+							<div class="text-center font-metro">
+									{{i.tema}}
+							</div>
 						</div>
 				{% endfor %}
 			</div>
@@ -52,9 +50,7 @@
 						<div class="tile tileLargo">
 					{% endif %}
 							<center class="font-metro">
-								<div id="text-quadrado">
-									<p id="cont">{{i.tema}}</p>
-								</div>
+									{{i.tema}}
 							</center>
 						</div>
 					{% endfor %}
@@ -74,9 +70,7 @@
 						<div class="tile tileLargo">
 					{% endif %}
 							<center class="font-metro">
-								<div id="text-quadrado">
-									<p id="cont">{{i.tema}}</p>
-								</div>
+									{{i.tema}}
 							</center>
 						</div>
 				{% endfor %}
