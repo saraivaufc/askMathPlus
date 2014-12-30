@@ -179,6 +179,14 @@ class Conteudo(Model):
 
 		return resFinal
 
+	def getPerguntasPuladasExclude(self, usuario, pergunta_id):
+		p = self.getPerguntasPuladas(usuario)
+		k = []
+		for i in p:
+			if i.id != pergunta_id:
+				k.append(i)
+		return k
+
 	def getPerguntasRestantes(self, usuario):
 		nao_respondidas = self.getPerguntasNaoRespondidas(usuario)
 		erradas = self.getPerguntasErradas(usuario)

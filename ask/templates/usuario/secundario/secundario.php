@@ -86,14 +86,46 @@
 			  	</div>
 			</div>
 		</div>
+		<center>
+		{% block barra-inferior %}
+		{% if existePular == False %}
+			{% if existePulos == False %}
+				{% if existeAjuda == False %}		
+				<div class="barra-responder tela-opcoes-2">
+				{% else %}
+				<div class="barra-responder tela-opcoes-3">
+				{% endif %}
+			{% else %}
+				{% if existeAjuda == False %}		
+				<div class="barra-responder tela-opcoes-3">
+				{% else %}
+				<div class="barra-responder tela-opcoes-4">
+				{% endif %}
+			{% endif %}
+		{% else %}
+			{% if existePulos == False %}
+				{% if existeAjuda == False %}		
+				<div class="barra-responder tela-opcoes-3">
+				{% else %}
+				<div class="barra-responder tela-opcoes-4">
+				{% endif %}
+			{% else %}
+				{% if existeAjuda == False %}		
+				<div class="barra-responder tela-opcoes-4">
+				{% else %}
+				<div class="barra-responder tela-opcoes-5">
+				{% endif %}
+			{% endif %}
+		{% endif %}
 
-		
-		<div class="barra-responder">
+				
+
 			<div class="btn-group btn-group-justified fixer-bottom">
 				<div class="btn-group">
 					<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
 				</div>
-				{% if disponibilizarPular %}
+				
+				{% if existePular %}
 				<div class="btn-group">
 					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
 				</div>
@@ -103,15 +135,18 @@
 					<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
 				</div>
 				{% endif %}
+				{% if existeAjuda %}
 				<div id="ajuda" class="btn-group">	
 					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
 				</div>
+				{% endif %}
 				<div class="btn-group">
 					<button  type="button" id="responder" class="btn btn-success ">Responder</button>
 				</div>
 			</div>
 		</div>
-
+		{% endblock %}
+		</center>
 		{% include 'usuario/modals/questoesSaltadas.php' %}
 
 		<!-- Modal Ajuda -->

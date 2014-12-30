@@ -226,7 +226,6 @@ def secundario(request, tema_conteudo):
 			pass
 
 		
-		print 'Detalhe'
 		perguntasTotal = (conteudo.getQuantPerguntasTotal())
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
@@ -238,15 +237,19 @@ def secundario(request, tema_conteudo):
 		perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
 		vezPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
-		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
+		perguntasSaltadas = conteudo.getPerguntasPuladasExclude(usuario, pergunta.id)
 
-		disponibilizarPular = False
+		existePular = False
 		if pulosDisponiveis > 0:
-			disponibilizarPular	= True		
+			existePular	= True		
 
 		existePulos = False
-		if len(conteudo.getPerguntasPuladas(usuario)) > 0:
+		if len(perguntasSaltadas) > 0:
 			existePulos = True
+
+		existeAjuda = False
+		if pergunta.ajuda != None:
+			existeAjuda = True 
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
