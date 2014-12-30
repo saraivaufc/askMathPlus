@@ -7,26 +7,44 @@
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">
-			QUESTOES TOTAL = {{ conteudo.getQuantPerguntasTotal }}
+			QUESTOES TOTAL
 		</td>
 		<td class="text-center">
-			QUESTOES CORRETAS = {{ questoesCorretas }}
-		</td>
-	</tr>
-	<tr>
+			{{ conteudo.getQuantPerguntasTotal }}
+		</td>	
 		<td class="text-center">
-			QUESTOES ERRADAS = {{ questoesErradas }}
+			QUESTOES CORRETAS
 		</td>
 		<td class="text-center">
-			SALTOS REALIZADOS = {{ pulosRealizados }}
+			{{ questoesCorretas }}
 		</td>
 	</tr>
 	<tr>
 		<td class="text-center">
-			VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
+			QUESTOES ERRADAS
 		</td>
 		<td class="text-center">
-			PONTOS ACUMULADOS = {{ pontosAcumulados }}
+			{{ questoesErradas }}
+		</td>
+		<td class="text-center">
+			SALTOS REALIZADOS
+		</td>
+		<td class="text-center">
+			{{ pulosRealizados }}
+		</td>
+	</tr>
+	<tr>
+		<td class="text-center">
+			VEZES QUE PEDIU AJUDA
+		</td>
+		<td class="text-center">
+			{{ vezesPediuAjuda }}
+		</td>
+		<td class="text-center">
+			PONTOS ACUMULADOS
+		</td>
+		<td class="text-center">
+			{{ pontosAcumulados }}
 		</td>
 	</tr>
 {% endblock %}
@@ -41,7 +59,7 @@
 {% endblock %}
 
 {%  block barra-inferior %}
-	<div class="barra-responder tela-opcoes-2">
+	<div class="barra-responder tela-opcoes-3">
 				<div class="btn-group btn-group-justified fixer-bottom">
 					<div class="btn-group">
 							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
