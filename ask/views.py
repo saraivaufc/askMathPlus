@@ -103,7 +103,7 @@ def secundario(request, tema_conteudo):
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
-			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+			return conteudoTerminado(request, locals())
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
 			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
@@ -133,7 +133,8 @@ def secundario(request, tema_conteudo):
 					# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
 					if len(perguntas_erradas) == 0:
 						print 'Conteudo Terminado Com Exito : linha 154'
-						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+						return conteudoTerminado(request, locals())
+
 
 					# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 					else:
@@ -149,7 +150,7 @@ def secundario(request, tema_conteudo):
 					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
 					if len(conteudo.getPerguntasRestantes(usuario)) <= 0:
 						print 'Conteudo Terminado Com Exito : linha 169'
-						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+						return conteudoTerminado(request, locals())
 					else:
 						#Se a pergunta ja estiver sido respondidade corretaente
 						try:
@@ -198,14 +199,15 @@ def secundario(request, tema_conteudo):
 					perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 					
 					if len(perguntas_erradas) == 0:
-						return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+						return conteudoTerminado(request, locals())
 					else:
 						pergunta = perguntas_erradas.pop()
 
 		#Isso Sempre e executa
 		if len(conteudo.getPerguntasRestantes(usuario)) == 0:
 			print 'Conteudo Terminado Com Exito : linha 215'
-			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+			return conteudoTerminado(request, locals())
+			
 		
 		try:
 			estado = Estado_Usuario.objects.filter(usuario = usuario.id, conteudo = conteudo.id)[0]
@@ -274,7 +276,7 @@ def secundarioOpcoes(request, tema_conteudo):
 		vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
-			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
+			return conteudoTerminado(request, locals())
 
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
 			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
@@ -325,12 +327,25 @@ def secundarioEncerrar(request, tema_conteudo):
 				secao = Secao.objects.filter(usuario = usuario.id, conteudo = conteudo.id);
 				if len(secao) > 0:
 					print "Secao Fechada"
-					secao[0].terminou()
+					if secao[0].fim == None:
+						secao[0].terminou()
 			except:
 				print "Falha ao fechar a secao"
 			return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 	else:
 		return HttpResponseRedirect('/login/')
+
+
+def conteudoTerminado(request, vars):
+	try:
+		secao = Secao.objects.filter(usuario = vars['usuario'].id, conteudo = vars['conteudo'].id);
+		if len(secao) > 0:
+			print "Secao Fechada"
+			if secao[0].fim == None:
+				secao[0].terminou()
+	except:
+		print "Nenhuma Secao Foi Aberta"
+	return render(request, 'usuario/avisos/conteudo_terminado.php', vars)
 
 
 def irPergunta(request, pergunta_id):
