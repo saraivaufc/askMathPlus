@@ -50,7 +50,7 @@
 				<div class="panel panel-info">
 				 	<div class="panel-title pontuacao">
 				 		<center>
-					    		<h3>Pergunta</h3>
+					    		<h3>Essa Pergunta Vale {{ pergunta.pontos }} Pontos</h3>
 					    </center>
 				  	</div>
 
