@@ -80,9 +80,9 @@ def principal(request):
 				turmas = Turma.objects.all()
 				return render(request , 'usuario/principal/turma.php' ,locals())
 
-			conteudos1 = Conteudo.objects.filter(linha_metro = 1, turma = usuario.turma);
-			conteudos2 = Conteudo.objects.filter(linha_metro = 2,turma = usuario.turma);
-			conteudos3 = Conteudo.objects.filter(linha_metro = 3,turma = usuario.turma);
+			conteudos1 = Conteudo.objects.filter(linha_metro = 1, turma = usuario.turma).order_by("tema");
+			conteudos2 = Conteudo.objects.filter(linha_metro = 2,turma = usuario.turma).order_by("tema");
+			conteudos3 = Conteudo.objects.filter(linha_metro = 3,turma = usuario.turma).order_by("tema");
 			return render(request , 'usuario/principal/principal.php' ,locals())
 	else:
 		return HttpResponseRedirect('/login/')

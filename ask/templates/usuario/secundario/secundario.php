@@ -8,21 +8,33 @@
 	}
 {% endblock %}
 
+{% block funcoes %}
+	$(document).ready(function(){
+		$(".panel-heading").css("height", "100%");
+		$(".jspPane").css("height", "100%");
+		$("#requisitos").css("height", "100%");
+
+
+	});
+{% endblock %}
+
 {% block voltar_all %}{% endblock %}
 
 {% block conteudo-left %}
 	<div class="font-dconteudo">
     	<div class="descricao-conteudo">
         		<div class="panel-heading">
-        		<div class="panel panel-info">
-				 	<div class="panel-title">
-						<center>
-			            	<h3>{{ conteudo.tema }}</h3>
-			          	</center>
-				  	</div>
-				 	<div class="panel-footer">
-				  		<t> {{ conteudo.descricao|safe }}<t>
-				  	</div>
+        			<div class="panel panel-info">
+					 	<div class="panel-title">
+							<center>
+				            	<h3>{{ conteudo.tema }}</h3>
+				          	</center>
+					  	</div>
+					 	<div class="panel-footer">
+					 		<div id="descricao-conteudo">
+					  		<t> {{ conteudo.descricao|safe }}<t>
+					  		</div>
+					  	</div>
 				  	</div>
 				</div>
       		<br>
@@ -36,53 +48,53 @@
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
 				<div class="panel panel-info">
-			 	<div class="panel-title pontuacao">
-			 		<center>
-				    		<h3>Pergunta</h3>
-				    </center>
-			  	</div>
+				 	<div class="panel-title pontuacao">
+				 		<center>
+					    		<h3>Pergunta</h3>
+					    </center>
+				  	</div>
 
-			 	<div class="panel-footer">
-			 		<div  class="table-responsive">
-						<table class="table table-hover table-bordered">
-							<tr>
-								<td class="text-center">
-									PONTOS ACUMULADOS = {{ pontosAcumulados }}
-								</td>
-								<td class="text-center">
-									SALTOS REALIZADOS = {{ pulosRealizados }}
-								</td>
-								<td class="text-center">
-									SALTOS DISPONIVEIS = {{ pulosDisponiveis }}
-								</td>
-								<td class="text-center">
-									QUESTOES CORRETAS = {{ perguntasCertas }}/{{ perguntasTotal }}
-								</td>
-							</tr>
-						</table>
-					</div>
-			  		<div class="espacamento">
-						  <t> {{ pergunta.descricao|safe }} </t>
-						<hr/>
-						<form method="POST" id="perguntas" name="resposta">
-						{%csrf_token %} 
-							   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
-							   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
-							
-							<ol>
-							{% for item in itens %}
-								<li type="A">
-									<div class="font-dconteudo">
-										<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-										<t>{{ item.descricao | safe }}</t>
-									</div>
-								</li>
-								<br>
-							{% endfor %}
-							</ol>
-						</form>
-			  		</div>
-			  	</div>
+				 	<div class="panel-footer">
+				 		<div  class="table-responsive">
+							<table class="table table-hover table-bordered">
+								<tr>
+									<td class="text-center">
+										PONTOS ACUMULADOS = {{ pontosAcumulados }}
+									</td>
+									<td class="text-center">
+										SALTOS REALIZADOS = {{ pulosRealizados }}
+									</td>
+									<td class="text-center">
+										SALTOS DISPONIVEIS = {{ pulosDisponiveis }}
+									</td>
+									<td class="text-center">
+										QUESTOES CORRETAS = {{ perguntasCertas }}/{{ perguntasTotal }}
+									</td>
+								</tr>
+							</table>
+						</div>
+				  		<div class="espacamento">
+							  <t> {{ pergunta.descricao|safe }} </t>
+							<hr/>
+							<form method="POST" id="perguntas" name="resposta">
+							{%csrf_token %} 
+								   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
+								   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
+								
+								<ol>
+								{% for item in itens %}
+									<li type="A">
+										<div class="font-dconteudo">
+											<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
+											<t>{{ item.descricao | safe }}</t>
+										</div>
+									</li>
+									<br>
+								{% endfor %}
+								</ol>
+							</form>
+				  		</div>
+				  	</div>
 			  	</div>
 			</div>
 		</div>

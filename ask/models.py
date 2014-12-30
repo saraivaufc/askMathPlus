@@ -35,7 +35,7 @@ class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")
 	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição")
-	pergunta_inicial = models.ForeignKey('Pergunta' , null=True , blank=True , verbose_name="Pergunta Inicial")
+	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL)
 	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
 	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos")
@@ -45,7 +45,7 @@ class Conteudo(Model):
 	def __unicode__(self):
 		return  str(self.id) + ": " +  self.tema
 	class Meta:
-		ordering = ['tema']
+		ordering = ['-criacao']
 
 	def getTema(self):
 		return transform_tema_revert(self.tema)
@@ -218,10 +218,10 @@ class Conteudo(Model):
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence")
 	descricao = models.TextField(verbose_name="Descrição")
-	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto")
-	pergunta_proximo_acertou = models.ForeignKey('Pergunta' ,related_name="proximo_acertou" , null=True , blank=True, verbose_name="Pergunta Proximo Acertou")
-	pergunta_proximo_errou = models.ForeignKey('Pergunta' ,related_name="proximo_errou" , null=True , blank=True, verbose_name="Pergunta Proximo Errou")
-	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda")
+	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL)
+	pergunta_proximo_acertou = models.ForeignKey('Pergunta' ,related_name="proximo_acertou" , null=True , blank=True, verbose_name="Pergunta Proximo Acertou", on_delete = models.SET_NULL)
+	pergunta_proximo_errou = models.ForeignKey('Pergunta' ,related_name="proximo_errou" , null=True , blank=True, verbose_name="Pergunta Proximo Errou", on_delete = models.SET_NULL)
+	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL)
 	pontos = models.IntegerField(verbose_name="Pontos Valem")
 
 	def __unicode__(self):
@@ -296,7 +296,7 @@ class Busca_Ajuda(Model):
 	def __unicode__(self):
 		return str(self.id) + str(self.usuario)
 	class Meta:
-		ordering = ['usuario']
+		ordering = ['criacao']
 
 class Historico(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
