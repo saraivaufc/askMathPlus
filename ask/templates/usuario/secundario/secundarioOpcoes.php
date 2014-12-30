@@ -75,7 +75,7 @@
 						</div>
 						{% if existePulos %}
 							<div class="btn-group">
-								<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn btn-primary">Rever Questoes Saltadas</button>
+								<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn btn-primary">Rever Saltos</button>
 							</div>
 						{% endif %}
 						

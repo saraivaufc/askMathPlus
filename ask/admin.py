@@ -210,15 +210,15 @@ class UsuarioPontuacaoAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('usuario',
         			      'conteudo',
-        				  'pontos',
-        				  'pulosRestantes',
         				)
         	  }
         ),
 	)
 	list_display = ('id','usuario',
 			      	'conteudo',
-				  	'pergunta',)
+				  	'pontos',
+				  	'pulosMaximo',
+				  	'pulosRestantes')
 
 	raw_id_fields = ('usuario',
     			     'conteudo',)

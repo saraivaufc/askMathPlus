@@ -108,14 +108,6 @@ def secundario(request, tema_conteudo):
 		if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
 			return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 
-		try:
-			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = conteudo.id)
-		except:
-			pontuacao = UsuarioPontuacao.objects.create(usuario_id = usuario.id,
-														conteudo_id = conteudo.id,
-														pulosRestantes = conteudo.max_pulos)
-			pontuacao.save()
-
 
 		if request.method == 'POST':
 			pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual'])
@@ -537,7 +529,11 @@ def pulo(request,id_conteudo, id_pergunta):
 			pergunta_id = id_pergunta
 		)
 		pulo.save()
-		conteudo = Conteudo.objects.get(id = id_conteudo)
+		try:
+			conteudo = Conteudo.objects.get(id = id_conteudo)
+		except:
+			return HttpResponse("500")
+		
 		conteudo.declementaPulosRestantes(usuario)
 		return HttpResponse("200")
 		

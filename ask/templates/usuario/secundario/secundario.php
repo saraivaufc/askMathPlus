@@ -102,7 +102,7 @@
 				</div>
 				{% endif %}
 				<div id="ajuda" class="btn-group">	
-					<button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
+					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
 				</div>
 				<div class="btn-group">
 					<button  type="button" id="responder" class="btn btn-success ">Responder</button>

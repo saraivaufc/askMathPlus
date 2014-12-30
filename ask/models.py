@@ -73,16 +73,32 @@ class Conteudo(Model):
 		try:
 			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		except:
+			pulos = UsuarioPontuacao.objects.create(
+				usuario_id = usuario.id,
+				conteudo_id = self.id,
+				pulosMaximo = self.max_pulos,
+				pulosRestantes = self.max_pulos,
+			)
+			print 'Pontuacao Criada'
+			pulos.save()
 			return self.max_pulos
 		return  pulos.pulosRestantes
 
 	def inclementaPulosRestantes(self, usuario):
-		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
-		pulos.inclementaPulos()
+		try:
+			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		except:
+			print "Impossivel encontrar Pontuacao em Inclementar Pulos Restantes"
+			return
+		pulos.inclementaPulosRestantes()
 
 	def declementaPulosRestantes(self, usuario):
-		pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
-		pulos.declementaPulos()
+		try:
+			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+		except:
+			print "Impossivel encontrar Pontuacao em Declementar Pulos Restantes"
+			return
+		pulos.declementaPulosRestantes()
 
 
 	def getPerguntasRespondidas(self, usuario):
@@ -184,7 +200,8 @@ class Conteudo(Model):
 		except:
 			pontuacao = UsuarioPontuacao.objects.create(usuario_id = usuario.id,
 														conteudo_id = self.id,
-														pulosRestantes = self.getQuantPulosRestantes(usuario))
+														pulosMaximo = self.max_pulos,
+														pulosRestantes = self.max_pulos)
 			pontuacao.save()
 		return pontuacao.pontos
 
@@ -328,6 +345,7 @@ class UsuarioPontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo")
 	pontos = models.IntegerField(default=0, verbose_name="Pontos",null=True , blank=True)
+	pulosMaximo = models.IntegerField(default=0, verbose_name="Pulos Maximo", null= True, blank=True)
 	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos Restantes", null= True, blank=True)
 
 	def __unicode__(self):
@@ -337,9 +355,14 @@ class UsuarioPontuacao(Model):
 		self.pontos += valor
 		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
 
-	def inclementaPulos(self):
+	def inclementaPulosRestantes(self):
 		self.pulosRestantes += 1 
 		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
+
+	def inclementaPulosMaximo(self):
+		self.pulosMaximo += 1
+		UsuarioPontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
+		self.inclementaPulosRestantes(self)
 
 	def declementaPontos(self,valor):
 		self.pontos -= valor
@@ -348,11 +371,19 @@ class UsuarioPontuacao(Model):
 
 		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
 
-	def declementaPulos(self):
+	def declementaPulosRestantes(self):
 		self.pulosRestantes -= 1
 		if self.pulosRestantes < 0:
 			self.pulosRestantes = 0
 		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
+
+	def declementaPulosMaximo(self):
+		self.pulosMaximo -= 1
+		if self.pulosMaximo < 0:
+			self.pulosMaximo = 0
+		UsuarioPontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
+		self.declementaPulosRestantes()
+
 
 
 
