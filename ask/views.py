@@ -166,10 +166,10 @@ def secundario(request, tema_conteudo):
 			else:
 				#Se Mesmo Errando, a pergunta nao tiver uma proxima pergunta
 				if pergunta.pergunta_proximo_errou == None:
-					perguntas_erradas = getPerguntasErradas(usuario.id, conteudo.id)
+					perguntas_restantes =  conteudo.getPerguntasRestantes(usuario)
 
-					while len(perguntas_erradas) > 1:
-						p = perguntas_erradas.pop()
+					while len(perguntas_restantes) > 1:
+						p = perguntas_restantes.pop()
 						if p.id != pergunta.id:
 							pergunta = p
 							break
@@ -203,7 +203,7 @@ def secundario(request, tema_conteudo):
 						pergunta = perguntas_erradas.pop()
 
 		#Isso Sempre e executa
-		if len(conteudo.getPerguntasNaoRespondidas(usuario)) == 0:
+		if len(conteudo.getPerguntasRestantes(usuario)) == 0:
 			print 'Conteudo Terminado Com Exito : linha 215'
 			return render(request, 'usuario/avisos/conteudo_terminado.php', locals())
 		
@@ -533,7 +533,7 @@ def pulo(request,id_conteudo, id_pergunta):
 			conteudo = Conteudo.objects.get(id = id_conteudo)
 		except:
 			return HttpResponse("500")
-		
+
 		conteudo.declementaPulosRestantes(usuario)
 		return HttpResponse("200")
 		
