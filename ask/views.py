@@ -256,8 +256,14 @@ def secundario(request, tema_conteudo):
 		if pergunta.ajuda != None:
 			existeAjuda = True
 
-		secao = Secao.objects.create(usuario_id = usuario.id, conteudo_id = conteudo.id)
-		secao.save()
+		try:
+			secao = Secao.objects.get(usuario_id = usuario.id, 
+									  conteudo_id = conteudo.id,
+									  fim = None)
+		except:
+			print 'Nao Existe secao Aberta'
+			secao = Secao.objects.create(usuario_id = usuario.id, conteudo_id = conteudo.id)
+			secao.save()
 
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
