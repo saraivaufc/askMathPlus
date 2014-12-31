@@ -60,12 +60,16 @@
 								<tr>
 									<td class="text-center">PONTOS ACUMULADOS</td>
 									<td class="text-center">QUESTOES CORRETAS</td>
+									<td class="text-center">TOTAL DE QUESTOES</td>
 									<td class="text-center">SALTOS REALIZADOS</td>
+									<td class="text-center">SALTOS DISPONIVEIS</td>
 								</tr>
 								<tr>
 									<td class="text-center">{{ pontosAcumulados }}</td>
-									<td class="text-center">{{ perguntasCertas }}/{{ perguntasTotal }}</td>
-									<td class="text-center">{{ pulosRealizados }}/{{ pulosMaximo }}</td>
+									<td class="text-center">{{ perguntasCertas }}</td>
+									<td class="text-center">{{ perguntasTotal }}</td>		
+									<td class="text-center">{{ pulosRealizados }}</td>
+									<td class="text-center">{{ pulosDisponiveis }}</td>
 								</tr>
 							</table>
 						</div>
