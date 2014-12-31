@@ -234,15 +234,16 @@ def secundario(request, tema_conteudo):
 		perguntasTotal = (conteudo.getQuantPerguntasTotal())
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
-		perguntasRespondidas = len(conteudo.getPerguntasRespondidas(usuario))
-		perguntasNaoRespondidas = len(conteudo.getPerguntasNaoRespondidas(usuario))
 		perguntasRestantes = len(conteudo.getPerguntasRestantes(usuario))
 		perguntasCertas = len(conteudo.getPerguntasCertas(usuario))
-		perguntasErradas = len(conteudo.getPerguntasErradas(usuario))
 		perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
-		vezPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		perguntasSaltadas = conteudo.getPerguntasPuladasExclude(usuario, pergunta.id)
+		try:
+			pulosMaximo = (UsuarioPontuacao.objects.get(usuario = usuario.id,
+												   conteudo = conteudo.id)).pulosMaximo
+		except:
+			pulosMaximo = conteudo.max_pulos
 
 		existePular = False
 		if pulosDisponiveis > 0:

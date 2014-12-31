@@ -65,7 +65,7 @@
 								<tr>
 									<td class="text-center">{{ pontosAcumulados }}</td>
 									<td class="text-center">{{ perguntasCertas }}/{{ perguntasTotal }}</td>
-									<td class="text-center">{{ pulosRealizados }}/{{ pulosDisponiveis }}</td>
+									<td class="text-center">{{ pulosRealizados }}/{{ pulosMaximo }}</td>
 								</tr>
 							</table>
 						</div>
