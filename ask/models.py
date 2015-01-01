@@ -25,7 +25,7 @@ class Turma(Model):
 
 
 class Usuario(User):
-	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma")
+	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL)
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.first_name +" " + self.last_name
@@ -216,7 +216,7 @@ class Conteudo(Model):
 
 	
 class Pergunta(Model):
-	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence")
+	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL)
 	descricao = models.TextField(verbose_name="Descrição")
 	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL)
 	pergunta_proximo_acertou = models.ForeignKey('Pergunta' ,related_name="proximo_acertou" , null=True , blank=True, verbose_name="Pergunta Proximo Acertou", on_delete = models.SET_NULL)
@@ -227,7 +227,7 @@ class Pergunta(Model):
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.getDescricao()
 	class Meta:
-		ordering = ['-criacao']
+		ordering = ['-conteudo_pertence']
 
 	def pediuAjuda(self, usuario):
 		b = Busca_Ajuda.objects.create(
@@ -303,7 +303,7 @@ class Historico(Model):
 	turma = models.ForeignKey(Turma, verbose_name="Turma")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
-	item = models.ForeignKey(Item, verbose_name="Item")
+	item = models.ForeignKey(Item, verbose_name="Item",null=True , blank=True, on_delete = models.SET_NULL)
 	acertou = models.BooleanField(default=False, verbose_name="Acertou")
 
 	def __unicode__(self):
@@ -341,7 +341,7 @@ class Pulo(Model):
 	turma  = models.ForeignKey(Turma, verbose_name="Turma")
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo , verbose_name="Conteudo")
-	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
+	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", null=True , blank=True, on_delete = models.SET_NULL)
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  str(self.usuario)
