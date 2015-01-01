@@ -100,7 +100,7 @@
 	{% block rodape_all %}
 	<footer id="rodape">
 		{% block rodape %}
-			<center id="creditos">AskMath | Copyright &copy; 2014-2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</center>
+			<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTIQX</center>
 		{% endblock %}
 	</footer>
 	{% endblock %}
