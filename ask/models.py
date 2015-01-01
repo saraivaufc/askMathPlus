@@ -12,7 +12,6 @@ class Model(models.Model):
 	def __unicode__(self):
 		return format(self.criacao, "%d/%m/%Y %H:%M:%S")
 
-
 class Turma(Model):
 	nome = models.CharField(max_length=255 , verbose_name="Nome")
 	semestre = models.FloatField(verbose_name="Semestre");
