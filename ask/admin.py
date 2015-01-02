@@ -166,8 +166,8 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
 class AjudaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('descricao',
-        	   			 'conteudo',
+        (None,{'fields':('conteudo',
+        				 'descricao',
         				)
         	  }
         ),
