@@ -272,7 +272,7 @@ class Pergunta(Model):
 class Item(Model):
 	descricao = models.TextField(verbose_name="Descrição")
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
-
+	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL)
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.descricao 
 	
@@ -281,12 +281,25 @@ class Item(Model):
 
 
 
+class Deficiencia(Model):
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
+	descricao = models.TextField(verbose_name="Descrição")
+
+	def __unicode__(self):
+		return str(self.id) + ": " +  self.descricao 
+	
+	class Meta:
+		ordering = ['-conteudo']	
+
+
+
 class Ajuda(Model):
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
 	descricao = models.TextField(verbose_name="Descrição")
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.descricao
 	class Meta:
-		ordering = ['-criacao']
+		ordering = ['-conteudo']
 
 class Busca_Ajuda(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")

@@ -403,17 +403,11 @@ body{
 	margin: 0 5px 0 5px;
 	padding:2px;
 	font-size: 120%;
-
-	border:0px solid #ffffff;
-	box-shadow: 3px 3px 3px 3px;
 }
 
 .tileLargo{
 	width:305px;
 	cursor: pointer;
-
-	border:0px solid #ffffff;
-	box-shadow: 3px 3px 3px 3px;
 }
 
 .tile .tileLargo{

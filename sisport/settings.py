@@ -68,6 +68,12 @@ DATABASES = {
 
 LANGUAGE_CODE = 'pt-br'
 
+LANGUAGES = (
+    ('pt-br', u'Português'),
+    ('en', u'Inglês'),
+    ('es', u'Espanhol'),
+)
+
 TIME_ZONE = 'America/Fortaleza'
 
 AUTH_USER_MODEL = 'spirit_user_profile.User'

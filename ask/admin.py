@@ -84,12 +84,28 @@ class ItemAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('pergunta_pertence',
         			      'descricao',
+        			      'deficiencia',
         				)
         	  }
         ),
 	)
-	list_display = ('id','pergunta_pertence','descricao','criacao',  )
-	raw_id_fields = ('pergunta_pertence',)
+	list_display = ('id','pergunta_pertence','descricao','deficiencia','criacao',  )
+	raw_id_fields = ('pergunta_pertence','deficiencia')
+	save_as = True
+	search_fields = ['descricao']
+
+@admin.register(Deficiencia)
+class DeficienciaAdmin(admin.ModelAdmin):
+	date_hierarchy = 'criacao'
+	fieldsets = (
+        (None,{'fields':('conteudo',
+        			      'descricao',
+        				)
+        	  }
+        ),
+	)
+	list_display = ('id','conteudo','descricao','criacao',  )
+	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
 
@@ -151,12 +167,14 @@ class AjudaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
         (None,{'fields':('descricao',
+        	   			 'conteudo',
         				)
         	  }
         ),
 	)
-	list_display = ('id','descricao', 'criacao',
+	list_display = ('id','descricao','conteudo', 'criacao',
 					)
+	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
 
