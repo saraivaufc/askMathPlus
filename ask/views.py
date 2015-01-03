@@ -128,59 +128,40 @@ def secundario(request, tema_conteudo):
 				pergunta.acertou(usuario)
 				pontosAcumulados = conteudo.getQuantPontos(usuario)
 
-				print 'acertou'
-				#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
-				if pergunta.pergunta_proximo_acertou == None:
-					perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
-					# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
-					if len(perguntas_erradas) == 0:
-						print 'Conteudo Terminado Com Exito : linha 154'
-						return conteudoTerminado(request, locals())
+			#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
+			if pergunta.pergunta_proximo == None:
+				perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
-
-					# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
-					else:
-						while len(perguntas_erradas) > 0:
-							p = perguntas_erradas.pop()
-							if p.id != pergunta.id:
-								pergunta = p
-								break
-
-
-				#Mas se Ele tiver uma Pergunta Proxima
+				# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
+				if len(perguntas_erradas) == 0:
+					print 'Conteudo Terminado Com Exito : linha 154'
+					return conteudoTerminado(request, locals())
+				# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 				else:
-					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
-					if len(conteudo.getPerguntasRestantes(usuario)) <= 0:
-						print 'Conteudo Terminado Com Exito : linha 169'
-						return conteudoTerminado(request, locals())
-					else:
-						#Se a pergunta ja estiver sido respondidade corretaente
-						try:
-							his = Historico.objects.get(usuario = usuario.id,
-											 	 conteudo = conteudo.id,
-											 	 pergunta = pergunta.id,
-												  acertou = True,)
-							pergunta = conteudo.getPerguntasRestantes(usuario)[0]
-						#se a pergunta ainda nao tiver sido respondidade corretamente
-						except:
-							print "Pulei para a proxima"
-
-			#Se Ele Nao Respondeu A Pergunta Corretamente
-			else:
-				#Se Mesmo Errando, a pergunta nao tiver uma proxima pergunta
-				if pergunta.pergunta_proximo_errou == None:
-					perguntas_restantes =  conteudo.getPerguntasRestantes(usuario)
-
-					while len(perguntas_restantes) > 1:
-						p = perguntas_restantes.pop()
+					while len(perguntas_erradas) > 0:
+						p = perguntas_erradas.pop()
 						if p.id != pergunta.id:
 							pergunta = p
 							break
 
-				#Mas se Ele tiver uma Pergunta Proxima
+			#Mas se Ele tiver uma Pergunta Proxima
+			else:
+				pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
+				if len(conteudo.getPerguntasRestantes(usuario)) <= 0:
+					print 'Conteudo Terminado Com Exito : linha 169'
+					return conteudoTerminado(request, locals())
 				else:
-					pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_errou_id)
+					#Se a pergunta ja estiver sido respondidade corretaente
+					try:
+						his = Historico.objects.get(usuario = usuario.id,
+										 	 conteudo = conteudo.id,
+										 	 pergunta = pergunta.id,
+											  acertou = True,)
+						pergunta = conteudo.getPerguntasRestantes(usuario)[0]
+					#se a pergunta ainda nao tiver sido respondidade corretamente
+					except:
+						print "Pulei para a proxima"
 
 
 		# Se o Metodo nao for Post
@@ -404,7 +385,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 			return HttpResponse("None")
 
 		#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
-		if pergunta.pergunta_proximo_acertou == None:
+		if pergunta.pergunta_proximo == None:
 			perguntas_erradas =  conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
@@ -424,7 +405,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 
 		#Mas se Ele tiver uma Pergunta Proxima
 		else:
-			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_acertou_id)
+			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo)
 
 		atualiza_estado(usuario.id, conteudo.id, pergunta.id)
 		return HttpResponseRedirect("/principal/" +  transform_tema_revert(conteudo.tema))

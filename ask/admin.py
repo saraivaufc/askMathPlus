@@ -65,16 +65,15 @@ class PerguntaAdmin(admin.ModelAdmin):
         (None,{'fields':('conteudo_pertence',
         			      'descricao',
         				  'item_correto',
-        				  'pergunta_proximo_acertou',
-        				  'pergunta_proximo_errou',
+        				  'pergunta_proximo',
         				  'ajuda',
         				  'pontos',
         				)
         	  }
         ),
 	)
-	list_display = ('id','conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo_acertou','pergunta_proximo_errou', 'ajuda','pontos' )
-	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo_acertou','pergunta_proximo_errou','ajuda')
+	list_display = ('id','conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo', 'ajuda','pontos' )
+	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo','ajuda')
 	save_as = True
 	search_fields = ['descricao']
 

@@ -49,17 +49,17 @@ WSGI_APPLICATION = 'sisport.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'SQLite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    #'Postgres' : {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'sisport',                      
-    #    'USER': 'postgres',
-    #    'PASSWORD': 'postgres',
-    #    'HOST': 'localhost'
-    #}
+    'default' : {
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'askmath',                      
+       'USER': 'postgres',
+       'PASSWORD': 'postgres',
+       'HOST': 'localhost'
+    }
     
 }
 

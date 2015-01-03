@@ -218,8 +218,7 @@ class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL)
 	descricao = models.TextField(verbose_name="Descrição")
 	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL)
-	pergunta_proximo_acertou = models.ForeignKey('Pergunta' ,related_name="proximo_acertou" , null=True , blank=True, verbose_name="Pergunta Proximo Acertou", on_delete = models.SET_NULL)
-	pergunta_proximo_errou = models.ForeignKey('Pergunta' ,related_name="proximo_errou" , null=True , blank=True, verbose_name="Pergunta Proximo Errou", on_delete = models.SET_NULL)
+	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL)
 	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL)
 	pontos = models.IntegerField(verbose_name="Pontos Valem")
 
