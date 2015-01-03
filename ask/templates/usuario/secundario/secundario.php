@@ -56,18 +56,18 @@
 
 				 	<div class="panel-footer">
 				 		<div  class="table-responsive">
-							<table class="table table-hover table-bordered table-condensed">
+							<table class="table table-bordered table-condensed">
 								<tr>
 									<td class="text-center">PONTOS ACUMULADOS</td>
-									<td class="text-center">QUESTOES CORRETAS</td>
 									<td class="text-center">TOTAL DE QUESTOES</td>
+									<td class="text-center">QUESTOES CORRETAS</td>
 									<td class="text-center">SALTOS REALIZADOS</td>
 									<td class="text-center">SALTOS DISPONIVEIS</td>
 								</tr>
 								<tr>
 									<td class="text-center">{{ pontosAcumulados }}</td>
-									<td class="text-center">{{ perguntasCertas }}</td>
-									<td class="text-center">{{ perguntasTotal }}</td>		
+									<td class="text-center">{{ perguntasTotal }}</td>
+									<td class="text-center">{{ perguntasCertas }}</td>		
 									<td class="text-center">{{ pulosRealizados }}</td>
 									<td class="text-center">{{ pulosDisponiveis }}</td>
 								</tr>

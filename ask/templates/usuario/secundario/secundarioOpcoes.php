@@ -15,19 +15,19 @@
 					 	<div class="panel-footer">
 					 		{%  block table-pontuacao-all %}
 					 		<div class="table-responsive">
-								<table class="table table-hover table-bordered">
+								<table class="table table-bordered">
 									{%  block table-pontuacao %}
 									<tr>
 										<td class="text-center">
 											NUMERO DE QUESTOES
 										</td>
 										<td class="text-center">
-											{{ conteudo.getQuantPerguntasTotal }}
+											SALTOS DISPONIVEIS
 										</td>
 									</tr>
 									<tr>
 										<td class="text-center">
-											SALTOS DISPONIVEIS
+											{{ conteudo.getQuantPerguntasTotal }}
 										</td>
 										<td class="text-center">
 											{{ conteudo.max_pulos }}

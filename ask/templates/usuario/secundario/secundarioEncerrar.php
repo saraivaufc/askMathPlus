@@ -21,13 +21,13 @@
 	</tr>
 	<tr>
 		<td class="text-center">
-			QUESTOES CORRETAS
+			VEZES QUE ACERTOU
 		</td>
 		<td class="text-center">
 			{{ questoesCorretas }}
 		</td>
 		<td class="text-center">
-			QUESTOES ERRADAS
+			VEZES QUE ERROU
 		</td>
 		<td class="text-center">
 			{{ questoesErradas }}
