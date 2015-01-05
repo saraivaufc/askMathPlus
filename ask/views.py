@@ -133,7 +133,7 @@ def secundario(request, tema_conteudo):
 				perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
 				# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
-				if len(perguntas_erradas) == 0:
+				if len(perguntas_erradas ) == 0:
 					print 'Conteudo Terminado Com Exito : linha 154'
 					return conteudoTerminado(request, locals())
 				# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
