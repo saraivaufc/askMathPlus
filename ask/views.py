@@ -385,7 +385,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 			return HttpResponse("None")
 
 		#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
-		if pergunta.pergunta_proximo == None:
+		if pergunta.pergunta_proximo_id == None:
 			perguntas_erradas =  conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
@@ -398,14 +398,13 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 				while len(perguntas_erradas) > 0:
 					p = perguntas_erradas.pop()
 					if p.id != pergunta.id:
-						print 'buceta'
 						pergunta = p
 						break
 
 
 		#Mas se Ele tiver uma Pergunta Proxima
 		else:
-			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo)
+			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
 
 		atualiza_estado(usuario.id, conteudo.id, pergunta.id)
 		return HttpResponseRedirect("/principal/" +  transform_tema_revert(conteudo.tema))
