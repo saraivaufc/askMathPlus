@@ -161,8 +161,6 @@
 		</center>
 		{% include 'usuario/modals/questoesSaltadas.php' %}
 		{% include 'usuario/modals/ajuda.php' %}
-		{% include 'usuario/modals/acertou.php' %}
-		{% include 'usuario/modals/errou.php' %}
 
 </div>
 

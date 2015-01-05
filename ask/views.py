@@ -128,8 +128,7 @@ def secundario(request, tema_conteudo):
 				pergunta.acertou(usuario)
 				pontosAcumulados = conteudo.getQuantPontos(usuario)
 
-
-			#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
+				#Se pergunta nao tiver uma proxima pergunta
 			if pergunta.pergunta_proximo == None:
 				perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
@@ -148,20 +147,15 @@ def secundario(request, tema_conteudo):
 			#Mas se Ele tiver uma Pergunta Proxima
 			else:
 				pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
-				if len(conteudo.getPerguntasRestantes(usuario)) <= 0:
-					print 'Conteudo Terminado Com Exito : linha 169'
-					return conteudoTerminado(request, locals())
-				else:
-					#Se a pergunta ja estiver sido respondidade corretaente
-					try:
-						his = Historico.objects.get(usuario = usuario.id,
-										 	 conteudo = conteudo.id,
-										 	 pergunta = pergunta.id,
-											  acertou = True,)
-						pergunta = conteudo.getPerguntasRestantes(usuario)[0]
-					#se a pergunta ainda nao tiver sido respondidade corretamente
-					except:
-						print "Pulei para a proxima"
+				perguntas_certas = conteudo.getPerguntasCertas(usuario)
+				respondida_certa = False
+				for i in perguntas_certas:
+					if i.id == pergunta.id:
+						respondida_certa = True
+				if respondida_certa:
+					request.POST = request.POST.copy()
+					request.POST['pergunta_atual'] = pergunta.id
+					return secundario(request,tema_conteudo)
 
 
 		# Se o Metodo nao for Post
@@ -196,14 +190,14 @@ def secundario(request, tema_conteudo):
 		try:
 			estado = Estado_Usuario.objects.filter(usuario = usuario.id, conteudo = conteudo.id)[0]
 			Estado_Usuario.objects.filter(id = estado.id).update(pergunta = pergunta.id)
-			print 'Conteguiu Econtrar o Estado_Usuario linha 220'
+			print 'Conteguiu Econtrar o Estado_Usuario linha 199'
 		except:
-			print 'Erro ao buscar Estado_Usuario linha 222'
+			print 'Erro ao buscar Estado_Usuario linha 202'
 
 			atualiza_estado(usuario.id,conteudo.id, pergunta.id)
 
 		itens = Item.objects.filter(pergunta_pertence = pergunta.id)
-		print 'Response Padrao Caso nao Entre no Post : linha 227'
+		print 'Response Padrao Caso nao Entre no Post : linha 206'
 
 		try:
 			his = Historico.objects.all()[0]
