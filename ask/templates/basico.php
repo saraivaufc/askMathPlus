@@ -24,14 +24,16 @@
     <!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type="text/javascript" src="/static/javascript/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="/static/javascript/latexit.js"></script>
 	<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
 	<script type="text/javascript" src="/static/javascript/metro.js" ></script>
 	<script type="text/javascript" src="/static/javascript/editor.js"></script>
-	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/static/javascript/jquery.jscrollpane.min.js"></script>
 	<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
+
+	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap/js/bootbox.min.js"></script>
 
 	<script type="text/javascript">
         {% block funcoes %}

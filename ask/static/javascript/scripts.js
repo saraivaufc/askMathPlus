@@ -35,13 +35,34 @@ $(document).ready(function(){
 		var res = verificarAcerto();
 		var corContinuar;
 		if(res){
-			alert("Voce Acertou!!!");
+			bootbox.dialog({
+			closeButton: false,
+			message: '<h2 class="text-center" >Sua resposta esta certa!!!</h2>',
+			buttons: {
+				success: {
+					label: "Continuar",
+					className: "btn-success",
+					callback: function() {
+						$("#perguntas").submit();
+					}
+				}
+			}
+			}).find('.modal-content').css({'color': 'green', 'font-weight':'bold'});
 		}else{
-			alert("Voce Errou!!!");
+			bootbox.dialog({
+			closeButton: false,
+			message: '<h2 class="text-center" >Sua resposta esta errada!!!</h2>',
+			buttons: {
+				success: {
+					label: "Continuar",
+					className: "btn-success",
+					callback: function() {
+						$("#perguntas").submit();
+					}
+				}
+			}
+			}).find('.modal-content').css({'color': 'red', 'font-weight':'bold'});   
 		};
-
-		$("#perguntas").submit();
-
 	});
 
 	$("#pular").click(function(){
