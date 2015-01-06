@@ -39,7 +39,6 @@ def login(request, **kwargs):
 	
 	return login_view(request, authentication_form=LoginForm, **kwargs)
 
-
 def login_falha(request):
 	return render(request , 'login/login_falha.php' , locals())
 
@@ -128,7 +127,11 @@ def secundario(request, tema_conteudo):
 				pergunta.acertou(usuario)
 				pontosAcumulados = conteudo.getQuantPontos(usuario)
 
-				#Se pergunta nao tiver uma proxima pergunta
+			#agora se ele errou a pergunta
+			else:
+				pergunta.errou(usuario)
+
+			#Se pergunta nao tiver uma proxima pergunta
 			if pergunta.pergunta_proximo == None:
 				perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
@@ -153,9 +156,12 @@ def secundario(request, tema_conteudo):
 					if i.id == pergunta.id:
 						respondida_certa = True
 				if respondida_certa:
-					request.POST = request.POST.copy()
-					request.POST['pergunta_atual'] = pergunta.id
-					return secundario(request,tema_conteudo)
+					perguntasRestantes = conteudo.getPerguntasRestantes(usuario)
+					if len(perguntasRestantes) > 0:
+						pergunta = perguntasRestantes[0]
+					else:
+						return conteudoTerminado(request, locals())
+
 
 
 		# Se o Metodo nao for Post
@@ -215,7 +221,7 @@ def secundario(request, tema_conteudo):
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		perguntasSaltadas = conteudo.getPerguntasPuladasExclude(usuario, pergunta.id)
 		try:
-			pulosMaximo = (UsuarioPontuacao.objects.get(usuario = usuario.id,
+			pulosMaximo = (Pontuacao.objects.get(usuario = usuario.id,
 												   conteudo = conteudo.id)).pulosMaximo
 		except:
 			pulosMaximo = conteudo.max_pulos
@@ -244,7 +250,6 @@ def secundario(request, tema_conteudo):
 		return render(request , 'usuario/secundario/secundario.php' , locals())
 	else:
 		return HttpResponseRedirect('/login/')
-
 
 def secundarioOpcoes(request, tema_conteudo):
 	if request.user.is_authenticated():
@@ -284,7 +289,6 @@ def secundarioOpcoes(request, tema_conteudo):
 	else:
 		return HttpResponseRedirect('/login/')
 
-
 def secundarioEncerrar(request, tema_conteudo):
 	if request.user.is_authenticated():
 
@@ -315,7 +319,6 @@ def secundarioEncerrar(request, tema_conteudo):
 	else:
 		return HttpResponseRedirect('/login/')
 
-
 def fecharSecaoaberta(usuario):
 	try:
 		secao = Secao.objects.filter(usuario = usuario.id).order_by('-inicio');
@@ -329,7 +332,6 @@ def fecharSecaoaberta(usuario):
 def conteudoTerminado(request, vars):
 	fecharSecaoaberta(vars['usuario'])
 	return render(request, 'usuario/avisos/conteudo_terminado.php', vars)
-
 
 def irPergunta(request, pergunta_id):
 	if request.user.is_authenticated():
@@ -345,7 +347,6 @@ def irPergunta(request, pergunta_id):
 
 	else:
 		return HttpResponseRedirect('/login/')
-
 
 def acertouPergunta(usuario_id, pergunta_id):
 	perguntas_certas = Historico.objects.filter(usuario_id = usuario_id, acertou = True)
@@ -495,13 +496,11 @@ def contato(request):
 	else:
 		return HttpResponseRedirect('/login/')
 
-
 def is_logado(request):
 	if request.user.is_authenticated():
 		return HttpResponse("1")
 	else:
 		return HttpResponse("0")
-
 
 def getAjuda(request, pergunta_id):
 	if request.user.is_authenticated():

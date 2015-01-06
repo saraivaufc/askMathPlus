@@ -22,13 +22,11 @@ class Turma(Model):
 	class Meta:
 		ordering = ['-semestre']
 
-
 class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL)
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.first_name +" " + self.last_name
-
 
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma")
@@ -70,9 +68,9 @@ class Conteudo(Model):
 
 	def getQuantPulosRestantes(self, usuario):
 		try:
-			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+			pulos = Pontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		except:
-			pulos = UsuarioPontuacao.objects.create(
+			pulos = Pontuacao.objects.create(
 				usuario_id = usuario.id,
 				conteudo_id = self.id,
 				pulosMaximo = self.max_pulos,
@@ -85,7 +83,7 @@ class Conteudo(Model):
 
 	def inclementaPulosRestantes(self, usuario):
 		try:
-			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+			pulos = Pontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		except:
 			print "Impossivel encontrar Pontuacao em Inclementar Pulos Restantes"
 			return
@@ -93,7 +91,7 @@ class Conteudo(Model):
 
 	def declementaPulosRestantes(self, usuario):
 		try:
-			pulos = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
+			pulos = Pontuacao.objects.get(usuario = usuario.id, conteudo = self.id)
 		except:
 			print "Impossivel encontrar Pontuacao em Declementar Pulos Restantes"
 			return
@@ -201,18 +199,16 @@ class Conteudo(Model):
 
 	def getQuantPontos(self, usuario):
 		try:
-			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id,
+			pontuacao = Pontuacao.objects.get(usuario = usuario.id,
 													 conteudo = self.id,
 													 )
 		except:
-			pontuacao = UsuarioPontuacao.objects.create(usuario_id = usuario.id,
+			pontuacao = Pontuacao.objects.create(usuario_id = usuario.id,
 														conteudo_id = self.id,
 														pulosMaximo = self.max_pulos,
 														pulosRestantes = self.max_pulos)
 			pontuacao.save()
 		return pontuacao.pontos
-
-
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL)
@@ -251,9 +247,9 @@ class Pergunta(Model):
 	def acertou(self, usuario):
 		pontuacao = None
 		try:
-			pontuacao = UsuarioPontuacao.objects.get(usuario = usuario.id, conteudo = self.conteudo_pertence )
+			pontuacao = Pontuacao.objects.get(usuario = usuario.id, conteudo = self.conteudo_pertence )
 		except:
-			pontuacao = UsuarioPontuacao.objects.create(
+			pontuacao = Pontuacao.objects.create(
 				usuario = usuario.id,
 				conteudo = self.conteudo_pertence,
 				pulosRestantes = (Conteudo.objects.get(id = self.conteudo_pertence)).max_pulos,
@@ -261,11 +257,27 @@ class Pergunta(Model):
 			pontuacao.save()
 		finally:
 			pontuacao.inclementaPontos(self.pontos)
+			#Como ele acertou a questao, entao aumentamos a quantidade de acertos seguintos e 
+			# zeramos a quantidade de erros seguindos
+			pontuacao.inclementaAcertosSeguidos()
+			pontuacao.zerarErrosSeguidos()
 
-
-
-
-
+	def errou(self, usuario):
+		pontuacao = None
+		try:
+			pontuacao = Pontuacao.objects.get(usuario = usuario.id, conteudo = self.conteudo_pertence )
+		except:
+			pontuacao = Pontuacao.objects.create(
+				usuario = usuario.id,
+				conteudo = self.conteudo_pertence,
+				pulosRestantes = (Conteudo.objects.get(id = self.conteudo_pertence)).max_pulos,
+			)
+			pontuacao.save()
+		finally:
+			#Como ele errou a questao, entao aumentamos a quantidade de erros seguintos e 
+			# zeramos a quantidade de acertos seguindos
+			pontuacao.inclementaErrosSeguidos()
+			pontuacao.zerarAcertosSeguidos()
 
 
 class Item(Model):
@@ -278,8 +290,6 @@ class Item(Model):
 	class Meta:
 		ordering = ['-criacao']
 
-
-
 class Deficiencia(Model):
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
 	descricao = models.TextField(verbose_name="Descrição")
@@ -289,8 +299,6 @@ class Deficiencia(Model):
 	
 	class Meta:
 		ordering = ['-conteudo']	
-
-
 
 class Ajuda(Model):
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
@@ -334,9 +342,6 @@ class Historico(Model):
 				recente.append(i)
 		return recente
 
-
-
-
 class Estado_Usuario(Model):
 	turma  = models.ForeignKey(Turma, verbose_name="Turma")
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
@@ -359,49 +364,76 @@ class Pulo(Model):
 	class Meta:
 		ordering = ['usuario']
 
-
-class UsuarioPontuacao(Model):
+class Pontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo")
-	pontos = models.IntegerField(default=0, verbose_name="Pontos",null=True , blank=True)
+	pontos = models.IntegerField(default=0, verbose_name="Pontos", null= True, blank=True)
 	pulosMaximo = models.IntegerField(default=0, verbose_name="Pulos Maximo", null= True, blank=True)
 	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos Restantes", null= True, blank=True)
+
+	acertos_seguidos = models.IntegerField(default=0, verbose_name="Acertos Seguidos", null= True, blank=True)
+	erros_seguidos = models.IntegerField(default=0, verbose_name="Erros Seguidos", null= True, blank=True)
+
 
 	def __unicode__(self):
 		return str(self.id) + ": " + str(self.usuario)
 
 	def inclementaPontos(self,valor):
 		self.pontos += valor
-		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
+		Pontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
 
 	def inclementaPulosRestantes(self):
-		self.pulosRestantes += 1 
-		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
+		self.pulosRestantes += 1
+		Pontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
 
 	def inclementaPulosMaximo(self):
 		self.pulosMaximo += 1
-		UsuarioPontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
+		Pontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
 		self.inclementaPulosRestantes(self)
+
+	def inclementaAcertosSeguidos(self):
+		self.acertos_seguidos += 1
+		if self.acertos_seguidos == 3:
+			self.pontos += self.pontos
+			self.inclementaPulosRestantes()
+			Pontuacao.objects.filter(id = self.id).update(pontos = self.pontos, 
+														  pulosMaximo = self.pulosMaximo,
+														  pulosRestantes = self.pulosRestantes,
+														  acertos_seguidos = 0,
+														  )
+		else:
+			Pontuacao.objects.filter(id = self.id).update(acertos_seguidos = self.acertos_seguidos)
+
+	def inclementaErrosSeguidos(self):
+		self.erros_seguidos += 1
+		
+		Pontuacao.objects.filter(id = self.id).update(erros_seguidos = self.erros_seguidos)
 
 	def declementaPontos(self,valor):
 		self.pontos -= valor
 		if self.pontos < 0:
 			self.pontos = 0
 
-		UsuarioPontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
+		Pontuacao.objects.filter(id = self.id).update(pontos = self.pontos)
 
 	def declementaPulosRestantes(self):
 		self.pulosRestantes -= 1
 		if self.pulosRestantes < 0:
 			self.pulosRestantes = 0
-		UsuarioPontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
+		Pontuacao.objects.filter(id = self.id).update(pulosRestantes = self.pulosRestantes)
 
 	def declementaPulosMaximo(self):
 		self.pulosMaximo -= 1
 		if self.pulosMaximo < 0:
 			self.pulosMaximo = 0
-		UsuarioPontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
+		Pontuacao.objects.filter(id = self.id).update(pulosMaximo = self.pulosMaximo)
 		self.declementaPulosRestantes()
+
+	def zerarAcertosSeguidos(self):
+		Pontuacao.objects.filter(id = self.id).update(acertos_seguidos = 0)
+
+	def zerarErrosSeguidos(self):
+		Pontuacao.objects.filter(id = self.id).update(erros_seguidos = 0)
 
 class Secao(models.Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")

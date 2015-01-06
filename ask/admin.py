@@ -221,8 +221,8 @@ class PuloAdmin(admin.ModelAdmin):
 	search_fields = ['usuario']
 
 
-@admin.register(UsuarioPontuacao)
-class UsuarioPontuacaoAdmin(admin.ModelAdmin):
+@admin.register(Pontuacao)
+class PontuacaoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
         (None,{'fields':('usuario',
@@ -235,7 +235,9 @@ class UsuarioPontuacaoAdmin(admin.ModelAdmin):
 			      	'conteudo',
 				  	'pontos',
 				  	'pulosMaximo',
-				  	'pulosRestantes')
+				  	'pulosRestantes',
+				  	'acertos_seguidos',
+				  	'erros_seguidos')
 
 	raw_id_fields = ('usuario',
     			     'conteudo',)
