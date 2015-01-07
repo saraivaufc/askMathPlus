@@ -4,6 +4,10 @@
 	<h3>Seu Andamento na Liçao</h3>
 {% endblock %}
 
+
+{% block funcoes %}{% endblock %}
+
+
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">

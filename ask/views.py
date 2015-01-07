@@ -584,6 +584,20 @@ def string_to_latex(s):
 		
 	return res
 
+def ganhou_bonus(request, id_conteudo):
+	if request.user.is_authenticated():
+		usuario = Usuario.objects.get(username = request.user)
+		pontuacao = None
+		try:
+			pontuacao = Pontuacao.objects.get(usuario_id = usuario.id, conteudo_id = id_conteudo)
+		except:
+			return HttpResponse("False")
 
+		if pontuacao.ganhou_bonus == True:
+			Pontuacao.objects.filter(id = pontuacao.id).update(ganhou_bonus = False)
+			return HttpResponse("True")
+		else:
+			return HttpResponse("False")
 
-
+	else:
+		return HttpResponse("500")

@@ -370,7 +370,7 @@ class Pontuacao(Model):
 	pontos = models.IntegerField(default=0, verbose_name="Pontos", null= True, blank=True)
 	pulosMaximo = models.IntegerField(default=0, verbose_name="Pulos Maximo", null= True, blank=True)
 	pulosRestantes = models.IntegerField(default=0, verbose_name="Pulos Restantes", null= True, blank=True)
-
+	ganhou_bonus = models.BooleanField(default = False, verbose_name="Ganhou Bonus", blank=True)
 	acertos_seguidos = models.IntegerField(default=0, verbose_name="Acertos Seguidos", null= True, blank=True)
 	erros_seguidos = models.IntegerField(default=0, verbose_name="Erros Seguidos", null= True, blank=True)
 
@@ -396,17 +396,21 @@ class Pontuacao(Model):
 		if self.acertos_seguidos == 3:
 			self.pontos += self.pontos
 			self.inclementaPulosRestantes()
-			Pontuacao.objects.filter(id = self.id).update(pontos = self.pontos, 
+			try:
+				Pontuacao.objects.filter(id = self.id).update(pontos = self.pontos, 
 														  pulosMaximo = self.pulosMaximo,
 														  pulosRestantes = self.pulosRestantes,
+														  ganhou_bonus = True,
 														  acertos_seguidos = 0,
 														  )
+			except:
+				return
 		else:
 			Pontuacao.objects.filter(id = self.id).update(acertos_seguidos = self.acertos_seguidos)
 
 	def inclementaErrosSeguidos(self):
 		self.erros_seguidos += 1
-		
+
 		Pontuacao.objects.filter(id = self.id).update(erros_seguidos = self.erros_seguidos)
 
 	def declementaPontos(self,valor):

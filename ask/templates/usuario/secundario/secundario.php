@@ -14,6 +14,21 @@
 		$(".jspPane").css("height", "100%");
 		$("#requisitos").css("height", "100%");
 
+		url = "/ganhou_bonus/" + $("#conteudo_atual").val()
+		$.ajax({
+			"url": url,
+			"type": "get",
+			"dataType": "html",
+			"success": function(data) {
+				if(data == "True"){
+					bootbox.alert("<h3 class='text-center'>Voce realizou 3 acertos consecutivos, com isso voce doblou seus pontos e ganhou mais 1 Salto!!!</h3>").find('.modal-content').css({'color': 'green', 'font-weight':'bold'});
+				}			
+			},
+			"error": function(jqXHR, status, error) {
+				alert("status:" + status + "error:" + error);
+				alert(url)
+			}
+		});	
 
 	});
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'usuario/secundario/secundario.php' %}
 
+{% block funcoes %}{% endblock %}
+
 {% block conteudo-right %}
 	<div class="font-dconteudo">
     	<div class="descricao-pergunta">

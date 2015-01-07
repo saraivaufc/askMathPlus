@@ -31,5 +31,7 @@ urlpatterns = patterns('',
 
     url(r'^pulo/(?P<id_conteudo>\d+)/(?P<id_pergunta>\d+)/$', pulo),
 
+    url(r'^ganhou_bonus/(?P<id_conteudo>\d+)/$', ganhou_bonus),
+
     url(r'^is_logado/$', is_logado),
 )
