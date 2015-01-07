@@ -65,46 +65,6 @@ $(document).ready(function(){
 		};
 	});
 
-	$("#pular").click(function(){
-		if(confirmPular() == false){
-			return;
-		}
-
-		var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
-		$.ajax({
-			"url": url,
-			"type": "get",
-			"dataType": "html",
-			async: false,
-			"success": function(data){
-				if(data == "None"){
-					alert("Pergunta nao Possui item Correto, contactar o Administrador...");	
-				}
-				url = "/pulo/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
-				$.ajax({
-					"url": url,
-					"type": "get",
-					"dataType": "html",
-					async: false,
-					"success": function(){
-
-					},
-					"error": function(jqXHR, status, error) {
-						alert(url);
-						alert(error);
-						
-					}
-				});
-				window.location = window.location;
-			},
-			"error": function(jqXHR, status, error) {
-				alert(error);
-				alert(url);
-			}
-		});
-	});
-
-
 	$("#ajuda").click(function(){
 		var valor = $("#pergunta_atual").val();
 		var url = "/ajuda/" + valor+"/";
@@ -114,8 +74,7 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
-			$("#ajuda_text").empty();
-			$("#ajuda_text").append(data);
+			$("#ajuda_text").empty().append(data);
 			var conteudo = $("#conteudo_atual").val();
 			url = "/busca_ajuda/" + conteudo + "/";
 			$.ajax({
@@ -127,8 +86,6 @@ $(document).ready(function(){
 				
 			});		
 		});
-
-
 	});
 
 });
@@ -185,10 +142,6 @@ function verificarAcerto(){
 	return res;
 };
 
-function confirmPular(){
-	return window.confirm("Deseja Pular a Pergunta?");
-}
-
 
 function sleep(millis){
 	var date = new Date();
@@ -197,3 +150,38 @@ function sleep(millis){
   		curDate = new Date(); 
   	}while(curDate-date < millis);
 }
+
+function pularPergunta(){
+	var url = "/atualiza_estado/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+	$.ajax({
+		"url": url,
+		"type": "get",
+		"dataType": "html",
+		async: false,
+		"success": function(data){
+			if(data == "None"){
+				bootbox.alert("Pergunta nao Possui item Correto, contactar o Administrador...");	
+			}
+			url = "/pulo/" + $("#conteudo_atual").val() + "/" + $("#pergunta_atual").val() + "/";
+			$.ajax({
+				"url": url,
+				"type": "get",
+				"dataType": "html",
+				async: false,
+				"success": function(){
+
+				},
+				"error": function(jqXHR, status, error) {
+					alert(url);
+					alert(error);
+					
+				}
+			});
+			window.location = window.location;
+		},
+		"error": function(jqXHR, status, error) {
+			alert(error);
+			alert(url);
+		}
+	});
+};

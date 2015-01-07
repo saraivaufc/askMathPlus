@@ -156,7 +156,7 @@
 				
 				{% if existePular %}
 				<div class="btn-group">
-					<button  type="button" id="pular"     class="btn btn-primary">Saltar</button>
+					<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">Saltar</button>
 				</div>
 				{% endif %}
 				{% if existePulos %}
@@ -179,6 +179,7 @@
 		{% include 'usuario/modals/questoesSaltadas.php' %}
 		{% include 'usuario/modals/ganhouBonus.php' %}
 		{% include 'usuario/modals/ajuda.php' %}
+		{% include 'usuario/modals/pularPergunta.php' %}
 
 </div>
 
