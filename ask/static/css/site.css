@@ -467,13 +467,16 @@ body{
 
 }
 
+#pontuacao h3{
+	color: #1E90FF;
+	font-style: italic;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px #000000;
+}
+
 #creditos{
 	color: #FFFFFF;
 	font-size: 125%;
-}
-
-.panel-title h3{
-	color: black;
 }
 
 #table-est{
@@ -484,7 +487,6 @@ body{
 .table-responsive table{
 	background-color: #BFBFBF;
 }
-
 
 #requisitos{
 	height: 60%;

@@ -3,7 +3,7 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 		    <div class="modal-body">
-		    	<div class="text-justify">
+		    	<div class="text-center">
 					<h3>Deseja Saltar Essa Pergunta?</h3>
 	      		</div>
 			</div>

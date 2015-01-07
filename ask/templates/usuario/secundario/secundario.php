@@ -42,7 +42,7 @@
     	<div class="descricao-conteudo">
         		<div class="panel-heading">
         			<div class="panel panel-info">
-					 	<div class="panel-title">
+					 	<div class="panel-title" id="tema-conteudo">
 							<center>
 				            	<h3>{{ conteudo.tema }}</h3>
 				          	</center>
@@ -65,15 +65,23 @@
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
 				<div class="panel panel-info">
-				 	<div class="panel-title pontuacao">
+					{%  block titulo-inicial-all %}
+				 	<div class="panel-title" id="pontuacao">
 				 		<center>
-					    		<h3>Essa Pergunta Vale {{ pergunta.pontos }} Pontos</h3>
+				 			<h3>
+				 			{%  block titulo-inicial %}
+					    		Essa Pergunta Vale {{ pergunta.pontos }} Pontos
+					    	{% endblock %}
+					    	</h3>
 					    </center>
 				  	</div>
+				  	{% endblock %}
 
 				 	<div class="panel-footer">
+				 		{%  block table-pontuacao-all %}
 				 		<div  class="table-responsive">
 							<table class="table table-bordered table-condensed">
+								{%  block table-pontuacao %}
 								<tr>
 									<td class="text-center">PONTOS ACUMULADOS</td>
 									<td class="text-center">TOTAL DE QUESTOES</td>
@@ -88,8 +96,12 @@
 									<td class="text-center">{{ pulosDisponiveis }}</td>		
 									<td class="text-center">{{ pulosRealizados }}</td>
 								</tr>
+								{% endblock %}
 							</table>
 						</div>
+						{% endblock %}
+
+						{% block outros-conteudos-all %}
 				  		<div class="espacamento">
 							  <t> {{ pergunta.descricao|safe }} </t>
 							<hr/>
@@ -111,6 +123,7 @@
 								</ol>
 							</form>
 				  		</div>
+				  		{% endblock %}
 				  	</div>
 			  	</div>
 			</div>
@@ -176,10 +189,12 @@
 		</div>
 		{% endblock %}
 		</center>
-		{% include 'usuario/modals/questoesSaltadas.php' %}
-		{% include 'usuario/modals/ganhouBonus.php' %}
-		{% include 'usuario/modals/ajuda.php' %}
-		{% include 'usuario/modals/pularPergunta.php' %}
+		{% block modals %}
+			{% include 'usuario/modals/questoesSaltadas.php' %}
+			{% include 'usuario/modals/ganhouBonus.php' %}
+			{% include 'usuario/modals/ajuda.php' %}
+			{% include 'usuario/modals/pularPergunta.php' %}
+		{% endblock %}
 
 </div>
 
