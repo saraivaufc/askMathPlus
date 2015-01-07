@@ -42,11 +42,13 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-sm-6">
-								<button  type="submit" class="form-control btn btn-primary" name="post">Entrar</button>
-							</div>
-							<div class="col-sm-6">
-								<button type="button" class="form-control btn  btn-primary"  onClick="document.location='/criarConta/'">Criar Conta</button>
+							<div class="btn-group btn-group-justified">
+								<div class="btn-group">
+									<button  type="submit" class="form-control btn btn-primary" name="post">Entrar</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="form-control btn  btn-primary"  onClick="document.location='/criarConta/'">Criar Conta</button>
+								</div>
 							</div>
 						</div>
 					</div>
