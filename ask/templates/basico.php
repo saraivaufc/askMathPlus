@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 
@@ -33,6 +34,7 @@
 	<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
 
 	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap/js/npm.js"></script>
 	<script type="text/javascript" src="/static/bootstrap/js/bootbox.min.js"></script>
 
 	<script type="text/javascript">
