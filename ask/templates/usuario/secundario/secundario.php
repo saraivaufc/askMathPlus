@@ -21,7 +21,9 @@
 			"dataType": "html",
 			"success": function(data) {
 				if(data == "True"){
-					bootbox.alert("<h3 class='text-center'>Voce realizou 3 acertos consecutivos, com isso voce doblou seus pontos e ganhou mais 1 Salto!!!</h3>").find('.modal-content').css({'color': 'green', 'font-weight':'bold'});
+					$('#ganhou_bonus_modal').modal({
+						keyboard: false
+					}).css({'color': 'green', 'font-weight':'bold'});
 				}			
 			},
 			"error": function(jqXHR, status, error) {
@@ -175,6 +177,7 @@
 		{% endblock %}
 		</center>
 		{% include 'usuario/modals/questoesSaltadas.php' %}
+		{% include 'usuario/modals/ganhouBonus.php' %}
 		{% include 'usuario/modals/ajuda.php' %}
 
 </div>

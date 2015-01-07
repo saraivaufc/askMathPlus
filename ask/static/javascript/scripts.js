@@ -37,7 +37,7 @@ $(document).ready(function(){
 		if(res){
 			bootbox.dialog({
 			closeButton: false,
-			message: '<h2 class="text-center" >Sua resposta esta certa!!!</h2>',
+			message: '<h2 class="text-center" >Sua resposta esta correta!!!</h2>',
 			buttons: {
 				success: {
 					label: "Continuar",
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		}else{
 			bootbox.dialog({
 			closeButton: false,
-			message: '<h2 class="text-center" >Sua resposta esta errada!!!</h2>',
+			message: '<h2 class="text-center" >Sua resposta esta incorreta!!!</h2>',
 			buttons: {
 				success: {
 					label: "Continuar",
@@ -104,9 +104,6 @@ $(document).ready(function(){
 		});
 	});
 
-	$("input[name='opcao']").click(function(){
-			$("#responder").removeAttr('disabled');
-	});
 
 	$("#ajuda").click(function(){
 		var valor = $("#pergunta_atual").val();
@@ -159,7 +156,12 @@ $(document).ready(function(){
     $('.descricao-pergunta').jScrollPane({showArrows: true});
 
 	$("#responder").attr('disabled', 'disabled');
+	
 	$("#li-botao").css({"margin-left": "5px" }); 	
+
+	$("input[name='opcao']").click(function(){
+			$("#responder").removeAttr('disabled');
+	});
 });
 
 function verificarAcerto(){

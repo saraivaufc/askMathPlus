@@ -3,7 +3,7 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header text-center">
-		        <h3 class="modal-title" id="myModalLabel">{{ conteudo.tema }}</h3>
+		        <h3 class="modal-title text-center" id="myModalLabel">{{ conteudo.tema }}</h3>
 		    </div>
 
 		    <div class="modal-body">
