@@ -110,12 +110,7 @@ body{
 	width:30%;
 }
 
-.form-group label{
-	font-weight: bold;
-	font-size: 120%;
-}
-
-.form h2{
+.form-login h2{
 	color: #1E90FF;
 	text-shadow: 1px 1px 0px #000000;
 }
@@ -144,40 +139,9 @@ body{
 
 
 
-
-
-
-
-.botao{
-	color: #FFFFFF;
-  	background-color: #428bca;
-  	border-color: #357ebd;
-	font-style:normal;
-}
-
-.botao:hover{
-	cursor:pointer;
-	position:relative;
-	top: -1px;
-	bottom:2px;
-	background: #ADD8E6;;
-	border:0px solid #ffffff;
-	box-shadow: 1px 3px 1px;
-}
-
-.botao-conteudo{
-	position: relative;
-	width:100%;
-	height:10%;
-}
-
 #comecar{
 	position: relative;
 	top: 40%;
-}
-
-#botao_concluido{
-	position: relative;
 }
 
 .btn-group .btn{
@@ -297,7 +261,6 @@ body{
 .text-align-center:{
 	text-align: center;
 }
-
 .show {
   display: block !important;
 }

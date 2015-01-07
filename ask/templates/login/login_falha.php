@@ -16,7 +16,7 @@
 				<center><h1>Falha ao Efetuar Login</h1>
 			</div>
 		<center>
-			<button class="btn botao caixa botao-1" onClick="document.location='/login/' ">Tentar Novamente</button>
+			<button class="btn btn-primary caixa botao-1" onClick="document.location='/login/' ">Tentar Novamente</button>
 		</center>
 	</div>
 </div>

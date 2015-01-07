@@ -73,7 +73,7 @@
 			</div>
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
-					Continuar com Licao
+					Continuar
 				</button>
 			</div>
 		</div>

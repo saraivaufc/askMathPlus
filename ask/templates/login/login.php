@@ -6,8 +6,15 @@
 
 {% block page_atual %}"/login/"{% endblock %}
 
+{% block estilo %}
+	.form-login label{
+		font-weight: bold;
+		font-size: 120%;
+	}
+{% endblock %}
+
+
 {% block botoes_adicionais_esq %}{% endblock %}
-{% block voltar_all %}{% endblock %}
 {% block sair_all %}{% endblock %}
 
 {% block conteudo %}

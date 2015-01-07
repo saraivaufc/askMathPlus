@@ -1,4 +1,4 @@
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'login/login.php' %}
 
 {% block page_atual %}"/criarConta/"{% endblock %}
 
@@ -13,9 +13,8 @@
 
 {% block conteudo %}
 <div class="conteudo">
-<center>
-	<div class="form-login">
-		<form class="form form-horizontal" role="form" onSubmit="return validaCriarConta()"  method="post">{% csrf_token %}
+	<center>
+		<form class="form-login form-horizontal" role="form" onSubmit="return validaCriarConta()"  method="post">{% csrf_token %}
 			<div class="col-sm-4">
 			</div>
 			<div class="col-sm-8">
@@ -74,8 +73,7 @@
 				</div>
 			</div>
 		</form>
-	</div>
-</center>	
+	</center>	
 </div>
 
 {% endblock %}
