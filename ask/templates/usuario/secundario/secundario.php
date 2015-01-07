@@ -4,7 +4,7 @@
 
 {% block estilo %}
 	#conteudo{
-		background-color: #428bca;
+		background-color: #337AB7;
 	}
 {% endblock %}
 
@@ -35,7 +35,8 @@
 	});
 {% endblock %}
 
-{% block voltar_all %}{% endblock %}
+{% block voltar_all %}
+{% endblock %}
 
 {% block conteudo-left %}
 	<div class="font-dconteudo">
@@ -100,7 +101,6 @@
 							</table>
 						</div>
 						{% endblock %}
-
 						{% block outros-conteudos-all %}
 				  		<div class="espacamento">
 							  <t> {{ pergunta.descricao|safe }} </t>
@@ -109,7 +109,6 @@
 							{%csrf_token %} 
 								   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
 								   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
-								
 								<ol>
 								{% for item in itens %}
 									<li type="A">
@@ -130,72 +129,72 @@
 		</div>
 		<center>
 		{% block barra-inferior %}
-		{% if existePular == False %}
-			{% if existePulos == False %}
-				{% if existeAjuda == False %}		
-				<div class="barra-responder tela-opcoes-2">
+			{% if existePular == False %}
+				{% if existePulos == False %}
+					{% if existeAjuda == False %}		
+					<div class="barra-responder tela-opcoes-2">
+					{% else %}
+					<div class="barra-responder tela-opcoes-3">
+					{% endif %}
 				{% else %}
-				<div class="barra-responder tela-opcoes-3">
+					{% if existeAjuda == False %}		
+					<div class="barra-responder tela-opcoes-3">
+					{% else %}
+					<div class="barra-responder tela-opcoes-4">
+					{% endif %}
 				{% endif %}
 			{% else %}
-				{% if existeAjuda == False %}		
-				<div class="barra-responder tela-opcoes-3">
+				{% if existePulos == False %}
+					{% if existeAjuda == False %}		
+					<div class="barra-responder tela-opcoes-3">
+					{% else %}
+					<div class="barra-responder tela-opcoes-4">
+					{% endif %}
 				{% else %}
-				<div class="barra-responder tela-opcoes-4">
+					{% if existeAjuda == False %}		
+					<div class="barra-responder tela-opcoes-4">
+					{% else %}
+					<div class="barra-responder tela-opcoes-5">
+					{% endif %}
 				{% endif %}
 			{% endif %}
-		{% else %}
-			{% if existePulos == False %}
-				{% if existeAjuda == False %}		
-				<div class="barra-responder tela-opcoes-3">
-				{% else %}
-				<div class="barra-responder tela-opcoes-4">
-				{% endif %}
-			{% else %}
-				{% if existeAjuda == False %}		
-				<div class="barra-responder tela-opcoes-4">
-				{% else %}
-				<div class="barra-responder tela-opcoes-5">
-				{% endif %}
-			{% endif %}
-		{% endif %}
 
-				
-
-			<div class="btn-group btn-group-justified fixer-bottom">
-				<div class="btn-group">
-					<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
-				</div>
-				
-				{% if existePular %}
-				<div class="btn-group">
-					<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">Saltar</button>
-				</div>
-				{% endif %}
-				{% if existePulos %}
-				<div class="btn-group">	
-					<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
-				</div>
-				{% endif %}
-				{% if existeAjuda %}
-				<div id="ajuda" class="btn-group">	
-					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
-				</div>
-				{% endif %}
-				<div class="btn-group">
-					<button  type="button" id="responder" class="btn btn-success ">Responder</button>
+				<div class="btn-group btn-group-justified fixer-bottom">
+					<div class="btn-group">
+						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
+					</div>
+					
+					{% if existePular %}
+					<div class="btn-group">
+						<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">Saltar</button>
+					</div>
+					{% endif %}
+					{% if existePulos %}
+					<div class="btn-group">	
+						<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
+					</div>
+					{% endif %}
+					{% if existeAjuda %}
+					<div id="ajuda" class="btn-group">	
+						<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
+					</div>
+					{% endif %}
+					<div class="btn-group">
+						<button  type="button" id="responder" class="btn btn-success ">Responder</button>
+					</div>
 				</div>
 			</div>
-		</div>
 		{% endblock %}
 		</center>
-		{% block modals %}
-			{% include 'usuario/modals/questoesSaltadas.php' %}
-			{% include 'usuario/modals/ganhouBonus.php' %}
-			{% include 'usuario/modals/ajuda.php' %}
-			{% include 'usuario/modals/pularPergunta.php' %}
-		{% endblock %}
+
+		<div class="font-dconteudo">
+			{% block modals %}
+				{% include 'usuario/modals/questoesSaltadas.php' %}
+				{% include 'usuario/modals/ganhouBonus.php' %}
+				{% include 'usuario/modals/ajuda.php' %}
+				{% include 'usuario/modals/pularPergunta.php' %}
+			{% endblock %}
+		</div>
 
 </div>
-
 {% endblock %}

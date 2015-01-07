@@ -1,11 +1,8 @@
-{% extends 'usuario/secundario/secundario.php' %}
+{% extends 'usuario/secundario/secundarioOpcoes.php' %}
 
 {% block titulo-inicial  %}
 	Seu Andamento na Liçao
 {% endblock %}
-
-
-{% block funcoes %}{% endblock %}
 
 
 {% block table-pontuacao %}
@@ -54,7 +51,10 @@
 	</tr>
 {% endblock %}
 
-{% block outros-conteudos-all %}
+{% block requisitos %}
+{% endblock %}
+
+{% block sugestoes %}
 	<a data-toggle="modal" href="#" data-target="#sugestoes_modal" class="list-group-item active">
 	    SUGESTOES DE ESTUDOS(*)
 	</a>
@@ -65,21 +65,20 @@
 
 {%  block barra-inferior %}
 	<div class="barra-responder tela-opcoes-2">
-				<div class="btn-group btn-group-justified fixer-bottom">
-					<div class="btn-group">
-							<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-								Voltar Inicio
-							</button>
-					</div>
-					<div class="btn-group">
-						<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
-							Continuar com Licao
-						</button>
-					</div>
-				</div>
+		<div class="btn-group btn-group-justified fixer-bottom">
+			<div class="btn-group">
+					<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
+						Voltar Inicio
+					</button>
+			</div>
+			<div class="btn-group">
+				<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
+					Continuar com Licao
+				</button>
+			</div>
+		</div>
 	</div>
 {% endblock %}
-
 
 {% block modals %}
 	{% include 'usuario/modals/sugestoes.php' %}	

@@ -30,12 +30,17 @@
 	<div id="requisitos">
 		<div class="list-group">
 			{% block outros-conteudos %}
-				<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
-				    REQUISITOS(*)
-				</a>
-				{% for c in conteudo.getRequisitos %}
-					<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
-				{% endfor %}
+				{% block requisitos %}
+					<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
+					    REQUISITOS(*)
+					</a>
+					{% for c in conteudo.getRequisitos %}
+						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
+					{% endfor %}
+				{% endblock %}
+				{% block sugestoes %}
+
+				{% endblock %}
 			{% endblock %}
 		</div>
 	</div>
