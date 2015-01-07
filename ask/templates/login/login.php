@@ -44,10 +44,10 @@
 						<div class="form-group">
 							<div class="btn-group btn-group-justified">
 								<div class="btn-group">
-									<button  type="submit" class="form-control btn btn-primary" name="post">Entrar</button>
+									<button type="button" class="form-control btn  btn-default"  onClick="document.location='/criarConta/'">Criar Conta</button>
 								</div>
 								<div class="btn-group">
-									<button type="button" class="form-control btn  btn-primary"  onClick="document.location='/criarConta/'">Criar Conta</button>
+									<button  type="submit" class="form-control btn btn-primary" name="post">Entrar</button>
 								</div>
 							</div>
 						</div>

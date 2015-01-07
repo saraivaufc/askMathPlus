@@ -76,6 +76,7 @@ def criarConta(request):
 			user.save()
 			return render(request , 'cadastro/criarContaSucesso.php', locals())
 		except:
+			deuErro = True
 			errors.append("Problemas no Banco de Dados.")
 			return render(request , 'cadastro/criarContaFalha.php', locals())
 	return render(request , 'cadastro/criarConta.php' , locals())

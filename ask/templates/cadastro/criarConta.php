@@ -54,13 +54,13 @@
 				<div class="form-group">
 					<label for="password" class="control-label">Senha</label>
 					<div>
-						<input id="password" class="form-control" name="password" required="" type="password" placeholder="Digite sua senha">
+						<input id="password" class="form-control" name="password" required="" type="password" placeholder="Digite uma senha">
 					</div>
 				</div>
 				<div class="form-group ">
 					<label for="password2" class="control-label">Repita a Senha</label>
 					<div>
-						<input id="password2" class="form-control" name="password2" required="" type="password" placeholder="Repita sua senha">
+						<input id="password2" class="form-control" name="password2" required="" type="password" placeholder="Repita a senha">
 					</div>
 				</div>
 			</div>
