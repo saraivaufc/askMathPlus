@@ -107,7 +107,17 @@ body{
 .form-login{
 	position: relative;
 	margin-top: 1%;
-	width:20%;
+	width:30%;
+}
+
+.form-group label{
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.form h2{
+	color: #1E90FF;
+	text-shadow: 1px 1px 0px #000000;
 }
 
 .form-contato{
@@ -284,6 +294,9 @@ body{
 }
 
 
+.text-align-center:{
+	text-align: center;
+}
 
 .show {
   display: block !important;

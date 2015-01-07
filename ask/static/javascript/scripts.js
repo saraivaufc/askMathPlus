@@ -185,3 +185,16 @@ function pularPergunta(){
 		}
 	});
 };
+
+function validaCriarConta(){
+	var senha1 = $("#password").val();
+	var senha2 = $("#password2").val();
+
+	retorno = true;
+
+	if (senha1 != senha2){
+		bootbox.alert("<h3>As senhas sao diferentes!!!</h3>");
+		retorno = false;
+	}
+	return retorno;
+};
