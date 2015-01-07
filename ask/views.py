@@ -92,7 +92,10 @@ def principal(request):
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
 		tema = transform_tema(tema_conteudo)
-		usuario = Usuario.objects.get(username = request.user);
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		try:
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
@@ -255,7 +258,10 @@ def secundarioOpcoes(request, tema_conteudo):
 	if request.user.is_authenticated():
 
 		tema = transform_tema(tema_conteudo)
-		usuario = Usuario.objects.get(username = request.user);
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		try:
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
@@ -293,7 +299,10 @@ def secundarioEncerrar(request, tema_conteudo):
 	if request.user.is_authenticated():
 
 		tema = transform_tema(tema_conteudo)
-		usuario = Usuario.objects.get(username = request.user);
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		try:
 			conteudo = Conteudo.objects.get(tema = tema);
 		except:
@@ -335,7 +344,10 @@ def conteudoTerminado(request, vars):
 
 def irPergunta(request, pergunta_id):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user);
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		try:
 			pergunta = Pergunta.objects.get(id = pergunta_id)
 			conteudo = Conteudo.objects.get(id = pergunta.conteudo_pertence_id)
@@ -357,7 +369,10 @@ def acertouPergunta(usuario_id, pergunta_id):
 
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user)
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		conteudo = Conteudo.objects.get(id = conteudo_id)
 		pergunta = Pergunta.objects.get(id = pergunta_id);
 		
@@ -409,7 +424,10 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 
 
 def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
-	usuario = Usuario.objects.get(id = usuario_id)
+	try:
+		usuario = Usuario.objects.get(id = usuario_id)
+	except:
+		return HttpResponseRedirect('/login/falha')
 	c = Conteudo.objects.get(id = conteudo_id)
 
 	if len(c.getPerguntasRestantes(usuario)) == 0:
@@ -423,8 +441,6 @@ def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
 	if certo:
 		return
 
-
-	usuario = Usuario.objects.get(id = usuario_id);
 	try:
 		estado = Estado_Usuario.objects.get(usuario_id = usuario_id , conteudo_id = conteudo_id)
 		Estado_Usuario.objects.filter(id = estado.id).update(pergunta = pergunta_id)
@@ -532,7 +548,10 @@ def busca_ajuda(request, id_conteudo):
 
 def pulo(request,id_conteudo, id_pergunta):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user)
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
 		
 		pulo = Pulo.objects.create(
 			turma_id = usuario.turma_id,
@@ -586,7 +605,11 @@ def string_to_latex(s):
 
 def ganhou_bonus(request, id_conteudo):
 	if request.user.is_authenticated():
-		usuario = Usuario.objects.get(username = request.user)
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/falha')
+		
 		pontuacao = None
 		try:
 			pontuacao = Pontuacao.objects.get(usuario_id = usuario.id, conteudo_id = id_conteudo)
