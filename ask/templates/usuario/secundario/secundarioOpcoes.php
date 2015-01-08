@@ -35,7 +35,9 @@
 					    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
 					</a>
 					{% for c in conteudo.getRequisitos %}
-						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
+						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">
+							{{ c.tema }}
+						</a>
 					{% endfor %}
 				{% endblock %}
 				{% block sugestoes %}

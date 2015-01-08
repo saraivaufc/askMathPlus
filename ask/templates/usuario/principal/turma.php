@@ -20,7 +20,7 @@
 					<div class="radio">
 							<label>
 								<input type="radio" name="opcao" id="opcao" value="{{i.id}}">
-								{{i.semestre}} = {{i.nome}}
+								<p class="lead">{{i.semestre}} : {{i.nome}}</p>
 							</label>
 					</div>
 				</div>

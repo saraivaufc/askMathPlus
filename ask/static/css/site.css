@@ -262,7 +262,7 @@ body{
 }
 
 
-.text-align-center:{
+.text-align-center{
 	text-align: center;
 }
 .show {
@@ -383,6 +383,8 @@ body{
 	margin: 0 5px 0 5px;
 	padding:2px;
 	font-size: 120%;
+	text-shadow: 1px 1px 0px #000000;
+	box-shadow: inset 0 0 20px #777777;
 }
 
 .tileLargo{
@@ -449,13 +451,12 @@ body{
 
 #pontuacao h3{
 	color: #1E90FF;
-	font-style: italic;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;
 }
 
 h1{
-	
+
 	color: #1E90FF;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;	
@@ -498,3 +499,22 @@ h1{
 .tela-opcoes-5{
 	width: 100%;
 }
+
+#tema-conteudo{
+	color: #428bff;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*  Bootstrap */
+
+

@@ -7,7 +7,7 @@
 			        <h3 class="modal-title text-center" id="myModalLabel">Sobre</h3>
 			    </div>
 			    <div class="modal-body">
-					<div class="text-justify">
+					<div class="text-justify lead">
 						Este sistema  foi criado baseado no canacademi
 					</div>
 				</div>

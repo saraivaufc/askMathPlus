@@ -6,7 +6,7 @@
 			        <h4 class="modal-title" id="myModalLabel">Sobre a escolha dos Requisitos</h4>
 			    </div>
 			    <div class="modal-body">
-					<div class="text-justify">
+					<div class="text-justify lead">
 						fazer depois
 					</div>
 				</div>

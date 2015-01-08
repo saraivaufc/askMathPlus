@@ -13,7 +13,7 @@
 							    Questoes Saltadas
 						</a>
 							{% for p in perguntasSaltadas %}
-								<a href="/irPergunta/{{ p.id }}/" class="list-group-item">{{ p.getDescricao }}</a>
+								<a href="/irPergunta/{{ p.id }}/" class="list-group-item lead">{{ p.getDescricao }}</a>
 							{% endfor %}
 					</div>
 				</div>

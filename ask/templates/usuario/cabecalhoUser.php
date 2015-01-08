@@ -14,7 +14,7 @@
 		      	</button>
 		    	<a class="navbar-brand" href="/principal/">
 		    		<div id="title-system">
-		    			AskMath <span class="glyphicon glyphicon-th-large"></span>
+		    			AskMath <span class="glyphicon glyphicon-home"></span>
 		    		</div>
 		    	</a>
 		    </div>
@@ -38,7 +38,7 @@
             		</li>
 	              	<li>
 	              		<a data-toggle="modal" data-target="#contato" href="#">
-	              			Contato <span class="glyphicon glyphicon-send"></span>
+	              			Contato <span class="glyphicon glyphicon-envelope"></span>
 	              		</a>
 	              	</li>
 	             	 <li>

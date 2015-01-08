@@ -1,12 +1,10 @@
 
-
+$(document).off('.data-api');
 
 
 
 //CLICKS
 $(document).ready(function(){
-
-
 	$("#voltar-contato").click(function(){ 
 		$.ajax({
 			"url": "/is_logado/",
@@ -47,7 +45,7 @@ $(document).ready(function(){
 					}
 				}
 			}
-			}).find('.modal-content').css({'color': 'green', 'font-weight':'bold'});
+			}).find('.modal-content').css({'color': 'green', 'font-weight':'bold'}).find(".btn").append("  <span class='glyphicon glyphicon-arrow-right'></span>");
 		}else{
 			bootbox.dialog({
 			closeButton: false,
@@ -61,7 +59,7 @@ $(document).ready(function(){
 					}
 				}
 			}
-			}).find('.modal-content').css({'color': 'red', 'font-weight':'bold'});   
+			}).find('.modal-content').css({'color': 'red', 'font-weight':'bold'}).find(".btn").append("  <span class='glyphicon glyphicon-arrow-right'></span>");   
 		};
 	});
 
@@ -193,7 +191,9 @@ function validaCriarConta(){
 	retorno = true;
 
 	if (senha1 != senha2){
-		bootbox.alert("<h3>As senhas sao diferentes!!!</h3>");
+		$("#senhas_diferentes_modal").modal("show");
+		$("#senha1").addClass("has-error");
+		$("#senha2").addClass("has-error");
 		retorno = false;
 	}
 	return retorno;

@@ -50,7 +50,7 @@
 					  	</div>
 					 	<div class="panel-footer">
 					 		<div id="descricao-conteudo">
-					  		<t> {{ conteudo.descricao|safe }}<t>
+					  		<t class="lead"> {{ conteudo.descricao|safe }}<t>
 					  		</div>
 					  	</div>
 				  	</div>
@@ -103,7 +103,7 @@
 						{% endblock %}
 						{% block outros-conteudos-all %}
 				  		<div class="espacamento">
-							  <t> {{ pergunta.descricao|safe }} </t>
+							  <t class="lead"> {{ pergunta.descricao|safe }} </t>
 							<hr/>
 							<form method="POST" id="perguntas" name="resposta">
 							{%csrf_token %} 
@@ -114,7 +114,7 @@
 									<li type="A">
 										<div class="font-dconteudo">
 											<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-											<t>{{ item.descricao | safe }}</t>
+											<t class="lead">{{ item.descricao | safe }}</t>
 										</div>
 									</li>
 									<br>
@@ -158,11 +158,10 @@
 					{% endif %}
 				{% endif %}
 			{% endif %}
-
-				<div class="btn-group btn-group-justified fixer-bottom">
+				<div class="btn-group btn-group-justified fixer-bottom" role="toolbar">
 					<div class="btn-group">
 						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">
-							Encerrar Licao <span class="glyphicon glyphicon-off"></span>
+							Terminar <span class="glyphicon glyphicon-off"></span>
 						</button>
 					</div>
 					

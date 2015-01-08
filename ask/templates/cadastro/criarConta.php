@@ -2,7 +2,6 @@
 
 {% block page_atual %}"/criarConta/"{% endblock %}
 
-{% block botoes_adicionais_esq %}{% endblock %}
 {% block voltar %}/login/{% endblock %}
 {% block sair_all %}{% endblock %}
 
@@ -51,13 +50,13 @@
 						<input id="email" class="form-control" name="email" required type="email" autocomplete="on" placeholder="Digite seu email">
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group " id="senha1">
 					<label for="password" class="control-label">Senha</label>
 					<div>
 						<input id="password" class="form-control" name="password" required="" type="password" placeholder="Digite uma senha">
 					</div>
 				</div>
-				<div class="form-group ">
+				<div class="form-group " id="senha2">
 					<label for="password2" class="control-label">Repita a Senha</label>
 					<div>
 						<input id="password2" class="form-control" name="password2" required="" type="password" placeholder="Repita a senha">
@@ -79,7 +78,9 @@
 				</div>
 			</div>
 		</form>
-	</center>	
+	</center>
+
+	{% include 'usuario/modals/senhasDiferentes.php' %}
 </div>
 
 {% endblock %}

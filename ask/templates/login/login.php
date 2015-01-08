@@ -14,7 +14,6 @@
 {% endblock %}
 
 
-{% block botoes_adicionais_esq %}{% endblock %}
 {% block sair_all %}{% endblock %}
 
 {% block conteudo %}

@@ -34,7 +34,6 @@
 	<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
 
 	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/bootstrap/js/npm.js"></script>
 	<script type="text/javascript" src="/static/bootstrap/js/bootbox.min.js"></script>
 
 	<script type="text/javascript">

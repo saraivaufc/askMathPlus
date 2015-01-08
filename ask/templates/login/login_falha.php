@@ -4,7 +4,6 @@
     Falha Login
 {% endblock %}
 
-{% block botoes_adicionais_esq %}{% endblock %}
 {% block voltar_all %}{% endblock %}
 {% block sair_all %}{% endblock %}
 
