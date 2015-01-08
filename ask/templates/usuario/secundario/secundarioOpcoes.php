@@ -25,7 +25,6 @@
 	</tr>
 	{% endblock %}
 
-
 	{% block outros-conteudos-all %}
 	<div id="requisitos">
 		<div class="list-group">

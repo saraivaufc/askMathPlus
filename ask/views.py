@@ -30,8 +30,12 @@ def index(request):
 		return HttpResponseRedirect('/login/')
 
 def login(request, **kwargs):
-	if request.user.is_authenticated() and request.user.is_moderator == False:
-		return HttpResponseRedirect('/principal/')
+	if request.user.is_authenticated():
+		if request.user.is_moderator == False:
+			return HttpResponseRedirect('/principal/')
+		else:
+			return HttpResponseRedirect('/principal_admin/')
+
 
 	if request.method == "POST":
 		c = Client()
@@ -83,6 +87,8 @@ def criarConta(request):
 
 def principal(request):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/principal_admin/")
 		try:
 			usuario = Usuario.objects.get(username = request.user)
 		except:

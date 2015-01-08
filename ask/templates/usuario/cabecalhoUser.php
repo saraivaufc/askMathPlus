@@ -36,6 +36,7 @@
             				<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
             			</a>
             		</li>
+            		{% block botoes-menu-dir %}
 	              	<li>
 	              		<a data-toggle="modal" data-target="#contato" href="#">
 	              			Contato <span class="glyphicon glyphicon-envelope"></span>
@@ -46,6 +47,8 @@
 	             	 		Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
 	             	 	</a>
 	             	 </li>
+	             	 {% endblock %}
+	             	 
 	              	{% block sair_all %}
 	              		<li>
 	              			<a  href="/logout/">
