@@ -59,3 +59,41 @@ def secundario_admin(request, tema_conteudo):
 			return HttpResponseRedirect("/principal/"+ tema_conteudo)
 	else:
 		return HttpResponseRedirect("/login/")
+
+def terciario_admin(request, tema_conteudo, id_pergunta):
+	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			tema = transform_tema(tema_conteudo)
+			usuario = User.objects.get(username = request.user)
+			try:
+				conteudo = Conteudo.objects.get(tema = tema)
+				pergunta = Pergunta.objects.get(id = id_pergunta)
+				itens = Item.objects.filter(pergunta_pertence_id = pergunta.id)
+			except:
+				return HttpResponseRedirect("/principal_admin/")
+
+			existeAnterior = False
+			existeProximo = False
+			existeAjuda = False
+			try:
+				perguntaAnterior = Pergunta.objects.get(pergunta_proximo_id = pergunta.id)
+				existeAnterior = True
+			except:
+				existeAnterior = False
+			try:
+				perguntaProximo = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
+				existeProximo = True
+			except:
+				existeProximo = False
+			try:
+				ajuda = Ajuda.objects.get(id = pergunta.ajuda_id)
+				existeAjuda = True
+			except:
+				existeAjuda = False
+
+			return render(request, "admin/terciario_admin/terciario_admin.php", locals())
+
+		else:
+			return HttpResponseRedirect("/principal/"+ tema_conteudo)
+	else:
+		return HttpResponseRedirect("/login/")

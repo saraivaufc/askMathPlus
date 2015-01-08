@@ -36,13 +36,15 @@
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
 				<div class="panel panel-info">
+				 	{% block panel %}
 				 	<div class="panel-footer">
+				 	
 				 		<div class="list-group">
 						  	<a href="#" class="list-group-item active">
 						    Perguntas dessa licao
 						  	</a>
 						  	{% for i in perguntas %}
-						  		<a href="principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">{{ i.getDescricao }}</a>
+						  		<a href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">{{ i.getDescricao }}</a>
 						  	{% endfor %}
 						</div>
 						<div class="list-group">
@@ -63,8 +65,9 @@
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
 							{% endfor %}
 						</div>
-
 				  	</div>
+				  	
+				 {%  endblock %}
 			  	</div>
 			</div>
 		</div>

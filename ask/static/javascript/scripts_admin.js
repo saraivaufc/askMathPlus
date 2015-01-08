@@ -70,17 +70,7 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
-			$("#ajuda_text").empty().append(data);
-			var conteudo = $("#conteudo_atual").val();
-			url = "/busca_ajuda/" + conteudo + "/";
-			$.ajax({
-				"url": url,
-				"type": "get",
-				"dataType": "html",
-				async: true
-			}).done(function(data){
-				
-			});		
+			$("#ajuda_text").empty().append(data);		
 		});
 	});
 
