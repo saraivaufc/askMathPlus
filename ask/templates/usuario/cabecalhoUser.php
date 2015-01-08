@@ -12,13 +12,21 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		    	<a class="navbar-brand" href="/principal/"><div id="title-system">AskMath</div></a>
+		    	<a class="navbar-brand" href="/principal/">
+		    		<div id="title-system">
+		    			AskMath <span class="glyphicon glyphicon-th-large"></span>
+		    		</div>
+		    	</a>
 		    </div>
 
 	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	            <ul class="nav navbar-nav">
 	            	{% block botoes_adicionais_esq %}
-			            <li><a onclick="window.open('/forum')"  href="#">Forum</a></li>
+			            <li>
+			            	<a onclick="window.open('/forum')"  href="#">
+			            		Forum <span class="glyphicon glyphicon-globe"></span>
+			            	</a>
+			            </li>
 	            	{% endblock %}
 	            </ul>
 	            
@@ -28,10 +36,22 @@
             				<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
             			</a>
             		</li>
-	              	<li><a data-toggle="modal" data-target="#contato" href="#">Contato</a></li>
-	             	 <li><a data-toggle="modal" data-target="#sobre" href="#">Sobre</a></li>
+	              	<li>
+	              		<a data-toggle="modal" data-target="#contato" href="#">
+	              			Contato <span class="glyphicon glyphicon-send"></span>
+	              		</a>
+	              	</li>
+	             	 <li>
+	             	 	<a data-toggle="modal" data-target="#sobre" href="#">
+	             	 		Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
+	             	 	</a>
+	             	 </li>
 	              	{% block sair_all %}
-	              		<li><a  href="/logout/">Sair</a></li>
+	              		<li>
+	              			<a  href="/logout/">
+	              				Sair <span class="glyphicon glyphicon-log-out"></span>
+	              			</a>
+	              		</li>
 	              	{% endblock %}
 	            </ul>
 	            
