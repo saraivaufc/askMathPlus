@@ -40,7 +40,7 @@
 				 	<div class="panel-footer">
 				 	
 				 		<div class="list-group">
-						  	<a href="#" class="list-group-item active">
+						  	<a class="list-group-item active">
 						    PERGUNTAS DESTA LIÇAO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
@@ -50,27 +50,29 @@
 						  			<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
 						  		{% else %}
 								  	{% for i in perguntas %}
-								  		<a href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">{{ i.getDescricao }}</a>
+								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">
+								  			{{ i.getDescricao }}
+								  		</a>
 								  	{% endfor %}
 								{% endif %}
 							{% endif %}
 						</div>
 						<div class="list-group">
-						  	<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
+						  	<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
 							    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getRequisitos %}
-								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" href="#" class="list-group-item">
+								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
 									{{ c.tema }}
 								</a>
 							{% endfor %}
 						</div>
 						<div class="list-group">
-							<a data-toggle="modal" href="#" data-target="#sugestoes_modal" class="list-group-item active">
+							<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
 							    SUGESTOES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getSugestoes %}
-								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
+								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
 							{% endfor %}
 						</div>
 				  	</div>

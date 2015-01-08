@@ -23,7 +23,7 @@
 	            <ul class="nav navbar-nav">
 	            	{% block botoes_adicionais_esq %}
 			            <li>
-			            	<a onclick="window.open('/forum')"  href="#">
+			            	<a id="forum" data-container="body" data-toggle="popover" data-placement="top" data-content="User esse forum para quando tiver alguma duvida e nescessitar de ajuda de outros usuarios ou bolsistas..."  onclick="window.open('/forum')">
 			            		Forum <span class="glyphicon glyphicon-globe"></span>
 			            	</a>
 			            </li>
@@ -38,12 +38,12 @@
             		</li>
             		{% block botoes-menu-dir %}
 	              	<li>
-	              		<a data-toggle="modal" data-target="#contato" href="#">
+	              		<a data-toggle="modal" data-target="#contato">
 	              			Contato <span class="glyphicon glyphicon-envelope"></span>
 	              		</a>
 	              	</li>
 	             	 <li>
-	             	 	<a data-toggle="modal" data-target="#sobre" href="#">
+	             	 	<a data-toggle="modal" data-target="#sobre">
 	             	 		Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
 	             	 	</a>
 	             	 </li>

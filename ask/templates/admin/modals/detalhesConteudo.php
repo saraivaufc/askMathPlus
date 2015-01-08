@@ -49,14 +49,14 @@
 				<hr/>
 
 				<div class="list-group">
-				  	<a href="#" class="list-group-item active">
+				  	<a class="list-group-item active">
 				    	Pergunta Inicial
 				  	</a>
 				  		{% if pergunta_inicial == None %}
-				  			<a href="#" class="list-group-item list-group-item-danger">
+				  			<a class="list-group-item list-group-item-danger">
 				  			Nenhuma Pergunta Inicial
 				  		{% else %}
-				  			<a href="#" class="list-group-item">
+				  			<a class="list-group-item">
 				  			{{pergunta_inicial.getDescricao}}
 				  		{% endif %}
 				  	</a>

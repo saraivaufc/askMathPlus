@@ -91,13 +91,17 @@ $(document).ready(function(){
 //HOVERS
 
 $(document).ready(function(){
-
+	$("#forum").hover(function(){
+		$("#forum").popover('show');
+	});
 });
 
 
 //LEAVES
 $(document).ready(function(){
-
+	$("#forum").mouseleave(function(){
+		$("#forum").popover('hide');
+	});
 });
 
 

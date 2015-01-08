@@ -117,7 +117,8 @@ def principal(request):
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
 		if request.user.is_moderator == True:
-			return HttpResponseRedirect("/principal_admin/" + tema_conteudo)
+			print 'casa'
+			return HttpResponseRedirect("/principal_admin/" + tema_conteudo + "/")
 
 		tema = transform_tema(tema_conteudo)
 		try:
@@ -285,7 +286,7 @@ def secundario(request, tema_conteudo):
 def secundarioOpcoes(request, tema_conteudo):
 	if request.user.is_authenticated():
 		if request.user.is_moderator == True:
-			return HttpResponseRedirect("principal_admin/" + tema_conteudo)
+			return HttpResponseRedirect("/principal_admin/" + tema_conteudo + "/")
 
 		tema = transform_tema(tema_conteudo)
 		try:
@@ -328,7 +329,7 @@ def secundarioOpcoes(request, tema_conteudo):
 def secundarioEncerrar(request, tema_conteudo):
 	if request.user.is_authenticated():
 		if request.user.is_moderator == True:
-			return HttpResponseRedirect("principal_admin/" + tema_conteudo)
+			return HttpResponseRedirect("/principal_admin/" + tema_conteudo + "/")
 
 		tema = transform_tema(tema_conteudo)
 		try:

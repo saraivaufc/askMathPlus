@@ -91,9 +91,9 @@ body{
 	width: 100%;
 }
 
-
-
-
+a{
+	cursor: pointer;
+}
 
 
 
@@ -509,11 +509,18 @@ h1{
 	width: 40%;
 }
 
+#up:hover{
+	background-color: #BFBFBF;
+}
 
+#down:hover{
+	background-color: #BFBFBF;
+}
 
-
-
-
+#up_and_down{
+	width: 20px;
+	margin-left: 98%;
+}
 
 /*  Bootstrap */
 

@@ -32,11 +32,11 @@
 {% endblock %}
 
 {% block sugestoes %}
-	<a data-toggle="modal" href="#" data-target="#sugestoes_modal" class="list-group-item active">
+	<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
 	    SUGESTOES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
 	{% for c in conteudo.getSugestoes %}
-		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
+		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
 	{% endfor %}
 {% endblock %}
 

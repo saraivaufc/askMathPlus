@@ -30,11 +30,11 @@
 		<div class="list-group">
 			{% block outros-conteudos %}
 				{% block requisitos %}
-					<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
+					<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
 					    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
 					</a>
 					{% for c in conteudo.getRequisitos %}
-						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">
+						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
 							{{ c.tema }}
 						</a>
 					{% endfor %}

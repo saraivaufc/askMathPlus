@@ -28,18 +28,18 @@
 	            <ul class="nav navbar-nav">
 	            	{% block botoes_adicionais_esq %}
 			            <li>
-			            	<a onclick="window.open('/forum')"  href="#">
+			            	<a id="forum" data-container="body" data-toggle="popover" data-placement="top" data-content="User esse forum para responder as duvidas dos usuarios..."  onclick="window.open('/forum')">
 			            		Forum <span class="glyphicon glyphicon-globe"></span>
 			            	</a>
 			            </li>
 			            <li>
-			            	<a onclick="window.open('/admin/')"  href="#">
+			            	<a id="gerenciador"  data-container="body" data-toggle="popover" data-placement="top" data-content="Use o gerenciador para adicionar, remover, buscar e editar os modelos..."  onclick="window.open('/admin/')">
 			            		Gerenciador <span class="glyphicon glyphicon-wrench"></span>
 			            	</a>
 			            </li>
 			            <li>
-			            	<a onclick="window.open('http://latex.codecogs.com/')"  href="#">
-			            		Editor Latex <span class="glyphicon glyphicon-pencil"></span>
+			            	<a id="editor-latex" data-container="body" data-toggle="popover" data-placement="top" data-content="Esse editor lhe ajudara quando nescessitar adicionar Latex nos modelos..."  onclick="window.open('http://latex.codecogs.com/')">
+			            		Editor Latex <span class="glyphicon glyphicon-edit"></span>
 			            	</a>
 			            </li>
 	            	{% endblock %}
@@ -52,12 +52,12 @@
             			</a>
             		</li>
             		<li>
-	              		<a data-toggle="modal" data-target="#contato" href="#">
+	              		<a data-toggle="modal" data-target="#contato">
 	              			Contato <span class="glyphicon glyphicon-envelope"></span>
 	              		</a>
 	              	</li>
 	             	 <li>
-	             	 	<a data-toggle="modal" data-target="#sobre" href="#">
+	             	 	<a data-toggle="modal" data-target="#sobre">
 	             	 		Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
 	             	 	</a>
 	             	 </li>
