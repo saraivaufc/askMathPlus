@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block sugestoes %}
-	<a class="list-group-item"></a>
+	<a class="list-group-item default"></a>
 	<a data-toggle="modal" href="#" data-target="#sugestoes_modal" class="list-group-item active">
-	    SUGESTOES DE ESTUDOS(*)
+	    SUGESTOES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
 	{% for c in conteudo.getSugestoes %}
 		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" href="#" class="list-group-item">{{ c.tema }}</a>
@@ -23,7 +23,7 @@
 		<div class="btn-group btn-group-justified fixer-bottom">
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-					Voltar Inicio
+					Voltar Inicio <span class="glyphicon glyphicon-th"></span>
 				</button>
 			</div>
 		</div>

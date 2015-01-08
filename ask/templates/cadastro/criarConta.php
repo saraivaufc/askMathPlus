@@ -67,10 +67,14 @@
 			<div class="form-group">
 				<div class="btn-group btn-group-justified tela-opcoes-3">
 					<div class="btn-group">
-						<button class="form-control btn  btn-default" onclick="window.location='/login/'" >Voltar Login</button>
+						<button class="form-control btn  btn-default" onclick="window.location='/login/'" >
+							Voltar Login <span class="glyphicon glyphicon-log-in"></span>
+						</button>
 					</div>
 					<div class="btn-group">
-						<button class="form-control btn  btn-primary" type="submit">Criar Conta</button>
+						<button class="form-control btn  btn-primary" type="submit">
+							Criar Conta <span class="glyphicon glyphicon-plus-sign"></span>
+						</button>
 					</div>
 				</div>
 			</div>

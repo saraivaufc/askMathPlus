@@ -82,5 +82,3 @@
 </div>
 
 {% endblock %}
-
-{% block voltar %}'/principal/'{% endblock %}

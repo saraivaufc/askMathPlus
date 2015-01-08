@@ -24,7 +24,9 @@
 					<div class="tela-opcoes-1">
 						<div class="btn-group btn-group-justified ">
 							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal">
+									Fechar <span class="glyphicon glyphicon-remove"></span>
+								</button>
 							</div>
 						</div>
 					</div>

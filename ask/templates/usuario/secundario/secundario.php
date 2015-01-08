@@ -161,26 +161,36 @@
 
 				<div class="btn-group btn-group-justified fixer-bottom">
 					<div class="btn-group">
-						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">Encerrar Licao</button>
+						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">
+							Encerrar Licao <span class="glyphicon glyphicon-off"></span>
+						</button>
 					</div>
 					
 					{% if existePular %}
 					<div class="btn-group">
-						<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">Saltar</button>
+						<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">
+							Saltar <span class="glyphicon glyphicon-share-alt"></span>
+						</button>
 					</div>
 					{% endif %}
 					{% if existePulos %}
 					<div class="btn-group">	
-						<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">Rever Saltos</button>
+						<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">
+							Rever Saltos <span class="glyphicon glyphicon-retweet"></span>
+						</button>
 					</div>
 					{% endif %}
 					{% if existeAjuda %}
 					<div id="ajuda" class="btn-group">	
-						<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">Pedir Ajuda</button>
+						<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">
+							Pedir Ajuda <span class="glyphicon glyphicon-question-sign"></span>
+						</button>
 					</div>
 					{% endif %}
 					<div class="btn-group">
-						<button  type="button" id="responder" class="btn btn-success ">Responder</button>
+						<button  type="button" id="responder" class="btn btn-success ">
+							Responder <span class="glyphicon glyphicon-check"></span>
+						</button>
 					</div>
 				</div>
 			</div>

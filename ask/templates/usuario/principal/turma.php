@@ -12,10 +12,11 @@
 <center>
 	<h1>Escolha uma Turma</h1>
 </center>
-	<div class="form-centro">
+	<center>
+		<div class="form-login login">
 		<form  class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
 			{% for i in turmas %}
-				<div class="form-group">
+				<div class="form-group  text-left">
 					<div class="radio">
 							<label>
 								<input type="radio" name="opcao" id="opcao" value="{{i.id}}">
@@ -24,16 +25,20 @@
 					</div>
 				</div>
 			{% endfor %}
-
-			<div class="btn-group btn-group-justified">
-				<div class="btn-group">
-					<button type="submit" class="btn btn-primary">Escolher</button>
+				<div class="btn-group btn-group-justified tela-opcoes-3">
+					<div class="btn-group">
+						<button type="submit" class="btn btn-primary">
+							Escolher <span class="glyphicon glyphicon-ok-circle"></span>
+						</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" onClick="document.location='/logout/'">
+							Sair <span class="glyphicon glyphicon-log-out"></span>
+						</button>
+					</div>
 				</div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-primary" onClick="document.location='/logout/'">Sair</button>
-				</div>
-			</div>
 		</form>
-	</div>
+		</div>
+	</center>
 
 {% endblock %}

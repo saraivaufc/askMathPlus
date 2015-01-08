@@ -14,12 +14,16 @@
 			</ul>
 			</h3>
 			<div>
-				<div class="btn-group btn-group-justified tela-opcoes-3">
+				<div class="btn-group btn-group-justified tela-opcoes-4">
 					<div class="btn-group">
-						<button class="btn btn-default" onClick="document.location='/login/'">Voltar Login</button>	
+						<button class="btn btn-default" onClick="document.location='/login/'">
+							Voltar Login <span class="glyphicon glyphicon-log-in"></span>
+						</button>	
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-primary" onClick="document.location='/criarConta/'">Tentar Novamente</button>
+						<button class="btn btn-primary" onClick="document.location='/criarConta/'">
+							Tentar Novamente <span class="glyphicon glyphicon-repeat"></span>
+						</button>
 					</div>
 				</div>
 			</div>
