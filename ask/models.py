@@ -243,6 +243,16 @@ class Pergunta(Model):
 		des +="..."
 		return des
 
+	def getItemCorreto(self):
+		if self.item_correto_id == None:
+			return None
+		else:
+			try:
+				item = Item.objects.get(id = self.item_correto_id)
+			except:
+				return None
+			return item
+
 
 
 	def acertou(self, usuario):
@@ -290,6 +300,19 @@ class Item(Model):
 	
 	class Meta:
 		ordering = ['-criacao']
+
+	def getDescricao(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 255:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
+
 
 class Deficiencia(Model):
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")

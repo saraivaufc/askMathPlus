@@ -116,6 +116,9 @@ def principal(request):
 		
 def secundario(request, tema_conteudo):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/principal_admin/" + tema_conteudo)
+
 		tema = transform_tema(tema_conteudo)
 		try:
 			usuario = Usuario.objects.get(username = request.user)
@@ -281,6 +284,8 @@ def secundario(request, tema_conteudo):
 
 def secundarioOpcoes(request, tema_conteudo):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("principal_admin/" + tema_conteudo)
 
 		tema = transform_tema(tema_conteudo)
 		try:
@@ -322,6 +327,8 @@ def secundarioOpcoes(request, tema_conteudo):
 
 def secundarioEncerrar(request, tema_conteudo):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("principal_admin/" + tema_conteudo)
 
 		tema = transform_tema(tema_conteudo)
 		try:
@@ -369,6 +376,8 @@ def conteudoTerminado(request, vars):
 
 def irPergunta(request, pergunta_id):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/login/")
 		try:
 			usuario = Usuario.objects.get(username = request.user)
 		except:
@@ -394,6 +403,9 @@ def acertouPergunta(usuario_id, pergunta_id):
 
 def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/login/")
+
 		try:
 			usuario = Usuario.objects.get(username = request.user)
 		except:
@@ -539,6 +551,8 @@ def contato(request):
 
 def is_logado(request):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("0")
 		return HttpResponse("1")
 	else:
 		return HttpResponse("0")
@@ -560,6 +574,8 @@ def getAjuda(request, pergunta_id):
 
 def busca_ajuda(request, id_conteudo):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/login/")
 		usuario = Usuario.objects.get(username = request.user)
 		busca = Busca_Ajuda.objects.create(
 			usuario_id = usuario.id,
@@ -573,6 +589,8 @@ def busca_ajuda(request, id_conteudo):
 
 def pulo(request,id_conteudo, id_pergunta):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/login/")
 		try:
 			usuario = Usuario.objects.get(username = request.user)
 		except:
@@ -630,6 +648,8 @@ def string_to_latex(s):
 
 def ganhou_bonus(request, id_conteudo):
 	if request.user.is_authenticated():
+		if request.user.is_moderator == True:
+			return HttpResponseRedirect("/login/")
 		try:
 			usuario = Usuario.objects.get(username = request.user)
 		except:

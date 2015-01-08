@@ -8,60 +8,62 @@
 		    </div>
 		    <div class="modal-body">
 		    	<table class="table table-bordered">
-		    		<h3>Turmas</h3>
-					<tr class="info">
-						</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
-					</tr>
-
-					{% for i in turmas %}
-						<tr>
-							<td>
-								{{i.semestre}}
-							</td>
-							<td>
-								{{i.disciplina}}
-							</td>
-							<td>
-								{{i.professor}}
-							</td>
-						</tr>
-					{% endfor %}
-				</table>
-
-
-				<hr/>
-
-				<table class="table table-bordered">
-		    		<h3>Mais Detalhes</h3>
-					<tr class="info">
-						</td><td>Numero de Questoes</td><td>Maximo de Pulos Permitido</td>
+		    		<h3>Sobre a Pontuacao</h3>
+					<tr class="active">
+						</td><td>Pontos</td>
 					</tr>
 					<tr>
 						<td>
-							{{ conteudo.getQuantPerguntasTotal }}
-						</td>
-						<td>
-							{{ conteudo.max_pulos }}
+							{{pergunta.pontos}}
 						</td>
 					</tr>
 				</table>
 
 				<hr/>
-
+				<h3>Mais Detalhes</h3>
 				<div class="list-group">
 				  	<a href="#" class="list-group-item active">
-				    	Pergunta Inicial
+				    	Item Correto
 				  	</a>
-				  		{% if pergunta_inicial == None %}
+				  		{% if pergunta.item_correto_id == None %}
 				  			<a href="#" class="list-group-item list-group-item-danger">
-				  			Nenhuma Pergunta
+				  			Nao Existe Item Correto...
 				  		{% else %}
 				  			<a href="#" class="list-group-item">
-				  			{{pergunta_inicial.getDescricao}}
+				  			{{ pergunta.getItemCorreto.getDescricao }}
 				  		{% endif %}
 				  	</a>
-				</div>
 
+				  	<a></a>
+
+				  	<a href="#" class="list-group-item active">
+				    	Pergunta Anterior
+				  	</a>
+				  		{% if existeAnterior == False %}
+				  			<a href="#" class="list-group-item list-group-item-danger">
+				  			Nao Existe Pergunta Anterior...
+				  		{% else %}
+				  			<a href="#" onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'" class="list-group-item">
+				  			{{ perguntaAnterior.getDescricao }}
+				  		{% endif %}
+				  	</a>
+
+				  	<a></a>
+
+				  	<a href="#" class="list-group-item active">
+				    	Pergunta Proximo
+				  	</a>
+				  		{% if existeProximo == False %}
+				  			<a href="#" class="list-group-item list-group-item-danger">
+				  			Nao Existe Pergunta Proxima...
+				  		{% else %}
+				  			<a href="#" onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'" class="list-group-item">
+				  			{{ perguntaProximo.getDescricao }}
+				  		{% endif %}
+				  	</a>
+
+
+				</div>
 
 
 
