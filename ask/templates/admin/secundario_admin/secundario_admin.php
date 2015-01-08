@@ -41,7 +41,7 @@
 				 	
 				 		<div class="list-group">
 						  	<a href="#" class="list-group-item active">
-						    Perguntas dessa licao
+						    PERGUNTAS DESTA LIÇAO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
 						  		<a  class="list-group-item list-group-item-danger">Licao nao possui pergunta Inicial...Corrija isso imediatamente...</a>

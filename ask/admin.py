@@ -1,26 +1,6 @@
 from django.contrib import admin
 from models import *
 
-
-@admin.register(Usuario)
-class UsuarioAdmin(admin.ModelAdmin):
-	fieldsets = (
-        (None,{'fields':('username',
-        				 'first_name',
-        				 'last_name',
-        	             'email',
-        	             'password',
-        	             'turma',
-        				)
-        	  }
-        ),
-	)
-	raw_id_fields = ('turma',)
-	list_display = ('id','username','first_name','last_name' ,'email',)
-	save_as = True
-	search_fields = ['nome']
-
-
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'

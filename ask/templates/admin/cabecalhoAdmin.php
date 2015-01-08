@@ -37,6 +37,11 @@
 			            		Gerenciador <span class="glyphicon glyphicon-wrench"></span>
 			            	</a>
 			            </li>
+			            <li>
+			            	<a onclick="window.open('http://latex.codecogs.com/')"  href="#">
+			            		Editor Latex <span class="glyphicon glyphicon-pencil"></span>
+			            	</a>
+			            </li>
 	            	{% endblock %}
 	            </ul>
 	            
