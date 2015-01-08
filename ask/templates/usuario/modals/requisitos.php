@@ -3,7 +3,7 @@
 	  	<div class="modal-dialog">
 			<div class="modal-content">
 			    <div class="modal-header">
-			        <h4 class="modal-title" id="myModalLabel">Sobre a escolha dos Requisitos</h4>
+			        <h3 class="modal-title  text-center" id="myModalLabel">REQUISITOS</h3>
 			    </div>
 			    <div class="modal-body">
 					<div class="text-justify lead">

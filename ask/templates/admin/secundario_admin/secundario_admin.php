@@ -40,7 +40,7 @@
 				 	<div class="panel-footer">
 				 	
 				 		<div class="list-group">
-						  	<a class="list-group-item active">
+						  	<a data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
 						    PERGUNTAS DESTA LIÇAO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
@@ -50,7 +50,7 @@
 						  			<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
 						  		{% else %}
 								  	{% for i in perguntas %}
-								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">
+								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
 								  			{{ i.getDescricao }}
 								  		</a>
 								  	{% endfor %}
@@ -105,6 +105,7 @@
 				{% include 'usuario/modals/requisitos.php' %}
 				{% include 'usuario/modals/sugestoes.php' %}
 				{% include 'admin/modals/detalhesConteudo.php' %}
+				{% include 'admin/modals/perguntasLicao.php' %}
 			{% endblock %}
 
 		</div>

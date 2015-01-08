@@ -3,7 +3,6 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema}}</h2>
 		    </div>
 		    <div class="modal-body">
@@ -56,7 +55,7 @@
 				  			<a class="list-group-item list-group-item-danger">
 				  			Nenhuma Pergunta Inicial
 				  		{% else %}
-				  			<a class="list-group-item">
+				  			<a class="list-group-item" href="/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/">
 				  			{{pergunta_inicial.getDescricao}}
 				  		{% endif %}
 				  	</a>
