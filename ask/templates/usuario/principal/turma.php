@@ -13,18 +13,32 @@
 	<h1>Escolha uma Turma</h1>
 </center>
 	<center>
-		<div class="form-login login">
+		<div id="escolher_turma">
 		<form  class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
+			<div class="table-responsive">
+			<table class="table table-bordered">
+			<tr class="info">
+				<td></td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
+			</tr>
+
 			{% for i in turmas %}
-				<div class="form-group  text-left">
-					<div class="radio">
-							<label>
-								<input type="radio" name="opcao" id="opcao" value="{{i.id}}">
-								<p class="lead">{{i.semestre}} : {{i.nome}}</p>
-							</label>
-					</div>
-				</div>
+				<tr>
+					<td>
+						<input type="radio" name="opcao" id="opcao" value="{{i.id}}" required>
+					</td>
+					<td>
+						{{i.semestre}}
+					</td>
+					<td>
+						{{i.disciplina}}
+					</td>
+					<td>
+						{{i.professor}}
+					</td>
+				</tr>
 			{% endfor %}
+			</table>
+			</div>
 				<div class="btn-group btn-group-justified tela-opcoes-3">
 					<div class="btn-group">
 						<button type="submit" class="btn btn-primary">

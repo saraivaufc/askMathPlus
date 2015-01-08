@@ -25,13 +25,14 @@ class UsuarioAdmin(admin.ModelAdmin):
 class TurmaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('nome',
+        (None,{'fields':('disciplina',
         	             'semestre',
+        	             'professor',
         				)
         	  }
         ),
 	)
-	list_display = ('id','nome','semestre','criacao')
+	list_display = ('id','disciplina','semestre','professor','criacao')
 	save_as = True
 	search_fields = ['nome'] 
 
