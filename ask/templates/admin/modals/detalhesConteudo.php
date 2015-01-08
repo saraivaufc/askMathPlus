@@ -54,7 +54,7 @@
 				  	</a>
 				  		{% if pergunta_inicial == None %}
 				  			<a href="#" class="list-group-item list-group-item-danger">
-				  			Nenhuma Pergunta
+				  			Nenhuma Pergunta Inicial
 				  		{% else %}
 				  			<a href="#" class="list-group-item">
 				  			{{pergunta_inicial.getDescricao}}

@@ -43,9 +43,17 @@
 						  	<a href="#" class="list-group-item active">
 						    Perguntas dessa licao
 						  	</a>
-						  	{% for i in perguntas %}
-						  		<a href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">{{ i.getDescricao }}</a>
-						  	{% endfor %}
+						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
+						  		<a  class="list-group-item list-group-item-danger">Licao nao possui pergunta Inicial...Corrija isso imediatamente...</a>
+						  	{% else %}
+						  		{% if conteudo.getQuantPerguntasTotal == 0 %}
+						  			<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
+						  		{% else %}
+								  	{% for i in perguntas %}
+								  		<a href="/principal_admin/{{ tema_conteudo }}/{{i.id}}" class="list-group-item">{{ i.getDescricao }}</a>
+								  	{% endfor %}
+								{% endif %}
+							{% endif %}
 						</div>
 						<div class="list-group">
 						  	<a data-toggle="modal" href="#" data-target="#requisitos_modal" class="list-group-item active">
@@ -66,7 +74,7 @@
 							{% endfor %}
 						</div>
 				  	</div>
-				  	
+
 				 {%  endblock %}
 			  	</div>
 			</div>

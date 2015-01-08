@@ -49,6 +49,7 @@ def secundario_admin(request, tema_conteudo):
 			except:
 				return HttpResponseRedirect("/principal_admin/")
 			turmas = conteudo.turma.all()
+			
 			existePerguntaInicial = False
 			if conteudo.pergunta_inicial_id != None:
 				existePerguntaInicial = True
