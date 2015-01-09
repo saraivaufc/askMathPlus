@@ -35,6 +35,7 @@ TEMPLATE_DEBUG = True
 INSTALLED_APPS += (
     'spirit_user_profile',
     'ask',
+    'django.contrib.webdesign',
 )
 
 TEMPLATE_DIRS = (

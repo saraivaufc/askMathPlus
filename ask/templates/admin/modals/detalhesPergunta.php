@@ -8,7 +8,7 @@
 		    <div class="modal-body">
 		    	<table class="table table-bordered">
 		    		<caption>Sobre a Pontuacao</caption>
-					<tr class="active">
+					<tr class="info">
 						</td><td>Pontos</td>
 					</tr>
 						<td>
@@ -31,7 +31,7 @@
 				  			</td>
 				  		{% else %}
 				  		<tr>
-				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
+				  			<td>
 				  				<t>{{ pergunta.getItemCorreto.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}

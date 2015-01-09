@@ -1,4 +1,5 @@
 {% extends 'admin/secundario_admin/secundario_admin.php' %}
+{% load webdesign %}
 
 {% block panel %}
 	<div class="panel-title" id="pontuacao">
@@ -12,7 +13,7 @@
   	</div>
  	<div class="panel-footer">
 		<div class="espacamento">
-		  	<t class="lead"> {{ pergunta.descricao|safe }} </t>
+		  	<t class="lead">{% lorem 20 w random %} {{ pergunta.descricao|safe }} </t>
 		<hr/>
 		<form method="POST" id="perguntas" name="resposta">{%csrf_token %} 
 			<input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
@@ -22,7 +23,7 @@
 				<li type="A">
 					<div class="font-dconteudo">
 						<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-						<t class="lead">{{ item.descricao | safe }}</t>
+						<t class="lead">{% lorem 20 w random %}{{ item.descricao | safe }}</t>
 					</div>
 				</li>
 				<br>

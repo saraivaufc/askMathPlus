@@ -12,6 +12,10 @@ class Model(models.Model):
 	def __unicode__(self):
 		return format(self.criacao, "%d/%m/%Y %H:%M:%S")
 
+	class Meta:
+		verbose_name = "Modelo Genérico"
+		verbose_name_plural = "Modelos Genéricos"
+
 class Turma(Model):
 	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina",  help_text="Coloque aqui o nome a disciplina dessa turma.")
 	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.");
@@ -22,12 +26,18 @@ class Turma(Model):
 
 	class Meta:
 		ordering = ['-semestre']
+		verbose_name = "Turma"
+		verbose_name_plural = "Turmas"
 
 class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL,  help_text="Escolha a turma que o aluno pertence.")
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.first_name +" " + self.last_name
+
+	class Meta:
+		verbose_name = "Usuário"
+		verbose_name_plural = "usuários"
 
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
@@ -55,6 +65,13 @@ class Conteudo(Model):
 		return  str(self.id) + ": " +  self.tema
 	class Meta:
 		ordering = ['-criacao']
+		verbose_name = "Conteudo"
+		verbose_name_plural = "Conteudos"
+	def clean(self):
+		if self.pergunta_inicial_id != None:
+			pergunta = Pergunta.objects.get(id = self.pergunta_inicial_id)
+			if self.id != pergunta.conteudo_pertence_id:
+				raise ValidationError("A Pergunta Inicial Não Pertence a esse Conteúdo.")
 
 	def getTema(self):
 		return transform_tema_revert(self.tema)
@@ -233,10 +250,29 @@ class Pergunta(Model):
 	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
 
+
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.getDescricao()
+		return str(self.id) + ": " +  self.getDescricaoMin()
+	
 	class Meta:
 		ordering = ['-conteudo_pertence']
+		verbose_name = "Pergunta"
+		verbose_name_plural = "Perguntas"
+
+	def clean(self):
+		if self.item_correto_id != None:
+			item = Item.objects.get(id = self.item_correto_id)
+			if self.id != item.pergunta_pertence_id:
+				raise ValidationError('O Item Correto Não Pertence a Essa Pergunta.')
+		if self.ajuda_id != None:
+			ajuda = Ajuda.objects.get(id = self.ajuda_id)
+			if self.conteudo_pertence_id != None:
+				if ajuda.conteudo_id != self.conteudo_pertence_id:
+					raise ValidationError('Essa ajuda não pertence ao conteúdo dessa pergunta.')
+		if self.pergunta_proximo_id != None:
+			pergunta = Pergunta.objects.get(id = self.pergunta_proximo_id)
+			if pergunta.conteudo_pertence_id != self.conteudo_pertence_id:
+				raise ValidationError('A Proxima Pergunta Não Pertence ao Conteúdo dessa Pergunta.')
 
 	def pediuAjuda(self, usuario):
 		b = Busca_Ajuda.objects.create(
@@ -256,6 +292,18 @@ class Pergunta(Model):
 			quant+=1
 		des +="..."
 		return string_to_latex(des)
+
+	def getDescricaoMin(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 50:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
 
 	def getItemCorreto(self):
 		if self.item_correto_id == None:
@@ -310,10 +358,20 @@ class Item(Model):
 	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence",  help_text="Escolha a pergunta da qual ele esta associado.")
 	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL, help_text="Todo item errado pode possuir uma deficiencia, quando um aluno responder erroneamente uma pergunta, precisamos saber qual a deficiencia em relacao ao conteudo que ele esta tendo, e para isso, usamos o item que ele respondeu, ou seja, todo item errado esta relacionado com uma possivel deficiencia apresentada pelo aluno.")
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.descricao 
+		return str(self.id) + ": " +  self.getDescricaoMin() 
 	
 	class Meta:
 		ordering = ['-criacao']
+		verbose_name = "Item"
+		verbose_name_plural = "Itens"
+	def clean(self):
+		if self.deficiencia_id != None:
+			deficiencia = Deficiencia.objects.get(id = self.deficiencia_id)
+			pergunta = Pergunta.objects.get(id = self.pergunta_pertence_id)
+			
+			if deficiencia.conteudo_id != None and pergunta.conteudo_pertence_id != None:
+				if deficiencia.conteudo_id != pergunta.conteudo_pertence_id:
+					raise ValidationError('O Conteúdo ao qual a Deficiência pertence não corresponde ao Conteúdo ao qual a Pergunta Pertence.')
 
 	def getDescricao(self):
 		quant = 0
@@ -326,6 +384,18 @@ class Item(Model):
 			quant+=1
 		des +="..."
 		return  string_to_latex(des)
+		
+	def getDescricaoMin(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 50:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
 
 
 class Deficiencia(Model):
@@ -333,29 +403,61 @@ class Deficiencia(Model):
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para essa deficiencia.")
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.descricao 
+		return str(self.id) + ": " +  self.getDescricaoMin()
 	
-	class Meta:
-		ordering = ['-conteudo']	
-
-class Ajuda(Model):
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",help_text="Escolha o conteudo ao qual esta ajuda esta relacionada." )
-	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descricao para essa ajuda.")
-	
-	def __unicode__(self):
-		return str(self.id) + ": " +  self.descricao
 	class Meta:
 		ordering = ['-conteudo']
+		verbose_name = "Deficiência"
+		verbose_name_plural = "Deficiências"
+
+	def getDescricaoMin(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 50:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
+
+	
+
+class Ajuda(Model):
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",help_text="Escolha o conteúdo ao qual esta ajuda esta relacionada." )
+	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descrição para essa ajuda.")
+	
+	def __unicode__(self):
+		return str(self.id) + ": " +  self.getDescricaoMin()
+	class Meta:
+		ordering = ['-conteudo']
+		verbose_name = "Ajuda"
+		verbose_name_plural = "Ajudas"
+
+	def getDescricaoMin(self):
+		quant = 0
+		des = ""
+		for i in self.descricao:
+			if quant < 50:
+				des += i
+			else:
+				break
+			quant+=1
+		des +="..."
+		return des
 
 class Busca_Ajuda(Model):
-	usuario = models.ForeignKey(Usuario, verbose_name="Usuário", help_text="Escolha o usuario que pediu a ajuda.")
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo", help_text="Escolha o conteudo ao qual ele pediu a ajuda.")
+	usuario = models.ForeignKey(Usuario, verbose_name="Usuário", help_text="Escolha o usuário que pediu a ajuda.")
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo", help_text="Escolha o conteúdo ao qual ele pediu a ajuda.")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", help_text="Escolha a pergunta ao qual ele pediu ajuda.")
 
 	def __unicode__(self):
 		return str(self.id) + str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
+		verbose_name = "Busca Ajuda"
+		verbose_name_plural = "Busca Ajudas"
 
 class Historico(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
@@ -369,6 +471,8 @@ class Historico(Model):
 		return  str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
+		verbose_name = "Histórico do Usuário"
+		verbose_name_plural = "Histórico dos Usuários"
 
 	def getRecente(self, usuario, conteudo):
 		todo = Historico.objects.filter(usuario = usuario.id, conteudo = conteudo.id).order_by('-criacao')
@@ -392,6 +496,8 @@ class Estado_Usuario(Model):
 		return str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
+		verbose_name = "Estado do Usuário"
+		verbose_name_plural = "Estado dos Usuários"
 
 class Pulo(Model):
 	turma  = models.ForeignKey(Turma, verbose_name="Turma")
@@ -403,6 +509,8 @@ class Pulo(Model):
 		return str(self.id) + ": " +  str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
+		verbose_name = "Salto"
+		verbose_name_plural = "Saltos"
 
 class Pontuacao(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
@@ -414,6 +522,9 @@ class Pontuacao(Model):
 	acertos_seguidos = models.IntegerField(default=0, verbose_name="Acertos Seguidos", null= True, blank=True)
 	erros_seguidos = models.IntegerField(default=0, verbose_name="Erros Seguidos", null= True, blank=True)
 
+	class Meta:
+		verbose_name = "Pontuação"
+		verbose_name_plural = "Pontuações"
 
 	def __unicode__(self):
 		return str(self.id) + ": " + str(self.usuario)
@@ -488,6 +599,8 @@ class Secao(models.Model):
 
 	class Meta:
 		ordering = ['-inicio']
+		verbose_name = "Seção"
+		verbose_name_plural = "Seções"
 
 	def iniciou(self):
 		self.inicio = datetime.now()
