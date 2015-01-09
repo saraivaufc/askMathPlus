@@ -21,7 +21,7 @@
 			
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="username" class=" control-label">Usuario</label>
+					<label for="username" class=" control-label">Usuário</label>
 					<div>
 						<input id="username" class="form-control" name="username" required autofocus type="text" autocomplete="on" placeholder="Digite um nome de usuario">
 					</div>

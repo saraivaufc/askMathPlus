@@ -50,7 +50,7 @@
 				  	<a></a>
 
 				  	<a class="list-group-item active">
-				    	Pergunta Proximo
+				    	Pergunta Próximo
 				  	</a>
 				  		{% if existeProximo == False %}
 				  			<a class="list-group-item list-group-item-danger">

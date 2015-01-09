@@ -71,7 +71,7 @@
 				 		<center>
 				 			<h3>
 				 			{%  block titulo-inicial %}
-					    		Essa Pergunta Vale {{ pergunta.pontos }} Pontos
+					    		Essa Pergunta Vale {{ pergunta.pontos }} Pontos.
 					    	{% endblock %}
 					    	</h3>
 					    </center>
@@ -85,9 +85,9 @@
 								{%  block table-pontuacao %}
 								<tr>
 									<td class="text-center">PONTOS ACUMULADOS</td>
-									<td class="text-center">TOTAL DE QUESTOES</td>
-									<td class="text-center">QUESTOES CORRETAS</td>
-									<td class="text-center">SALTOS DISPONIVEIS</td>
+									<td class="text-center">TOTAL DE QUESTÕES</td>
+									<td class="text-center">QUESTÕES CORRETAS</td>
+									<td class="text-center">SALTOS DISPONÍVEIS</td>
 									<td class="text-center">SALTOS REALIZADOS</td>
 								</tr>
 								<tr>

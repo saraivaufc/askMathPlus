@@ -16,8 +16,6 @@
 		<hr/>
 		<form method="POST" id="perguntas" name="resposta">
 		{%csrf_token %} 
-			   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
-			   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 			<ol>
 			{% for item in itens %}
 				<li type="A">
@@ -92,7 +90,7 @@
 			{% if existeProximo %}
 			<div class="btn-group">
 				<button  type="button" onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'" class="btn btn-primary">
-					Proxima <span class="glyphicon glyphicon-chevron-right"></span>
+					Próxima <span class="glyphicon glyphicon-chevron-right"></span>
 				</button>
 			</div>
 			{% endif %}

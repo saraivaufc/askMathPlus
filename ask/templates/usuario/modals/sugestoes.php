@@ -3,11 +3,11 @@
 	  	<div class="modal-dialog">
 			<div class="modal-content">
 			    <div class="modal-header">
-			        <h3 class="modal-title  text-center" id="myModalLabel">SUGESTOES</h3>
+			        <h3 class="modal-title  text-center" id="myModalLabel">SUGESTÕES</h3>
 			    </div>
 			    <div class="modal-body">
 					<div class="text-justify lead">
-						fazer depois
+						Como você já concluiu essa lição, aconselhamos que siga agora para essas.
 					</div>
 				</div>
 

@@ -5,7 +5,7 @@
 		    <div class="modal-body">
 		    	<div class="text-justify">
 					<h3>
-						As senhas sao diferentes, corrija isso...
+						As senhas são diferentes!!! , corrija isso.
 					</h3>
 	      		</div>
 			</div>

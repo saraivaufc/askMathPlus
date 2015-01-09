@@ -7,7 +7,7 @@
 			    </div>
 			    <div class="modal-body">
 					<div class="text-justify lead">
-						Este sistema  foi criado baseado no canacademi
+						Esse sistema foi criado com o objetivo de melhorar a educação atravéz....
 					</div>
 				</div>
 

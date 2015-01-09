@@ -10,7 +10,7 @@
 				<div class="text-justify">
 					<div class="list-group">
 						<a class="list-group-item active text-center ">
-							    Questoes Saltadas
+							    Questões Saltadas
 						</a>
 							{% for p in perguntasSaltadas %}
 								<a href="/irPergunta/{{ p.id }}/" class="list-group-item lead">{{ p.getDescricao }}</a>

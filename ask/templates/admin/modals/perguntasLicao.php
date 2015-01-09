@@ -7,8 +7,7 @@
 			</div>
 		    <div class="modal-body">
 		    	<div class="text-justify">
-					Essas perguntas estao ordenadas, a primeira na lista, e a primaira pergunta que o usuario devera,
-					responder, a segunda e a proxima que ele devera responder e assim sucessivamente...
+					Essas perguntas estao ordenadas. A Primeira da lista refere-se a primeira pergunta que o usuário devera responder, já a segunda refere-se a proxima que ele deverá responder e assim por diante.
 	      		</div>
 			</div>
 

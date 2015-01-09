@@ -9,10 +9,10 @@
 	{%  block table-pontuacao %}
 	<tr>
 		<td class="text-center">
-			NUMERO DE QUESTOES
+			NUMERO DE QUESTÕES
 		</td>
 		<td class="text-center">
-			SALTOS DISPONIVEIS
+			SALTOS DISPONÍVEIS
 		</td>
 	</tr>
 	<tr>
@@ -56,15 +56,15 @@
 			<div class="btn-group btn-group-justified fixer-bottom">
 				<div class="btn-group">
 					<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-						Voltar Inicio <span class="glyphicon glyphicon-th"></span>
+						Voltar Início <span class="glyphicon glyphicon-th"></span>
 					</button>
 				</div>
 				<div class="btn-group">
 					<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
 						{% if respondeuPergunta %}
-							Refazer Licao <span class="glyphicon glyphicon-repeat"></span>
+							Refazer Lição <span class="glyphicon glyphicon-repeat"></span>
 						{% else %}
-							Iniciar Licao <span class="glyphicon glyphicon-play"></span>
+							Iniciar Lição <span class="glyphicon glyphicon-play"></span>
 						{% endif %}
 					</button>
 				</div>

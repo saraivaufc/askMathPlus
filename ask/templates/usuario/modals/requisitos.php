@@ -7,7 +7,7 @@
 			    </div>
 			    <div class="modal-body">
 					<div class="text-justify lead">
-						fazer depois
+						Nós aconselhamos que você tenha terminado essas lições antes de proceguir nesta aqui. 
 					</div>
 				</div>
 

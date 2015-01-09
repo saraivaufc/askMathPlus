@@ -33,7 +33,7 @@
 				<table class="table table-bordered">
 		    		<h3>Mais Detalhes</h3>
 					<tr class="info">
-						</td><td>Numero de Questoes</td><td>Maximo de Pulos Permitido</td>
+						</td><td>Número de Questões</td><td>Máximo de Pulos Permitido</td>
 					</tr>
 					<tr>
 						<td>

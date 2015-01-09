@@ -7,7 +7,7 @@
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">
-			QUESTOES TOTAL = {{ conteudo.getQuantPerguntasTotal }}
+			QUESTÕES TOTAL = {{ conteudo.getQuantPerguntasTotal }}
 		</td>
 	</tr>
 	<tr>
@@ -33,7 +33,7 @@
 
 {% block sugestoes %}
 	<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
-	    SUGESTOES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
+	    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
 	{% for c in conteudo.getSugestoes %}
 		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>

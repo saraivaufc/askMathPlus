@@ -28,17 +28,17 @@
 	            <ul class="nav navbar-nav">
 	            	{% block botoes_adicionais_esq %}
 			            <li>
-			            	<a id="forum" data-container="body" data-toggle="popover" data-placement="top" data-content="User esse forum para responder as duvidas dos usuarios..."  onclick="window.open('/forum')">
+			            	<a id="forum" data-container="body" data-toggle="popover" data-placement="top" data-content="Use esse forum para responder as dúvidas dos usuários."  onclick="window.open('/forum')">
 			            		Forum <span class="glyphicon glyphicon-globe"></span>
 			            	</a>
 			            </li>
 			            <li>
-			            	<a id="gerenciador"  data-container="body" data-toggle="popover" data-placement="top" data-content="Use o gerenciador para adicionar, remover, buscar e editar os modelos..."  onclick="window.open('/admin/')">
+			            	<a id="gerenciador"  data-container="body" data-toggle="popover" data-placement="top" data-content="Use ess gerenciador para adicionar, remover, buscar e editar os modelos."  onclick="window.open('/admin/')">
 			            		Gerenciador <span class="glyphicon glyphicon-wrench"></span>
 			            	</a>
 			            </li>
 			            <li>
-			            	<a id="editor-latex" data-container="body" data-toggle="popover" data-placement="top" data-content="Esse editor lhe ajudara quando nescessitar adicionar Latex nos modelos..."  onclick="window.open('http://latex.codecogs.com/')">
+			            	<a id="editor-latex" data-container="body" data-toggle="popover" data-placement="top" data-content="Esse editor lhe ajudará quando nescessitar adicionar Latex nos modelos."  onclick="window.open('http://latex.codecogs.com/')">
 			            		Editor Latex <span class="glyphicon glyphicon-edit"></span>
 			            	</a>
 			            </li>

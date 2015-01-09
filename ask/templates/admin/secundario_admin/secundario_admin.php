@@ -41,10 +41,10 @@
 				 	
 				 		<div class="list-group">
 						  	<a data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-						    PERGUNTAS DESTA LIÇAO <span class="glyphicon glyphicon-sort-by-attributes"></span>
+						    PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
-						  		<a  class="list-group-item list-group-item-danger">Licao nao possui pergunta Inicial...Corrija isso imediatamente...</a>
+						  		<a  class="list-group-item list-group-item-danger">Licão não possui pergunta Inicial!!!, Corrija isso imediatamente...</a>
 						  	{% else %}
 						  		{% if conteudo.getQuantPerguntasTotal == 0 %}
 						  			<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
@@ -69,7 +69,7 @@
 						</div>
 						<div class="list-group">
 							<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
-							    SUGESTOES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
+							    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getSugestoes %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
@@ -87,7 +87,7 @@
 				<div class="btn-group btn-group-justified fixer-bottom" role="toolbar">
 					<div class="btn-group">
 						<button  type="button"  onclick="window.location='/principal_admin/'" class="btn btn-primary">
-							Voltar Inicio <span class="glyphicon glyphicon-th"></span>
+							Voltar Início <span class="glyphicon glyphicon-th"></span>
 						</button>
 					</div>
 					<div class="btn-group">
