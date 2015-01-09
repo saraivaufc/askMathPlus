@@ -8,12 +8,12 @@
 		    <div class="modal-body">
 		    	<table class="table table-bordered table-hover">
 		    		<caption>Turmas</caption>
-					<tr class="info">
+					<tr class="info text-center">
 						</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
 					</tr>
 
 					{% for i in turmas %}
-						<tr>
+						<tr class="text-center">
 							<td>
 								{{i.semestre|default_if_none:"Nenhum"}}
 							</td>
@@ -36,10 +36,10 @@
 
 				<table class="table table-bordered table-hover">
 					<caption>Mais Detalhes</caption>
-					<tr class="info">
+					<tr class="info text-center">
 						</td><td>Número de Questões</td><td>Máximo de Pulos Permitido</td>
 					</tr>
-					<tr>
+					<tr class="text-center">
 						<td>
 							{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
 						</td>
@@ -53,11 +53,11 @@
 
 				<table class="table table-bordered table-hover">
 					<caption>Pergunta Inicial</caption>
-					<tr class="info">
+					<tr class="info text-center">
 						</td><td>Descriçao</td>
 					</tr>
 						{% if pergunta_inicial == None %}
-						<tr class="danger link">
+						<tr class="danger link text-center">
 				  			<td>
 				  				Nenhuma Pergunta Inicial.
 				  			</td>

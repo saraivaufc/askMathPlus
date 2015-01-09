@@ -7,22 +7,31 @@
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">
-			QUESTÕES TOTAL = {{ conteudo.getQuantPerguntasTotal }}
+			QUESTÕES TOTAL
+		</td>
+		<td class="text-center">
+			PULOS REALIZADOS
+		</td>
+		<td class="text-center">
+			VEZES QUE PEDIU AJUDA
+		</td>
+		<td class="text-center">
+			PONTOS ACUMULADOS
 		</td>
 	</tr>
+
 	<tr>
 		<td class="text-center">
-			PULOS REALIZADOS = {{ pulosRealizados }}
+			{{ conteudo.getQuantPerguntasTotal }}
 		</td>
-	</tr>
-	<tr>
 		<td class="text-center">
-			VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
+			{{ pulosRealizados }}
 		</td>
-	</tr>
-	<tr>
 		<td class="text-center">
-			PONTOS ACUMULADOS = {{ pontosAcumulados }}
+			{{ vezesPediuAjuda }}
+		</td>
+		<td class="text-center">
+			{{ pontosAcumulados }}
 		</td>
 	</tr>
 {% endblock %}

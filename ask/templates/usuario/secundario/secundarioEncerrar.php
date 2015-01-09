@@ -8,42 +8,43 @@
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">
-			QUESTÕES TOTAL
+			QUESTÕES
 		</td>
+		<td class="text-center">
+			PONTOS
+		</td>
+		<td class="text-center">
+			ACERTOS
+		</td>
+		<td class="text-center">
+			ERRORS
+		</td>
+		<td class="text-center">
+			SALTOS
+		</td>
+		<td class="text-center">
+			PEDIU AJUDA
+		</td>
+	</tr>
+	<tr>
 		<td class="text-center">
 			{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
 		</td>
 		<td class="text-center">
-			PONTOS ACUMULADOS
-		</td>
-		<td class="text-center">
 			{{ pontosAcumulados|default_if_none:"0" }}
 		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			VEZES QUE ACERTOU
-		</td>
+		
 		<td class="text-center">
 			{{ questoesCorretas|default_if_none:"0" }}
 		</td>
-		<td class="text-center">
-			VEZES QUE ERROU
-		</td>
+		
 		<td class="text-center">
 			{{ questoesErradas|default_if_none:"0" }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			SALTOS REALIZADOS
 		</td>
 		<td class="text-center">
 			{{ pulosRealizados|default_if_none:"0" }}
 		</td>
-		<td class="text-center">
-			VEZES QUE PEDIU AJUDA
-		</td>
+		
 		<td class="text-center">
 			{{ vezesPediuAjuda|default_if_none:"0" }}
 		</td>
