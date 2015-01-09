@@ -45,7 +45,7 @@
         			<div class="panel panel-info">
 					 	<div class="panel-title" id="tema-conteudo">
 							<center>
-				            	<h3>{{ conteudo.tema }}</h3>
+				            	<t class="lead"><h3>{{ conteudo.tema|safe }}</t></h3>
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">
@@ -91,11 +91,11 @@
 									<td class="text-center">SALTOS REALIZADOS</td>
 								</tr>
 								<tr>
-									<td class="text-center">{{ pontosAcumulados }}</td>
-									<td class="text-center">{{ perguntasTotal }}</td>
-									<td class="text-center">{{ perguntasCertas }}</td>
-									<td class="text-center">{{ pulosDisponiveis }}</td>		
-									<td class="text-center">{{ pulosRealizados }}</td>
+									<td class="text-center">{{ pontosAcumulados|default_if_none:"0" }}</td>
+									<td class="text-center">{{ perguntasTotal|default_if_none:"0" }}</td>
+									<td class="text-center">{{ perguntasCertas|default_if_none:"0" }}</td>
+									<td class="text-center">{{ pulosDisponiveis|default_if_none:"0" }}</td>		
+									<td class="text-center">{{ pulosRealizados|default_if_none:"0" }}</td>
 								</tr>
 								{% endblock %}
 							</table>
@@ -114,7 +114,7 @@
 									<li type="A">
 										<div class="font-dconteudo">
 											<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-											<t class="lead">{{ item.descricao | safe }}</t>
+											<t class="lead">{{ item.descricao|safe }}</t>
 										</div>
 									</li>
 									<br>

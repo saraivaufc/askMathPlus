@@ -15,7 +15,7 @@
 					{% for i in turmas %}
 						<tr>
 							<td>
-								{{i.semestre}}
+								{{i.semestre|default_if_none:"Nenhum"}}
 							</td>
 							<td>
 								{{i.disciplina}}
@@ -41,10 +41,10 @@
 					</tr>
 					<tr>
 						<td>
-							{{ conteudo.getQuantPerguntasTotal }}
+							{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
 						</td>
 						<td>
-							{{ conteudo.max_pulos }}
+							{{ conteudo.max_pulos|default_if_none:"0" }}
 						</td>
 					</tr>
 				</table>
@@ -64,7 +64,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
-				  				{{pergunta_inicial.getDescricao}}	
+				  				<t class="lead">{{ pergunta_inicial.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

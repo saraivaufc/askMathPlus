@@ -12,7 +12,7 @@
 						</td><td>Pontos</td>
 					</tr>
 						<td>
-							{{pergunta.pontos}}
+							{{pergunta.pontos|default_if_none:"0"}}
 						</td>
 					</tr>
 				</table>
@@ -32,7 +32,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
-				  				{{ pergunta.getItemCorreto.getDescricao }}
+				  				<t class="lead">{{ pergunta.getItemCorreto.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -52,7 +52,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'">
-				  				{{ perguntaAnterior.getDescricao }}
+				  				<t class="lead">{{ perguntaAnterior.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -71,7 +71,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'">
-				  				{{ perguntaProximo.getDescricao }}
+				  				<t class="lead">{{ perguntaProximo.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

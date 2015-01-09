@@ -17,10 +17,10 @@
 	</tr>
 	<tr>
 		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal }}
+			{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
 		</td>
 		<td class="text-center">
-			{{ conteudo.max_pulos }}
+			{{ conteudo.max_pulos|default_if_none:"0" }}
 		</td>
 	</tr>
 	{% endblock %}

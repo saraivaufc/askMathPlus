@@ -51,7 +51,7 @@
 						  		{% else %}
 								  	{% for i in perguntas %}
 								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
-								  			{{ i.getDescricao }}
+								  			<t class="lead">{{ i.getDescricao|safe }}</t>
 								  		</a>
 								  	{% empty %}
 								  		<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
@@ -76,7 +76,9 @@
 							    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getSugestoes %}
-								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
+								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
+									{{ c.tema }}
+								</a>
 							{% empty %}
 								<a class="list-group-item list-group-item-warning">Nao existe sugestoes para essa Licao</a>
 							{% endfor %}

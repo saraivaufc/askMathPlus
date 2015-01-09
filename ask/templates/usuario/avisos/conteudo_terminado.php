@@ -36,7 +36,9 @@
 	    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
 	{% for c in conteudo.getSugestoes %}
-		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
+		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
+			<t class="lead">{{ c.tema }}</t>
+		</a>
 	{% empty %}
 		<a class="list-group-item list-group-item-warning">Nao existe sugestoes para essa Licao</a>
 	{% endfor %}

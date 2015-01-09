@@ -11,13 +11,13 @@
 			QUESTÕES TOTAL
 		</td>
 		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal }}
+			{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
 		</td>
 		<td class="text-center">
 			PONTOS ACUMULADOS
 		</td>
 		<td class="text-center">
-			{{ pontosAcumulados }}
+			{{ pontosAcumulados|default_if_none:"0" }}
 		</td>
 	</tr>
 	<tr>
@@ -25,13 +25,13 @@
 			VEZES QUE ACERTOU
 		</td>
 		<td class="text-center">
-			{{ questoesCorretas }}
+			{{ questoesCorretas|default_if_none:"0" }}
 		</td>
 		<td class="text-center">
 			VEZES QUE ERROU
 		</td>
 		<td class="text-center">
-			{{ questoesErradas }}
+			{{ questoesErradas|default_if_none:"0" }}
 		</td>
 	</tr>
 	<tr>
@@ -39,13 +39,13 @@
 			SALTOS REALIZADOS
 		</td>
 		<td class="text-center">
-			{{ pulosRealizados }}
+			{{ pulosRealizados|default_if_none:"0" }}
 		</td>
 		<td class="text-center">
 			VEZES QUE PEDIU AJUDA
 		</td>
 		<td class="text-center">
-			{{ vezesPediuAjuda }}
+			{{ vezesPediuAjuda|default_if_none:"0" }}
 		</td>
 		
 	</tr>

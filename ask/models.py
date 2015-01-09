@@ -58,6 +58,8 @@ class Conteudo(Model):
 
 	def getTema(self):
 		return transform_tema_revert(self.tema)
+	def getDescricao(self):
+		return string_to_latex(self.descricao)
 
 
 	#GETS
@@ -253,7 +255,7 @@ class Pergunta(Model):
 				break
 			quant+=1
 		des +="..."
-		return des
+		return string_to_latex(des)
 
 	def getItemCorreto(self):
 		if self.item_correto_id == None:
@@ -323,7 +325,7 @@ class Item(Model):
 				break
 			quant+=1
 		des +="..."
-		return des
+		return  string_to_latex(des)
 
 
 class Deficiencia(Model):
