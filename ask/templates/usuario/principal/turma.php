@@ -17,12 +17,12 @@
 		<form  class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
 			<div class="table-responsive">
 			<table class="table table-bordered">
-			<tr class="info">
-				<td></td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
+			<tr class="info active text-center">
+				<td>#</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
 			</tr>
 
 			{% for i in turmas %}
-				<tr>
+				<tr class="text-center">
 					<td>
 						<input type="radio" name="opcao" id="opcao" value="{{i.id}}" required>
 					</td>
@@ -36,6 +36,11 @@
 						{{i.professor}}
 					</td>
 				</tr>
+			{% empty %}
+				<tr class="warning">
+					<td colspan="4"><div class="text-center">Nao existe Turma cadastrada.</div></td>
+				</tr>
+
 			{% endfor %}
 			</table>
 			</div>

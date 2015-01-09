@@ -197,6 +197,9 @@ a{
 	color: #428bca;
 }
 
+.table tr:first-child{
+	font-weight: bold;
+}
 
 
 

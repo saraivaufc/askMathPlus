@@ -118,6 +118,10 @@
 										</div>
 									</li>
 									<br>
+								{% empty %}
+									<div class="font-dconteudo">
+										<t class="lead">Essa pergunta nao possui itens.</t>
+									</div>
 								{% endfor %}
 								</ol>
 							</form>

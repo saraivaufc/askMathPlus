@@ -24,6 +24,10 @@
 								{{i.professor}}
 							</td>
 						</tr>
+					{% empty %}
+					<tr class="warning">
+						<td colspan="3"><div class="text-center">Essa licao nao pertence a nenhuma turma.</div></td>
+					</tr>
 					{% endfor %}
 				</table>
 

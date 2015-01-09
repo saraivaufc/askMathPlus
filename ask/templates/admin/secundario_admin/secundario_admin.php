@@ -53,6 +53,8 @@
 								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
 								  			{{ i.getDescricao }}
 								  		</a>
+								  	{% empty %}
+								  		<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
 								  	{% endfor %}
 								{% endif %}
 							{% endif %}
@@ -65,6 +67,8 @@
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
 									{{ c.tema }}
 								</a>
+							{% empty %}
+								<a class="list-group-item list-group-item-warning">Nao existe requisitos para essa Licao</a>
 							{% endfor %}
 						</div>
 						<div class="list-group">
@@ -73,6 +77,8 @@
 							</a>
 							{% for c in conteudo.getSugestoes %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">{{ c.tema }}</a>
+							{% empty %}
+								<a class="list-group-item list-group-item-warning">Nao existe sugestoes para essa Licao</a>
 							{% endfor %}
 						</div>
 				  	</div>

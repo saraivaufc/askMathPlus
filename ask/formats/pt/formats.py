@@ -1,0 +1,9 @@
+DATE_FORMAT = 'j/n/Y';
+DATE_INPUT_FORMATS = ('%d/%m/%Y',)
+
+TIME_INPUT_FORMATS = ('%H:%M:%S',)
+
+DATETIME_FORMAT = 'j/n/Y  P'
+DATETIME_INPUT_FORMATS = ('%m/%d/%y %H:%M:%S',)
+
+DECIMAL_SEPARATOR = '.'

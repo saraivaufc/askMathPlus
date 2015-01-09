@@ -37,6 +37,8 @@
 						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
 							{{ c.tema }}
 						</a>
+					{% empty %}
+						<a class="list-group-item list-group-item-warning">Nao existe requisitos para essa Licao</a>
 					{% endfor %}
 				{% endblock %}
 				{% block sugestoes %}

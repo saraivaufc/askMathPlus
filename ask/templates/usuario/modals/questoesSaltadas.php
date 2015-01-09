@@ -14,6 +14,8 @@
 						</a>
 							{% for p in perguntasSaltadas %}
 								<a href="/irPergunta/{{ p.id }}/" class="list-group-item lead">{{ p.getDescricao }}</a>
+							{% empty %}
+							<a class="list-group-item list-group-item-warning">Nao existe Perguntas Saltadas.</a>
 							{% endfor %}
 					</div>
 				</div>

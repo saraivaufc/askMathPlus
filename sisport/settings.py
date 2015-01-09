@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 from spirit.settings import *
+from django.utils.translation import ugettext_lazy as _
 
 """
 Django settings for sisport project.
@@ -58,7 +59,7 @@ DATABASES = {
        'NAME': 'askmath',                      
        'USER': 'postgres',
        'PASSWORD': 'postgres',
-       'HOST': 'localhost'
+       'HOST': 'localhost',
     }
     
 }
@@ -76,15 +77,21 @@ CACHES.update({
     },
 })
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+ADMINS = ( ('Ciano','saraiva.ufc@gmail.com'), )
+
+
+DEFAULT_FROM_EMAIL= 'saraiva.ufc@gmail.com'
+
+
+FORMAT_MODULE_PATH = 'ask.formats'
+
+LANGUAGE_CODE = 'pt'
 
 LANGUAGES = (
-    ('pt-br', u'Português'),
-    ('en', u'Inglês'),
-    ('es', u'Espanhol'),
+    ('pt', _('Português')),
+    ('en', _('Inglês')),
+    ('es', _('Espanhol')),
 )
 
 TIME_ZONE = 'America/Fortaleza'
