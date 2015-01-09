@@ -5,6 +5,15 @@ from ask.views_admin import *
 
 admin.autodiscover()
 
+
+#ERROS
+
+handler400 = 'ask.views.my_custom_bad_request_view'
+handler403 = 'ask.views.my_custom_permission_denied_view'
+handler404 = 'ask.views.my_custom_page_not_found_view'
+handler500 = 'ask.views.my_custom_error_view'
+
+
 urlpatterns = patterns('',
 
     url(r'^' , include('ask.urls', namespace="ask", app_name="ask")),

@@ -5,7 +5,7 @@ from datetime import datetime
 import unicodedata
 from spirit_user_profile.models import User
 from utils import *
-
+from django.core.exceptions import ValidationError
 
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
@@ -221,6 +221,7 @@ class Conteudo(Model):
 														pulosRestantes = self.max_pulos)
 			pontuacao.save()
 		return pontuacao.pontos
+
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")

@@ -6,10 +6,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from ask.models import *
 from django.core.mail import send_mail
-try:
-	from hashlib import md5
-except:
-	from md5 import new as md5
 
 import re
 from random import randrange
@@ -671,3 +667,20 @@ def ganhou_bonus(request, id_conteudo):
 
 	else:
 		return HttpResponse("500")
+
+
+
+
+
+#errors
+def my_custom_bad_request_view(request):
+	return HttpResponse("Mal")
+
+def my_custom_permission_denied_view(request):
+	return HttpResponse("Acesso Negado")
+
+def my_custom_page_not_found_view(request):
+	return HttpResponse("Nao encontrado")
+
+def my_custom_error_view(request):
+	return HttpResponse("Erros nas views")
