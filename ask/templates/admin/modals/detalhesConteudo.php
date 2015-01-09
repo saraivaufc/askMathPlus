@@ -3,7 +3,7 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 		    <div class="modal-header">
-		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema}}</h2>
+		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema|title}}</h2>
 		    </div>
 		    <div class="modal-body">
 		    	<table class="table table-bordered table-hover">
@@ -64,7 +64,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
-				  				<t class="lead">{{ pergunta_inicial.getDescricao|safe }}</t>
+				  				<t>{{ pergunta_inicial.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

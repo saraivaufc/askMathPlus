@@ -15,7 +15,7 @@
         			<div class="panel panel-info">
 					 	<div class="panel-title" id="tema-conteudo">
 							<center>
-				            	<h3>{{ conteudo.tema }}</h3>
+				            	<h3>{{ conteudo.tema|title }}</h3>
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">
@@ -44,17 +44,23 @@
 						    PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
-						  		<a  class="list-group-item list-group-item-danger">Licão não possui pergunta Inicial!!!, Corrija isso imediatamente...</a>
+						  		<a  class="list-group-item list-group-item-danger">
+						  			Lição não possui pergunta Inicial!!!, Corrija isso imediatamente...
+						  		</a>
 						  	{% else %}
 						  		{% if conteudo.getQuantPerguntasTotal == 0 %}
-						  			<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
+						  			<a class="list-group-item list-group-item-warning">
+						  				Licao nao possui Perguntas
+						  			</a>
 						  		{% else %}
 								  	{% for i in perguntas %}
 								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
-								  			<t class="lead">{{ i.getDescricao|safe }}</t>
+								  			<t>{{ i.getDescricao|safe }}</t>
 								  		</a>
 								  	{% empty %}
-								  		<a class="list-group-item list-group-item-warning">Licao nao possui Perguntas</a>
+								  		<a class="list-group-item list-group-item-warning">
+								  			Licao nao possui Perguntas
+								  		</a>
 								  	{% endfor %}
 								{% endif %}
 							{% endif %}
@@ -65,10 +71,12 @@
 							</a>
 							{% for c in conteudo.getRequisitos %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
-									{{ c.tema }}
+									<t>{{ c.tema|title }}</t>
 								</a>
 							{% empty %}
-								<a class="list-group-item list-group-item-warning">Nao existe requisitos para essa Licao</a>
+								<a class="list-group-item list-group-item-warning">
+									Nao existe requisitos para essa Licao
+								</a>
 							{% endfor %}
 						</div>
 						<div class="list-group">
@@ -77,10 +85,12 @@
 							</a>
 							{% for c in conteudo.getSugestoes %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
-									{{ c.tema }}
+									<t>{{ c.tema|title }}</t>
 								</a>
 							{% empty %}
-								<a class="list-group-item list-group-item-warning">Nao existe sugestoes para essa Licao</a>
+								<a class="list-group-item list-group-item-warning">
+									Nao existe sugestoes para essa Licao
+								</a>
 							{% endfor %}
 						</div>
 				  	</div>

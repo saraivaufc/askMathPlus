@@ -3,7 +3,7 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 		    <div class="modal-header">
-		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema}}</h2>
+		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema|title}}</h2>
 		    </div>
 		    <div class="modal-body">
 		    	<table class="table table-bordered">
@@ -32,7 +32,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
-				  				<t class="lead">{{ pergunta.getItemCorreto.getDescricao|safe }}</t>
+				  				<t>{{ pergunta.getItemCorreto.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -52,7 +52,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'">
-				  				<t class="lead">{{ perguntaAnterior.getDescricao|safe }}</t>
+				  				<t>{{ perguntaAnterior.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -71,7 +71,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'">
-				  				<t class="lead">{{ perguntaProximo.getDescricao|safe }}</t>
+				  				<t>{{ perguntaProximo.getDescricao|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

@@ -4,7 +4,9 @@
 		<div class="modal-content">
 		    <div class="modal-body">
 		    	<div class="text-justify">
-					<h3>Você realizou 3 acertos consecutivos, com isso você doblou seus pontos e ganhou mais 1 Salto!!!</h3>
+					<h3>
+						Você realizou 3 acertos consecutivos, com isso você doblou seus pontos e ganhou mais 1 Salto!!!
+					</h3>
 	      		</div>
 			</div>
 

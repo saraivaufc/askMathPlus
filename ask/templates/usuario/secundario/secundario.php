@@ -45,7 +45,7 @@
         			<div class="panel panel-info">
 					 	<div class="panel-title" id="tema-conteudo">
 							<center>
-				            	<t class="lead"><h3>{{ conteudo.tema|safe }}</t></h3>
+				            	<t class="lead"><h3>{{ conteudo.tema|safe|title }}</t></h3>
 				          	</center>
 					  	</div>
 					 	<div class="panel-footer">

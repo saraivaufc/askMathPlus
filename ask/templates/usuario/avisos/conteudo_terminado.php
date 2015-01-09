@@ -37,7 +37,7 @@
 	</a>
 	{% for c in conteudo.getSugestoes %}
 		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
-			<t class="lead">{{ c.tema }}</t>
+			<t>{{ c.tema|title }}</t>
 		</a>
 	{% empty %}
 		<a class="list-group-item list-group-item-warning">Nao existe sugestoes para essa Licao</a>

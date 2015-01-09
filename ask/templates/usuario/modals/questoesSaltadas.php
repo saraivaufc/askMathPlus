@@ -3,7 +3,7 @@
   	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header text-center">
-		        <h3 class="modal-title text-center" id="myModalLabel">{{ conteudo.tema }}</h3>
+		        <h3 class="modal-title text-center" id="myModalLabel">{{ conteudo.tema|title }}</h3>
 		    </div>
 
 		    <div class="modal-body">
@@ -13,7 +13,7 @@
 							    Questões Saltadas
 						</a>
 							{% for p in perguntasSaltadas %}
-								<a href="/irPergunta/{{ p.id }}/" class="list-group-item lead">
+								<a href="/irPergunta/{{ p.id }}/" class="list-group-item">
 									<t>
 										{{ p.getDescricao|safe }}
 									</t>

@@ -38,7 +38,9 @@
 							{{ c.tema }}
 						</a>
 					{% empty %}
-						<a class="list-group-item list-group-item-warning">Nao existe requisitos para essa Licao</a>
+						<a class="list-group-item list-group-item-warning">
+							Nao existe requisitos para essa Licao
+						</a>
 					{% endfor %}
 				{% endblock %}
 				{% block sugestoes %}
