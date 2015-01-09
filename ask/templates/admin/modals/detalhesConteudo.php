@@ -6,8 +6,8 @@
 		        <h2 class="modal-title text-center" id="myModalLabel">{{conteudo.tema}}</h2>
 		    </div>
 		    <div class="modal-body">
-		    	<table class="table table-bordered">
-		    		<h3>Turmas</h3>
+		    	<table class="table table-bordered table-hover">
+		    		<caption>Turmas</caption>
 					<tr class="info">
 						</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
 					</tr>
@@ -30,8 +30,8 @@
 
 				<hr/>
 
-				<table class="table table-bordered">
-		    		<h3>Mais Detalhes</h3>
+				<table class="table table-bordered table-hover">
+					<caption>Mais Detalhes</caption>
 					<tr class="info">
 						</td><td>Número de Questões</td><td>Máximo de Pulos Permitido</td>
 					</tr>
@@ -47,22 +47,24 @@
 
 				<hr/>
 
-				<div class="list-group">
-				  	<a class="list-group-item active">
-				    	Pergunta Inicial
-				  	</a>
-				  		{% if pergunta_inicial == None %}
-				  			<a class="list-group-item list-group-item-danger">
-				  			Nenhuma Pergunta Inicial
+				<table class="table table-bordered table-hover">
+					<caption>Pergunta Inicial</caption>
+					<tr class="info">
+						</td><td>Descriçao</td>
+					</tr>
+						{% if pergunta_inicial == None %}
+						<tr class="danger link">
+				  			<td>
+				  				Nenhuma Pergunta Inicial.
+				  			</td>
 				  		{% else %}
-				  			<a class="list-group-item" href="/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/">
-				  			{{pergunta_inicial.getDescricao}}
+				  		<tr>
+				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
+				  				{{pergunta_inicial.getDescricao}}	
+				  			</td>
 				  		{% endif %}
-				  	</a>
-				</div>
-
-
-
+					</tr>
+				</table>
 
 			</div>
 

@@ -74,7 +74,8 @@ $(document).ready(function(){
 		}).done(function(data){
 			$("#ajuda_text").empty().append(data);
 			var conteudo = $("#conteudo_atual").val();
-			url = "/busca_ajuda/" + conteudo + "/";
+			var pergunta = $("#pergunta_atual").val();
+			url = "/busca_ajuda/" + conteudo + "/" + pergunta + "/";
 			$.ajax({
 				"url": url,
 				"type": "get",

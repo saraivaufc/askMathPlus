@@ -13,9 +13,9 @@ class Model(models.Model):
 		return format(self.criacao, "%d/%m/%Y %H:%M:%S")
 
 class Turma(Model):
-	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina")
-	semestre = models.FloatField(verbose_name="Semestre");
-	professor = models.CharField(max_length=255 , verbose_name="Professor")
+	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina",  help_text="Coloque aqui o nome a disciplina dessa turma.")
+	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.");
+	professor = models.CharField(max_length=255 , verbose_name="Professor",  help_text="Escrevao nome do Professor que esta dando essa disciplina.")
 
 	def __unicode__(self):
 		return str(self.semestre) + ": " + self.disciplina + ":" + self.professor
@@ -24,21 +24,32 @@ class Turma(Model):
 		ordering = ['-semestre']
 
 class Usuario(User):
-	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL)
+	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL,  help_text="Escolha a turma que o aluno pertence.")
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.first_name +" " + self.last_name
 
 class Conteudo(Model):
-	turma = models.ManyToManyField('Turma', verbose_name="Turma")
-	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema")
-	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição")
-	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL)
-	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos")
-	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo")
-	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos")
-	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False);
-	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False);
+	turma = models.ManyToManyField('Turma', verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
+	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para o conteudo.")
+	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto do conteudo")
+	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Todo conteudo precisa ter uma pergunta inicial.")
+	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui os conteudo que e recomendado a concluçao antes de seguir para esse.")
+	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais conteudo o usuario deve seguir apos concluir esse.")
+	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuario pode realizar nesse conteudo.")
+	
+	POSICAOMETRO = (
+		(1, "TOPO"),
+		(2, "MEIO"),
+		(3, "BAIXO"),
+	)
+	TAMANHOMETRO = (
+		(1, "PEQUENO"),
+		(2, "GRANDE"),
+	)
+
+	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False, choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
+	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False, choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
 	
 	def __unicode__(self):
 		return  str(self.id) + ": " +  self.tema
@@ -212,12 +223,12 @@ class Conteudo(Model):
 		return pontuacao.pontos
 	
 class Pergunta(Model):
-	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL)
-	descricao = models.TextField(verbose_name="Descrição")
-	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL)
-	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL)
-	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL)
-	pontos = models.IntegerField(verbose_name="Pontos Valem")
+	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
+	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
+	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
+	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
+	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.getDescricao()
@@ -292,9 +303,9 @@ class Pergunta(Model):
 
 
 class Item(Model):
-	descricao = models.TextField(verbose_name="Descrição")
-	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence")
-	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL)
+	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para este item.")
+	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence",  help_text="Escolha a pergunta da qual ele esta associado.")
+	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL, help_text="Todo item errado pode possuir uma deficiencia, quando um aluno responder erroneamente uma pergunta, precisamos saber qual a deficiencia em relacao ao conteudo que ele esta tendo, e para isso, usamos o item que ele respondeu, ou seja, todo item errado esta relacionado com uma possivel deficiencia apresentada pelo aluno.")
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.descricao 
 	
@@ -315,8 +326,8 @@ class Item(Model):
 
 
 class Deficiencia(Model):
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
-	descricao = models.TextField(verbose_name="Descrição")
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",  help_text="Escolha o conteudo ao qual esta deficiencia esta relacionada.")
+	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para essa deficiencia.")
 
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.descricao 
@@ -325,16 +336,18 @@ class Deficiencia(Model):
 		ordering = ['-conteudo']	
 
 class Ajuda(Model):
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
-	descricao = models.TextField(verbose_name="Descrição")
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",help_text="Escolha o conteudo ao qual esta ajuda esta relacionada." )
+	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descricao para essa ajuda.")
+	
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.descricao
 	class Meta:
 		ordering = ['-conteudo']
 
 class Busca_Ajuda(Model):
-	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Pergunta")
+	usuario = models.ForeignKey(Usuario, verbose_name="Usuário", help_text="Escolha o usuario que pediu a ajuda.")
+	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo", help_text="Escolha o conteudo ao qual ele pediu a ajuda.")
+	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", help_text="Escolha a pergunta ao qual ele pediu ajuda.")
 
 	def __unicode__(self):
 		return str(self.id) + str(self.usuario)

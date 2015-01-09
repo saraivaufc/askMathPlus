@@ -573,7 +573,7 @@ def getAjuda(request, pergunta_id):
 	else:
 		return HttpResponseRedirect('/login/')
 
-def busca_ajuda(request, id_conteudo):
+def busca_ajuda(request, id_conteudo, id_pergunta):
 	if request.user.is_authenticated():
 		if request.user.is_moderator == True:
 			return HttpResponseRedirect("/login/")
@@ -581,6 +581,7 @@ def busca_ajuda(request, id_conteudo):
 		busca = Busca_Ajuda.objects.create(
 			usuario_id = usuario.id,
 			conteudo_id = id_conteudo,
+			pergunta_id = id_pergunta,
 		)
 		busca.save()
 		return HttpResponse("200")

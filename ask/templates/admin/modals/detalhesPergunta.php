@@ -7,11 +7,10 @@
 		    </div>
 		    <div class="modal-body">
 		    	<table class="table table-bordered">
-		    		<h3>Sobre a Pontuacao</h3>
+		    		<caption>Sobre a Pontuacao</caption>
 					<tr class="active">
 						</td><td>Pontos</td>
 					</tr>
-					<tr>
 						<td>
 							{{pergunta.pontos}}
 						</td>
@@ -19,52 +18,64 @@
 				</table>
 
 				<hr/>
-				<h3>Mais Detalhes</h3>
-				<div class="list-group">
-				  	<a  class="list-group-item active">
-				    	Item Correto
-				  	</a>
-				  		{% if pergunta.item_correto_id == None %}
-				  			<a class="list-group-item list-group-item-danger">
-				  			Nao Existe Item Correto...
+
+				<table class="table table-bordered table-hover">
+					<caption>Item Correto</caption>
+					<tr class="info">
+						</td><td>Descriçao</td>
+					</tr>
+						{% if pergunta.item_correto_id == None %}
+						<tr class="danger link">
+				  			<td>
+				  				Nao Existe Item Correto.
+				  			</td>
 				  		{% else %}
-				  			<a class="list-group-item">
-				  			{{ pergunta.getItemCorreto.getDescricao }}
+				  		<tr>
+				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
+				  				{{ pergunta.getItemCorreto.getDescricao }}
+				  			</td>
 				  		{% endif %}
-				  	</a>
+					</tr>
+				</table>
 
-				  	<a></a>
 
-				  	<a class="list-group-item active">
-				    	Pergunta Anterior
-				  	</a>
-				  		{% if existeAnterior == False %}
-				  			<a class="list-group-item list-group-item-danger">
-				  			Nao Existe Pergunta Anterior...
+				<table class="table table-bordered table-hover">
+					<caption>Pergunta Anterior</caption>
+					<tr class="info">
+						</td><td>Descriçao</td>
+					</tr>
+						{% if existeAnterior == False %}
+						<tr class="danger link">
+				  			<td>
+				  				Nao Existe Pergunta Anterior.
+				  			</td>
 				  		{% else %}
-				  			<a onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'" class="list-group-item">
-				  			{{ perguntaAnterior.getDescricao }}
+				  		<tr>
+				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'">
+				  				{{ perguntaAnterior.getDescricao }}
+				  			</td>
 				  		{% endif %}
-				  	</a>
+					</tr>
+				</table>
 
-				  	<a></a>
-
-				  	<a class="list-group-item active">
-				    	Pergunta Próximo
-				  	</a>
-				  		{% if existeProximo == False %}
-				  			<a class="list-group-item list-group-item-danger">
-				  			Nao Existe Pergunta Proxima...
+				<table class="table table-bordered table-hover">
+					<caption>Pergunta Próxima</caption>
+					<tr class="info">
+						</td><td>Descriçao</td>
+					</tr>
+						{% if existeProximo == False %}
+						<tr class="danger link">
+				  			<td>
+				  				Nao Existe Pergunta Proxima.
+				  			</td>
 				  		{% else %}
-				  			<a onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'" class="list-group-item">
-				  			{{ perguntaProximo.getDescricao }}
+				  		<tr>
+				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'">
+				  				{{ perguntaProximo.getDescricao }}
+				  			</td>
 				  		{% endif %}
-				  	</a>
-
-
-				</div>
-
-
+					</tr>
+				</table>
 
 			</div>
 

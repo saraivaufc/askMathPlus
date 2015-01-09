@@ -164,6 +164,7 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('usuario',
         				  'conteudo',
+        				  'pergunta',
         				)
         	  }
         ),
@@ -171,9 +172,11 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 	list_display = ('id',
                     'usuario',
 				  	'conteudo',
+				  	'pergunta',
 				  	'criacao',)
 	raw_id_fields = ('usuario',
-				  	'conteudo',)
+				  	'conteudo',
+				  	'pergunta',)
 	save_as = True
 	search_fields = ['conteudo']
 

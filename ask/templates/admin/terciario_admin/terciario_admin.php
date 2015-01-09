@@ -14,8 +14,9 @@
 		<div class="espacamento">
 		  	<t class="lead"> {{ pergunta.descricao|safe }} </t>
 		<hr/>
-		<form method="POST" id="perguntas" name="resposta">
-		{%csrf_token %} 
+		<form method="POST" id="perguntas" name="resposta">{%csrf_token %} 
+			<input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
+			<input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 			<ol>
 			{% for item in itens %}
 				<li type="A">

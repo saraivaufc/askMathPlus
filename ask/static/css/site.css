@@ -355,8 +355,9 @@ a{
 	color:#000000;
 }
 
-
-
+.link{
+	cursor: pointer;
+}
 
 .metro{
 	position: relative;
@@ -503,23 +504,11 @@ h1{
 #tema-conteudo{
 	color: #428bff;
 	font-weight: bold;
+	text-shadow: 1px 1px 0px #000000;
 }
 
 #escolher_turma{
 	width: 40%;
-}
-
-#up:hover{
-	background-color: #BFBFBF;
-}
-
-#down:hover{
-	background-color: #BFBFBF;
-}
-
-#up_and_down{
-	width: 20px;
-	margin-left: 98%;
 }
 
 /*  Bootstrap */
