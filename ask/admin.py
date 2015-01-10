@@ -12,6 +12,13 @@ from django.contrib import admin
 #IMPORTS ASK
 from ask.models import *
 
+
+
+from django.contrib import admin
+from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponseRedirect
+
+
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
@@ -44,7 +51,7 @@ class ConteudoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','tema','pergunta_inicial','max_pulos',)
+	list_display = ('id','tema','getDescricaoMin','pergunta_inicial','max_pulos',)
 	raw_id_fields = ('turma','pergunta_inicial', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
@@ -64,7 +71,7 @@ class PerguntaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','conteudo_pertence','descricao', 'item_correto', 'pergunta_proximo', 'ajuda','pontos' )
+	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_correto', 'pergunta_proximo', 'ajuda','pontos' )
 	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo','ajuda')
 	save_as = True
 	search_fields = ['descricao']
@@ -80,7 +87,7 @@ class ItemAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','pergunta_pertence','descricao','deficiencia','criacao',  )
+	list_display = ('id','pergunta_pertence','getDescricaoMin','deficiencia','criacao',  )
 	raw_id_fields = ('pergunta_pertence','deficiencia')
 	save_as = True
 	search_fields = ['descricao']

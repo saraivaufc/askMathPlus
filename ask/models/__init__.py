@@ -19,6 +19,19 @@ from spirit_user_profile.models import User
 from ask.utils import *
 
 
+
+#CHOICES
+POSICAOMETRO = (
+		(1, "TOPO"),
+		(2, "MEIO"),
+		(3, "BAIXO"),
+	)
+TAMANHOMETRO = (
+	(1, "PEQUENO"),
+	(2, "GRANDE"),
+)
+
+
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
 	def __unicode__(self):
@@ -59,22 +72,13 @@ class Conteudo(Model):
 	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui os conteudo que e recomendado a concluçao antes de seguir para esse.")
 	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais conteudo o usuario deve seguir apos concluir esse.")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuario pode realizar nesse conteudo.")
-	
-	POSICAOMETRO = (
-		(1, "TOPO"),
-		(2, "MEIO"),
-		(3, "BAIXO"),
-	)
-	TAMANHOMETRO = (
-		(1, "PEQUENO"),
-		(2, "GRANDE"),
-	)
 
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False, choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False, choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
 	
 	def __unicode__(self):
 		return  str(self.id) + ": " +  self.tema
+	
 	class Meta:
 		ordering = ['-criacao']
 		verbose_name = "Conteudo"
@@ -89,6 +93,11 @@ class Conteudo(Model):
 		return transform_tema_revert(self.tema)
 	def getDescricao(self):
 		return string_to_latex(self.descricao)
+
+	def getDescricaoMin(self):
+		return minimize_frase(self.descricao)
+	getDescricaoMin.short_description = 'Descrição'
+	
 
 
 	#GETS
@@ -306,16 +315,8 @@ class Pergunta(Model):
 		return string_to_latex(des)
 
 	def getDescricaoMin(self):
-		quant = 0
-		des = ""
-		for i in self.descricao:
-			if quant < 50:
-				des += i
-			else:
-				break
-			quant+=1
-		des +="..."
-		return des
+		return minimize_frase(self.descricao)
+	getDescricaoMin.short_description = 'Descrição'
 
 	def getItemCorreto(self):
 		if self.item_correto_id == None:
@@ -396,18 +397,10 @@ class Item(Model):
 			quant+=1
 		des +="..."
 		return  string_to_latex(des)
-		
+
 	def getDescricaoMin(self):
-		quant = 0
-		des = ""
-		for i in self.descricao:
-			if quant < 50:
-				des += i
-			else:
-				break
-			quant+=1
-		des +="..."
-		return des
+		return minimize_frase(self.descricao)
+	getDescricaoMin.short_description = 'Descrição'
 
 
 class Deficiencia(Model):
