@@ -10,6 +10,7 @@ import unicodedata
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.html import format_html
+from django.core.urlresolvers import reverse
 
 #IMPORTS SPIRIT
 
@@ -86,6 +87,7 @@ class Conteudo(Model):
 		ordering = ['-criacao']
 		verbose_name = "Conteudo"
 		verbose_name_plural = "Conteudos"
+	
 	def clean(self):
 		if self.pergunta_inicial_id != None:
 			pergunta = Pergunta.objects.get(id = self.pergunta_inicial_id)

@@ -54,6 +54,7 @@ class ConteudoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
+
 	list_display = ('id','tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
 	list_display_links = ('id',)
 	list_editable = ('tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
@@ -99,7 +100,7 @@ class ItemAdmin(admin.ModelAdmin):
 	list_display = ('id','pergunta_pertence','getDescricaoMin','deficiencia', )
 	list_display_links = ('id','getDescricaoMin',)
 	list_editable = ('pergunta_pertence','deficiencia')
-	list_filter = ('pergunta_pertence',)
+	list_filter = ('pergunta_pertence','deficiencia')
 	raw_id_fields = ('pergunta_pertence','deficiencia')
 	save_as = True
 	search_fields = ['descricao']
@@ -260,15 +261,16 @@ class PontuacaoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','usuario',
-			      	'conteudo',
-				  	'pontos',
-				  	'pulosMaximo',
-				  	'pulosRestantes',
-				  	'acertos_seguidos',
-				  	'erros_seguidos')
+	list_display = ('id',
+					'usuario',
+					'conteudo',
+					'pontos',
+					'pulosMaximo',
+					'pulosRestantes',
+					'acertos_seguidos',
+					'erros_seguidos')
 	list_display_links = ('id',)
-	list_filter = ('usuario','conteudo',)
+	list_filter = ('usuario','conteudo','pontos','pulosRestantes',)
 	raw_id_fields = ('usuario',
     			     'conteudo',)
 	save_as = True
