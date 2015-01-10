@@ -4,7 +4,7 @@ from django.db import models
 from datetime import datetime
 import unicodedata
 from spirit_user_profile.models import User
-from utils import *
+from ask.utils import *
 from django.core.exceptions import ValidationError
 
 class Model(models.Model):	

@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
-from views_admin import *
+from ask.views import *
 
 urlpatterns = patterns('',
     url(r'^principal_admin/$' , principal_admin),

@@ -46,6 +46,14 @@ ROOT_URLCONF = 'sisport.urls'
 
 WSGI_APPLICATION = 'sisport.wsgi.application'
 
+ST_RATELIMIT_ENABLE = True
+ST_RATELIMIT_CACHE_PREFIX = 'srl'
+ST_RATELIMIT_CACHE = 'default'
+
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

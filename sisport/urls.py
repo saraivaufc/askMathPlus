@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from ask.views import *
-from ask.views_admin import *
+
 
 admin.autodiscover()
 
@@ -16,7 +15,6 @@ handler500 = 'ask.views.my_custom_error_view'
 
 urlpatterns = patterns('',
 	url(r'^' , include('ask.urls', namespace="ask", app_name="ask")),
-    url(r'^' , include('ask.urls_admin', namespace="ask", app_name="ask")),
 
     url(r'^forum/', include('spirit.urls', namespace="spirit", app_name="spirit")),
     
