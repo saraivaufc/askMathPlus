@@ -30,7 +30,10 @@ class TurmaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','disciplina','semestre','professor','criacao')
+	list_display = ('id','disciplina','semestre','professor',)
+	list_display_links = ('id',)
+	list_editable = ('disciplina','semestre','professor',)
+	list_filter = ('semestre',)
 	save_as = True
 	search_fields = ['nome'] 
 
@@ -51,7 +54,10 @@ class ConteudoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','tema','getDescricaoMin','pergunta_inicial','max_pulos',)
+	list_display = ('id','tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
+	list_display_links = ('id',)
+	list_editable = ('tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
+	list_filter = ('turma','linha_metro','tamanho_metro',)
 	raw_id_fields = ('turma','pergunta_inicial', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
@@ -72,6 +78,9 @@ class PerguntaAdmin(admin.ModelAdmin):
         ),
 	)
 	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_correto', 'pergunta_proximo', 'ajuda','pontos' )
+	list_display_links = ('id','getDescricaoMin',)
+	list_editable = ('conteudo_pertence','item_correto','pergunta_proximo', 'ajuda','pontos', )
+	list_filter = ('conteudo_pertence',)
 	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo','ajuda')
 	save_as = True
 	search_fields = ['descricao']
@@ -87,7 +96,10 @@ class ItemAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','pergunta_pertence','getDescricaoMin','deficiencia','criacao',  )
+	list_display = ('id','pergunta_pertence','getDescricaoMin','deficiencia', )
+	list_display_links = ('id','getDescricaoMin',)
+	list_editable = ('pergunta_pertence','deficiencia')
+	list_filter = ('pergunta_pertence',)
 	raw_id_fields = ('pergunta_pertence','deficiencia')
 	save_as = True
 	search_fields = ['descricao']
@@ -102,7 +114,10 @@ class DeficienciaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','conteudo','descricao','criacao',  )
+	list_display = ('id','conteudo','getDescricaoMin',  )
+	list_display_links = ('id','getDescricaoMin',)
+	list_editable = ('conteudo', )
+	list_filter = ('conteudo',)
 	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
@@ -128,6 +143,9 @@ class HistoricoAdmin(admin.ModelAdmin):
 				  	'item',
 				  	'acertou',
 				  	'criacao',)
+	list_display_links = ('id',)
+	
+	list_filter = ('turma','usuario','turma','conteudo','pergunta','item','acertou','criacao')
 	raw_id_fields = ('usuario',
     			     'turma',
     			     'conteudo',
@@ -153,6 +171,8 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
 			      	'conteudo',
 				  	'pergunta',
 				  	'criacao',)
+	list_display_links = ('id','turma',)
+	list_filter = ('turma','usuario','conteudo','pergunta','criacao')
 	raw_id_fields = ('usuario',
     			     'turma',
     			     'conteudo',
@@ -170,8 +190,11 @@ class AjudaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','descricao','conteudo', 'criacao',
-					)
+	list_display = ('id','getDescricaoMin','conteudo',)
+	list_display_links = ('id','getDescricaoMin',)
+	list_editable =('conteudo',)
+	list_filter = ('conteudo',)
+	
 	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
@@ -192,6 +215,8 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 				  	'conteudo',
 				  	'pergunta',
 				  	'criacao',)
+	list_display_links = ('id','usuario',)
+	list_filter = ('usuario','conteudo','pergunta','criacao', )
 	raw_id_fields = ('usuario',
 				  	'conteudo',
 				  	'pergunta',)
@@ -215,6 +240,8 @@ class PuloAdmin(admin.ModelAdmin):
 			      	'conteudo',
 				  	'pergunta',
 				  	'criacao',)
+	list_display_links = ('id',)
+	list_filter = ('turma','usuario','conteudo','pergunta','criacao',)
 	raw_id_fields = ('usuario',
     			     'turma',
     			     'conteudo',
@@ -240,7 +267,8 @@ class PontuacaoAdmin(admin.ModelAdmin):
 				  	'pulosRestantes',
 				  	'acertos_seguidos',
 				  	'erros_seguidos')
-
+	list_display_links = ('id',)
+	list_filter = ('usuario','conteudo',)
 	raw_id_fields = ('usuario',
     			     'conteudo',)
 	save_as = True
@@ -261,6 +289,8 @@ class SecaoAdmin(admin.ModelAdmin):
 			      	'conteudo',
 				  	'inicio',
 				  	'fim',)
+	list_display_links = ('id','usuario',)
+	list_filter = ('usuario','conteudo','inicio','fim',)
 
 	raw_id_fields = ('usuario',
     			     'conteudo',)

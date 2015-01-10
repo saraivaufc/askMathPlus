@@ -9,6 +9,7 @@ import unicodedata
 #IMPORTS DJANGO
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.utils.html import format_html
 
 #IMPORTS SPIRIT
 
@@ -46,6 +47,7 @@ class Turma(Model):
 	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.");
 	professor = models.CharField(max_length=255 , verbose_name="Professor",  help_text="Escrevao nome do Professor que esta dando essa disciplina.")
 
+
 	def __unicode__(self):
 		return str(self.semestre) + ": " + self.disciplina + ":" + self.professor
 
@@ -75,6 +77,7 @@ class Conteudo(Model):
 
 	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False, choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
 	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False, choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
+	
 	
 	def __unicode__(self):
 		return  str(self.id) + ": " +  self.tema
@@ -416,16 +419,8 @@ class Deficiencia(Model):
 		verbose_name_plural = "Deficiências"
 
 	def getDescricaoMin(self):
-		quant = 0
-		des = ""
-		for i in self.descricao:
-			if quant < 50:
-				des += i
-			else:
-				break
-			quant+=1
-		des +="..."
-		return des
+		return minimize_frase(self.descricao)
+	getDescricaoMin.short_description = 'Descrição'
 
 	
 
@@ -441,16 +436,8 @@ class Ajuda(Model):
 		verbose_name_plural = "Ajudas"
 
 	def getDescricaoMin(self):
-		quant = 0
-		des = ""
-		for i in self.descricao:
-			if quant < 50:
-				des += i
-			else:
-				break
-			quant+=1
-		des +="..."
-		return des
+		return minimize_frase(self.descricao)
+	getDescricaoMin.short_description = 'Descrição'
 
 class Busca_Ajuda(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário", help_text="Escolha o usuário que pediu a ajuda.")
