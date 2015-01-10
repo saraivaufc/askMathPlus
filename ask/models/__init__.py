@@ -310,13 +310,16 @@ class Pergunta(Model):
 	def getDescricao(self):
 		quant = 0
 		des = ""
+		add = False
 		for i in self.descricao:
-			if quant < 255:
+			if quant < 100:
 				des += i
 			else:
+				add = True
 				break
 			quant+=1
-		des +="..."
+		if add:
+			des +="..."
 		return string_to_latex(des)
 
 	def getDescricaoMin(self):
@@ -394,14 +397,17 @@ class Item(Model):
 	def getDescricao(self):
 		quant = 0
 		des = ""
+		add = False
 		for i in self.descricao:
-			if quant < 255:
+			if quant < 100:
 				des += i
 			else:
+				add = True
 				break
 			quant+=1
-		des +="..."
-		return  string_to_latex(des)
+		if add:
+			des +="..."
+		return string_to_latex(des)
 
 	def getDescricaoMin(self):
 		return minimize_frase(self.descricao)

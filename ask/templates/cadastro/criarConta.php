@@ -18,32 +18,33 @@
 				<h2>Criar Conta</h2>
 				<br>
 			</div>
-			
-			<div class="col-sm-6">
-				<div class="form-group">
-					<label for="username" class=" control-label">Usuário</label>
-					<div>
-						<input id="username" class="form-control" name="username" required autofocus type="text" autocomplete="on" placeholder="Digite um nome de usuario">
+		<div class="row">
+			<fieldset class="col-md-5">
+				<legend>Sobre o Usuário</legend>
+					<div class="form-group">
+						<label for="username" class=" control-label">Usuário</label>
+						<div>
+							<input id="username" class="form-control" name="username" required autofocus type="text" autocomplete="on" placeholder="Digite um nome de usuario">
+						</div>
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<label for="first_name" class="control-label">Primeiro Nome</label>
-					<div>
-						<input id="first_name" class="form-control" name="first_name" required type="text" autocomplete="on" placeholder="Digite seu primeiro nome">
+					
+					<div class="form-group">
+						<label for="first_name" class="control-label">Primeiro Nome</label>
+						<div>
+							<input id="first_name" class="form-control" name="first_name" required type="text" autocomplete="on" placeholder="Digite seu primeiro nome">
+						</div>
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<label for="last_name" class="control-label">Segundo Nome</label>
-					<div>
-						<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu segundo nome">
+					
+					<div class="form-group">
+						<label for="last_name" class="control-label">Segundo Nome</label>
+						<div>
+							<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu segundo nome">
+						</div>
 					</div>
-				</div>
-			</div>
+			</fieldset>
 
-			<div class="col-sm-6">
-
+			<fieldset class="col-md-5 col-md-offset-1">
+				<legend>Dados da Conta</legend>
 				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
 					<div>
@@ -62,7 +63,9 @@
 						<input id="password2" class="form-control" name="password2" required="" type="password" placeholder="Repita a senha">
 					</div>
 				</div>
-			</div>
+			</fieldset>
+		</div>
+		<div class="row">
 			<div class="form-group">
 				<div class="btn-group btn-group-justified tela-opcoes-3">
 					<div class="btn-group">
@@ -77,6 +80,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</form>
 	</center>
 

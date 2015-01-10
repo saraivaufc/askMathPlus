@@ -20,7 +20,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/basico.css" />
+
+
+	<link rel="stylesheet" media="(min-width: 1200px)" href="/static/css/large.css" />
+	<link rel="stylesheet" media="(min-width: 768px) and (max-width: 979px)" href="/static/css/tablet.css" />
+	<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/tablet.css" />
+	<link rel="stylesheet" media="(max-width: 480px)" href="/static/css/phone.css" />
 
 {% block head %}
     
@@ -63,50 +69,56 @@
 </head>
 
 <body>
-<div id="container-site" class="container-fluid">
+<div id="container-site">
 {% block body %}
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12">
 	<header>
-		<div class="container-fluid">
-			{% block cabecalho_all %}
-			<div id="cabecalho">
-				<div class="row">
-					<div class="col-md-12 col-xs-12">
-					{% block cabecalho %}
-						<div id="logo">
+		<div id="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					{% block cabecalho_all %}
+					<div id="cabecalho" class="hidden-xs">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+							{% block cabecalho %}
+								<div id="logo">
 
+								</div>
+							{% endblock %}
+							</div>
 						</div>
-					{% endblock %}
 					</div>
-				</div>
-			</div>
-			{% endblock %}
+					{% endblock %}
 
-			{% block menu_all %}
-			<div id="menu">
-				<div class="row">
-					<div class="col-md-12 col-xs-12">
-					{% block menu %}
-					{% endblock %}
+					{% block menu_all %}
+					<div id="menu">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+							{% block menu %}
+							{% endblock %}
+							</div>
+						</div>
 					</div>
+					{% endblock %}
 				</div>
 			</div>
-			{% endblock %}
 		</div>
 	</header>
 
 	{% block conteudo_all %}
 	<section id="conteudo">
-		<div class="container-fluid">
+		<div id="container-fluid">
 			<div class="row">
 				{% block conteudo %}
-						<div class="col-md-5 col-xs-12">
+						<div class="col-xs-5 col-sm-5 col-md-5">
 							<div id="conteudo-left">
 								{% block conteudo-left %}
 								{% endblock %}
 							</div>
 						</div>
 
-						<div class="col-md-7 col-xs-12">
+						<div class="col-xs-7 col-sm-7 col-md-7">
 							<div id="conteudo-right">
 								{% block conteudo-right %}
 								{% endblock %}
@@ -119,12 +131,20 @@
 	{% endblock %}
 	
 	{% block rodape_all %}
-	<footer id="rodape">
-		{% block rodape %}
-			<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTI</center>
-		{% endblock %}
+	<footer id="rodape" class="hidden-xs">
+		<div id="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					{% block rodape %}
+						<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTI</center>
+					{% endblock %}
+				</div>
+			</div>
+		</div>
 	</footer>
 	{% endblock %}
+</div>
+</div>
 {% endblock %}
 </div>
 </body>

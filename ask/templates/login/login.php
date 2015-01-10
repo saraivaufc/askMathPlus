@@ -32,12 +32,12 @@
 					<div class="col-sm-8">
 						<div class="form-group">
 							<label>Usuário ou Email</label>
-							<input id="id_username" class="form-control" maxlength="254" name="username" type="text" required autofocus autocomplete="on">
+							<input id="id_username" class="form-control" maxlength="254" name="username" type="text" required autofocus autocomplete="on" placeholder="Seu nome de usuário ou email">
 						</div>
 
 						<div class="form-group">
 							<label>Senha</label>
-							<input id="id_password" class="form-control" name="password" type="password" required>
+							<input id="id_password" class="form-control" name="password" type="password" required placeholder="Sua senha">
 						</div>
 
 						<div class="form-group">

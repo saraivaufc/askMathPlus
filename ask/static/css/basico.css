@@ -7,9 +7,15 @@ body{
 }
 
 #container-site{
-	min-width: 800px;
-	min-height: 550px;
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
 
+#container-fluid{
+	width:98%;
+	margin-left: 1%;
+	margin-right: 1%;
 }
 
 .container{

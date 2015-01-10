@@ -22,7 +22,7 @@
 					  	</div>
 					 	<div class="panel-footer">
 					 		<div id="descricao-conteudo">
-					  		<t class="lead">{% lorem 100 w random %} {{ conteudo.descricao|safe }}<t>
+					  		<t class="lead">{{ conteudo.descricao|safe }}<t>
 					  		</div>
 					  	</div>
 				  	</div>
@@ -57,7 +57,7 @@
 						  		{% else %}
 								  	{% for i in perguntas %}
 								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
-								  			<t> {% lorem 50 w random %} {{ i.getDescricao|safe }}</t>
+								  			<t>{{ i.getDescricao|safe }}</t>
 								  		</a>
 								  	{% empty %}
 								  		<a class="list-group-item list-group-item-warning">
