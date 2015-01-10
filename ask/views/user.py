@@ -1,6 +1,13 @@
-# -*- encoding=utf-8 -*-
-from __future__ import unicode_literals
+# -*- coding: utf-8 -*-
 
+#IMPORTS PYTHON
+from __future__ import unicode_literals
+import re
+from random import randrange
+import smtplib
+from email.mime.text import MIMEText
+
+#IMPORTS DJANGO
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
@@ -9,14 +16,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login as login_view
 from django.contrib.auth.views import logout as logout_sys
 
-import re
-from random import randrange
-import smtplib
-from email.mime.text import MIMEText
-
-from spirit.forms.user import LoginForm
+#IMPORTS SPIRIT
 
 
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+from ask.forms.user import LoginForm
 from ask.utils import *
 from ask.models import *
 

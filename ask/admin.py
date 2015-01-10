@@ -1,5 +1,16 @@
+# -*- coding: utf-8 -*-
+
+#IMPORTS PYTHON
+
+#IMPORTS DJANGO
 from django.contrib import admin
-from models import *
+
+#IMPORTS SPIRIT
+
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+from ask.models import *
 
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):

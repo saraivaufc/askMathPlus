@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+
+#IMPORTS PYTHON
+
+#IMPORTS DJANGO
+
+#IMPORTS SPIRIT
+
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+
 def transform_tema(t):
 	tema =""
 	for i in t:

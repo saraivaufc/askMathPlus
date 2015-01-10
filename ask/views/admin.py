@@ -1,23 +1,34 @@
-# -*- encoding=utf-8 -*-
+# -*- coding: utf-8 -*-
 
+#IMPORTS PYTHON
 from __future__ import unicode_literals
-
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from ask.models import *
-from django.core.mail import send_mail
 try:
 	from hashlib import md5
 except:
 	from md5 import new as md5
-
 import re
 from random import randrange
 import smtplib
 from email.mime.text import MIMEText
+
+
+#IMPORTS DJANGO
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 
+#IMPORTS SPIRIT
+
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+from ask.models import *
 from ask.utils import *
+
+
+
+
 
 @login_required
 def principal_admin(request):

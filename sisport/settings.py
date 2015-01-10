@@ -1,6 +1,17 @@
-# -*- encoding: utf-8 -*-
-from spirit.settings import *
+# -*- coding: utf-8 -*-
+
+#IMPORTS PYTHON
+
+#IMPORTS DJANGO
 from django.utils.translation import ugettext_lazy as _
+
+#IMPORTS SPIRIT
+from spirit.settings import *
+
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+
 
 """
 Django settings for sisport project.

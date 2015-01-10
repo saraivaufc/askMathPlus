@@ -1,5 +1,17 @@
+# -*- coding: utf-8 -*-
+
+#IMPORTS PYTHON
+
+#IMPORTS DJANGO
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+
+#IMPORTS SPIRIT
+
+#IMPORTS USER_PROFILE_SPIRIT
+
+#IMPORTS ASK
+
 
 
 admin.autodiscover()

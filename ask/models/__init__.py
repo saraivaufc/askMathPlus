@@ -1,11 +1,23 @@
 # -*- encoding: utf-8 -*-
 
-from django.db import models
+
+
+#IMPORTS PYTHON
 from datetime import datetime
 import unicodedata
-from spirit_user_profile.models import User
-from ask.utils import *
+
+#IMPORTS DJANGO
+from django.db import models
 from django.core.exceptions import ValidationError
+
+#IMPORTS SPIRIT
+
+#IMPORTS USER_PROFILE_SPIRIT
+from spirit_user_profile.models import User
+
+#IMPORTS ASK
+from ask.utils import *
+
 
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
