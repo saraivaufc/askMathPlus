@@ -10,7 +10,7 @@
 	<div class="nav navbar bg-primary">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-6 col-sm-9 col-md-9">
+				<div class="col-xs-9 col-sm-9 col-md-9">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/principal_admin/">
 							<div id="title-system">
@@ -38,7 +38,7 @@
 							{% endblock %}
 						</ul>
 				</div>
-				<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="col-xs-3 col-sm-3 col-md-3">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
 								<a href="/principal_admin/">

@@ -20,13 +20,10 @@
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/basico.css" />
 
-
-	<link rel="stylesheet" media="(min-width: 1200px)" href="/static/css/large.css" />
-	<link rel="stylesheet" media="(min-width: 768px) and (max-width: 979px)" href="/static/css/tablet.css" />
-	<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/tablet.css" />
-	<link rel="stylesheet" media="(max-width: 480px)" href="/static/css/phone.css" />
+	<link rel="stylesheet"  href="/static/css/normal.css" />
+	<link rel="stylesheet" media="(min-width: 1600px)" href="/static/css/grande.css" />
+	<link rel="stylesheet" media="(max-width: 979px)" href="/static/css/pequeno.css" />
 
 {% block head %}
     
@@ -76,11 +73,11 @@
 	<header>
 		<div id="container-fluid">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="col-md-12">
 					{% block cabecalho_all %}
-					<div id="cabecalho" class="hidden-xs">
+					<div id="cabecalho">
 						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="col-md-12">
 							{% block cabecalho %}
 								<div id="logo">
 
@@ -118,7 +115,7 @@
 							</div>
 						</div>
 
-						<div class="col-xs-7 col-sm-7 col-md-7">
+						<div class="col-xs-7 col-sm-7  col-md-7">
 							<div id="conteudo-right">
 								{% block conteudo-right %}
 								{% endblock %}
@@ -131,7 +128,7 @@
 	{% endblock %}
 	
 	{% block rodape_all %}
-	<footer id="rodape" class="hidden-xs">
+	<footer id="rodape">
 		<div id="container-fluid">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12">

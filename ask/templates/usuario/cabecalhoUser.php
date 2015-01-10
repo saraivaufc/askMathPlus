@@ -5,7 +5,7 @@
 	<div class="nav navbar bg-primary">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-6 col-sm-4 col-md-8">
+				<div class="col-xs-3 col-sm-3 col-md-3">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/principal/">
 							<div id="title-system">
@@ -24,7 +24,7 @@
 					</ul>
 				</div>
 
-				<div class="col-xs-6  col-sm-8 col-md-4">
+				<div class="col-xs-9 col-sm-9 col-md-9">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="/principal/">
