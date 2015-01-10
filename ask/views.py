@@ -17,6 +17,7 @@ from spirit.utils.ratelimit.decorators import ratelimit
 from django.test import Client
 from classes import *
 from utils import *
+from django.contrib.auth import authenticate, login as login_admin
 
 def index(request):
 	if request.user.is_authenticated() and request.user.is_moderator == False:
@@ -33,10 +34,14 @@ def login(request, **kwargs):
 
 
 	if request.method == "POST":
-		c = Client()
-		c.login(username = 'id_username', password = 'id_password')
-	
-	return login_view(request, authentication_form=LoginForm, **kwargs)
+		user = authenticate(username=request.POST['username'], password=request.POST['password'])
+		if user is not None:
+			login_admin(request, user)
+			return login(request)
+		else:
+			return render(request , 'login/login_falha.php' , locals())
+	else:
+		return login_view(request, authentication_form=LoginForm, **kwargs)
 
 def login_falha(request):
 	return render(request , 'login/login_falha.php' , locals())
