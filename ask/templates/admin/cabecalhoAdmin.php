@@ -10,7 +10,7 @@
 	<div class="nav navbar bg-primary">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-6 col-sm-9 col-md-6">
+				<div class="col-xs-6 col-sm-9 col-md-9">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/principal_admin/">
 							<div id="title-system">
@@ -38,24 +38,13 @@
 							{% endblock %}
 						</ul>
 				</div>
-				<div class="col-xs-6 col-sm-3 col-md-6">
+				<div class="col-xs-6 col-sm-3 col-md-3">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
 								<a href="/principal_admin/">
 									<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
 								</a>
 							</li>
-							<li class="hidden-sm">
-								<a data-toggle="modal" data-target="#contato">
-									Contato <span class="glyphicon glyphicon-envelope"></span>
-								</a>
-							</li>
-							 <li class="hidden-sm">
-								<a data-toggle="modal" data-target="#sobre">
-									Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
-								</a>
-							 </li>
-							 
 							{% block sair_all %}
 								<li>
 									<a  href="/logout/">
@@ -70,12 +59,5 @@
 		</div><!--/.container-fluid -->
 	</div><!--/.nav navbar -->    
 </div><!-- /.barra-menu -->
-
-
-<div class="font-dconteudo">
- 	{% include 'usuario/modals/sobre.php' %}
- 	{% include 'usuario/modals/contato.php' %}
-</div>
-
 
 {% endblock %}
