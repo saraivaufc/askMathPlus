@@ -24,7 +24,7 @@
 	<div class="barra-responder tela-opcoes-1">
 		<div class="btn-group btn-group-justified fixer-bottom">
 			<div class="btn-group">
-				<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
+				<button  type="button"  onclick="window.location='/principal/'" class="btn ui-btn btn-primary">
 					Voltar Início <span class="glyphicon glyphicon-th"></span>
 				</button>
 			</div>

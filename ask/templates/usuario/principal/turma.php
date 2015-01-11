@@ -46,12 +46,12 @@
 			</div>
 				<div class="btn-group btn-group-justified tela-opcoes-3">
 					<div class="btn-group">
-						<button type="submit" class="btn btn-primary">
+						<button type="submit" class="btn ui-btn btn-primary">
 							Escolher <span class="glyphicon glyphicon-ok-circle hidden-xs"></span>
 						</button>
 					</div>
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary" onClick="document.location='/logout/'">
+						<button type="button" class="btn ui-btn btn-primary" onClick="document.location='/logout/'">
 							Sair <span class="glyphicon glyphicon-log-out hidden-xs"></span>
 						</button>
 					</div>

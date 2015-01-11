@@ -29,21 +29,21 @@
 				<legend class="hidden-xs">Usuário</legend>
 					<div class="form-group">
 						<label for="username" class=" control-label">Usuário</label>
-						<div>
+						<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 							<input id="username" class="form-control" name="username" required autofocus type="text" autocomplete="on" placeholder="Digite um nome de usuario">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="first_name" class="control-label">Primeiro Nome</label>
-						<div>
+						<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 							<input id="first_name" class="form-control" name="first_name" required type="text" autocomplete="on" placeholder="Digite seu primeiro nome">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="last_name" class="control-label">Segundo Nome</label>
-						<div>
+						<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 							<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu segundo nome">
 						</div>
 					</div>
@@ -53,19 +53,19 @@
 				<legend class="hidden-xs">Conta</legend>
 				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
-					<div>
+					<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 						<input id="email" class="form-control" name="email" required type="email" autocomplete="on" placeholder="Digite seu email">
 					</div>
 				</div>
 				<div class="form-group " id="senha1">
 					<label for="password" class="control-label">Senha</label>
-					<div>
+					<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 						<input id="password" class="form-control" name="password" required="" type="password" placeholder="Digite uma senha">
 					</div>
 				</div>
 				<div class="form-group " id="senha2">
 					<label for="password2" class="control-label">Repita a Senha</label>
-					<div>
+					<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
 						<input id="password2" class="form-control" name="password2" required="" type="password" placeholder="Repita a senha">
 					</div>
 				</div>

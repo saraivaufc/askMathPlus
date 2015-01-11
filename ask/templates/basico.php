@@ -45,12 +45,12 @@
 				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 			<![endif]-->
 
+
+<script type="text/javascript" media="(max-width: 480px)"  src="/static/jquery_mobile/jquery.mobile-1.4.5.js"></script>
+
+
 			<!-- JQuery Normal -->
-			<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>
-			
-
-			
-
+			<script type="text/javascript" src="/static/javascript/jquery.js"></script>
 			
 
 			<!-- Latex -->
@@ -71,6 +71,13 @@
 				<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
 				<script type="text/javascript" src="/static/javascript/metro.js" ></script>
 			{% endblock %}
+
+
+<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.theme-1.4.5.css" />
+<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.structure-1.4.5.css" />
+<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.external-png-1.4.5.css" />
+<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.icons-1.4.5.css" />
 
 
 			<script type="text/javascript">

@@ -13,12 +13,12 @@
 					<div class="tela-opcoes-2">
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-dismiss="modal">
+								<button type="button" class="btn ui-btn btn-default" data-dismiss="modal">
 									Não <span class="glyphicon glyphicon-remove"></span>
 								</button>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="pularPergunta()" >
+								<button type="button" class="btn ui-btn btn-primary" data-dismiss="modal" onclick="pularPergunta()" >
 									Sim <span class="glyphicon glyphicon-ok"></span>
 								</button>
 							</div>

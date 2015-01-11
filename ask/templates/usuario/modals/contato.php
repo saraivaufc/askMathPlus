@@ -36,12 +36,12 @@
 						<center>
 							<div class="btn-group btn-group-justified tela-opcoes-2">
 								<div class="btn-group">
-									<button type="button" class="btn btn-default" data-dismiss="modal">
+									<button type="button" class="btn ui-btn btn-default" data-dismiss="modal">
 										Cancelar <span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</div>
 								<div class="btn-group">
-									<button type="submit" class="btn btn-primary" >
+									<button type="submit" class="btn ui-btn btn-primary" >
 										Enviar <span class="glyphicon glyphicon-send "></span>
 									</button>
 								</div>

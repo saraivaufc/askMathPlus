@@ -64,7 +64,7 @@
 					</button>
 				</div>
 				<div class="btn-group">
-					<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
+					<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn ui-btn btn-success">
 						{% if respondeuPergunta %}
 							Refazer Lição <span class="glyphicon glyphicon-repeat"></span>
 						{% else %}
@@ -74,7 +74,7 @@
 				</div>
 				{% if existePulos %}
 					<div class="btn-group">
-						<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn btn-primary">
+						<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn ui-btn btn-primary">
 							Rever Saltos <span class="glyphicon glyphicon-retweet"></span>
 						</button>
 					</div>
