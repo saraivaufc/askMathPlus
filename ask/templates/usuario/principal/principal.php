@@ -1,3 +1,4 @@
+
 {% extends 'usuario/cabecalhoUser.php' %}
 
 {% block voltar_all %}
@@ -14,10 +15,7 @@
 {%  endblock %}
 
 {% block conteudo %}
-
-<div class="col-md-12 col-xs-12">
 	<div class="metro">
-
 		<table id="container-metro">
 			<tr id="linha-metro">
 			<td>
@@ -79,6 +77,4 @@
 			</tr>
 		</table>
 	</div>
-</div>
-
 {% endblock %}
