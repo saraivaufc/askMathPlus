@@ -125,7 +125,7 @@ body{
 .barra-responder{
 	position: relative;
 	width: 100%;
-	height: 15%;
+	font-size: 70%;
 }
 
 .nav{
@@ -143,6 +143,7 @@ body{
 }
 
 .table tr:first-child{
+	font-size: 80%;
 	font-weight: bold;
 }
 
@@ -282,6 +283,7 @@ body{
 
 #pontuacao h3{
 	color: #1E90FF;
+	font-size: 100%;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;
 }
@@ -353,3 +355,4 @@ h1{
 	width:100%;
 	height:100%;
 }
+

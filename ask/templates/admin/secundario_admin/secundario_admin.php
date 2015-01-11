@@ -43,7 +43,7 @@
 				 	
 				 		<div class="list-group">
 						  	<a data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-						    PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes hidden-xs"></span>
+						    PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 						  	</a>
 						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
 						  		<a  class="list-group-item list-group-item-danger">
@@ -69,7 +69,7 @@
 						</div>
 						<div class="list-group">
 						  	<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
-							    REQUISITOS <span class="glyphicon glyphicon-info-sign hidden-xs"></span>
+							    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getRequisitos %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
@@ -83,7 +83,7 @@
 						</div>
 						<div class="list-group">
 							<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
-							    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign hidden-xs"></span>
+							    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 							</a>
 							{% for c in conteudo.getSugestoes %}
 								<a  onclick="window.open('/principal_admin/{{ c.getTema }}')" class="list-group-item">
@@ -107,12 +107,12 @@
 				<div class="btn-group btn-group-justified fixer-bottom" role="toolbar">
 					<div class="btn-group">
 						<button  type="button"  onclick="window.location='/principal_admin/'" class="btn btn-primary">
-							Voltar Início <span class="glyphicon glyphicon-th hidden-xs"></span>
+							Voltar Início <span class="glyphicon glyphicon-th "></span>
 						</button>
 					</div>
 					<div class="btn-group">
 						<button  type="button"  data-toggle="modal" data-target="#detalhes_conteudo_modal" class="btn btn-primary">
-							Detalhes <span class="glyphicon glyphicon-exclamation-sign hidden-xs"></span>
+							Detalhes <span class="glyphicon glyphicon-exclamation-sign"></span>
 						</button>
 					</div>
 				</div>

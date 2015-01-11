@@ -17,7 +17,7 @@
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary" data-dismiss="modal">
-									Fechar <span class="glyphicon glyphicon-remove hidden-xs"></span>
+									Fechar <span class="glyphicon glyphicon-remove"></span>
 								</button>
 							</div>
 						</div>

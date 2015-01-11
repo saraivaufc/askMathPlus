@@ -127,6 +127,7 @@ $(document).ready(function(){
 	$("input[name='opcao']").click(function(){
 			$("#responder").removeAttr('disabled');
 	});
+
 });
 
 function verificarAcerto(){

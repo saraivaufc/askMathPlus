@@ -14,12 +14,12 @@
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default" data-dismiss="modal">
-									Não <span class="glyphicon glyphicon-remove hidden-xs"></span>
+									Não <span class="glyphicon glyphicon-remove"></span>
 								</button>
 							</div>
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="pularPergunta()" >
-									Sim <span class="glyphicon glyphicon-ok hidden-xs"></span>
+									Sim <span class="glyphicon glyphicon-ok"></span>
 								</button>
 							</div>
 						</div>

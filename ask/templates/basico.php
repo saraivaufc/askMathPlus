@@ -94,13 +94,13 @@
 						<div id="conteudo">
 							{% block conteudo %}
 								<div class="row">
-									<div class="col-md-4 col-lg-5">
+									<div class="col-sm-5 col-md-4 col-lg-5">
 										<div id="conteudo-left">
 											{% block conteudo-left %}
 											{% endblock %}
 										</div>
 									</div>
-									<div class="col-md-8 col-lg-7">
+									<div class="col-sm-7 col-md-8 col-lg-7">
 										<div id="conteudo-right">
 											{% block conteudo-right %}
 											{% endblock %}

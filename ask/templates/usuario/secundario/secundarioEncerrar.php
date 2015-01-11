@@ -71,12 +71,12 @@
 		<div class="btn-group btn-group-justified fixer-bottom">
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-					Voltar Início <span class="glyphicon glyphicon-th hidden-xs"></span>
+					Voltar Início <span class="glyphicon glyphicon-th"></span>
 				</button>
 			</div>
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
-					Continuar <span class="glyphicon glyphicon-arrow-right hidden-xs"></span>
+					Continuar <span class="glyphicon glyphicon-arrow-right"></span>
 				</button>
 			</div>
 		</div>

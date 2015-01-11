@@ -42,7 +42,7 @@
 
 {% block sugestoes %}
 	<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
-	    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign hidden-xs"></span>
+	    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
 	{% for c in conteudo.getSugestoes %}
 		<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
@@ -58,7 +58,7 @@
 		<div class="btn-group btn-group-justified fixer-bottom">
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-					Voltar Inicio <span class="glyphicon glyphicon-th hidden-xs"></span>
+					Voltar Inicio <span class="glyphicon glyphicon-th"></span>
 				</button>
 			</div>
 		</div>
