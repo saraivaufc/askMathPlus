@@ -11,16 +11,15 @@
 
 
 {% block conteudo %}
-<div class="conteudo">
+<div class="container">
 	<center>
 		<form class="form-login form-horizontal" role="form" onSubmit="return validaCriarConta()"  method="post">{% csrf_token %}
 			<div class="col-sm-12">
 				<h2>Criar Conta</h2>
-				<br>
 			</div>
 		<div class="row">
 			<fieldset class="col-md-5">
-				<legend>Sobre o Usuário</legend>
+				<legend>Usuário</legend>
 					<div class="form-group">
 						<label for="username" class=" control-label">Usuário</label>
 						<div>
@@ -44,7 +43,7 @@
 			</fieldset>
 
 			<fieldset class="col-md-5 col-md-offset-1">
-				<legend>Dados da Conta</legend>
+				<legend>Conta</legend>
 				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
 					<div>

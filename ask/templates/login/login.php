@@ -17,7 +17,7 @@
 {% block sair_all %}{% endblock %}
 
 {% block conteudo %}
-	<div class="conteudo">
+	<div class="container">
 		<center>
 			<div class="form-login login">
 				<form class="form form-horizontal" method="post" role="form" action=".">{% csrf_token %}
@@ -62,5 +62,4 @@
 			</div>
 		</center>
 	</div>
-
 {% endblock %}

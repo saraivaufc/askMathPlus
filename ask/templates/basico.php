@@ -89,26 +89,26 @@
 
 		<section>
 			{% block conteudo_all %}
-				<div id="conteudo">
-					<div class="row">
+				<div class="row">
 					<div class="col-md-12 col-xs-12">
-					{% block conteudo %}
-						<div class="row">
-							<div class="col-md-5">
-								<div id="conteudo-left">
-									{% block conteudo-left %}
-									{% endblock %}
+						<div id="conteudo">
+							{% block conteudo %}
+								<div class="row">
+									<div class="col-md-4">
+										<div id="conteudo-left">
+											{% block conteudo-left %}
+											{% endblock %}
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div id="conteudo-right">
+											{% block conteudo-right %}
+											{% endblock %}
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-7">
-								<div id="conteudo-right">
-									{% block conteudo-right %}
-									{% endblock %}
-								</div>
-							</div>
+							{% endblock %}
 						</div>
-					{% endblock %}
-					</div>
 					</div>
 				</div>
 			{% endblock %}

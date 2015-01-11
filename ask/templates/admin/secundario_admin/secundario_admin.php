@@ -6,7 +6,7 @@
 
 {% block estilo %}
 	#conteudo{
-		background-color: #337AB7;
+		background-color: #D9EDF7;
 	}
 {% endblock %}
 
