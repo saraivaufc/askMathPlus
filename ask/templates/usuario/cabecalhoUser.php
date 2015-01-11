@@ -31,12 +31,12 @@
 						</a>
 					</li>
 					<li>
-						<a data-toggle="modal" data-target="#contato">
+						<a data-toggle="modal" data-rel="dialog"  data-target="#contato">
 							Contato <span class="glyphicon glyphicon-envelope"></span>
 						</a>
 					</li>
 					<li>
-						<a data-toggle="modal" data-target="#sobre">
+						<a  data-role="button" data-icon="gear" data-toggle="modal" data-target="#sobre">
 							Sobre <span class="glyphicon glyphicon-exclamation-sign"></span>
 						</a>
 					</li>

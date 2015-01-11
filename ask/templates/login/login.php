@@ -22,7 +22,7 @@
 			<div class="form-login login">
 				<form class="form form-horizontal" method="post" role="form" action=".">{% csrf_token %}
 					<div class="col-sm-12">
-						<h2>Realizar Login</h2>
+						<h2>Login</h2>
 					</div>
 					<input name="next" value="/principal/" type="hidden">
 					

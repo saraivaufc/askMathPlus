@@ -91,7 +91,7 @@ a{
 .form-login{
 	position: relative;
 	margin-top: 1%;
-	width:30%;
+	width:40%;
 }
 
 .form-login h2{
@@ -397,7 +397,7 @@ a{
 
 .form-centro{
 	position: relative;
-	width: 40%;
+	width: 50%;
 	left: 30%;
 	right: 70%;
 }

@@ -167,7 +167,7 @@
 			{% endif %}
 				<div class="btn-group btn-group-justified fixer-bottom" role="toolbar">
 					<div class="btn-group">
-						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">
+						<button type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">
 							Terminar <span class="glyphicon glyphicon-off"></span>
 						</button>
 					</div>
@@ -194,7 +194,7 @@
 					</div>
 					{% endif %}
 					<div class="btn-group">
-						<button  type="button" id="responder" class="btn btn-success ">
+						<button  type="button" id="responder" class="btn btn-success">
 							Responder <span class="glyphicon glyphicon-check"></span>
 						</button>
 					</div>

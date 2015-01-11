@@ -23,8 +23,9 @@
 			<div class="col-sm-12">
 				<h2>Criar Conta</h2>
 			</div>
+		<center>
 		<div class="row">
-			<fieldset class="col-md-5">
+			<fieldset class="col-md-6">
 				<legend class="hidden-xs">Usuário</legend>
 					<div class="form-group">
 						<label for="username" class=" control-label">Usuário</label>
@@ -48,7 +49,7 @@
 					</div>
 			</fieldset>
 
-			<fieldset class="col-md-5 col-md-offset-1">
+			<fieldset class="col-md-6">
 				<legend class="hidden-xs">Conta</legend>
 				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
@@ -70,7 +71,6 @@
 				</div>
 			</fieldset>
 		</div>
-		<div class="row">
 			<div class="form-group">
 				<div class="btn-group btn-group-justified tela-opcoes-3">
 					<div class="btn-group">
@@ -85,7 +85,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</center>
 		</form>
 	</center>
 
