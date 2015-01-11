@@ -1,6 +1,4 @@
 
-$(document).off('.data-api');
-
 //CLICKS
 $(document).ready(function(){
 

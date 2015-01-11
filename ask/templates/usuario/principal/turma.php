@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block conteudo %}
-
+<div class="container">
 <center>
 	<h1>Escolha uma Turma</h1>
 </center>
@@ -59,5 +59,5 @@
 		</form>
 		</div>
 	</center>
-
+</div>
 {% endblock %}

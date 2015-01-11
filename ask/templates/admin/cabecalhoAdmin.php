@@ -11,10 +11,7 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" id="navOpcoes" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<span class="glyphicon glyphicon-th-large"></span>
 				</button>
 				<a class="navbar-brand" href="/principal_admin/">
 					AskMath <span class="glyphicon glyphicon-home"></span>
@@ -24,17 +21,17 @@
 			<div id="obcoesMenu" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a id="forum" onClick="window.open('/forum/')" data-container="body" data-toggle="popover" data-placement="top" data-content="Use esse forum para responder as duvidas dos alunos.">
+						<a id="forum" onClick="window.open('/forum/')" >
 							Forum <span class="glyphicon glyphicon-globe"></span>
 						</a>
 					</li>
 					<li>
-						<a id="gerenciador"  data-container="body" data-toggle="popover" data-placement="top" data-content="Use ess gerenciador para adicionar, remover, buscar e editar os modelos."  onclick="window.open('/admin/')">
+						<a id="gerenciador" onclick="window.open('/admin/')">
 							Gerenciador <span class="glyphicon glyphicon-wrench"></span>
 						</a>
 					</li>
 					<li>
-						<a id="editor-latex" data-container="body" data-toggle="popover" data-placement="top" data-content="Esse editor lhe ajudará quando nescessitar adicionar Latex nos modelos."  onclick="window.open('http://latex.codecogs.com/')">
+						<a id="editor-latex" onclick="window.open('http://latex.codecogs.com/')">
 							Editor Latex <span class="glyphicon glyphicon-edit"></span>
 						</a>
 					</li>
@@ -42,7 +39,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/principal/">
+						<a href="/principal_admin/">
 							<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
 						</a>
 					</li>

@@ -6,10 +6,7 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" id="navOpcoes" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<span class="glyphicon glyphicon-th-large"></span>
 				</button>
 				<a class="navbar-brand" href="/principal/">
 					AskMath <span class="glyphicon glyphicon-home "></span>

@@ -21,16 +21,11 @@
 			<!-- Favicons -->
 			<link rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
 
-
-
 			<!-- Bootstrap -->
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
 
-
-			<!--  Jquery Mobile -->
-			<link rel="stylesheet" type="text/css" href="/static/jquery_mobile/jquery.mobile-1.4.5.min.css">
 
 			<!-- Responsive  -->
 			<link rel="stylesheet" href="/static/css/base.css" />
@@ -49,13 +44,6 @@
 				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 			<![endif]-->
-
-
-
-
-			
-			<!--Jquery Mobile -->
-			<script type="text/javascript" src="/static/jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
 
 			<!-- JQuery Normal -->
 			<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>

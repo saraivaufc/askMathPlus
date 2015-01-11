@@ -1,3 +1,7 @@
+.lead{
+	font-size: 100%;
+}
+
 
 #menu{
 	position: relative;
@@ -86,7 +90,7 @@
 }
 
 .btn-group .btn{
-	font-size: 100%;
+	font-size: 90%;
 	text-align: center;
 }
 
@@ -174,85 +178,6 @@
 }
 
 
-.selecionado{
-	background: #ADD8E6;
-	color:#000000;
-}
-
-.container-conteudo{
-	position: relative;
-	width:100%;
-	height:100%;
-	background-color: #E5E5E5;
-}
-
-.metro{
-	position: relative;
-	width:100%;
-	height:100%;
-	overflow-x:auto;
-	background-color: #E5E5E5;
-}
-
-.linha{
-	width:100%;
-	height: 100%;
-	padding: 5px;
-	display:inline-flex;
-}
-
-.tile{
-	width:150px;
-	height:100%;
-	float:left;
-	cursor: pointer;
-	margin: 0 5px 0 5px;
-	padding:2px;
-	font-size: 120%;
-	text-shadow: 1px 1px 0px #000000;
-	box-shadow: inset 0 0 20px #777777;
-}
-
-.tileLargo{
-	width:305px;
-	cursor: pointer;
-}
-
-.tile .tileLargo{
-	text-align: center;
-}
-
-.tile:hover{
-	box-shadow: 5px 5px 5px #4D4D4D;
-}
-
-
-.form-centro{
-	position: relative;
-	width: 100%;
-}
-
-
-#container-metro{
-	position: relative;
-	height: 100%;
-	height: 100%;
-	top: 2%;
-	bottom: 2%;
-}
-
-#linha-metro{
-	position: relative;
-	height: 30%;
-}
-
-
-.avisos-conteudo{
-	position: relative;
-	top: 30%;
-
-}
-
 .fixer-bottom{
 	position: absolute;
 	bottom: 5px;
@@ -267,7 +192,6 @@
 }
 
 h1{
-
 	color: #1E90FF;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;	
@@ -293,10 +217,10 @@ h1{
 }
 
 .tela-opcoes-1{
-	width: 100%;
+	width: 40%;
 }
 .tela-opcoes-2{
-	width: 100%;
+	width: 80%;
 }
 
 .tela-opcoes-3{
@@ -318,8 +242,6 @@ h1{
 }
 
 #escolher_turma{
-	width: 40%;
+	width: 100%;
 }
-
-
 

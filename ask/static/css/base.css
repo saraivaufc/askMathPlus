@@ -197,14 +197,6 @@ a{
 	height: 75%;
 }
 
-.conteudo-all{
-	position: relative;
-	top:28%;
-	left:0%;
-	right: 0%;
-	bottom:4%;
-	background:#E6E6FA;
-}
 
 .pergunta-itens{
 	position:relative;
@@ -215,21 +207,7 @@ a{
 
 #ajuda_text{
 	text-align: justify;
-	font-size:18px;	
 }
-
-.espacamento{
-	margin-left:2%;
-	margin-right:2%;
-}
-
-.espacamento-right{
-	margin-right:4%;
-}
-.espacamento-left{
-	margin-left:4%;
-}
-
 
 .descricao-conteudo{
 	position: relative;
@@ -245,9 +223,6 @@ a{
 }
 
 
-.text-align-center{
-	text-align: center;
-}
 .show {
   display: block !important;
   visibility: visible;

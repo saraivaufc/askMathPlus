@@ -25,7 +25,7 @@
 			</div>
 		<center>
 		<div class="row">
-			<fieldset class="col-md-6">
+			<fieldset class="col-sm-6 col-md-6">
 				<legend class="hidden-xs">Usuário</legend>
 					<div class="form-group">
 						<label for="username" class=" control-label">Usuário</label>
@@ -49,7 +49,7 @@
 					</div>
 			</fieldset>
 
-			<fieldset class="col-md-6">
+			<fieldset class="col-sm-6  col-md-6">
 				<legend class="hidden-xs">Conta</legend>
 				<div class="form-group">
 					<label for="email" class="control-label">Email</label>

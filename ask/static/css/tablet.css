@@ -1,1 +1,260 @@
+.lead{
+	font-size: 100%;
+}
+
+#cabecalho {
+	position: relative;
+	width: 100%;
+	height: 20%;
+}
+
+#logo{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#menu{
+	position: relative;
+	width: 100%;
+	height: 7%;
+}
+
+
+#conteudo{
+	position: relative;
+ 	width: 100%;
+ 	height: 69%;
+ 	background-color: #FFFFFF;
+ 	color: #4a5b62;
+}
+
+#conteudo-left{
+	position:relative;
+	width: 100%;
+	height: 100%;
+	background-color: #FCFFCD;
+ 	overflow-y:auto;
+}
+#conteudo-right{
+	position:relative;
+	width: 100%;
+	height: 100%;
+	background-color: #D9EDF7;
+}
+
+.conteudo-center{
+	position:relative;
+	width: 100%;
+	height: 98%;
+}
+
+#rodape{
+	position:relative;
+	width: 100%;
+	height: 4%;
+	background-color: #337AB7;
+}
+
+
+
+.form-login{
+	position: relative;
+	margin-top: 1%;
+	width:50%;
+}
+
+.form-login h2{
+	color: #428bca;
+	font-weight: bold;
+}
+
+.form-contato{
+	position: relative;
+	width:50%;
+}
+
+.font-dconteudo{
+	position:relative;
+	text-align: justify;
+	color: black;
+}
+
+.font-metro{
+	position: relative;
+	top: 35%;
+	font-weight: bold;
+	font-size: 110%;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+
+
+
+#comecar{
+	position: relative;
+	top: 40%;
+}
+
+.btn-group .btn{
+	font-size: 70%;
+	text-align: center;
+}
+
+.navbar a{
+	text-align: center;
+}
+
+
+#barra-avancar{
+	position: relative;
+	width: 100%;
+	height: 6%;
+}
+.barra-responder{
+	position: relative;
+	width: 100%;
+	height: 15%;
+}
+
+
+
+.jsPane{
+	margin-top: 1px;
+	margin-bottom: 1px;
+	height: 100%;
+}
+
+.jspContainer{
+	height: 100%;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.nav{
+	height: 100%;
+}
+
+.navbar a{
+	font-size: 80%;
+	height: 100%;
+	color: #FFFFFF;
+}
+
+.navbar-brand a{
+	font-size: 120%;
+}
+
+.navbar-nav a:hover{
+	color: #428bca;
+}
+
+.table tr:first-child{
+	font-weight: bold;
+}
+
+
+
+.titulo-pergunta{
+	position: relative;
+	width:100%;
+	height:3%;
+	color: #4a5b62;
+} 
+.texto-descricao{
+	position: relative;
+	margin-right: 4%;
+	margin-left: 4%;
+	height: 75%;
+}
+
+.pergunta-itens{
+	position:relative;
+	top: 10%;
+	text-align: justify;
+	font-size:18px;
+}
+
+#ajuda_text{
+	text-align: justify;
+	font-size:18px;	
+}
+
+
+.descricao-conteudo{
+	position: relative;
+	width:100%;
+	height:95%;
+}
+
+.descricao-pergunta{
+	position: relative;
+	width:100%;
+	height:86%;	
+ 	overflow-y:auto;
+}
+
+.container-conteudo{
+	position: relative;
+	width:100%;
+	height:100%;
+	background-color: #E5E5E5;
+}
+
+
+.form-centro{
+	position: relative;
+	width: 50%;
+	left: 30%;
+	right: 70%;
+}
+
+
+#pontuacao h3{
+	color: #1E90FF;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px #000000;
+	font-size: 100%;
+}
+
+h1{
+	color: #1E90FF;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px #000000;	
+}
+
+#creditos{
+	color: #FFFFFF;
+	font-size: 100%;
+}
+
+.tela-opcoes-1{
+	width: 20%;
+}
+.tela-opcoes-2{
+	width: 50%;
+}
+
+.tela-opcoes-3{
+	width: 100%;
+}
+
+.tela-opcoes-4{
+	width: 100%;
+}
+
+.tela-opcoes-5{
+	width: 100%;
+}
+
+#escolher_turma{
+	width: 80%;
+}
+
+.nav li a{
+	font-size: 90%;
+}
 

@@ -5,6 +5,10 @@ from __future__ import unicode_literals
 import re
 from random import randrange
 import smtplib
+try:
+	from hashlib import md5
+except:
+	from md5 import new as md5
 from email.mime.text import MIMEText
 
 #IMPORTS DJANGO
