@@ -17,16 +17,6 @@ $(document).ready(function(){
 		});
 	});
 
-	$("#navOpcoes").click(function(){
-		if($("#corpo").css('visibility') == 'visible' ){
-			$("#corpo").css("visibility", "hidden");
-			$("#obcoesMenu").css("overflow", "none");
-		}else{
-			$("#corpo").css("visibility", "visible");
-		};
-	});
-
-
 });
 
 //HOVERS

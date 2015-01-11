@@ -9,6 +9,12 @@
     Criar Conta
 {% endblock %}
 
+{% block estilo %}
+	#conteudo{
+		overflow-y:auto;
+	}
+{% endblock %}
+
 
 {% block conteudo %}
 <div class="container">
