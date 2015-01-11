@@ -7,7 +7,7 @@
 
 {% block estilo %}
 	#conteudo{
-		background-color: blue;
+		background-color: #337AB7;
 	}
 {% endblock %}
 
@@ -168,34 +168,34 @@
 				<div class="btn-group btn-group-justified fixer-bottom" role="toolbar">
 					<div class="btn-group">
 						<button  type="button" id="encerrar"  onclick="window.location = '/principal/encerrar/{{ conteudo.getTema }}' "  class="btn btn-danger">
-							Terminar <span class="glyphicon glyphicon-off"></span>
+							Terminar <span class="glyphicon glyphicon-off hidden-xs"></span>
 						</button>
 					</div>
 					
 					{% if existePular %}
 					<div class="btn-group">
 						<button  type="button" id="pular" data-toggle="modal" data-target="#pular_pergunta_modal" class="btn btn-primary">
-							Saltar <span class="glyphicon glyphicon-share-alt"></span>
+							Saltar <span class="glyphicon glyphicon-share-alt hidden-xs"></span>
 						</button>
 					</div>
 					{% endif %}
 					{% if existePulos %}
 					<div class="btn-group">	
 						<button  type="button" id="rever" data-toggle="modal" href="#" data-target="#questoes_saltadas_modal"	  class="btn btn-primary">
-							Rever Saltos <span class="glyphicon glyphicon-retweet"></span>
+							Rever Saltos <span class="glyphicon glyphicon-retweet hidden-xs"></span>
 						</button>
 					</div>
 					{% endif %}
 					{% if existeAjuda %}
 					<div id="ajuda" class="btn-group">	
 						<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">
-							Pedir Ajuda <span class="glyphicon glyphicon-question-sign"></span>
+							Pedir Ajuda <span class="glyphicon glyphicon-question-sign hidden-xs"></span>
 						</button>
 					</div>
 					{% endif %}
 					<div class="btn-group">
 						<button  type="button" id="responder" class="btn btn-success ">
-							Responder <span class="glyphicon glyphicon-check"></span>
+							Responder <span class="glyphicon glyphicon-check hidden-xs"></span>
 						</button>
 					</div>
 				</div>

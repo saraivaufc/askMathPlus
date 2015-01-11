@@ -72,31 +72,31 @@
 			{% if existeAnterior  %}
 				<div class="btn-group">
 				<button  type="button" onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'" class="btn btn-primary">
-					Anterior <span class="glyphicon glyphicon-chevron-left"></span>
+					Anterior <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
 				</button>
 			</div>
 			{% endif %}
 			<div class="btn-group">
 				<button  type="button"  onclick="window.location='/principal_admin/{{conteudo.getTema}}'" class="btn btn-primary">
-					Voltar <span class="glyphicon glyphicon-list"></span>
+					Voltar <span class="glyphicon glyphicon-list hidden-xs"></span>
 				</button>
 			</div>
 			{% if existeAjuda %}
 			<div id="ajuda" class="btn-group">	
 				<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuda_modal">
-					Ver Ajuda <span class="glyphicon glyphicon-question-sign"></span>
+					Ver Ajuda <span class="glyphicon glyphicon-question-sign hidden-xs"></span>
 				</button>
 			</div>
 			{% endif %}
 			<div class="btn-group">
 				<button  type="button"  data-toggle="modal" data-target="#detalhes_pergunta_modal" class="btn btn-primary">
-					Detalhes <span class="glyphicon glyphicon-exclamation-sign"></span>
+					Detalhes <span class="glyphicon glyphicon-exclamation-sign hidden-xs"></span>
 				</button>
 			</div>
 			{% if existeProximo %}
 			<div class="btn-group">
 				<button  type="button" onclick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'" class="btn btn-primary">
-					Próxima <span class="glyphicon glyphicon-chevron-right"></span>
+					Próxima <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
 				</button>
 			</div>
 			{% endif %}

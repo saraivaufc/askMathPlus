@@ -13,8 +13,17 @@ $(document).ready(function(){
 			"dataType": "html",
 			async: false
 		}).done(function(data){
-			$("#ajuda_text").empty().append(data);		
+			$("#ajuda_text").empty().append(data);
 		});
+	});
+
+	$("#navOpcoes").click(function(){
+		if($("#corpo").css('visibility') == 'visible' ){
+			$("#corpo").css("visibility", "hidden");
+			$("#obcoesMenu").css("overflow", "none");
+		}else{
+			$("#corpo").css("visibility", "visible");
+		};
 	});
 
 

@@ -22,7 +22,7 @@
 						<div class="btn-group btn-group-justified fixer-bottom">
 							<div class="btn-group">
 								<button  type="button"  onclick="window.location=window.location" class="btn btn-primary">
-									Recarregar <span class="glyphicon glyphicon-refresh"></span>
+									Recarregar <span class="glyphicon glyphicon-refresh hidden-xs"></span>
 								</button>
 							</div>
 						</div>

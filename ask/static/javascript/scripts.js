@@ -1,8 +1,4 @@
 
-$(document).off('.data-api');
-
-
-
 //CLICKS
 $(document).ready(function(){
 	$("#voltar-contato").click(function(){ 
@@ -60,6 +56,15 @@ $(document).ready(function(){
 				}
 			}
 			}).find('.modal-content').css({'color': 'red', 'font-weight':'bold'}).find(".btn").append("  <span class='glyphicon glyphicon-arrow-right'></span>");   
+		};
+	});
+
+	$("#navOpcoes").click(function(){
+		if($("#corpo").css('visibility') == 'visible' ){
+			$("#corpo").css("visibility", "hidden");
+			$("#obcoesMenu").css("overflow", "none");
+		}else{
+			$("#corpo").css("visibility", "visible");
 		};
 	});
 

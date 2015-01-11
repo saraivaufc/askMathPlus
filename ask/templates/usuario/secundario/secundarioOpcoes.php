@@ -31,7 +31,7 @@
 			{% block outros-conteudos %}
 				{% block requisitos %}
 					<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
-					    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
+					    REQUISITOS <span class="glyphicon glyphicon-info-sign hidden-xs"></span>
 					</a>
 					{% for c in conteudo.getRequisitos %}
 						<a  onclick="window.open('/principal/opcoes/{{ c.getTema }}')" class="list-group-item">
@@ -60,22 +60,22 @@
 			<div class="btn-group btn-group-justified fixer-bottom">
 				<div class="btn-group">
 					<button  type="button"  onclick="window.location='/principal/'" class="btn btn-primary">
-						Voltar Início <span class="glyphicon glyphicon-th"></span>
+						Voltar Início <span class="glyphicon glyphicon-th hidden-xs"></span>
 					</button>
 				</div>
 				<div class="btn-group">
 					<button  type="button"  onclick="window.location='/principal/{{ conteudo.getTema }}'" class="btn btn-success">
 						{% if respondeuPergunta %}
-							Refazer Lição <span class="glyphicon glyphicon-repeat"></span>
+							Refazer Lição <span class="glyphicon glyphicon-repeat hidden-xs"></span>
 						{% else %}
-							Iniciar Lição <span class="glyphicon glyphicon-play"></span>
+							Iniciar Lição <span class="glyphicon glyphicon-play hidden-xs"></span>
 						{% endif %}
 					</button>
 				</div>
 				{% if existePulos %}
 					<div class="btn-group">
 						<button type="button"  data-toggle="modal" href="#" data-target="#questoes_saltadas_modal" class="btn btn-primary">
-							Rever Saltos <span class="glyphicon glyphicon-retweet"></span>
+							Rever Saltos <span class="glyphicon glyphicon-retweet hidden-xs"></span>
 						</button>
 					</div>
 				{% endif %}

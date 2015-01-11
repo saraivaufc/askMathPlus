@@ -66,12 +66,12 @@
 	</head>
 
 	<body>
-		<div class="container-fluid">
+		<div id="container-fluid">
 		{% block body %}
 
 		<header>
 			{% block cabecalho_all %}
-				<div id="cabecalho">
+				<div id="cabecalho" class="hidden-xs">
 					{% block cabecalho %}
 						<img id="logo" src="/static/imagens/background.jpg">
 						</img>
@@ -87,20 +87,20 @@
 			{% endblock %}
 		</header>
 
-		<section>
+		<section id="corpo">
 			{% block conteudo_all %}
 				<div class="row">
-					<div class="col-md-12 col-xs-12">
+					<div class="col-xs-12 col-md-12">
 						<div id="conteudo">
 							{% block conteudo %}
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-4 col-lg-5">
 										<div id="conteudo-left">
 											{% block conteudo-left %}
 											{% endblock %}
 										</div>
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-8 col-lg-7">
 										<div id="conteudo-right">
 											{% block conteudo-right %}
 											{% endblock %}
@@ -114,7 +114,7 @@
 			{% endblock %}
 		</section>
 
-		<footer>
+		<footer class="hidden-xs">
 			{% block rodape_all %}
 				<div id="rodape">
 					{% block rodape %}
