@@ -30,9 +30,9 @@
 			<!-- Responsive  -->
 			<link rel="stylesheet" href="/static/css/base.css" />
 			<link rel="stylesheet" media="(min-width: 1200px)" href="/static/css/large.css" />
-			<link rel="stylesheet" media="(min-width: 768px) and (max-width: 979px)" href="/static/css/tablet.css" />
+			<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)" href="/static/css/tablet.css" />
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/tablet.css" />
-			<link rel="stylesheet" media="(max-width: 480px)" href="/static/css/phone.css" />
+			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/phone.css" />
 
 			<style type="text/css">
 				{% block estilo %}
