@@ -72,26 +72,34 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										{% block conteudo %}
-											<div class="row">
-												{% block conteudo-left-all %}
-													<div class="col-sm-5 col-md-4 col-lg-5">
-														<div id="conteudo-left">
-															{% block conteudo-left %}
-															{% endblock %}
+										<div class="row">
+											{% block conteudo %}
+											<div class="container-fluid">
+												<div class="row">
+													{% block conteudo-left-all %}
+														<div class="col-sm-5 col-md-4 col-lg-5">
+															<div class="row">
+																<div id="conteudo-left">
+																	{% block conteudo-left %}
+																	{% endblock %}
+																</div>
+															</div>
+														</div>
+													{% endblock %}
+													{% block conteudo-right-all %}
+													<div class="col-sm-7 col-md-8 col-lg-7">
+														<div class="row">
+															<div id="conteudo-right">
+																{% block conteudo-right %}
+																{% endblock %}
+															</div>
 														</div>
 													</div>
-												{% endblock %}
-												{% block conteudo-right-all %}
-												<div class="col-sm-7 col-md-8 col-lg-7">
-													<div id="conteudo-right">
-														{% block conteudo-right %}
-														{% endblock %}
-													</div>
+													{% endblock %}
 												</div>
-												{% endblock %}
 											</div>
-										{% endblock %}
+											{% endblock %}
+										<div class="row">
 									</div>
 								</div>
 							</div>

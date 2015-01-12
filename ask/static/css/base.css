@@ -155,19 +155,6 @@ a{
 }
 
 
-
-.jsPane{
-	margin-top: 1px;
-	margin-bottom: 1px;
-	height: 100%;
-}
-
-.jspContainer{
-	height: 100%;
-	margin-top: 1px;
-	margin-bottom: 1px;
-}
-
 .nav{
 	height: 100%;
 }
@@ -190,8 +177,6 @@ a{
 } 
 .texto-descricao{
 	position: relative;
-	margin-right: 4%;
-	margin-left: 4%;
 	height: 75%;
 }
 
@@ -480,23 +465,4 @@ h1{
 
 #point{
 	font-weight: bold;
-}
-
-.col-xs-12 { 
-	padding-left: 0px;
-	padding-right: 0px;
-}
-.col-sm-12{ 
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.col-md-12{ 
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.col-lg-12{ 
-	padding-left: 0px;
-	padding-right: 0px;
 }
