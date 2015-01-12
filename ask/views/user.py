@@ -287,6 +287,33 @@ def secundario(request, tema_conteudo):
 		secao = Secao.objects.create(usuario_id = usuario.id, conteudo_id = conteudo.id)
 		secao.save()
 
+
+	ps = []
+	try:
+		pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+		ps.append(pergunta_inicial)
+		while ps[len(ps)-1].pergunta_proximo_id != None:
+			pergunta_proximo = Pergunta.objects.get(id = ps[len(ps)-1].pergunta_proximo_id)
+			ps.append(pergunta_proximo)
+	except:
+		return render(request , 'usuario/secundario/secundario.php' , locals())
+
+	
+
+
+	NUMEROPERGUNTA = 0
+	achou = False
+	for i in ps:
+		if i.id == pergunta.id:
+			NUMEROPERGUNTA += 1
+			achou = True
+			break;
+		else:
+			NUMEROPERGUNTA += 1
+	if not achou:
+		NUMEROPERGUNTA = 0
+
+
 	return render(request , 'usuario/secundario/secundario.php' , locals())
 
 

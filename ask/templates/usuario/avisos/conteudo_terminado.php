@@ -4,31 +4,39 @@
 	<h3>Licao Concluida Com Exito</h3>
 {% endblock %}
 
+
+{% block conteudo-left-visible %}
+	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+{% endblock %}
+
 {% block table-pontuacao %}
 	<tr>
 		<td class="text-center">
 			QUESTÕES TOTAL
 		</td>
 		<td class="text-center">
-			PULOS REALIZADOS
-		</td>
-		<td class="text-center">
-			VEZES QUE PEDIU AJUDA
-		</td>
-		<td class="text-center">
-			PONTOS ACUMULADOS
+			{{ conteudo.getQuantPerguntasTotal }}
 		</td>
 	</tr>
-
 	<tr>
 		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal }}
+			PULOS REALIZADOS
 		</td>
 		<td class="text-center">
 			{{ pulosRealizados }}
 		</td>
+	</tr>
+	<tr>
+		<td class="text-center">
+			VEZES QUE PEDIU AJUDA
+		</td>
 		<td class="text-center">
 			{{ vezesPediuAjuda }}
+		</td>
+	</tr>
+	<tr>
+		<td class="text-center">
+			PONTOS ACUMULADOS
 		</td>
 		<td class="text-center">
 			{{ pontosAcumulados }}

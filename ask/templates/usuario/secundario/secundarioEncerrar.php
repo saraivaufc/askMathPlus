@@ -8,51 +8,23 @@
 	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
 {% endblock %}
 
-{% block table-pontuacao %}
-	<tr>
-		<td class="text-center">
-			QUESTÕES
-		</td>
-		<td class="text-center">
-			PONTOS
-		</td>
-		<td class="text-center">
-			ACERTOS
-		</td>
-		<td class="text-center">
-			ERRORS
-		</td>
-		<td class="text-center">
-			SALTOS
-		</td>
-		<td class="text-center">
-			PEDIU AJUDA
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
-		</td>
-		<td class="text-center">
-			{{ pontosAcumulados|default_if_none:"0" }}
-		</td>
-		
-		<td class="text-center">
-			{{ questoesCorretas|default_if_none:"0" }}
-		</td>
-		
-		<td class="text-center">
-			{{ questoesErradas|default_if_none:"0" }}
-		</td>
-		<td class="text-center">
-			{{ pulosRealizados|default_if_none:"0" }}
-		</td>
-		
-		<td class="text-center">
-			{{ vezesPediuAjuda|default_if_none:"0" }}
-		</td>
-		
-	</tr>
+{% block pontuacao %}
+	<div class="col-sm-6 col-md-6 bg-primary">
+		<div class="col-sm-12 col-md-6">
+			ACERTOS = {{ questoesCorretas|default_if_none:"0" }}
+		</div>
+		<div class="col-sm-12 col-md-6">
+			ERRORS = {{ questoesErradas|default_if_none:"0" }}
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-6 bg-info">
+		<div class="col-sm-12 col-md-6">
+			SALTOS = {{ pulosRealizados|default_if_none:"0" }}
+		</div>
+		<div class="col-sm-12 col-md-6">
+			AJUDAS = {{ vezesPediuAjuda|default_if_none:"0" }}
+		</div>
+	</div>
 {% endblock %}
 
 {% block requisitos %}

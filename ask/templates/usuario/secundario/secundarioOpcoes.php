@@ -12,23 +12,13 @@
 		Sobre esta Licao
 	{% endblock %}
 
-	{%  block table-pontuacao %}
-		<tr>
-			<td class="text-center">
-				NUMERO DE QUESTÕES
-			</td>
-			<td class="text-center">
-				SALTOS DISPONÍVEIS
-			</td>
-		</tr>
-		<tr>
-			<td class="text-center">
-				{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
-			</td>
-			<td class="text-center">
-				{{ conteudo.max_pulos|default_if_none:"0" }}
-			</td>
-		</tr>
+	{%  block pontuacao %}
+	<div class="col-sm-6 col-md-6 bg-primary">
+		NUMERO DE QUESTÕES = {{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
+	</div>
+	<div class="col-sm-6 col-md-6 bg-info">
+		SALTOS DISPONÍVEIS = {{ conteudo.max_pulos|default_if_none:"0" }}
+	</div>
 	{% endblock %}
 
 	{% block outros-conteudos-all %}

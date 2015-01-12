@@ -49,7 +49,7 @@
 			<div class="font-dconteudo">
 		    	<div class="descricao-conteudo">
 		        		<div class="panel-heading">
-		        			<div class="panel panel-info">
+		        			<div class="panel panel-primary">
 							 	<div class="panel-title" id="tema-conteudo">
 									<center>
 						            	<t class="lead"><h3>{{ conteudo.tema|safe|title }}</t></h3>
@@ -74,9 +74,10 @@
 <div class="font-dconteudo">
 		<div class="descricao-pergunta">
 			<div class="panel-heading">
-				<div class="panel panel-info">
-					{%  block titulo-inicial-all %}
-				 	<div class="panel-title" id="pontuacao">
+				<div class="panel panel-primary">
+			  	<div class="panel-title">
+			  		{%  block titulo-inicial-all %}
+				 	<div id="pontuacao">
 				 		<center>
 				 			<h3>
 				 			{%  block titulo-inicial %}
@@ -86,58 +87,77 @@
 					    </center>
 				  	</div>
 				  	{% endblock %}
-
-				 	<div class="panel-footer">
-				 		{%  block table-pontuacao-all %}
-				 		<div  class="table-responsive">
-							<table class="table table-bordered table-condensed">
-								{%  block table-pontuacao %}
-								<tr>
-									<td class="text-center">PONTOS ACUMULADOS</td>
-									<td class="text-center">TOTAL DE QUESTÕES</td>
-									<td class="text-center">QUESTÕES CORRETAS</td>
-									<td class="text-center">SALTOS DISPONÍVEIS</td>
-									<td class="text-center">SALTOS REALIZADOS</td>
-								</tr>
-								<tr>
-									<td class="text-center">{{ pontosAcumulados|default_if_none:"0" }}</td>
-									<td class="text-center">{{ perguntasTotal|default_if_none:"0" }}</td>
-									<td class="text-center">{{ perguntasCertas|default_if_none:"0" }}</td>
-									<td class="text-center">{{ pulosDisponiveis|default_if_none:"0" }}</td>		
-									<td class="text-center">{{ pulosRealizados|default_if_none:"0" }}</td>
-								</tr>
-								{% endblock %}
-							</table>
-						</div>
-						{% endblock %}
-						{% block outros-conteudos-all %}
-				  		<div class="espacamento">
-							  <t class="lead">{{ pergunta.descricao|safe }} </t>
-							<hr/>
-							<form method="POST" id="perguntas" name="resposta">
-							{%csrf_token %} 
-								   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
-								   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
-								<ol>
-								{% for item in itens %}
-									<li type="A">
-										<div class="font-dconteudo">
-											<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-											<t class="lead">{{ item.descricao|safe }}</t>
-										</div>
-									</li>
-									<br>
-								{% empty %}
-									<div class="font-dconteudo">
-										<t class="lead">Essa pergunta nao possui itens.</t>
-									</div>
-								{% endfor %}
-								</ol>
-							</form>
-				  		</div>
-				  		{% endblock %}
-				  	</div>
 			  	</div>
+			  	<div class="panel-footer">
+			  		<div class="container-fluid">
+				  		<div id="point">
+							{%  block pontuacao-all %}
+							 	<div class="row text-center">
+									{%  block pontuacao %}
+										<div class="row">
+											<div class="col-sm-4 col-md-3 bg-primary">
+												<div class="row">
+													PONTOS = {{ pontosAcumulados|default_if_none:"0" }}
+												</div>
+												<div class="row">
+													SALTOS = {{ pulosRealizados|default_if_none:"0" }}
+												</div>
+											</div>
+											<div class="col-sm-8 col-md-4 bg-info">
+												<div class="row">
+													{% if NUMEROPERGUNTA == 0 %}
+														Nao Pertence
+													{% else %}
+													QUESTAO = {{NUMEROPERGUNTA}}/{{ perguntasTotal|default_if_none:"0" }}
+													{% endif %}
+												</div>
+												<div class="row">
+													QUESTOES SALTADAS = {{perguntasPuladas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }} 
+												</div>
+											</div>
+											<div class="col-sm-12 col-md-5 bg-danger">
+												<div class="row">
+													QUESTOES CORRETAS = {{perguntasCertas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }}
+												</div>
+												<div class="row">
+													SALTOS DISPONÍVEIS = {{ pulosDisponiveis|default_if_none:"0" }}
+												</div>
+											</div>
+										</div>
+									{% endblock %}
+								</div>
+							{% endblock %}
+						</div><!-- Point -->
+					</div>
+						<hr>
+						{% block outros-conteudos-all %}
+					  		<div class="espacamento">
+								  <t class="lead">{{ pergunta.descricao|safe }} </t>
+								<hr/>
+								<form method="POST" id="perguntas" name="resposta">
+								{%csrf_token %} 
+									   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
+									   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
+									<ol>
+									{% for item in itens %}
+										<li type="A">
+											<div class="font-dconteudo">
+												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
+												<t class="lead">{{ item.descricao|safe }}</t>
+											</div>
+										</li>
+										<br>
+									{% empty %}
+										<div class="font-dconteudo">
+											<t class="lead">Essa pergunta nao possui itens.</t>
+										</div>
+									{% endfor %}
+									</ol>
+								</form>
+					  		</div>
+				  		{% endblock %}
+			  		</div><!-- Panel Foorter -->
+				</div><!-- Pnale -->
 			</div>
 		</div>
 		<center>

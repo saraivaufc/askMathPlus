@@ -152,11 +152,6 @@
 	color: #428bca;
 }
 
-.table tr:first-child{
-	font-weight: bold;
-}
-
-
 
 .titulo-pergunta{
 	position: relative;
@@ -258,3 +253,7 @@ h1{
 	font-size: 90%;
 }
 
+#point{
+	font-weight: normal;
+	font-size: 90%;
+}

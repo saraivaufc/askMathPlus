@@ -2,12 +2,15 @@
 
 {% block voltar %}{% endblock %}
 
-
 {%  block funcoes %}
 	$(document).ready(function(){
 		$(".jspPane").css("height","100%");
 	});
 {%  endblock %}
+
+{% block conteudo-left-visible %}
+	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+{% endblock %}
 
 {% block conteudo-right %}
 	<div class="conteudo-right bg-info">

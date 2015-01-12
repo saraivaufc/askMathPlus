@@ -18,7 +18,7 @@ body{
 }
 
 #logo{
-	position: relative;
+	posiotion: relative;
 	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
@@ -107,8 +107,7 @@ a{
 .font-dconteudo{
 	position:relative;
 	text-align: justify;
-	font-size:17px;
-	color: black;
+	font-size:17px;	color: black;
 }
 
 .font-metro{
@@ -176,12 +175,6 @@ a{
 .navbar-nav a:hover{
 	color: #428bca;
 }
-
-.table tr:first-child{
-	font-weight: bold;
-}
-
-
 
 .titulo-pergunta{
 	position: relative;
@@ -480,4 +473,6 @@ h1{
 	width: 40%;
 }
 
-
+#point{
+	font-weight: bold;
+}

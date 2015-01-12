@@ -4,8 +4,10 @@
 	<h3>Licao Nao Possui Perguntas</h3>
 {% endblock %}
 
-{% block table-pontuacao-all %}
+{% block botao-detalhes %}
+{% endblock %}
 
+{% block table-pontuacao-all %}
 {% endblock %}
 
 {% block sugestoes %}
