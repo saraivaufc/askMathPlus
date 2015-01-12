@@ -38,48 +38,13 @@
 				{% block estilo %}
 				{% endblock %}
 			</style>
-
-
-			<!--[if lt IE 9]>
-				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-			<![endif]-->
-
-
-			<!-- JQuery Normal -->
-			<script type="text/javascript" src="/static/javascript/jquery.js"></script>
 			
-
-			<!-- Latex -->
-			<script type="text/javascript" src="/static/javascript/latexit.js"></script>
-
-			<!-- Jscrollpane -->
-			<script type="text/javascript" src="/static/javascript/jquery.jscrollpane.min.js"></script>
-			<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
-
-			<!-- Bootstrap -->
-			<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="/static/bootstrap/js/bootbox.min.js"></script>
-
-
-			<!-- My Scripts -->
-			<script type="text/javascript" src="/static/javascript/base.js" ></script>
-			{% block user-scripts %}
-				<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
-				<script type="text/javascript" src="/static/javascript/metro.js" ></script>
-			{% endblock %}
-
-
-			<script type="text/javascript">
-				{% block funcoes %}
-				{% endblock %}
-			</script>
 		{% endblock %}
 	</head>
 
 	<body>
 		<div data-role="page " data-quicklinks="true">
-			<div class="container-fluid">
+			<div>
 				{% block body %}
 				
 				<header>
@@ -100,11 +65,11 @@
 					{% endblock %}
 				</header>
 				
-				<section id="corpo" >
+				<section id="conteudo">
 					{% block conteudo-all %}
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<div id="conteudo">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									{% block conteudo %}
 										<div class="row">
 											{% block conteudo-left-all %}
@@ -144,6 +109,46 @@
 				{% endblock %}
 			</div>
 		</div>
+
+
+
+		<!-- Scripts -->
+
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+
+		<!-- JQuery Normal -->
+		<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>
+		
+
+		<!-- Latex -->
+		<script type="text/javascript" src="/static/javascript/latexit.js"></script>
+
+		<!-- Jscrollpane -->
+		<script type="text/javascript" src="/static/javascript/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" src="/static/javascript/jquery.mousewheel.js"></script>
+
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/static/bootstrap/js/bootbox.min.js"></script>
+
+
+		<!-- My Scripts -->
+		<script type="text/javascript" src="/static/javascript/base.js" ></script>
+		{% block user-scripts %}
+			<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
+			<script type="text/javascript" src="/static/javascript/metro.js" ></script>
+		{% endblock %}
+
+
+		<script type="text/javascript">
+			{% block funcoes %}
+			{% endblock %}
+		</script>
+
 	</body>
 </html>
 

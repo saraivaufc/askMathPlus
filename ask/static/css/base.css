@@ -31,6 +31,12 @@ body{
 	height: 7%;
 }
 
+#corpo{
+	position: relative;
+	width: 100%;
+}
+
+
 
 #conteudo{
 	position: relative;
@@ -475,4 +481,23 @@ h1{
 
 #point{
 	font-weight: bold;
+}
+
+.col-xs-12 { 
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.col-sm-12{ 
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.col-md-12{ 
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.col-lg-12{ 
+	padding-left: 0px;
+	padding-right: 0px;
 }
