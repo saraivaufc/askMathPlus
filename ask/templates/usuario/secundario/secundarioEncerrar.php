@@ -4,6 +4,9 @@
 	Seu Andamento na Liçao
 {% endblock %}
 
+{% block conteudo-left-visible %}
+	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+{% endblock %}
 
 {% block table-pontuacao %}
 	<tr>

@@ -1,28 +1,34 @@
 {% extends 'usuario/secundario/secundario.php' %}
 
-{% block funcoes %}{% endblock %}
+	{% block funcoes %}
+
+	{% endblock %}
+
+	{% block conteudo-left-visible %}
+		<div class="col-sm-5 col-md-4 col-lg-5">
+	{% endblock %}
 
 	{%  block titulo-inicial %}
 		Sobre esta Licao
 	{% endblock %}
-					 	
+
 	{%  block table-pontuacao %}
-	<tr>
-		<td class="text-center">
-			NUMERO DE QUESTÕES
-		</td>
-		<td class="text-center">
-			SALTOS DISPONÍVEIS
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
-		</td>
-		<td class="text-center">
-			{{ conteudo.max_pulos|default_if_none:"0" }}
-		</td>
-	</tr>
+		<tr>
+			<td class="text-center">
+				NUMERO DE QUESTÕES
+			</td>
+			<td class="text-center">
+				SALTOS DISPONÍVEIS
+			</td>
+		</tr>
+		<tr>
+			<td class="text-center">
+				{{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
+			</td>
+			<td class="text-center">
+				{{ conteudo.max_pulos|default_if_none:"0" }}
+			</td>
+		</tr>
 	{% endblock %}
 
 	{% block outros-conteudos-all %}

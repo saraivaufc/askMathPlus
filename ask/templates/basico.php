@@ -46,9 +46,6 @@
 			<![endif]-->
 
 
-<script type="text/javascript" media="(max-width: 480px)"  src="/static/jquery_mobile/jquery.mobile-1.4.5.js"></script>
-
-
 			<!-- JQuery Normal -->
 			<script type="text/javascript" src="/static/javascript/jquery.js"></script>
 			
@@ -73,13 +70,6 @@
 			{% endblock %}
 
 
-<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile-1.4.5.css" />
-<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.theme-1.4.5.css" />
-<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.structure-1.4.5.css" />
-<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.external-png-1.4.5.css" />
-<link rel="stylesheet" media="(max-width: 480px)" href="/static/jquery_mobile/jquery.mobile.icons-1.4.5.css" />
-
-
 			<script type="text/javascript">
 				{% block funcoes %}
 				{% endblock %}
@@ -92,8 +82,8 @@
 			<div class="container-fluid">
 				{% block body %}
 				
-				<header data-role="header" class="jqm-header">
-					{% block cabecalho_all %}
+				<header>
+					{% block cabecalho-all %}
 						<div id="cabecalho" class="hidden-xs">
 							{% block cabecalho %}
 								<img id="logo" src="/static/imagens/background.jpg">
@@ -102,7 +92,7 @@
 						</div>
 					{% endblock %}
 					
-					{% block menu_all %}
+					{% block menu-all %}
 						<div id="menu">
 							{% block menu %}
 							{% endblock %}
@@ -110,25 +100,29 @@
 					{% endblock %}
 				</header>
 				
-				<section data-role="content" id="corpo"  role="main" class="jqm-content" >
-					{% block conteudo_all %}
+				<section id="corpo" >
+					{% block conteudo-all %}
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<div id="conteudo">
 									{% block conteudo %}
 										<div class="row">
-											<div class="col-sm-5 col-md-4 col-lg-5">
-												<div id="conteudo-left">
-													{% block conteudo-left %}
-													{% endblock %}
+											{% block conteudo-left-all %}
+												<div class="col-sm-5 col-md-4 col-lg-5">
+													<div id="conteudo-left">
+														{% block conteudo-left %}
+														{% endblock %}
+													</div>
 												</div>
-											</div>
+											{% endblock %}
+											{% block conteudo-right-all %}
 											<div class="col-sm-7 col-md-8 col-lg-7">
 												<div id="conteudo-right">
 													{% block conteudo-right %}
 													{% endblock %}
 												</div>
 											</div>
+											{% endblock %}
 										</div>
 									{% endblock %}
 								</div>
@@ -138,7 +132,7 @@
 				</section>
 				
 				<footer data-role="footer" class="hidden-xs">
-					{% block rodape_all %}
+					{% block rodape-all %}
 						<div id="rodape">
 							{% block rodape %}
 								<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTI</center>

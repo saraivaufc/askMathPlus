@@ -41,26 +41,32 @@
 {% block voltar_all %}
 {% endblock %}
 
-{% block conteudo-left %}
-	<div class="font-dconteudo">
-    	<div class="descricao-conteudo">
-        		<div class="panel-heading">
-        			<div class="panel panel-info">
-					 	<div class="panel-title" id="tema-conteudo">
-							<center>
-				            	<t class="lead"><h3>{{ conteudo.tema|safe|title }}</t></h3>
-				          	</center>
-					  	</div>
-					 	<div class="panel-footer">
-					 		<div id="descricao-conteudo">
-					  		<t class="lead">{{ conteudo.descricao|safe }}<t>
-					  		</div>
-					  	</div>
-				  	</div>
-				</div>
-      		<br>
-    	</div>
-  	</div>
+{% block conteudo-left-all %}
+	{% block conteudo-left-visible %}
+	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+	{% endblock %}
+		<div id="conteudo-left">
+			<div class="font-dconteudo">
+		    	<div class="descricao-conteudo">
+		        		<div class="panel-heading">
+		        			<div class="panel panel-info">
+							 	<div class="panel-title" id="tema-conteudo">
+									<center>
+						            	<t class="lead"><h3>{{ conteudo.tema|safe|title }}</t></h3>
+						          	</center>
+							  	</div>
+							 	<div class="panel-footer">
+							 		<div id="descricao-conteudo">
+							  		<t class="lead">{{ conteudo.descricao|safe }}<t>
+							  		</div>
+							  	</div>
+						  	</div>
+						</div>
+		      		<br>
+		    	</div>
+		  	</div>
+		</div>
+	</div>
 {% endblock %}
 
 

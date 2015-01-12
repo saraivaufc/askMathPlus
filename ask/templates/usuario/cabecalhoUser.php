@@ -2,11 +2,13 @@
 
 {% block menu %}
 	<!-- Static navbar -->
-	<div class="navbar navbar-default" role="navigation">
+	<div class="navbar navbar-default navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" id="navOpcoes" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="glyphicon glyphicon-th-large"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/principal/">
 					AskMath <span class="glyphicon glyphicon-home "></span>
