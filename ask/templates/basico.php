@@ -33,7 +33,8 @@
 			<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)" href="/static/css/tablet.css" />
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/tablet.css" />
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/phone.css" />
-			<link rel="stylesheet" media="(max-height: 480px)" href="/static/css/micro.css" />
+			<link rel="stylesheet" media="(max-height: 480px)" href="/static/css/micro-height.css" />
+			<link rel="stylesheet" media="(max-width: 250px)" href="/static/css/micro-width.css" />
 
 			<style type="text/css">
 				{% block estilo %}
