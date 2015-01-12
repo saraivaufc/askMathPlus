@@ -115,12 +115,6 @@
 	height: 100%;
 }
 
-.navbar a{
-	font-size: 100%;
-	height: 100%;
-	color: #FFFFFF;
-}
-
 .navbar-nav a:hover{
 	color: #428bca;
 }

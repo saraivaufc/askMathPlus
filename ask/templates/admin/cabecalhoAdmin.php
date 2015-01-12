@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block menu %}
+<div id="navbar" class="navbar-wrapper">
+
 	<!-- Static navbar -->
 	<div class="navbar navbar-default navbar-inverse" role="navigation">
 		<div class="container-fluid">
@@ -64,6 +66,7 @@
 			</div><!--/.nav-collapse -->
 		</div><!--/.container-fluid -->
 	</div><!--/ .navbar -->
+</div>
 	<div class="font-dconteudo">
 		{% include 'usuario/modals/sobre.php' %}
 		{% include 'usuario/modals/contato.php' %}

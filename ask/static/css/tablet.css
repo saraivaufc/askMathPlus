@@ -138,16 +138,6 @@
 	height: 100%;
 }
 
-.navbar a{
-	font-size: 80%;
-	height: 100%;
-	color: #FFFFFF;
-}
-
-.navbar-brand a{
-	font-size: 120%;
-}
-
 .navbar-nav a:hover{
 	color: #428bca;
 }

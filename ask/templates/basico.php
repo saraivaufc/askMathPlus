@@ -33,6 +33,7 @@
 			<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)" href="/static/css/tablet.css" />
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/tablet.css" />
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/phone.css" />
+			<link rel="stylesheet" media="(max-height: 480px)" href="/static/css/micro.css" />
 
 			<style type="text/css">
 				{% block estilo %}
@@ -47,7 +48,7 @@
 			<div>
 				{% block body %}
 				
-				<header>
+				
 					{% block cabecalho-all %}
 						<div id="cabecalho" class="hidden-xs">
 							{% block cabecalho %}
@@ -63,38 +64,39 @@
 							{% endblock %}
 						</div>
 					{% endblock %}
-				</header>
 				
-				<section id="conteudo">
-					{% block conteudo-all %}
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									{% block conteudo %}
-										<div class="row">
-											{% block conteudo-left-all %}
-												<div class="col-sm-5 col-md-4 col-lg-5">
-													<div id="conteudo-left">
-														{% block conteudo-left %}
+				<div id="corpo">
+					<section id="conteudo">
+						{% block conteudo-all %}
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										{% block conteudo %}
+											<div class="row">
+												{% block conteudo-left-all %}
+													<div class="col-sm-5 col-md-4 col-lg-5">
+														<div id="conteudo-left">
+															{% block conteudo-left %}
+															{% endblock %}
+														</div>
+													</div>
+												{% endblock %}
+												{% block conteudo-right-all %}
+												<div class="col-sm-7 col-md-8 col-lg-7">
+													<div id="conteudo-right">
+														{% block conteudo-right %}
 														{% endblock %}
 													</div>
 												</div>
-											{% endblock %}
-											{% block conteudo-right-all %}
-											<div class="col-sm-7 col-md-8 col-lg-7">
-												<div id="conteudo-right">
-													{% block conteudo-right %}
-													{% endblock %}
-												</div>
+												{% endblock %}
 											</div>
-											{% endblock %}
-										</div>
-									{% endblock %}
+										{% endblock %}
+									</div>
 								</div>
 							</div>
-						</div>
-					{% endblock %}
-				</section>
+						{% endblock %}
+					</section>
+				</div>
 				
 				<footer data-role="footer" class="hidden-xs">
 					{% block rodape-all %}
@@ -138,6 +140,7 @@
 
 		<!-- My Scripts -->
 		<script type="text/javascript" src="/static/javascript/base.js" ></script>
+
 		{% block user-scripts %}
 			<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
 			<script type="text/javascript" src="/static/javascript/metro.js" ></script>
