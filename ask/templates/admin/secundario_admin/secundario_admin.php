@@ -26,7 +26,7 @@
 							  	</div>
 							 	<div class="panel-footer">
 							 		<div id="descricao-conteudo">
-							  		<t><p>{{ conteudo.descricao|safe }}</p><t>
+							  		<t><p>{{ conteudo.descricao|safe }}{% lorem 300 w random %}</p><t>
 							  		</div>
 							  	</div>
 						  	</div>

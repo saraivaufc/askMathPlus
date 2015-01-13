@@ -6,42 +6,28 @@
 
 
 {% block conteudo-left-visible %}
-	<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+	<div class="col-sm-5 col-md-4 col-lg-5">
 {% endblock %}
 
-{% block table-pontuacao %}
-	<tr>
-		<td class="text-center">
-			QUESTÕES TOTAL
-		</td>
-		<td class="text-center">
-			{{ conteudo.getQuantPerguntasTotal }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			PULOS REALIZADOS
-		</td>
-		<td class="text-center">
-			{{ pulosRealizados }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			VEZES QUE PEDIU AJUDA
-		</td>
-		<td class="text-center">
-			{{ vezesPediuAjuda }}
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center">
-			PONTOS ACUMULADOS
-		</td>
-		<td class="text-center">
-			{{ pontosAcumulados }}
-		</td>
-	</tr>
+{% block pontuacao %}
+	<div class="row">
+		<div class="col-sm-6 col-md-6 bg-primary">
+			<div class="row">
+				QUESTÕES TOTAL =  {{ conteudo.getQuantPerguntasTotal }}
+			</div>
+			<div class="row">
+				PONTOS ACUMULADOS = {{ pontosAcumulados }}
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-6 bg-info">
+			<div class="row">
+				PULOS REALIZADOS = {{ pulosRealizados }}
+			</div>
+			<div class="row">
+				VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 

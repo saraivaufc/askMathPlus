@@ -64,7 +64,7 @@
 						  	</div>
 						 	<div class="panel-footer">
 						 		<div id="descricao-conteudo">
-						  			<t><p>{{ conteudo.descricao|safe }}</p><t>
+						  			<t><p>{{ conteudo.descricao|safe }}{% lorem 300 w random %}</p><t>
 						  		</div>
 						  	</div>
 					  	</div>
@@ -141,7 +141,7 @@
 						<hr>
 						{% block outros-conteudos-all %}
 					  		<div class="espacamento">
-								  <t>{{ pergunta.descricao|safe }} </t>
+								  <t><p>{{ pergunta.descricao|safe }}{% lorem 100 w random %}</p></t>
 								<hr/>
 								<form method="POST" id="perguntas" name="resposta">
 								{%csrf_token %} 
@@ -152,7 +152,7 @@
 										<li type="A">
 											<div class="font-dconteudo">
 												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-												<t><p>{{ item.descricao|safe }}</p></t>
+												<t>{{ item.descricao|safe }}{% lorem 50 w random %}</t>
 											</div>
 										</li>
 										<br>
