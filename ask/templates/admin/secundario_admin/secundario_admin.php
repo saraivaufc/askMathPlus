@@ -1,13 +1,12 @@
-{% extends 'admin/cabecalhoAdmin.php' %}
+{% extends 'basico.php' %}
 {% load webdesign %}
 
 
 {% block titulo %}{{conteudo.tema}}{% endblock %}
 
-{% block estilo %}
-	#conteudo{
-		background-color: #337AB7;
-	}
+
+{% block menu %}
+{% include 'admin/cabecalhoAdmin.php' %}
 {% endblock %}
 
 {% block conteudo-left %}

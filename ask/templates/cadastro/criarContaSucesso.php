@@ -1,4 +1,4 @@
-{% extends 'login/login.php' %}
+{% extends 'cadastro/criarConta.php' %}
 
 {% block conteudo %}
 	<div class="container">

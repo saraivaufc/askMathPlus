@@ -1,7 +1,11 @@
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'basico.php' %}
 
 {% block titulo %}
     Login
+{% endblock %}
+
+{% block menu %}
+{% include 'login/cabecalhoLogin.php' %}
 {% endblock %}
 
 {% block page_atual %}"/login/"{% endblock %}
@@ -12,9 +16,6 @@
 		font-size: 120%;
 	}
 {% endblock %}
-
-
-{% block sair_all %}{% endblock %}
 
 {% block conteudo %}
 	<div class="container">

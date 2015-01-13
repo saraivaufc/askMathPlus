@@ -1,5 +1,4 @@
-
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'basico.php' %}
 
 {% block voltar_all %}
 {% endblock %}
@@ -7,6 +6,9 @@
 
 {% block titulo %}Principal{% endblock %}
 
+{% block menu %}
+{% include 'usuario/cabecalhoUser.php' %}
+{% endblock %}
 
 {%  block funcoes %}
 	$(document).ready(function(){

@@ -1,4 +1,4 @@
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'login/login.php' %}
 
 {% block titulo %}
     Falha Login
@@ -9,16 +9,20 @@
 
 
 {% block conteudo %}
-<div class="col-md-12 col-xs-12">
-	<div class="conteudo">
-			<div class="title-container">
-				<center><h1>Falha ao Efetuar Login</h1>
-			</div>
-		<center>
-			<button class="btn btn-primary caixa botao-1" onClick="document.location='/login/' ">
-				Tentar Novamente <span class="glyphicon glyphicon-repeat"></span>
-			</button>
-		</center>
+<div class="container">
+<div class="col-xs-12 col-sm-12 col-md-12">
+	<div class="row">
+		<div class="conteudo">
+				<div class="title-container">
+					<center><h1>Falha ao Efetuar Login</h1>
+				</div>
+			<center>
+				<button class="btn btn-primary caixa botao-1" onClick="document.location='/login/' ">
+					Tentar Novamente <span class="glyphicon glyphicon-repeat"></span>
+				</button>
+			</center>
+		</div>
 	</div>
 </div>
+</center>
 {% endblock %}

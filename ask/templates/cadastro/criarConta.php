@@ -2,19 +2,11 @@
 
 {% block page_atual %}"/criarConta/"{% endblock %}
 
-{% block voltar %}/login/{% endblock %}
-{% block sair_all %}{% endblock %}
-
-{% block titulo %}
-    Criar Conta
-{% endblock %}
-
 {% block estilo %}
-	#conteudo{
+	.container{
 		overflow-y:auto;
 	}
 {% endblock %}
-
 
 {% block conteudo %}
 <div class="container">
@@ -23,7 +15,6 @@
 			<div class="col-sm-12">
 				<h2>Criar Conta</h2>
 			</div>
-		<center>
 		<div class="row">
 			<fieldset class="col-sm-6 col-md-6">
 				<legend class="hidden-xs">Usuário</legend>
@@ -85,11 +76,9 @@
 					</div>
 				</div>
 			</div>
-		</center>
 		</form>
 	</center>
 
 	{% include 'usuario/modals/senhasDiferentes.php' %}
 </div>
-
 {% endblock %}

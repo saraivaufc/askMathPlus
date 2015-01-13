@@ -1,8 +1,10 @@
-{% extends 'admin/cabecalhoAdmin.php' %}
-
-
+{% extends 'basico.php' %}
 
 {% block titulo %}Principal{% endblock %}
+
+{% block menu %}
+	{% include 'admin/cabecalhoAdmin.php' %}
+{% endblock %}
 
 
 {%  block funcoes %}
