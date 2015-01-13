@@ -104,15 +104,15 @@ ADMINS = ( ('Ciano','saraiva.ufc@gmail.com'), )
 DEFAULT_FROM_EMAIL= 'saraiva.ufc@gmail.com'
 
 
-FORMAT_MODULE_PATH = 'ask.formats'
+#FORMAT_MODULE_PATH = 'ask.formats'
 
-LANGUAGE_CODE = 'pt'
+LANGUAGE_CODE = 'pt-br'
 
-LANGUAGES = (
-    ('pt', _('Português')),
-    ('en', _('Inglês')),
-    ('es', _('Espanhol')),
-)
+# LANGUAGES = (
+#     ('pt', _('Português')),
+#     ('en', _('Inglês')),
+#     ('es', _('Espanhol')),
+# )
 
 TIME_ZONE = 'America/Fortaleza'
 
