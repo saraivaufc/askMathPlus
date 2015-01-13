@@ -55,7 +55,7 @@
 	        			<div class="panel panel-primary">
 						 	<div class="panel-title" id="tema-conteudo">
 								<center>
-					            	<t class="lead">
+					            	<t>
 					            		<h3>
 					            			{{ conteudo.tema|safe|title }}
 					            		</h3>
@@ -64,7 +64,7 @@
 						  	</div>
 						 	<div class="panel-footer">
 						 		<div id="descricao-conteudo">
-						  			<t class="lead">{{ conteudo.descricao|safe }}<t>
+						  			<t><p>{{ conteudo.descricao|safe }}</p><t>
 						  		</div>
 						  	</div>
 					  	</div>
@@ -141,7 +141,7 @@
 						<hr>
 						{% block outros-conteudos-all %}
 					  		<div class="espacamento">
-								  <t class="lead">{{ pergunta.descricao|safe }} </t>
+								  <t>{{ pergunta.descricao|safe }} </t>
 								<hr/>
 								<form method="POST" id="perguntas" name="resposta">
 								{%csrf_token %} 
@@ -152,13 +152,13 @@
 										<li type="A">
 											<div class="font-dconteudo">
 												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-												<t class="lead">{{ item.descricao|safe }}</t>
+												<t><p>{{ item.descricao|safe }}</p></t>
 											</div>
 										</li>
 										<br>
 									{% empty %}
 										<div class="font-dconteudo">
-											<t class="lead">Essa pergunta nao possui itens.</t>
+											<t><p>Essa pergunta nao possui itens.</p></t>
 										</div>
 									{% endfor %}
 									</ol>

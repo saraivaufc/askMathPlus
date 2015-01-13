@@ -9,26 +9,35 @@
 {% include 'admin/cabecalhoAdmin.php' %}
 {% endblock %}
 
-{% block conteudo-left %}
-	<div class="font-dconteudo">
-    	<div class="descricao-conteudo">
-        		<div class="panel-heading">
-        			<div class="panel panel-info">
-					 	<div class="panel-title" id="tema-conteudo">
-							<center>
-				            	<h3>{{ conteudo.tema|title }}</h3>
-				          	</center>
-					  	</div>
-					 	<div class="panel-footer">
-					 		<div id="descricao-conteudo">
-					  		<t class="lead">{{ conteudo.descricao|safe }}<t>
-					  		</div>
-					  	</div>
-				  	</div>
-				</div>
-      		<br>
-    	</div>
-  	</div>
+{% block conteudo-left-all %}
+{% block conteudo-left-visible %}
+<div class="col-sm-5 col-md-4 col-lg-5">
+{% endblock %}
+	<div class="row">
+		<div id="conteudo-left">
+			<div class="font-dconteudo">
+		    	<div class="descricao-conteudo">
+		        		<div class="panel-heading">
+		        			<div class="panel panel-info">
+							 	<div class="panel-title" id="tema-conteudo">
+									<center>
+						            	<h3>{{ conteudo.tema|title }}</h3>
+						          	</center>
+							  	</div>
+							 	<div class="panel-footer">
+							 		<div id="descricao-conteudo">
+							  		<t><p>{{ conteudo.descricao|safe }}</p><t>
+							  		</div>
+							  	</div>
+						  	</div>
+						</div>
+		      		<br>
+		    	</div>
+		  	</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
 
 

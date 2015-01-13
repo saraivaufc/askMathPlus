@@ -1,6 +1,10 @@
 {% extends 'admin/secundario_admin/secundario_admin.php' %}
 {% load webdesign %}
 
+{% block conteudo-left-visible %}
+<div class="col-sm-5 col-md-4 col-lg-5 hidden-xs">
+{% endblock %}
+
 {% block panel %}
 	<div class="panel-title" id="pontuacao">
  		<center>
@@ -13,7 +17,7 @@
   	</div>
  	<div class="panel-footer">
 		<div class="espacamento">
-		  	<t class="lead">{% lorem 20 w random %} {{ pergunta.descricao|safe }} </t>
+		  	<t><p>{{ pergunta.descricao|safe }}</p></t>
 		<hr/>
 		<form method="POST" id="perguntas" name="resposta">{%csrf_token %} 
 			<input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
@@ -23,13 +27,13 @@
 				<li type="A">
 					<div class="font-dconteudo">
 						<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-						<t class="lead">{% lorem 20 w random %}{{ item.descricao | safe }}</t>
+						<t><p>{{ item.descricao | safe }}</p></t>
 					</div>
 				</li>
 				<br>
 			{% empty %}
 				<div class="font-dconteudo">
-					<t class="lead">Essa pergunta nao possui itens.</t>
+					<t><p>Essa pergunta nao possui itens.</p></t>
 				</div>
 			{% endfor %}
 			</ol>
