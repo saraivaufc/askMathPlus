@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2014-05-09 01:37-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: CIANO SARAIVA <saraiva.ufc@gmail.com>\n"
-"Language-Team: PORTUGUÊS <LL@li.org>\n"
+"Language-Team: PORTUGUÊS DO BRASIL <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: .\forms\admin.py:46
 msgid ""
 "The category you are updating can not has a parent since it has childrens"
-msgstr "La categoria que estas intentando actualizar no puede tener una categoria ya que tiene subcategorias"
+msgstr "A categoria que você está tentando atualizar não pode pertencer há uma categoria que tem subcategorias"
 
 #: .\forms\comment.py:24
 msgid "Write comment..."
@@ -83,7 +83,7 @@ msgstr "Deixar em branco"
 
 #: .\forms\user.py:26
 msgid "Do not fill this field."
-msgstr "No rellenes este campo."
+msgstr "Não preencha este este campo."
 
 #: .\forms\user.py:39
 msgid "The username is taken."
@@ -103,7 +103,7 @@ msgstr "Senha"
 
 #: .\forms\user.py:72
 msgid "Your password was entered incorrectly. Please enter it again."
-msgstr "A senha está errada. Por favor insira uma nova."
+msgstr "A senha está incorreta. Por favor insira uma nova."
 
 #: .\forms\user.py:81
 msgid "Try a different email."
@@ -186,7 +186,7 @@ msgstr "contador de modificações"
 
 #: .\models\comment.py:45
 msgid "likes count"
-msgstr "contador de likes"
+msgstr "contador de curtis"
 
 #: .\models\comment.py:53 .\templates\spirit\user\profile_comments.html:5
 msgid "comments"
@@ -210,15 +210,15 @@ msgstr "Outro"
 
 #: .\models\comment_flag.py:26
 msgid "comment flag"
-msgstr "reporte de comentario"
+msgstr "report de comentário"
 
 #: .\models\comment_flag.py:27
 msgid "comments flags"
-msgstr "reportes de comentarios"
+msgstr "reportes de comentários"
 
 #: .\models\comment_flag.py:42
 msgid "reason"
-msgstr "rezão"
+msgstr "razão"
 
 #: .\models\comment_flag.py:43
 msgid "body"
@@ -267,7 +267,7 @@ msgstr "Fixado"
 
 #: .\models\topic.py:29
 msgid "views count"
-msgstr "contador visto"
+msgstr "contador vistos"
 
 #: .\models\topic.py:30 .\models\user.py:26
 msgid "comment count"
@@ -275,11 +275,11 @@ msgstr "contador de comentário"
 
 #: .\models\topic.py:37
 msgid "topic"
-msgstr "Tópico"
+msgstr "tópico"
 
 #: .\models\topic.py:38 .\templates\spirit\user\profile_topics.html:5
 msgid "topics"
-msgstr "Tópicos"
+msgstr "tópicos"
 
 #: .\models\topic_favorite.py:19
 msgid "favorite"
@@ -315,7 +315,7 @@ msgstr "tópico privado"
 
 #: .\models\topic_private.py:25
 msgid "private topics"
-msgstr "tópicos privados "
+msgstr "tópicos privados"
 
 #: .\models\topic_unread.py:31
 msgid "topic unread"
@@ -356,7 +356,7 @@ msgstr "contador de tópicos"
 #: .\models\user.py:45
 msgid ""
 "Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
-msgstr "Requer. 30 caracteres ou menos. Letras, números ou @/./+/-/_"
+msgstr "Requerido. 30 caracteres ou menos. Letras, números ou @/./+/-/_"
 
 #: .\models\user.py:48
 msgid "Enter a valid username."
@@ -376,11 +376,11 @@ msgstr "email"
 
 #: .\models\user.py:54
 msgid "staff status"
-msgstr "estado staff"
+msgstr "estado empregado"
 
 #: .\models\user.py:55
 msgid "Designates whether the user can log into this admin site."
-msgstr "Decida se o usuário pode acessar o site do administrador."
+msgstr "Decida se o usuário pode acessar o site como um administrador."
 
 #: .\models\user.py:57
 msgid "active"
@@ -407,7 +407,7 @@ msgstr "Você não tem privilégios suficientes para acessar essa conta"
 
 #: .\templates\404.html:10
 msgid "what you are looking for is gone..."
-msgstr "lo que busca ya no esta"
+msgstr "não encontramos  o que você busca..."
 
 #: .\templates\spirit\_base.html:43
 msgid "{user} has mention you on {topic}"
@@ -550,7 +550,7 @@ msgstr "Reportes fechados"
 #: .\templates\spirit\admin\comment_flag\flag_detail.html:5
 #: .\templates\spirit\admin\comment_flag\flag_detail.html:14
 msgid "Flag"
-msgstr "reporte"
+msgstr "Reporte"
 
 #: .\templates\spirit\admin\comment_flag\flag_detail.html:18
 msgid "Moderated by"
@@ -572,7 +572,7 @@ msgstr "Reportadores"
 #: .\templates\spirit\admin\comment_flag\flag_open.html:5
 #: .\templates\spirit\admin\comment_flag\flag_open.html:11
 msgid "Open flags"
-msgstr "Reportes abiertos"
+msgstr "Reportes abertos"
 
 #: .\templates\spirit\admin\config\config_basic.html:5
 #: .\templates\spirit\admin\config\config_basic.html:11
@@ -607,7 +607,7 @@ msgstr "Comentários"
 #: .\templates\spirit\admin\index\dashboard.html:39
 #: .\templates\spirit\user\_profile.html:35
 msgid "Likes"
-msgstr "Curtir"
+msgstr "Curtis"
 
 #: .\templates\spirit\admin\topic\_tabs.html:4
 msgid "Deleted"
@@ -677,7 +677,7 @@ msgstr "Negrito"
 
 #: .\templates\spirit\comment\_editor.html:6
 msgid "Italic"
-msgstr "Italico"
+msgstr "Itálico"
 
 #: .\templates\spirit\comment\_editor.html:8
 msgid "URL"
@@ -689,7 +689,7 @@ msgstr "Imagem"
 
 #: .\templates\spirit\comment\_editor.html:10
 msgid "Preview"
-msgstr "Ver previa"
+msgstr "Ver Previa"
 
 #: .\templates\spirit\comment\_editor.html:29
 msgid "bolded text"
@@ -697,7 +697,7 @@ msgstr "texto em negrito"
 
 #: .\templates\spirit\comment\_editor.html:30
 msgid "italicised text"
-msgstr "texto em italico"
+msgstr "texto em itálico"
 
 #: .\templates\spirit\comment\_editor.html:31
 msgid "list item"
@@ -734,7 +734,7 @@ msgstr "reportar"
 #: .\templates\spirit\comment\_render_list.html:50
 #: .\templates\spirit\comment\_render_list.html:110
 msgid "remove like"
-msgstr "apagar curtir"
+msgstr "descurtir"
 
 #: .\templates\spirit\comment\_render_list.html:64
 msgid "quote"
@@ -813,11 +813,11 @@ msgstr "Página %(number)s de %(num_pages)s"
 
 #: .\templates\spirit\paginator\_paginator.html:8
 msgid "Last"
-msgstr "Última"
+msgstr "Último"
 
 #: .\templates\spirit\paginator\_paginator.html:10
 msgid "First"
-msgstr "Primeira"
+msgstr "Primeiro"
 
 #: .\templates\spirit\paginator\_yt_paginator.html:5
 msgid "Page 1 of 1"
@@ -862,7 +862,7 @@ msgstr "Principal"
 
 #: .\templates\spirit\topic\topic_detail.html:42
 msgid "Select comments to move"
-msgstr "Seleccionar comentários para mover"
+msgstr "Selecionar comentários para mover"
 
 #: .\templates\spirit\topic\topic_detail.html:45
 msgid "Undelete topic"
@@ -870,7 +870,7 @@ msgstr "Restaurar tópico"
 
 #: .\templates\spirit\topic\topic_detail.html:47
 msgid "Delete topic"
-msgstr "Eliminar tópico"
+msgstr "Apagar tópico"
 
 #: .\templates\spirit\topic\topic_detail.html:51
 msgid "Open topic"
@@ -899,7 +899,7 @@ msgstr "Mover"
 #: .\templates\spirit\topic\topic_moderate.html:5
 #: .\templates\spirit\topic\topic_moderate.html:9
 msgid "Moderate topic"
-msgstr "Moderar tópcico"
+msgstr "Moderar tópico"
 
 #: .\templates\spirit\topic\topic_publish.html:5
 #: .\templates\spirit\topic\topic_publish.html:21
@@ -932,7 +932,7 @@ msgid ""
 "<a href=\"%(url_profile)s\">%(username)s</a> has commented on <a href=\"%"
 "(url_topic)s\">%(topic_title)s</a>"
 msgstr ""
-"<a href=\"%(url_profile)s\">%(username)s</a> ha comentado en <a href=\"%"
+"<a href=\"%(url_profile)s\">%(username)s</a> comentou em <a href=\"%"
 "(url_topic)s\">%(topic_title)s</a>"
 
 #: .\templates\spirit\topic_notification\_render_list.html:11
@@ -940,7 +940,7 @@ msgid ""
 "<a href=\"%(url_profile)s\">%(username)s</a> has mention you on <a href=\"%"
 "(url_topic)s\">%(topic_title)s</a>"
 msgstr ""
-"<a href=\"%(url_profile)s\">%(username)s</a> te ha mencionado en <a href=\"%"
+"<a href=\"%(url_profile)s\">%(username)s</a> mencionou você em <a href=\"%"
 "(url_topic)s\">%(topic_title)s</a>"
 
 #: .\templates\spirit\topic_notification\_render_list.html:17
@@ -1075,7 +1075,7 @@ msgstr "Por favor, o link a seguir ativa sua conta:"
 #: .\templates\spirit\user\email_change_email.html:8
 #: .\templates\spirit\user\password_reset_email.html:9
 msgid "Thanks for using our site!"
-msgstr "Obrigado por usar o AskMath! :)"
+msgstr "Obrigado por usar nosso site! :)"
 
 #: .\templates\spirit\user\email_change_email.html:2
 msgid ""
@@ -1421,7 +1421,7 @@ msgstr "A categoria foi atualizada!"
 
 #: .\views\admin\comment_flag.py:35
 msgid "The flag has been moderated!"
-msgstr "El reporte ha sido moderado!"
+msgstr "O reporte já foi moderado!"
 
 #: .\views\admin\config.py:20
 msgid "Settings updated!"
@@ -1431,14 +1431,17 @@ msgstr "Configurações atualizadas!"
 msgid "This profile has been updated!"
 msgstr "Este perfil foi atualizado!"
 
-#~ msgid "permissions"
-#~ msgstr "permisos"
+msgid "permissions"
+msgstr "permições"
 
-#~ msgid "Muted"
-#~ msgstr "Silenciado"
+msgid "Muted"
+msgstr "Silenciado"
 
-#~ msgid "Nothing to show"
-#~ msgstr "Nada para mostrar"
+msgid "Nothing to show"
+msgstr "Nada para mostrar"
 
-#~ msgid "No results found"
-#~ msgstr "No hay resultados"
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"
+
+msgid "Uncategorized"
+msgstr "Nenhuma Categoria"

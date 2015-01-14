@@ -1,11 +1,14 @@
-{% extends 'usuario/cabecalhoUser.php' %}
+{% extends 'basico.php' %}
 
 {% block titulo %}
-    Principal
+    Turma
 {% endblock %}
 
-{% block voltar_all %}
+
+{% block menu %}
+{% include 'usuario/cabecalhoUser.php' %}
 {% endblock %}
+
 
 {% block conteudo %}
 <div class="container">
