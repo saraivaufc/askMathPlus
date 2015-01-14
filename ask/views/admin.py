@@ -82,7 +82,6 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 		try:
 			conteudo = Conteudo.objects.get(tema = tema)
 			pergunta = Pergunta.objects.get(id = id_pergunta)
-			itens = Item.objects.filter(pergunta_pertence_id = pergunta.id)
 		except:
 			return HttpResponseRedirect("/principal_admin/")
 

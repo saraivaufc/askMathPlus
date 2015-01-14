@@ -19,7 +19,7 @@
 				<div class="avisos-conteudo">
 				<center>
 					<h1>
-						Pergunta não possui item correto, entre em contato com o Administrador!!!
+						Voce errou porque a pergunta não possui item correto, entre em contato com o Administrador!!!
 					</h1>
 					<div class="barra-responder tela-opcoes-1">
 						<div class="btn-group btn-group-justified fixer-bottom">

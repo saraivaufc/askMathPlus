@@ -271,6 +271,12 @@ class Conteudo(Model):
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	item_a =  models.ForeignKey('Item', null=True, blank=False, related_name="Item A",verbose_name="Item A", on_delete = models.SET_NULL)
+	item_b =  models.ForeignKey('Item', null=True , blank=False, related_name="Item B", verbose_name="Item B", on_delete = models.SET_NULL)
+	item_c =  models.ForeignKey('Item', null=True, blank=False, related_name="Item C", verbose_name="Item C", on_delete = models.SET_NULL)
+	item_d =  models.ForeignKey('Item', null=True , blank=False, related_name="Item D", verbose_name="Item D", on_delete = models.SET_NULL)
+	item_e =  models.ForeignKey('Item', null=True , blank=False, related_name="Item E", verbose_name="Item E", on_delete = models.SET_NULL)
+
 	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
 	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
@@ -287,9 +293,26 @@ class Pergunta(Model):
 
 	def clean(self):
 		if self.item_correto_id != None:
-			item = Item.objects.get(id = self.item_correto_id)
-			if self.id != item.pergunta_pertence_id:
-				raise ValidationError('O Item Correto Não Pertence a Essa Pergunta.')
+			item_correto_pertence = False
+			if self.item_a != None:
+				if self.item_correto_id == self.item_a_id:
+					item_correto_pertence = True
+			if self.item_b != None:
+				if self.item_correto_id == self.item_b_id:
+					item_correto_pertence = True
+			if self.item_c != None:
+				if self.item_correto_id == self.item_c_id:
+					item_correto_pertence = True
+			if self.item_d != None:
+				if self.item_correto_id == self.item_d_id:
+					item_correto_pertence = True
+			if self.item_e != None:
+				if self.item_correto_id == self.item_e_id:
+					item_correto_pertence = True
+			if item_correto_pertence == False:
+				raise ValidationError('Item Correto nao pertence a essa pergunta!!!')
+
+
 		if self.ajuda_id != None:
 			ajuda = Ajuda.objects.get(id = self.ajuda_id)
 			if self.conteudo_pertence_id != None:
@@ -335,6 +358,39 @@ class Pergunta(Model):
 			except:
 				return None
 			return item
+	def getItens(self):
+		itens = []
+		if self.item_a_id != None:
+			try:
+				itens.append(Item.objects.get(id = self.item_a_id))
+			except:
+				pass
+		if self.item_b_id != None:
+			try:
+				itens.append(Item.objects.get(id = self.item_b_id))
+			except:
+				pass
+		if self.item_c_id != None:
+			try:
+				itens.append(Item.objects.get(id = self.item_c_id))
+			except:
+				pass
+		if self.item_d_id != None:
+			try:
+				itens.append(Item.objects.get(id = self.item_d_id))
+			except:
+				pass
+		if self.item_e_id != None:
+			try:
+				itens.append(Item.objects.get(id = self.item_e_id))
+			except:
+				pass
+		return itens
+
+		
+		
+		
+
 
 
 
@@ -376,7 +432,6 @@ class Pergunta(Model):
 
 class Item(Model):
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para este item.")
-	pergunta_pertence = models.ForeignKey(Pergunta , related_name='pertence', verbose_name="Pergunta Pertence",  help_text="Escolha a pergunta da qual ele esta associado.")
 	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL, help_text="Todo item errado pode possuir uma deficiencia, quando um aluno responder erroneamente uma pergunta, precisamos saber qual a deficiencia em relacao ao conteudo que ele esta tendo, e para isso, usamos o item que ele respondeu, ou seja, todo item errado esta relacionado com uma possivel deficiencia apresentada pelo aluno.")
 	def __unicode__(self):
 		return str(self.id) + ": " +  self.getDescricaoMin() 
@@ -386,13 +441,7 @@ class Item(Model):
 		verbose_name = "Item"
 		verbose_name_plural = "Itens"
 	def clean(self):
-		if self.deficiencia_id != None:
-			deficiencia = Deficiencia.objects.get(id = self.deficiencia_id)
-			pergunta = Pergunta.objects.get(id = self.pergunta_pertence_id)
-			
-			if deficiencia.conteudo_id != None and pergunta.conteudo_pertence_id != None:
-				if deficiencia.conteudo_id != pergunta.conteudo_pertence_id:
-					raise ValidationError('O Conteúdo ao qual a Deficiência pertence não corresponde ao Conteúdo ao qual a Pergunta Pertence.')
+		pass
 
 	def getDescricao(self):
 		quant = 0

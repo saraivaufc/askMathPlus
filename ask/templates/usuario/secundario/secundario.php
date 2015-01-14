@@ -148,7 +148,7 @@
 									   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
 									   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 									<ol>
-									{% for item in itens %}
+									{% for item in pergunta.getItens %}
 										<li type="A">
 											<div class="font-dconteudo">
 												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">

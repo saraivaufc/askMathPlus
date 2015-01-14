@@ -69,41 +69,41 @@ class PerguntaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
         (None,{'fields':('conteudo_pertence',
-        			      'descricao',
-        				  'item_correto',
-        				  'pergunta_proximo',
-        				  'ajuda',
-        				  'pontos',
+        			'descricao',
+        			'item_a','item_b','item_c','item_d','item_e',
+        			 'item_correto',
+        			 'pergunta_proximo',
+        			 'ajuda',
+        			 'pontos',
         				)
         	  }
         ),
 	)
-	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_correto', 'pergunta_proximo', 'ajuda','pontos' )
+	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_a','item_b','item_c','item_d','item_e','item_correto',  'pergunta_proximo', 'ajuda','pontos', )
 	list_display_links = ('id','getDescricaoMin',)
 	list_editable = ('conteudo_pertence','item_correto','pergunta_proximo', 'ajuda','pontos', )
 	list_filter = ('conteudo_pertence',)
-	raw_id_fields = ('item_correto','conteudo_pertence','pergunta_proximo','ajuda')
+	raw_id_fields = ( 'item_a','item_b','item_c','item_d','item_e','item_correto','conteudo_pertence','pergunta_proximo','ajuda',)
 	save_as = True
-	search_fields = ['descricao']
+	search_fields = ['descricao',]
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('pergunta_pertence',
-        			      'descricao',
-        			      'deficiencia',
-        				)
+        (None,{'fields':('descricao',
+        		         'deficiencia',
+        			)
         	  }
         ),
 	)
-	list_display = ('id','pergunta_pertence','getDescricaoMin','deficiencia', )
+	list_display = ('id','getDescricaoMin','deficiencia', )
 	list_display_links = ('id','getDescricaoMin',)
-	list_editable = ('pergunta_pertence','deficiencia')
-	list_filter = ('pergunta_pertence','deficiencia')
-	raw_id_fields = ('pergunta_pertence','deficiencia')
+	list_editable = ('deficiencia',)
+	list_filter = ('deficiencia',)
+	raw_id_fields = ('deficiencia',)
 	save_as = True
-	search_fields = ['descricao']
+	search_fields = ['descricao',]
 
 @admin.register(Deficiencia)
 class DeficienciaAdmin(admin.ModelAdmin):

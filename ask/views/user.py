@@ -249,7 +249,6 @@ def secundario(request, tema_conteudo):
 
 		atualiza_estado(usuario.id,conteudo.id, pergunta.id)
 
-	itens = Item.objects.filter(pergunta_pertence = pergunta.id)
 	print 'Response Padrao Caso nao Entre no Post : linha 206'
 
 	try:
