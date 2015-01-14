@@ -1,6 +1,3 @@
-.lead{
-	font-size: 100%;
-}
 
 #cabecalho {
 	position: relative;
@@ -244,6 +241,5 @@ h1{
 }
 
 #point{
-	font-weight: normal;
 	font-size: 90%;
 }

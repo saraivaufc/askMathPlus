@@ -86,7 +86,7 @@
 				<div class="panel panel-primary">
 			  	<div class="panel-title">
 			  		{%  block titulo-inicial-all %}
-				 	<div id="pontuacao">
+				 	<div id="pontuacao-pergunta">
 				 		<center>
 				 			<h3>
 				 			{%  block titulo-inicial %}
@@ -101,10 +101,10 @@
 			  		<div class="container-fluid">
 				  		<div id="point">
 							{%  block pontuacao-all %}
-							 	<div class="row text-center">
+							 	<div class="text-center">
 									{%  block pontuacao %}
-										<div class="row">
-											<div class="col-sm-4 col-md-3 bg-primary">
+										<div>
+											<div class="col-xs-12 col-sm-5 col-md-3">
 												<div class="row">
 													PONTOS = {{ pontosAcumulados|default_if_none:"0" }}
 												</div>
@@ -112,19 +112,19 @@
 													SALTOS = {{ pulosRealizados|default_if_none:"0" }}
 												</div>
 											</div>
-											<div class="col-sm-8 col-md-4 bg-info">
+											<div class="col-xs-12 col-sm-7 col-md-4">
 												<div class="row">
 													{% if NUMEROPERGUNTA == 0 %}
 														Nao Pertence
 													{% else %}
-													QUESTAO = {{NUMEROPERGUNTA}}/{{ perguntasTotal|default_if_none:"0" }}
+														QUESTAO = {{NUMEROPERGUNTA}}/{{ perguntasTotal|default_if_none:"0" }}
 													{% endif %}
 												</div>
 												<div class="row">
-													QUESTOES SALTADAS = {{perguntasPuladas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }} 
+													QUESTOES SALTADAS = {{perguntasPuladas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }}
 												</div>
 											</div>
-											<div class="col-sm-12 col-md-5 bg-danger">
+											<div class="col-xs-12 col-sm-12 col-md-5">
 												<div class="row">
 													QUESTOES CORRETAS = {{perguntasCertas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }}
 												</div>

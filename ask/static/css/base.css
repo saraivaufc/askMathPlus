@@ -401,7 +401,7 @@ a{
 
 }
 
-#pontuacao h3{
+#pontuacao-pergunta h3{
 	color: #1E90FF;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;
@@ -464,4 +464,9 @@ h1{
 
 #point{
 	font-weight: bold;
+}
+
+#point .row{
+	border : 1px solid black ;
+	background-color: #BFBFBF;
 }
