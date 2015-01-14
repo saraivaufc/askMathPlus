@@ -287,7 +287,8 @@ class SecaoAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','usuario',
+	list_display = ('id',
+					'usuario',
 			      	'conteudo',
 				  	'inicio',
 				  	'fim',)

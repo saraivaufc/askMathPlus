@@ -563,7 +563,10 @@ def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
 		return HttpResponse("FALSE")
 
 def send_email(nome, email, msg):
-	send_mail('AskMath', msg , email , ['saraiva.ufc@gmail.com'], fail_silently=False)
+	try:
+		send_mail('AskMath', msg , email , ['saraiva.ufc@gmail.com'], fail_silently=False)
+	except:
+		return None
 
 def contato(request):
 	if request.method == 'POST':
