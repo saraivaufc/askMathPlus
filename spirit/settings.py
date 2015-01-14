@@ -48,13 +48,6 @@ INSTALLED_APPS = (
     # 'spirit.tests'
 )
 
-# python manage.py createcachetable spirit_cache
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'spirit_cache',
-    },
-}
 
 AUTH_USER_MODEL = 'spirit.User'
 
@@ -113,12 +106,6 @@ INSTALLED_APPS += (
 )
 
 DJC_BACKEND = 'djconfig'
-
-CACHES.update({
-    'djconfig': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-})
 
 MIDDLEWARE_CLASSES += (
     'djconfig.middleware.DjConfigLocMemMiddleware',

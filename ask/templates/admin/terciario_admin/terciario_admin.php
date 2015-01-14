@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block panel %}
-	<div class="panel-title" id="pontuacao">
+	<div class="panel-title" id="pontuacao-pergunta">
  		<center>
  			<h3>
  			{%  block titulo-inicial %}
-	    		Pergunta
+	    		Essa Pergunta Vale {{ pergunta.pontos }} Pontos.
 	    	{% endblock %}
 	    	</h3>
 	    </center>

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block sugestoes %}
-	<a class="list-group-item default"></a>
+	<br>
 	<a data-toggle="modal" data-target="#sugestoes_modal" class="list-group-item active">
 	    SUGESTÕES DE ESTUDOS <span class="glyphicon glyphicon-info-sign"></span>
 	</a>
