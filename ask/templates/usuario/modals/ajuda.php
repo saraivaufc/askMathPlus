@@ -7,7 +7,7 @@
 		    </div>
 		    <div class="modal-body">
 		    	<div class="text-justify">
-					<t id="ajuda_text" class="lead">
+					<t id="ajuda_text">
 		      		</t>
 	      		</div>
 			</div>

@@ -56,7 +56,14 @@ def login(request, **kwargs):
 def login_falha(request):
 	return render(request , 'login/login_falha.php' , locals())
 
+@login_required
 def logout(request):
+	if request.user.is_moderator == False:
+		try:
+			usuario = Usuario.objects.get(username = request.user)
+		except:
+			return HttpResponseRedirect('/login/')
+		fecharSecaoaberta(usuario)
 	logout_sys(request)
 	return HttpResponseRedirect('/login/')
 
@@ -355,7 +362,7 @@ def secundarioOpcoes(request, tema_conteudo):
 			respondeuPergunta = True
 
 		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
-
+		fecharSecaoaberta(usuario)
 		return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 
 @login_required
@@ -387,8 +394,8 @@ def secundarioEncerrar(request, tema_conteudo):
 
 		pontosAcumulados = conteudo.getQuantPontos(usuario)
 		
-		fecharSecaoaberta(usuario)
 
+		fecharSecaoaberta(usuario)
 		return render(request, 'usuario/secundario/secundarioEncerrar.php', locals())
 
 

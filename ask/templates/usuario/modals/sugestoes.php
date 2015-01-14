@@ -6,7 +6,7 @@
 			        <h3 class="modal-title  text-center" id="myModalLabel">SUGESTÕES</h3>
 			    </div>
 			    <div class="modal-body">
-					<div class="text-justify lead">
+					<div class="text-justify">
 						Como você já concluiu essa lição, aconselhamos que siga agora para essas.
 					</div>
 				</div>

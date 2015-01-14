@@ -6,7 +6,7 @@
 			        <h3 class="modal-title text-center" id="myModalLabel">Sobre</h3>
 			    </div>
 			    <div class="modal-body">
-					<div class="text-justify lead">
+					<div class="text-justify">
 						Esse sistema foi criado com o objetivo de melhorar a educação atravéz....
 					</div>
 				</div>

@@ -6,7 +6,7 @@
 			        <h3 class="modal-title  text-center" id="myModalLabel">REQUISITOS</h3>
 			    </div>
 			    <div class="modal-body">
-					<div class="text-justify lead">
+					<div class="text-justify">
 						Nós aconselhamos que você tenha terminado essas lições antes de proceguir nesta aqui. 
 					</div>
 				</div>

@@ -33,7 +33,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="last_name" class="control-label">Segundo Nome</label>
+						<label for="last_name" class="control-label">Último Nome</label>
 						<div>
 							<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu segundo nome">
 						</div>
