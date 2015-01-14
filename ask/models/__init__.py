@@ -33,7 +33,6 @@ TAMANHOMETRO = (
 	(2, "GRANDE"),
 )
 
-
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
 	def __unicode__(self):
@@ -271,13 +270,13 @@ class Conteudo(Model):
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
-	item_a =  models.ForeignKey('Item', null=True, blank=False, related_name="Item A",verbose_name="Item A", on_delete = models.SET_NULL)
-	item_b =  models.ForeignKey('Item', null=True , blank=False, related_name="Item B", verbose_name="Item B", on_delete = models.SET_NULL)
-	item_c =  models.ForeignKey('Item', null=True, blank=False, related_name="Item C", verbose_name="Item C", on_delete = models.SET_NULL)
-	item_d =  models.ForeignKey('Item', null=True , blank=False, related_name="Item D", verbose_name="Item D", on_delete = models.SET_NULL)
-	item_e =  models.ForeignKey('Item', null=True , blank=False, related_name="Item E", verbose_name="Item E", on_delete = models.SET_NULL)
+	item_a =  models.ForeignKey('Item', null=True, blank=True, related_name="Item A",verbose_name="Item A", on_delete = models.SET_NULL)
+	item_b =  models.ForeignKey('Item', null=True , blank=True, related_name="Item B", verbose_name="Item B", on_delete = models.SET_NULL)
+	item_c =  models.ForeignKey('Item', null=True, blank=True, related_name="Item C", verbose_name="Item C", on_delete = models.SET_NULL)
+	item_d =  models.ForeignKey('Item', null=True , blank=True, related_name="Item D", verbose_name="Item D", on_delete = models.SET_NULL)
+	item_e =  models.ForeignKey('Item', null=True , blank=True, related_name="Item E", verbose_name="Item E", on_delete = models.SET_NULL)
 
-	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
+	item_correto = models.ForeignKey('Item', null=True , blank=False, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
 	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
