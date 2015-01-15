@@ -30,7 +30,12 @@
 {% block nav-dir %}
 	<li>
 		<a href="/principal_admin/">
-			<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
+			<span class="glyphicon glyphicon-user"></span>
+			{% if  usuario.first_name == ""  %}
+				{{ usuario.username }}
+			{% else %}
+				{{ usuario.first_name }}
+			{% endif %}
 		</a>
 	</li>
 	<li>
