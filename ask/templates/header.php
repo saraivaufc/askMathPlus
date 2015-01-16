@@ -1,6 +1,6 @@
 <div id="navbar" class="navbar-wrapper">
 	<!-- Static navbar -->
-	<div class="navbar navbar-default navbar-inverse" role="navigation">
+	<div class="navbar navbar-custom" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" id="navOpcoes" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
