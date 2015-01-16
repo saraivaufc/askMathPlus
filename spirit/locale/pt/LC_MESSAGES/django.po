@@ -455,8 +455,8 @@ msgid "Admin"
 msgstr "Administrador"
 
 #: .\templates\spirit\_header.html:29 .\templates\spirit\user\menu.html:23
-msgid "Log out"
-msgstr "Sair"
+msgid "Back to AskMath"
+msgstr "Voltar ao AskMath"
 
 #: .\templates\spirit\_header.html:42
 msgid "Log in"

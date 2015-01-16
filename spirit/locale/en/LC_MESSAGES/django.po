@@ -556,7 +556,7 @@ msgstr ""
 
 #: .\templates\spirit\_header.html:29 .\templates\spirit\user\logout.html:5
 #: .\templates\spirit\user\logout.html:15 .\templates\spirit\user\menu.html:23
-msgid "Log out"
+msgid "Back to AskMath"
 msgstr ""
 
 #: .\templates\spirit\_header.html:42
