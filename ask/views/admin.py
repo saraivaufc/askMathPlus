@@ -54,6 +54,11 @@ def secundario_admin(request, tema_conteudo):
 			return HttpResponseRedirect("/principal_admin/")
 		turmas = conteudo.turma.all()
 
+		try:
+			pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+		except:
+			pass
+
 		return render(request, "admin/secundario_admin/secundario_admin.php", locals())
 
 	else:
