@@ -41,10 +41,9 @@ class TurmaAdmin(admin.ModelAdmin):
 class ConteudoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('turma',
+        (None,{'fields':(		'turma',
         				 'tema',
-        	             'descricao', 
-        				  'pergunta_inicial', 
+        	             		'descricao',  
         				  'requisitos',
         				  'sugestao_estudo',
         				  'max_pulos',
@@ -55,11 +54,11 @@ class ConteudoAdmin(admin.ModelAdmin):
         ),
 	)
 
-	list_display = ('id','tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
+	list_display = ('id','tema','max_pulos','linha_metro','tamanho_metro',)
 	list_display_links = ('id',)
-	list_editable = ('tema','pergunta_inicial','max_pulos','linha_metro','tamanho_metro',)
+	list_editable = ('tema','max_pulos','linha_metro','tamanho_metro',)
 	list_filter = ('turma','linha_metro','tamanho_metro',)
-	raw_id_fields = ('turma','pergunta_inicial', 'requisitos', 'sugestao_estudo')
+	raw_id_fields = ('turma', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
 
@@ -72,18 +71,17 @@ class PerguntaAdmin(admin.ModelAdmin):
         			'descricao',
         			'item_a','item_b','item_c','item_d','item_e',
         			 'item_correto',
-        			 'pergunta_proximo',
         			 'ajuda',
         			 'pontos',
         				)
         	  }
         ),
 	)
-	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_a','item_b','item_c','item_d','item_e','item_correto',  'pergunta_proximo', 'ajuda','pontos', )
+	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_a','item_b','item_c','item_d','item_e','item_correto', 'ajuda','pontos', )
 	list_display_links = ('id','getDescricaoMin',)
-	list_editable = ('conteudo_pertence','item_correto','pergunta_proximo', 'ajuda','pontos', )
+	list_editable = ('conteudo_pertence','item_correto','ajuda','pontos', )
 	list_filter = ('conteudo_pertence',)
-	raw_id_fields = ( 'item_a','item_b','item_c','item_d','item_e','item_correto','conteudo_pertence','pergunta_proximo','ajuda',)
+	raw_id_fields = ( 'item_a','item_b','item_c','item_d','item_e','item_correto','conteudo_pertence','ajuda',)
 	save_as = True
 	search_fields = ['descricao',]
 

@@ -90,7 +90,7 @@
 						  	{% endfor %}
 						</ul>
 
-						<button  onclick="atualizarListas()" class="btn btn-primary">Submeter Listas</button>
+						<button  onclick="atualizarListas()" class="btn btn-success">Submeter Listas</button>
 
 						<hr class="divider">
 
