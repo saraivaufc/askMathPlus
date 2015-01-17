@@ -37,6 +37,8 @@ $(document).ready(function(){
 			      	_super(item);
 		    	});
 		    	atualizarLista();
+		    	zerarLista();
+		    	window.location = window.location;
 		},
 
 		  // set item relative to cursor position
@@ -75,6 +77,21 @@ function atualizarLista(){
 	data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
 
 	$.post("/ordena_perguntas/", data);
-
-
 };
+
+function zerarLista(){
+	var  perguntas= $("ul.perguntas_desordenadas li").filter("[name='pergunta']");
+	var conteudo = $("#conteudo_atual").val();
+	var ids = new Object();
+	var index = 0;
+	$.each( perguntas , function(){
+		ids[index++] = $(this).val();
+	});
+
+	data = new Object();
+	data['conteudo'] = conteudo;
+	data['perguntas'] = JSON.stringify(ids);
+	data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
+
+	$.post("/zerar_perguntas/", data);	
+}

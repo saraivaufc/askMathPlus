@@ -125,3 +125,22 @@ def ordenaPerguntas(request):
 
 	return HttpResponse("Success")
 
+
+def zerarPerguntas(request):
+	if request.method == "POST":
+		conteudo_id = request.POST['conteudo']
+		perguntas = request.POST['perguntas']
+
+
+		perguntas = json.loads(perguntas)
+		quant_perguntas = len(perguntas.keys())
+
+		for  i in range(quant_perguntas):
+			pergunta_id = perguntas[str(i)]
+			Pergunta.objects.filter(id = pergunta_id).update(pergunta_proximo_id = None)
+
+
+
+
+	return HttpResponse("Success")
+
