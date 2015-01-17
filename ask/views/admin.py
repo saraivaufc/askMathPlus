@@ -108,3 +108,15 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 
 	else:
 		return HttpResponseRedirect("/principal/"+ tema_conteudo)
+
+
+def ordenaPerguntas(request):
+	if request.method == "POST":
+		conteudo = request.POST['conteudo']
+		perguntas = request.POST['perguntas']
+
+		print conteudo
+		print perguntas
+
+	return HttpResponse("Success")
+

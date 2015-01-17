@@ -135,7 +135,8 @@
 		<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>
 		<script type="text/javascript" src="/static/javascript/jquery-sortable.js"></script>
 
-		
+		<!-- Json 2 -->
+		<script type="text/javascript" src="/static/javascript/json2.js"></script>
 
 		<!-- Latex -->
 		<script type="text/javascript" src="/static/javascript/latexit.js"></script>

@@ -48,10 +48,11 @@
 				<div class="panel panel-info">
 				 	{% block panel %}
 				 	<div class="panel-footer">
-				 		
+					 	
 
-
-				 		<ul class="list-group">
+					 	<input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
+					 	<input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
+				 		<ul id="lista-perguntas" class="list-group ">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active pointer">
 								PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
 							</li>
