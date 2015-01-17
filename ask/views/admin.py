@@ -114,10 +114,6 @@ def ordenaPerguntas(request):
 		
 		quant_perguntas = len(perguntas.keys())
 
-		print conteudo_id
-		print perguntas
-		print quant_perguntas
-
 		for  i in range(quant_perguntas):
 			pergunta_id = perguntas[str(i)]
 			if i == 0:
@@ -135,12 +131,14 @@ def ordenaPerguntas(request):
 
 
 def zerarPerguntas(request):
+	print "casaquista"
 	if request.method == "POST":
 		conteudo_id = request.POST['conteudo']
 		perguntas = request.POST['perguntas']
 
 
 		perguntas = json.loads(perguntas)
+
 		quant_perguntas = len(perguntas.keys())
 
 		for  i in range(quant_perguntas):

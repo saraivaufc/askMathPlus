@@ -90,6 +90,10 @@
 						  	{% endfor %}
 						</ul>
 
+						<button  onclick="atualizarListas()" class="btn btn-primary">Submeter Listas</button>
+
+						<hr class="divider">
+
 						<div class="list-group">
 						  	<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
 							    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>

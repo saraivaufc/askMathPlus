@@ -10,13 +10,6 @@ $(document).ready(function(){
 });
 
 
-
-
-
-
-
-
-
 /* CSS */
 
 $(document).ready(function(){
@@ -36,9 +29,6 @@ $(document).ready(function(){
 			      	clonedItem.detach();
 			      	_super(item);
 		    	});
-		    	atualizarLista();
-		    	zerarLista();
-		    	window.location = window.location;
 		},
 
 		  // set item relative to cursor position
@@ -49,7 +39,7 @@ $(document).ready(function(){
 		    	adjustment = {
 		      		left: pointer.left - offset.left,
 		      		top: pointer.top - offset.top
-		    	}
+		    	};
 
 		    	_super($item, container);
 		},
@@ -57,7 +47,7 @@ $(document).ready(function(){
 		 	$item.css({
 		      		left: position.left - adjustment.left,
 		      		top: position.top - adjustment.top
-		    	})
+		    	});
 		 }
 	})
 });
@@ -76,7 +66,17 @@ function atualizarLista(){
 	data['perguntas'] = JSON.stringify(ids);
 	data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
 
-	$.post("/ordena_perguntas/", data);
+	$.ajax({
+		"url": "/ordena_perguntas/",
+		"type": "post",
+		"data": data,
+		async: false,
+		"success": function(data) {			
+		},
+		"error": function(jqXHR, status, error) {
+			alert("status:" + status  +"  === " +  "error:" + error);
+		}
+	});
 };
 
 function zerarLista(){
@@ -93,5 +93,21 @@ function zerarLista(){
 	data['perguntas'] = JSON.stringify(ids);
 	data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
 
-	$.post("/zerar_perguntas/", data);	
+	$.ajax({
+		"url": "/zerar_perguntas/",
+		"type": "post",
+		"data": data,
+		async: false,
+		"success": function(data) {			
+		},
+		"error": function(jqXHR, status, error) {
+			alert("status:" + status +"  === " + "error:" + error);
+		}
+	});
+}
+
+function atualizarListas(){
+	zerarLista();
+    	atualizarLista();
+    	window.location = window.location;
 }
