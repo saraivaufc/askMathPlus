@@ -11,7 +11,7 @@
 
 {% block nav-esq %}
 	<li>
-		<a id="forum" onClick="window.open('/forum/')" >
+		<a href="/forum/" >
 			Forum <span class="glyphicon glyphicon-globe"></span>
 		</a>
 	</li>

@@ -1,7 +1,7 @@
 {% load spirit_tags i18n %}
 
     <header class="header js-tabs-container">
-		<a class="header-logo" href="{% url "spirit:index" %}">AskMath</a>
+		<a class="header-logo" href="{% url "spirit:index" %}">AskForum</a>
 
         {% if user.is_authenticated %}
             {% has_topic_notifications user as has_notifications %}
