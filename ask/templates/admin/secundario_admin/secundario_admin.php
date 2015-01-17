@@ -52,32 +52,42 @@
 
 					 	<input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 					 	<input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
-				 		<ul id="lista-perguntas" class="list-group ">
+				 		
+				 		<ul class="lista_perguntas list-group  perguntas_ordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active pointer">
-								PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
+								PERGUNTAS DESTA LIÇÃO ORDENADAS <span class="glyphicon glyphicon-sort-by-attributes"></span>
 							</li>
-							{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
+							{% if conteudo.pergunta_inicial_id == None and conteudo.getQuantPerguntasTotal > 0 %}
 						  		<li  class="list-group-item list-group-item-danger">
 						  			Lição não possui pergunta Inicial!!!, Corrija isso imediatamente...
 						  		</li>
 						  	{% else %}
-						  		{% if conteudo.getQuantPerguntasTotal == 0 %}
-						  			<li class="list-group-item list-group-item-warning">
-						  				Licao nao possui Perguntas
-						  			</li>
-						  		{% else %}
-								  	{% for i in perguntas %}
-								  		<li  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
-								  			<i class="glyphicon glyphicon-move pointer" ></i>
-								  			<t>{{ i.getDescricao|safe }}</t>
-								  		</li>
-								  	{% empty %}
-								  		<li class="list-group-item list-group-item-warning">
-								  			Licao nao possui Perguntas
-								  		</li>
-								  	{% endfor %}
-								{% endif %}
+							  	{% for i in conteudo.getPerguntasOrdenadas %}
+							  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
+							  			<i class="glyphicon glyphicon-move pointer" ></i>
+							  			<t>{{ i.getDescricao|safe }}</t>
+							  		</li>
+							  	{% empty %}
+							  		<li class="list-group-item list-group-item-warning">
+							  			Licao nao possui Perguntas em Ordem
+							  		</li>
+							  	{% endfor %}
 							{% endif %}
+						</ul>
+						<ul class="lista_perguntas list-group  perguntas_desordenadas">
+							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active pointer">
+								PERGUNTAS DESTA LIÇÃO DESORDENADAS <span class="glyphicon glyphicon-sort-by-attributes"></span>
+							</li>
+						  	{% for i in conteudo.getPerguntasNaoOrdenadas %}
+						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
+						  			<i class="glyphicon glyphicon-move pointer" ></i>
+						  			<t>{{ i.getDescricao|safe }}</t>
+						  		</li>
+						  	{% empty %}
+						  		<li class="list-group-item list-group-item-warning">
+						  			Licao nao possui Perguntas Fora de Ordem
+						  		</li>
+						  	{% endfor %}
 						</ul>
 
 						<div class="list-group">

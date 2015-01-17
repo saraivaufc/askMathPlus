@@ -109,6 +109,41 @@ class Conteudo(Model):
 		p = Pergunta.objects.filter(conteudo_pertence = self.id)
 		return len(p)
 
+	def getPerguntasOrdenadas(self):
+		print "getPerguntasOrdenadas"
+		perguntas = []
+		perguntas_vistas = []
+		if self.pergunta_inicial_id != None:
+			pergunta_inicial =  Pergunta.objects.get(id = self.pergunta_inicial_id)
+			perguntas.append(pergunta_inicial)
+			perguntas_vistas.append(pergunta_inicial.id)
+
+			while perguntas[len(perguntas)-1].pergunta_proximo_id != None:
+				pergunta_proximo = Pergunta.objects.get(id = perguntas[len(perguntas)-1].pergunta_proximo_id)
+				if pergunta_proximo.id in perguntas_vistas:
+					break
+				perguntas.append(pergunta_proximo)
+				perguntas_vistas.append(pergunta_proximo.id)
+				
+		return perguntas
+
+	def getPerguntasNaoOrdenadas(self):
+		print "getPerguntasNaoOrdenadas"
+		perguntas_all = Pergunta.objects.filter(conteudo_pertence_id = self.id)
+		print len(perguntas_all) , "casa"
+		perguntas_ordenadas = self.getPerguntasOrdenadas()
+		print len(perguntas_ordenadas)
+		perguntas_nao_ordenadas = []
+		for i in perguntas_all:
+			cotem = False
+			for k in perguntas_ordenadas:
+				if i.id == k.id:
+					cotem = True
+			if cotem == False:
+				perguntas_nao_ordenadas.append(i)
+		return perguntas_nao_ordenadas
+
+
 	def getRequisitos(self):
 		return self.requisitos.all()
 

@@ -53,22 +53,6 @@ def secundario_admin(request, tema_conteudo):
 		except:
 			return HttpResponseRedirect("/principal_admin/")
 		turmas = conteudo.turma.all()
-		
-		existePerguntaInicial = False
-		if conteudo.pergunta_inicial_id != None:
-			existePerguntaInicial = True
-		else:
-			return render(request, "admin/secundario_admin/secundario_admin.php", locals())
-		perguntas = []
-		try:
-			pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-		except:
-			 return render(request, "admin/secundario_admin/secundario_admin.php", locals())
-
-		perguntas.append(pergunta_inicial)
-		while perguntas[len(perguntas)-1].pergunta_proximo_id != None:
-			pergunta_proximo = Pergunta.objects.get(id = perguntas[len(perguntas)-1].pergunta_proximo_id)
-			perguntas.append(pergunta_proximo)
 
 		return render(request, "admin/secundario_admin/secundario_admin.php", locals())
 
