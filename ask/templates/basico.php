@@ -133,6 +133,8 @@
 
 		<!-- JQuery Normal -->
 		<script type="text/javascript" src="/static/javascript/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="/static/javascript/jquery-sortable.js"></script>
+
 		
 
 		<!-- Latex -->

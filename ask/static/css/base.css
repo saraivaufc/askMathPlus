@@ -588,3 +588,29 @@ h1{
 	background-color: #BFBFBF;
 	color: black;
 }
+
+.pointer{
+	cursor: pointer;
+}
+
+
+/*  Sorter Jquery */
+
+body.dragging, body.dragging * {
+	cursor: move !important;
+}
+
+.dragged {
+ 	position: absolute;
+ 	opacity: 0.5;
+ 	z-index: 2000;
+}
+
+ul.list-group li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ul.list-group li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}

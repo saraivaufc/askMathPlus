@@ -48,33 +48,37 @@
 				<div class="panel panel-info">
 				 	{% block panel %}
 				 	<div class="panel-footer">
-				 	
-				 		<div class="list-group">
-						  	<a data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-						    PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
-						  	</a>
-						  	{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
-						  		<a  class="list-group-item list-group-item-danger">
+				 		
+
+
+				 		<ul class="list-group">
+							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active pointer">
+								PERGUNTAS DESTA LIÇÃO <span class="glyphicon glyphicon-sort-by-attributes"></span>
+							</li>
+							{% if existePerguntaInicial == False and conteudo.getQuantPerguntasTotal > 0 %}
+						  		<li  class="list-group-item list-group-item-danger">
 						  			Lição não possui pergunta Inicial!!!, Corrija isso imediatamente...
-						  		</a>
+						  		</li>
 						  	{% else %}
 						  		{% if conteudo.getQuantPerguntasTotal == 0 %}
-						  			<a class="list-group-item list-group-item-warning">
+						  			<li class="list-group-item list-group-item-warning">
 						  				Licao nao possui Perguntas
-						  			</a>
+						  			</li>
 						  		{% else %}
 								  	{% for i in perguntas %}
-								  		<a  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
+								  		<li  value="{{ i.id }}" name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item">
+								  			<i class="glyphicon glyphicon-move pointer" ></i>
 								  			<t>{{ i.getDescricao|safe }}</t>
-								  		</a>
+								  		</li>
 								  	{% empty %}
-								  		<a class="list-group-item list-group-item-warning">
+								  		<li class="list-group-item list-group-item-warning">
 								  			Licao nao possui Perguntas
-								  		</a>
+								  		</li>
 								  	{% endfor %}
 								{% endif %}
 							{% endif %}
-						</div>
+						</ul>
+
 						<div class="list-group">
 						  	<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
 							    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
