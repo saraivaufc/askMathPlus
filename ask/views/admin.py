@@ -107,7 +107,10 @@ def ordenaPerguntas(request):
 
 
 		perguntas = json.loads(perguntas)
-		print 'casa'
+		
+		if len(perguntas) == 0:
+			Conteudo.objects.filter(id = conteudo_id).update(pergunta_inicial_id = None)
+			return HttpResponse("Sem Perguntas Iniciais")
 		
 		quant_perguntas = len(perguntas.keys())
 
