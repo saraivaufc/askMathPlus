@@ -10,6 +10,7 @@ import re
 from random import randrange
 import smtplib
 from email.mime.text import MIMEText
+import json
 
 
 #IMPORTS DJANGO
@@ -112,11 +113,31 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 
 def ordenaPerguntas(request):
 	if request.method == "POST":
-		conteudo = request.POST['conteudo']
+		conteudo_id = request.POST['conteudo']
 		perguntas = request.POST['perguntas']
 
-		print conteudo
+
+		perguntas = json.loads(perguntas)
+		print 'casa'
+		
+		quant_perguntas = len(perguntas.keys())
+
+		print conteudo_id
 		print perguntas
+		print quant_perguntas
+
+		for  i in range(quant_perguntas):
+			pergunta_id = perguntas[str(i)]
+			if i == 0:
+				Conteudo.objects.filter(id = conteudo_id).update(pergunta_inicial_id = pergunta_id)
+			else:
+				pergunta_anterior_id = perguntas[str(i-1)]
+				Pergunta.objects.filter(id = pergunta_anterior_id ).update(pergunta_proximo_id = pergunta_id)
+				if i == (quant_perguntas-1):
+					Pergunta.objects.filter(id = pergunta_id).update(pergunta_proximo_id = None)
+
+
+
 
 	return HttpResponse("Success")
 
