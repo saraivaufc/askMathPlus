@@ -1,12 +1,9 @@
-{% extends 'basico.php' %}
+{% extends 'login/cabecalhoLogin.php' %}
 
 {% block titulo %}
     Login
 {% endblock %}
 
-{% block menu %}
-{% include 'login/cabecalhoLogin.php' %}
-{% endblock %}
 
 {% block page_atual %}"/login/"{% endblock %}
 

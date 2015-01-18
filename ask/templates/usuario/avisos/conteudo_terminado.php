@@ -12,7 +12,7 @@
 {% block pontuacao %}
 	<div class="col-sm-6 col-md-6 bg-primary">
 		<div class="row">
-			QUESTÕES TOTAL =  {{ conteudo.getQuantPerguntasTotal }}
+			QUESTÕES TOTAL =  {{ conteudo.getPerguntasOrdenadas|length }}
 		</div>
 		<div class="row">
 			PONTOS ACUMULADOS = {{ pontosAcumulados }}

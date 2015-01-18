@@ -112,8 +112,12 @@ def principal(request):
 		return HttpResponseRedirect('/login/falha')
 
 	if request.method == 'POST':
-		Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
-		return HttpResponseRedirect('/principal/')
+		try:
+			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
+		except:
+			pass
+		finally:
+			return HttpResponseRedirect('/principal/')
 	else:
 		try:
 			turma = Turma.objects.get(id = usuario.turma_id)
@@ -151,10 +155,10 @@ def secundario(request, tema_conteudo):
 	vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 	pontosAcumulados = conteudo.getQuantPontos(usuario)
 
-	if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
+	if len(conteudo.getPerguntasOrdenadas()) == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
 		return conteudoTerminado(request, locals())
 
-	if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
+	if len(conteudo.getPerguntasOrdenadas()) == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
 		return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 
 
@@ -258,7 +262,7 @@ def secundario(request, tema_conteudo):
 		pass
 
 	
-	perguntasTotal = (conteudo.getQuantPerguntasTotal())
+	perguntasTotal = len(conteudo.getPerguntasOrdenadas())
 	pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
 	pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
 	perguntasRestantes = len(conteudo.getPerguntasRestantes(usuario))

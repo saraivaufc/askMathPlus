@@ -15,7 +15,7 @@
 	{%  block pontuacao %}
 	<div class="col-sm-6 col-md-6">
 		<div class="row">
-			NUMERO DE QUESTÕES = {{ conteudo.getQuantPerguntasTotal|default_if_none:"0" }}
+			NUMERO DE QUESTÕES = {{ conteudo.getPerguntasOrdenadas|length|default_if_none:"0" }}
 		</div>
 	</div>
 	<div class=" col-sm-6 col-md-6">

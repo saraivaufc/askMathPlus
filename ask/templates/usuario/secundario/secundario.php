@@ -1,11 +1,8 @@
-{% extends 'basico.php' %}
+{% extends 'usuario/cabecalhoUser.php' %}
+
 {% load webdesign %}
 
 {% block titulo %}{{conteudo.tema}}{% endblock %}
-
-{% block menu %}
-{% include 'usuario/cabecalhoUser.php' %}
-{% endblock %}
 
 {% block estilo %}
 	#conteudo{

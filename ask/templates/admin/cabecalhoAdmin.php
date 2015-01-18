@@ -15,11 +15,14 @@
 			Forum <span class="glyphicon glyphicon-globe"></span>
 		</a>
 	</li>
+	{% block gerenciador %}
 	<li>
-		<a id="gerenciador" onclick="window.open('/admin/')">
+		
+		<a id="gerenciador"  href="/gerenciador/" >
 			Gerenciador <span class="glyphicon glyphicon-wrench"></span>
 		</a>
 	</li>
+	{% endblock %}
 	<li>
 		<a id="editor-latex" onclick="window.open('http://latex.codecogs.com/eqneditor/editor.php')">
 			Editor Latex <span class="glyphicon glyphicon-edit"></span>

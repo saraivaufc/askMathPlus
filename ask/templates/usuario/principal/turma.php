@@ -1,4 +1,4 @@
-{% extends 'basico.php' %}
+{% extends 'usuario/cabecalhoUser.php' %}
 
 {% block titulo %}
     Turma

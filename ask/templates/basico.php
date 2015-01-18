@@ -62,6 +62,7 @@
 					{% block menu-all %}
 						<div id="menu">
 							{% block menu %}
+							
 							{% endblock %}
 						</div>
 					{% endblock %}

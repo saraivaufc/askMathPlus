@@ -100,6 +100,11 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 		return HttpResponseRedirect("/principal/"+ tema_conteudo)
 
 
+@login_required
+def gerenciador(request):
+	usuario = User.objects.get(username = request.user)
+	return render(request, "admin/gerenciador/principal.php", locals())
+
 def ordenaPerguntas(request):
 	if request.method == "POST":
 		conteudo_id = request.POST['conteudo']

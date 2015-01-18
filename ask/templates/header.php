@@ -1,3 +1,7 @@
+{% extends 'basico.php' %}
+
+
+{% block menu %}
 <div id="navbar" class="navbar-wrapper">
 	<!-- Static navbar -->
 	<div class="navbar navbar-custom" role="navigation">
@@ -32,3 +36,5 @@
 		{% include 'usuario/modals/sobre.php' %}
 		{% include 'usuario/modals/contato.php' %}
 </div>
+
+{% endblock %}
