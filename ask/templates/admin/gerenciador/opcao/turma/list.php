@@ -33,7 +33,7 @@
 			<div class="col-md-3">
 				<td>
 					&nbsp;<span onClick="window.location = '/gerenciador/edit/1/{{ i.id }}/' " class="glyphicon glyphicon-edit pointer"></span>&nbsp;
-					<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
+					<span onClick="remTurma({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>
 		</tr>

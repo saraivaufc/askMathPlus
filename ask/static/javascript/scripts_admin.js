@@ -60,3 +60,40 @@ $(document).ready(function(){
     $('#conteudo-left').jScrollPane({showArrows: true});
     $('.descricao-pergunta').jScrollPane({showArrows: true}); 	
 });
+
+
+function remTurma(id){
+	if(window.confirm("Deseja realmente remover essa Turma?")){
+		window.location = "/gerenciador/rem/1/" +id + "/";
+	}
+}
+
+function remLicao(id){
+	if(window.confirm("Deseja realmente remover essa Licao?")){
+		window.location = "/gerenciador/rem/2/" +id + "/";
+	}
+}
+
+function remPergunta(id){
+	if(window.confirm("Deseja realmente remover essa Pergunta?")){
+			window.location = "/gerenciador/rem/3/" +id + "/";
+	}
+}
+
+function remAjuda(id){
+	if(window.confirm("Deseja realmente remover essa Ajuda?")){
+		window.location = "/gerenciador/rem/4/" +id + "/";
+	}
+}
+
+function remItem(id){
+	if(window.confirm("Deseja realmente remover esse Item?")){
+		window.location = "/gerenciador/rem/5/" +id + "/";
+	}
+}
+
+function remDeficiencia(id){
+	if(window.confirm("Deseja realmente remover essa Deficiencia?")){
+		window.location = "/gerenciador/rem/6/" +id + "/";
+	}
+}
