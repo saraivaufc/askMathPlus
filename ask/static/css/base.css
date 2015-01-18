@@ -617,3 +617,8 @@ ul.list-group li.placeholder:before {
   position: absolute;
   /** Define arrowhead **/
 }
+
+.opcoes-padrao{
+	height: 100%;
+	overflow-y:auto;
+}

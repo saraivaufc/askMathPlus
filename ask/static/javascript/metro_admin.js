@@ -85,4 +85,5 @@ $(document).ready(function(){
 $(document).ready(function(){
 	//$('.conteudo').jScrollPane({showArrows: true});
     $('.metro').jScrollPane({showArrows: true}); 	
+    $('.opcoes-padrao').jScrollPane({showArrows: true});
 });

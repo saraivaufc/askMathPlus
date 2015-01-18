@@ -25,8 +25,15 @@
 			<!-- Bootstrap -->
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
+			
+
+			<!--Font Awesome -->
+			<link rel="stylesheet" type="text/css" href="/static/font-awesome/css/font-awesome.min.css">
+
+
+
 			<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
-		
+
 
 			<!-- Responsive  -->
 			<link rel="stylesheet" href="/static/css/base.css" />
@@ -36,6 +43,9 @@
 			<link rel="stylesheet" media="(max-width: 767px)" href="/static/css/phone.css" />
 			<link rel="stylesheet" media="(max-height: 480px)" href="/static/css/micro-height.css" />
 			<link rel="stylesheet" media="(max-width: 250px)" href="/static/css/micro-width.css" />
+
+			<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 
 			<style type="text/css">
 				{% block estilo %}

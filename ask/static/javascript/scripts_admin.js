@@ -15,19 +15,9 @@ $(document).ready(function(){
 		});
 	});
 
-	$(".glyphicon-plus").click(function(){
+	$(".glyphicon-list-alt").click(function(){
 		var opcao = $(this).parent().attr("value");
-		 window.location = "/gerenciador/add/" + opcao + "/";
-	});
-
-	$(".glyphicon-remove").click(function(){
-		var opcao = $(this).parent().attr("value");
-		 window.location = "/gerenciador/rem/" + opcao + "/";
-	});
-
-	$(".glyphicon-edit").click(function(){
-		var opcao = $(this).parent().attr("value");
-		 window.location = "/gerenciador/edit/" + opcao + "/";
+		 window.location = "/gerenciador/list/" + opcao + "/";
 	});
 
 

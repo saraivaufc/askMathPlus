@@ -36,9 +36,7 @@
 								 		Turma	
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="1">
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>
@@ -50,9 +48,7 @@
 								 		Licao
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="2">
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>
@@ -64,9 +60,7 @@
 								 		Pergunta	
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="3">
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>
@@ -78,9 +72,7 @@
 								 		Ajuda
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right value=" value="4">
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>
@@ -92,9 +84,7 @@
 								 		Item	
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right " value="5">
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>
@@ -106,9 +96,7 @@
 								 		Deficiencia	
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="6" >
-								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
-								 		<span class="glyphicon glyphicon-edit pointer"></span>
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>
 							 </div>

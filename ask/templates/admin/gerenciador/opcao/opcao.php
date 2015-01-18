@@ -7,7 +7,21 @@
 	<div class="row">
 		<div id="conteudo-right">
 			{% block conteudo-right %}
-			
+			<div class="opcoes-padrao">
+				<br>
+				<div class="text-right">
+					<button class="btn btn-success">
+						Adicionar&nbsp;<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+				<div class="container-fluid">
+					<div class="row">	
+						{% block  opcoes-padrao %}
+
+						{% endblock %}
+					</div>
+				</div>
+			</div>
 			{% endblock %}
 		</div>
 	</div>

@@ -105,6 +105,26 @@ def gerenciador(request):
 	usuario = User.objects.get(username = request.user)
 	return render(request, "admin/gerenciador/principal/principal.php", locals())
 
+
+@login_required
+def listOpcao(request, opcao):
+	if opcao == "1":
+		turmas = Turma.objects.all()
+		return  render(request, "admin/gerenciador/opcao/turma/list.php", locals())
+	elif opcao == "2":
+		conteudos = Conteudo.objects.all()
+		return  render(request, "admin/gerenciador/opcao/licao/list.php", locals())
+	elif opcao == "3":
+		return  render(request, "admin/gerenciador/opcao/pergunta/list.php", locals())
+	elif opcao == "4":
+		return  render(request, "admin/gerenciador/opcao/ajuda/list.php", locals())
+	elif opcao == "5":
+		return  render(request, "admin/gerenciador/opcao/item/list.php", locals())
+	elif opcao == "6":
+		return  render(request, "admin/gerenciador/opcao/deficiencia/list.php", locals())
+	else:
+		HttpResponseRedirect("/gerenciador/")
+
 @login_required
 def addOpcao(request, opcao):
 	if opcao == "1":
@@ -123,24 +143,24 @@ def addOpcao(request, opcao):
 		HttpResponseRedirect("/gerenciador/")
 
 @login_required
-def remOpcao(request, opcao):
+def remOpcao(request, opcao, id):
 	if opcao == "1":
-		return  render(request, "admin/gerenciador/opcao/turma/rem.php")
+		pass
 	elif opcao == "2":
-		return  render(request, "admin/gerenciador/opcao/licao/rem.php")
+		pass
 	elif opcao == "3":
-		return  render(request, "admin/gerenciador/opcao/pergunta/rem.php")
+		pass
 	elif opcao == "4":
-		return  render(request, "admin/gerenciador/opcao/ajuda/rem.php")
+		pass
 	elif opcao == "5":
-		return  render(request, "admin/gerenciador/opcao/item/rem.php")
+		pass
 	elif opcao == "6":
-		return  render(request, "admin/gerenciador/opcao/deficiencia/rem.php")
+		pass
 	else:
 		HttpResponseRedirect("/gerenciador/")
 
 @login_required
-def editOpcao(request, opcao):
+def editOpcao(request, opcao, id):
 	if opcao == "1":
 		return  render(request, "admin/gerenciador/opcao/turma/edit.php")
 	elif opcao == "2":
