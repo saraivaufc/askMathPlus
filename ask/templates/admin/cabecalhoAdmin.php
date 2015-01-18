@@ -33,7 +33,7 @@
 {% block nav-dir %}
 	<li>
 		<a href="/principal_admin/">
-			<span class="glyphicon glyphicon-user"></span> {{ usuario.username }}
+			<span class="glyphicon glyphicon-user"></span> {{ request.user.username }}
 		</a>
 	</li>
 	<li>

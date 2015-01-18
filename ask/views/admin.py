@@ -107,15 +107,54 @@ def gerenciador(request):
 
 @login_required
 def addOpcao(request, opcao):
-	pass
+	if opcao == "1":
+		return  render(request, "admin/gerenciador/opcao/turma/add.php")
+	elif opcao == "2":
+		return  render(request, "admin/gerenciador/opcao/licao/add.php")
+	elif opcao == "3":
+		return  render(request, "admin/gerenciador/opcao/pergunta/add.php")
+	elif opcao == "4":
+		return  render(request, "admin/gerenciador/opcao/ajuda/add.php")
+	elif opcao == "5":
+		return  render(request, "admin/gerenciador/opcao/item/add.php")
+	elif opcao == "6":
+		return  render(request, "admin/gerenciador/opcao/deficiencia/add.php")
+	else:
+		HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def remOpcao(request, opcao):
-	pass
+	if opcao == "1":
+		return  render(request, "admin/gerenciador/opcao/turma/rem.php")
+	elif opcao == "2":
+		return  render(request, "admin/gerenciador/opcao/licao/rem.php")
+	elif opcao == "3":
+		return  render(request, "admin/gerenciador/opcao/pergunta/rem.php")
+	elif opcao == "4":
+		return  render(request, "admin/gerenciador/opcao/ajuda/rem.php")
+	elif opcao == "5":
+		return  render(request, "admin/gerenciador/opcao/item/rem.php")
+	elif opcao == "6":
+		return  render(request, "admin/gerenciador/opcao/deficiencia/rem.php")
+	else:
+		HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def editOpcao(request, opcao):
-	pass
+	if opcao == "1":
+		return  render(request, "admin/gerenciador/opcao/turma/edit.php")
+	elif opcao == "2":
+		return  render(request, "admin/gerenciador/opcao/licao/edit.php")
+	elif opcao == "3":
+		return  render(request, "admin/gerenciador/opcao/pergunta/edit.php")
+	elif opcao == "4":
+		return  render(request, "admin/gerenciador/opcao/ajuda/edit.php")
+	elif opcao == "5":
+		return  render(request, "admin/gerenciador/opcao/item/edit.php")
+	elif opcao == "6":
+		return  render(request, "admin/gerenciador/opcao/deficiencia/edit.php")
+	else:
+		HttpResponseRedirect("/gerenciador/")
 
 
 

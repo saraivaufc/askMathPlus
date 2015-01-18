@@ -23,7 +23,7 @@
 		<div class="row">
 			<div id="conteudo-left">
 				{% block conteudo-left %}
-				<ul class="list-group text-center">
+				<ul class="list-group text-center"  style="vertical-align: middle;">
 					<br>
 					<div class="container-fluid">
 						<div class="row">
@@ -35,7 +35,7 @@
 								 	<div class="col-xs-6  col-md-8 text-center">
 								 		Turma	
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right" value="1">
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
@@ -49,7 +49,7 @@
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Licao
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right" value="2">
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
@@ -63,7 +63,7 @@
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Pergunta	
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right" value="3">
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
@@ -77,7 +77,7 @@
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Ajuda
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right value=" value="4">
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
@@ -91,7 +91,7 @@
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Item	
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right " value="5">
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
@@ -105,7 +105,7 @@
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Deficiencia	
 								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right">
+								 	<div class="col-xs-6 col-md-4 text-right" value="6" >
 								 		<span class="glyphicon glyphicon-plus pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 								 		<span class="glyphicon glyphicon-edit pointer"></span>
