@@ -11,18 +11,16 @@ from django.utils.image import Image
 
 
 class TurmaForm(forms.Form):
-	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' , "autofocus":'true',}),)
-	semestre =  forms.FloatField(label="Semestre",  widget=forms.TextInput(attrs={ 'required': 'true' }),)
-	professor = forms.CharField(label="Professor", max_length=255, widget=forms.TextInput(attrs={ 'required': 'true' }),)
+	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' , "autofocus":'true',}), help_text="Coloque aqui o nome a disciplina dessa turma.")
+	semestre =  forms.FloatField(label="Semestre",  widget=forms.TextInput(attrs={ 'required': 'true' }),  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.")
+	professor = forms.CharField(label="Professor", max_length=255, widget=forms.TextInput(attrs={ 'required': 'true' }),  help_text="Escrevao nome do Professor que esta dando essa disciplina.")
 
 	def __init__(self, *args, **kwargs):
 		super(TurmaForm, self).__init__(*args, **kwargs)
 
 	class Meta:
 		model = Turma
-		exclude = ['likes',]
-		fields = ['instituicao','nome', 'sobrenome', 'idade', 'peso', 'relacionamento',
-				  'imagem_perfil', 'facebook',  ]
+		fields = ['disciplina', 'semestre', 'professor',]
 	def clean(self):
 		cleaned_data = super(TurmaForm,self).clean()
 		disciplina = self.cleaned_data.get('disciplina')
