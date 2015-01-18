@@ -115,12 +115,16 @@ def listOpcao(request, opcao):
 		conteudos = Conteudo.objects.all()
 		return  render(request, "admin/gerenciador/opcao/licao/list.php", locals())
 	elif opcao == "3":
+		perguntas = Pergunta.objects.all()
 		return  render(request, "admin/gerenciador/opcao/pergunta/list.php", locals())
 	elif opcao == "4":
+		ajudas = Ajuda.objects.all()
 		return  render(request, "admin/gerenciador/opcao/ajuda/list.php", locals())
 	elif opcao == "5":
+		itens = Item.objects.all()
 		return  render(request, "admin/gerenciador/opcao/item/list.php", locals())
 	elif opcao == "6":
+		deficiencias = Deficiencia.objects.all()
 		return  render(request, "admin/gerenciador/opcao/deficiencia/list.php", locals())
 	else:
 		HttpResponseRedirect("/gerenciador/")

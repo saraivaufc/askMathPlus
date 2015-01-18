@@ -60,7 +60,7 @@ class Usuario(User):
 	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL,  help_text="Escolha a turma que o aluno pertence.")
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.first_name +" " + self.last_name
+		return self.first_name +" " + self.last_name
 
 	class Meta:
 		verbose_name = "Usuário"
@@ -80,7 +80,7 @@ class Conteudo(Model):
 	
 	
 	def __unicode__(self):
-		return  str(self.id) + ": " +  self.tema
+		return  self.tema
 	
 	class Meta:
 		ordering = ['-criacao']
@@ -318,7 +318,7 @@ class Pergunta(Model):
 
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.getDescricaoMin()
+		return self.getDescricaoMin()
 	
 	class Meta:
 		ordering = ['-conteudo_pertence']
@@ -468,7 +468,7 @@ class Item(Model):
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para este item.")
 	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL, help_text="Todo item errado pode possuir uma deficiencia, quando um aluno responder erroneamente uma pergunta, precisamos saber qual a deficiencia em relacao ao conteudo que ele esta tendo, e para isso, usamos o item que ele respondeu, ou seja, todo item errado esta relacionado com uma possivel deficiencia apresentada pelo aluno.")
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.getDescricaoMin() 
+		return self.getDescricaoMin() 
 	
 	class Meta:
 		ordering = ['-criacao']
@@ -496,13 +496,35 @@ class Item(Model):
 		return minimize_frase(self.descricao)
 	getDescricaoMin.short_description = 'Descrição'
 
+	def getConteudo(self):
+		pergunta = self.getPergunta()
+		if pergunta == None:
+			return None
+		else:
+			try:
+				conteudo = Conteudo.objects.get(id = pergunta.conteudo_pertence_id)
+			except:
+				return None
+			return conteudo
+
+	def getPergunta(self):
+		perguntas = Pergunta.objects.all()
+		for i in perguntas:
+			itens = i.getItens()
+			for k in itens:
+				if self.id == k.id:
+					return i
+		return None
+
+
+
 
 class Deficiencia(Model):
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",  help_text="Escolha o conteudo ao qual esta deficiencia esta relacionada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para essa deficiencia.")
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.getDescricaoMin()
+		return self.getDescricaoMin()
 	
 	class Meta:
 		ordering = ['-conteudo']
@@ -520,7 +542,7 @@ class Ajuda(Model):
 	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descrição para essa ajuda.")
 	
 	def __unicode__(self):
-		return str(self.id) + ": " +  self.getDescricaoMin()
+		return self.getDescricaoMin()
 	class Meta:
 		ordering = ['-conteudo']
 		verbose_name = "Ajuda"
@@ -536,7 +558,7 @@ class Busca_Ajuda(Model):
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", help_text="Escolha a pergunta ao qual ele pediu ajuda.")
 
 	def __unicode__(self):
-		return str(self.id) + str(self.usuario)
+		return str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
 		verbose_name = "Busca Ajuda"
@@ -551,7 +573,7 @@ class Historico(Model):
 	acertou = models.BooleanField(default=False, verbose_name="Acertou")
 
 	def __unicode__(self):
-		return  str(self.id) + ": " +  str(self.usuario)
+		return  str(self.usuario)
 	class Meta:
 		ordering = ['-criacao']
 		verbose_name = "Histórico do Usuário"
@@ -576,7 +598,7 @@ class Estado_Usuario(Model):
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  str(self.usuario)
+		return str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
 		verbose_name = "Estado do Usuário"
@@ -589,7 +611,7 @@ class Pulo(Model):
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", null=True , blank=True, on_delete = models.SET_NULL)
 
 	def __unicode__(self):
-		return str(self.id) + ": " +  str(self.usuario)
+		return  str(self.usuario)
 	class Meta:
 		ordering = ['usuario']
 		verbose_name = "Salto"
@@ -610,7 +632,7 @@ class Pontuacao(Model):
 		verbose_name_plural = "Pontuações"
 
 	def __unicode__(self):
-		return str(self.id) + ": " + str(self.usuario)
+		return str(self.usuario)
 
 	def inclementaPontos(self,valor):
 		self.pontos += valor

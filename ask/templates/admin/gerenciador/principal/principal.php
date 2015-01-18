@@ -27,10 +27,10 @@
 					<br>
 					<div class="container-fluid">
 						<div class="row">
-							 <div class="list-group-item active">Escolha uma Opcao</div>
+							 <div class="list-group-item active">Seus Modelos</div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-turma %}{% endblock %} ">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6  col-md-8 text-center">
 								 		Turma	
@@ -42,7 +42,7 @@
 							 </div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-licao %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Licao
@@ -54,7 +54,7 @@
 							 </div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-pergunta %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Pergunta	
@@ -66,7 +66,7 @@
 							 </div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-ajuda %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Ajuda
@@ -78,7 +78,7 @@
 							 </div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-item %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Item	
@@ -90,7 +90,7 @@
 							 </div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item">
+							 <div class="list-group-item {% block classes-deficiencia %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
 								 		Deficiencia	

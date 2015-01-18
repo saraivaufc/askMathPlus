@@ -1,5 +1,7 @@
 {% extends 'admin/gerenciador/opcao/opcao.php' %}
 
+{% block classes-turma %}list-group-item-info{% endblock %}
+
 {% block opcoes-padrao %}
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
