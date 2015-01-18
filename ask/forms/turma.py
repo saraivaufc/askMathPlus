@@ -11,7 +11,7 @@ from django.utils.image import Image
 
 
 class TurmaForm(forms.Form):
-	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' }),)
+	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' , "autofocus":'true',}),)
 	semestre =  forms.FloatField(label="Semestre",  widget=forms.TextInput(attrs={ 'required': 'true' }),)
 	professor = forms.CharField(label="Professor", max_length=255, widget=forms.TextInput(attrs={ 'required': 'true' }),)
 
@@ -48,3 +48,22 @@ class TurmaForm(forms.Form):
 		except:
 			return False
 
+	def update(self, id):
+		disciplina = self.cleaned_data['disciplina']
+		semestre = self.cleaned_data['semestre']
+		professor = self.cleaned_data['professor']
+
+		try:
+			turma = Turma.objects.filter(id = id).update(
+								disciplina = disciplina,
+								semestre = semestre,
+								professor = professor,
+						)
+			return True
+		except:
+			return False
+
+class TurmaFormToModel(ModelForm):
+	class Meta:
+		model = Turma
+		fields = ['disciplina', 'semestre','professor',]

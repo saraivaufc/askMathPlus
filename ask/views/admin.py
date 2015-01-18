@@ -204,6 +204,20 @@ def remOpcao(request, opcao, id):
 @login_required
 def editOpcao(request, opcao, id):
 	if opcao == "1":
+		try:
+			turma = Turma.objects.get(id = id)
+		except:
+			return HttpResponse("falha")
+		if request.method == 'POST':
+			form = TurmaForm(data=request.POST, files=request.FILES)
+			if form.is_valid():
+				form.update(id)
+				return render(request, "admin/gerenciador/opcao/turma/avisos/editado.php", {'ok': True})
+			else:
+				return render(request, "admin/gerenciador/opcao/turma/avisos/editado.php", {'ok': False})
+
+		else:
+			form = TurmaFormToModel(instance=turma)
 		return  render(request, "admin/gerenciador/opcao/turma/edit.php", locals())
 	elif opcao == "2":
 		return  render(request, "admin/gerenciador/opcao/licao/edit.php", locals())

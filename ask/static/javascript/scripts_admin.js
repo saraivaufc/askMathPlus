@@ -62,6 +62,11 @@ $(document).ready(function(){
 });
 
 
+function editTurma(id){
+	window.location = "/gerenciador/edit/1/" +id + "/";
+}
+
+
 function remTurma(id){
 	if(window.confirm("Deseja realmente remover essa Turma?")){
 		$.get("/gerenciador/rem/1/" +id + "/", function(data){
