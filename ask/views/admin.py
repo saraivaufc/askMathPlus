@@ -26,6 +26,7 @@ from django.contrib.auth.decorators import login_required
 #IMPORTS ASK
 from ask.models import *
 from ask.utils import *
+from ask.forms import *
 
 
 
@@ -127,66 +128,78 @@ def listOpcao(request, opcao):
 		deficiencias = Deficiencia.objects.all()
 		return  render(request, "admin/gerenciador/opcao/deficiencia/list.php", locals())
 	else:
-		HttpResponseRedirect("/gerenciador/")
+		return HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def addOpcao(request, opcao):
 	if opcao == "1":
-		return  render(request, "admin/gerenciador/opcao/turma/add.php")
+		if request.method == "POST":
+			form = TurmaForm(data=request.POST, files=request.FILES)
+			if form.is_valid():
+				print "Formulario Valido"
+				if(form.save()):
+					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Sucesso!!!'})
+				else:
+					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Falhou!!!'})
+			else:
+				return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Falhou!!!'})
+		else:
+			form = TurmaForm()
+			return  render(request, "admin/gerenciador/opcao/turma/add.php", locals())
 	elif opcao == "2":
-		return  render(request, "admin/gerenciador/opcao/licao/add.php")
+		return  render(request, "admin/gerenciador/opcao/licao/add.php", locals())
 	elif opcao == "3":
-		return  render(request, "admin/gerenciador/opcao/pergunta/add.php")
+		return  render(request, "admin/gerenciador/opcao/pergunta/add.php", locals())
 	elif opcao == "4":
-		return  render(request, "admin/gerenciador/opcao/ajuda/add.php")
+		return  render(request, "admin/gerenciador/opcao/ajuda/add.php", locals())
 	elif opcao == "5":
-		return  render(request, "admin/gerenciador/opcao/item/add.php")
+		return  render(request, "admin/gerenciador/opcao/item/add.php", locals())
 	elif opcao == "6":
-		return  render(request, "admin/gerenciador/opcao/deficiencia/add.php")
+		return  render(request, "admin/gerenciador/opcao/deficiencia/add.php", locals())
 	else:
-		HttpResponseRedirect("/gerenciador/")
+		return HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def remOpcao(request, opcao, id):
 	if opcao == "1":
 		try:
 			Turma.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/turma/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/turma/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/turma/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/turma/avisos/removido.php", {'aviso': 'Falhou!!!'})
 	elif opcao == "2":
 		try:
 			Conteudo.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/licao/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/licao/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/licao/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/licao/avisos/removido.php", {'aviso': 'Falhou!!!'})
 	elif opcao == "3":
 		try:
 			Pergunta.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removido.php", {'aviso': 'Falhou!!!'})
 		
 	elif opcao == "4":
 		try:
 			Ajuda.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removido.php", {'aviso': 'Falhou!!!'})
 	elif opcao == "5":
 		try:
 			Item.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/item/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/item/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/item/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/item/avisos/removido.php", {'aviso': 'Falhou!!!'})
 	elif opcao == "6":
 		try:
 			Deficiencia.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removidoSucesso.php", locals())
+			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removido.php", {'aviso': 'Sucesso!!!'})
 		except:
-			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removidoFalha.php", locals())
+			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removido.php", {'aviso': 'Falhou!!!'})
 	else:
-		HttpResponseRedirect("/gerenciador/")
+		return HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def editOpcao(request, opcao, id):
@@ -203,7 +216,7 @@ def editOpcao(request, opcao, id):
 	elif opcao == "6":
 		return  render(request, "admin/gerenciador/opcao/deficiencia/edit.php", locals())
 	else:
-		HttpResponseRedirect("/gerenciador/")
+		return HttpResponseRedirect("/gerenciador/")
 
 
 
