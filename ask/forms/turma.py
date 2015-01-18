@@ -9,10 +9,11 @@ from ask.models import *
 from django.forms import ModelForm
 from django.utils.image import Image
 
+
 class TurmaForm(forms.Form):
-	disciplina = forms.CharField(label="Disciplina", max_length=255)
-	semestre =  forms.FloatField(label="Semestre")
-	professor = forms.CharField(label="Professor", max_length=255)
+	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' }),)
+	semestre =  forms.FloatField(label="Semestre",  widget=forms.TextInput(attrs={ 'required': 'true' }),)
+	professor = forms.CharField(label="Professor", max_length=255, widget=forms.TextInput(attrs={ 'required': 'true' }),)
 
 	def __init__(self, *args, **kwargs):
 		super(TurmaForm, self).__init__(*args, **kwargs)
@@ -27,6 +28,8 @@ class TurmaForm(forms.Form):
 		disciplina = self.cleaned_data.get('disciplina')
 		semestre = self.cleaned_data.get('semestre')
 		professor = self.cleaned_data.get('professor')
+
+
 		return self.cleaned_data
 
 	def save(self):

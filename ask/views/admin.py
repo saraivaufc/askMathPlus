@@ -138,11 +138,11 @@ def addOpcao(request, opcao):
 			if form.is_valid():
 				print "Formulario Valido"
 				if(form.save()):
-					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Sucesso!!!'})
+					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': True})
 				else:
-					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Falhou!!!'})
+					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': False})
 			else:
-				return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'aviso': 'Falhou!!!'})
+				return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': False})
 		else:
 			form = TurmaForm()
 			return  render(request, "admin/gerenciador/opcao/turma/add.php", locals())
@@ -164,40 +164,40 @@ def remOpcao(request, opcao, id):
 	if opcao == "1":
 		try:
 			Turma.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/turma/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/turma/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 	elif opcao == "2":
 		try:
 			Conteudo.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/licao/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/licao/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 	elif opcao == "3":
 		try:
 			Pergunta.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/pergunta/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 		
 	elif opcao == "4":
 		try:
 			Ajuda.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/ajuda/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 	elif opcao == "5":
 		try:
 			Item.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/item/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/item/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 	elif opcao == "6":
 		try:
 			Deficiencia.objects.filter(id = id).delete()
-			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removido.php", {'aviso': 'Sucesso!!!'})
+			return HttpResponse("True")
 		except:
-			return render(request, "admin/gerenciador/opcao/deficiencia/avisos/removido.php", {'aviso': 'Falhou!!!'})
+			return HttpResponse("False")
 	else:
 		return HttpResponseRedirect("/gerenciador/")
 

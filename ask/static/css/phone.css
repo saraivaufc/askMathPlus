@@ -177,7 +177,6 @@
 
 #pontuacao h3{
 	color: #1E90FF;
-	font-size: 100%;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;
 }
@@ -234,12 +233,4 @@ h1{
 
 #escolher_turma{
 	width: 100%;
-}
-
-h3{
-	font-size: 100%;
-}
-
-h2{
-	font-size: 100%;
 }
