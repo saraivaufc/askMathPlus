@@ -21,11 +21,12 @@
 			<!-- Favicons -->
 			<link rel="icon" type="image/png" id="favicon" href="/static/imagens/icon.png" />
 
+
 			<!-- Bootstrap -->
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/css/jquery.jscrollpane.css">
-
+		
 
 			<!-- Responsive  -->
 			<link rel="stylesheet" href="/static/css/base.css" />

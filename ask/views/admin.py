@@ -103,7 +103,21 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 @login_required
 def gerenciador(request):
 	usuario = User.objects.get(username = request.user)
-	return render(request, "admin/gerenciador/principal.php", locals())
+	return render(request, "admin/gerenciador/principal/principal.php", locals())
+
+@login_required
+def addOpcao(request, opcao):
+	pass
+
+@login_required
+def remOpcao(request, opcao):
+	pass
+
+@login_required
+def editOpcao(request, opcao):
+	pass
+
+
 
 def ordenaPerguntas(request):
 	if request.method == "POST":
