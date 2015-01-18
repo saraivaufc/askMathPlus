@@ -1,1 +1,7 @@
-{% extends 'admin/gerenciador/opcao/opcao.php' %}
+{% extends 'admin/gerenciador/opcao/turma/list.php' %}
+
+{% block botao-adicionar %}
+{% endblock %}
+
+{% block opcoes-padrao %}
+{% endblock %}

@@ -8,12 +8,14 @@
 		<div id="conteudo-right">
 			{% block conteudo-right %}
 			<div class="opcoes-padrao">
+				{% block botao-adicionar %}
 				<br>
 				<div class="text-right">
 					<button class="btn btn-success">
 						Adicionar&nbsp;<span class="glyphicon glyphicon-plus"></span>
 					</button>
 				</div>
+				{% endblock %}
 				<div class="container-fluid">
 					<div class="row">	
 						{% block  opcoes-padrao %}

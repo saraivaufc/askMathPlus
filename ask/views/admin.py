@@ -166,17 +166,17 @@ def remOpcao(request, opcao, id):
 @login_required
 def editOpcao(request, opcao, id):
 	if opcao == "1":
-		return  render(request, "admin/gerenciador/opcao/turma/edit.php")
+		return  render(request, "admin/gerenciador/opcao/turma/edit.php", locals())
 	elif opcao == "2":
-		return  render(request, "admin/gerenciador/opcao/licao/edit.php")
+		return  render(request, "admin/gerenciador/opcao/licao/edit.php", locals())
 	elif opcao == "3":
-		return  render(request, "admin/gerenciador/opcao/pergunta/edit.php")
+		return  render(request, "admin/gerenciador/opcao/pergunta/edit.php", locals())
 	elif opcao == "4":
-		return  render(request, "admin/gerenciador/opcao/ajuda/edit.php")
+		return  render(request, "admin/gerenciador/opcao/ajuda/edit.php", locals())
 	elif opcao == "5":
-		return  render(request, "admin/gerenciador/opcao/item/edit.php")
+		return  render(request, "admin/gerenciador/opcao/item/edit.php", locals())
 	elif opcao == "6":
-		return  render(request, "admin/gerenciador/opcao/deficiencia/edit.php")
+		return  render(request, "admin/gerenciador/opcao/deficiencia/edit.php", locals())
 	else:
 		HttpResponseRedirect("/gerenciador/")
 

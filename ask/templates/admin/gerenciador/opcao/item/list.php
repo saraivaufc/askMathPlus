@@ -38,7 +38,7 @@
 			</div>
 			<div class="col-md-4">
 				<td>
-					&nbsp;<span class="glyphicon glyphicon-edit pointer"></span>&nbsp;
+					&nbsp;<span  onClick="window.location = '/gerenciador/edit/5/{{ i.id }}/' " class="glyphicon glyphicon-edit pointer"></span>&nbsp;
 					<span class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>
