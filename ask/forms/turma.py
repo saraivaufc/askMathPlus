@@ -9,58 +9,13 @@ from ask.models import *
 from django.forms import ModelForm
 
 
-class TurmaForm(forms.Form):
-	disciplina = forms.CharField(label="Disciplina", max_length=255,  widget=forms.TextInput(attrs={ 'required': 'true' , "autofocus":'true',}), help_text="Coloque aqui o nome a disciplina dessa turma.")
-	semestre =  forms.FloatField(label="Semestre",  widget=forms.TextInput(attrs={ 'required': 'true' }),  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.")
-	professor = forms.CharField(label="Professor", max_length=255, widget=forms.TextInput(attrs={ 'required': 'true' }),  help_text="Escrevao nome do Professor que esta dando essa disciplina.")
-
-	def __init__(self, *args, **kwargs):
-		super(TurmaForm, self).__init__(*args, **kwargs)
-
+class TurmaForm(ModelForm):
 	class Meta:
-		model = Turma
-		fields = ['disciplina', 'semestre', 'professor',]
-	def clean(self):
-		cleaned_data = super(TurmaForm,self).clean()
-		disciplina = self.cleaned_data.get('disciplina')
-		semestre = self.cleaned_data.get('semestre')
-		professor = self.cleaned_data.get('professor')
+		model= Turma
+		fields = '__all__'
 
-
-		return self.cleaned_data
-
-	def save(self):
-		disciplina = self.cleaned_data['disciplina']
-		semestre = self.cleaned_data['semestre']
-		professor = self.cleaned_data['professor']
-
-		try:
-			turma = Turma.objects.create(
-				disciplina = disciplina,
-				semestre = semestre,
-				professor = professor,
-				)
-			turma.save()
-			return True
-		except:
-			return False
-
-	def update(self, id):
-		disciplina = self.cleaned_data['disciplina']
-		semestre = self.cleaned_data['semestre']
-		professor = self.cleaned_data['professor']
-
-		try:
-			turma = Turma.objects.filter(id = id).update(
-								disciplina = disciplina,
-								semestre = semestre,
-								professor = professor,
-						)
-			return True
-		except:
-			return False
-
-class TurmaFormToModel(ModelForm):
+class PartialTurmaForm(ModelForm):
 	class Meta:
-		model = Turma
-		fields = ['disciplina', 'semestre','professor',]
+		model= Turma
+		exclude = ['criacao',]
+
