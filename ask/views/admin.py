@@ -138,52 +138,51 @@ def addOpcao(request, opcao):
 		return HttpResponseRedirect("/gerenciador/")
 
 	my_template = 'admin/gerenciador/opcao/opcao.php'
-	if opcao == 1:
-		if request.method == "POST":
+
+	if request.method == "POST":
+		if opcao == 1:
 			form = TurmaForm(request.POST)
-			if form.is_valid():
-				print "Formulario Valido"
-				if(form.save()):
-					ok = True
-					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
-				else:
-					ok = False
-					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
+		elif opcao == 2:
+			form = ConteudoForm(request.POST)
+		elif opcao == 3:
+			form = PerguntaForm(request.POST)
+		elif opcao == 4:
+			form = AjudaForm(request.POST)
+		elif opcao == 5:
+			form = ItemForm(request.POST)
+		elif opcao == 6:
+			form = DeficienciaForm(request.POST)
+		else:
+			return  HttpResponseRedirect("/gerenciador/")
+
+		if form.is_valid():
+			print "Formulario Valido"
+			if(form.save()):
+				ok = True
+				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 			else:
 				ok = False
 				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 		else:
+			ok = False
+			return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
+	else:
+		if opcao == 1:
 			form = PartialTurmaForm()
-			return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	elif opcao == 2:
-		if request.method == "POST":
-			form = PartialConteudoForm(request.POST)
-			if form.is_valid():
-				print "Formulario Valido"
-				if(form.save()):
-					ok = True
-					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
-				else:
-					ok = False
-					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php",locals())
-			else:
-				ok = False
-				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php",locals())
-		else:
+		elif opcao == 2:
 			form = PartialConteudoForm()
-			return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	elif opcao == 3:
-		return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	elif opcao == 4:
-		return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	elif opcao == 5:
+		elif opcao == 3:
+			form = PartialPerguntaForm()
+		elif opcao == 4:
+			form = PartialAjudaForm()
+		elif opcao == 5:
+			form = PartialItemForm()
+		elif opcao == 6:
+			form = PartialDeficienciaForm()
+		else:
+			return HttpResponseRedirect("/gerenciador/")
 
 		return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	elif opcao == 6:
-		
-		return  render(request, "admin/gerenciador/opcao/add/add.php", locals())
-	else:
-		return HttpResponseRedirect("/gerenciador/")
 
 @login_required
 def remOpcao(request, opcao, id):
