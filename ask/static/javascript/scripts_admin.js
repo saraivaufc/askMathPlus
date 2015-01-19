@@ -80,6 +80,10 @@ function remTurma(id){
 	}
 }
 
+function editLicao(id){
+	window.location = "/gerenciador/edit/2/" + id + "/";
+}
+
 function remLicao(id){
 	if(window.confirm("Deseja realmente remover essa Licao?")){
 		$.get("/gerenciador/rem/2/" +id + "/", function(data){

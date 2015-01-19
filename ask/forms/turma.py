@@ -7,7 +7,6 @@ import datetime
 from django.forms.formsets import formset_factory, BaseFormSet
 from ask.models import *
 from django.forms import ModelForm
-from django.utils.image import Image
 
 
 class TurmaForm(forms.Form):
