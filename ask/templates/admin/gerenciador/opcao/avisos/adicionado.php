@@ -47,22 +47,27 @@
 				{% endif %}
 			</h1>
 			<div class="btn-group">
+				{% if opcao >= 1 and opcao <= 6 %}
+					<button  onclick="window.location='/gerenciador/list/{{ opcao }}/' " class="btn btn-primary">
+				{%  else %}
+					<button  onclick="window.location='/gerenciador/' " class="btn btn-primary">
+				{% endif %}
+				
 				{% if opcao == 1 %}
-				 	<button  onclick="window.location='/gerenciador/list/1/' " class="btn btn-primary">Voltar as Turmas</button>
+				 	Voltar as Turmas
 				 {%  elif opcao == 2 %}
-				 	<button  onclick="window.location='/gerenciador/list/2/' " class="btn btn-primary">Voltar as Licoes</button>
+				 	Voltar as Licoes
 				 {% elif opcao == 3 %}
-				 	<button  onclick="window.location='/gerenciador/list/3/' " class="btn btn-primary">Voltar as Perguntas</button>
+				 	Voltar as Perguntas
 				 {% elif  opcao == 4 %}
-				 	<button  onclick="window.location='/gerenciador/list/4/' " class="btn btn-primary">Voltar as Ajudas</button>
+				 	Voltar as Ajudas
 				 {%  elif  opcao == 5 %}
-				 	<button  onclick="window.location='/gerenciador/list/5/' " class="btn btn-primary">Voltar aos Itens</button>
+				 	Voltar aos Itens
 				 {% elif  opcao == 6  %}
-				 	<button  onclick="window.location='/gerenciador/list/6/' " class="btn btn-primary">Voltar as Deficiencias</button>
+				 	Voltar as Deficiencias
 				 {% else %}
-				 	<button  onclick="window.location='/gerenciador/' " class="btn btn-primary">Voltar as Opcoes</button>
+				 	Voltar as Opcoes
 				 {% endif %}
-
 
 				{%  if ok == False %}
 				<button onclick="window.location='/gerenciador/add/{{ opcao }}/' " class="btn btn-primary">Tentar Novamente</button>

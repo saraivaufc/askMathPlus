@@ -2,6 +2,21 @@
 
 {% block classes-ajuda %}list-group-item-info{% endblock %}
 
+{% block  descricao %}
+<h3 class="text-center">
+	Todas as Ajudas
+</h3>
+{% endblock %}
+
+{% block botao-adicionar %}
+	<br>
+	<div class="text-right">
+		<button  onclick="window.location = '/gerenciador/add/4/'  " class="btn btn-success">
+			Adicionar&nbsp;<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</div>
+{% endblock %}
+
 {% block opcoes-padrao %}
 <div class="table-responsive">
 	<table class="table table-bordered text-center">

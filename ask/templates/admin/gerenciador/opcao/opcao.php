@@ -18,7 +18,7 @@
 							</div>
 							<div class="col-xs-4 col-sm-4 col-md-4">
 								{% block botao-adicionar %}
-					
+									
 								{% endblock %}
 							</div>
 						{% endblock %}
