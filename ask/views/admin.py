@@ -189,47 +189,27 @@ def remOpcao(request, opcao, id):
 	try:
 		opcao = int(opcao)
 	except:
-		return HttpResponse("Opcao e numeral")
+		return HttpResponse("Opcao nao e numeral")
 
-	if opcao == 1:
-		try:
+	try:
+		if opcao == 1:
 			Turma.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-	elif opcao == 2:
-		try:
+		elif opcao == 2:
 			Conteudo.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-	elif opcao == 3:
-		try:
+		elif opcao == 3:
 			Pergunta.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-		
-	elif opcao == 4:
-		try:
+		elif opcao == 4:
 			Ajuda.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-	elif opcao == 5:
-		try:
+		elif opcao == 5:
 			Item.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-	elif opcao == 6:
-		try:
+		elif opcao == 6:
 			Deficiencia.objects.filter(id = id).delete()
-			return HttpResponse("True")
-		except:
-			return HttpResponse("False")
-	else:
-		return HttpResponseRedirect("/gerenciador/")
+		else:
+			return HttpResponseRedirect("/gerenciador/")
+		return HttpResponse("True")
+	except:
+		return HttpResponse("False")
+
 
 @login_required
 def editOpcao(request, opcao, id):
