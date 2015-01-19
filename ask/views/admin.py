@@ -219,54 +219,65 @@ def editOpcao(request, opcao, id):
 		return HttpResponseRedirect("/gerenciador/")
 
 	my_template = 'admin/gerenciador/opcao/opcao.php'
-	if opcao == 1:
-		try:
+
+	try:
+		if opcao == 1:
 			turma = Turma.objects.get(id = id)
-		except:
-			return HttpResponse("falha")
-		if request.method == 'POST':
-			form = TurmaForm(request.POST,instance=turma)
-			if form.is_valid():
-				form.save()
-				ok= True
-				return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
-			else:
-				ok = False
-				return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
-
-		else:
-			form = PartialTurmaForm(instance=turma)
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	elif opcao == 2:
-		try:
+		elif opcao == 2:
 			conteudo = Conteudo.objects.get(id = id)
-		except:
-			return HttpResponse("falha")
-		if request.method == 'POST':
-			form = ConteudoForm(request.POST,instance=conteudo)
-			if form.is_valid():
-				form.save()
-				ok= True
-				return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
-			else:
-				ok = False
-				return render(request, "admin/gerenciador/opcao/avisos/editado.php",locals())
-
+		elif opcao == 3:
+			pergunta = Pergunta.objects.get(id = id)
+		elif opcao == 4:
+			ajuda = Ajuda.objects.get(id = id)
+		elif opcao == 5:
+			item = Item.objects.get(id = id)
+		elif opcao == 6:
+			deficiencia = Deficiencia.objects.get(id = id)
 		else:
-			form = PartialConteudoForm(instance=conteudo)
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	elif opcao == 3:
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	elif opcao == 4:
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	elif opcao == 5:
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	elif opcao == 6:
-		return  render(request, "admin/gerenciador/opcao/edit/edit.php", locals())
-	else:
+			return HttpResponseRedirect("/gerenciador/")
+	except:
 		return HttpResponseRedirect("/gerenciador/")
 
+	if request.method == 'POST':
+		if opcao == 1:
+			form = TurmaForm(request.POST,instance=turma)
+		elif opcao == 2:
+			form = ConteudoForm(request.POST,instance=conteudo)
+		elif opcao == 3:
+			form = PerguntaForm(request.POST,instance=pergunta)
+		elif opcao == 4:
+			form = AjudaForm(request.POST,instance=ajuda)
+		elif opcao == 5:
+			form = ItemForm(request.POST,instance=item)
+		elif opcao == 6:
+			form = DeficienciaForm(request.POST,instance=deficiencia)
+		else:
+			return HttpResponseRedirect("/gerenciador/")
 
+		if form.is_valid():
+			form.save()
+			ok= True
+			return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
+		else:
+			ok = False
+			return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
+	else:
+		if opcao == 1:
+			form = PartialTurmaForm(instance=turma)
+		elif opcao == 2:
+			form = PartialConteudoForm(instance=conteudo)
+		elif opcao == 3:
+			form = PartialPerguntaForm(instance=pergunta)
+		elif opcao == 4:
+			form = PartialAjudaForm(instance=ajuda)
+		elif opcao == 5:
+			form = PartialItemForm(instance=item)
+		elif opcao == 6:
+			form = PartialDeficienciaForm(instance=deficiencia)
+		else:
+			return HttpResponseRedirect("/gerenciador/")
+
+		return render(request, 'admin/gerenciador/opcao/edit/edit.php', locals())
 
 def ordenaPerguntas(request):
 	if request.method == "POST":
