@@ -133,40 +133,56 @@ def listOpcao(request, opcao):
 @login_required
 def addOpcao(request, opcao):
 	if opcao == "1":
+		opcao = 1
 		if request.method == "POST":
 			form = TurmaForm(request.POST)
 			if form.is_valid():
 				print "Formulario Valido"
 				if(form.save()):
-					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': True})
+					ok = True
+					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 				else:
-					return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': False})
+					ok = False
+					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 			else:
-				return render(request, "admin/gerenciador/opcao/turma/avisos/adicionado.php", {'ok': False})
+				ok = False
+				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 		else:
 			form = PartialTurmaForm()
 			return  render(request, "admin/gerenciador/opcao/turma/add.php", locals())
 	elif opcao == "2":
+		opcao = 2
 		if request.method == "POST":
 			form = PartialConteudoForm(request.POST)
 			if form.is_valid():
 				print "Formulario Valido"
 				if(form.save()):
-					return render(request, "admin/gerenciador/opcao/licao/avisos/adicionado.php", {'ok': True})
+					ok = True
+					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 				else:
-					return render(request, "admin/gerenciador/opcao/licao/avisos/adicionado.php", {'ok': False})
+					ok = False
+					return render(request, "admin/gerenciador/opcao/avisos/adicionado.php",locals())
 			else:
-				return render(request, "admin/gerenciador/opcao/licao/avisos/adicionado.php", {'ok': False})
+				ok = False
+				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php",locals())
 		else:
 			form = PartialConteudoForm()
 			return  render(request, "admin/gerenciador/opcao/licao/add.php", locals())
 	elif opcao == "3":
+		opcao = 3
+
 		return  render(request, "admin/gerenciador/opcao/pergunta/add.php", locals())
 	elif opcao == "4":
+		opcao = 4
+
 		return  render(request, "admin/gerenciador/opcao/ajuda/add.php", locals())
 	elif opcao == "5":
+		opcao = 5
+
 		return  render(request, "admin/gerenciador/opcao/item/add.php", locals())
 	elif opcao == "6":
+		opcao = 6
+		
 		return  render(request, "admin/gerenciador/opcao/deficiencia/add.php", locals())
 	else:
 		return HttpResponseRedirect("/gerenciador/")
@@ -224,9 +240,11 @@ def editOpcao(request, opcao, id):
 			form = TurmaForm(request.POST,instance=turma)
 			if form.is_valid():
 				form.save()
-				return render(request, "admin/gerenciador/opcao/turma/avisos/editado.php", {'ok': True})
+				ok= True
+				return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
 			else:
-				return render(request, "admin/gerenciador/opcao/turma/avisos/editado.php", {'ok': False})
+				ok = False
+				return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
 
 		else:
 			form = PartialTurmaForm(instance=turma)
@@ -240,9 +258,11 @@ def editOpcao(request, opcao, id):
 			form = ConteudoForm(request.POST,instance=conteudo)
 			if form.is_valid():
 				form.save()
-				return render(request, "admin/gerenciador/opcao/licao/avisos/editado.php", {'ok': True})
+				ok= True
+				return render(request, "admin/gerenciador/opcao/licao/avisos/editado.php", locals())
 			else:
-				return render(request, "admin/gerenciador/opcao/licao/avisos/editado.php", {'ok': False})
+				ok = False
+				return render(request, "admin/gerenciador/opcao/licao/avisos/editado.php",locals())
 
 		else:
 			form = PartialConteudoForm(instance=conteudo)

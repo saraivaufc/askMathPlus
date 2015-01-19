@@ -12,15 +12,15 @@
 		<center>
 			<h1 class="text-center">
 				{%  if ok %}
-				Licao Editada com Sucesso!!!
+				Ajuda Editada com Sucesso!!!
 				{% else %}
-				Falha ao Editar a Licao!!!
+				Falha ao Editar a Ajuda!!!
 				{% endif %}
 			</h1>
 			<div class="btn-group">
-				<button  onclick="window.location='/gerenciador/list/2/' " class="btn btn-primary">Voltar as Licoes</button>
+				<button  onclick="window.location='/gerenciador/list/4/' " class="btn btn-primary">Voltar as Ajudas</button>
 				{%  if ok == False %}
-				<button onclick="window.location='/gerenciador/add/2/' " class="btn btn-primary">Tentar Novamente</button>
+				<button onclick="window.location='/gerenciador/edit/4/{{ id }}' " class="btn btn-primary">Tentar Novamente</button>
 				{% endif %}	
 			</div>
 			
