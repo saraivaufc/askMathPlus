@@ -213,7 +213,7 @@ class Conteudo(Model):
 	def getPerguntasNaoRespondidas(self, usuario):
 		respondidas = self.getPerguntasRespondidas(usuario)
 		nao_respondidas = []
-		for i in Pergunta.objects.filter(conteudo_pertence = self.id):
+		for i in self.getPerguntasOrdenadas():
 			existe = False
 			for k in respondidas:
 				if i.id == k.id:
