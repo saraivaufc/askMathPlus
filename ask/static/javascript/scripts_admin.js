@@ -1,20 +1,6 @@
 
 //CLICKS
 $(document).ready(function(){
-
-	$("#ajuda").click(function(){
-		var valor = $("#pergunta_atual").val();
-		var url = "/ajuda/" + valor+"/";
-		$.ajax({
-			"url": url,
-			"type": "get",
-			"dataType": "html",
-			async: false
-		}).done(function(data){
-			$("#ajuda_text").empty().append(data);
-		});
-	});
-
 	$(".glyphicon-list-alt").click(function(){
 		var opcao = $(this).parent().attr("value");
 		 window.location = "/gerenciador/list/" + opcao + "/";

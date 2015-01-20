@@ -115,8 +115,7 @@ class Conteudo(Model):
 
 	#GETS
 	def getQuantPerguntasTotal(self):
-		p = Pergunta.objects.filter(conteudo_pertence = self.id)
-		return len(p)
+		return len(self.getPerguntasOrdenadas())
 
 	def getPerguntasOrdenadas(self):
 		print "getPerguntasOrdenadas"

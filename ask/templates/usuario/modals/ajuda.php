@@ -7,7 +7,8 @@
 		    </div>
 		    <div class="modal-body">
 		    	<div class="text-justify">
-					<t id="ajuda_text">
+				<t id="ajuda_text">
+					{{ pergunta.ajuda }}
 		      		</t>
 	      		</div>
 			</div>

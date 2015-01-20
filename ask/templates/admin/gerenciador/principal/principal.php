@@ -1,7 +1,11 @@
 {% extends 'admin/cabecalhoAdmin.php' %}
 
+{% block home-active %}
+<li>
+{% endblock %}
+
 {% block gerenciador %}
-<li class="active">
+<li>
 	
 	<a id="gerenciador"  href="/gerenciador/" >
 		Gerenciador <span class="glyphicon glyphicon-wrench"></span>

@@ -13,14 +13,14 @@
 	{% endblock %}
 
 	{%  block pontuacao %}
-	<div class="col-sm-6 col-md-6">
+	<div class="col-xs-12 col-sm-6 col-md-6">
 		<div class="row">
-			NUMERO DE QUESTÕES = {{ conteudo.getPerguntasOrdenadas|length|default_if_none:"0" }}
+			QUESTÕES : {{ conteudo.getPerguntasOrdenadas|length|default_if_none:"0" }}
 		</div>
 	</div>
-	<div class=" col-sm-6 col-md-6">
+	<div class="col-xs-12 col-sm-6 col-md-6">
 		<div class="row">
-			SALTOS DISPONÍVEIS = {{ conteudo.max_pulos|default_if_none:"0" }}
+			SALTOS DISPONÍVEIS : {{ pulosDisponiveis|default_if_none:"0" }}
 		</div>
 	</div>
 	{% endblock %}

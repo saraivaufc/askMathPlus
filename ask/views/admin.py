@@ -89,10 +89,9 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 			existeProximo = True
 		except:
 			existeProximo = False
-		try:
-			ajuda = Ajuda.objects.get(id = pergunta.ajuda_id)
+		if pergunta.ajuda != '':
 			existeAjuda = True
-		except:
+		else:
 			existeAjuda = False
 
 		return render(request, "admin/terciario_admin/terciario_admin.php", locals())

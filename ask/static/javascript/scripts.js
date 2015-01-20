@@ -61,27 +61,10 @@ $(document).ready(function(){
 
 
 	$("#ajuda").click(function(){
-		var valor = $("#pergunta_atual").val();
-		var url = "/ajuda/" + valor+"/";
-		$.ajax({
-			"url": url,
-			"type": "get",
-			"dataType": "html",
-			async: false
-		}).done(function(data){
-			$("#ajuda_text").empty().append(data);
-			var conteudo = $("#conteudo_atual").val();
-			var pergunta = $("#pergunta_atual").val();
-			url = "/busca_ajuda/" + conteudo + "/" + pergunta + "/";
-			$.ajax({
-				"url": url,
-				"type": "get",
-				"dataType": "html",
-				async: true
-			}).done(function(data){
-				
-			});		
-		});
+		var conteudo = $("#conteudo_atual").val();
+		var pergunta = $("#pergunta_atual").val();
+		url = "/busca_ajuda/" + conteudo + "/" + pergunta + "/";
+		$.get(url);
 	});
 
 });

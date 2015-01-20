@@ -100,35 +100,20 @@
 							{%  block pontuacao-all %}
 							 	<div class="text-center">
 									{%  block pontuacao %}
-										<div>
-											<div class="col-xs-12 col-sm-5 col-md-3">
-												<div class="row">
-													PONTOS = {{ pontosAcumulados|default_if_none:"0" }}
-												</div>
-												<div class="row">
-													SALTOS = {{ pulosRealizados|default_if_none:"0" }}
-												</div>
-											</div>
-											<div class="col-xs-12 col-sm-7 col-md-4">
-												<div class="row">
-													{% if NUMEROPERGUNTA == 0 %}
-														Nao Pertence
-													{% else %}
-														QUESTAO = {{NUMEROPERGUNTA}}/{{ perguntasTotal|default_if_none:"0" }}
-													{% endif %}
-												</div>
-												<div class="row">
-													QUESTOES SALTADAS = {{perguntasPuladas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }}
-												</div>
-											</div>
-											<div class="col-xs-12 col-sm-12 col-md-5">
-												<div class="row">
-													QUESTOES CORRETAS = {{perguntasCertas|default_if_none:"0"}}/{{ perguntasTotal|default_if_none:"0" }}
-												</div>
-												<div class="row">
-													SALTOS DISPONÍVEIS = {{ pulosDisponiveis|default_if_none:"0" }}
-												</div>
-											</div>
+										<div class="col-xs-4 col-sm-4 col-md-4">
+											<div class="row">
+												PONTOS : {{ pontosAcumulados|default_if_none:"0" }}
+											</div>	
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4">
+											<div class="row">
+												QUESTAO : {{NUMEROPERGUNTA}} / {{ perguntasTotal|default_if_none:"0" }}
+											</div>	
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4">
+											<div class="row">
+												SALTOS : {{ pulosRealizados|default_if_none:"0" }} / {{ pulosDisponiveis|default_if_none:"0" }}
+											</div>	
 										</div>
 									{% endblock %}
 								</div>

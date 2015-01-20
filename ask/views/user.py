@@ -267,7 +267,7 @@ def secundario(request, tema_conteudo):
 	
 	perguntasTotal = len(conteudo.getPerguntasOrdenadas())
 	pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
-	pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
+	pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario) + pulosRealizados
 	perguntasRestantes = len(conteudo.getPerguntasRestantes(usuario))
 	perguntasCertas = len(conteudo.getPerguntasCertas(usuario))
 	perguntasPuladas = len(conteudo.getPerguntasPuladas(usuario))
@@ -369,6 +369,10 @@ def secundarioOpcoes(request, tema_conteudo):
 
 		perguntasSaltadas = conteudo.getPerguntasPuladas(usuario)
 		fecharSecaoaberta(usuario)
+
+		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
+		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario) + pulosRealizados
+		
 		return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 
 @login_required

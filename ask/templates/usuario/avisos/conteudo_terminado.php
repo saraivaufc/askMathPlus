@@ -10,20 +10,24 @@
 {% endblock %}
 
 {% block pontuacao %}
-	<div class="col-sm-6 col-md-6 bg-primary">
+	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			QUESTÕES TOTAL =  {{ conteudo.getPerguntasOrdenadas|length }}
-		</div>
-		<div class="row">
-			PONTOS ACUMULADOS = {{ pontosAcumulados }}
+			QUESTÕES : {{ conteudo.getPerguntasOrdenadas|length }}
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-6 bg-info">
+	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			PULOS REALIZADOS = {{ pulosRealizados }}
+			PONTOS : {{ pontosAcumulados }}
 		</div>
+	</div>
+	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			VEZES QUE PEDIU AJUDA = {{ vezesPediuAjuda }}
+			SALTOS : {{ pulosRealizados }}
+		</div>
+	</div>
+	<div class="col-xs-6 col-sm-3 col-md-3">
+		<div class="row">
+			AJUDAS : {{ vezesPediuAjuda }}
 		</div>
 	</div>
 {% endblock %}
