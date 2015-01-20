@@ -65,42 +65,6 @@
 								 </div>
 							 </div>
 						</div>
-						<div class="row">
-							 <div class="list-group-item {% block classes-ajuda %}{% endblock %}">
-								 <div class="container-fluid">
-								 	<div class="col-xs-6 col-md-8 text-center">
-								 		Ajuda
-								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right value=" value="4">
-								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
-								 	</div>
-								 </div>
-							 </div>
-						</div>
-						<div class="row">
-							 <div class="list-group-item {% block classes-item %}{% endblock %}">
-								 <div class="container-fluid">
-								 	<div class="col-xs-6 col-md-8 text-center">
-								 		Item	
-								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right " value="5">
-								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
-								 	</div>
-								 </div>
-							 </div>
-						</div>
-						<div class="row">
-							 <div class="list-group-item {% block classes-deficiencia %}{% endblock %}">
-								 <div class="container-fluid">
-								 	<div class="col-xs-6 col-md-8 text-center">
-								 		Deficiencia	
-								 	</div>
-								 	<div class="col-xs-6 col-md-4 text-right" value="6" >
-								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
-								 	</div>
-								 </div>
-							 </div>
-						</div>
 					</div>
 				</ul>
 				{% endblock %}

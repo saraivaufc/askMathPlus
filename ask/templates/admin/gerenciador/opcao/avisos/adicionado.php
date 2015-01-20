@@ -18,12 +18,6 @@
 					 	Licao Adicionada Com Sucesso!!!
 					 {% elif opcao == 3 %}
 					 	Pergunta Adicionada Com Sucesso!!!
-					 {% elif  opcao == 4 %}
-					 	Ajuda Adicionada Com Sucesso!!!
-					 {%  elif  opcao == 5 %}
-					 	Item Adicionada Com Sucesso!!!
-					 {% elif  opcao == 6  %}
-					 	Deficiencia Adicionada Com Sucesso!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
@@ -35,19 +29,13 @@
 					 	Falha ao Adicionar Licao!!!
 					 {% elif opcao == 3 %}
 					 	Falha ao Adicionar Pergunta!!!
-					 {% elif  opcao == 4 %}
-					 	Falha ao Adicionar Ajuda!!!
-					 {%  elif  opcao == 5 %}
-					 	Falha ao Adicionar Item!!!
-					 {% elif  opcao == 6  %}
-					 	Falha ao Adicionar Deficiencia!!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
 				{% endif %}
 			</h1>
 			<div class="btn-group">
-				{% if opcao >= 1 and opcao <= 6 %}
+				{% if opcao >= 1 and opcao <= 3 %}
 					<button  onclick="window.location='/gerenciador/list/{{ opcao }}/' " class="btn btn-primary">
 				{%  else %}
 					<button  onclick="window.location='/gerenciador/' " class="btn btn-primary">
@@ -59,12 +47,6 @@
 				 	Voltar as Licoes
 				 {% elif opcao == 3 %}
 				 	Voltar as Perguntas
-				 {% elif  opcao == 4 %}
-				 	Voltar as Ajudas
-				 {%  elif  opcao == 5 %}
-				 	Voltar aos Itens
-				 {% elif  opcao == 6  %}
-				 	Voltar as Deficiencias
 				 {% else %}
 				 	Voltar as Opcoes
 				 {% endif %}

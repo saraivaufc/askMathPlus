@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<div class="btn-group btn-group-justified tela-opcoes-3">
 						<div class="btn-group">
-							<button class="form-control btn  btn-default" onclick="window.location='/login/'" >
+							<button class="form-control btn  btn-default" onclick="window.location='/login/'; return false;" >
 								Voltar Login <span class="glyphicon glyphicon-log-in"></span>
 							</button>
 						</div>

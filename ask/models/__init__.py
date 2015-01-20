@@ -304,14 +304,14 @@ class Conteudo(Model):
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
-	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	descricao = models.TextField(null= True,  blank= True,  verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
 	item_a =  models.ForeignKey('Item', null=True, blank=True, related_name="Item A",verbose_name="Item A", on_delete = models.SET_NULL)
 	item_b =  models.ForeignKey('Item', null=True , blank=True, related_name="Item B", verbose_name="Item B", on_delete = models.SET_NULL)
 	item_c =  models.ForeignKey('Item', null=True, blank=True, related_name="Item C", verbose_name="Item C", on_delete = models.SET_NULL)
 	item_d =  models.ForeignKey('Item', null=True , blank=True, related_name="Item D", verbose_name="Item D", on_delete = models.SET_NULL)
 	item_e =  models.ForeignKey('Item', null=True , blank=True, related_name="Item E", verbose_name="Item E", on_delete = models.SET_NULL)
 
-	item_correto = models.ForeignKey('Item', null=True , blank=False, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
+	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
 	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
@@ -520,14 +520,13 @@ class Item(Model):
 
 
 class Deficiencia(Model):
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",  help_text="Escolha o conteudo ao qual esta deficiencia esta relacionada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para essa deficiencia.")
 
 	def __unicode__(self):
 		return self.getDescricaoMin()
 	
 	class Meta:
-		ordering = ['-conteudo']
+		ordering = ['-criacao']
 		verbose_name = "Deficiência"
 		verbose_name_plural = "Deficiências"
 
@@ -538,13 +537,12 @@ class Deficiencia(Model):
 	
 
 class Ajuda(Model):
-	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo",help_text="Escolha o conteúdo ao qual esta ajuda esta relacionada." )
 	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descrição para essa ajuda.")
 	
 	def __unicode__(self):
 		return self.getDescricaoMin()
 	class Meta:
-		ordering = ['-conteudo']
+		ordering = ['-criacao']
 		verbose_name = "Ajuda"
 		verbose_name_plural = "Ajudas"
 

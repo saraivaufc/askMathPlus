@@ -6,12 +6,6 @@
 	template_values['my_template'] = 'admin/gerenciador/opcao/licao/list.php'
 {% elif opcao == 3 %}
 	template_values['my_template'] = 'admin/gerenciador/opcao/pergunta/list.php'
-{% elif opcao == 4 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/ajuda/list.php'
-{% elif opcao == 5 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/item/list.php'
-{% elif opcao == 6 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/deficiencia/list.php'
 {% else %}
 
 {% endif %}
@@ -28,12 +22,6 @@
 			Adicionar Nova Licao
 		{% elif opcao == 3 %}
 			Adicionar Nova Pergunta
-		{% elif opcao == 4 %}
-			Adicionar Nova Ajuda
-		{% elif opcao == 5 %}
-			Adicionar Novo  Item
-		{% elif opcao == 6 %}
-			Adicionar Nova Deficiencia
 		{% else %}
 			Sem Opcao Selecionada
 		{% endif %}

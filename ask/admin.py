@@ -107,17 +107,13 @@ class ItemAdmin(admin.ModelAdmin):
 class DeficienciaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('conteudo',
-        			      'descricao',
+        (None,{'fields':('descricao',
         				)
         	  }
         ),
 	)
-	list_display = ('id','conteudo','getDescricaoMin',  )
+	list_display = ('id','getDescricaoMin',  )
 	list_display_links = ('id','getDescricaoMin',)
-	list_editable = ('conteudo', )
-	list_filter = ('conteudo',)
-	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
 
@@ -183,18 +179,13 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
 class AjudaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('conteudo',
-        				 'descricao',
+        (None,{'fields':( 'descricao',
         				)
         	  }
         ),
 	)
 	list_display = ('id','getDescricaoMin','conteudo',)
 	list_display_links = ('id','getDescricaoMin',)
-	list_editable =('conteudo',)
-	list_filter = ('conteudo',)
-	
-	raw_id_fields = ('conteudo',)
 	save_as = True
 	search_fields = ['descricao']
 

@@ -15,7 +15,7 @@ class ItemForm(ModelForm):
 
 
 
-class PartialitemForm(ModelForm):
+class PartialItemForm(ModelForm):
 	class Meta:
 		model=Item
-		exclude  = ['criacao',]
+		exclude  = ['criacao','deficiencia']

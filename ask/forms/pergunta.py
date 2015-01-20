@@ -18,4 +18,5 @@ class PerguntaForm(ModelForm):
 class PartialPerguntaForm(ModelForm):
 	class Meta:
 		model=Pergunta
-		exclude  = ['criacao', 'pergunta_proximo',]
+		exclude  = ['criacao', 'pergunta_proximo','item_a', 'item_b', 'item_c', 'item_d', 'item_e','item_correto','ajuda' ]
+		localized_fields = ('__all__',)
