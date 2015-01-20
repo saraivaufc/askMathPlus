@@ -33,6 +33,15 @@ TAMANHOMETRO = (
 	(2, "GRANDE"),
 )
 
+ITENS = (
+	(1, "ITEM A"),
+	(2, "ITEM B"),
+	(3, "ITEM C"),
+	(4, "ITEM D"),
+	(5, "ITEM E"),
+)
+
+
 class Model(models.Model):	
 	criacao = models.DateTimeField(default=datetime.now, blank=True,null = True, verbose_name="Criacao")
 	def __unicode__(self):
@@ -305,15 +314,24 @@ class Conteudo(Model):
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
 	descricao = models.TextField(null= True,  blank= True,  verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
-	item_a =  models.ForeignKey('Item', null=True, blank=True, related_name="Item A",verbose_name="Item A", on_delete = models.SET_NULL)
-	item_b =  models.ForeignKey('Item', null=True , blank=True, related_name="Item B", verbose_name="Item B", on_delete = models.SET_NULL)
-	item_c =  models.ForeignKey('Item', null=True, blank=True, related_name="Item C", verbose_name="Item C", on_delete = models.SET_NULL)
-	item_d =  models.ForeignKey('Item', null=True , blank=True, related_name="Item D", verbose_name="Item D", on_delete = models.SET_NULL)
-	item_e =  models.ForeignKey('Item', null=True , blank=True, related_name="Item E", verbose_name="Item E", on_delete = models.SET_NULL)
+	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
+	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva a Deficiencia do Item  A.")
+	
+	item_b =  models.TextField(null= True,  blank= True,  verbose_name="Item B",  help_text="Escreva o Item B.")
+	deficiencia_b =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia B",  help_text="Escreva a Deficiencia do Item  B.")
+	
+	item_c =  models.TextField(null= True,  blank= True,  verbose_name="Item C",  help_text="Escreva o Item C.")
+	deficiencia_c =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia C",  help_text="Escreva a Deficiencia do Item  C.")
 
-	item_correto = models.ForeignKey('Item', null=True , blank=True, verbose_name="Item Correto", on_delete = models.SET_NULL, help_text="Diga qual dos itens dela e o correto.(Toda Pergunta tem que ter um item correto!!!)")
+	item_d =  models.TextField(null= True,  blank= True,  verbose_name="Item D",  help_text="Escreva o Item D.")
+	deficiencia_d =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia D",  help_text="Escreva a Deficiencia do Item  D.")
+
+	item_e =  models.TextField(null= True,  blank= True,  verbose_name="Item E",  help_text="Escreva o Item E.")
+	deficiencia_e =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia E",  help_text="Escreva a Deficiencia do Item  E.")
+
+	item_correto = models.IntegerField(null = True, blank = False, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
-	ajuda = models.ForeignKey('Ajuda', null=True , blank=True, verbose_name="Ajuda", on_delete = models.SET_NULL,  help_text="Se desejar, adicioner uma ajuda para o usuario.")
+	ajuda = models.TextField(null= True,  blank= True,  verbose_name="Ajuda",  help_text="Se desejar, pode adicionar uma ajuda para essa pergunta.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
 
 
@@ -326,43 +344,32 @@ class Pergunta(Model):
 		verbose_name_plural = "Perguntas"
 
 	def clean(self):
-		if self.item_correto_id != None:
-			item_correto_pertence = False
-			if self.item_a != None:
-				if self.item_correto_id == self.item_a_id:
-					item_correto_pertence = True
-			if self.item_b != None:
-				if self.item_correto_id == self.item_b_id:
-					item_correto_pertence = True
-			if self.item_c != None:
-				if self.item_correto_id == self.item_c_id:
-					item_correto_pertence = True
-			if self.item_d != None:
-				if self.item_correto_id == self.item_d_id:
-					item_correto_pertence = True
-			if self.item_e != None:
-				if self.item_correto_id == self.item_e_id:
-					item_correto_pertence = True
-			if item_correto_pertence == False:
-				raise ValidationError('Item Correto nao pertence a essa pergunta!!!')
+		if self.item_correto != None:
+			if self.item_correto == 1 and self.item_a == None:
+				raise ValidationError("Item Correto Esta em Branco")
+			elif self.item_correto == 2 and self.item_b == None:
+				raise ValidationError("Item Correto Esta em Branco")
+			elif self.item_correto == 3 and self.item_c == None:
+				raise ValidationError("Item Correto Esta em Branco")
+			elif self.item_correto == 4 and self.item_d == None:
+				raise ValidationError("Item Correto Esta em Branco")
+			elif self.item_correto == 5 and self.item_e == None:
+				raise ValidationError("Item Correto Esta em Branco")
 
-
-		if self.ajuda_id != None:
-			ajuda = Ajuda.objects.get(id = self.ajuda_id)
-			if self.conteudo_pertence_id != None:
-				if ajuda.conteudo_id != self.conteudo_pertence_id:
-					raise ValidationError('Essa ajuda não pertence ao conteúdo dessa pergunta.')
 		if self.pergunta_proximo_id != None:
 			pergunta = Pergunta.objects.get(id = self.pergunta_proximo_id)
 			if pergunta.conteudo_pertence_id != self.conteudo_pertence_id:
 				raise ValidationError('A Proxima Pergunta Não Pertence ao Conteúdo dessa Pergunta.')
 
 	def pediuAjuda(self, usuario):
-		b = Busca_Ajuda.objects.create(
-				usuario = usuario.id,
-				pergunta = self.id,
-			)
-		b.save()
+		try:
+			b = Busca_Ajuda.objects.create(
+					usuario = usuario.id,
+					pergunta = self.id,
+				)
+			b.save()
+		except:
+			print "pediuAjuda() Falhou!!!!"
 
 	def getDescricao(self):
 		quant = 0
@@ -384,39 +391,33 @@ class Pergunta(Model):
 	getDescricaoMin.short_description = 'Descrição'
 
 	def getItemCorreto(self):
-		if self.item_correto_id == None:
-			return None
-		else:
-			try:
-				item = Item.objects.get(id = self.item_correto_id)
-			except:
-				return None
-			return item
+		return self.item_correto
+
 	def getItens(self):
-		itens = []
-		if self.item_a_id != None:
+		itens = {}
+		if self.item_a != '':
 			try:
-				itens.append(Item.objects.get(id = self.item_a_id))
+				itens[1]=self.item_a
 			except:
 				pass
-		if self.item_b_id != None:
+		if self.item_b != '':
 			try:
-				itens.append(Item.objects.get(id = self.item_b_id))
+				itens[2]=self.item_b
 			except:
 				pass
-		if self.item_c_id != None:
+		if self.item_c != '':
 			try:
-				itens.append(Item.objects.get(id = self.item_c_id))
+				itens[3]=self.item_c
 			except:
 				pass
-		if self.item_d_id != None:
+		if self.item_d != '':
 			try:
-				itens.append(Item.objects.get(id = self.item_d_id))
+				itens[4]= self.item_d
 			except:
 				pass
-		if self.item_e_id != None:
+		if self.item_e!= '':
 			try:
-				itens.append(Item.objects.get(id = self.item_e_id))
+				itens[5]= self.item_e
 			except:
 				pass
 		return itens
@@ -464,92 +465,6 @@ class Pergunta(Model):
 			pontuacao.zerarAcertosSeguidos()
 
 
-class Item(Model):
-	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para este item.")
-	deficiencia = models.ForeignKey("Deficiencia", verbose_name="Deficiencia", null = True, blank=True, on_delete=models.SET_NULL, help_text="Todo item errado pode possuir uma deficiencia, quando um aluno responder erroneamente uma pergunta, precisamos saber qual a deficiencia em relacao ao conteudo que ele esta tendo, e para isso, usamos o item que ele respondeu, ou seja, todo item errado esta relacionado com uma possivel deficiencia apresentada pelo aluno.")
-	def __unicode__(self):
-		return self.getDescricaoMin() 
-	
-	class Meta:
-		ordering = ['-criacao']
-		verbose_name = "Item"
-		verbose_name_plural = "Itens"
-	def clean(self):
-		pass
-
-	def getDescricao(self):
-		quant = 0
-		des = ""
-		add = False
-		for i in self.descricao:
-			if quant < 100:
-				des += i
-			else:
-				add = True
-				break
-			quant+=1
-		if add:
-			des +="..."
-		return string_to_latex(des)
-
-	def getDescricaoMin(self):
-		return minimize_frase(self.descricao)
-	getDescricaoMin.short_description = 'Descrição'
-
-	def getConteudo(self):
-		pergunta = self.getPergunta()
-		if pergunta == None:
-			return None
-		else:
-			try:
-				conteudo = Conteudo.objects.get(id = pergunta.conteudo_pertence_id)
-			except:
-				return None
-			return conteudo
-
-	def getPergunta(self):
-		perguntas = Pergunta.objects.all()
-		for i in perguntas:
-			itens = i.getItens()
-			for k in itens:
-				if self.id == k.id:
-					return i
-		return None
-
-
-
-
-class Deficiencia(Model):
-	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para essa deficiencia.")
-
-	def __unicode__(self):
-		return self.getDescricaoMin()
-	
-	class Meta:
-		ordering = ['-criacao']
-		verbose_name = "Deficiência"
-		verbose_name_plural = "Deficiências"
-
-	def getDescricaoMin(self):
-		return minimize_frase(self.descricao)
-	getDescricaoMin.short_description = 'Descrição'
-
-	
-
-class Ajuda(Model):
-	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descrição para essa ajuda.")
-	
-	def __unicode__(self):
-		return self.getDescricaoMin()
-	class Meta:
-		ordering = ['-criacao']
-		verbose_name = "Ajuda"
-		verbose_name_plural = "Ajudas"
-
-	def getDescricaoMin(self):
-		return minimize_frase(self.descricao)
-	getDescricaoMin.short_description = 'Descrição'
-
 class Busca_Ajuda(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário", help_text="Escolha o usuário que pediu a ajuda.")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteudo", help_text="Escolha o conteúdo ao qual ele pediu a ajuda.")
@@ -567,7 +482,7 @@ class Historico(Model):
 	turma = models.ForeignKey(Turma, verbose_name="Turma")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
-	item = models.ForeignKey(Item, verbose_name="Item",null=True , blank=True, on_delete = models.SET_NULL)
+	item = models.IntegerField(verbose_name="Item")
 	acertou = models.BooleanField(default=False, verbose_name="Acertou")
 
 	def __unicode__(self):

@@ -4,12 +4,6 @@
     Turma
 {% endblock %}
 
-
-{% block menu %}
-{% include 'usuario/cabecalhoUser.php' %}
-{% endblock %}
-
-
 {% block conteudo %}
 <div class="container">
 <center>

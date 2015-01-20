@@ -145,11 +145,11 @@
 									   <input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
 									   <input id="conteudo_atual" name="conteudo_atual" value="{{conteudo.id}}" type="hidden">
 									<ol>
-									{% for item in pergunta.getItens %}
+									{% for chave , item in pergunta.getItens.items %}
 										<li type="A">
 											<div class="font-dconteudo">
-												<input name="opcao" value="{{item.id|safe}}" required="" type="radio">
-												<t>{{ item.descricao|safe }}{% lorem 50 w random %}</t>
+												<input name="opcao" value='{{chave}}' required type="radio">
+												<t>{{ item|safe }}{% lorem 50 w random %}</t>
 											</div>
 										</li>
 										<br>

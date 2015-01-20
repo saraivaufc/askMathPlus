@@ -145,7 +145,7 @@ def addOpcao(request, opcao):
 		elif opcao == 2:
 			form = ConteudoForm(request.POST)
 		elif opcao == 3:
-			return salvarPergunta(request)
+			form = PerguntaForm(request.POST)
 		else:
 			return  HttpResponseRedirect("/gerenciador/")
 
@@ -167,7 +167,6 @@ def addOpcao(request, opcao):
 			form = PartialConteudoForm()
 		elif opcao == 3:
 			form = PartialPerguntaForm()
-			return render(request, "admin/gerenciador/opcao/pergunta/add.php", locals())
 		else:
 			return HttpResponseRedirect("/gerenciador/")
 

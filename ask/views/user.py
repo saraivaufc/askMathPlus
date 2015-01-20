@@ -164,16 +164,19 @@ def secundario(request, tema_conteudo):
 
 	if request.method == 'POST':
 		pergunta = Pergunta.objects.get(id = request.POST['pergunta_atual'])
-
+		try:
+			item  = int(request.POST['opcao'])
+		except:
+			return HttpResponse("Falha ao pegar Opcao")
 		#Caso a Pergunta nao tenha um item Correto(Falha do Administrador)
-		if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,pergunta.id , request.POST['opcao'] ) == False:
+
+		if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,pergunta.id ,item ) == False:
 			print 'Sem Item Correto : linha 139'
 			return render(request, 'usuario/avisos/sem_item_correto.php', locals())
 		
 		cont_all = Conteudo.objects.all()
-		item  = Item.objects.get(id = request.POST['opcao'])
 		# Se Ele Respondeu a Pergunta Corretamente
-		if pergunta.item_correto_id == item.id:
+		if pergunta.item_correto == item:
 			#atualizando a pontuacao
 			pergunta.acertou(usuario)
 			pontosAcumulados = conteudo.getQuantPontos(usuario)
@@ -272,7 +275,7 @@ def secundario(request, tema_conteudo):
 	perguntasSaltadas = conteudo.getPerguntasPuladasExclude(usuario, pergunta.id)
 	try:
 		pulosMaximo = (Pontuacao.objects.get(usuario = usuario.id,
-											   conteudo = conteudo.id)).pulosMaximo
+							conteudo = conteudo.id)).pulosMaximo
 	except:
 		pulosMaximo = conteudo.max_pulos
 
@@ -290,8 +293,8 @@ def secundario(request, tema_conteudo):
 
 	try:
 		secao = Secao.objects.get(usuario_id = usuario.id, 
-								  conteudo_id = conteudo.id,
-								  fim = None)
+					     conteudo_id = conteudo.id,
+					     fim = None)
 	except:
 		print 'Nao Existe secao Aberta'
 		secao = Secao.objects.create(usuario_id = usuario.id, conteudo_id = conteudo.id)
@@ -458,11 +461,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 	pergunta = Pergunta.objects.get(id = pergunta_id);
 	
 	#tento pegar o item correto da questao
-	try:
-		item = Item.objects.get(id = pergunta.item_correto_id)
-	
-	#Se a questao nao tiver um item correto
-	except:
+	if pergunta.item_correto == None:
 		perguntas_erradas = conteudo.getPerguntasNaoRespondidas(usuario)
 		if(len(perguntas_erradas) == 0 ):
 			return HttpResponse("Conteudo Concluido!!!")
@@ -531,12 +530,20 @@ def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
 		estado_usuario.save()
 
 def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item):
-	item = Item.objects.get(id = id_item)
-	item_correto = (Pergunta.objects.get(id = id_pergunta) ).item_correto_id 
-	if(item_correto == None):
+	try:
+		id_item = int(id_item)
+	except:
+		return False
+
+	if(id_item == None):
 		return False;
 	resposta = None
-	if item.id == item_correto:
+	try:
+		pergunta = Pergunta.objects.get(id = id_pergunta)
+	except:
+		resposta =  False
+
+	if id_item == pergunta.item_correto:
 		resposta = True
 	else:
 		resposta = False
@@ -546,7 +553,7 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 			turma_id = id_turma,
 			conteudo_id = id_conteudo,
 			pergunta_id = id_pergunta,
-			item_id = id_item,
+			item = id_item,
 			acertou = resposta,
 	)
 	historico.save()
@@ -555,12 +562,18 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 @login_required
 def verifica_respostas(request, id_conteudo, id_pergunta, id_item):
 	try:
-		conteudo = Conteudo.objects.get(id = id_conteudo)
-		pergunta = Pergunta.objects.get(id = id_pergunta, conteudo_pertence_id = id_conteudo)
-		item = Item.objects.get(id = id_item)
+		id_item = int(id_item)
 	except:
 		return HttpResponse("FALSE")
-	if(pergunta.item_correto_id == item.id):
+	try:
+		pergunta = Pergunta.objects.get(id = id_pergunta, conteudo_pertence_id = id_conteudo)
+	except:
+		print "verificar_respostas() >> Erro ao Pegar Pergunta"
+		return HttpResponse("FALSE")
+
+	print type(pergunta.item_correto), " == " , type(id_item)
+	if(pergunta.item_correto == id_item):
+		print "sdaodosadojaojsd"
 		return HttpResponse("TRUE")
 	else:
 		return HttpResponse("FALSE")
@@ -604,12 +617,11 @@ def getAjuda(request, pergunta_id):
 		pergunta = Pergunta.objects.get(id = pergunta_id);
 	except:
 		return HttpResponse("None");
-	try:
-		ajuda = Ajuda.objects.get(id = pergunta.ajuda_id);
-	except:
-		return HttpResponse("None");
-
-	return HttpResponse( string_to_latex(ajuda.descricao));
+	
+	if pergunta.ajuda == None:
+		return HttpResponse("None")
+	else:
+		return HttpResponse( string_to_latex(pergunta.ajuda));
 
 @login_required
 def busca_ajuda(request, id_conteudo, id_pergunta):

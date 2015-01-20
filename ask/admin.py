@@ -69,7 +69,11 @@ class PerguntaAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None,{'fields':('conteudo_pertence',
         			'descricao',
-        			'item_a','item_b','item_c','item_d','item_e',
+        			'item_a','deficiencia_a',
+        			'item_b','deficiencia_b',
+        			'item_c','deficiencia_c',
+        			'item_d','deficiencia_d',
+        			'item_e','deficiencia_e',
         			 'item_correto',
         			 'ajuda',
         			 'pontos',
@@ -79,43 +83,11 @@ class PerguntaAdmin(admin.ModelAdmin):
 	)
 	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_a','item_b','item_c','item_d','item_e','item_correto', 'ajuda','pontos', )
 	list_display_links = ('id','getDescricaoMin',)
-	list_editable = ('conteudo_pertence','item_correto','ajuda','pontos', )
 	list_filter = ('conteudo_pertence',)
-	raw_id_fields = ( 'item_a','item_b','item_c','item_d','item_e','item_correto','conteudo_pertence','ajuda',)
+	raw_id_fields = ('conteudo_pertence',)
 	save_as = True
 	search_fields = ['descricao',]
 
-@admin.register(Item)
-class ItemAdmin(admin.ModelAdmin):
-	date_hierarchy = 'criacao'
-	fieldsets = (
-        (None,{'fields':('descricao',
-        		         'deficiencia',
-        			)
-        	  }
-        ),
-	)
-	list_display = ('id','getDescricaoMin','deficiencia', )
-	list_display_links = ('id','getDescricaoMin',)
-	list_editable = ('deficiencia',)
-	list_filter = ('deficiencia',)
-	raw_id_fields = ('deficiencia',)
-	save_as = True
-	search_fields = ['descricao',]
-
-@admin.register(Deficiencia)
-class DeficienciaAdmin(admin.ModelAdmin):
-	date_hierarchy = 'criacao'
-	fieldsets = (
-        (None,{'fields':('descricao',
-        				)
-        	  }
-        ),
-	)
-	list_display = ('id','getDescricaoMin',  )
-	list_display_links = ('id','getDescricaoMin',)
-	save_as = True
-	search_fields = ['descricao']
 
 @admin.register(Historico)
 class HistoricoAdmin(admin.ModelAdmin):
@@ -144,8 +116,7 @@ class HistoricoAdmin(admin.ModelAdmin):
 	raw_id_fields = ('usuario',
     			     'turma',
     			     'conteudo',
-    				 'pergunta',
-    				 'item',)
+    				 'pergunta',)
 	save_as = True
 	search_fields = ['usuario']
 
@@ -174,20 +145,6 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
     				 'pergunta',)
 	save_as = True
 	search_fields = ['usuario']
-
-@admin.register(Ajuda)
-class AjudaAdmin(admin.ModelAdmin):
-	date_hierarchy = 'criacao'
-	fieldsets = (
-        (None,{'fields':( 'descricao',
-        				)
-        	  }
-        ),
-	)
-	list_display = ('id','getDescricaoMin','conteudo',)
-	list_display_links = ('id','getDescricaoMin',)
-	save_as = True
-	search_fields = ['descricao']
 
 @admin.register(Busca_Ajuda)
 class Busca_AjudaAdmin(admin.ModelAdmin):
