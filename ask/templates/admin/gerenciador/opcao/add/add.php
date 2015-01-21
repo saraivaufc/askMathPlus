@@ -25,8 +25,12 @@
 			</table>
 		</div>	
 		<div class="btn-group">
-			<button class="btn btn-primary" onClick="window.location='/gerenciador/list/{{ opcao }}/'; return false; "  type="cancel">Cancelar</button>
-			<button type="submit" class="btn btn-primary">Submeter</button>
+			<button class="btn btn-default" onClick="window.location='/gerenciador/list/{{ opcao }}/'; return false; "  type="cancel">
+				Cancelar <span class="glyphicon glyphicon-remove-circle"></span>
+			</button>
+			<button type="submit" class="btn btn-primary">
+				Submeter <span class="glyphicon glyphicon-ok-circle hidden-xs"></span>
+			</button>
 		</div>
 	</form>
 {% endblock %}
