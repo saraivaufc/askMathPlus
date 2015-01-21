@@ -76,7 +76,7 @@ class Usuario(User):
 		verbose_name_plural = "usuários"
 
 class Conteudo(Model):
-	turma = models.ManyToManyField('Turma', verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
+	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para o conteudo.")
 	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto do conteudo")
 	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Todo conteudo precisa ter uma pergunta inicial.")
@@ -311,8 +311,8 @@ class Conteudo(Model):
 
 	
 class Pergunta(Model):
-	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=True, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
-	descricao = models.TextField(null= True,  blank= True,  verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
+	descricao = models.TextField(null= False,  blank= False,  verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
 	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
 	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva a Deficiencia do Item  A.")
 	
@@ -328,7 +328,7 @@ class Pergunta(Model):
 	item_e =  models.TextField(null= True,  blank= True,  verbose_name="Item E",  help_text="Escreva o Item E.")
 	deficiencia_e =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia E",  help_text="Escreva a Deficiencia do Item  E.")
 
-	item_correto = models.IntegerField(null = True, blank = False, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
+	item_correto = models.IntegerField(null = True, blank = True, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
 	ajuda = models.TextField(null= True,  blank= True,  verbose_name="Ajuda",  help_text="Se desejar, pode adicionar uma ajuda para essa pergunta.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")

@@ -12,18 +12,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand">
-					AskMath
+				<a  href="{% block home %}{% endblock %}" class="navbar-brand">
+					AskMath  <span class="glyphicon glyphicon-home "></span>
 				</a>
 			</div>
 
 			<div id="obcoesMenu" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li>
-						<a   href="{% block home %}{% endblock %}">
-							Inicio  <span class="glyphicon glyphicon-home "></span>
-						</a>
-					</li>
 				{% block nav-esq %}
 				{% endblock %}
 				</ul>

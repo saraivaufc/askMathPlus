@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block opcoes-padrao %}
-	<form  action="."  method="POST" >{% csrf_token %}
+	<form  action="."  method="POST"  onsubmit="return validaAdd({{ opcao }});" >{% csrf_token %}
 		<div class="table-responsive">
 			<table class="table table-bordered table-condensed">
 				{{ form.as_table }}		
