@@ -11,7 +11,7 @@ from django.contrib.auth.views import password_reset, logout
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.utils.translation import ugettext as _
-from django.http import HttpResponsePermanentRedirect
+from django.http import HttpResponsePermanentRedirect,  HttpResponseRedirect
 
 from spirit.utils.ratelimit.decorators import ratelimit
 from spirit.utils.user.email import send_activation_email, send_email_change_email
@@ -21,7 +21,7 @@ from ..models.topic import Topic
 from ..models.comment import Comment
 
 from ..forms.user import UserProfileForm, RegistrationForm, LoginForm, EmailChangeForm, ResendActivationForm
-
+from ask.views import *
 
 User = get_user_model()
 
@@ -35,18 +35,18 @@ def custom_login(request, **kwargs):
     if request.is_limited and request.method == "POST":
         return redirect(request.get_full_path())
 
-    return login_view(request, authentication_form=LoginForm, **kwargs)
+    return  HttpResponseRedirect("/login/")
 
 
 def custom_logout(request, **kwargs):
-    # Current Django 1.6 uses GET to log out
-    if not request.user.is_authenticated():
-        return redirect(request.GET.get('next', reverse('spirit:user-login')))
-
-    if request.method == 'POST':
-        return logout(request, **kwargs)
-
-    return render(request, 'spirit/user/logout.html')
+    if request.user.is_moderator == False:
+        try:
+            usuario = Usuario.objects.get(username = request.user)
+        except:
+            return HttpResponseRedirect('/login/')
+        fecharSecaoaberta(usuario)
+    logout_sys(request)
+    return HttpResponseRedirect('/login/')
 
 
 @ratelimit(field='email', rate='5/5m')
