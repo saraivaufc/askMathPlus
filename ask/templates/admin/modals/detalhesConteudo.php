@@ -62,7 +62,7 @@
 				  				Nenhuma Pergunta Inicial.
 				  			</td>
 				  		{% else %}
-				  		<tr>
+				  		<tr class="pointer">
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
 				  				<t>{{ pergunta_inicial.getDescricao|safe }}</t>
 				  			</td>

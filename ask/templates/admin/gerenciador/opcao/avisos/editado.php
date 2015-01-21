@@ -1,4 +1,4 @@
-{% extends 'admin/gerenciador/opcao/turma/list.php' %}
+{% extends my_template %}
 
 {% block  descricao %}
 {% endblock %}

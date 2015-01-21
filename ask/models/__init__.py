@@ -392,6 +392,21 @@ class Pergunta(Model):
 	def getItemCorreto(self):
 		return self.item_correto
 
+	def getDescricaoItemCorreto(self):
+		if self.item_correto == 1:
+			return minimize_frase(self.item_a)
+		elif self.item_correto == 2:
+			return minimize_frase(self.item_b)
+		elif self.item_correto == 3:
+			return minimize_frase(self.item_c)
+		elif self.item_correto == 4:
+			return minimize_frase(self.item_d)
+		elif self.item_correto == 5:
+			return minimize_frase(self.item_e)
+		else:
+			return None
+		
+
 	def getItens(self):
 		itens = {}
 		if self.item_a != '':

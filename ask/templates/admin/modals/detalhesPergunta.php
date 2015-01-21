@@ -24,7 +24,7 @@
 					<tr class="info">
 						</td><td>Descriçao</td>
 					</tr>
-						{% if pergunta.item_correto_id == None %}
+						{% if pergunta.getDescricaoItemCorreto == None %}
 						<tr class="danger link">
 				  			<td>
 				  				Nao Existe Item Correto.
@@ -32,7 +32,7 @@
 				  		{% else %}
 				  		<tr>
 				  			<td>
-				  				<t>{{ pergunta.getItemCorreto.getDescricao|safe }}</t>
+				  				<t>{{ pergunta.getDescricaoItemCorreto|safe }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -50,7 +50,7 @@
 				  				Nao Existe Pergunta Anterior.
 				  			</td>
 				  		{% else %}
-				  		<tr>
+				  		<tr class="pointer">
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'">
 				  				<t>{{ perguntaAnterior.getDescricao|safe }}</t>
 				  			</td>
@@ -69,7 +69,7 @@
 				  				Nao Existe Pergunta Proxima.
 				  			</td>
 				  		{% else %}
-				  		<tr>
+				  		<tr class="pointer">
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'">
 				  				<t>{{ perguntaProximo.getDescricao|safe }}</t>
 				  			</td>

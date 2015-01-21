@@ -1,7 +1,5 @@
 {% extends 'usuario/cabecalhoUser.php' %}
 
-{% load webdesign %}
-
 {% block titulo %}{{conteudo.tema}}{% endblock %}
 
 {% block estilo %}
@@ -61,7 +59,7 @@
 						  	</div>
 						 	<div class="panel-footer">
 						 		<div id="descricao-conteudo">
-						  			<t><p>{{ conteudo.descricao|safe }}{% lorem 300 w random %}</p><t>
+						  			<t><p>{{ conteudo.descricao|safe }}</p><t>
 						  		</div>
 						  	</div>
 					  	</div>
@@ -123,7 +121,7 @@
 						<hr>
 						{% block outros-conteudos-all %}
 					  		<div class="espacamento">
-								  <t><p>{{ pergunta.descricao|safe }}{% lorem 100 w random %}</p></t>
+								  <t><p>{{ pergunta.descricao|safe }}</p></t>
 								<hr/>
 								<form method="POST" id="perguntas" name="resposta">
 								{%csrf_token %} 
@@ -134,7 +132,7 @@
 										<li type="A">
 											<div class="font-dconteudo">
 												<input name="opcao" value='{{chave}}' required type="radio">
-												<t>{{ item|safe }}{% lorem 50 w random %}</t>
+												<t>{{ item|safe }}</t>
 											</div>
 										</li>
 										<br>

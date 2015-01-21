@@ -1,6 +1,4 @@
 {% extends 'admin/cabecalhoAdmin.php' %}
-{% load webdesign %}
-
 
 {% block titulo %}{{conteudo.tema}}{% endblock %}
 
@@ -21,7 +19,7 @@
 							  	</div>
 							 	<div class="panel-footer">
 							 		<div id="descricao-conteudo">
-							  		<t><p>{{ conteudo.descricao|safe }}{% lorem 300 w random %}</p><t>
+							  		<t><p>{{ conteudo.descricao|safe }}</p><t>
 							  		</div>
 							  	</div>
 						  	</div>
@@ -50,7 +48,7 @@
 				 		
 				 		<ul class="lista_perguntas list-group  perguntas_ordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-								PERGUNTAS INCLUIDAS NA LIÇAO
+								PERGUNTAS VISIVEIS AOS ALUNOS
 							</li>
 							{% if conteudo.pergunta_inicial_id == None and conteudo.getQuantPerguntasTotal > 0 %}
 						  		<li  class="list-group-item list-group-item-danger">
@@ -63,14 +61,14 @@
 							  		</li>
 							  	{% empty %}
 							  		<li class="list-group-item list-group-item-warning">
-							  			Licao nao possui Perguntas em Ordem
+							  			Licao nao possui Perguntas Visiveis aos Alunos...
 							  		</li>
 							  	{% endfor %}
 							{% endif %}
 						</ul>
 						<ul class="lista_perguntas list-group  perguntas_desordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-								PERGUNTAS PERTENCENTES A LIÇAO
+								PERGUNTAS INVISIVEIS AOS ALUNOS
 							</li>
 						  	{% for i in conteudo.getPerguntasNaoOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
@@ -78,7 +76,7 @@
 						  		</li>
 						  	{% empty %}
 						  		<li class="list-group-item list-group-item-warning">
-						  			Licao nao possui Perguntas Fora de Ordem
+						  			Licao nao possui Perguntas Invisiveis aos Alunos...
 						  		</li>
 						  	{% endfor %}
 						</ul>
