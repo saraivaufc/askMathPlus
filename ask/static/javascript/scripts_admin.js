@@ -66,6 +66,17 @@ function remTurma(id){
 	}
 }
 
+function viewLicao(id){
+	var url = "/getNomeConteudo/" + id + "/";
+	$.get(url, function(data){
+		if(data != "None"){
+			window.open("/principal_admin/" + data + "/");
+		}else{
+			window.open("/principal_admin/");
+		}
+	});
+}
+
 function editLicao(id){
 	window.location = "/gerenciador/edit/2/" + id + "/";
 }
@@ -81,6 +92,20 @@ function remLicao(id){
 			window.location = window.location;
 		});
 	}
+}
+
+
+function viewPergunta(id){
+	var url = "/getNomeConteudoPerguntaPertence/" + id + "/";
+	$.get(url, function(data){
+		if (data != "None"){
+			window.open("/principal_admin/"  + data+ "/" + id + "/");
+		}
+	});
+}
+
+function editPergunta(id){
+	window.location = "/gerenciador/edit/3/" + id + "/";
 }
 
 function remPergunta(id){

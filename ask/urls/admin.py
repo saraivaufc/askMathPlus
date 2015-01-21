@@ -24,4 +24,6 @@ urlpatterns = patterns('',
 	url(r'^gerenciador/edit/(?P<opcao>\d+)/(?P<id>\d+)/$' , editOpcao ),
 	url(r'^ordena_perguntas/$', ordenaPerguntas),
 	url(r'^zerar_perguntas/$', zerarPerguntas),
+	url(r'^getNomeConteudo/(?P<id>\d+)/$', getNomeConteudo),
+	url(r'^getNomeConteudoPerguntaPertence/(?P<id>\d+)/$', getNomeConteudoPerguntaPertence),
 )

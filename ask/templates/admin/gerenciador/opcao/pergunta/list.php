@@ -41,7 +41,10 @@
 			</div>
 			<div class="col-md-4">
 				<td>
-					&nbsp;<span  onClick="window.location = '/gerenciador/edit/3/{{ i.id }}/' " class="glyphicon glyphicon-edit pointer"></span>&nbsp;
+
+					&nbsp;
+					<span onClick="viewPergunta({{ i.id }})" class="glyphicon glyphicon-eye-open pointer"></span>&nbsp;
+					<span  onClick="editPergunta({{ i.id }})" class="glyphicon glyphicon-edit pointer"></span>&nbsp;
 					<span onClick="remPergunta({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>

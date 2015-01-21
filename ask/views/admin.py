@@ -561,3 +561,20 @@ def salvarPergunta(request):
 		ok = False
 		opcao = 3
 		return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
+
+
+def getNomeConteudo(request, id):
+	try:
+		conteudo = Conteudo.objects.get(id = id)
+		print  conteudo.getTema()
+		return  HttpResponse(conteudo.getTema())
+	except:
+		return HttpResponse("None")
+
+def getNomeConteudoPerguntaPertence(request, id):
+	try:
+		pergunta = Pergunta.objects.get(id = id)
+		conteudo = Conteudo.objects.get(id = pergunta.conteudo_pertence_id)
+		return  HttpResponse(conteudo.getTema())
+	except:
+		return HttpResponse("None")

@@ -47,7 +47,8 @@
 			</div>
 			<div class="col-md-3">
 				<td>
-					&nbsp;<span onClick="editLicao({{ i.id }})" class="glyphicon glyphicon-edit pointer"></span>&nbsp;
+					&nbsp;<span onClick="viewLicao({{ i.id }})" class="glyphicon glyphicon-eye-open pointer"></span>&nbsp;
+					<span onClick="editLicao({{ i.id }})" class="glyphicon glyphicon-edit pointer"></span>&nbsp;
 					<span onClick="remLicao({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>
