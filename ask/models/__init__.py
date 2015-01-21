@@ -78,14 +78,14 @@ class Usuario(User):
 class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para o conteudo.")
-	descricao = models.TextField(null=True , blank=True, verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto do conteudo")
+	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto do conteudo")
 	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Todo conteudo precisa ter uma pergunta inicial.")
 	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui os conteudo que e recomendado a concluçao antes de seguir para esse.")
 	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais conteudo o usuario deve seguir apos concluir esse.")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuario pode realizar nesse conteudo.")
 
-	linha_metro = models.IntegerField(verbose_name="Posição Metro", null=False , blank=False, choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
-	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro", null=False , blank=False, choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
+	linha_metro = models.IntegerField(verbose_name="Posição Metro",choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
+	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro",choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
 	
 	
 	def __unicode__(self):
@@ -312,7 +312,7 @@ class Conteudo(Model):
 	
 class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
-	descricao = models.TextField(null= False,  blank= False,  verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
 	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
 	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva a Deficiencia do Item  A.")
 	

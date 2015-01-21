@@ -136,7 +136,6 @@ def addOpcao(request, opcao):
 	except:
 		return HttpResponseRedirect("/gerenciador/")
 
-	my_template = 'admin/gerenciador/opcao/opcao.php'
 
 	if request.method == "POST":
 		if opcao == 1:
@@ -161,10 +160,13 @@ def addOpcao(request, opcao):
 			return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 	else:
 		if opcao == 1:
+			my_template = 'admin/gerenciador/opcao/turma/list.php'
 			form = PartialTurmaForm()
 		elif opcao == 2:
+			my_template = 'admin/gerenciador/opcao/licao/list.php'
 			form = PartialConteudoForm()
 		elif opcao == 3:
+			my_template = 'admin/gerenciador/opcao/pergunta/list.php'
 			form = PartialPerguntaForm()
 		else:
 			return HttpResponseRedirect("/gerenciador/")
@@ -199,8 +201,6 @@ def editOpcao(request, opcao, id):
 	except:
 		return HttpResponseRedirect("/gerenciador/")
 
-	my_template = 'admin/gerenciador/opcao/opcao.php'
-
 	try:
 		if opcao == 1:
 			turma = Turma.objects.get(id = id)
@@ -232,10 +232,13 @@ def editOpcao(request, opcao, id):
 			return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
 	else:
 		if opcao == 1:
+			my_template = 'admin/gerenciador/opcao/turma/list.php'
 			form = PartialTurmaForm(instance=turma)
 		elif opcao == 2:
+			my_template = 'admin/gerenciador/opcao/licao/list.php'
 			form = PartialConteudoForm(instance=conteudo)
 		elif opcao == 3:
+			my_template = 'admin/gerenciador/opcao/pergunta/list.php'
 			form = PartialPerguntaForm(instance=pergunta)
 		else:
 			return HttpResponseRedirect("/gerenciador/")

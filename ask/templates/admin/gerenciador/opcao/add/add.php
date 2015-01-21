@@ -1,17 +1,5 @@
 {% extends my_template %}
 
-{% if opcao == 1 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/turma/list.php'
-{% elif  opcao == 2 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/licao/list.php'
-{% elif opcao == 3 %}
-	template_values['my_template'] = 'admin/gerenciador/opcao/pergunta/list.php'
-{% else %}
-
-{% endif %}
-
-
-
 
 {% block barra-superior %}
 	<div class="col-xs-12 col-sm-12  col-md-12">
