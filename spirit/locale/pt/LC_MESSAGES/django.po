@@ -368,7 +368,7 @@ msgstr "primeiro nome"
 
 #: .\models\user.py:52
 msgid "last name"
-msgstr "segundo nome"
+msgstr "Último nome"
 
 #: .\models\user.py:53
 msgid "email"
