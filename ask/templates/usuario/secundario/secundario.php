@@ -97,23 +97,29 @@
 				  		<div id="point">
 							{%  block pontuacao-all %}
 							 	<div class="text-center">
-									{%  block pontuacao %}
-										<div class="col-xs-4 col-sm-4 col-md-4">
-											<div class="row">
-												PONTOS : {{ pontosAcumulados|default_if_none:"0" }}
-											</div>	
+							 		<ul class="list-group">
+								 		<li  class="list-group-item list-group-item-info">
+								 		<div class="row">
+										{%  block pontuacao %}
+											<div class="col-xs-4 col-sm-4 col-md-4">
+												<div class="row">
+													PONTOS : {{ pontosAcumulados|default_if_none:"0" }}
+												</div>	
+											</div>
+											<div class="col-xs-4 col-sm-4 col-md-4">
+												<div class="row">
+													QUESTAO : {{NUMEROPERGUNTA}} / {{ perguntasTotal|default_if_none:"0" }}
+												</div>	
+											</div>
+											<div class="col-xs-4 col-sm-4 col-md-4">
+												<div class="row">
+													SALTOS : {{ pulosRealizados|default_if_none:"0" }} / {{ pulosDisponiveis|default_if_none:"0" }}
+												</div>	
+											</div>
+										{% endblock %}
 										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4">
-											<div class="row">
-												QUESTAO : {{NUMEROPERGUNTA}} / {{ perguntasTotal|default_if_none:"0" }}
-											</div>	
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4">
-											<div class="row">
-												SALTOS : {{ pulosRealizados|default_if_none:"0" }} / {{ pulosDisponiveis|default_if_none:"0" }}
-											</div>	
-										</div>
-									{% endblock %}
+										</li>
+									</ul>
 								</div>
 							{% endblock %}
 						</div><!-- Point -->
