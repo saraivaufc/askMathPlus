@@ -42,11 +42,6 @@
 		</a>
 	</li>
 	<li>
-		<a data-toggle="modal" data-target="#sobre">
-			Sobre <span class="glyphicon glyphicon-exclamation-sign "></span>
-		</a>
-	</li>
-	<li>
 		<a href="/logout/">
 			Sair <span class="glyphicon glyphicon-log-out "></span>
 		</a>

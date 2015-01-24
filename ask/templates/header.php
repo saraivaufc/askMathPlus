@@ -33,7 +33,6 @@
 </div>
 
 <div class="font-dconteudo">
-		{% include 'usuario/modals/sobre.php' %}
 		{% include 'usuario/modals/contato.php' %}
 </div>
 
