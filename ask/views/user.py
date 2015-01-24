@@ -279,9 +279,7 @@ def secundario(request, tema_conteudo):
 	except:
 		pulosMaximo = conteudo.max_pulos
 
-	existePular = False
-	if pulosDisponiveis > 0:
-		existePular	= True		
+	existePular = pulosRealizados < pulosDisponiveis
 
 	existePulos = False
 	if len(perguntasSaltadas) > 0:
