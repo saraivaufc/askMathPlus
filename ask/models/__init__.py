@@ -267,7 +267,7 @@ class Conteudo(Model):
 		resFinal = []
 		for i in res:
 			respondida = False
-			for k in self.getPerguntasRespondidas(usuario):
+			for k in self.getPerguntasCertas(usuario):
 				if i.id == k.id:
 					respondida = True
 			if respondida == False:
