@@ -57,7 +57,7 @@
 						  	{% else %}
 							  	{% for i in conteudo.getPerguntasOrdenadas %}
 							  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
-							  			<t>{{ i.getDescricao|safe }}</t>
+							  			<t>{{ i.getDescricao|safe|truncatechars_html:80 }}</t>
 							  		</li>
 							  	{% empty %}
 							  		<li class="list-group-item list-group-item-warning">

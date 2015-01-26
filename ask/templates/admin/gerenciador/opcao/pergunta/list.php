@@ -37,7 +37,7 @@
 				<td>{{ i.conteudo_pertence }}</td>
 			</div>
 			<div class="col-md-4">
-				<td><t>{{ i.getDescricaoMin|safe }}</t></td>
+				<td><t>{{ i.getDescricao|safe|truncatechars_html:50 }}</t></td>
 			</div>
 			<div class="col-md-4">
 				<td>

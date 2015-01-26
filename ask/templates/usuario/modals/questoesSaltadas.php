@@ -15,7 +15,7 @@
 							{% for p in perguntasSaltadas %}
 								<a href="/irPergunta/{{ p.id }}/" class="list-group-item">
 									<t>
-										{{ p.getDescricao|safe }}
+										{{ p.getDescricao|safe|truncatechars_html:70 }}
 									</t>
 								</a>
 							{% empty %}

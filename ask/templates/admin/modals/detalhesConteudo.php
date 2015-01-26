@@ -62,9 +62,9 @@
 				  				Nenhuma Pergunta Inicial.
 				  			</td>
 				  		{% else %}
-				  		<tr class="pointer">
+				  		<tr class="pointer text-justify">
 				  			<td onClick="document.location = '/principal_admin/{{ tema_conteudo }}/{{pergunta_inicial.id}}/'">
-				  				<t>{{ pergunta_inicial.getDescricao|safe }}</t>
+				  				<t>{{ pergunta_inicial.getDescricao|safe|truncatechars_html:80 }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

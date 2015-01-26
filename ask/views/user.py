@@ -369,7 +369,7 @@ def secundarioOpcoes(request, tema_conteudo):
 		fecharSecaoaberta(usuario)
 
 		pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
-		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario) + pulosRealizados
+		pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario)
 		
 		return render(request, 'usuario/secundario/secundarioOpcoes.php', locals())
 

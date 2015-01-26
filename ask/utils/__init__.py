@@ -59,19 +59,3 @@ def string_to_latex(s):
 	print res
 		
 	return res
-
-def minimize_frase(text):
-	quant = 0
-	des = ""
-	add = False
-	for i in text:
-		if quant < 50:
-			des += i
-			quant+=1
-		else:
-			add = True
-			break
-		
-	if add:
-		des +="..."
-	return des

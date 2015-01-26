@@ -31,8 +31,8 @@
 				  			</td>
 				  		{% else %}
 				  		<tr>
-				  			<td>
-				  				<t>{{ pergunta.getDescricaoItemCorreto|safe }}</t>
+				  			<td class="text-justify">
+				  				<t>{{ pergunta.getDescricaoItemCorreto|safe|truncatechars_html:80 }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -50,9 +50,9 @@
 				  				Nao Existe Pergunta Anterior.
 				  			</td>
 				  		{% else %}
-				  		<tr class="pointer">
+				  		<tr class="pointer  text-justify">
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaAnterior.id}}'">
-				  				<t>{{ perguntaAnterior.getDescricao|safe }}</t>
+				  				<t>{{ perguntaAnterior.getDescricao|safe|truncatechars_html:80 }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>
@@ -69,9 +69,9 @@
 				  				Nao Existe Pergunta Proxima.
 				  			</td>
 				  		{% else %}
-				  		<tr class="pointer">
+				  		<tr class="pointer text-justify ">
 				  			<td onClick="document.location = '/principal_admin/{{conteudo.getTema}}/{{perguntaProximo.id}}'">
-				  				<t>{{ perguntaProximo.getDescricao|safe }}</t>
+				  				<t>{{ perguntaProximo.getDescricao|safe|truncatechars_html:80 }}</t>
 				  			</td>
 				  		{% endif %}
 					</tr>

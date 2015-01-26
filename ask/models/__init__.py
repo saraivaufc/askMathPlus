@@ -107,18 +107,11 @@ class Conteudo(Model):
 	def getDescricao(self):
 		return string_to_latex(self.descricao)
 
-	def getDescricaoMin(self):
-		return minimize_frase(self.descricao)
-	getDescricaoMin.short_description = 'Descrição'
-	
-
-
 	#GETS
 	def getQuantPerguntasTotal(self):
 		return len(self.getPerguntasOrdenadas())
 
 	def getPerguntasOrdenadas(self):
-		print "getPerguntasOrdenadas"
 		perguntas = []
 		perguntas_vistas = []
 		if self.pergunta_inicial_id != None:
@@ -136,11 +129,8 @@ class Conteudo(Model):
 		return perguntas
 
 	def getPerguntasNaoOrdenadas(self):
-		print "getPerguntasNaoOrdenadas"
 		perguntas_all = Pergunta.objects.filter(conteudo_pertence_id = self.id)
-		print len(perguntas_all) , "casa"
 		perguntas_ordenadas = self.getPerguntasOrdenadas()
-		print len(perguntas_ordenadas)
 		perguntas_nao_ordenadas = []
 		for i in perguntas_all:
 			cotem = False
@@ -371,38 +361,22 @@ class Pergunta(Model):
 			print "pediuAjuda() Falhou!!!!"
 
 	def getDescricao(self):
-		quant = 0
-		des = ""
-		add = False
-		for i in self.descricao:
-			if quant < 100:
-				des += i
-			else:
-				add = True
-				break
-			quant+=1
-		if add:
-			des +="..."
-		return string_to_latex(des)
-
-	def getDescricaoMin(self):
-		return minimize_frase(self.descricao)
-	getDescricaoMin.short_description = 'Descrição'
+		return string_to_latex(self.descricao)
 
 	def getItemCorreto(self):
 		return self.item_correto
 
 	def getDescricaoItemCorreto(self):
 		if self.item_correto == 1:
-			return minimize_frase(self.item_a)
+			return self.item_a
 		elif self.item_correto == 2:
-			return minimize_frase(self.item_b)
+			return self.item_b
 		elif self.item_correto == 3:
-			return minimize_frase(self.item_c)
+			return self.item_c
 		elif self.item_correto == 4:
-			return minimize_frase(self.item_d)
+			return self.item_d
 		elif self.item_correto == 5:
-			return minimize_frase(self.item_e)
+			return self.item_e
 		else:
 			return None
 		

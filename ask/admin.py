@@ -81,8 +81,8 @@ class PerguntaAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','conteudo_pertence','getDescricaoMin', 'item_a','item_b','item_c','item_d','item_e','item_correto', 'ajuda','pontos', )
-	list_display_links = ('id','getDescricaoMin',)
+	list_display = ('id','conteudo_pertence','descricao', 'item_a','item_b','item_c','item_d','item_e','item_correto', 'ajuda','pontos', )
+	list_display_links = ('id','descricao',)
 	list_filter = ('conteudo_pertence',)
 	raw_id_fields = ('conteudo_pertence',)
 	save_as = True
