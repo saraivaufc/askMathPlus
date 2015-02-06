@@ -76,7 +76,7 @@ DATABASES = {
     },
     'default' : {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'askmath',                      
+       'NAME': 'AskMath',                      
        'USER': 'postgres',
        'PASSWORD': 'postgres',
        'HOST': 'localhost',

@@ -345,6 +345,7 @@ def secundarioOpcoes(request, tema_conteudo):
 
 	#DETALHES
 	pulosRealizados = conteudo.getQuantPulosRealizados(usuario)
+	pulosDisponiveis = conteudo.getQuantPulosRestantes(usuario) + pulosRealizados
 	vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 	pontosAcumulados = conteudo.getQuantPontos(usuario)
 	if conteudo.getQuantPerguntasTotal() == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:

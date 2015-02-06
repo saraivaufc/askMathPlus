@@ -105,13 +105,7 @@ a{
 .navbar-custom .navbar-text {
   color: #ffffff;
 }
-.navbar-custom .navbar-nav > li:last-child > a {
-  border-right: 1px solid #265c8a;
-}
-.navbar-custom .navbar-nav > li > a {
-  color: #ffffff;
-  border-left: 1px solid #265c8a;
-}
+
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
   color: #c0c0c0;
