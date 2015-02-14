@@ -436,7 +436,7 @@ html {
 
 body {
   *zoom: 1;
-  max-width: 68em;
+  max-width: 99%;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
@@ -1243,3 +1243,7 @@ div.container {
   
 }
 */
+
+
+.header{
+}

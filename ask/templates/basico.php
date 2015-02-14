@@ -56,11 +56,20 @@
 	</head>
 
 	<body>
-		<div data-role="page " data-quicklinks="true">
-			<div>
+		<noscript>
+			<div class="container-fluid">
+				<div class="row">
+					<h1>
+						Para a funcionalidade completa deste site é necessário habilitar o JavaScript.<br>
+						Aqui estão as <a href="http://www.enable-javascript.com/pt/" target="_blank">
+						instruções sobre como ativar o JavaScript no seu navegador </a>.
+					</h1>
+				</div>
+			</div>
+		</noscript>
+		<div class="container-fluid">
+			<div class="row">
 				{% block body %}
-				
-				
 					{% block cabecalho-all %}
 						<div id="cabecalho" class="hidden-xs">
 							{% block cabecalho %}
@@ -77,57 +86,57 @@
 							{% endblock %}
 						</div>
 					{% endblock %}
-				
-				<div id="corpo">
-					<section id="conteudo">
-						{% block conteudo-all %}
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="row">
-											{% block conteudo %}
-											<div class="container-fluid">
-												<div class="row">
-													{% block conteudo-left-all %}
-														<div class="col-sm-5 col-md-4 col-lg-5">
+
+					<div id="corpo">
+						<section id="conteudo">
+							{% block conteudo-all %}
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="row">
+												{% block conteudo %}
+												<div class="container-fluid">
+													<div class="row">
+														{% block conteudo-left-all %}
+															<div class="col-sm-5 col-md-4 col-lg-5">
+																<div class="row">
+																	<div id="conteudo-left">
+																		{% block conteudo-left %}
+																		{% endblock %}
+																	</div>
+																</div>
+															</div>
+														{% endblock %}
+														{% block conteudo-right-all %}
+														<div class="col-sm-7 col-md-8 col-lg-7">
 															<div class="row">
-																<div id="conteudo-left">
-																	{% block conteudo-left %}
+																<div id="conteudo-right">
+																	{% block conteudo-right %}
 																	{% endblock %}
 																</div>
 															</div>
 														</div>
-													{% endblock %}
-													{% block conteudo-right-all %}
-													<div class="col-sm-7 col-md-8 col-lg-7">
-														<div class="row">
-															<div id="conteudo-right">
-																{% block conteudo-right %}
-																{% endblock %}
-															</div>
-														</div>
+														{% endblock %}
 													</div>
-													{% endblock %}
 												</div>
+												{% endblock %}
 											</div>
-											{% endblock %}
-										<div class="row">
+										</div>
 									</div>
 								</div>
+							{% endblock %}
+						</section>
+					</div>
+
+					<footer data-role="footer" class="hidden-xs">
+						{% block rodape-all %}
+							<div id="rodape">
+								{% block rodape %}
+									<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTI</center>
+								{% endblock %}
 							</div>
 						{% endblock %}
-					</section>
-				</div>
-				
-				<footer data-role="footer" class="hidden-xs">
-					{% block rodape-all %}
-						<div id="rodape">
-							{% block rodape %}
-								<center id="creditos">AskMath | Copyright &copy; 2015 - Programa De Educação Tutorial - Tecnologia Da Informação - PETTI</center>
-							{% endblock %}
-						</div>
-					{% endblock %}
-				</footer>
+					</footer>
 
 				{% endblock %}
 			</div>

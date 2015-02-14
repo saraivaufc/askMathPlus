@@ -9,7 +9,6 @@ $(document).ready(function(){
 	});
 });
 
-
 /* CSS */
 
 $(document).ready(function(){
