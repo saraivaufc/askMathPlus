@@ -1,59 +1,40 @@
-<!-- Modal Contato -->
-	<div class="modal fade" id="contato" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h3 class="modal-title text-center" id="myModalLabel">Entrar em Contato</h3>
-	      </div>
-	      <div class="modal-body">
-			<center>
-			<div class="form-contato">
-				<form class="form-horizontal" method="post" action="/contato/" role="form">{% csrf_token %}
-
-					<input type="hidden" id="page_atual" name="page_atual" value={% block page_atual %}"/principal/"{% endblock %}>
-					<div class="modal-body">
-						<div class="form-group">
-							<label class="row-sm-4 control-label">Nome</label>
-							<div class="row-sm-8">
-								<input type="text" class="form-control" name="nome" autofocus required>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="row-sm-4 control-label">Email</label>
-							<div class="row-sm-8">
-							<input type="email" class="form-control" name="email" required>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="row-sm-4 control-label">Mensagem</label>
-							<div class="row-sm-8">
-								<textarea class="form-control" name="mensagem" required></textarea>
-							</div>
-						</div>
-					</div>
-					</div>
-					<div class="modal-footer">
-						<center>
-							<div class="btn-group btn-group-justified tela-opcoes-2">
-								<div class="btn-group">
-									<button type="button" class="btn ui-btn btn-default" data-dismiss="modal">
-										Cancelar <span class="glyphicon glyphicon-remove"></span>
-									</button>
-								</div>
-								<div class="btn-group">
-									<button type="submit" class="btn ui-btn btn-primary" >
-										Enviar <span class="glyphicon glyphicon-send "></span>
-									</button>
-								</div>
-							</div>
-						</center>
-					</div>
-				</form>
-			</div>
-			
-			</center>
-			
+<div id="contato" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Gostaríamos muito de ouvir de você</h3>
 		</div>
-	  </div>
+	  
+	  	<div class="modal-body">
+			<form class="form-horizontal col-sm-12"  action="/contato/" method="POST">{% csrf_token %}
+				<br>
+				<div class="form-group">
+					<label>Nome</label>
+					<input class="form-control required" placeholder="Seu nome" name="name" data-placement="top" data-trigger="manual" data-content="Deve ter pelo menos 3 caracteres, e deve conter apenas letras." type="text" required>
+				</div>
+
+				<div class="form-group">
+					<label>Mensagem</label>
+					<textarea class="form-control" placeholder="Sua mensagem aqui..." name="messager" data-placement="top" data-trigger="manual" required></textarea>
+				</div>
+			  
+				<div class="form-group">
+					<label>E-Mail</label>
+					<input class="form-control email" placeholder="email@service.com (para que possamos entrar em contato com você)" name="email" data-placement="top" data-trigger="manual" data-content="Deve ser um endereço de e-mail válido (usuario@gmail.com)" type="text" required>
+				</div>
+			  
+				<div class="form-group">
+					<button type="submit" class="btn btn-success pull-right">Enviar!</button>
+					<p class="help-block pull-left text-danger hide" id="form-error">&nbsp; O Formulário não é válido. </p>
+				</div>			
+			</form>
+		</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+			</div>
 	</div>
+  </div>
+</div>
 	<!--  Fim Modal Contatos -->
