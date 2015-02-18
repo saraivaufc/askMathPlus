@@ -2,12 +2,10 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 	  
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Gostaríamos muito de ouvir de você</h3>
-		</div>
-	  
 	  	<div class="modal-body">
+	  		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Gostaríamos muito de ouvir de você</h3>
+	  		
 			<form class="form-horizontal col-sm-12"  action="/contato/" method="POST">{% csrf_token %}
 				<br>
 				<div class="form-group">
@@ -30,10 +28,10 @@
 					<p class="help-block pull-left text-danger hide" id="form-error">&nbsp; O Formulário não é válido. </p>
 				</div>			
 			</form>
-		</div>
 			<div class="modal-footer">
 				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
 			</div>
+		</div>
 	</div>
   </div>
 </div>

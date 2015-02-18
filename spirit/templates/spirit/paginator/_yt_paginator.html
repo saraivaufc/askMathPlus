@@ -1,5 +1,5 @@
 {% load i18n %}
-
+<div class="container-fluid">
 <ul class="paginator">
     {% if page.num_pages == 1 %}
         <li class="paginator-pages">{% trans "Page 1 of 1" %}</li>
@@ -17,3 +17,4 @@
         {% endif %}
     {% endif %}
 </ul>
+</div>

@@ -1,6 +1,7 @@
 {% load spirit_tags i18n %}
 
     <header class="header js-tabs-container">
+        <div class="container-fluid">
 		<a class="header-logo" href="{% url "spirit:index" %}">AskForum</a>
 
         {% if user.is_authenticated %}
@@ -55,4 +56,5 @@
         {% else %}
             <a class="header-link" href="{% url "spirit:user-login" %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "Log in" %}</a>
         {% endif %}
+        </div>
 	</header>

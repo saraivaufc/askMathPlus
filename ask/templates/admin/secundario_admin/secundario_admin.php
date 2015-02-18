@@ -47,8 +47,8 @@
 					 	<input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
 				 		
 				 		<ul class="lista_perguntas list-group  perguntas_ordenadas">
-							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-								PERGUNTAS VISIVEIS AOS ALUNOS
+							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
+								PERGUNTAS VISIVEIS AOS ALUNOS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 							{% if conteudo.pergunta_inicial_id == None and conteudo.getQuantPerguntasTotal > 0 %}
 						  		<li  class="list-group-item list-group-item-danger">
@@ -67,8 +67,8 @@
 							{% endif %}
 						</ul>
 						<ul class="lista_perguntas list-group  perguntas_desordenadas">
-							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active">
-								PERGUNTAS INVISIVEIS AOS ALUNOS
+							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
+								PERGUNTAS INVISIVEIS AOS ALUNOS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 						  	{% for i in conteudo.getPerguntasNaoOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">

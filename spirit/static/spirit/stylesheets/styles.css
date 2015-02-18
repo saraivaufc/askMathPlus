@@ -436,7 +436,7 @@ html {
 
 body {
   *zoom: 1;
-  max-width: 99%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
@@ -667,7 +667,9 @@ input[type="submit"].button,
 
 .container,
 .header {
-  margin-bottom: 24px; }
+  margin-bottom: 24px; 
+}
+
 
 .header-logo {
   float: left;
@@ -1245,5 +1247,17 @@ div.container {
 */
 
 
-.header{
+
+.header.js-tabs-container{
+
+  background-color: #357DBA;
+}
+
+header.js-tabs-container  *{
+  color: #ffffff;
+}
+
+.menu-link{
+  color: #000 !important;
+  background-color: #FFF;
 }

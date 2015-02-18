@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/vendors/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/vendors/github.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/vendors/jquery.atwho.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css">
+
+
     <link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/styles.css">
 
     <script src="{{ STATIC_URL }}spirit/scripts/vendors/jquery.min.js"></script>
@@ -20,6 +26,7 @@
     <script src="{{ STATIC_URL }}spirit/scripts/tab.js"></script>
     <script src="{{ STATIC_URL }}spirit/scripts/postify.js"></script>
     <script src="{{ STATIC_URL }}spirit/scripts/social_share.js"></script>
+    
     {% if user.is_authenticated %}
         <script src="{{ STATIC_URL }}spirit/scripts/vendors/atwho/jquery.caret.min.js"></script>
         <script src="{{ STATIC_URL }}spirit/scripts/vendors/atwho/jquery.atwho.min.js"></script>
@@ -37,6 +44,10 @@
     {% if user.is_moderator %}
         <script src="{{ STATIC_URL }}spirit/scripts/move_comments.js"></script>
     {% endif %}
+
+    <!-- Bootstrap -->
+        <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+        
 
     <script>
 
@@ -76,9 +87,13 @@
   <body>
 
     {% include 'spirit/_header.html' %}
-    {% render_messages messages %}
-    {% block content %}{% endblock %}
-    {% include 'spirit/_footer.html' %}
+    <div class="container-fluid">
+        <div class="row">
+        {% render_messages messages %}
+        {% include 'spirit/_footer.html' %}  
+        {% block content %}{% endblock %}
+        </div>
+    </div>
 
   </body>
 

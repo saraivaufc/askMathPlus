@@ -589,7 +589,10 @@ def send_email(nome, email, msg):
 
 def contato(request):
 	if request.method == 'POST':
-		page = request.POST['page_atual']
+		try:
+			page = request.POST['page_atual']
+		except:
+			return HttpResponse(request)
 		nome = None
 		email = None
 		msg = None
