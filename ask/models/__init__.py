@@ -52,9 +52,9 @@ class Model(models.Model):
 		verbose_name_plural = "Modelos Genéricos"
 
 class Turma(Model):
-	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina",  help_text="Coloque aqui o nome a disciplina dessa turma.")
-	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina do item anterior esta sendo cursada.");
-	professor = models.CharField(max_length=255 , verbose_name="Professor",  help_text="Escrevao nome do Professor que esta dando essa disciplina.")
+	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina",  help_text="Coloque aqui o nome da disciplina dessa turma.")
+	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina está sendo cursada.");
+	professor = models.CharField(max_length=255 , verbose_name="Professor",  help_text="Escreva o nome do Professor que está dando essa disciplina.")
 
 
 	def __unicode__(self):
@@ -76,16 +76,16 @@ class Usuario(User):
 		verbose_name_plural = "usuários"
 
 class Conteudo(Model):
-	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas que esse conteudo pertence.")
-	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para o conteudo.")
-	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto do conteudo")
-	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Todo conteudo precisa ter uma pergunta inicial.")
-	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui os conteudo que e recomendado a concluçao antes de seguir para esse.")
-	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais conteudo o usuario deve seguir apos concluir esse.")
-	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuario pode realizar nesse conteudo.")
+	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas à qual essa lição pertence.")
+	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para a lição.")
+	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto a lição.")
+	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Toda lição precisa ter uma pergunta inicial.")
+	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui as lições que são pré-requisitos para esta lição.")
+	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais lições o usuário deve seguir após a conclusão desta.")
+	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuário pode realizar nessa lição.")
 
-	linha_metro = models.IntegerField(verbose_name="Posição Metro",choices=POSICAOMETRO, help_text="Escolha em qual posicao esse conteudo sera exibido.");
-	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro",choices=TAMANHOMETRO, help_text="Escolha o tamanho do azulejo que esse conteudo sera exibido.");
+	linha_metro = models.IntegerField(verbose_name="Posição Metro",choices=POSICAOMETRO, help_text="Escolha em qual posição da interface Metro essa lição será exibida.");
+	tamanho_metro = models.IntegerField(verbose_name="Tamanho Metro",choices=TAMANHOMETRO, help_text="Escolha o tamanho do bloco onde esta lição será exibida.");
 	
 	
 	def __unicode__(self):
@@ -301,31 +301,31 @@ class Conteudo(Model):
 
 	
 class Pergunta(Model):
-	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui o  conteudo ao qual esta pergunta esta associada.")
-	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descricao para a pergunta.")
+	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui a lição a qual esta pergunta está associada.")
+	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descrição para a pergunta.")
 	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
-	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva a Deficiencia do Item  A.")
+	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva, se houver, a Deficiência do Item  A.")
 	
 	item_b =  models.TextField(null= True,  blank= True,  verbose_name="Item B",  help_text="Escreva o Item B.")
-	deficiencia_b =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia B",  help_text="Escreva a Deficiencia do Item  B.")
+	deficiencia_b =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia B",  help_text="Escreva, se houver, a Deficiência do Item B.")
 	
 	item_c =  models.TextField(null= True,  blank= True,  verbose_name="Item C",  help_text="Escreva o Item C.")
-	deficiencia_c =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia C",  help_text="Escreva a Deficiencia do Item  C.")
+	deficiencia_c =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia C",  help_text="Escreva, se houver, a Deficiência do Item  C.")
 
 	item_d =  models.TextField(null= True,  blank= True,  verbose_name="Item D",  help_text="Escreva o Item D.")
-	deficiencia_d =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia D",  help_text="Escreva a Deficiencia do Item  D.")
+	deficiencia_d =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia D",  help_text="Escreva, se houver, a Deficiência do Item  D.")
 
 	item_e =  models.TextField(null= True,  blank= True,  verbose_name="Item E",  help_text="Escreva o Item E.")
-	deficiencia_e =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia E",  help_text="Escreva a Deficiencia do Item  E.")
+	deficiencia_e =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia E",  help_text="Escreva, se houver, a Deficiência do Item  E.")
 
 	item_correto = models.IntegerField(null = True, blank = True, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
-	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta na qual o usuario seguira apos responder essa.")
+	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta para a qual o usuário seguirá após responder essa pergunta.")
 	ajuda = models.TextField(null= True,  blank= True,  verbose_name="Ajuda",  help_text="Se desejar, pode adicionar uma ajuda para essa pergunta.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
 
 
 	def __unicode__(self):
-		return self.getDescricaoMin()
+		return self.getDescricao()
 	
 	class Meta:
 		ordering = ['-conteudo_pertence']
@@ -335,20 +335,20 @@ class Pergunta(Model):
 	def clean(self):
 		if self.item_correto != None:
 			if self.item_correto == 1 and self.item_a == None:
-				raise ValidationError("Item Correto Esta em Branco")
+				raise ValidationError("Item Correto Está em Branco")
 			elif self.item_correto == 2 and self.item_b == None:
-				raise ValidationError("Item Correto Esta em Branco")
+				raise ValidationError("Item Correto Está em Branco")
 			elif self.item_correto == 3 and self.item_c == None:
-				raise ValidationError("Item Correto Esta em Branco")
+				raise ValidationError("Item Correto Está em Branco")
 			elif self.item_correto == 4 and self.item_d == None:
-				raise ValidationError("Item Correto Esta em Branco")
+				raise ValidationError("Item Correto Está em Branco")
 			elif self.item_correto == 5 and self.item_e == None:
-				raise ValidationError("Item Correto Esta em Branco")
+				raise ValidationError("Item Correto Está em Branco")
 
 		if self.pergunta_proximo_id != None:
 			pergunta = Pergunta.objects.get(id = self.pergunta_proximo_id)
 			if pergunta.conteudo_pertence_id != self.conteudo_pertence_id:
-				raise ValidationError('A Proxima Pergunta Não Pertence ao Conteúdo dessa Pergunta.')
+				raise ValidationError('A Próxima Pergunta Não Pertence ao Conteúdo dessa Pergunta.')
 
 	def pediuAjuda(self, usuario):
 		try:
