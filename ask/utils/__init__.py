@@ -55,7 +55,5 @@ def string_to_latex(s):
 			temp +=i
 		else:
 			res += i
-
-	print res
 		
 	return res

@@ -18,6 +18,8 @@
 					 	Licao Editada Com Sucesso!!!
 					 {% elif opcao == 3 %}
 					 	Pergunta Editada Com Sucesso!!!
+					 {% elif opcao == 4 %}
+					 	Usuário Editado Com Sucesso!!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
@@ -28,6 +30,8 @@
 					 	Falha ao Editar Licao!!!
 					 {% elif opcao == 3 %}
 					 	Falha ao Editar Pergunta!!!
+					 {% elif opcao == 4 %}
+					 	Falha ao Editar Usuário!!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
@@ -46,6 +50,8 @@
 				 	Voltar as Licoes
 				 {% elif opcao == 3 %}
 				 	Voltar as Perguntas
+				 {% elif opcao == 4 %}
+				 	Voltar os Usuário
 				 {% else %}
 				 	Voltar as Opcoes
 				 {% endif %}

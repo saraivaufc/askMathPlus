@@ -18,6 +18,8 @@
 					 	Licao Adicionada Com Sucesso!!!
 					 {% elif opcao == 3 %}
 					 	Pergunta Adicionada Com Sucesso!!!
+					 {% elif opcao == 4 %}
+					 	Usuário Adicionado Com Sucesso!!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
@@ -29,13 +31,15 @@
 					 	Falha ao Adicionar Licao!!!
 					 {% elif opcao == 3 %}
 					 	Falha ao Adicionar Pergunta!!!
+					 {% elif opcao == 4 %}
+					 	Falha ao Adicionar Usuário!!!
 					 {% else %}
 					 	Nenhuma Opcao Selecionada!!!
 					 {% endif %}
 				{% endif %}
 			</h1>
 			<div class="btn-group">
-				{% if opcao >= 1 and opcao <= 3 %}
+				{% if opcao >= 1 and opcao <= 4 %}
 					<button  onclick="window.location='/gerenciador/list/{{ opcao }}/' " class="btn btn-primary">
 				{%  else %}
 					<button  onclick="window.location='/gerenciador/' " class="btn btn-primary">
@@ -47,6 +51,8 @@
 				 	Voltar as Licoes
 				 {% elif opcao == 3 %}
 				 	Voltar as Perguntas
+				 {% elif opcao == 4 %}
+				 	Voltar os Usuário
 				 {% else %}
 				 	Voltar as Opcoes
 				 {% endif %}

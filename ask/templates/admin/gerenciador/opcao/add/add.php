@@ -10,6 +10,8 @@
 			Adicionar Nova Licao
 		{% elif opcao == 3 %}
 			Adicionar Nova Pergunta
+		{% elif opcao == 4 %}
+			Adicionar Novo Usuário
 		{% else %}
 			Sem Opcao Selecionada
 		{% endif %}

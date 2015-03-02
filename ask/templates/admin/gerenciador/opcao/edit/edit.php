@@ -10,6 +10,8 @@
 			Editar Licao
 		{% elif opcao == 3 %}
 			Editar Pergunta
+		{% elif opcao == 4 %}
+			Editar Usuário
 		{% else %}
 			Nenhuma Opcao Escolhida
 		{% endif %}

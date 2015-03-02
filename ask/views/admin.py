@@ -11,7 +11,7 @@ from random import randrange
 import smtplib
 from email.mime.text import MIMEText
 import json
-
+from django.contrib.auth.models import User
 
 #IMPORTS DJANGO
 from django.shortcuts import render, redirect
@@ -118,14 +118,8 @@ def listOpcao(request, opcao):
 		perguntas = Pergunta.objects.all()
 		return  render(request, "admin/gerenciador/opcao/pergunta/list.php", locals())
 	elif opcao == "4":
-		ajudas = Ajuda.objects.all()
-		return  render(request, "admin/gerenciador/opcao/ajuda/list.php", locals())
-	elif opcao == "5":
-		itens = Item.objects.all()
-		return  render(request, "admin/gerenciador/opcao/item/list.php", locals())
-	elif opcao == "6":
-		deficiencias = Deficiencia.objects.all()
-		return  render(request, "admin/gerenciador/opcao/deficiencia/list.php", locals())
+		usuarios = User.objects.all()
+		return  render(request, "admin/gerenciador/opcao/usuario/list.php", locals())
 	else:
 		return HttpResponseRedirect("/gerenciador/")
 
@@ -143,6 +137,8 @@ def addOpcao(request, opcao):
 		my_template = 'admin/gerenciador/opcao/licao/list.php'
 	elif opcao == 3:
 		my_template = 'admin/gerenciador/opcao/pergunta/list.php'
+	elif opcao == 4:
+		my_template = 'admin/gerenciador/opcao/usuario/list.php'
 	else:
 		my_template = 'admin/gerenciador/opcao/opcao.php'
 
@@ -154,6 +150,8 @@ def addOpcao(request, opcao):
 			form = ConteudoForm(request.POST)
 		elif opcao == 3:
 			form = PerguntaForm(request.POST)
+		elif opcao == 4:
+			form = UserForm(request.POST)
 		else:
 			return  HttpResponseRedirect("/gerenciador/")
 
@@ -175,6 +173,8 @@ def addOpcao(request, opcao):
 			form = PartialConteudoForm()
 		elif opcao == 3:
 			form = PartialPerguntaForm()
+		elif opcao == 4:
+			form = UserForm()
 		else:
 			return HttpResponseRedirect("/gerenciador/")
 
@@ -194,6 +194,8 @@ def remOpcao(request, opcao, id):
 			Conteudo.objects.filter(id = id).delete()
 		elif opcao == 3:
 			Pergunta.objects.filter(id = id).delete()
+		elif opcao == 4:
+			User.objects.filter(id = id).delete()
 		else:
 			return HttpResponseRedirect("/gerenciador/")
 		return HttpResponse("True")
@@ -215,6 +217,8 @@ def editOpcao(request, opcao, id):
 		my_template = 'admin/gerenciador/opcao/licao/list.php'
 	elif opcao == 3:
 		my_template = 'admin/gerenciador/opcao/pergunta/list.php'
+	elif opcao == 4:
+		my_template = 'admin/gerenciador/opcao/usuario/list.php'
 	else:
 		my_template = 'admin/gerenciador/opcao/opcao.php'
 
@@ -225,6 +229,8 @@ def editOpcao(request, opcao, id):
 			conteudo = Conteudo.objects.get(id = id)
 		elif opcao == 3:
 			pergunta = Pergunta.objects.get(id = id)
+		elif opcao == 4:
+			usuario = User.objects.get(id = id)
 		else:
 			return HttpResponseRedirect("/gerenciador/")
 	except:
@@ -237,6 +243,8 @@ def editOpcao(request, opcao, id):
 			form = ConteudoForm(request.POST,instance=conteudo)
 		elif opcao == 3:
 			form = PerguntaForm(request.POST,instance=pergunta)
+		elif opcao == 4:
+			form = UserForm(request.POST,instance=usuario)
 		else:
 			return HttpResponseRedirect("/gerenciador/")               
 
@@ -254,6 +262,8 @@ def editOpcao(request, opcao, id):
 			form = PartialConteudoForm(instance=conteudo)
 		elif opcao == 3:
 			form = PartialPerguntaForm(instance=pergunta)
+		elif opcao == 4:
+			form = UserForm(instance=usuario)
 		else:
 			return HttpResponseRedirect("/gerenciador/")
 

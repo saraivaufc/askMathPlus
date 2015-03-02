@@ -10,7 +10,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<meta name="description" content="">
 			<meta name="keywords" content="Universidade, Sistema, Educação, Estudantes, Perguntas e Respostas">
-			<meta name="author" content="Ciano Saraiva">
+			<meta name="author" content="Ciano Saraiva <saraiva@alu.ufc.br">
 
 
 			<title>

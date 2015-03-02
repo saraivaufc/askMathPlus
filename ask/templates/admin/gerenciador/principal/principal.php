@@ -37,7 +37,7 @@
 							 <div class="list-group-item {% block classes-turma %}{% endblock %} ">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6  col-md-8 text-center">
-								 		Turma	
+								 		Turmas
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="1">
 								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
@@ -49,7 +49,7 @@
 							 <div class="list-group-item {% block classes-licao %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
-								 		Licao
+								 		Lições
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="2">
 								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
@@ -61,9 +61,21 @@
 							 <div class="list-group-item {% block classes-pergunta %}{% endblock %}">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6 col-md-8 text-center">
-								 		Pergunta	
+								 		Perguntas	
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="3">
+								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
+								 	</div>
+								 </div>
+							 </div>
+						</div>
+						<div class="row">
+							 <div class="list-group-item {% block classes-usuario %}{% endblock %}">
+								 <div class="container-fluid">
+								 	<div class="col-xs-6 col-md-8 text-center">
+								 		Usuários	
+								 	</div>
+								 	<div class="col-xs-6 col-md-4 text-right" value="4">
 								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;
 								 	</div>
 								 </div>

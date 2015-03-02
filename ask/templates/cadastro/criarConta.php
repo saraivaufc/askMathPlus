@@ -18,9 +18,8 @@
 				</div>
 				<div class="row">
 					<fieldset class="col-sm-6 col-md-6">
-						<legend class="hidden-xs">Usuário</legend>
 							<div class="form-group">
-								<label for="username" class=" control-label">Usuário</label>
+								<label for="username" class=" control-label">Nome de Usuário</label>
 								<div>
 									<input id="username" class="form-control" name="username" required autofocus type="text" autocomplete="on" placeholder="Digite um nome de usuario">
 								</div>
@@ -36,13 +35,12 @@
 							<div class="form-group">
 								<label for="last_name" class="control-label">Último Nome</label>
 								<div>
-									<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu segundo nome">
+									<input id="last_name" class="form-control" name="last_name" required type="text" autocomplete="on" placeholder="Digite seu último nome">
 								</div>
 							</div>
 					</fieldset>
 
 					<fieldset class="col-sm-6  col-md-6">
-						<legend class="hidden-xs">Conta</legend>
 						<div class="form-group">
 							<label for="email" class="control-label">Email</label>
 							<div>

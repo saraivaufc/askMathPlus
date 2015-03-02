@@ -66,6 +66,24 @@ function remTurma(id){
 	}
 }
 
+function editUsuario(id){
+	window.location = "/gerenciador/edit/4/" +id + "/";
+}
+
+
+function remUsuario(id){
+	if(window.confirm("Deseja realmente remover esse Usuário?")){
+		$.get("/gerenciador/rem/4/" +id + "/", function(data){
+			if(data == "True"){
+				alert("Usuário Removido com Sucesso!!!");
+			}else{
+				alert("Falha ao Remover Usuário!!!");
+			}
+			window.location = window.location;
+		});
+	}
+}
+
 function viewLicao(id){
 	var url = "/getNomeConteudo/" + id + "/";
 	$.get(url, function(data){
