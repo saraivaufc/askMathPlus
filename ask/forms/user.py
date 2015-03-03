@@ -11,8 +11,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.template import defaultfilters
-from django.forms import ModelForm
-from django.contrib.auth.models import User
+from django.forms import ModelForm, Textarea, TextInput,  NumberInput
+from ask.models import *
 
 #IMPORTS SPIRIT
 
@@ -25,10 +25,17 @@ from django.contrib.auth.models import User
 User = get_user_model()
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label=_("Username or Email"), max_length=254)
+	username = forms.CharField(label=_("Username or Email"), max_length=254)
 
 
 class UserForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ("first_name", "last_name", "email","username", "password","is_administrator", "is_staff", "is_moderator")
+	class Meta:
+		model = Usuario
+		fields = ("first_name", "last_name", "email","username", "password","is_administrator", "is_staff", "is_moderator")
+		widgets = {
+			'first_name': TextInput(attrs={'required': 'required'}),
+			'last_name': TextInput(attrs={'required': 'required'}),
+			'email': TextInput(attrs={'required': 'required', 'type': 'email'}),
+			'username': TextInput(attrs={'required': 'required'}),
+			'password': TextInput(attrs={'required': 'required',  'type': 'password'}),
+		}

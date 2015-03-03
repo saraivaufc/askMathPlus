@@ -93,6 +93,7 @@ a{
   background-image: linear-gradient(to bottom, #3b87c9 0%, #2d6da4 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b87c9', endColorstr='#ff2d6da4', GradientType=0);
+  border-radius: 0px !important;
 }
 .navbar-custom .navbar-brand {
   color: #ffffff;

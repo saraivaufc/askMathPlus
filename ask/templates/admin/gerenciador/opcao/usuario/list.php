@@ -33,6 +33,9 @@
 			<div class="col-md-3">
 				<td>Status de Administrador</td>
 			</div>
+			<div class="col-md-3">
+				<td>Opção</td>
+			</div>
 		</tr>
 		{%  for i in usuarios %}
 		<tr class="row">

@@ -11,13 +11,13 @@ from random import randrange
 import smtplib
 from email.mime.text import MIMEText
 import json
-from django.contrib.auth.models import User
-
 #IMPORTS DJANGO
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_page
 
 #IMPORTS SPIRIT
 
@@ -27,8 +27,6 @@ from django.contrib.auth.decorators import login_required
 from ask.models import *
 from ask.utils import *
 from ask.forms import *
-
-
 
 
 
@@ -104,7 +102,6 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 def gerenciador(request):
 	usuario = User.objects.get(username = request.user)
 	return render(request, "admin/gerenciador/principal/principal.php", locals())
-
 
 @login_required
 def listOpcao(request, opcao):
@@ -268,6 +265,7 @@ def editOpcao(request, opcao, id):
 			return HttpResponseRedirect("/gerenciador/")
 
 		return render(request, 'admin/gerenciador/opcao/edit/edit.php', locals())
+
 
 def ordenaPerguntas(request):
 	if request.method == "POST":

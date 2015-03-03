@@ -19,6 +19,7 @@ from django.contrib.auth import authenticate, login as login_admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login as login_view
 from django.contrib.auth.views import logout as logout_sys
+from django.views.decorators.cache import cache_page
 
 #IMPORTS SPIRIT
 
@@ -115,7 +116,7 @@ def principal(request):
 		try:
 			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
 		except:
-			pass
+			print "Error ao setar turma ao usuário..."
 		finally:
 			return HttpResponseRedirect('/principal/')
 	else:
@@ -326,7 +327,6 @@ def secundario(request, tema_conteudo):
 
 
 	return render(request , 'usuario/secundario/secundario.php' , locals())
-
 
 @login_required
 def secundarioOpcoes(request, tema_conteudo):
