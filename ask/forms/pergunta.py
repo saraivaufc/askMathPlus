@@ -27,18 +27,13 @@ class PartialPerguntaForm(ModelForm):
 			'item_d': Textarea(attrs={'cols': 40, 'rows': 3}),
 			'item_e': Textarea(attrs={'cols': 40, 'rows': 3}),
 
-		            'deficiencia_a': Textarea(attrs={'cols': 40, 'rows': 1}),
-		            'deficiencia_b': Textarea(attrs={'cols': 40, 'rows': 1}),
-		            'deficiencia_c': Textarea(attrs={'cols': 40, 'rows': 1}),
-		            'deficiencia_d': Textarea(attrs={'cols': 40, 'rows': 1}),
-		            'deficiencia_e': Textarea(attrs={'cols': 40, 'rows': 1}),
-
-		            'ajuda': Textarea(attrs={'cols': 40, 'rows': 4}),
+            'ajuda': Textarea(attrs={'cols': 40, 'rows': 4}),
 
 
-		            #required
-		            'conteudo_pertence': Select(attrs={'required': 'required'}),
-		            'descricao': Textarea(attrs={'required': 'required'}),
-		            'pontos': NumberInput(attrs={'required': 'required'}),
+            #required
+            'conteudo_pertence': Select(attrs={'required': 'required'}),
+            'item_correto': Select(attrs={'required': 'required'}),
+            'descricao': Textarea(attrs={'required': 'required'}),
+            'pontos': NumberInput(attrs={'required': 'required'}),
 
 		}

@@ -138,30 +138,3 @@ function remPergunta(id){
 		});
 	}
 }
-
-function validaAdd(opcao){
-	if (opcao == 1){
-
-	}else if(opcao == 2){
-
-	}else if(opcao == 3){
-		var item_correto = $("#id_item_correto").val()
-		item = null;
-		if(item_correto == 1){
-			item = $("#id_item_a");
-		}else if (item_correto == 2){
-			item = $("#id_item_b");
-		}else if (item_correto == 3){
-			item = $("#id_item_c");
-		}else if (item_correto == 4){
-			item = $("#id_item_d");
-		}else if (item_correto == 5){
-			item = $("#id_item_e");
-		}
-		if (item.val() == ''){
-			alert("Item Correto esta vazio!!!");
-			return false;
-		}
-	}
-	return true;
-}

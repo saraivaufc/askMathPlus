@@ -142,11 +142,11 @@ def addOpcao(request, opcao):
 
 	if request.method == "POST":
 		if opcao == 1:
-			form = TurmaForm(request.POST)
+			form = PartialTurmaForm(request.POST)
 		elif opcao == 2:
-			form = ConteudoForm(request.POST)
+			form = PartialConteudoForm(request.POST)
 		elif opcao == 3:
-			form = PerguntaForm(request.POST)
+			form = PartialPerguntaForm(request.POST)
 		elif opcao == 4:
 			form = UserForm(request.POST)
 		else:
@@ -156,6 +156,13 @@ def addOpcao(request, opcao):
 			print "Formulario Valido"
 			if(form.save()):
 				ok = True
+				if opcao == 3:
+					try:
+						if atualizaPerguntasVisiveis(request.POST['conteudo_pertence']) == True:
+							print "Perguntas visíveis atualizadas com sucesso."
+					except:
+						print "Erro ao atualizar perguntas visiveis."
+						pass
 				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 			else:
 				ok = False
@@ -235,11 +242,11 @@ def editOpcao(request, opcao, id):
 
 	if request.method == 'POST':
 		if opcao == 1:
-			form = TurmaForm(request.POST,instance=turma)
+			form = PartialTurmaForm(request.POST,instance=turma)
 		elif opcao == 2:
-			form = ConteudoForm(request.POST,instance=conteudo)
+			form = PartialConteudoForm(request.POST,instance=conteudo)
 		elif opcao == 3:
-			form = PerguntaForm(request.POST,instance=pergunta)
+			form = PartialPerguntaForm(request.POST,instance=pergunta)
 		elif opcao == 4:
 			form = UserForm(request.POST,instance=usuario)
 		else:
@@ -334,3 +341,56 @@ def getNomeConteudoPerguntaPertence(request, id):
 		return  HttpResponse(conteudo.getTema())
 	except:
 		return HttpResponse("None")
+
+def atualizaPerguntasVisiveis(id_conteudo):
+	try:
+		conteudo = Conteudo.objects.get(id = id_conteudo)
+	except:
+		print "Falha ao pegar o conteúdo em atualizaPerguntasVisiveis()"
+		return False;
+	perguntas_visiveis = Pergunta.objects.filter(visivel = True)
+	if conteudo.pergunta_inicial_id == None:
+		for i in perguntas_visiveis:
+			if conteudo.pergunta_inicial_id != None:
+				Pergunta.objects.filter(id = conteudo.pergunta_inicial_id).update(visivel = True)
+				Pergunta.objects.filter(id = i.id).update(pergunta_proximo_id = conteudo.pergunta_inicial_id)
+			Conteudo.objects.filter(id = conteudo.id).update(pergunta_inicial = i.id)
+		return True
+	else:
+		id_perguntas = []
+		try:
+			pergunta_atual = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+		except:
+			print "Conteúdo não possui pergunta inicial em atualizaPerguntasVisiveis()"
+			return False	
+		id_perguntas.append(pergunta_atual.id)
+		while pergunta_atual.pergunta_proximo_id != None :
+			try:
+				Pergunta.objects.filter(id = pergunta_atual.id).update(visivel = True)
+				pergunta_atual = Pergunta.objects.get(id = pergunta_atual.pergunta_proximo_id)
+				id_perguntas.append(pergunta_atual.id)
+			except:
+				print "Não existe mais Próxima Pergunta"
+				break
+		for i in perguntas_visiveis:
+			esta = False
+			for k in id_perguntas:
+				if i.id == k:
+					esta = True
+			if esta == False:
+				try:
+					pergunta_inicial = Pergunta.objects.get(id = Conteudo.pergunta_inicial_id)
+					Conteudo.objects.filter(id = conteudo.id).update(pergunta_inicial = i.id)
+					Pergunta.objects.filter(id = i.id).update(pergunta_proximo_id = pergunta_inicial.id)
+				except:
+					break
+		return True
+
+
+
+
+
+
+
+
+

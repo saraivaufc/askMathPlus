@@ -173,6 +173,7 @@
 
 		<!-- My Scripts -->
 		<script type="text/javascript" src="/static/javascript/base.js" ></script>
+		<script type="text/javascript" src="/static/javascript/validacao.js" ></script>
 
 		{% block user-scripts %}
 			<script type="text/javascript" src="/static/javascript/scripts.js" ></script>

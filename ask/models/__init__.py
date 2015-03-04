@@ -304,20 +304,20 @@ class Pergunta(Model):
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui a lição a qual esta pergunta está associada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descrição para a pergunta.")
 	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
-	deficiencia_a =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia A",  help_text="Escreva, se houver, a Deficiência do Item  A.")
+	deficiencia_a =  models.ManyToManyField('Conteudo',related_name="DefifienciaA",null=True , blank=True, verbose_name="Deficiência A", help_text="Marque, se houver, a Deficiência do Item A. ")
 	
 	item_b =  models.TextField(null= True,  blank= True,  verbose_name="Item B",  help_text="Escreva o Item B.")
-	deficiencia_b =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia B",  help_text="Escreva, se houver, a Deficiência do Item B.")
+	deficiencia_b =  models.ManyToManyField('Conteudo',related_name="DefifienciaB",null=True , blank=True, verbose_name="Deficiência B", help_text="Marque, se houver, a Deficiência do Item B. ")
 	
 	item_c =  models.TextField(null= True,  blank= True,  verbose_name="Item C",  help_text="Escreva o Item C.")
-	deficiencia_c =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia C",  help_text="Escreva, se houver, a Deficiência do Item  C.")
+	deficiencia_c =  models.ManyToManyField('Conteudo',related_name="DefifienciaC",null=True , blank=True, verbose_name="Deficiência C", help_text="Marque, se houver, a Deficiência do Item C. ")
 
 	item_d =  models.TextField(null= True,  blank= True,  verbose_name="Item D",  help_text="Escreva o Item D.")
-	deficiencia_d =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia D",  help_text="Escreva, se houver, a Deficiência do Item  D.")
+	deficiencia_d =  models.ManyToManyField('Conteudo',related_name="DefifienciaD",null=True , blank=True, verbose_name="Deficiência D", help_text="Marque, se houver, a Deficiência do Item D. ")
 
 	item_e =  models.TextField(null= True,  blank= True,  verbose_name="Item E",  help_text="Escreva o Item E.")
-	deficiencia_e =  models.TextField(null= True,  blank= True,  verbose_name="Deficiencia E",  help_text="Escreva, se houver, a Deficiência do Item  E.")
-
+	deficiencia_e =  models.ManyToManyField('Conteudo',related_name="DefifienciaE",null=True , blank=True, verbose_name="Deficiência E", help_text="Marque, se houver, a Deficiência do Item E. ")
+	visivel = models.BooleanField(default=True, blank=True, verbose_name="Visível ao Usuário", help_text="Deixe essa opção marcada caso queira que essa pergunta apareça imediatamente ao usuário.")
 	item_correto = models.IntegerField(null = True, blank = True, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
 	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta para a qual o usuário seguirá após responder essa pergunta.")
 	ajuda = models.TextField(null= True,  blank= True,  verbose_name="Ajuda",  help_text="Se desejar, pode adicionar uma ajuda para essa pergunta.")
