@@ -13,7 +13,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a  href="{% block home %}{% endblock %}" class="navbar-brand">
-					AskMath  <span class="glyphicon glyphicon-home "></span>
+					Início  <span class="glyphicon glyphicon-home "></span>
 				</a>
 			</div>
 
