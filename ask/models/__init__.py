@@ -51,22 +51,21 @@ class Model(models.Model):
 		verbose_name = "Modelo Genérico"
 		verbose_name_plural = "Modelos Genéricos"
 
-class Turma(Model):
-	disciplina = models.CharField(max_length=255 , verbose_name="Disciplina",  help_text="Coloque aqui o nome da disciplina dessa turma.")
-	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina está sendo cursada.");
-	professor = models.CharField(max_length=255 , verbose_name="Professor",  help_text="Escreva o nome do Professor que está dando essa disciplina.")
+class Disciplina(Model):
+	nome = models.CharField(max_length=255 , verbose_name="Nome",  help_text="Coloque aqui o nome dessa disciplina.")
+	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina está sendo cursada.")
 
 
 	def __unicode__(self):
-		return str(self.semestre) + ": " + self.disciplina + ":" + self.professor
+		return str(self.semestre) + " - " + self.nome
 
 	class Meta:
 		ordering = ['-semestre']
-		verbose_name = "Turma"
-		verbose_name_plural = "Turmas"
+		verbose_name = "Disciplina"
+		verbose_name_plural = "Disciplinas"
 
 class Usuario(User):
-	turma = models.ForeignKey('Turma', null= True, blank= True, verbose_name="Turma", on_delete = models.SET_NULL,  help_text="Escolha a turma que o aluno pertence.")
+	disciplina = models.ForeignKey('Disciplina', null= True, blank= True, verbose_name="Disciplina", on_delete = models.SET_NULL,  help_text="Escolha uma disciplina.")
 
 	def __unicode__(self):
 		return self.first_name +" " + self.last_name
@@ -76,7 +75,7 @@ class Usuario(User):
 		verbose_name_plural = "usuários"
 
 class Conteudo(Model):
-	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas à qual essa lição pertence.")
+	disciplina = models.ManyToManyField('Disciplina', null= True, blank=True , verbose_name="Disciplina", help_text="Escolha a disciplina que essa lição pertence.")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para a lição.")
 	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto a lição.")
 	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui as lições que são pré-requisitos para esta lição.")
@@ -472,7 +471,7 @@ class Busca_Ajuda(Model):
 
 class Historico(Model):
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuário")
-	turma = models.ForeignKey(Turma, verbose_name="Turma")
+	disciplina = models.ForeignKey(Disciplina, verbose_name="Disciplina")
 	conteudo = models.ForeignKey(Conteudo, verbose_name="Conteúdo")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
 	item = models.IntegerField(verbose_name="Item")
@@ -498,7 +497,7 @@ class Historico(Model):
 		return recente
 
 class Estado_Usuario(Model):
-	turma  = models.ForeignKey(Turma, verbose_name="Turma")
+	disciplina  = models.ForeignKey(Disciplina, verbose_name="Disciplina")
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo , verbose_name="Conteudo")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta")
@@ -511,7 +510,7 @@ class Estado_Usuario(Model):
 		verbose_name_plural = "Estado dos Usuários"
 
 class Pulo(Model):
-	turma  = models.ForeignKey(Turma, verbose_name="Turma")
+	disciplina  = models.ForeignKey(Disciplina, verbose_name="Disciplina")
 	usuario = models.ForeignKey(Usuario, verbose_name="Usuario")
 	conteudo = models.ForeignKey(Conteudo , verbose_name="Conteudo")
 	pergunta = models.ForeignKey(Pergunta, verbose_name="Pergunta", null=True , blank=True, on_delete = models.SET_NULL)

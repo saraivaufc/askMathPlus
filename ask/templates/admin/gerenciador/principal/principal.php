@@ -34,10 +34,10 @@
 							 <div class="list-group-item active">Seus Modelos</div>
 						</div>
 						<div class="row">
-							 <div class="list-group-item {% block classes-turma %}{% endblock %} ">
+							 <div class="list-group-item {% block classes-disciplina %}{% endblock %} ">
 								 <div class="container-fluid">
 								 	<div class="col-xs-6  col-md-8 text-center">
-								 		Turmas
+								 		Disciplinas
 								 	</div>
 								 	<div class="col-xs-6 col-md-4 text-right" value="1">
 								 		<span class="glyphicon glyphicon-list-alt pointer"></span>&nbsp;

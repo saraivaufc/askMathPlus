@@ -1,10 +1,10 @@
 {% extends 'admin/gerenciador/opcao/opcao.php' %}
 
-{% block classes-turma %}list-group-item-info{% endblock %}
+{% block classes-disciplina %}list-group-item-info{% endblock %}
 
 {% block  descricao %}
 <h3 class="text-center">
-	Todas as Turmas
+	Todas as Disciplinas
 </h3>
 {% endblock %}
 
@@ -25,30 +25,24 @@
 				<td>Semestre</td>
 			</div>
 			<div class="col-md-3">
-				<td>Disciplina</td>
-			</div>
-			<div class="col-md-3">
-				<td>Professor</td>
+				<td>Nome</td>
 			</div>
 			<div class="col-md-3">
 				<td>Opcao</td>
 			</div>
 		</tr>
-		{%  for i in turmas %}
+		{%  for i in disciplinas %}
 		<tr class="row">
 			<div class="col-md-3">
 				<td>{{ i.semestre }}</td>
 			</div>
 			<div class="col-md-3">
-				<td>{{ i.disciplina }}</td>
-			</div>
-			<div class="col-md-3">
-				<td>{{ i.professor }}</td>
+				<td>{{ i.nome }}</td>
 			</div>
 			<div class="col-md-3">
 				<td>
-					&nbsp;<span onClick="editTurma({{ i.id }})"  class="glyphicon glyphicon-edit pointer"></span>&nbsp;
-					<span onClick="remTurma({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
+					&nbsp;<span onClick="editDisciplina({{ i.id }})"  class="glyphicon glyphicon-edit pointer"></span>&nbsp;
+					<span onClick="remDisciplina({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>
 		</tr>

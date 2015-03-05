@@ -5,7 +5,7 @@
 	<div class="col-xs-12 col-sm-12  col-md-12">
 		<h3 class="text-center">
 		{% if opcao == 1 %}
-			Adicionar Nova Turma
+			Adicionar Nova Disciplina
 		{%  elif  opcao == 2 %}
 			Adicionar Nova Licao
 		{% elif opcao == 3 %}

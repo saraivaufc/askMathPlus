@@ -1,13 +1,13 @@
 {% extends 'usuario/cabecalhoUser.php' %}
 
 {% block titulo %}
-    Turma
+    Disciplinas
 {% endblock %}
 
 {% block conteudo %}
 <div class="container">
 <center>
-	<h1>Escolha uma Turma</h1>
+	<h1>Escolha uma Disciplina</h1>
 </center>
 	<center>
 		<div id="escolher_turma">
@@ -15,10 +15,10 @@
 			<div class="table-responsive">
 			<table class="table table-bordered">
 			<tr class="info active text-center">
-				<td>#</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
+				<td>#</td><td>Semestre</td><td>Nome</td>
 			</tr>
 
-			{% for i in turmas %}
+			{% for i in disciplinas %}
 				<tr class="text-center">
 					<td>
 						<input type="radio" name="opcao" id="opcao" value="{{i.id}}" required>
@@ -27,15 +27,12 @@
 						{{i.semestre}}
 					</td>
 					<td>
-						{{i.disciplina}}
-					</td>
-					<td>
-						{{i.professor}}
+						{{i.nome}}
 					</td>
 				</tr>
 			{% empty %}
 				<tr class="warning">
-					<td colspan="4"><div class="text-center">Nao existe Turma cadastrada.</div></td>
+					<td colspan="4"><div class="text-center">Nao existe Disciplina cadastrada.</div></td>
 				</tr>
 
 			{% endfor %}

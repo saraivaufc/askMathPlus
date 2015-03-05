@@ -19,29 +19,28 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 
 
-@admin.register(Turma)
-class TurmaAdmin(admin.ModelAdmin):
+@admin.register(Disciplina)
+class DisciplinaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('disciplina',
+        (None,{'fields':('nome',
         	             'semestre',
-        	             'professor',
         				)
         	  }
         ),
 	)
-	list_display = ('id','disciplina','semestre','professor',)
+	list_display = ('id','nome','semestre',)
 	list_display_links = ('id',)
-	list_editable = ('disciplina','semestre','professor',)
+	list_editable = ('nome','semestre',)
 	list_filter = ('semestre',)
 	save_as = True
-	search_fields = ['nome'] 
+	search_fields = ['nome']
 
 @admin.register(Conteudo)
 class ConteudoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':( 'turma',
+        (None,{'fields':( 'disciplina',
         				 'tema',
         	             'descricao',
         	             'pergunta_inicial',  
@@ -58,8 +57,8 @@ class ConteudoAdmin(admin.ModelAdmin):
 	list_display = ('id','tema','max_pulos','linha_metro','tamanho_metro',)
 	list_display_links = ('id',)
 	list_editable = ('tema','max_pulos','linha_metro','tamanho_metro',)
-	list_filter = ('turma','linha_metro','tamanho_metro',)
-	raw_id_fields = ('turma', 'requisitos', 'sugestao_estudo')
+	list_filter = ('disciplina','linha_metro','tamanho_metro',)
+	raw_id_fields = ('disciplina', 'requisitos', 'sugestao_estudo')
 	save_as = True
 	search_fields = ['tema'] 
 
@@ -96,7 +95,7 @@ class HistoricoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
         (None,{'fields':('usuario',
-        			      'turma',
+        			      'disciplina',
         			      'conteudo',
         				  'pergunta',
         				  'item',
@@ -106,7 +105,7 @@ class HistoricoAdmin(admin.ModelAdmin):
         ),
 	)
 	list_display = ('id','usuario',
-			      	'turma',
+			      	'disciplina',
 			      	'conteudo',
 				  	'pergunta',
 				  	'item',
@@ -114,9 +113,9 @@ class HistoricoAdmin(admin.ModelAdmin):
 				  	'criacao',)
 	list_display_links = ('id',)
 	
-	list_filter = ('turma','usuario','turma','conteudo','pergunta','item','acertou','criacao')
+	list_filter = ('disciplina','usuario','disciplina','conteudo','pergunta','item','acertou','criacao')
 	raw_id_fields = ('usuario',
-    			     'turma',
+    			     'disciplina',
     			     'conteudo',
     				 'pergunta',)
 	save_as = True
@@ -126,7 +125,7 @@ class HistoricoAdmin(admin.ModelAdmin):
 class Estado_UsuarioAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('turma',
+        (None,{'fields':('disciplina',
         				  'usuario',
         			      'conteudo',
         				  'pergunta',
@@ -134,15 +133,15 @@ class Estado_UsuarioAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','turma',
+	list_display = ('id','disciplina',
 		   			'usuario',
 			      	'conteudo',
 				  	'pergunta',
 				  	'criacao',)
-	list_display_links = ('id','turma',)
-	list_filter = ('turma','usuario','conteudo','pergunta','criacao')
+	list_display_links = ('id','disciplina',)
+	list_filter = ('disciplina','usuario','conteudo','pergunta','criacao')
 	raw_id_fields = ('usuario',
-    			     'turma',
+    			     'disciplina',
     			     'conteudo',
     				 'pergunta',)
 	save_as = True
@@ -176,7 +175,7 @@ class Busca_AjudaAdmin(admin.ModelAdmin):
 class PuloAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('turma',
+        (None,{'fields':('disciplina',
         				  'usuario',
         			      'conteudo',
         				  'pergunta',
@@ -184,15 +183,15 @@ class PuloAdmin(admin.ModelAdmin):
         	  }
         ),
 	)
-	list_display = ('id','turma',
+	list_display = ('id','disciplina',
 		   			'usuario',
 			      	'conteudo',
 				  	'pergunta',
 				  	'criacao',)
 	list_display_links = ('id',)
-	list_filter = ('turma','usuario','conteudo','pergunta','criacao',)
+	list_filter = ('disciplina','usuario','conteudo','pergunta','criacao',)
 	raw_id_fields = ('usuario',
-    			     'turma',
+    			     'disciplina',
     			     'conteudo',
     				 'pergunta',)
 	save_as = True

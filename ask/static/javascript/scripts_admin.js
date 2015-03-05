@@ -48,18 +48,18 @@ $(document).ready(function(){
 });
 
 
-function editTurma(id){
+function editDisciplina(id){
 	window.location = "/gerenciador/edit/1/" +id + "/";
 }
 
 
-function remTurma(id){
-	if(window.confirm("Deseja realmente remover essa Turma?")){
+function remDisciplina(id){
+	if(window.confirm("Deseja realmente remover essa Disciplina?")){
 		$.get("/gerenciador/rem/1/" +id + "/", function(data){
 			if(data == "True"){
-				alert("Turma Removida com Sucesso!!!");
+				alert("Disciplina Removida com Sucesso!!!");
 			}else{
-				alert("Falha ao Remover Turma!!!");
+				alert("Falha ao Remover Disciplina!!!");
 			}
 			window.location = window.location;
 		});

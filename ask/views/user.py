@@ -114,21 +114,21 @@ def principal(request):
 
 	if request.method == 'POST':
 		try:
-			Usuario.objects.filter(id = usuario.id).update(turma = request.POST['opcao'])
+			Usuario.objects.filter(id = usuario.id).update(disciplina = request.POST['opcao'])
 		except:
-			print "Error ao setar turma ao usuário..."
+			print "Error ao setar disciplina ao usuário..."
 		finally:
 			return HttpResponseRedirect('/principal/')
 	else:
 		try:
-			turma = Turma.objects.get(id = usuario.turma_id)
+			disciplina = Disciplina.objects.get(id = usuario.disciplina_id)
 		except:
-			turmas = Turma.objects.all()
-			return render(request , 'usuario/principal/turma.php' ,locals())
+			disciplinas = Disciplina.objects.all()
+			return render(request , 'usuario/principal/disciplina.php' ,locals())
 
-		conteudos1 = Conteudo.objects.filter(linha_metro = 1, turma = usuario.turma).order_by("tema");
-		conteudos2 = Conteudo.objects.filter(linha_metro = 2,turma = usuario.turma).order_by("tema");
-		conteudos3 = Conteudo.objects.filter(linha_metro = 3,turma = usuario.turma).order_by("tema");
+		conteudos1 = Conteudo.objects.filter(linha_metro = 1, disciplina = usuario.disciplina).order_by("tema");
+		conteudos2 = Conteudo.objects.filter(linha_metro = 2,disciplina = usuario.disciplina).order_by("tema");
+		conteudos3 = Conteudo.objects.filter(linha_metro = 3,disciplina = usuario.disciplina).order_by("tema");
 
 		fecharSecaoaberta(usuario)
 		
@@ -171,7 +171,7 @@ def secundario(request, tema_conteudo):
 			return HttpResponse("Falha ao pegar Opcao")
 		#Caso a Pergunta nao tenha um item Correto(Falha do Administrador)
 
-		if atualiza_historico( usuario.id ,usuario.turma_id,conteudo.id ,pergunta.id ,item ) == False:
+		if atualiza_historico( usuario.id ,usuario.disciplina_id,conteudo.id ,pergunta.id ,item ) == False:
 			print 'Sem Item Correto : linha 139'
 			return render(request, 'usuario/avisos/sem_item_correto.php', locals())
 		
@@ -527,13 +527,13 @@ def atualiza_estado(usuario_id, conteudo_id, pergunta_id):
 	except:
 		estado_usuario = Estado_Usuario.objects.create(
 			usuario_id = usuario.id,
-			turma_id = usuario.turma_id,
+			disciplina_id = usuario.disciplina_id,
 			conteudo_id = conteudo_id,
 			pergunta_id = pergunta_id,
 		);
 		estado_usuario.save()
 
-def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item):
+def atualiza_historico( id_usuario, id_disciplina, id_conteudo , id_pergunta, id_item):
 	try:
 		id_item = int(id_item)
 	except:
@@ -554,7 +554,7 @@ def atualiza_historico( id_usuario, id_turma, id_conteudo , id_pergunta, id_item
 	#aqui eu crio o historico
 	historico = Historico.objects.create(
 			usuario_id = id_usuario,
-			turma_id = id_turma,
+			disciplina_id = id_disciplina,
 			conteudo_id = id_conteudo,
 			pergunta_id = id_pergunta,
 			item = id_item,
@@ -654,7 +654,7 @@ def pulo(request,id_conteudo, id_pergunta):
 		return HttpResponseRedirect('/login/falha')
 	
 	pulo = Pulo.objects.create(
-		turma_id = usuario.turma_id,
+		disciplina_id = usuario.disciplina_id,
 		usuario_id = usuario.id,
 		conteudo_id = id_conteudo,
 		pergunta_id = id_pergunta

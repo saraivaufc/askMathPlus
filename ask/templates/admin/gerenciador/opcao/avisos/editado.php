@@ -13,7 +13,7 @@
 			<h1 class="text-center">
 				{%  if ok %}
 					{% if opcao == 1 %}
-					 	Turma Editada Com Sucesso!!!
+					 	Disciplina Editada Com Sucesso!!!
 					 {%  elif opcao == 2 %}
 					 	Licao Editada Com Sucesso!!!
 					 {% elif opcao == 3 %}
@@ -25,7 +25,7 @@
 					 {% endif %}
 				{% else %}
 					{% if opcao == 1 %}
-					 	Falha ao Editar Turma!!!
+					 	Falha ao Editar Disciplina!!!
 					 {%  elif opcao == 2 %}
 					 	Falha ao Editar Licao!!!
 					 {% elif opcao == 3 %}
@@ -45,7 +45,7 @@
 				{% endif %}
 				
 				{% if opcao == 1 %}
-				 	Voltar as Turmas
+				 	Voltar as Disciplinas
 				 {%  elif opcao == 2 %}
 				 	Voltar as Licoes
 				 {% elif opcao == 3 %}

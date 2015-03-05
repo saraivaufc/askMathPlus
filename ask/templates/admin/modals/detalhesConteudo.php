@@ -7,21 +7,18 @@
 		    </div>
 		    <div class="modal-body">
 		    	<table class="table table-bordered table-hover">
-		    		<caption>Turmas</caption>
+		    		<caption>Disciplinas</caption>
 					<tr class="info text-center">
-						</td><td>Semestre</td><td>Disciplina</td><td>Professor</td>
+						</td><td>Semestre</td><td>Nome</td>
 					</tr>
 
-					{% for i in turmas %}
+					{% for i in disciplinas %}
 						<tr class="text-center">
 							<td>
 								{{i.semestre|default_if_none:"Nenhum"}}
 							</td>
 							<td>
-								{{i.disciplina}}
-							</td>
-							<td>
-								{{i.professor}}
+								{{i.nome}}
 							</td>
 						</tr>
 					{% empty %}

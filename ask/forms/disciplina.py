@@ -9,14 +9,14 @@ from ask.models import *
 from django.forms import ModelForm, Textarea, TextInput, NumberInput
 
 
-class TurmaForm(ModelForm):
+class DisciplinaForm(ModelForm):
 	class Meta:
-		model= Turma
+		model= Disciplina
 		fields = '__all__'
 
-class PartialTurmaForm(ModelForm):
+class PartialDisciplinaForm(ModelForm):
 	class Meta:
-		model= Turma
+		model= Disciplina
 		exclude = ['criacao',]
 
 		widgets = {
