@@ -8,6 +8,11 @@
 			Forum <span class="glyphicon glyphicon-globe"></span>
 		</a>
 	</li>
+	<li>
+		<a data-toggle="modal" data-rel="dialog"  data-target="#disciplinas">
+			Disciplinas <span class="glyphicon glyphicon-th-list"></span>
+		</a>
+	</li>
 {% endblock %}
 
 {% block nav-dir %}
@@ -26,5 +31,7 @@
 			Sair <span class="glyphicon glyphicon-log-out"></span>
 		</a>
 	</li>
+
+{% include 'usuario/modals/disciplinas.php' %}
 {% endblock %}
 
