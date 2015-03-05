@@ -41,9 +41,10 @@ class TurmaAdmin(admin.ModelAdmin):
 class ConteudoAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':(		'turma',
+        (None,{'fields':( 'turma',
         				 'tema',
-        	             		'descricao',  
+        	             'descricao',
+        	             'pergunta_inicial',  
         				  'requisitos',
         				  'sugestao_estudo',
         				  'max_pulos',

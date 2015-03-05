@@ -50,21 +50,15 @@
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
 								PERGUNTAS VISIVEIS AOS ALUNOS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
-							{% if conteudo.pergunta_inicial_id == None and conteudo.getQuantPerguntasTotal > 0 %}
-						  		<li  class="list-group-item list-group-item-danger">
-						  			Lição não possui pergunta Inicial!!!, Corrija isso imediatamente...
+						  	{% for i in conteudo.getPerguntasOrdenadas %}
+						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
+						  			<t>{{ i.getDescricao|safe|truncatechars_html:80 }}</t>
 						  		</li>
-						  	{% else %}
-							  	{% for i in conteudo.getPerguntasOrdenadas %}
-							  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
-							  			<t>{{ i.getDescricao|safe|truncatechars_html:80 }}</t>
-							  		</li>
-							  	{% empty %}
-							  		<li class="list-group-item list-group-item-warning">
-							  			Licao nao possui Perguntas Visiveis aos Alunos...
-							  		</li>
-							  	{% endfor %}
-							{% endif %}
+						  	{% empty %}
+						  		<li class="list-group-item list-group-item-warning">
+						  			Licao nao possui Perguntas Visiveis aos Alunos...
+						  		</li>
+						  	{% endfor %}
 						</ul>
 						<ul class="lista_perguntas list-group  perguntas_desordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">

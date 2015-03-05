@@ -54,7 +54,7 @@ def secundario_admin(request, tema_conteudo):
 		turmas = conteudo.turma.all()
 
 		try:
-			pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+			pergunta_inicial = conteudo.getPerguntasOrdenadas()[0]
 		except:
 			pass
 
@@ -78,13 +78,19 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 		existeProximo = False
 		existeAjuda = False
 		try:
-			perguntaAnterior = Pergunta.objects.get(pergunta_proximo_id = pergunta.id)
-			existeAnterior = True
+			perguntaAnterior = pergunta.getPerguntaAnterior()
+			if perguntaAnterior != None:
+				existeAnterior = True
+			else:
+				existeAnterior = False
 		except:
 			existeAnterior = False
 		try:
-			perguntaProximo = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
-			existeProximo = True
+			perguntaProximo = pergunta.getPerguntaProxima()
+			if perguntaProximo != None:
+				existeProximo = True
+			else:
+				existeProximo = False
 		except:
 			existeProximo = False
 		if pergunta.ajuda != '':
@@ -283,7 +289,6 @@ def ordenaPerguntas(request):
 		perguntas = json.loads(perguntas)
 		
 		if len(perguntas) == 0:
-			Conteudo.objects.filter(id = conteudo_id).update(pergunta_inicial_id = None)
 			return HttpResponse("Sem Perguntas Iniciais")
 		
 		quant_perguntas = len(perguntas.keys())
@@ -291,16 +296,9 @@ def ordenaPerguntas(request):
 		for  i in range(quant_perguntas):
 			pergunta_id = perguntas[str(i)]
 			try:
-				Pergunta.objects.filter(id = pergunta_id).update(visivel = True)
+				Pergunta.objects.filter(id = pergunta_id).update(posicao = i, visivel = True)
 			except:
-				pass
-			if i == 0:
-				Conteudo.objects.filter(id = conteudo_id).update(pergunta_inicial_id = pergunta_id)
-			else:
-				pergunta_anterior_id = perguntas[str(i-1)]
-				Pergunta.objects.filter(id = pergunta_anterior_id ).update(pergunta_proximo_id = pergunta_id)
-				if i == (quant_perguntas-1):
-					Pergunta.objects.filter(id = pergunta_id).update(pergunta_proximo_id = None)
+				continue
 
 
 
@@ -320,8 +318,7 @@ def zerarPerguntas(request):
 
 		for  i in range(quant_perguntas):
 			pergunta_id = perguntas[str(i)]
-			Pergunta.objects.filter(id = pergunta_id).update(pergunta_proximo_id = None, visivel=False)
-
+			Pergunta.objects.filter(id = pergunta_id).update(posicao=None, visivel=False)
 
 
 
@@ -351,59 +348,10 @@ def atualizaPerguntasVisiveis(id_conteudo):
 	except:
 		print "Falha ao pegar o conteúdo em atualizaPerguntasVisiveis()"
 		return False;
-	perguntas_visiveis = Pergunta.objects.filter(visivel = True)
-	if conteudo.pergunta_inicial_id == None:
-		pergunta_atual = None
-		for i in perguntas_visiveis:
-			if conteudo.pergunta_inicial_id != None:
-				if pergunta_atual == None:
-					pergunta_atual = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-					while pergunta_atual.pergunta_proximo_id != None:
-						pergunta_atual = Pergunta.objects.get(id = pergunta_atual.pergunta_proximo_id)
-
-				Pergunta.objects.filter(id = conteudo.pergunta_inicial_id).update(visivel = True)
-				Pergunta.objects.filter(id = i.id).update(pergunta_proximo_id = conteudo.pergunta_inicial_id)
-			else:
-				Conteudo.objects.filter(id = conteudo.id).update(pergunta_inicial = i.id)
-				pergunta_atual = Pergunta.objects.get(id = i.id)
-			
-		return True
-	else:
-		id_perguntas = []
-		try:
-			pergunta_atual = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-		except:
-			print "Conteúdo não possui pergunta inicial em atualizaPerguntasVisiveis()"
-			return False	
-		id_perguntas.append(pergunta_atual.id)
-		while pergunta_atual.pergunta_proximo_id != None :
-			try:
-				Pergunta.objects.filter(id = pergunta_atual.id).update(visivel = True)
-				pergunta_atual = Pergunta.objects.get(id = pergunta_atual.pergunta_proximo_id)
-				id_perguntas.append(pergunta_atual.id)
-			except:
-				print "Não existe mais Próxima Pergunta"
-				break
-		for i in perguntas_visiveis:
-			esta = False
-			for k in id_perguntas:
-				if i.id == k:
-					esta = True
-			if esta == False:
-				try:
-					try:
-						pergunta_inicial = Pergunta.objects.get(id = Conteudo.pergunta_inicial_id)
-					except:
-						Conteudo.objects.filter(id = conteudo.id).update(pergunta_inicial = i.id)
-						continue
-					while pergunta_inicial.pergunta_proximo_id != None:
-						pergunta_inicial = Pergunta.objects.get(id = pergunta_inicial.pergunta_proximo_id)
-					Pergunta.objects.filter(id = pergunta_inicial.id).update(pergunta_proximo_id = i.id)
-					Pergunta.objects.filter(id = i.id).update(pergunta_proximo_id = None)
-				except:
-					print "Falha ao deixar Pergunta visivel"
-					continue
-		return True
+	perguntas_visiveis = Pergunta.objects.filter(conteudo_pertence = id_conteudo, visivel=True, order_by="posicao")
+	for i in range(len(perguntas_visiveis)):
+		Pergunta.objects.filter(id = perguntas_visiveis[i].id ).update(posicao = i+1)
+	
 
 
 

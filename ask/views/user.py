@@ -186,8 +186,9 @@ def secundario(request, tema_conteudo):
 		else:
 			pergunta.errou(usuario)
 
+
 		#Se pergunta nao tiver uma proxima pergunta
-		if pergunta.pergunta_proximo == None:
+		if pergunta.getPerguntaProxima() == None:
 			perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
@@ -204,7 +205,7 @@ def secundario(request, tema_conteudo):
 
 		#Mas se Ele tiver uma Pergunta Proxima
 		else:
-			pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
+			pergunta = pergunta.getPerguntaProxima()
 			perguntas_certas = conteudo.getPerguntasCertas(usuario)
 			respondida_certa = False
 			for i in perguntas_certas:
@@ -304,8 +305,8 @@ def secundario(request, tema_conteudo):
 	try:
 		pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
 		ps.append(pergunta_inicial)
-		while ps[len(ps)-1].pergunta_proximo_id != None:
-			pergunta_proximo = Pergunta.objects.get(id = ps[len(ps)-1].pergunta_proximo_id)
+		while ps[len(ps)-1].getPerguntaProxima() != None:
+			pergunta_proximo = ps[len(ps)-1].getPerguntaProxima()
 			ps.append(pergunta_proximo)
 	except:
 		return render(request , 'usuario/secundario/secundario.php' , locals())
@@ -478,7 +479,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 		return HttpResponse("None")
 
 	#Se Mesmo Acertando, a pergunta nao tiver uma proxima pergunta
-	if pergunta.pergunta_proximo_id == None:
+	if pergunta.getPerguntaProxima() == None:
 		perguntas_erradas =  conteudo.getPerguntasRestantes(usuario)
 
 		# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
@@ -497,7 +498,7 @@ def atualiza_estado_usuario(request, conteudo_id, pergunta_id):
 
 	#Mas se Ele tiver uma Pergunta Proxima
 	else:
-		pergunta = Pergunta.objects.get(id = pergunta.pergunta_proximo_id)
+		pergunta = pergunta.getPerguntaProxima()
 
 	atualiza_estado(usuario.id, conteudo.id, pergunta.id)
 	return HttpResponseRedirect("/principal/" +  transform_tema_revert(conteudo.tema))

@@ -18,7 +18,7 @@ class PerguntaForm(ModelForm):
 class PartialPerguntaForm(ModelForm):
 	class Meta:
 		model=Pergunta
-		exclude  = ['criacao', 'pergunta_proximo',]
+		exclude  = ['criacao', 'posicao',]
 		localized_fields = ('__all__',)
 		widgets = {
 			'item_a': Textarea(attrs={'cols': 40, 'rows': 3}),

@@ -20,7 +20,7 @@ class ConteudoForm(ModelForm):
 class PartialConteudoForm(ModelForm):
 	class Meta:
 		model=Conteudo
-		exclude  = ['pergunta_inicial','criacao']
+		exclude  = ['criacao']
 
 		widgets = {
 			'tema': TextInput(attrs={'required': 'required'}),
@@ -28,6 +28,4 @@ class PartialConteudoForm(ModelForm):
 			'max_pulos': NumberInput(attrs={'required': 'required'}),
 			'linha_metro': Select(attrs={'required': 'required'}),
 			'tamanho_metro': Select(attrs={'required': 'required'}),
-
-
 		}

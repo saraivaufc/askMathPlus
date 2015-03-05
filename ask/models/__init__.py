@@ -79,7 +79,6 @@ class Conteudo(Model):
 	turma = models.ManyToManyField('Turma', null= True, blank=True , verbose_name="Turma", help_text="Escolha as turmas à qual essa lição pertence.")
 	tema = models.CharField(max_length=255 , unique=True, verbose_name="Tema", help_text="Escolha um tema para a lição.")
 	descricao = models.TextField(verbose_name="Descrição", help_text="Escreva uma descriçao sobre o assunto a lição.")
-	pergunta_inicial = models.ForeignKey('Pergunta',  null=True , blank=True , verbose_name="Pergunta Inicial", on_delete = models.SET_NULL, help_text="Toda lição precisa ter uma pergunta inicial.")
 	requisitos = models.ManyToManyField('Conteudo',related_name="Requisitos",null=True , blank=True, verbose_name="Requisitos", help_text="Escolha aqui as lições que são pré-requisitos para esta lição.")
 	sugestao_estudo = models.ManyToManyField('Conteudo',related_name="Sugestoes",null=True , blank=True,verbose_name="Sugestao Estudo", help_text="Escolha aqui quais lições o usuário deve seguir após a conclusão desta.")
 	max_pulos = models.IntegerField(verbose_name="Maximo de Pulos", help_text="Coloque aqui a quantidade de pulos que o usuário pode realizar nessa lição.")
@@ -95,12 +94,6 @@ class Conteudo(Model):
 		ordering = ['-criacao']
 		verbose_name = "Conteudo"
 		verbose_name_plural = "Conteudos"
-	
-	def clean(self):
-		if self.pergunta_inicial_id != None:
-			pergunta = Pergunta.objects.get(id = self.pergunta_inicial_id)
-			if self.id != pergunta.conteudo_pertence_id:
-				raise ValidationError("A Pergunta Inicial Não Pertence a esse Conteúdo.")
 
 	def getTema(self):
 		return transform_tema_revert(self.tema)
@@ -112,33 +105,11 @@ class Conteudo(Model):
 		return len(self.getPerguntasOrdenadas())
 
 	def getPerguntasOrdenadas(self):
-		perguntas = []
-		perguntas_vistas = []
-		if self.pergunta_inicial_id != None:
-			pergunta_inicial =  Pergunta.objects.get(id = self.pergunta_inicial_id)
-			perguntas.append(pergunta_inicial)
-			perguntas_vistas.append(pergunta_inicial.id)
-
-			while perguntas[len(perguntas)-1].pergunta_proximo_id != None:
-				pergunta_proximo = Pergunta.objects.get(id = perguntas[len(perguntas)-1].pergunta_proximo_id)
-				if pergunta_proximo.id in perguntas_vistas:
-					break
-				perguntas.append(pergunta_proximo)
-				perguntas_vistas.append(pergunta_proximo.id)
-				
-		return perguntas
+		perguntas_ordenadas = Pergunta.objects.filter(conteudo_pertence_id = self.id, visivel=True).order_by("posicao")
+		return perguntas_ordenadas
 
 	def getPerguntasNaoOrdenadas(self):
-		perguntas_all = Pergunta.objects.filter(conteudo_pertence_id = self.id)
-		perguntas_ordenadas = self.getPerguntasOrdenadas()
-		perguntas_nao_ordenadas = []
-		for i in perguntas_all:
-			cotem = False
-			for k in perguntas_ordenadas:
-				if i.id == k.id:
-					cotem = True
-			if cotem == False:
-				perguntas_nao_ordenadas.append(i)
+		perguntas_nao_ordenadas = Pergunta.objects.filter(conteudo_pertence_id = self.id, visivel=False).order_by("posicao")
 		return perguntas_nao_ordenadas
 
 
@@ -210,7 +181,6 @@ class Conteudo(Model):
 			if existe == False:
 				nao_respondidas.append(i)
 		return nao_respondidas
-
 
 	def getPerguntasCertas(self, usuario):
 		his = Historico.objects.filter(conteudo = self.id, usuario = usuario.id, acertou = True)
@@ -292,7 +262,7 @@ class Conteudo(Model):
 													 conteudo = self.id,
 													 )
 		except:
-			pontuacao = Pontuacao.objects.create(usuario_id = usuario.id,
+			pontuacao = Pontuacao.objects.create(usuario = usuario.id,
 														conteudo_id = self.id,
 														pulosMaximo = self.max_pulos,
 														pulosRestantes = self.max_pulos)
@@ -301,6 +271,7 @@ class Conteudo(Model):
 
 	
 class Pergunta(Model):
+	posicao = models.IntegerField(verbose_name="Posição", null= True, blank=True)
 	conteudo_pertence = models.ForeignKey(Conteudo, verbose_name="Conteudo Pertence",null=True , blank=False, on_delete = models.SET_NULL,  help_text="Escolha aqui a lição a qual esta pergunta está associada.")
 	descricao = models.TextField(verbose_name="Descrição",  help_text="Escreva uma descrição para a pergunta.")
 	item_a =  models.TextField(null= True,  blank= True,  verbose_name="Item A",  help_text="Escreva o Item A.")
@@ -317,9 +288,9 @@ class Pergunta(Model):
 
 	item_e =  models.TextField(null= True,  blank= True,  verbose_name="Item E",  help_text="Escreva o Item E.")
 	deficiencia_e =  models.ManyToManyField('Conteudo',related_name="DefifienciaE",null=True , blank=True, verbose_name="Deficiência E", help_text="Marque, se houver, a Deficiência do Item E. ")
+	
 	visivel = models.BooleanField(default=True, blank=True, verbose_name="Visível ao Usuário", help_text="Deixe essa opção marcada caso queira que essa pergunta apareça imediatamente ao usuário.")
 	item_correto = models.IntegerField(null = True, blank = True, verbose_name="Item Correto", help_text="Diga qual dos itens e o correto.", choices=ITENS)
-	pergunta_proximo = models.ForeignKey('Pergunta' ,related_name="proxima pergunta" , null=True , blank=True, verbose_name="Pergunta Proximo", on_delete = models.SET_NULL,  help_text="Escolha a pergunta para a qual o usuário seguirá após responder essa pergunta.")
 	ajuda = models.TextField(null= True,  blank= True,  verbose_name="Ajuda",  help_text="Se desejar, pode adicionar uma ajuda para essa pergunta.")
 	pontos = models.IntegerField(verbose_name="Pontos Valem",  help_text="Digite aqui a quantidade de pontos que a pergunta vale.")
 
@@ -345,11 +316,6 @@ class Pergunta(Model):
 			elif self.item_correto == 5 and self.item_e == None:
 				raise ValidationError("Item Correto Está em Branco")
 
-		if self.pergunta_proximo_id != None:
-			pergunta = Pergunta.objects.get(id = self.pergunta_proximo_id)
-			if pergunta.conteudo_pertence_id != self.conteudo_pertence_id:
-				raise ValidationError('A Próxima Pergunta Não Pertence ao Conteúdo dessa Pergunta.')
-
 	def pediuAjuda(self, usuario):
 		try:
 			b = Busca_Ajuda.objects.create(
@@ -365,6 +331,45 @@ class Pergunta(Model):
 
 	def getItemCorreto(self):
 		return self.item_correto
+
+	
+	def getPerguntaProxima(self):
+		try:
+			conteudo = Conteudo.objects.get(id = self.conteudo_pertence_id)
+		except:
+			print "wew"
+			return None
+		perguntas_ordenadas = conteudo.getPerguntasOrdenadas()
+
+		chegou = False
+		for i in perguntas_ordenadas:
+			if chegou:
+				return i
+			if self.id == i.id:
+				chegou = True
+		return None
+
+
+
+	def getPerguntaAnterior(self):
+		try:
+			conteudo = Conteudo.objects.get(id = self.conteudo_pertence_id)
+		except:
+			return None
+		perguntas_ordenadas = conteudo.getPerguntasOrdenadas()
+
+		anterior = None
+		chegou = False
+		for i in perguntas_ordenadas:
+			if chegou:
+				return anterior
+			if self.id == i.id:
+				chegou = True
+			else:
+				anterior = i
+		return anterior
+
+
 
 	def getDescricaoItemCorreto(self):
 		if self.item_correto == 1:
