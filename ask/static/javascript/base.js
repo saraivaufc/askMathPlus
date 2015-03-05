@@ -107,6 +107,6 @@ function zerarLista(){
 
 function atualizarListas(){
 	zerarLista();
-    	atualizarLista();
-    	window.location = window.location;
+	atualizarLista();
+	window.location = window.location;
 }
