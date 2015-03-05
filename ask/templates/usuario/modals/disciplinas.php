@@ -9,29 +9,10 @@
 				<div>
 				<form  class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
 					<div class="table-responsive">
-					<table class="table table-bordered">
-					<tr class="info active text-center">
-						<td>#</td><td>Semestre</td><td>Nome</td>
-					</tr>
-
-					{% for i in disciplinas %}
-						<tr class="text-center">
-							<td>
-								<input type="radio" name="opcao" id="opcao" value="{{i.id}}" required>
-							</td>
-							<td>
-								{{i.semestre}}
-							</td>
-							<td>
-								{{i.nome}}
-							</td>
+					<table id="disciplinas" class="table table-bordered disciplinas">
+						<tr class="info active text-center">
+							<td>#</td><td>Semestre</td><td>Nome</td>
 						</tr>
-					{% empty %}
-						<tr class="warning">
-							<td colspan="4"><div class="text-center">Nao existe Disciplina cadastrada.</div></td>
-						</tr>
-
-					{% endfor %}
 					</table>
 					</div>
 						<div class="btn-group btn-group-justified tela-opcoes-1">

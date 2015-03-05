@@ -34,4 +34,3 @@
 
 {% include 'usuario/modals/disciplinas.php' %}
 {% endblock %}
-

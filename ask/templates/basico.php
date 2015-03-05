@@ -174,6 +174,7 @@
 		<!-- My Scripts -->
 		<script type="text/javascript" src="/static/javascript/base.js" ></script>
 		<script type="text/javascript" src="/static/javascript/validacao.js" ></script>
+		<script type="text/javascript" src="/static/javascript/carrega_disciplinas.js" ></script>
 
 		{% block user-scripts %}
 			<script type="text/javascript" src="/static/javascript/scripts.js" ></script>
@@ -183,8 +184,17 @@
 
 		<script type="text/javascript">
 			{% block funcoes %}
+
 			{% endblock %}
 		</script>
+
+		{% if request.user.is_staff == False %}
+		<script type="text/javascript">
+			$(function(){
+				carrega_disciplinas();
+			});
+		</script>
+		{% endif %}
 
 	</body>
 </html>
