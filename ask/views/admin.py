@@ -19,6 +19,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_page
 
+
 #IMPORTS SPIRIT
 
 #IMPORTS USER_PROFILE_SPIRIT
@@ -169,6 +170,14 @@ def addOpcao(request, opcao):
 					except:
 						print "Erro ao atualizar perguntas visiveis."
 						pass
+				if opcao == 4:
+					try:
+						senha = request.POST['password']
+						u = User.objects.get(username=request.POST['username'])
+						u.set_password(senha)
+						u.save()
+					except:
+						pass
 				return render(request, "admin/gerenciador/opcao/avisos/adicionado.php", locals())
 			else:
 				ok = False
@@ -261,6 +270,12 @@ def editOpcao(request, opcao, id):
 		if form.is_valid():
 			form.save()
 			ok= True
+			if opcao == 3:
+				try:
+					senha = md5.new(request.POST['password']).hexdigest()
+					User.objects.filter(username=request.POST['username']).update(password=senha)
+				except:
+					pass
 			return render(request, "admin/gerenciador/opcao/avisos/editado.php", locals())
 		else:
 			ok = False

@@ -221,7 +221,10 @@ class Conteudo(Model):
 				if k.id == p.pergunta_id:
 					existe = True
 			if existe == False:
-				res.append(Pergunta.objects.get(id = p.pergunta_id))
+				try:
+					res.append(Pergunta.objects.get(id = p.pergunta_id))
+				except:
+					continue
 
 		resFinal = []
 		for i in res:
