@@ -288,7 +288,7 @@ def secundario(request, tema_conteudo):
 		existePulos = True
 
 	existeAjuda = False
-	if pergunta.ajuda != None:
+	if len(pergunta.ajuda) > 0:
 		existeAjuda = True
 
 	try:

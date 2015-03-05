@@ -48,7 +48,7 @@
 				 		
 				 		<ul class="lista_perguntas list-group  perguntas_ordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
-								PERGUNTAS VISIVEIS AOS ALUNOS <span class="glyphicon glyphicon-info-sign"></span>
+								PERGUNTAS VISIVEIS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 						  	{% for i in conteudo.getPerguntasOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
@@ -62,7 +62,7 @@
 						</ul>
 						<ul class="lista_perguntas list-group  perguntas_desordenadas">
 							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
-								PERGUNTAS INVISIVEIS AOS ALUNOS <span class="glyphicon glyphicon-info-sign"></span>
+								PERGUNTAS INVISIVEIS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 						  	{% for i in conteudo.getPerguntasNaoOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
