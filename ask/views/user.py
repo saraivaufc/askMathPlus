@@ -301,31 +301,15 @@ def secundario(request, tema_conteudo):
 		secao.save()
 
 
-	ps = []
-	try:
-		pergunta_inicial = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
-		ps.append(pergunta_inicial)
-		while ps[len(ps)-1].getPerguntaProxima() != None:
-			pergunta_proximo = ps[len(ps)-1].getPerguntaProxima()
-			ps.append(pergunta_proximo)
-	except:
-		return render(request , 'usuario/secundario/secundario.php' , locals())
-
-	
-
-
 	NUMEROPERGUNTA = 0
-	achou = False
-	for i in ps:
+	pO = conteudo.getPerguntasOrdenadas()
+	index = 1
+	for i in pO:
 		if i.id == pergunta.id:
-			NUMEROPERGUNTA += 1
-			achou = True
-			break;
+			NUMEROPERGUNTA = index
+			break
 		else:
-			NUMEROPERGUNTA += 1
-	if not achou:
-		NUMEROPERGUNTA = 0
-
+			index+=1
 
 	return render(request , 'usuario/secundario/secundario.php' , locals())
 

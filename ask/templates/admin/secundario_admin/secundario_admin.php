@@ -47,8 +47,8 @@
 					 	<input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
 				 		
 				 		<ul class="lista_perguntas list-group  perguntas_ordenadas">
-							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
-								PERGUNTAS VISIVEIS <span class="glyphicon glyphicon-info-sign"></span>
+							<li  data-toggle="modal" data-target="#perguntas_visiveis"  class="list-group-item active link">
+								PERGUNTAS VISÍVEIS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 						  	{% for i in conteudo.getPerguntasOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
@@ -61,8 +61,8 @@
 						  	{% endfor %}
 						</ul>
 						<ul class="lista_perguntas list-group  perguntas_desordenadas">
-							<li  data-toggle="modal" data-target="#pergunta_modal"  class="list-group-item active link">
-								PERGUNTAS INVISIVEIS <span class="glyphicon glyphicon-info-sign"></span>
+							<li  data-toggle="modal" data-target="#perguntas_invisiveis"  class="list-group-item active link">
+								PERGUNTAS INVISÍVEIS <span class="glyphicon glyphicon-info-sign"></span>
 							</li>
 						  	{% for i in conteudo.getPerguntasNaoOrdenadas %}
 						  		<li  value="{{ i.id }}"  name="pergunta" href="/principal_admin/{{ tema_conteudo }}/{{i.id}}/" class="list-group-item move">
@@ -137,7 +137,8 @@
 				{% include 'usuario/modals/requisitos.php' %}
 				{% include 'usuario/modals/sugestoes.php' %}
 				{% include 'admin/modals/detalhesConteudo.php' %}
-				{% include 'admin/modals/perguntasLicao.php' %}
+				{% include 'admin/modals/perguntasVisiveis.php' %}
+				{% include 'admin/modals/perguntasInvisiveis.php' %}
 			{% endblock %}
 
 		</div>

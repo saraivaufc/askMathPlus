@@ -22,13 +22,13 @@
 	<table class="table table-bordered text-center">
 		<tr class="row">
 			<div class="col-md-4">
-				<td>Conteudo</td>
+				<td>Lição</td>
 			</div>
 			<div class="col-md-4">
-				<td>Descricao</td>
+				<td>Descrição</td>
 			</div>
 			<div class="col-md-4">
-				<td>Opcao</td>
+				<td>Opção</td>
 			</div>
 		</tr>
 		{%  for i in perguntas %}

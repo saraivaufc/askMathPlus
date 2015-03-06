@@ -1,13 +1,16 @@
 <!-- Modal Perguntas -->
-<div class="modal fade" id="pergunta_modal" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
+<div class="modal fade" id="perguntas_invisiveis" tabindex="-1" role="dialog" aria-labelledby="contatoLabel" aria-hidden="true">
   	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title text-center" id="myModalLabel">PERGUNTAS DESTA LICAO</h3>
+				<h3 class="modal-title text-center" id="myModalLabel">PERGUNTAS INVISÍVEIS</h3>
 			</div>
 		    <div class="modal-body">
 		    	<div class="text-justify">
-					Essas perguntas estao ordenadas. A Primeira da lista refere-se a primeira pergunta que o usuário devera responder, já a segunda refere-se a proxima que ele deverá responder e assim por diante.
+					Essas perguntas não estaram disponívels aos alunos e não contará como existente
+					para a lição, para alterar isso e permitir que os alunos possam responder essas 
+					perguntas, você deve arrastalas com seu mouse ṕara a lista de cima(Perguntas Visíveis) e clicar no 
+					botão "Submeter Listas". 
 	      		</div>
 			</div>
 
