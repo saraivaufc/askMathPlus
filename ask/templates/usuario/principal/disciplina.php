@@ -7,7 +7,7 @@
 {% block conteudo %}
 <div class="container">
 <center>
-	<h1>Escolha uma Disciplina</h1>
+	<h1>Escolha uma Disciplina.</h1>
 </center>
 	<center>
 		<div id="escolher_turma">
@@ -15,16 +15,13 @@
 			<div class="table-responsive">
 			<table class="table table-bordered">
 			<tr class="info active text-center">
-				<td>#</td><td>Semestre</td><td>Nome</td>
+				<td>Marque</td><td>Nome</td>
 			</tr>
 
 			{% for i in disciplinas %}
 				<tr class="text-center">
 					<td>
 						<input type="radio" name="opcao" id="opcao" value="{{i.id}}" required>
-					</td>
-					<td>
-						{{i.semestre}}
 					</td>
 					<td>
 						{{i.nome}}

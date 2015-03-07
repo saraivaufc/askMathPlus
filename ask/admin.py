@@ -23,16 +23,13 @@ from django.http import HttpResponseRedirect
 class DisciplinaAdmin(admin.ModelAdmin):
 	date_hierarchy = 'criacao'
 	fieldsets = (
-        (None,{'fields':('nome',
-        	             'semestre',
-        				)
+        (None,{'fields':('nome',)
         	  }
         ),
 	)
-	list_display = ('id','nome','semestre',)
+	list_display = ('id','nome',)
 	list_display_links = ('id',)
-	list_editable = ('nome','semestre',)
-	list_filter = ('semestre',)
+	list_editable = ('nome',)
 	save_as = True
 	search_fields = ['nome']
 

@@ -156,10 +156,14 @@ def secundario(request, tema_conteudo):
 	vezesPediuAjuda = conteudo.getVezesPediuAjuda(usuario)
 	pontosAcumulados = conteudo.getQuantPontos(usuario)
 
-	if len(conteudo.getPerguntasOrdenadas()) == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) > 0:
+	perguntasOrdenadas = conteudo.getPerguntasOrdenadas()
+	perguntasCertas = conteudo.getPerguntasCertas(usuario)
+	perguntasRespondidas = conteudo.getPerguntasRespondidas(usuario)
+
+	if len(perguntasOrdenadas) == len(perguntasCertas) and len(perguntasRespondidas) > 0:
 		return conteudoTerminado(request, locals())
 
-	if len(conteudo.getPerguntasOrdenadas()) == len(conteudo.getPerguntasCertas(usuario)) and len(conteudo.getPerguntasRespondidas(usuario)) == 0:
+	if len(perguntasOrdenadas) == len(perguntasCertas) and len(perguntasRespondidas) == 0:
 		return render(request, 'usuario/avisos/sem_perguntas.php', locals())
 
 
@@ -188,12 +192,13 @@ def secundario(request, tema_conteudo):
 
 
 		#Se pergunta nao tiver uma proxima pergunta
-		if pergunta.getPerguntaProxima() == None:
+		pergunta = pergunta.getPerguntaProximaUsuario(usuario)
+ 		if  pergunta == None:
 			perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
 			if len(perguntas_erradas ) == 0:
-				print 'Conteudo Terminado Com Exito : linha 154'
+				print 'Conteudo Terminado Com Exito : linha 200'
 				return conteudoTerminado(request, locals())
 			# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 			else:
@@ -203,36 +208,19 @@ def secundario(request, tema_conteudo):
 						pergunta = p
 						break
 
-		#Mas se Ele tiver uma Pergunta Proxima
-		else:
-			pergunta = pergunta.getPerguntaProxima()
-			perguntas_certas = conteudo.getPerguntasCertas(usuario)
-			respondida_certa = False
-			for i in perguntas_certas:
-				if i.id == pergunta.id:
-					respondida_certa = True
-			if respondida_certa:
-				perguntasRestantes = conteudo.getPerguntasRestantes(usuario)
-				if len(perguntasRestantes) > 0:
-					pergunta = perguntasRestantes[0]
-				else:
-					return conteudoTerminado(request, locals())
-
-
-
 	# Se o Metodo nao for Post
 	else:
 		#Ele tenta ir para a ultima pergunta que nao tinha respondido
 		try:
 			estado = (Estado_Usuario.objects.get(usuario_id = usuario.id , conteudo_id = conteudo.id) )
 			pergunta = Pergunta.objects.get(id = estado.pergunta_id)
-		
 		#caso ele nao consiga(seja porque nunca tenha respondido nenhuma questao)
 		except:
-			
 			#Ele tenta ir para a primeira pergunta que esta setada no conteudo
 			try:
-				pergunta = Pergunta.objects.get(id = conteudo.pergunta_inicial_id)
+				pergunta = conteudo.getPerguntasOrdenadas()
+				if len(pergunta) > 1:
+					pergunta = pergunta[0]
 			
 			#caso nao exista uma pergunta iniciao no conteudo(Nao foi setada)
 			except:
@@ -255,7 +243,6 @@ def secundario(request, tema_conteudo):
 		print 'Conteguiu Econtrar o Estado_Usuario linha 199'
 	except:
 		print 'Erro ao buscar Estado_Usuario linha 202'
-
 		atualiza_estado(usuario.id,conteudo.id, pergunta.id)
 
 	print 'Response Padrao Caso nao Entre no Post : linha 206'

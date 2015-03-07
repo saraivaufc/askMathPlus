@@ -38,7 +38,7 @@
 				{% endif %}
 			</h1>
 			<div class="btn-group">
-				{% if opcao >= 1 and opcao <= 3 %}
+				{% if opcao >= 1 and opcao <= 4 %}
 					<button  onclick="window.location='/gerenciador/list/{{ opcao }}/' " class="btn btn-primary">
 				{%  else %}
 					<button  onclick="window.location='/gerenciador/' " class="btn btn-primary">

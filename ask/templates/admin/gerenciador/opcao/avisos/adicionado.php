@@ -15,26 +15,26 @@
 					 {% if opcao == 1 %}
 					 	Disciplina Adicionada Com Sucesso!!!
 					 {%  elif opcao == 2 %}
-					 	Licao Adicionada Com Sucesso!!!
+					 	Lição Adicionada Com Sucesso!!!
 					 {% elif opcao == 3 %}
 					 	Pergunta Adicionada Com Sucesso!!!
 					 {% elif opcao == 4 %}
 					 	Usuário Adicionado Com Sucesso!!!
 					 {% else %}
-					 	Nenhuma Opcao Selecionada!!!
+					 	Nenhuma Opção Selecionada!!!
 					 {% endif %}
 
 				{% else %}
 					{% if opcao == 1 %}
 					 	Falha ao Adicionar Disciplina!!!
 					 {%  elif opcao == 2 %}
-					 	Falha ao Adicionar Licao!!!
+					 	Falha ao Adicionar Lição!!!
 					 {% elif opcao == 3 %}
 					 	Falha ao Adicionar Pergunta!!!
 					 {% elif opcao == 4 %}
 					 	Falha ao Adicionar Usuário!!!
 					 {% else %}
-					 	Nenhuma Opcao Selecionada!!!
+					 	Nenhuma Opção Selecionada!!!
 					 {% endif %}
 				{% endif %}
 			</h1>
@@ -48,11 +48,11 @@
 				{% if opcao == 1 %}
 				 	Voltar as Disciplinas
 				 {%  elif opcao == 2 %}
-				 	Voltar as Licoes
+				 	Voltar as Lições
 				 {% elif opcao == 3 %}
 				 	Voltar as Perguntas
 				 {% elif opcao == 4 %}
-				 	Voltar os Usuário
+				 	Voltar aos Usuários
 				 {% else %}
 				 	Voltar as Opcoes
 				 {% endif %}

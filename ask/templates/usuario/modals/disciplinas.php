@@ -4,14 +4,14 @@
 	  
 	  	<div class="modal-body">
 	  		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Escolha uma disciplina...</h3>
+			<h3 id="myModalLabel">Escolha uma disciplina.</h3>
 			<center>
 				<div>
-				<form  class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
+				<form  class="form-horizontal" role="form" action="/principal/" method="POST">{% csrf_token %}
 					<div class="table-responsive">
 					<table id="disciplinas" class="table table-bordered disciplinas">
 						<tr class="info active text-center">
-							<td>#</td><td>Semestre</td><td>Nome</td>
+							<td>Escolher</td><td>Nome</td>
 						</tr>
 					</table>
 					</div>

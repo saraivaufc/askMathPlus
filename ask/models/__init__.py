@@ -53,14 +53,13 @@ class Model(models.Model):
 
 class Disciplina(Model):
 	nome = models.CharField(max_length=255 , verbose_name="Nome",  help_text="Coloque aqui o nome dessa disciplina.")
-	semestre = models.FloatField(verbose_name="Semestre",  help_text="Coloque aqui o semestre que essa disciplina está sendo cursada.")
 
 
 	def __unicode__(self):
-		return str(self.semestre) + " - " + self.nome
+		return self.nome
 
 	class Meta:
-		ordering = ['-semestre']
+		ordering = ['-nome']
 		verbose_name = "Disciplina"
 		verbose_name_plural = "Disciplinas"
 
@@ -246,6 +245,7 @@ class Conteudo(Model):
 		return k
 
 	def getPerguntasRestantes(self, usuario):
+		ordenadas = self.getPerguntasOrdenadas()
 		nao_respondidas = self.getPerguntasNaoRespondidas(usuario)
 		erradas = self.getPerguntasErradas(usuario)
 		todas = []
@@ -261,14 +261,16 @@ class Conteudo(Model):
 	def getQuantPontos(self, usuario):
 		try:
 			pontuacao = Pontuacao.objects.get(usuario = usuario.id,
-													 conteudo = self.id,
-													 )
+													 conteudo = self.id,)
 		except:
-			pontuacao = Pontuacao.objects.create(usuario = usuario.id,
-														conteudo_id = self.id,
-														pulosMaximo = self.max_pulos,
-														pulosRestantes = self.max_pulos)
-			pontuacao.save()
+			try:
+				pontuacao = Pontuacao.objects.create(usuario = usuario.id,
+													conteudo = self.id,
+													pulosMaximo = self.max_pulos,
+													pulosRestantes = self.max_pulos)
+				pontuacao.save()
+			except:
+				return 0
 		return pontuacao.pontos
 
 	
@@ -339,7 +341,6 @@ class Pergunta(Model):
 		try:
 			conteudo = Conteudo.objects.get(id = self.conteudo_pertence_id)
 		except:
-			print "wew"
 			return None
 		perguntas_ordenadas = conteudo.getPerguntasOrdenadas()
 
@@ -347,6 +348,23 @@ class Pergunta(Model):
 		for i in perguntas_ordenadas:
 			if chegou:
 				return i
+			if self.id == i.id:
+				chegou = True
+		return None
+
+	def getPerguntaProximaUsuario(self, usuario):
+		try:
+			conteudo = Conteudo.objects.get(id = self.conteudo_pertence_id)
+		except:
+			return None
+		perguntas_ordenadas = conteudo.getPerguntasOrdenadas()
+
+		chegou = False
+		for i in perguntas_ordenadas:
+			if chegou:
+				his = Historico.objects.filter(usuario = usuario.id, pergunta=i.id, acertou=True)
+				if len(his) == 0:
+					return i
 			if self.id == i.id:
 				chegou = True
 		return None

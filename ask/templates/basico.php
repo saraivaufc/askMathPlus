@@ -44,7 +44,6 @@
 			<link rel="stylesheet" media="(max-height: 480px)" href="/static/css/micro-height.css" />
 			<link rel="stylesheet" media="(max-width: 250px)" href="/static/css/micro-width.css" />
 
-			<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 			<style type="text/css">
@@ -137,7 +136,6 @@
 							</div>
 						{% endblock %}
 					</footer>
-
 				{% endblock %}
 			</div>
 		</div>

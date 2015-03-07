@@ -21,7 +21,6 @@ class PartialDisciplinaForm(ModelForm):
 
 		widgets = {
 			'disciplina': TextInput(attrs={'required': 'required'}),
-			'semestre': NumberInput(attrs={'required': 'required'}),
 			'professor': TextInput(attrs={'required': 'required'}),
 
 		}

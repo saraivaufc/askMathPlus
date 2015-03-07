@@ -8,7 +8,7 @@
 			Forum <span class="glyphicon glyphicon-globe"></span>
 		</a>
 	</li>
-	<li>
+	<li id="menu_disciplina">
 		<a data-toggle="modal" data-rel="dialog"  data-target="#disciplinas">
 			Disciplinas <span class="glyphicon glyphicon-th-list"></span>
 		</a>
