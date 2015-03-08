@@ -288,15 +288,7 @@ def secundario(request, tema_conteudo):
 		secao.save()
 
 
-	NUMEROPERGUNTA = 0
-	pO = conteudo.getPerguntasOrdenadas()
-	index = 1
-	for i in pO:
-		if i.id == pergunta.id:
-			NUMEROPERGUNTA = index
-			break
-		else:
-			index+=1
+	NUMEROPERGUNTA = pergunta.getNumeroPergunta()
 
 	return render(request , 'usuario/secundario/secundario.php' , locals())
 

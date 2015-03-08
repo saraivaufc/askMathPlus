@@ -78,6 +78,9 @@ def terciario_admin(request, tema_conteudo, id_pergunta):
 		existeAnterior = False
 		existeProximo = False
 		existeAjuda = False
+		perguntasTotal = len(conteudo.getPerguntasOrdenadas())
+		numeroPergunta = pergunta.getNumeroPergunta()
+
 		try:
 			perguntaAnterior = pergunta.getPerguntaAnterior()
 			if perguntaAnterior != None:

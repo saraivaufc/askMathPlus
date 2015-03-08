@@ -14,7 +14,7 @@
 		        			<div class="panel panel-info">
 							 	<div class="panel-title" id="tema-conteudo">
 									<center>
-						            	<h3>{{ conteudo.tema|title }}</h3>
+						            	<h3 class="texto-azul">{{ conteudo.tema|title }}</h3>
 						          	</center>
 							  	</div>
 							 	<div class="panel-footer">

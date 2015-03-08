@@ -5,6 +5,7 @@
 #IMPORTS PYTHON
 from datetime import datetime
 import unicodedata
+import string
 
 #IMPORTS DJANGO
 from django.db import models
@@ -336,6 +337,45 @@ class Pergunta(Model):
 	def getItemCorreto(self):
 		return self.item_correto
 
+	def numeroParaItemDescricao(self, numero ):
+		if numero == 1:
+			return self.item_a
+		elif numero == 2:
+			return self.item_b
+		elif numero == 3:
+			return self.item_c
+		elif numero == 4:
+			return self.item_d
+		elif numero == 5:
+			return self.item_e
+		else:
+			return ''
+
+
+	def getNumeroItemCorreto(self):
+		itens = self.getItens()
+		index = 1
+		for i in itens:
+			print self.numeroParaItemDescricao(i), self.getDescricaoItemCorreto()
+			if self.numeroParaItemDescricao(i) == self.getDescricaoItemCorreto():
+				break
+			else:
+				index += 1
+		if index == 1:
+			return 'A'
+		elif index == 2:
+			return 'B'
+		elif index == 3: 
+			return 'C'
+		elif index == 4:
+			return 'D'
+		elif index == 5:
+			return 'E'
+		else:
+			return 'None'
+
+		
+
 	
 	def getPerguntaProxima(self):
 		try:
@@ -389,7 +429,20 @@ class Pergunta(Model):
 				anterior = i
 		return anterior
 
-
+	def getNumeroPergunta(self):
+		if self.conteudo_pertence_id == None:
+			return None
+		conteudo = Conteudo.objects.get(id = self.conteudo_pertence_id)
+		NUMEROPERGUNTA = 0
+		pO = conteudo.getPerguntasOrdenadas()
+		index = 1
+		for i in pO:
+			if i.id == self.id:
+				NUMEROPERGUNTA = index
+				break
+			else:
+				index+=1
+		return NUMEROPERGUNTA
 
 	def getDescricaoItemCorreto(self):
 		if self.item_correto == 1:

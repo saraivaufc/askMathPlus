@@ -510,7 +510,7 @@ a{
 
 }
 
-#pontuacao-pergunta h3{
+.texto-azul{
 	color: #1E90FF;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #000000;
@@ -609,3 +609,11 @@ ul.list-group li.placeholder:before {
 	height: 100%;
 	overflow-y:auto;
 }
+
+#pontuacao-pergunta{
+	background-color: #428BCA;
+	color: #FFFFFF;	
+}
+
+
+
