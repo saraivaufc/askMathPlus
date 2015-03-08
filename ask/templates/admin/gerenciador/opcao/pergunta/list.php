@@ -20,7 +20,7 @@
 {% block opcoes-padrao %}
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
-		<tr class="row">
+		<tr>
 			<div class="col-md-4">
 				<td>Lição</td>
 			</div>
@@ -32,7 +32,7 @@
 			</div>
 		</tr>
 		{%  for i in perguntas %}
-		<tr class="row">
+		<tr>
 			<div class="col-md-4">
 				<td>{{ i.conteudo_pertence }}</td>
 			</div>

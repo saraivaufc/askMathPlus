@@ -4,7 +4,7 @@
 	  
 	  	<div class="modal-body">
 	  		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Gostaríamos muito de ouvir de você</h3>
+			<h3 id="myModalLabel">Gostaríamos muito de ouvir você</h3>
 	  		
 			<form class="form-horizontal col-sm-12"  action="/contato/" method="POST">{% csrf_token %}
 				<br>
@@ -24,12 +24,14 @@
 				</div>
 			  
 				<div class="form-group">
-					<button type="submit" class="btn btn-success pull-right">Enviar!</button>
+					<button type="submit" class="btn btn-success pull-right">
+						Enviar <span class="glyphicon glyphicon-send"></span>
+					</button>
 					<p class="help-block pull-left text-danger hide" id="form-error">&nbsp; O Formulário não é válido. </p>
 				</div>			
 			</form>
 			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+			
 			</div>
 		</div>
 	</div>

@@ -20,7 +20,7 @@
 {% block opcoes-padrao %}
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
-		<tr class="row">
+		<tr>
 			<div class="col-md-3">
 				<td>Primeiro Nome</td>
 			</div>
@@ -38,7 +38,7 @@
 			</div>
 		</tr>
 		{%  for i in usuarios %}
-		<tr class="row">
+		<tr>
 			<div class="col-md-3">
 				<td>{{ i.first_name }}</td>
 			</div>

@@ -107,4 +107,5 @@ var LatexIT = {
 };
 
 LatexIT.init();
-LatexIT.add('*');
+LatexIT.scale(2);
+LatexIT.add('t');

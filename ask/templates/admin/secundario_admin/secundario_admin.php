@@ -19,7 +19,7 @@
 							  	</div>
 							 	<div class="panel-footer">
 							 		<div id="descricao-conteudo">
-							  		<t><p>{{ conteudo.descricao|safe }}</p><t>
+							  		<t><p class="lead">{{ conteudo.descricao|safe }}</p><t>
 							  		</div>
 							  	</div>
 						  	</div>

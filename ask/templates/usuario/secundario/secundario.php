@@ -59,7 +59,7 @@
 						  	</div>
 						 	<div class="panel-footer">
 						 		<div id="descricao-conteudo">
-						  			<t><p>{{ conteudo.descricao|safe }}</p><t>
+						  			<t><p class="lead">{{ conteudo.descricao|safe }}</p><t>
 						  		</div>
 						  	</div>
 					  	</div>
@@ -105,7 +105,7 @@
 			  	<div class="panel-footer">
 						{% block outros-conteudos-all %}
 					  		<div class="espacamento">
-								  <t><p>{{ pergunta.descricao|safe }}</p></t>
+								  <t><p class="lead">{{ pergunta.descricao|safe }}</p></t>
 								<hr/>
 								<form method="POST" id="perguntas" name="resposta">
 								{%csrf_token %} 
@@ -116,13 +116,13 @@
 										<li type="A">
 											<div class="font-dconteudo">
 												<input name="opcao" value='{{chave}}' required type="radio">
-												<t>{{ item|safe }}</t>
+												<t class="lead">{{ item|safe }}</t>
 											</div>
 										</li>
 										<br>
 									{% empty %}
 										<div class="font-dconteudo">
-											<t><p>Essa pergunta nao possui itens.</p></t>
+											<t><p class="lead">Essa pergunta não possui itens.</p></t>
 										</div>
 									{% endfor %}
 									</ol>

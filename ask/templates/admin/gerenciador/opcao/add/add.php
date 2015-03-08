@@ -5,15 +5,15 @@
 	<div class="col-xs-12 col-sm-12  col-md-12">
 		<h3 class="text-center">
 		{% if opcao == 1 %}
-			Adicionar Nova Disciplina
+			Adicionar Nova Disciplina.
 		{%  elif  opcao == 2 %}
-			Adicionar Nova Licao
+			Adicionar Nova Licao.
 		{% elif opcao == 3 %}
-			Adicionar Nova Pergunta
+			Adicionar Nova Pergunta.
 		{% elif opcao == 4 %}
-			Adicionar Novo Usuário
+			Adicionar Novo Usuário.
 		{% else %}
-			Sem Opcao Selecionada
+			Sem Opção Selecionada.
 		{% endif %}
 		</h3>
 	</div>

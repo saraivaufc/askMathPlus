@@ -11,22 +11,22 @@
 {% block pontuacao %}
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			ACERTOS : {{ questoesCorretas|default_if_none:"0" }}
+			<h4>Acertos : {{ questoesCorretas|default_if_none:"0" }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			ERRORS : {{ questoesErradas|default_if_none:"0" }}
+			<h4>Erros : {{ questoesErradas|default_if_none:"0" }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			SALTOS : {{ pulosRealizados|default_if_none:"0" }}
+			<h4>Saltos : {{ pulosRealizados|default_if_none:"0" }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			AJUDAS : {{ vezesPediuAjuda|default_if_none:"0" }}
+			<h4>Ajudas : {{ vezesPediuAjuda|default_if_none:"0" }}</h4>
 		</div>
 	</div>
 {% endblock %}

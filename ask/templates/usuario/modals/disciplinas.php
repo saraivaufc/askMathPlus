@@ -11,13 +11,13 @@
 					<div class="table-responsive">
 					<table id="disciplinas" class="table table-bordered disciplinas">
 						<tr class="info active text-center">
-							<td>Escolher</td><td>Nome</td>
+							<td colspan="2">Disciplinas</td>
 						</tr>
 					</table>
 					</div>
 						<div class="btn-group btn-group-justified tela-opcoes-1">
 							<div class="btn-group">
-								<button type="submit" class="btn ui-btn btn-primary">
+								<button type="submit" class="btn btn-primary">
 									Escolher <span class="glyphicon glyphicon-ok-circle hidden-xs"></span>
 								</button>
 							</div>

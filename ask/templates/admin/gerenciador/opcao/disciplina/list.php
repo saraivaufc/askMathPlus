@@ -20,34 +20,31 @@
 {% block opcoes-padrao %}
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
-		<tr class="row">
-			<div class="col-md-3">
-				<td>Semestre</td>
-			</div>
-			<div class="col-md-3">
-				<td>Nome</td>
-			</div>
-			<div class="col-md-3">
-				<td>Opcao</td>
-			</div>
-		</tr>
+		<div class="container-fluid">
+			<tr>
+				<div class="col-md-6">
+					<td>Nome</td>
+				</div>
+				<div class="col-md-6">
+					<td>Opcao</td>
+				</div>
+			</tr>
+		</div>
 		{%  for i in disciplinas %}
-		<tr class="row">
-			<div class="col-md-3">
-				<td>{{ i.semestre }}</td>
-			</div>
-			<div class="col-md-3">
+		<div class="container-fluid">
+		<tr>
+			<div class="col-md-6">
 				<td>{{ i.nome }}</td>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-6">
 				<td>
 					&nbsp;<span onClick="editDisciplina({{ i.id }})"  class="glyphicon glyphicon-edit pointer"></span>&nbsp;
 					<span onClick="remDisciplina({{ i.id }})" class="glyphicon glyphicon-remove pointer"></span>&nbsp;
 				</td>
 			</div>
 		</tr>
+		</div>
 		{% endfor %}
 	</table>
 </div>
-
 {% endblock %}

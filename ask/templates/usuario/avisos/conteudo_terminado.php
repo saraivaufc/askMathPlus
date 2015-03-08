@@ -12,22 +12,22 @@
 {% block pontuacao %}
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			QUESTÕES : {{ conteudo.getPerguntasOrdenadas|length }}
+			<h4>Questões : {{ conteudo.getPerguntasOrdenadas|length }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			PONTOS : {{ pontosAcumulados }}
+			<h4>Pontos : {{ pontosAcumulados }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			SALTOS : {{ pulosRealizados }}
+			<h4>Saltos : {{ pulosRealizados }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3">
 		<div class="row">
-			AJUDAS : {{ vezesPediuAjuda }}
+			<h4>Ajudas : {{ vezesPediuAjuda }}</h4>
 		</div>
 	</div>
 {% endblock %}

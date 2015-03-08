@@ -33,7 +33,7 @@
 
 
 		<div class="espacamento">
-		  	<t><p>{{ pergunta.descricao|safe }}</p></t>
+		  	<t><p class="lead">{{ pergunta.descricao|safe }}</p></t>
 		<hr/>
 		<form method="POST" id="perguntas" name="resposta">{%csrf_token %} 
 			<input id="pergunta_atual" name="pergunta_atual" value="{{pergunta.id}}" type="hidden"> 
@@ -43,13 +43,13 @@
 				<li type="A">
 					<div class="font-dconteudo">
 						<input name="opcao" value='{{chave}}' required type="radio">
-						<t>{{ item|safe }}</t>
+						<t class="lead">{{ item|safe }}</t>
 					</div>
 				</li>
 				<br>
 			{% empty %}
 				<div class="font-dconteudo">
-					<t><p>Essa pergunta nao possui itens.</p></t>
+					<t><p class="lead">Essa pergunta nao possui itens.</p></t>
 				</div>
 			{% endfor %}
 			</ol>

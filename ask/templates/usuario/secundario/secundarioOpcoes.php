@@ -15,12 +15,12 @@
 	{%  block pontuacao %}
 	<div class="col-xs-12 col-sm-6 col-md-6">
 		<div class="row">
-			QUESTÕES : {{ conteudo.getPerguntasOrdenadas|length|default:"0" }}
+			<h4>Questões : {{ conteudo.getPerguntasOrdenadas|length|default:"0" }}</h4>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6">
 		<div class="row">
-			SALTOS DISPONÍVEIS : {{ pulosDisponiveis|default:"0" }}
+			<h4>Saltos Disponíveis : {{ pulosDisponiveis|default:"0" }}</h4>
 		</div>
 	</div>
 	{% endblock %}
@@ -29,6 +29,8 @@
 	<div id="requisitos">
 		<div class="list-group">
 			{% block outros-conteudos %}
+
+				<br>
 				{% block requisitos %}
 					<a data-toggle="modal" data-target="#requisitos_modal" class="list-group-item active">
 					    REQUISITOS <span class="glyphicon glyphicon-info-sign"></span>
@@ -39,7 +41,7 @@
 						</a>
 					{% empty %}
 						<a class="list-group-item list-group-item-warning">
-							Nao existe requisitos para essa Licao
+							Não existe requisitos para está Lição.
 						</a>
 					{% endfor %}
 				{% endblock %}
