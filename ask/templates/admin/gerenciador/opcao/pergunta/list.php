@@ -18,6 +18,7 @@
 {% endblock %}
 
 {% block opcoes-padrao %}
+<div class="container-fluid">
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
 		<tr>
@@ -41,7 +42,6 @@
 			</div>
 			<div class="col-md-4">
 				<td>
-
 					&nbsp;
 					<span onClick="viewPergunta({{ i.id }})" class="glyphicon glyphicon-eye-open pointer"></span>&nbsp;
 					<span  onClick="editPergunta({{ i.id }})" class="glyphicon glyphicon-edit pointer"></span>&nbsp;
@@ -51,6 +51,7 @@
 		</tr>
 		{% endfor %}
 	</table>
+</div>
 </div>
 
 {% endblock %}

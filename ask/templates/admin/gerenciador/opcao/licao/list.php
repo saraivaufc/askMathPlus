@@ -4,7 +4,7 @@
 
 {% block  descricao %}
 <h3 class="text-center">
-	Todas as Licoes
+	Todas as Lições
 </h3>
 {% endblock %}
 
@@ -18,6 +18,7 @@
 {% endblock %}
 
 {% block opcoes-padrao %}
+<div class="container-fluid">
 <div class="table-responsive">
 	<table class="table table-bordered text-center">
 		<tr>
@@ -55,6 +56,7 @@
 		</tr>
 		{% endfor %}
 	</table>
+</div>
 </div>
 
 {% endblock %}
