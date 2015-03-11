@@ -194,19 +194,23 @@ def secundario(request, tema_conteudo):
 		#Se pergunta nao tiver uma proxima pergunta
 		pergunta = pergunta.getPerguntaProximaUsuario(usuario)
  		if  pergunta == None:
-			perguntas_erradas = conteudo.getPerguntasRestantes(usuario)
+			perguntas_restantes = conteudo.getPerguntasRestantes(usuario)
 
 			# Se nao Existir mais nenhma pergunta errada, e porque todas estao respondidas
-			if len(perguntas_erradas ) == 0:
+			if len(perguntas_restantes ) == 0:
 				print 'Conteudo Terminado Com Exito : linha 200'
 				return conteudoTerminado(request, locals())
 			# mas se ainda existir pergunta que nao foram respondidas ou estao erradas
 			else:
-				while len(perguntas_erradas) > 0:
-					p = perguntas_erradas.pop()
-					if p.id != pergunta.id:
+				while len(perguntas_restantes) > 0:
+					p = perguntas_restantes.pop()
+					if p != None and pergunta != None:
+						if p.id != pergunta.id:
+							pergunta = p
+							break
+					else:
 						pergunta = p
-						break
+
 
 	# Se o Metodo nao for Post
 	else:
