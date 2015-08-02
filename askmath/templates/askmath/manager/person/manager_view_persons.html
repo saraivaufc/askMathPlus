@@ -1,0 +1,42 @@
+{% extends 'askmath/manager/person/manager_choose_person_types.html' %}
+{% load i18n %}
+
+{%  block content %}
+
+<div class="cell auto-size padding20">
+	<a href="/home/manager/persons/choose_person_types/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_person %}
+		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
+	{% endif %}
+	{% if is_removed %}
+		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>
+	{% else %}
+		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area no-padding bg-transparent ">
+<div class="tile-container">
+{% for person in persons %}
+<div class="tile {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+    <a href="/home/manager/persons/view/person_type={{ person_type }}/person={{ person.id }}/" class="tile-content iconic">
+        {% if person.get_profile_image %}
+        <div class="image-container image-format-square">
+        <img alt="" src="{{ person.get_profile_image.url }}">
+        </div>
+        {% else %}
+        <span class="icon mif-user"></span>
+        {% endif %}
+        <span class="tile-label">{{ person.get_name }}</span>
+        {% if not person.exists %}
+        <span class="tile-badge mif-bin"></span>
+        {% endif %}
+    </a>
+</div>
+{% empty %}
+<h3 class="text-center">{% trans "Not Person Found" %}</h3>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

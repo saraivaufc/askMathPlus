@@ -1,0 +1,105 @@
+{% load i18n %}
+<h3 class="text-center">{% trans "Lesson" %}</h3>
+<hr class="thin bg-grayLighter">
+<table class="table bg-white">
+    <thead>
+    	<tr>
+            <th>{% trans "Disciplines:" %}</th>
+            <th>
+	            {% for discipline in lesson.get_disciplines %}
+        			{{ discipline }}
+        			{% if not forloop.counter == lesson.get_disciplines|length %}
+        			,
+        			{% endif %}
+        		{% empty %}
+        			{% trans "NULL" %}
+        		{% endfor %}
+            </th>
+        </tr>
+        <tr>
+            <th>{% trans "Title:" %}</th>
+            <th>{{ lesson.get_title }}</th>
+        </tr>
+        <tr>
+   		   	<th>{% trans "Description:" %}</th>
+   		   	<th>{{ lesson.get_description|safe|linebreaksbr }}</th>
+   		</tr>
+        <tr>
+        	<th>{% trans "Requirements:" %}</th>
+        	<th>
+        		{% for requirement in lesson.get_requirements %}
+        			{{ requirement }}
+        			{% if not forloop.counter == lesson.get_requirements|length %}
+        			,
+        			{% endif %}
+        		{% empty %}
+        			{% trans "NULL" %}
+        		{% endfor %}
+        	</th>
+        </tr>
+        <tr>
+        	<th>{% trans "Sugestions:" %}</th>
+        	<th>
+        		{% for sugestion in lesson.get_sugestions %}
+        			{{ sugestion }}
+        			{% if not forloop.counter == lesson.get_sugestions|length %}
+        			,
+        			{% endif %}
+        		{% empty %}
+        			{% trans "NULL" %} 
+        		{% endfor %}
+        	</th>
+        </tr>
+        <tr>
+        	<th>{% trans "Maximum Hops:" %}</th>
+        	<th>{{ lesson.get_maximum_hops }}</th>
+        </tr>
+        <tr>
+        	<th>{% trans "Is Visible:" %}</th>
+        	<th>{{ lesson.is_visible }}</th>
+        </tr>
+    </thead>
+</table>
+<h3 class="text-center">{% trans "Questions" %}</h3>
+<hr class="thin bg-grayLighter">
+
+<div class="tile-area no-padding bg-transparent">
+<div class="tile-container">
+{% for question in lesson.get_questions %}
+<div class="tile-wide {{colors|random}} {% if question.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
+        <span class="icon mif-list-numbered"></span>
+        <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>
+        {% if not question.exists %}
+        <span class="tile-badge mif-bin"></span>
+        {% endif %}
+    </a>
+</div>
+{% empty %}
+<h3>{% trans "No Question found." %}</h3>
+{% endfor %}
+</div>
+</div>
+
+<h3 class="text-center">{% trans "Videos" %}</h3>
+<hr class="thin bg-grayLighter">
+<div class="tile-area no-padding bg-transparent">
+<div class="tile-container">
+	{% for video in lesson.get_videos %}
+		 <div class="tile-wide {{colors|random}}">
+		    <a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
+		        <span class="icon mif-film"></span>
+		        <div class="tile-label">
+		            {{ video.get_title|title }}
+		        </div>
+		        <span class="tile-badge bg-crimson">{{ video.get_position }}</span>
+		        <div class="slide-over bg-steel">
+		        	<p class="paragraph">{{ video.get_description|safe|linebreaksbr|truncatewords:25 }}</p>
+		        </div>
+		    </a>
+		</div>
+	{% empty %}
+	<h3 class="text-center">{%trans "Lesson does not have videos."%}</h3>
+	{% endfor %}
+</div>
+</div>

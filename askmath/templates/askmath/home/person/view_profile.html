@@ -1,0 +1,40 @@
+{% extends "askmath/home/home.html" %}
+{% load i18n %}
+
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+{% block content %}
+<br>
+{% if perms.askmath.access_manager  %}
+<div class="fg-dark">
+{% else %}
+<div class="fg-white">
+{% endif %}
+<div class="container-fluid">
+	<div class="row">
+		<center>
+			{% if person.get_profile_image %}
+				<img class="img img-responsive" width="200px" height="200px" src="{{ person.get_profile_image.url }}"></<img>
+			{% else %}
+				<img class="img img-responsive" width="200px" height="200px" src="/static/askmath/img/metro/user.ico"></<img>				
+		 	{% endif %}
+		 </center>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<center>
+			<h1>{{ person.get_name }}</h1>
+			<h2>{{ person.get_email }}</h2>
+			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
+			<a href="/person/profile/edit/" class="button primary">{% trans "Edit" %}</a>
+		</center>
+	</div>
+</div>
+</div>
+
+{% endblock %}

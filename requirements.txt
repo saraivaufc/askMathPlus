@@ -8,3 +8,10 @@ django-djconfig>=0.1.7,<0.2
 django-debug-toolbar
 pytz
 South>=0.7.4
+djangorestframework
+markdown
+django-filter
+
+sudo apt-get install postfix
+sudo aptitude install libapache2-mod-wsgi
+sudo easy_install django-rosetta

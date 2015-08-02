@@ -1,0 +1,54 @@
+{% extends 'askmath/_base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+	<form class="form form-generic" action="/authentication/signup/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
+		{% csrf_token %}
+		<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
+		<hr class="colorgraph">
+		{{ form.as_table }}	
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+			<input type="checkbox" required> {% blocktrans %}By clicking here, you agree to the <a href="#" class="font-dark" data-toggle="modal" data-target="#terms">Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
+			    </span>
+			</label> 
+			</div>
+		</div>
+		<hr class="colorgraph">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<a href="/authentication/login/" class="button primary btn-block" tabindex="10">{% trans "Cancel" %}</a>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<input type="submit" value="{% trans "Register" %}" class="button success btn-block" tabindex="9">
+			</div>
+		</div>
+	</form>
+
+
+{% load i18n %}
+
+<!-- Modal -->
+<div class="modal fade" id="terms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg fg-black">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h2 class="modal-title text-center" id="myModalLabel">{% trans "Terms & Conditions" %}</h2>
+			</div>
+			<div class="modal-body">
+				{% include "askmath/home/_render_terms.html" %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button success" data-dismiss="modal">{% trans "I Agree" %}</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</div>
+{% endblock  %}

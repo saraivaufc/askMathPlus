@@ -1,0 +1,114 @@
+{% load i18n %}
+{% load askmath_tags %}
+
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" itemprop="title">
+            	<img class="v-center" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body1">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="footer-body1" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% block home %}
+                <li>
+                {% endblock %}
+                	<a href="/home/">{% trans "Home" %}</a></li>
+				{% if perms.askmath.access_manager_discipline %}
+				
+				{% block discipline %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/disciplines/view/">{% trans "Disciplines" %}</a></li>
+				{% endif %}
+				{% if perms.askmath.access_manager_lesson %}
+				
+				{% block lesson %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/lessons/view/">{% trans "Lessons" %}</a></li>
+				{% endif %}
+				{% if perms.askmath.access_manager_question %}
+				
+				{% block question %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/questions/choose_lesson/">{% trans "Questions" %}</a></li>
+				{% endif %}
+				{% if perms.askmath.access_manager_video %}
+				
+				{% block video %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/videos/choose_lesson/">{% trans "Videos" %}</a></li>
+				{% endif %}
+				{% if perms.askmath.access_manager_statistics %}
+				
+				{% block statistic %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/statistics/choose_type/">{% trans "Statistics" %}</a></li>
+				{% endif %}
+				{% if perms.askmath.access_manager_person %}
+				
+				{% block person %}
+                <li>
+                {% endblock %}
+					<a href="/home/manager/persons/choose_person_types/">{% trans "Persons" %}</a></li>
+				{% endif %}
+            </ul>
+            {% if request.user.is_authenticated %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong>{{ request.user.get_username }}</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu bg-dark">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            {% if request.user.get_profile_image %}
+                                            <img src="{{ request.user.get_profile_image.url }}">
+                                            {% else %}
+                                            <img src="/static/askmath/img/metro/user.ico"></<img>   
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
+                                        <p class="text-left small">{{ request.user.get_email }}</p>
+                                        <p class="text-left">
+                                            <a href="/person/profile/view/" class="btn btn-primary btn-block btn-sm">{% trans "View Profile" %}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="navbar-login navbar-login-session">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>
+                                            <a href="/authentication/logout/" class="btn btn-danger btn-block">{% trans "Logout" %}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>

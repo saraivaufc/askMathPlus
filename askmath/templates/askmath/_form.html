@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="container-fluid">
+		<form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
+		{% csrf_token %}
+			<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
+			<hr class="colorgraph">
+			{{ form }}
+			<hr class="colorgraph">
+			<div class="text-right">
+				<a class="button primary" onclick="window.history.back();" ><span class="mif-cancel"></span>{% trans " Cancel" %}</a>
+				<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+			</div>
+		</form>
+</div>

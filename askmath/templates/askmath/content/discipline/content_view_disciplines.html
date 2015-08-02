@@ -1,0 +1,34 @@
+{% extends 'askmath/content/content_home.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super  }}
+{% endblock %}
+
+{% block tiles %}
+<div class="tile-group">
+	<span id="index" class="tile-group-title">{% trans "Disciplines" %}</span>
+	{% for discipline in disciplines %}
+         <div class="tile-wide {{colors|random}}">
+		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/" class="tile-content slide-down iconic">
+		        <span class="icon mif-stack2"></span>
+		        <div class="tile-label">
+		            {{ discipline.get_title|title }}
+		        </div>
+		        <div class="slide-over bg-steel">
+		        <table class="text-center fill">
+		        	<tr>
+		        		<td>{{ discipline.get_responsible }}</td>
+		        	</tr>
+		        	<tr>
+		        		<td>{% trans "Lessons" %} : {{ discipline.get_lessons_visible|length }}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </a>
+		</div>
+	{% empty %}
+		<h3 class="text-center">{%trans "Nor discipline found."%}</h3>
+	{% endfor %}
+</div>
+{% endblock %}

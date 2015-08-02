@@ -1,0 +1,25 @@
+{% extends 'askmath/manager/question/manager_view_questions.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+<div class="cell padding10">
+	<a href="/home/manager/questions/view/lesson={{lesson.id}}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_question %}
+		<a href="/home/manager/questions/edit/lesson={{lesson.id}}/question={{ question.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		{% if question.exists %}
+		<a href="/home/manager/questions/remove/lesson={{lesson.id}}/question={{ question.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		{% endif %}
+		{% if not question.exists %}
+		<a href="/home/manager/questions/restore/lesson={{lesson.id}}/question={{ question.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		{% endif %}
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="padding10">
+{% include "askmath/manager/question/_render_question.html" %}
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'askmath/manager/discipline/manager_view_disciplines.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+
+<div class="cell padding5">
+	<a href="/home/manager/disciplines/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<hr class="thin bg-grayLighter">
+
+{% include 'askmath/_form.html' %}
+
+{% endblock %}

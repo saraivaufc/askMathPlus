@@ -1,0 +1,35 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/manager/question/overwrite_header.html' %}
+{% endblock %}
+
+{%  block content %}
+
+<div class="cell padding10">
+	<h2 class="text-dark  text-center">{% trans "Choose Lesson" %}<span class="mif-clipboard place-right"></span></h2>
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area padding10 bg-transparent">
+{% for discipline in disciplines %}
+<h4>{{ discipline.get_title|title }}</h4>
+<div class="tile-container fg-white">
+	{% for lesson in discipline.get_lessons %}
+	<div class="tile {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+	    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="tile-content iconic">
+	        <span class="icon mif-clipboard"></span>
+	        <span class="tile-label">{{ lesson }}</span>
+	        {% if not lesson.exists %}
+	        <span class="tile-badge mif-bin"></span>
+	        {% endif %}
+	    </a>
+	</div>
+	{% endfor %}
+</div>
+{% empty %}
+<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+{% endfor %}
+</div>
+{% endblock %}

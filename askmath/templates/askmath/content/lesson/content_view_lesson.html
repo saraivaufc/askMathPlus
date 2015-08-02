@@ -1,0 +1,67 @@
+{% extends 'askmath/content/lesson/content_view_lessons.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson.get_title|title }}</spam></a></li>
+{% endblock %}
+
+{%  block tiles %}
+
+
+{% block tiles-left %}
+	<div class="container-metro">
+	<div class="col-xs-12  col-sm-12 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">	
+		<h3 class="text-center">{{ lesson.get_title|title }}</h3>
+		<p class="text-justify lead">
+			{{ lesson.get_description|safe|linebreaksbr }}
+		</p>
+	</div>
+	</div>
+{% endblock %}
+
+{% block tiles-rigth %}
+<div class="cell">
+<div class="tile-group">
+	<h3 class="text-left">{% trans "Options:" %}</h3>
+	<div class="tile-container">
+		<div class="tile {{colors|random}}">
+		    <a href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+		        <span class="icon mif-list-numbered"></span>
+		        <div class="tile-label">
+		            {% trans "Questions" %}
+		        </div>
+		        <div class="slide-over bg-steel">
+		        <table class="text-center fill">
+		        	<tr>
+		        		<td> {% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </a>
+		</div>
+		
+		<div class="tile {{colors|random}}">
+		    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+		        <span class="icon mif-video-camera"></span>
+		        <div class="tile-label">
+		            {% trans "Videos" %}
+		        </div>
+		         <div class="slide-over bg-steel">
+		        <table class="text-center fill">
+		        	<tr>
+		        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </a>
+		</div>
+	</div>
+</div>
+
+
+</div>
+{% endblock %}
+
+
+{% endblock %}

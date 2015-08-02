@@ -1,0 +1,28 @@
+{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+<div class="cell padding10">
+	<a href="/home/manager/lessons/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_lesson %}
+		<a href="/home/manager/lessons/edit/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		{% if lesson.exists %}
+		<a href="/home/manager/lessons/remove/lesson={{ lesson.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		{% endif %}
+		{% if not lesson.exists %}
+		<a href="/home/manager/lessons/restore/lesson={{ lesson.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		{% endif %}
+	{% endif %}
+	{% if perms.askmath.write_question %}
+		<a data-toggle="modal" data-target="#quantity_items" href="#" class="button primary" ><span class="mif-plus"></span>{% trans " Create Question" %}</a>
+	{% endif %}
+	{% if perms.askmath.write_video %}
+		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create Video" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+	{% include "askmath/manager/lesson/_render_lesson.html" %}
+	{% include "askmath/manager/question/_modal_choose_quant_items.html" %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'askmath/home/home.html' %}
+{% load i18n %}
+
+{% block header %}
+    {% include 'askmath/manager/overwrite_header.html' %}
+{% endblock %}
+
+
+{% block content %}
+	<div class="flex-grid">
+	<div class="tile-area no-padding bg-transparent">
+    	<div class="tile-container">
+	    	{% if perms.askmath.access_manager_discipline %}
+    		<div class="tile-wide {{colors|random}} " data-role="tile">
+                <a href="/home/manager/disciplines/view/" class="tile-content iconic">
+                    <span class="icon mif-stack2"></span>
+                    <span class="tile-label">{% trans "DISCIPLINES" %}</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if perms.askmath.access_manager_lesson %}
+            <div class="tile-wide {{colors|random}}" data-role="tile">
+                <a href="/home/manager/lessons/view/" class="tile-content iconic">
+                    <span class="icon mif-clipboard"></span>
+                    <span class="tile-label">{% trans "LESSONS" %}</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if perms.askmath.access_manager_question %}
+            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+                <a href="/home/manager/questions/choose_lesson/" class="tile-content iconic">
+                    <span class="icon mif-list-numbered"></span>
+                    <span class="tile-label">{% trans "QUESTIONS" %}</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if perms.askmath.access_manager_video %}
+            <div class="tile-wide  {{colors|random}}  fg-white" data-role="tile">
+               <a href="/home/manager/videos/choose_lesson/" class="tile-content iconic">
+                    <span class="icon mif-film"></span>
+                    <span class="tile-label">{% trans "VIDEOS" %}</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if perms.askmath.access_manager_statistics %}
+            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+                <a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
+                    <span class="icon mif-chart-line"></span>
+                    <span class="tile-label">{% trans "STATISTICS" %}</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if perms.askmath.access_manager_person %}
+            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+                <a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
+                    <span class="icon mif-users"></span>
+                    <span class="tile-label">{% trans "PERSONS" %}</span>
+                </a>
+            </div>
+            {% endif %}
+    	</div>
+    </div>
+	</div>
+{% endblock %}

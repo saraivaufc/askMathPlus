@@ -1,4 +1,2 @@
-AskMath
-=======
-
-Sistema de Perguntas Desenvolvido Para Estudantes de Matemática Basica da UFC
+# AskMath+
+Um sistema web para o ensino de matemática nas escolas.

@@ -1,0 +1,31 @@
+{% load i18n %}
+<h3 class="text-center">{% trans "Video" %}</h3>
+<hr class="thin bg-grayLighter">
+
+<table class="table bg-white">
+	<thead>
+		<tr>
+			<th>{% trans "Lesson:" %}</th>
+			<th>
+				{{ video.get_lesson }}
+			</th>
+		</tr>
+		<tr>
+			<th>{% trans "Title:" %}</th>
+			<th>{{ video.get_title }}</th>
+		</tr>
+		<tr>
+			<th>{% trans "Description:" %}</th>
+			<th>{{ video.get_description|safe|linebreaksbr }}</th>
+		</tr>
+		<tr>
+			<th>{% trans "Is Visible:" %}</th>
+			<th>
+				{{ video.is_visible }}
+			</th>
+		</tr>
+	</thead>
+</table>
+<div class="col-xs-12 col-sm-9 col-md-8 col-md-offset-2">
+	{% include "askmath/utils/video/_render_video.html" %}
+</div>

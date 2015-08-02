@@ -1,0 +1,15 @@
+{% if video.file %}
+	<div class="container-video">
+	<video width="100%" height="100%" controls>
+		<source src="{{ video.file.url }}" type="video/mp4">
+		<source src="{{ video.file.url }}" type="video/ogg">
+		<source src="{{ video.file.url }}" type="video/webm">
+		<source src="{{ video.file.url }}" type="video/x-flv">
+		{% if video.get_extension == '.swf' %}
+			<object data="{{ video.file.url }}" type="application/x-shockwave-flash">
+				<param value="{{ video.file.url }}" name="movie"/>
+			</object>
+		{% endif %}
+	</video>
+	</div>
+{% endif %}

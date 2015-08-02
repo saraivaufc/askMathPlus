@@ -1,0 +1,172 @@
+body{
+	background: url("../img/backgrounds/background-learner.jpg");
+	background-size: cover;
+	background-repeat: no-repeat ; 
+	background-attachment: fixed;
+	font-family: "Segoe UI","Open Sans",serif;
+	font-size: 0.875rem;
+	color: #fff;
+	line-height: 1.1;
+	font-weight: 400;
+	font-style: normal;
+}
+
+* {
+	margin:0;
+}
+html, body {
+	height: 100%;
+}
+
+#main{
+	margin-bottom: 20px;
+}
+
+.v-center {
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.transparent{
+	background: transparent;
+}
+
+
+label {
+  display: inline-block;
+  width: 100%;
+}
+
+
+/* Hide the file input using
+opacity */
+#input_profile_image [type=file] {
+    position: absolute;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+.errorlist, .error-field{
+	color: red;
+}
+
+
+
+.video{
+	position: relative;
+	height: 95%;
+}
+
+
+.input-control, .input{
+	color: #000 !important;
+}
+
+.form-generic{
+	width: 100%;
+}
+
+
+.icon-lesson-progress{
+	width: 200px;
+	height: 200px;
+	background-color: white;
+	color: gray;
+	border-radius: 50%;
+	-webkit-font-smoothing: antialiased;
+	padding:10px;
+	border: 10px solid #1BA1E2;
+	color: #1BA1E2;
+	font-size: x-large;
+}
+
+.heigth{
+	min-height: 100%;
+	height: 100%;
+}
+
+.width{
+	min-width: 100%;
+	width: 100%;
+}
+
+.fill{
+	min-height: 100%;
+	height: 100%;
+	min-width: 100%;
+	width: 100%;
+}
+
+.border{
+	border: 1px solid #FFF;
+}
+
+#lower-menu .btn-group .btn{
+	font-weight: bold;
+	font-size: 120%;
+}
+
+
+
+#points{
+	font-size: large;
+}
+
+.paragraph{
+	text-indent: 2em;
+}
+
+.clean-margin{
+	margin: 0px;
+}
+
+.app-bar-element.branding{
+	font-size: 150% !important;
+	font-weight: bold;
+}
+
+.noborder{
+	border: 0px;
+}
+
+.right {
+  float: right;
+}
+
+
+/************  FOOTER  *************/
+
+
+#footer .navbar-inverse, #header .navbar-inverse{
+	background: none;
+}
+
+.navbar{
+	margin-bottom: 0px;
+}
+
+.navbar-inverse a{
+	color: #fff !important;
+}
+
+
+.navbar-inverse{
+	color: #fff;
+	border:none;
+}
+
+.font-letterng{
+	font-family: 'Letterng';
+}
+
+
+#text-welcome{
+	padding: 10px;
+}
+/************  ENDFOOTER  *************/
+
+.container-video{
+	margin-left: auto;
+	margin-right: auto;
+}

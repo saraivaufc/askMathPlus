@@ -1,0 +1,45 @@
+{% extends 'askmath/_base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<section>
+<div class="container-fluid">
+	<div class="row">
+		<div class="tile-group bg-transparent ">
+			{% for discipline in disciplines %}
+			{% if discipline.get_lessons_visible|length > 0 %}
+				<h4>{{ discipline|title }}</h4>
+				<div class="tile-container">
+					{% for lesson in discipline.get_lessons_visible %}
+						<div class="tile {{colors|random}} fg-white" data-role="tile">
+						    <div class="tile-content iconic">
+						        <span class="icon mif-clipboard"></span>
+						        <span class="tile-label">{{ lesson.get_title }}</span>
+						    </div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% empty %}
+				<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+</section>
+<article>
+	<div class="container-fluid">
+	<div class="row">
+		<center>
+		<a href="/authentication/login/" class="command-button success">
+		    <span class="icon mif-play"></span>
+		    {% trans "Click here and start to learn ..." %}
+		    <small>{% trans "There are several issues and interesting videos for you." %}</small>
+		</a>
+		</center>
+	</div>
+	</div>
+</article>
+{% endblock %}

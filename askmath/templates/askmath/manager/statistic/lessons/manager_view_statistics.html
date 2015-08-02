@@ -1,0 +1,155 @@
+{% extends 'askmath/manager/statistic/manager_choose_types.html' %}
+
+{% load i18n %}
+{% load askmath_tags %}
+
+{%  block content %}
+
+<div class="cell padding5">
+	<a href="/home/manager/statistics/lesson/choose_lesson/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<h2 class="text-dark  text-center">{{lesson.get_title}}<span class="mif-chart-line place-right"></span></h2>
+	<hr class="thin bg-grayLighter">
+</div>
+<style type="text/css">
+	#container1, #container2{
+		min-width: 310px; 
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	#container1, #container2{
+		height: 400px; 
+	}
+</style>
+
+<div id="container1" class="bg-dark"></div>
+<div id="container2" style="height: 400px"></div>
+{% endblock %}
+
+{% block scripts  %}
+{{ block.super }}
+<script type="text/javascript">
+$(function () {
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container1',
+            type: 'column',
+            margin: 75,
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                viewDistance: 25,
+                depth: 40
+            },
+            marginTop: 80,
+            marginRight: 40
+        },
+
+        title: {
+            text: 'Total de pessoas que acertaram e erraram cada questão desta lição.'
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: '{% trans "Persons" %}'
+            }
+        },
+
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                depth: 40
+            }
+        },
+        xAxis: {
+            categories: [
+            	{% for question in lesson.get_questions %}
+        			'{{ question.get_description|truncatewords:30 }}',
+        		{% endfor %}
+            ]
+        },
+        
+
+        series: [{
+        	name: '{% trans "Acerts" %}',
+        	data: [
+        		{% for question in lesson.get_questions %}
+        			{{ question|acerts_question }},
+        		{% endfor %}
+        			
+        	],
+        },{
+        	name: '{% trans "Errors" %}',
+        	data: [
+        		{% for question in lesson.get_questions %}
+        			{{ question|errors_question }},
+        		{% endfor %}
+        			
+        	],
+        },{
+        	name: '{% trans "Skippeds" %}',
+        	data: [
+        		{% for question in lesson.get_questions %}
+        			{{ question|skippeds_question }},
+        		{% endfor %}
+        			
+        	],
+        },{
+        	name: '{% trans "Helps" %}',
+        	data: [
+        		{% for question in lesson.get_questions %}
+        			{{ question|helps_question }},
+        		{% endfor %}
+        			
+        	],
+        }]
+    });    
+});
+
+
+
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: 'Porcentagem de acertos e erros das respostas desta lição.'
+        },
+        tooltip: {
+            headerFormat: '<b>{point.key}</b><br>',
+            pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Answered',
+            data: [
+            	{% for key, value in percentage_answered_questions.items %}
+	                ['{{key}}', {{ value|floatformat }}],
+                {% endfor %}
+            ]
+        }]
+    });
+});
+
+</script>
+
+{% endblock %}

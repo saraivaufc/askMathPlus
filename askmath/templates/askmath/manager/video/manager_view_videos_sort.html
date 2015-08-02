@@ -1,0 +1,36 @@
+{% extends 'askmath/manager/video/manager_view_videos.html' %}
+{% load i18n %}
+
+{%  block content %}
+
+<div class="tile-content">
+
+<div class="cell padding10">
+	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="padding10">
+
+<h3 class="text-center">{% trans "Sort Videos" %}</h3>
+<hr class="thin bg-grayLighter">
+
+
+<ul id="list_videos_sort" class="listview ">
+{% csrf_token %}
+{% for video in videos %}
+<li class="list active" value={{ video.id }}>
+	<span class="list-title">{{ video }}</span>
+</li>
+{% empty %}
+<h3 class="text-center">{% trans "Not Videos Found" %}</h3>
+{% endfor %}
+</ul>
+
+<div class="text-right">
+	<button onclick="sortVideos();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+</div>
+</div>
+</div>
+
+{% endblock %}

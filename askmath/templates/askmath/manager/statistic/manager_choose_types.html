@@ -1,0 +1,42 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+{% block header %}
+    {% include 'askmath/manager/statistic/overwrite_header.html' %}
+{% endblock %}
+
+{%  block content %}
+
+<div class="cell padding5">
+	<h2 class="text-dark  text-center">{% trans "Choose Type of Statistic" %}<span class="mif-chart-line place-right"></span></h2>
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area no-padding bg-transparent">
+
+{% if perms.askmath.access_manager_statistics %}
+<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+    <a href="/home/manager/statistics/discipline/view_statistics/" class="tile-content iconic">
+        <span class="icon mif-chart-line"></span>
+        <span class="tile-label">{% trans "Disciplines" %}</span>
+    </a>
+</div>
+
+<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+    <a href="/home/manager/statistics/lesson/choose_lesson/" class="tile-content iconic">
+        <span class="icon mif-chart-line"></span>
+        <span class="tile-label">{% trans "Lessons" %}</span>
+    </a>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<!-- HighCharts -->
+<script src="{{ STATIC_URL }}askmath/frameworks/highcharts/highcharts.js"></script>
+<script src="{{ STATIC_URL }}askmath/frameworks/highcharts/highcharts-3d.js"></script>
+<script src="{{ STATIC_URL }}askmath/frameworks/highcharts/modules/exporting.js"></script>
+{% endblock %}

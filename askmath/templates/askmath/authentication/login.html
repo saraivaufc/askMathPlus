@@ -1,0 +1,24 @@
+{% extends 'askmath/_base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+    <form class="form form-signin" action="/authentication/login/" method="POST" role="form">
+   		{% csrf_token %}
+      	<h2 class="form-signin-heading text-center ">  {% trans "Login" %}</h2>
+      	<hr class="colorgraph">
+		{{ form.as_table }}
+		<a href="/authentication/recover_password/" class="font-white">{% trans "Recover Password" %}</a>
+		<hr class="colorgraph">
+      	<div class="row">
+			<div class="col-xs-12 col-md-6">				
+				<a  href="/authentication/signup/" class="button primary btn-block" >{% trans "Register" %}</a>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<button class="button success btn-block" type="submit">{% trans "Login" %}</button>
+			</div>
+		</div>
+    </form>
+</div>
+{% endblock %}

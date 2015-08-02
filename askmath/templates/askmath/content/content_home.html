@@ -1,0 +1,24 @@
+{% extends 'askmath/home/home.html' %}
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/content/overwrite_header.html' %}
+{% endblock %}
+
+{% block content %}
+	<div class="container-metro">
+		<div class="menu-breadcrumbs">
+		<ul id="menu" class="breadcrumbs2">
+		    {% block breadcrumbs %}
+		    <li><a href="/home/"><span class="icon mif-home"></span></a></li>
+			{% endblock %}
+		</ul>
+		</div>
+	</div>
+	<div class="fg-white">
+	{% block tiles %}
+
+	{% endblock %}
+	</div>
+</div>
+{% endblock %}

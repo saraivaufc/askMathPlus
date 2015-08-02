@@ -1,0 +1,34 @@
+{% extends 'askmath/manager/statistic/manager_choose_types.html' %}
+{% load i18n %}
+{% load askmath_tags %}
+
+{%  block content %}
+
+<div class="cell padding5">
+	<a href="/home/manager/statistics/choose_type/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<h2 class="text-dark  text-center">{% trans "Choose Lesson" %}<span class="mif-clipboard place-right"></span></h2>
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area no-padding bg-transparent">
+
+{% for discipline in disciplines %}
+<h4>{{ discipline.get_title|title }}</h4>
+<div class="tile-container fg-white">
+	{% for lesson in discipline.get_lessons %}
+	<div class="tile {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+	    <a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/" class="tile-content iconic">
+	        <span class="icon mif-clipboard"></span>
+	        <span class="tile-label">{{ lesson }}</span>
+	        {% if not lesson.exists %}
+	        <span class="tile-badge mif-bin"></span>
+	        {% endif %}
+	    </a>
+	</div>
+	{% endfor %}
+</div>
+{% empty %}
+<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+{% endfor %}
+</div>
+{% endblock %}

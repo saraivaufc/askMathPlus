@@ -1,0 +1,16 @@
+{% extends 'askmath/manager/person/manager_view_persons.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+
+<div class="cell auto-size padding20 ">
+	<a href="/home/manager/persons/view/person_type={{ person_type }}" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<hr class="thin bg-grayLighter">
+</div>
+
+{% include 'askmath/_form.html' %}
+
+</div>
+
+{% endblock %}

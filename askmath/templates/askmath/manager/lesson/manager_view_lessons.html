@@ -1,0 +1,47 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+
+{% block header %}
+	{% include 'askmath/manager/lesson/overwrite_header.html' %}
+{% endblock %}
+
+{%  block content %}
+
+<div class="cell padding10">
+	{% if perms.askmath.write_lesson %}
+		<a href="/home/manager/lessons/add/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
+	{% endif %}
+	{% if is_removed %}
+		<a href="/home/manager/lessons/view/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>
+	{% else %}
+		<a href="/home/manager/lessons/view_removed/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+</div>
+
+{% regroup disciplines by title as discipline_list %}
+
+<div class="tile-area padding10 bg-transparent ">
+	{% for discipline in discipline_list %}
+		<h4>{{ discipline.grouper|title }}</h4>
+		<div class="tile-container">
+			{% for item in discipline.list %}
+				{% for lesson in item.lessons %}
+					<div class="tile {{colors|random}} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+					    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
+					        <span class="icon mif-clipboard"></span>
+					        <span class="tile-label">{{ lesson.get_title }}</span>
+					        {% if not lesson.exists %}
+					        <span class="tile-badge mif-bin"></span>
+					        {% endif %}
+					    </a>
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	{% empty %}
+		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+	{% endfor %}
+</div>
+{% endblock %}

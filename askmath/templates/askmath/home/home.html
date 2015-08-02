@@ -1,0 +1,54 @@
+{% extends 'askmath/_base.html' %}
+
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/home/overwrite_header.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+	<div id="text-welcome" class="jumbotron transparent">
+		<h1 class="text-center font-white font-letterng">{% trans 'Welcome to the Askmath...' %}</h1>
+	</div>
+</section>
+
+<section>
+	<div class="flex-grid ">
+	<div class="container-fluid">
+	<div class="row flex-just-center ">
+	<div class="cell size5">
+		<div class="row tile-container cell-auto-size">
+			<div class="cell tile bg-red fg-white" data-role="tile">
+		        <a href="/authentication/signup/" class="tile-content iconic">
+		            <span class="icon mif-clipboard"></span>
+		        </a>
+		        <span class="tile-label">{% trans "Register" %}</span>
+		    </div>
+		    <div class="cell tile-wide bg-green fg-white" data-role="tile">
+		        <a href="/authentication/login/" class="tile-content iconic">
+		            <span class="icon mif-play"></span>
+		        </a>
+		        <span class="tile-label">{% trans "Start here" %}</span>
+		    </div>
+		</div>
+		<div class="row tile-container cell-auto-size" >
+	    	<div class="cell tile-wide bg-darkBlue fg-white" data-role="tile">
+		        <a href="/about/" class="tile-content iconic">
+		            <span class="icon mif-info"></span>
+		        </a>
+		        <span class="tile-label">{% trans "About the project" %}</span>
+		    </div>
+		    <div class="cell tile bg-yellow fg-white" data-role="tile">
+		        <a href="/contents/" class="tile-content iconic">
+		            <span class="icon mif-list"></span>
+		        </a>
+		        <span class="tile-label">{% trans "Contents" %}</span>
+		    </div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</section>
+{% endblock %}

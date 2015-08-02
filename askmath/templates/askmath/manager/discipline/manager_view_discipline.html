@@ -1,0 +1,28 @@
+{% extends 'askmath/manager/discipline/manager_view_disciplines.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+<div class="cell padding10">
+	<a href="/home/manager/disciplines/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_discipline %}	
+		<a href="/home/manager/disciplines/edit/discipline={{ discipline.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		{% if discipline.exists %}
+			<a href="/home/manager/disciplines/remove/discipline={{ discipline.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		{% endif %}
+		{% if not discipline.exists %}
+			<a href="/home/manager/disciplines/restore/discipline={{ discipline.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		{% endif %}
+	{% endif %}
+	{% if perms.askmath.write_lesson %}
+		<a href="/home/manager/lessons/add/" class="button primary" ><span class="mif-plus"></span>{% trans " Create Lesson" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+	
+</div>
+
+<div class="padding10">
+{% include "askmath/manager/discipline/_render_discipline.html" %}
+</div>
+</div>
+{% endblock %}

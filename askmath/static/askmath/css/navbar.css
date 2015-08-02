@@ -1,0 +1,43 @@
+#header , #footer{
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+}
+
+
+.navbar-nav>li>a:hover, .navbar-nav>li>a:active, .navbar-nav>li>a:focus {
+    color: #fff !important;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+.navbar a{
+	color: #fff;
+}
+
+.navbar .active{
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
+.icon-bar{
+    color: #fff !important;
+}

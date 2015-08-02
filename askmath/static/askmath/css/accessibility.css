@@ -1,0 +1,18 @@
+#nav-accessibillity a{
+	color: #fff;
+}
+
+.contrast{
+	background-color: #191919 !important;
+	color: #fff !important;
+}
+
+.link_contrast{
+	color: #ff0 !important;
+}
+
+.btn_contrast{
+	background: none !important;
+	background-color: #ff0 !important;
+	color: #000 !important;
+}

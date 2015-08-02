@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% if message %}
+    {% if message.type == "SUCCESS" %}
+    <input type='hidden' id="alert-success" value="{{ message.text }}">
+    {% elif  message.type == "ERROR" %}
+    <input type='hidden' id="alert-danger" value="{{ message.text }}">
+    {% elif  message.type == "WARNING" %}
+    <input type='hidden' id="alert-warning" value="{{ message.text }}">
+    {% elif message.type == "INFO" %}
+    <input type='hidden' id="alert-info" value="{{ message.text }}">
+    {% else %}
+    {% endif  %}
+{% endif %}

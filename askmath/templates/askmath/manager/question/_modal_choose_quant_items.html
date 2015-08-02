@@ -1,0 +1,21 @@
+{% load i18n %}
+<div class="modal fade" id="quantity_items">
+  <div class="modal-dialog modal-sm">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">{% trans "How many items this issue have?" %}</h4>
+	  </div>
+	  <div class="modal-body">
+		<form id="form_quantity_items" action="/home/manager/questions/add/lesson={{ lesson.id }}/" method="POST" onsubmit="return updateURLQuantityItems();" >
+			{% csrf_token %}
+			<input type="number" name="quantity_items" class="input-control number" step="1" min="2" value=5 required>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="button primary" data-dismiss="modal">{% trans "Cancel" %}</button>
+		<button type="submit" class="button success">{% trans "Submit" %}</button>
+		</form>
+	  </div>
+	</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

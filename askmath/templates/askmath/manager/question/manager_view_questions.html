@@ -1,0 +1,42 @@
+{% extends 'askmath/manager/question/manager_choose_lessons.html' %}
+{% load i18n %}
+
+{%  block content %}
+
+<div class="cell padding10">
+	<a href="/home/manager/questions/choose_lesson/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_question %}
+		<a data-toggle="modal" data-target="#quantity_items" href="#" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
+		<a href="/home/manager/questions/sort/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>
+	{% endif %}
+	
+	{% if is_removed %}
+		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>
+	{% else %}
+		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area padding10 bg-transparent">
+<div class="tile-container">
+{% for question in questions %}
+<div class="tile-wide {{colors|random}} {% if question.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
+        <span class="icon mif-list-numbered"></span>
+        <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>
+        {% if not question.exists %}
+        <span class="tile-badge mif-bin"></span>
+        {% endif %}
+    </a>
+</div>
+{% empty %}
+<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
+{% endfor %}
+</div>
+</div>
+
+{% include "askmath/manager/question/_modal_choose_quant_items.html" %}
+
+</div>
+{% endblock %}
