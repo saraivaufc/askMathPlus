@@ -1,10 +1,19 @@
 {% load i18n %}
+
 <div class="container-fluid">
 		<form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
 		{% csrf_token %}
 			<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 			<hr class="colorgraph">
-			{{ form }}
+			{% for field in form %}
+		        <div class="fieldWrapper">
+		            {{ field.errors }}
+		            {{ field.label_tag }}
+		            {{ field }}
+		            <div id="{{ field.auto_id }}_div">
+		            </div>
+		        </div>
+		    {% endfor %}
 			<hr class="colorgraph">
 			<div class="text-right">
 				<a class="button primary" onclick="window.history.back();" ><span class="mif-cancel"></span>{% trans " Cancel" %}</a>

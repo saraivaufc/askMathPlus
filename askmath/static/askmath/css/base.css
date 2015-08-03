@@ -171,3 +171,19 @@ opacity */
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.break-word {
+	white-space: pre-wrap;
+}
+
+
+#banner-float {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    margin-top: 10px;
+    z-index: 1000000;
+    white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow: auto;
+}

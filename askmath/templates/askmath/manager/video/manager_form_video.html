@@ -8,8 +8,7 @@
 	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
 </div>
-
+{% include 'askmath/utils/_box_latex.html' %}
 {% include "askmath/_form.html" %}
-
 </div>
 {% endblock %}

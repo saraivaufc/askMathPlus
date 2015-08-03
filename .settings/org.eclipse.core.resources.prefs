@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//askmath/forms/lesson/lesson.py=utf-8
 encoding//askmath/forms/question/item.py=utf-8
+encoding//askmath/forms/question/question.py=utf-8
+encoding//askmath/forms/video/video.py=utf-8

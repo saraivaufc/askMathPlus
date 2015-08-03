@@ -181,3 +181,33 @@ function help(){
 
 $("#btn-help").click(help);
 
+$(function(){
+	var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+    var math = null;                // the element jax for the math output.
+	QUEUE.Push(function (id_preview) {
+      math = MathJax.Hub.getAllJax('"' + id_preview + '"')[0];
+    });
+    
+	window.UpdateMath = function (TeX, id_preview) {
+      QUEUE.Push(id_preview, ["Text",math,"\\displaystyle("+TeX+")"]);
+    }
+	
+	
+	$(".latex").each(function(){
+		var id_field = $(this).attr("id");
+		$(this).keyup(function(){
+			UpdateMath($(this).val(), MathOutput);
+		});
+	});
+});
+
+
+jQuery(document).ready(function() {
+    $(window).scroll(function () {
+        set = $(document).scrollTop()+"px";
+        jQuery('#banner-float').animate(
+            {top:set},
+            {duration:1000, queue:false}
+        );
+    });
+});

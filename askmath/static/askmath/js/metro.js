@@ -25,12 +25,9 @@ $(".tile-area").css({
 
 var addMouseWheel = function (){
     $("body").mousewheel(function(event, delta, deltaX, deltaY){
-                var page = $(document);
-                var scroll_value = delta * 50;
-                page.scrollLeft(page.scrollLeft() - scroll_value);
-                return true;
-            });
-        };
+        return true;
+    });
+};
 
         plugin.init();
     }

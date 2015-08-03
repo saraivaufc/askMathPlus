@@ -15,7 +15,7 @@ class ItemForm(ModelForm):
 		fields = ("position", "description", "correct", "deficiencys")
 		widgets = {
 			'position': HiddenInput(attrs={'class':'input-control hidden'}),
-			'description': Textarea(attrs={'required': 'required', 'class':'input-control  textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
+			'description': Textarea(attrs={'required': 'required', 'class':'latex input-control  textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
 			'correct': CheckboxInput(attrs={'class':'input-control checkbox'}),
 			'deficiencys': SelectMultiple(attrs={'class':'input-control select'}),
 		}
