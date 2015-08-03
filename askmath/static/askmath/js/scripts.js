@@ -1,4 +1,10 @@
 function Init(){
+	resize_window();
+};
+
+window.onresize = resize_window();
+
+function resize_window(){
 	var screean = parseInt($(window).height());
 	var header = parseInt($("#header").css("height"));
 	var main = parseInt($("#main").css("height"));
@@ -7,7 +13,7 @@ function Init(){
 		var res = screean - header - footer;
 		parseInt($("#main").css("height", (res-20) + "px"));
 	};
-};
+}
 
 
 

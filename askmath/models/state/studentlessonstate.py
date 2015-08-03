@@ -221,23 +221,32 @@ class StudentLessonState(IState):
     
                 
         
-    def answer_question(self, question, item):
+    def answer_question(self, question, items):
         #Se a questao na pertence a essa licao
         if not question in self.lesson.get_questions():
             return Message(TextMessage.QUESTION_NOT_FOUND_IN_LESSON, TypeMessage.SUCCESS)
         
-        #Se o item nao pertence a essa questao
-        if not item in question.get_items():
-            return Message(TextMessage.ITEM_NOT_FOUND_IN_QUESTION, TypeMessage.SUCCESS)
+        #Se o items nao pertence a essa questao
+        for item in items:
+            exists = False
+            for item_question in question.get_items():
+                if item.id == item_question.id:
+                    exists = True
+            if not exists:
+                return Message(TextMessage.ITEM_NOT_FOUND_IN_QUESTION, TypeMessage.SUCCESS)
         
-        items_corrects = question.get_items_corrects()
-        if item in items_corrects:
+        try:
+            items_corrects = question.get_items_corrects()
+        except:
+            return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
+        
+        if any(i in items_corrects for i in items):
             self.add_answered_correct_question(question)
-            self.save_answer_question_historic(question, item, True)
+            self.save_answer_question_historic(question, items, True)
             return Message(TextMessage.QUESTION_SUCCESS_REPLY, TypeMessage.SUCCESS)
         else:
             self.add_answered_incorrect_question(question)
-            self.save_answer_question_historic(question, item, False)
+            self.save_answer_question_historic(question, items, False)
             return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
     
     def save_answer_question_historic(self, question, item, hit=False):
