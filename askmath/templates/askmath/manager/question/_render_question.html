@@ -1,65 +1,69 @@
 {% load i18n %}
-<h3 class="text-center">{% trans "Question" %}</h3>
-<hr class="thin bg-grayLighter">
-
-<table class="table bg-white">
-    <thead>
-    	<tr>
-            <th>{% trans "Description:" %}</th>
-            <th>{{ question.get_description|safe|linebreaksbr }}</th>
-        </tr>
-        <tr>
-   		   	<th>{% trans "Help:" %}</th>
-   		   	<th>{{ question.get_help|safe|linebreaksbr }}</th>
-   		</tr>
-        <tr>
-        	<th>{% trans "Scores:" %}</th>
-        	<th>
-        		{{ question.get_scores }}
-        	</th>
-        </tr>
-        <tr>
-        	<th>{% trans "Is Visible:" %}</th>
-        	<th>
-        		{{ question.is_visible }}
-        	</th>
-        </tr>
-    </thead>
-</table>
-
-
-<h3 class="text-center">{% trans "Items" %}</h3>
-<hr class="thin bg-grayLighter">
-<ol type="A" class="list">
-{% for item in question.get_items %}
-	<li class="active">
-		<table class="table border bordered bg-white">
-		    <thead>
-		        <tr>
-		            <th>{% trans "Description:" %}</th>
-		            <th>{{ item.get_description|safe|linebreaksbr }}</th>
-		        </tr>
-		        <tr>
-		            <th>{% trans "Is Correct:" %}</th>
-		            <th>{{ item.is_correct }}</th>
-		        </tr>
-		        <tr>
-		            <th>{% trans "Deficiencys:" %}</th>
-		            <th>
-		        	{% for deficiency in item.get_deficiencys %}
-		        		{{ deficiency }}
-		        		{% if not forloop.counter == item.get_deficiencys|length %}
-	        			,
-	        			{% endif %}
-	        		{% empty %}
-	        			{% trans "NULL" %}
-		        	{% endfor %}	
-		        	</th>
-		        </tr>
-		    </thead>
-		</table>
-	</li>
-{% empty %}
-<h3>{% trans "No item found." %}</h3>
-{% endfor %}
-</ol>
+	<section>
+	<h3 class="text-center">{% trans "Question" %}</h3>
+	<hr class="thin bg-grayLighter">
+	<article>
+	<table class="table bg-white">
+	    <thead>
+	    	<tr>
+	            <th>{% trans "Description:" %}</th>
+	            <th>{{ question.get_description|safe|linebreaksbr }}</th>
+	        </tr>
+	        <tr>
+	   		   	<th>{% trans "Help:" %}</th>
+	   		   	<th>{{ question.get_help|safe|linebreaksbr }}</th>
+	   		</tr>
+	        <tr>
+	        	<th>{% trans "Scores:" %}</th>
+	        	<th>
+	        		{{ question.get_scores }}
+	        	</th>
+	        </tr>
+	        <tr>
+	        	<th>{% trans "Is Visible:" %}</th>
+	        	<th>
+	        		{{ question.is_visible }}
+	        	</th>
+	        </tr>
+	    </thead>
+	</table>
+	</article>
+	
+	<article>
+	<h3 class="text-center">{% trans "Items" %}</h3>
+	<hr class="thin bg-grayLighter">
+	<ol type="A" class="list">
+	{% for item in question.get_items %}
+		<li class="active">
+			<table class="table bg-white">
+			    <thead>
+			        <tr>
+			            <th>{% trans "Description:" %}</th>
+			            <th>{{ item.get_description|safe|linebreaksbr }}</th>
+			        </tr>
+			        <tr>
+			            <th>{% trans "Is Correct:" %}</th>
+			            <th>{{ item.is_correct }}</th>
+			        </tr>
+			        <tr>
+			            <th>{% trans "Deficiencys:" %}</th>
+			            <th>
+			        	{% for deficiency in item.get_deficiencys %}
+			        		{{ deficiency }}
+			        		{% if not forloop.counter == item.get_deficiencys|length %}
+		        			,
+		        			{% endif %}
+		        		{% empty %}
+		        			{% trans "NULL" %}
+			        	{% endfor %}	
+			        	</th>
+			        </tr>
+			    </thead>
+			</table>
+		</li>
+	{% empty %}
+	<h3>{% trans "No item found." %}</h3>
+	{% endfor %}
+	</ol>
+	</article>
+	</section>

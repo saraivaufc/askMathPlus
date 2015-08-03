@@ -240,7 +240,7 @@ class StudentLessonState(IState):
         except:
             return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
         
-        if any(i in items_corrects for i in items):
+        if set(items_corrects) == set(items):
             self.add_answered_correct_question(question)
             self.save_answer_question_historic(question, items, True)
             return Message(TextMessage.QUESTION_SUCCESS_REPLY, TypeMessage.SUCCESS)

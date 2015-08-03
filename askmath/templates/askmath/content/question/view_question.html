@@ -3,8 +3,8 @@
 
 {% block container-left %}
 	<div>
-		<h3 class="text-center">{% trans "Mark all the correct items." %}</h3>
-		<h4 class="text-center">{% trans "This question goes:" %} <spam id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</spam></h4>
+		<h3 class="text-center">{% trans "This question worth:" %} <spam id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</spam></h3>
+		<h4 class="text-center">{% trans "Mark all the correct items." %}</h4>
 		<p class="lead text-justify">{{ question.get_position }}). {{ question.get_description|safe|linebreaksbr }}</p>
 		<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
 		<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
