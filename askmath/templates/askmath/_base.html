@@ -132,12 +132,7 @@
 			  CreatePreview: function () {
 			    Preview.timeout = null;
 			    if (this.mjRunning) return;
-			    var text = null;
-			    $(":focus").each(function() {
-				    if($(this).hasClass('latex')){
-				    	text = $(this).val();
-				    };
-				});
+			    var text = document.getElementById("MathInput").value;
 			    if (text === this.oldtext) return;
 			    this.buffer.innerHTML = this.oldtext = text;
 			    this.mjRunning = true;

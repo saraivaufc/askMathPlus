@@ -189,12 +189,19 @@ $(function(){
 	
 $("#btn-help").click(help);
 
-jQuery(document).ready(function() {
-    $(window).scroll(function () {
-        set = $(document).scrollTop()+"px";
-        jQuery('#MathPreview').animate(
-            {top:set},
-            {duration:1000, queue:false}
-        );
-    });
+$(function(){
+	$(".latex").focus(function(){
+		var id = $(this).attr("id");
+		$('#box-latex').attr('value',id);
+		$("#MathInput").val($(this).val());
+		$('#box-latex').modal();
+	});
+	
+	$("#box-latex-submit").click(function(){
+		var text = $("#MathInput").val();
+		$("#MathInput").val("");
+		var input_form = $("#" + $('#box-latex').attr('value'));
+		input_form.text(text);
+		$('#box-latex').modal('hide');
+	});
 });

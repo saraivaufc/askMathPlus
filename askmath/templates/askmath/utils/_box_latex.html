@@ -1,6 +1,26 @@
 {% load i18n %}
 
-<div id="MathPreview">
-</div>
-<div id="MathBuffer">
-</div>
+<div class="modal fade" id="box-latex">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">{% trans "Latex Preview:" %}</h4>
+      </div>
+      <div class="modal-body">
+      	<textarea id="MathInput" cols="60" rows="10" onkeyup="Preview.Update()">
+		</textarea>
+		<br/><br/>
+		Preview is shown here:
+		<div id="MathPreview" style="border:1px solid; width:100%; margin-top:5px"></div>
+		<div id="MathBuffer" style="border:1px solid; width:100%; margin-top:5px; 
+		visibility:hidden; position:absolute; top:0; left: 0"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+        <button id="box-latex-submit" type="button" class="btn btn-primary">{% trans "Save changes" %}</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
