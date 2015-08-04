@@ -100,6 +100,23 @@
 	</head>
 
 	<body onload="Init();">	
+	
+		<script>
+			  (function () {
+			    var QUEUE = MathJax.Hub.queue;
+			    var math = null, box = null;
+			    var HIDEBOX = function () {box.style.visibility = "hidden"}
+			    var SHOWBOX = function () {box.style.visibility = "visible"}
+			    QUEUE.Push(function () {
+			      math = MathJax.Hub.getAllJax("MathOutput")[0];
+			      box = document.getElementById("box");
+			      SHOWBOX(); // box is initially hidden so the braces don't show
+			    });
+			    window.UpdateMath = function (TeX) {
+			      QUEUE.Push(HIDEBOX,["Text",math,"\\displaystyle{"+TeX+"}"],SHOWBOX);
+			    }
+			  })();
+		</script>	
 		<div id="fb-root"></div>
 
 		<header id="header">
@@ -107,7 +124,7 @@
 		{% block header %}
 			{% include 'askmath/_header.html' %}
 		{% endblock %}
-		</header>		
+		</header>	
 		<main id="main">
 			<div class="container-fluid">
 				<div class="row">
