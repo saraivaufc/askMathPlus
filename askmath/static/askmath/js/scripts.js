@@ -182,7 +182,7 @@ function help(){
 $(function(){
 	$(".latex").each(function(){
 		$(this).keyup(function(){
-			UpdateMath($(this).val());
+			Preview.Update();
 		});
 	});
 });
@@ -192,7 +192,7 @@ $("#btn-help").click(help);
 jQuery(document).ready(function() {
     $(window).scroll(function () {
         set = $(document).scrollTop()+"px";
-        jQuery('#MathOutput').animate(
+        jQuery('#MathPreview').animate(
             {top:set},
             {duration:1000, queue:false}
         );

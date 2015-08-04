@@ -92,31 +92,77 @@
 	    
 	    <!-- MathJax -->
 	    <script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		  MathJax.Hub.Config({
+		    showProcessingMessages: false,
+		    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+		  });
 		</script>
 		<script type="text/javascript"
 		  src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 		</script>
+		
+		<script>
+			var Preview = {
+			  delay: 150,        // delay after keystroke before updating
+			
+			  preview: null,     // filled in by Init below
+			  buffer: null,      // filled in by Init below
+			
+			  timeout: null,     // store setTimout id
+			  mjRunning: false,  // true when MathJax is processing
+			  oldText: null,     // used to check if an update is needed
+			
+			  Init: function () {
+			    this.preview = document.getElementById("MathPreview");
+			    this.buffer = document.getElementById("MathBuffer");
+			  },
+			
+			  SwapBuffers: function () {
+			    var buffer = this.preview, preview = this.buffer;
+			    this.buffer = buffer; this.preview = preview;
+			    buffer.style.visibility = "hidden"; buffer.style.position = "absolute";
+			    preview.style.position = ""; preview.style.visibility = "";
+			  },
+			
+			  
+			  Update: function () {
+			    if (this.timeout) {clearTimeout(this.timeout)}
+			    this.timeout = setTimeout(this.callback,this.delay);
+			  },
+			 
+			  CreatePreview: function () {
+			    Preview.timeout = null;
+			    if (this.mjRunning) return;
+			    var text = null;
+			    $(":focus").each(function() {
+				    if($(this).hasClass('latex')){
+				    	text = $(this).val();
+				    };
+				});
+			    if (text === this.oldtext) return;
+			    this.buffer.innerHTML = this.oldtext = text;
+			    this.mjRunning = true;
+			    MathJax.Hub.Queue(
+			      ["Typeset",MathJax.Hub,this.buffer],
+			      ["PreviewDone",this]
+			    );
+			  },
+			
+			  PreviewDone: function () {
+			    this.mjRunning = false;
+			    this.SwapBuffers();
+			  }
+			
+			};
+			
+			Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
+			Preview.callback.autoReset = true;  // make sure it can run more than once
+			
+			</script>
+		
 	</head>
 
-	<body onload="Init();">	
-	
-		<script>
-			  (function () {
-			    var QUEUE = MathJax.Hub.queue;
-			    var math = null, box = null;
-			    var HIDEBOX = function () {box.style.visibility = "hidden"}
-			    var SHOWBOX = function () {box.style.visibility = "visible"}
-			    QUEUE.Push(function () {
-			      math = MathJax.Hub.getAllJax("MathOutput")[0];
-			      box = document.getElementById("box");
-			      SHOWBOX(); // box is initially hidden so the braces don't show
-			    });
-			    window.UpdateMath = function (TeX) {
-			      QUEUE.Push(HIDEBOX,["Text",math,"\\displaystyle{"+TeX+"}"],SHOWBOX);
-			    }
-			  })();
-		</script>	
+	<body onload="Init();">		
 		<div id="fb-root"></div>
 
 		<header id="header">
@@ -149,6 +195,11 @@
 			{% include 'askmath/_footer.html' %}
 		{% endblock %}
 		</footer>
+		
+		<script>
+		Preview.Init();
+		</script>
+				
 		
 		<!-- Jquery -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery/jquery-2.1.3.min.js"></script>

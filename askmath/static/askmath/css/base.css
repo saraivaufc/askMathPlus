@@ -177,16 +177,9 @@ opacity */
 }
 
 
-input {margin-top: .7em}
-.output {
-	border: 1px solid black;
-	width: 200px;
+#MathPreview {
+	width: 100%;
 	white-space: pre-wrap;
-	position: absolute; top: 0; right: 2em;
 	z-index: 1000000;
 	background-color: threedlightshadow;
-}
-.box {
-	position: relative;
-	background-color: black;
 }
