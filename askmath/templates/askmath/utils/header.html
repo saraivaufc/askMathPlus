@@ -1,90 +1,10 @@
-<div style="margin-left: 170px;" id="wrap" class="wrap">
+<div id="wrap" class="wrap">
 			<div id="bar1" class="top">
 				<div class="toolbar_wrapper">
 					<div class="toolbar" style="z-index:23">
 						<div class="panel">
-							<img id="undobutton" src="images/buttons/undo.gif" alt="undo" title="undo">
-							<img id="redobutton" src="images/buttons/redo-x.gif" alt="redo" title="redo">
-						</div>
-						<div class="panel">
-							<select title="Cores da equação" onchange="EqEditor.insert(this.value, this.value.length-1); this.selectedIndex=0">
-								<option value="">Cores...</option>
-								<option value="{\color{Red} }" style="color:Red">Vermelho</option>
-								<option value="{\color{Green} }" style="color:Green">Verde</option>
-								<option value="{\color{Blue} }" style="color:Blue">Blue</option>
-								<option value="{\color{Yellow} }" style="color:Yellow">Amarelo</option>
-								<option value="{\color{Cyan} }" style="color:Cyan">Ciano</option>
-								<option value="{\color{Magenta} }" style="color:Magenta">Magenta</option>
-								<option value="{\color{Teal} }" style="color:Teal">Teal</option>
-								<option value="{\color{Purple} }" style="color:Purple">Púrpura</option>
-								<option value="{\color{DarkBlue} }" style="color:DarkBlue">Azul escuro</option>
-								<option value="{\color{DarkRed} }" style="color:DarkRed">Vermelho escuro</option>
-								<option value="{\color{Orange} }" style="color:Orange">Laranja</option>
-								<option value="{\color{DarkOrange} }" style="color:DarkOrange">Laranja escuro</option>
-								<option value="{\color{Golden} }" style="color:Golden">Dourado</option>
-								<option value="{\color{Pink} }" style="color:Pink">Rosa</option>
-								<option value="{\color{DarkGreen} }" style="color:DarkGreen">Verde escuro</option>
-								<option value="{\color{Orchid} }" style="color:Orchid">Orquídea</option>
-								<option value="{\color{Emerald} }" style="color:Emerald">Esmeralda</option>
-							</select>
-						</div>
-						<div class="panel">
-							<select title="Functions" onchange="EqEditor.insert(this.value); this.selectedIndex=0;">
-								<option selected="selected" value="" style="color:#8080ff">Functions…</option>
-								<option value="\displaystyle">display style</option>
-								<optgroup label="Trig">
-									<option value="\sin">sin</option>
-									<option value="\cos">cos</option>
-									<option value="\tan">tan</option>
-									<option value="\csc">csc</option>
-									<option value="\sec">sec</option>
-									<option value="\cot">cot</option>
-									<option value="\sinh">sinh</option>
-									<option value="\cosh">cosh</option>
-									<option value="\tanh">tanh</option>
-									<option value="\coth">coth</option>
-								</optgroup>
-								<optgroup label="Inverse Trig">
-									<option value="\arcsin">arcsin</option>
-									<option value="\arccos">arccos</option>
-									<option value="\arctan">arctan</option>
-									<option value="\textrm{arccsc}">arccsc</option>
-									<option value="\textrm{arcsec}">arcsec</option>
-									<option value="\textrm{arccot}">arccot</option>
-									<option value="\sin^{-1}">sin-1</option>
-									<option value="\cos^{-1}">cos-1</option>
-									<option value="\tan^{-1}">tan-1</option>
-									<option value="\sinh^{-1}">sinh-1</option>
-									<option value="\cosh^{-1}">cosh-1</option>
-									<option value="\tanh^{-1}">tanh-1</option>
-								</optgroup>
-								<optgroup label="Logs">
-									<option value="\exp">exp</option>
-									<option value="\lg">lg</option>
-									<option value="\ln">ln</option>
-									<option value="\log">log</option>
-									<option value="\log_{e}">log e</option>
-									<option value="\log_{10}">log 10</option>
-								</optgroup>
-								<optgroup label="Limits">
-									<option value="\lim">limit</option>
-									<option value="\liminf">liminf</option>
-									<option value="\limsup">limsup</option>
-									<option value="\max">maximum</option>
-									<option value="\min">minimum</option>
-									<option value="\infty">infinite</option>
-								</optgroup>
-								<optgroup label="Operators">
-									<option value="\arg">arg</option>
-									<option value="\det">det</option>
-									<option value="\dim">dim</option>
-									<option value="\gcd">gcd</option>
-									<option value="\hom">hom</option>
-									<option value="\ker">ker</option>
-									<option value="\Pr">Pr</option>
-									<option value="\sup">sup</option>
-								</optgroup>
-							</select>
+							<img id="undobutton" src="{{ STATIC_URL }}askmath/components/editor/images/buttons/undo.gif" alt="undo" title="undo">
+							<img id="redobutton" src="{{ STATIC_URL }}askmath/components/editor/images/buttons/redo-x.gif" alt="redo" title="redo">
 						</div>
 					</div>
 				</div>
@@ -121,7 +41,7 @@
 						<div class="panel" id="panel4" style="height:34px">
 							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/binary.gif" title="Binary" alt="Binary Panel" usemap="#binary_map" height="238" width="68" border="0">
 							<map name="binary_map" id="binary_map">
-								<area title="\pm" shape="rect" alt="" coords="0,0,14,14">
+								<area title="\pm$" shape="rect" alt="" coords="0,0,14,14">
 								<area title="\mp" shape="rect" alt="" coords="0,17,14,31">
 								<area title="\times" shape="rect" alt="" coords="0,34,14,48">
 								<area title="\ast" shape="rect" alt="" coords="0,51,14,65">

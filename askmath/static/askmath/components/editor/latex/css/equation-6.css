@@ -27,15 +27,10 @@ img.lt-lt  { width:30px; height:17px; background:url('/latex/lang/lang2.gif') 0p
 img.bg-bg  { width:30px; height:17px; background:url('/latex/lang/lang2.gif') 0px -340px; }
 img.pt-pt  { width:30px; height:17px; background:url('/latex/lang/lang2.gif') 0px -357px; }
 
-body {
-	padding:0;
-	margin:0; 
-	font-size:12px;
-	font-family:Arial, Helvetica, sans-serif;
-	overflow:hidden;
-}
-
-.wrap { margin:0 auto; max-width:1020px; min-width:600px; margin-left:170px; }
+.wrap { 
+	margin:0 auto;
+	width: 100%;
+ }
 
 p { margin:2px 0; }
 
