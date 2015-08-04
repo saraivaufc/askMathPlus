@@ -193,13 +193,19 @@ $(function(){
 	$(".latex").focus(function(){
 		var id = $(this).attr("id");
 		$('#box-latex').attr('value',id);
-		$("#MathInput").val($(this).val());
+		$("#latex_formula").val($(this).val());
 		$('#box-latex').modal();
 	});
 	
+	$("#latex_formula").keyup(function(){
+		var latex = document.getElementById("latex_formula").value;
+		var result = document.getElementById("MathPreview");
+		typejax.updater.init(latex, latex.length, result);
+	});
+	
 	$("#box-latex-submit").click(function(){
-		var text = $("#MathInput").val();
-		$("#MathInput").val("");
+		var text = $("#latex_formula").val();
+		$("#latex_formula").val("");
 		var input_form = $("#" + $('#box-latex').attr('value'));
 		input_form.text(text);
 		$('#box-latex').modal('hide');
