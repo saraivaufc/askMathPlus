@@ -91,18 +91,15 @@
 	    </script>
 	    
 	    <!-- MathJax -->
-		
-		<script src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
-
-		
-		<script type="text/x-mathjax-config">
+	    <script type="text/x-mathjax-config">
 		  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 		</script>
-	    
+		<script type="text/javascript"
+		  src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
 	</head>
 
-	<body onload="Init();">
+	<body onload="Init();">	
 		<div id="fb-root"></div>
 
 		<header id="header">
@@ -110,8 +107,7 @@
 		{% block header %}
 			{% include 'askmath/_header.html' %}
 		{% endblock %}
-		</header>
-
+		</header>		
 		<main id="main">
 			<div class="container-fluid">
 				<div class="row">
