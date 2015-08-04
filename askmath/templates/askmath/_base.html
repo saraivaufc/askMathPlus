@@ -39,7 +39,8 @@
 
 		<!-- Fonts -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/fonts.css" >
-
+			
+		
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/bootstrap/css/bootstrap-theme.min.css" >
@@ -47,6 +48,10 @@
 		<!-- Metro  -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro.min.css" >
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro-icons.min.css" >
+		
+		<!-- Latex Editor -->
+		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/components/editor/latex/css/equation-6.css" type="text/css">
+		
 		
 		
 		<!-- My Styles -->
@@ -67,9 +72,6 @@
 		<!-- Plugins -->
 	    <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
 		
-		
-		<!-- Latex Editor -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/components/editor/latex/css/equation-6.css" type="text/css">
 		
 		{% if perms.askmath.access_manager %}
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/manager.css" >
