@@ -90,11 +90,8 @@ form { border:0; padding:0; margin:0; }
 
 select 
 {
-	font-family:"lucida grande", tahoma, verdana, arial, sans-sarif;
-  font-size:11px;
 	background-color:#FFFFFF;
 	border:1px solid #8FB6BD;
-	height:18px;
 }
 
 /* ------- Button formating ------ */
