@@ -10,7 +10,8 @@ class RegisterKey(models.Model):
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     
-
+    def __unicode__(self):
+        return self.key
     def delete(self):
         self.exists = False
         self.save()
@@ -21,3 +22,6 @@ class RegisterKey(models.Model):
     
     class Meta:
         abstract = True
+        ordering = ['creator']
+        verbose_name = _("Register Key")
+        verbose_name_plural = _("Register Keys")

@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login as login_user
 from django.contrib.auth.views import logout as logout_sys
 from django.http.response import HttpResponseRedirect
-from askmath.forms import StudentForm
+from askmath.forms import StudentForm, AssistantForm, TeacherForm, AdministratorForm
 from askMathPlus.settings import LOGIN_URL
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.models.users import Student, Person as PersonModel
+from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 from askmath.forms.users import PersonLoginForm, PersonRecoverPassword
@@ -28,7 +29,6 @@ class Person(IPerson):
                 except:
                     person = False
                     message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-                    
                 if person:
                     user = authenticate(username=username, password=password)
                     if user:
@@ -58,23 +58,49 @@ class Person(IPerson):
             request.POST = request.POST.copy()
             try:
                 request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
-                form = StudentForm(request.POST, request.FILES)
-                if form.is_valid():
+                type = request.POST['type']
+                form = None
+                register_key = None
+                
+                if type == "STUDENT":
+                    form = StudentForm(request.POST, request.FILES)
+                elif type == "ASSISTANT":
+                    try:
+                        key = request.POST['key']
+                        register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
+                        form = AssistantForm(request.POST, request.FILES)
+                    except:
+                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                elif type == "TEACHER":
+                    try:
+                        key = request.POST['key']
+                        register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
+                        form = TeacherForm(request.POST, request.FILES)
+                    except:
+                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                elif type == "ADMINISTRATOR":
+                    try:
+                        key = request.POST['key']
+                        register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
+                        form = AdministratorForm(request.POST, request.FILES)
+                    except:
+                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                else:
+                    message = Message(TextMessage.USER_TYPE_NOT_FOUND, TypeMessage.ERROR)
+                
+                if form and form.is_valid():
                     user=form.save()
+                    if register_key:
+                        register_key.add_user(user)
                     group = Group.objects.get(name='student') 
                     user.groups.add(group)
                     message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
                     request.method="GET"
                     return self.login(request,None, message)
-                else:
-                    message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
             except:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-            return render(request, 'askmath/authentication/signup.html',
-                {'request': request,'message': message, 'form': form})
-        else:
-            form = StudentForm()
-            return render(request, 'askmath/authentication/signup.html', 
+        form = StudentForm()
+        return render(request, 'askmath/authentication/signup.html', 
                 {'request': request,'message': message, 'form': form, 'title_form': _("Register Student")})
         
     def recover_password(self, request, user=None, message=None):

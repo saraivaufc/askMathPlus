@@ -211,3 +211,15 @@ $(function(){
 		$('#box-latex').modal('hide');
 	});
 });
+
+$(function(){
+	$("#select-signup").change(function(){
+		if($(this).val() != "STUDENT"){
+			$("#input-key").removeAttr("disabled");
+			$("#input-key").attr("required","required");
+		}else{
+			$("#input-key").removeAttr("required");
+			$("#input-key").attr("disabled", "disabled");
+		}
+	});
+});

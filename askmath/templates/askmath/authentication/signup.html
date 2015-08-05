@@ -8,7 +8,22 @@
 		{% csrf_token %}
 		<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 		<hr class="colorgraph">
-		{{ form.as_table }}	
+		{{ form.as_table }}
+		<div class="row">
+		    <div class="col-md-6">
+			    <div class="input-control select">
+			        <select name="type" id="select-signup">
+			            <option value="STUDENT">{% trans "Student" %}</option>
+			            <option value="ASSISTANT">{% trans "Assistant" %}</option>
+			            <option value="TEACHER">{% trans "Teacher" %}</option>
+			            <option value="ADMINISTRATOR">{% trans "Administrator" %}</option>
+			        </select>
+			    </div>
+		    </div>
+		    <div class="col-md-6">
+			    <input id="input-key" class="input-control text" name="key" placeholder="{% trans "Enter your key" %}" disabled type="text"></input>
+		    </div>
+	    </div>
 		<br>
 		<div class="container-fluid">
 			<div class="row">

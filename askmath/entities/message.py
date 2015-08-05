@@ -20,6 +20,7 @@ class TextMessage():
 	USER_CREATED_SUCCESS = _("User created successfully.")
 	USER_CREATED_ERROR = _("Failed to create user.")
 	USER_ADD_GROUP_ERROR = _("Failed to add group.")
+	USER_TYPE_NOT_FOUND = _("User type not found.")
 	
 	EMAIL_RECOVER_PASSWORD_SUCCESS = _("Email of recover password send success.")
 	EMAIL_RECOVER_PASSWORD_ERROR = _("Email of recover password send error.")
@@ -163,6 +164,10 @@ class TextMessage():
 
 	#Messages
 	MESSAGE_SUCCESS_SEND = _("Message successfully send.")
+	
+	#KEYS
+	KEY_NOT_FOUND = _("Key not found")
+	
 	
 
 
