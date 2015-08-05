@@ -64,11 +64,13 @@ class Person(IPerson):
                 
                 if type == "STUDENT":
                     form = StudentForm(request.POST, request.FILES)
+                    group_name = "student"
                 elif type == "ASSISTANT":
                     try:
                         key = request.POST['key']
                         register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
                         form = AssistantForm(request.POST, request.FILES)
+                        group_name = "assistant"
                     except:
                         message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
                 elif type == "TEACHER":
@@ -76,6 +78,7 @@ class Person(IPerson):
                         key = request.POST['key']
                         register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
                         form = TeacherForm(request.POST, request.FILES)
+                        group_name = "teacher"
                     except:
                         message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
                 elif type == "ADMINISTRATOR":
@@ -83,6 +86,7 @@ class Person(IPerson):
                         key = request.POST['key']
                         register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
                         form = AdministratorForm(request.POST, request.FILES)
+                        group_name = "administrator"
                     except:
                         message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
                 else:
@@ -92,11 +96,14 @@ class Person(IPerson):
                     user=form.save()
                     if register_key:
                         register_key.add_user(user)
-                    group = Group.objects.get(name='student') 
+                    group = Group.objects.get(name=group_name)
                     user.groups.add(group)
                     message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
                     request.method="GET"
                     return self.login(request,None, message)
+                else:
+                    if not message:
+                        message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
             except:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         form = StudentForm()

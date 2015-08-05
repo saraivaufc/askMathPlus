@@ -9,6 +9,11 @@ class Permissions(Model):
                         ("access_manager_person", "Access Manager Person"),
                         ("read_person", "Read Person"),
                         ("write_person", "Write Person"),
+                        ("write_administrator", "Write Administrator"),
+                        ("write_teacher", "Write Teacher"),
+                        ("write_assistant", "Write Assistant"),
+                        
+                        
                         
                         ("access_manager_student_historic", "Access Manager Student Historic"),
                         ("read_student_historic", "Read StudentHistoric"),

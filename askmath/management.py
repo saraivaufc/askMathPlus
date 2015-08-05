@@ -11,6 +11,9 @@ askmath_group_permissions = {
         "access_manager_person",
         "read_person",
         "write_person",
+        "write_administrator",
+        "write_teacher",
+        "write_assistant",
         
         "access_manager_student_historic",
         "read_student_historic",
@@ -51,6 +54,8 @@ askmath_group_permissions = {
         "access_manager_person",
         "read_person",
         "write_person",
+        "write_teacher",
+        "write_assistant",
         
         "access_manager_student_historic",
         "read_student_historic",
