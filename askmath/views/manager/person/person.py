@@ -35,7 +35,7 @@ class Person(IPerson):
         elif PERSONTYPE == person_types.ASSISTANT:
             write_person = request.user.has_perm('askmath.write_assitant')
         elif PERSONTYPE == person_types.STUDENT:
-            write_person = request.user.has_perm('askmath.write_student')
+            write_person = False
         else:
             write_person = False
             
@@ -52,7 +52,7 @@ class Person(IPerson):
         elif PERSONTYPE == person_types.ASSISTANT:
             write_person = request.user.has_perm('askmath.write_assitant')
         elif PERSONTYPE == person_types.STUDENT:
-            write_person = request.user.has_perm('askmath.write_student')
+            write_person = False
         else:
             write_person = False
         persons = person_types.get_persons_removed()
@@ -68,7 +68,7 @@ class Person(IPerson):
         elif PERSONTYPE == person_types.ASSISTANT:
             write_person = request.user.has_perm('askmath.write_assitant')
         elif PERSONTYPE == person_types.STUDENT:
-            write_person = request.user.has_perm('askmath.write_student')
+            write_person = False
         else:
             write_person = False
         return render(request, "askmath/manager/person/manager_view_person.html", 
