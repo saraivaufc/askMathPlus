@@ -9,6 +9,7 @@ from askmath.models.progress import StudentQuestionProgress, StudentVideoProgres
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
 from askmath.models.state import StudentLessonState
 from askmath.models.experience import StudentExperience
+from askmath.models.access import RegisterKey, AdministratorKey, TeacherKey, AssistantKey
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -93,4 +94,19 @@ class StudentLessonStateAdmin(admin.ModelAdmin):
 
 @admin.register(StudentExperience)
 class StudentExperienceAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AdministratorKey)
+class AdministratorKeyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TeacherKey)
+class TeacherKeyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AssistantKey)
+class AssistantKeyAdmin(admin.ModelAdmin):
     pass
