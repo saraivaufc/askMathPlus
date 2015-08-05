@@ -166,7 +166,8 @@ class TextMessage():
 	MESSAGE_SUCCESS_SEND = _("Message successfully send.")
 	
 	#KEYS
-	KEY_NOT_FOUND = _("Key not found")
+	KEY_NOT_FOUND = _("Key not found.")
+	KEY_ERROR_REMOVE_USED = _("Error removing the key, user ever used.")
 	
 	
 

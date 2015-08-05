@@ -28,19 +28,51 @@ class Person(IPerson):
     
     def view_persons(self, request, PERSONTYPE, message=None):
         person_types = PersonTypes(PERSONTYPE)
+        if PERSONTYPE == person_types.ADMIN:
+            write_person = request.user.has_perm('askmath.write_administrator')
+        elif PERSONTYPE == person_types.TEACHER:
+            write_person = request.user.has_perm('askmath.write_teacher')
+        elif PERSONTYPE == person_types.ASSISTANT:
+            write_person = request.user.has_perm('askmath.write_assitant')
+        elif PERSONTYPE == person_types.STUDENT:
+            write_person = request.user.has_perm('askmath.write_student')
+        else:
+            write_person = False
+            
         persons = person_types.get_persons()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person, 'colors': COLORS_ALL, 'message': message})
     
     def view_persons_removed(self, request, PERSONTYPE, message=None):
         person_types = PersonTypes(PERSONTYPE)
+        if PERSONTYPE == person_types.ADMIN:
+            write_person = request.user.has_perm('askmath.write_administrator')
+        elif PERSONTYPE == person_types.TEACHER:
+            write_person = request.user.has_perm('askmath.write_teacher')
+        elif PERSONTYPE == person_types.ASSISTANT:
+            write_person = request.user.has_perm('askmath.write_assitant')
+        elif PERSONTYPE == person_types.STUDENT:
+            write_person = request.user.has_perm('askmath.write_student')
+        else:
+            write_person = False
         persons = person_types.get_persons_removed()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'is_removed': True , 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True , 'colors': COLORS_ALL, 'message': message})
         
     def view_person(self,request, PERSONTYPE,person, message=None ):
+        person_types = PersonTypes(PERSONTYPE)
+        if PERSONTYPE == person_types.ADMIN:
+            write_person = request.user.has_perm('askmath.write_administrator')
+        elif PERSONTYPE == person_types.TEACHER:
+            write_person = request.user.has_perm('askmath.write_teacher')
+        elif PERSONTYPE == person_types.ASSISTANT:
+            write_person = request.user.has_perm('askmath.write_assitant')
+        elif PERSONTYPE == person_types.STUDENT:
+            write_person = request.user.has_perm('askmath.write_student')
+        else:
+            write_person = False
         return render(request, "askmath/manager/person/manager_view_person.html", 
-            {'request':request,'person': person,'person_type': PERSONTYPE,'message': message, 'colors': COLORS_ALL })
+            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person,'message': message, 'colors': COLORS_ALL })
     
     
     def add_person(self,request, PERSONTYPE,message=None ):
@@ -65,10 +97,17 @@ class Person(IPerson):
             {'request':request, 'person_type': PERSONTYPE ,'new_register_key': new_register_key ,'register_keys': register_keys, 'message': message})
 
     
-    def remove_person(self, request, PERSONTYPE, person):
+    def remove_person(self, request, PERSONTYPE, person,message=None ):
         person.delete()
         message = Message(TextMessage.PERSON_SUCCESS_REM, TypeMessage.SUCCESS)
         return self.view_persons(request,PERSONTYPE, message)
+    
+    def remove_registerkey(self, request, PERSONTYPE, registerkey,message=None ):
+        if not registerkey.get_user():
+            registerkey.delete()
+        else:
+            message = Message(TextMessage.KEY_ERROR_REMOVE_USED, TypeMessage.WARNING)
+        return self.add_person(request, PERSONTYPE, message)
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()

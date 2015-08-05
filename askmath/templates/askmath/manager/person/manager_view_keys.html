@@ -14,14 +14,15 @@
 	<button class="button success" type="submit" ><span class="mif-cog"></span>{% trans " Generate Key" %}</button>
 	</form>
 	{% if new_register_key %}
-	<h3>{%  trans "Key Created" %} : <spam class="tag success">{{ new_register_key }}</spam></h3>
+	<h3>{%  trans "Key Created" %} : <span class="tag success">{{ new_register_key }}</span></h3>
 	{% endif %}	
-	<table class="table striped hovered cell-hovered border bordered">
+	<table class="table striped border bordered">
 		<thead>
 		<tr class="active">
 			<td>{% trans "Key" %}</td>
 			<td>{% trans "Creator" %}</td>
 			<td>{% trans "User" %}</td>
+			<td>{% trans "Options" %}</td>
 		</tr>
 		<thead>
 		<tbody>
@@ -30,6 +31,13 @@
 				<td>{{ register_key.key }}</td>
 				<td>{{ register_key.get_creator }}</td>
 				<td>{{ register_key.user }}</td>
+				<td>
+				{% if not register_key.user %}
+				<a href="/home/manager/persons/remove_registerkey/person_type={{ person_type }}/registerkey={{ register_key.id }}/">
+					<span class="icon mif-cross fg-red text-center"></span>
+				</a>
+				{% endif %}
+				</td>
 			</tr>
 		{% empty %}
 		{% endfor %}

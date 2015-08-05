@@ -18,5 +18,8 @@ class IPerson():
     def remove_person(self):
         pass
     
+    def remove_registerkey(self):
+        pass
+    
     def restore_person(self):
         pass

@@ -6,10 +6,10 @@
 <div class="cell auto-size padding20 ">
 	<a href="/home/manager/persons/view/person_type={{  person_type }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_person %}
-		{% if person.exists %}
+		{% if person.exists and write_person %}
 		<a href="/home/manager/persons/remove/person_type={{ person_type }}/person={{ person.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
 		{% endif %}
-		{% if not person.exists %}
+		{% if not person.exists and write_person %}
 		<a href="/home/manager/persons/restore/person_type={{ person_type }}/person={{ person.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
 		{% endif %}
 	{% endif %}

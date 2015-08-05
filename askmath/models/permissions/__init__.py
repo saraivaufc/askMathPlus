@@ -12,6 +12,7 @@ class Permissions(Model):
                         ("write_administrator", "Write Administrator"),
                         ("write_teacher", "Write Teacher"),
                         ("write_assistant", "Write Assistant"),
+                        ("write_student", "Write Student"),
                         
                         
                         

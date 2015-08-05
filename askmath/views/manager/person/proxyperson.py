@@ -4,6 +4,7 @@ from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.entities import PersonTypes
 from askmath.models.users import Person as PersonModel
 from askmath.views.initial import Home
+from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
 from .iperson import IPerson
 from .person import Person
@@ -94,6 +95,31 @@ class ProxyPerson(IPerson):
                 return self.view_persons(request, PERSONTYPE, message)
             try:
                 return self.__person.remove_person(request, PERSONTYPE, person)
+            except:
+                message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
+        else:
+            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+        return self.view_persons(request, PERSONTYPE, message)
+    
+    def remove_registerkey(self, request, PERSONTYPE, id_registerkey, message=None):
+        if request.user.has_perm("askmath.write_person"):
+            try:
+                person_types = PersonTypes()
+                if PERSONTYPE in person_types.get_types():
+                    person_types = PersonTypes(PERSONTYPE)
+                    if PERSONTYPE == person_types.ADMIN:
+                        registerkey = AdministratorKey.objects.get(id = id_registerkey)
+                    elif PERSONTYPE == person_types.TEACHER:
+                        registerkey = TeacherKey.objects.get(id = id_registerkey)
+                    elif PERSONTYPE == person_types.ASSISTANT:
+                        registerkey = AssistantKey.objects.get(id = id_registerkey)
+                    else:
+                        registerkey = False
+            except:
+                message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
+                return self.view_persons(request, PERSONTYPE, message)
+            try:
+                return self.__person.remove_registerkey(request, PERSONTYPE, registerkey)
             except:
                 message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
         else:
