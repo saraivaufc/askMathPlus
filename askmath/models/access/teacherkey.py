@@ -4,6 +4,9 @@ from django.db import models
 class TeacherKey(RegisterKey):
     user = models.ForeignKey("Teacher",related_name="Teacher", null=True, blank=True)
     
+    def get_user(self):
+        return self.user
+    
     def add_user(self, user):
         self.user = user
         self.in_use = True

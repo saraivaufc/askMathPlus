@@ -13,6 +13,7 @@ except:
 
 from askmath.entities import PersonTypes
 from askmath.forms import PersonForm
+from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
 from .iperson import IPerson
 
@@ -44,19 +45,24 @@ class Person(IPerson):
     
     def add_person(self,request, PERSONTYPE,message=None ):
         person_types = PersonTypes(PERSONTYPE)
-        if request.method == "POST":
-            request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
-            form = person_types.get_person_form(request.POST, request.FILES)
-            if form.is_valid():
-                person = form.save()
-                group = Group.objects.get(name=PERSONTYPE.lower) 
-                person.groups.add(group)
-                message = Message(TextMessage.PERSON_SUCCESS_EDIT, TypeMessage.SUCCESS)
-                return self.view_person(request, PERSONTYPE,person, message)
+        new_register_key = None
+        register_keys = None
+        if PERSONTYPE == person_types.ADMIN:
+            if request.method == "POST":
+                new_register_key =  AdministratorKey.objects.create(creator=request.user)
+            register_keys = AdministratorKey.objects.filter(exists = True)
+        elif PERSONTYPE == person_types.TEACHER:
+            if request.method == "POST":
+                new_register_key =  TeacherKey.objects.create(creator=request.user)
+            register_keys = TeacherKey.objects.filter(exists = True)
+        elif PERSONTYPE == person_types.ASSISTANT:
+            if request.method == "POST":
+                new_register_key =  AssistantKey.objects.create(creator=request.user)
+            register_keys = AssistantKey.objects.filter(exists = True)
         else:
-            form = person_types.get_person_form()
-        return render(request, "askmath/manager/person/manager_form_person.html", 
-            {'request':request,'form': form,'person_type': PERSONTYPE ,'title_form':_('Create '+ PERSONTYPE.title()), 'message': message})
+            register_keys = None
+        return render(request, "askmath/manager/person/manager_view_keys.html", 
+            {'request':request, 'person_type': PERSONTYPE ,'new_register_key': new_register_key ,'register_keys': register_keys, 'message': message})
 
     
     def remove_person(self, request, PERSONTYPE, person):

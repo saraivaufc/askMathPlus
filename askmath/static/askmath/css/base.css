@@ -59,11 +59,6 @@ opacity */
 	height: 95%;
 }
 
-
-.input-control, .input{
-	color: #000 !important;
-}
-
 .form-generic{
 	width: 100%;
 }
@@ -193,12 +188,21 @@ button[disabled], html input[disabled] {
     cursor: not-allowed;
 }
 
+.input-control, .input{
+	color: #000 !important;
+}
+
 input:disabled {
     background: #dddddd;
 } 
 
 .input-control{
 	padding: 0px;
+	padding-left: 10px;
+}
+seclect, .input-control{
+	padding: 0px;
+	padding-left: 0px;
 }
 
 

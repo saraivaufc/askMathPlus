@@ -1,0 +1,41 @@
+{% extends 'askmath/manager/person/manager_view_persons.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+
+<div class="cell auto-size padding20 ">
+	<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	<hr class="thin bg-grayLighter">
+</div>
+<div class="container">
+	<form action="." method="POST">
+	{% csrf_token %}
+	<button class="button success" type="submit" ><span class="mif-cog"></span>{% trans " Generate Key" %}</button>
+	</form>
+	{% if new_register_key %}
+	<h3>{%  trans "Key Created" %} : <spam class="tag success">{{ new_register_key }}</spam></h3>
+	{% endif %}	
+	<table class="table striped hovered cell-hovered border bordered">
+		<thead>
+		<tr class="active">
+			<td>{% trans "Key" %}</td>
+			<td>{% trans "Creator" %}</td>
+			<td>{% trans "User" %}</td>
+		</tr>
+		<thead>
+		<tbody>
+		{% for register_key in register_keys %}
+			<tr>
+				<td>{{ register_key.key }}</td>
+				<td>{{ register_key.get_creator }}</td>
+				<td>{{ register_key.user }}</td>
+			</tr>
+		{% empty %}
+		{% endfor %}
+		<tbody>
+	</table>
+</div>
+</div>
+
+{% endblock %}

@@ -5,6 +5,9 @@ from askmath.models.access.registerkey import RegisterKey
 class AdministratorKey(RegisterKey):
     user = models.ForeignKey("Administrator", related_name="Administrator", null=True, blank=True)
     
+    def get_user(self):
+        return self.user
+    
     def add_user(self, user):
         self.user = user
         self.in_use = True
