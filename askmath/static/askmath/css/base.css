@@ -200,9 +200,8 @@ input:disabled {
 	padding: 0px;
 	padding-left: 10px;
 }
-seclect, .input-control{
+.select.input-control{
 	padding: 0px;
-	padding-left: 0px;
 }
 
 
