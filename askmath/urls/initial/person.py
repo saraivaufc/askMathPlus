@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, include, url
 from askmath.views.initial import ProxyPerson
 
-proxyperson = ProxyPerson()
+proxy_person = ProxyPerson()
 
 urlpatterns = patterns('',
-    url(r'^profile/view/$', proxyperson.view_profile),
-    url(r'^profile/edit/$', proxyperson.edit_profile),
+    url(r'^profile/view/$', proxy_person.view_profile),
+    url(r'^profile/edit/$', proxy_person.edit_profile),
+    url(r'^profile/alter_password/$', proxy_person.alter_password),
 )

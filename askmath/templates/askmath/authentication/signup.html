@@ -8,7 +8,11 @@
 		{% csrf_token %}
 		<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 		<hr class="colorgraph">
-		{{ form.as_table }}
+		<div class="container-fluid">
+			<div class="row">
+				{{ form.as_table }}
+			</div>
+		</div>
 		<div class="row">
 		    <div class="col-md-6">
 			    <div class="input-control select">

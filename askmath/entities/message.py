@@ -24,6 +24,10 @@ class TextMessage():
 	
 	EMAIL_RECOVER_PASSWORD_SUCCESS = _("Email of recover password send success.")
 	EMAIL_RECOVER_PASSWORD_ERROR = _("Email of recover password send error.")
+	
+	
+	CHANGED_PASSWORD_SUCCESS = _("Password changed success.")
+	PASSWORD_INCORRECT = _("Password incorrect.")
 
 
 	#Login and Logout

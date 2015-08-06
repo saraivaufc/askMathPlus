@@ -88,7 +88,7 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 
     def email_user(self, subject, message, from_email=settings.EMAIL_HOST_USER):
         return send_mail(subject, message, from_email, [self.email,settings.EMAIL_HOST_USER],fail_silently=True)
-        
+    
     def change_password(self, new_password):
         new_password_hash = md5(new_password).hexdigest()
         self.password = new_password_hash

@@ -58,5 +58,16 @@ class PersonRecoverPassword(forms.Form):
 	email = forms.EmailField(label=_('Email'), 
 		widget=forms.EmailInput(attrs={'required': 'required', 'class':'input-control email full-size'}),
 		error_messages={'required': _('Please enter you email.')})
+	
+class PersonAlterPassword(forms.Form):
+	old_password = forms.CharField(label=_('Old Password'),
+		widget=forms.PasswordInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
+		error_messages={'required': _('Please enter you old password.')} )
+	new_password = forms.CharField(label=_('New Password'), 
+		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
+		error_messages={'required': _('Please enter you new password.')})
+	confirm_password = forms.CharField(label=_('Confirm Password'), 
+		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
+		error_messages={'required': _('Please repeat your new password.')})
 
 

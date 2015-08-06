@@ -55,3 +55,4 @@ class ProxyPerson(IPerson):
                 except:
                     message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         return self.__person.recover_password(request, message=message)
+    

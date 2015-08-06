@@ -14,25 +14,28 @@
 <div class="fg-white">
 {% endif %}
 <div class="container-fluid">
-	<div class="row">
+	<div class="col-md-6">
 		<center>
 			{% if person.get_profile_image %}
 				<img class="img img-responsive" width="200px" height="200px" src="{{ person.get_profile_image.url }}"></<img>
 			{% else %}
 				<img class="img img-responsive" width="200px" height="200px" src="/static/askmath/img/metro/user.ico"></<img>				
 		 	{% endif %}
-		 </center>
-		</div>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">
-		<center>
 			<h1>{{ person.get_name }}</h1>
 			<h2>{{ person.get_email }}</h2>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 			<a href="/person/profile/edit/" class="button primary">{% trans "Edit" %}</a>
-		</center>
+		 </center>
+	</div>
+	<div class="col-md-6">
+		<a href="/person/profile/alter_password/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+		    <span class="icon mif-pencil"></span>
+		    <span class="title">{% trans "Alter Password" %}</span>
+		</a>
+		<button class="shortcut-button bg-red bg-active-darkBlue fg-white">
+		    <span class="icon mif-cross"></span>
+		    <span class="title">{% trans "Remove Account" %}</span>
+		</button>
 	</div>
 </div>
 </div>

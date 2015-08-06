@@ -10,7 +10,7 @@ from askmath.models.users import Student, Person as PersonModel
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
-from askmath.forms.users import PersonLoginForm, PersonRecoverPassword
+from askmath.forms.users import PersonLoginForm, PersonRecoverPassword, PersonAlterPassword
 
 try:
     from hashlib import md5
@@ -56,56 +56,56 @@ class Person(IPerson):
     def signup(self, request, message=None):
         if request.method == "POST":
             request.POST = request.POST.copy()
-            try:
-                request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
-                type = request.POST['type']
-                form = None
-                register_key = None
-                
-                if type == "STUDENT":
-                    form = StudentForm(request.POST, request.FILES)
-                    group_name = "student"
-                elif type == "ASSISTANT":
-                    try:
-                        key = request.POST['key']
-                        register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
-                        form = AssistantForm(request.POST, request.FILES)
-                        group_name = "assistant"
-                    except:
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
-                elif type == "TEACHER":
-                    try:
-                        key = request.POST['key']
-                        register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
-                        form = TeacherForm(request.POST, request.FILES)
-                        group_name = "teacher"
-                    except:
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
-                elif type == "ADMINISTRATOR":
-                    try:
-                        key = request.POST['key']
-                        register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
-                        form = AdministratorForm(request.POST, request.FILES)
-                        group_name = "administrator"
-                    except:
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
-                else:
-                    message = Message(TextMessage.USER_TYPE_NOT_FOUND, TypeMessage.ERROR)
-                
-                if form and form.is_valid():
-                    user=form.save()
-                    if register_key:
-                        register_key.add_user(user)
-                    group = Group.objects.get(name=group_name)
-                    user.groups.add(group)
-                    message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
-                    request.method="GET"
-                    return self.login(request,None, message)
-                else:
-                    if not message:
-                        message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+            #try:
+            request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
+            type = request.POST['type']
+            form = None
+            register_key = None
+            
+            if type == "STUDENT":
+                form = StudentForm(request.POST, request.FILES)
+                group_name = "student"
+            elif type == "ASSISTANT":
+                try:
+                    key = request.POST['key']
+                    register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
+                    form = AssistantForm(request.POST, request.FILES)
+                    group_name = "assistant"
+                except:
+                    message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+            elif type == "TEACHER":
+                try:
+                    key = request.POST['key']
+                    register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
+                    form = TeacherForm(request.POST, request.FILES)
+                    group_name = "teacher"
+                except:
+                    message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+            elif type == "ADMINISTRATOR":
+                try:
+                    key = request.POST['key']
+                    register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
+                    form = AdministratorForm(request.POST, request.FILES)
+                    group_name = "administrator"
+                except:
+                    message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+            else:
+                message = Message(TextMessage.USER_TYPE_NOT_FOUND, TypeMessage.ERROR)
+            
+            if form and form.is_valid():
+                user=form.save()
+                if register_key:
+                    register_key.add_user(user)
+                group = Group.objects.get(name=group_name)
+                user.groups.add(group)
+                message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
+                request.method="GET"
+                return self.login(request,None, message)
+            else:
+                if not message:
+                    message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+#             except:
+#                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         form = StudentForm()
         return render(request, 'askmath/authentication/signup.html', 
                 {'request': request,'message': message, 'form': form, 'title_form': _("Register Student")})
@@ -128,3 +128,4 @@ class Person(IPerson):
             form = PersonRecoverPassword()
         return render(request, 'askmath/authentication/recover_password.html',
             {'request': request,'form': form, 'title_form': _("Recover Password"), 'message': message})
+        

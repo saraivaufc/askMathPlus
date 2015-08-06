@@ -4,3 +4,7 @@ class IPerson():
     
     def edit_profile(self):
         pass
+    
+        
+    def alter_password(self):
+        pass
