@@ -46,12 +46,12 @@ class Person(IPerson):
         return render(request, 'askmath/authentication/login.html',
             {'request':request,'form': form, 'message': message})
     
-    def logout(self, request):
+    def logout(self, request, message=None):
         try:
             logout_sys(request)
         except:
             pass
-        return HttpResponseRedirect("/home/")
+        return self.login(request, None, message)
     
     def signup(self, request, message=None):
         if request.method == "POST":

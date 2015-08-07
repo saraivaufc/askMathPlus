@@ -32,10 +32,11 @@
 		    <span class="icon mif-pencil"></span>
 		    <span class="title">{% trans "Alter Password" %}</span>
 		</a>
-		<button class="shortcut-button bg-red bg-active-darkBlue fg-white">
+		<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
 		    <span class="icon mif-cross"></span>
 		    <span class="title">{% trans "Remove Account" %}</span>
 		</button>
+		{% include "askmath/home/person/_modal_remove_account.html" %}
 	</div>
 </div>
 </div>

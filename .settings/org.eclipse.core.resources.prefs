@@ -4,3 +4,4 @@ encoding//askmath/forms/question/item.py=utf-8
 encoding//askmath/forms/question/question.py=utf-8
 encoding//askmath/forms/users/person.py=utf-8
 encoding//askmath/forms/video/video.py=utf-8
+encoding//askmath/templatetags/tags/utils/filters.py=utf-8

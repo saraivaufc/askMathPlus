@@ -24,11 +24,11 @@ class ProxyPerson(IPerson):
                     {'request': request,'form':form, 'message': message})
         return self.__person.login(request)
     
-    def logout(self, request):
+    def logout(self, request, message=None):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         
-        return self.__person.logout(request)
+        return self.__person.logout(request, message)
     
     def signup(self, request):
         if request.user.is_authenticated():

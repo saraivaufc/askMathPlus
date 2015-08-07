@@ -14,18 +14,19 @@ except:
 from .iperson import IPerson
 
 class Person(IPerson):
-    def view_profile(self, request, person, message=None):
+    def view_profile(self, request, message=None):
         return render(request, "askmath/home/person/view_profile.html",
-            {'request': request, 'person': person, 'message': message})
+            {'request': request, 'person': request.user, 'message': message})
     
-    def edit_profile(self, request, person, message):
+    def edit_profile(self, request, message):
+        person = request.user
         if request.method == "POST":
             username = request.POST['username']
             form = PersonProfile(request.POST, request.FILES, instance=person)
             if form.is_valid():
                 form.save()
                 message = Message(TextMessage.PERSON_SUCCESS_EDIT, TypeMessage.SUCCESS)
-                return self.view_profile(request, person, message)
+                return self.view_profile(request, message)
         else:
             form = PersonProfile(instance=person)
         return render(request, "askmath/home/person/edit_profile.html",
@@ -48,9 +49,20 @@ class Person(IPerson):
             else:
                 print "Form invalid"
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.SUCCESS)
-            return self.view_profile(request, request.user, message)
+            return self.view_profile(request, message)
         else:
             form = PersonAlterPassword()
         return render(request, 'askmath/home/person/alter_password.html',
             {'request': request,'form': form, 'title_form': _("Alter Password"), 'message': message})
     
+    def remove_account(self, request, password, message=None):
+        if request.user.check_password(password):
+            request.user.delete()
+            from askmath.views.authentication.proxyperson import ProxyPerson
+            proxy_person = ProxyPerson()
+            message = Message(TextMessage.ACCOUNT_SUCCESS_REMOVED, TypeMessage.SUCCESS)
+            request.method = "GET"
+            return proxy_person.logout(request, message)
+        else:
+            message = Message(TextMessage.PASSWORD_INCORRECT, TypeMessage.WARNING)
+        return self.view_profile(request, message)
