@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     
     url(r'^home/content/',  include('askmath.urls.content')),
     url(r'^home/manager/', include('askmath.urls.manager')),
+    url(r'^services/', include('askmath.urls.services')),
 )

@@ -9,7 +9,7 @@ class ExperienceLevel():
     GOD = _("God")
     
     __LEVEL = None
-    
+        
     def __init__(self, LEVEL=1):
         if LEVEL == 1:
             self.__LEVEL = self.BEGINNER
