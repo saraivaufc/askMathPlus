@@ -8,3 +8,6 @@ class IPerson():
         
     def alter_password(self):
         pass
+    
+    def remove_account(self):
+        pass

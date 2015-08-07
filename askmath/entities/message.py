@@ -173,6 +173,9 @@ class TextMessage():
 	KEY_NOT_FOUND = _("Key not found.")
 	KEY_ERROR_REMOVE_USED = _("Error removing the key, user ever used.")
 	
+	#ACCOUNT
+	ACCOUNT_SUCCESS_REMOVED = _("Account success removed.") 
+	
 	
 
 
