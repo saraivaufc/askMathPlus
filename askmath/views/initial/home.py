@@ -46,5 +46,3 @@ class Home():
         disciplines = Discipline.objects.filter(exists=True, visible=True)
         return render(request, 'askmath/home/contents.html', 
              {'request': request,'disciplines': disciplines,'colors': COLORS_ALL,'message': message})
-
-        
