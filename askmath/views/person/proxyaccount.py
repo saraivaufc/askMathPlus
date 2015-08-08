@@ -6,7 +6,7 @@ from askmath.forms.users import PersonAlterPassword
 
 from askmath.views.person.iaccount import IAccount
 from askmath.views.person.account import Account
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 
 class ProxyAccount(IAccount):

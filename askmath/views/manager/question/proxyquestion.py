@@ -5,7 +5,7 @@ import json
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.question import Question as QuestionModel
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 from .iquestion import IQuestion
 from .question import Question

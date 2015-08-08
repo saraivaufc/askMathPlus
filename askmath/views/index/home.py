@@ -18,11 +18,11 @@ class Home():
                 return render(request, 'askmath/content/discipline/content_view_disciplines.html',
                     {'request': request,'disciplines':  disciplines ,'colors': COLORS_ALL,'message': message})
         else:
-            return render(request, 'askmath/home/home.html',
+            return render(request, 'askmath/index/home.html',
                 {'request': request, 'message': message})
         
     def about(self, request, message = None):
-        return render(request, 'askmath/home/about.html',
+        return render(request, 'askmath/index/about.html',
             {'request': request, 'message': message})
     
     def contact(self, request, message = None):
@@ -34,15 +34,15 @@ class Home():
                 return self.index(request, message)
         else:
             form = ContactForm()
-        return render(request, 'askmath/home/contact.html', 
+        return render(request, 'askmath/index/contact.html', 
              {'request': request,'form':form,'message': message})
 
     def terms(self, request, message = None):
-        return render(request, 'askmath/home/terms.html', 
+        return render(request, 'askmath/index/terms.html', 
              {'request': request, 'message': message})
 
 
     def contents(self, request, message = None):
         disciplines = Discipline.objects.filter(exists=True, visible=True)
-        return render(request, 'askmath/home/contents.html', 
+        return render(request, 'askmath/index/contents.html', 
              {'request': request,'disciplines': disciplines,'colors': COLORS_ALL,'message': message})

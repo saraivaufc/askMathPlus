@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.entities import Message, TextMessage, TypeMessage
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 from .ilesson import ILesson
 from .lesson import Lesson

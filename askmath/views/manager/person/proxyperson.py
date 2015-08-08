@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.entities import PersonTypes
 from askmath.models.users import Person as PersonModel
-from askmath.views.initial import Home
+from askmath.views.index import Home
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
 from .iperson import IPerson

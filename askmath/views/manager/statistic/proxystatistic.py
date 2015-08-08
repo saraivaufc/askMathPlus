@@ -8,7 +8,7 @@ from askmath.entities import Message, TextMessage, TypeMessage
 
 from .istatistic import IStatistic
 from .statistic import Statistic
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 class ProxyStatistic(IStatistic):
     def __init__(self):

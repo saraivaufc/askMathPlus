@@ -11,6 +11,7 @@ South>=0.7.4
 djangorestframework
 markdown
 django-filter
+nltk
 
 #sudo apt-get install postfix
 #sudo aptitude install libapache2-mod-wsgi

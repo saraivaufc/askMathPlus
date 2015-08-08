@@ -16,7 +16,7 @@ from .iquestion import IQuestion
 from askMathPlus.settings import COLORS_ALL
 from django.utils.translation import ugettext_lazy as _
 from askmath.entities import ExperienceLevel
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 
 class Question(IQuestion):

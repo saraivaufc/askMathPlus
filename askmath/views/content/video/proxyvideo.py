@@ -7,7 +7,7 @@ from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.video import Video as VideoModel
 
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 
 

@@ -107,10 +107,17 @@ a.tile-content{
 	bottom: 0px;
 }
 
-.container-metro{
-	padding-left: 80px;
-	padding-right: 80px;
+.container-metro, .tile-group{
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
+
+.tile-group-title{
+	margin-left: 10px;
+}
+
 
 
 .input-control{

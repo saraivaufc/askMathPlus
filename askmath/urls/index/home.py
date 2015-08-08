@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from askmath.views.initial import Home
+from askmath.views.index import Home
 
 home = Home()
 
