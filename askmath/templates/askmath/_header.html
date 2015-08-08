@@ -93,7 +93,7 @@
                                             {% if request.user.get_profile_image %}
                                             <img src="{{ request.user.get_profile_image.url }}">
                                             {% else %}
-                                            <img src="/static/askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
+                                            <img src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
                                             {% endif %}
                                         </p>
                                     </div>
