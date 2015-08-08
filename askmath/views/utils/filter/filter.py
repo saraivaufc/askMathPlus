@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Discipline, Lesson, Video
 from askMathPlus.settings import BASE_DIR
 from askMathPlus.settings import COLORS_ALL
+from multiprocessing.pool import ThreadPool
 
 from .ifilter import IFilter
 import nltk, os
@@ -30,7 +31,23 @@ class Filter(IFilter):
         lessons = Lesson.objects.filter(exists=True, visible=True)
         videos = Video.objects.filter(exists=True, visible=True)
         
-        #SEARCH IN DISCIPLINES BY TITLE
+        pool = ThreadPool(processes=3)
+        
+        p_disciplines = pool.apply_async(self.search_disciplines, (request, expression, disciplines, message))
+        p_lessons = pool.apply_async(self.search_lessons, (request, expression, lessons, message))
+        p_videos = pool.apply_async(self.search_videos, (request, expression, videos, message))
+        
+        
+        disciplines_occurrences = p_disciplines.get()
+        lessons_occurrences = p_lessons.get()
+        videos_occurrences = p_videos.get()
+        
+        return render(request, "askmath/utils/filter/search.html", 
+            {'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+    
+    
+    
+    def search_disciplines(self, request,expression, disciplines, message=None):
         disciplines_occurrences = {}
         for discipline in disciplines:
             if discipline.get_title().upper() == expression.upper():
@@ -41,9 +58,9 @@ class Filter(IFilter):
                 if occurrences > 0:
                     disciplines_occurrences[discipline] = occurrences
         disciplines_occurrences = sorted(disciplines_occurrences.items(), key=lambda x: x[1], reverse=True)
-        
-                
-        #SEARCH IN LESSONS
+        return disciplines_occurrences
+    
+    def search_lessons(self, request, expression, lessons, message=None):        
         lessons_occurrences = {}
         for lesson in lessons:
             if lesson.get_title().upper() == expression.upper():
@@ -56,8 +73,9 @@ class Filter(IFilter):
         
         
         lessons_occurrences = sorted(lessons_occurrences.items(), key=lambda x: x[1], reverse=True)
-        
-        
+        return lessons_occurrences
+    
+    def search_videos(self, request, expression, videos, message=None):
         #SEARCH IN VIDEOS
         videos_occurrences = {}
         for video in videos:
@@ -70,10 +88,8 @@ class Filter(IFilter):
                     videos_occurrences[video] = occurrences
         
         videos_occurrences = sorted(videos_occurrences.items(), key=lambda x: x[1], reverse=True)
-        
-        
-        return render(request, "askmath/utils/filter/search.html", 
-            {'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+        return videos_occurrences
+    
                     
     def occurrences(self, text="", expression=""):
         expression = self.expression_clean(expression).split(" ")
