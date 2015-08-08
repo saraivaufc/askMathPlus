@@ -10,15 +10,29 @@ import nltk, os
 nltk.data.path.append(os.path.join(BASE_DIR, 'askmath/static/askmath/filter/nltk_data/'))
 from nltk.corpus import stopwords
 
+from askmath.views.content.discipline import ProxyDiscipline
+from askmath.views.content.lesson import ProxyLesson
+
 LANGUAGE = "portuguese"
 IGNORED_WORDS = stopwords.words(LANGUAGE)
 
 class Filter(IFilter):
+    def __init__(self):
+        self.__proxy_discipline = ProxyDiscipline()
+        self.__proxy_lesson = ProxyLesson()
+    
     def search(self, request, expression , message=None):
         disciplines = Discipline.objects.filter(exists=True, visible=True)
         lessons = Lesson.objects.filter(exists=True, visible=True)
         videos = Video.objects.filter(exists=True, visible=True)
-        return self.expression_clean(expression)
+        for discipline in disciplines:
+            if discipline.get_title().upper() == expression.upper():
+                if request.user.is_authenticated():
+                    return self.__proxy_lesson.view_lessons(request, discipline.id, message)
+        for lesson in lessons:
+            if lesson.get_title().upper() == expression.upper():
+                if request.user.is_authenticated():
+                    return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
     
     def expression_clean(self, expression=""):
         expression = [i for i in expression.split(" ") if i  not in IGNORED_WORDS]

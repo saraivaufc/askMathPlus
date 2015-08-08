@@ -35,15 +35,20 @@ class ProxyLesson(ILesson):
     def view_lesson(self, request,id_discipline, id_lesson, message=None):
         if request.user.has_perm("askmath.read_lesson"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
-            try:
                 lesson = LessonModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_lessons(request,message)
+            
+            try:
+                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+            except:
+                try:
+                    discipline = lesson.disciplines.filter(exists=True, visible=True)[0]
+                except:
+                    message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
+                    return self.__home.index(request, message)
+            
             try:
                 return self.__lesson.view_lesson(request,discipline, lesson)
             except:
