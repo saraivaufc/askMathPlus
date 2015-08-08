@@ -13,13 +13,13 @@ from .person import Person
 
 class ProxyPerson(IPerson):
     def __init__(self):
-        self.__person = Person()
+        self.__account = Person()
         self.__home = Home()
         
     def choose_person_types(self, request, message=None):
         if request.user.has_perm("askmath.read_person"):
             try:
-                return self.__person.choose_person_types(request, message)
+                return self.__account.choose_person_types(request, message)
             except:
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
@@ -31,7 +31,7 @@ class ProxyPerson(IPerson):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
-                    return self.__person.view_persons(request, PERSONTYPE, message)
+                    return self.__account.view_persons(request, PERSONTYPE, message)
                 else:
                     message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             except:
@@ -45,7 +45,7 @@ class ProxyPerson(IPerson):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
-                    return self.__person.view_persons_removed(request, PERSONTYPE, message)
+                    return self.__account.view_persons_removed(request, PERSONTYPE, message)
                 else:
                     message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             except:
@@ -64,7 +64,7 @@ class ProxyPerson(IPerson):
                 message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_persons(request, PERSONTYPE, message)
             try:
-                return self.__person.view_person(request, PERSONTYPE, person)
+                return self.__account.view_person(request, PERSONTYPE, person)
             except:
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
@@ -76,7 +76,7 @@ class ProxyPerson(IPerson):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
-                    return self.__person.add_person(request, PERSONTYPE)
+                    return self.__account.add_person(request, PERSONTYPE)
             except:
                 message = Message(TextMessage.PERSON_ERROR_ADD, TypeMessage.ERROR)
         else:
@@ -94,7 +94,7 @@ class ProxyPerson(IPerson):
                 message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_persons(request, PERSONTYPE, message)
             try:
-                return self.__person.remove_person(request, PERSONTYPE, person)
+                return self.__account.remove_person(request, PERSONTYPE, person)
             except:
                 message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
         else:
@@ -119,7 +119,7 @@ class ProxyPerson(IPerson):
                 message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_persons(request, PERSONTYPE, message)
             try:
-                return self.__person.remove_registerkey(request, PERSONTYPE, registerkey)
+                return self.__account.remove_registerkey(request, PERSONTYPE, registerkey)
             except:
                 message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
         else:
@@ -136,7 +136,7 @@ class ProxyPerson(IPerson):
                 message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_persons(request, PERSONTYPE, message)
             try:
-                return self.__person.restore_person(request, PERSONTYPE, person)
+                return self.__account.restore_person(request, PERSONTYPE, person)
             except:
                 message = Message(TextMessage.PERSON_ERROR_RESTORE, TypeMessage.ERROR)
         else:

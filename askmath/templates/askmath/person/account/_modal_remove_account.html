@@ -9,7 +9,7 @@
 	  <div class="modal-body">
 	  	<h4>{% blocktrans  with name=request.user.get_username context "greeting"  %}Deleting your member account ({{ name }} ) will be permanent. Please, enter your password to continue... {% endblocktrans %}</h4>
 	  	<center>
-	  	<form action="/person/profile/remove_account/" method="POST">
+	  	<form action="/home/person/account/remove_account/" method="POST">
 	  	{% csrf_token %}
 			<input class="input-control password" type="password" autofocus name="password">
 	  	</center>

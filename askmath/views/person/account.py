@@ -11,11 +11,11 @@ try:
 except:
     from md5 import new as md5
     
-from .iperson import IPerson
+from askmath.views.person.iaccount import IAccount
 
-class Person(IPerson):
+class Account(IAccount):
     def view_profile(self, request, message=None):
-        return render(request, "askmath/home/person/view_profile.html",
+        return render(request, "askmath/person/account/view_profile.html",
             {'request': request, 'person': request.user, 'message': message})
     
     def edit_profile(self, request, message):
@@ -29,7 +29,7 @@ class Person(IPerson):
                 return self.view_profile(request, message)
         else:
             form = PersonProfile(instance=person)
-        return render(request, "askmath/home/person/edit_profile.html",
+        return render(request, "askmath/person/account/edit_profile.html",
             {'request': request, 'form': form, 'title_form': _("Edit Profile"), 'message': message})
         
     def alter_password(self, request, message=None):
@@ -52,17 +52,17 @@ class Person(IPerson):
             return self.view_profile(request, message)
         else:
             form = PersonAlterPassword()
-        return render(request, 'askmath/home/person/alter_password.html',
+        return render(request, 'askmath/person/account/alter_password.html',
             {'request': request,'form': form, 'title_form': _("Alter Password"), 'message': message})
     
     def remove_account(self, request, password, message=None):
         if request.user.check_password(password):
             request.user.delete()
             from askmath.views.authentication.proxyperson import ProxyPerson
-            proxy_person = ProxyPerson()
+            proxy_account = ProxyPerson()
             message = Message(TextMessage.ACCOUNT_SUCCESS_REMOVED, TypeMessage.SUCCESS)
             request.method = "GET"
-            return proxy_person.logout(request, message)
+            return proxy_account.logout(request, message)
         else:
             message = Message(TextMessage.PASSWORD_INCORRECT, TypeMessage.WARNING)
         return self.view_profile(request, message)

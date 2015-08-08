@@ -1,4 +1,4 @@
-class IPerson():
+class IAccount():
     def view_profile(self):
         pass
     

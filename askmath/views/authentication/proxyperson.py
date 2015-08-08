@@ -10,7 +10,7 @@ from askmath.forms.users import PersonLoginForm, PersonRecoverPassword
 
 class ProxyPerson(IPerson):
     def __init__(self):
-        self.__person = Person()
+        self.__account = Person()
     
     def login(self, request, message = None):
         if request.user.is_authenticated():
@@ -18,23 +18,23 @@ class ProxyPerson(IPerson):
         if request.method == 'POST':
             form = PersonLoginForm(request.POST)
             if form.is_valid():
-                return self.__person.login(request, form)
+                return self.__account.login(request, form)
             else:
                 return render(request, 'askmath/authentication/login.html',
                     {'request': request,'form':form, 'message': message})
-        return self.__person.login(request)
+        return self.__account.login(request)
     
     def logout(self, request, message=None):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         
-        return self.__person.logout(request, message)
+        return self.__account.logout(request, message)
     
     def signup(self, request):
         if request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         else:
-            return self.__person.signup(request)
+            return self.__account.signup(request)
         
     def recover_password(self, request, message = None):
         if request.user.is_authenticated():
@@ -47,12 +47,12 @@ class ProxyPerson(IPerson):
                     try:
                         user = Student.objects.get(username = str(_username), email = str(_email))
                         if user:
-                            return self.__person.recover_password(request, user)
+                            return self.__account.recover_password(request, user)
                         else:
                             message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                     except:
                         message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                 except:
                     message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        return self.__person.recover_password(request, message=message)
+        return self.__account.recover_password(request, message=message)
     

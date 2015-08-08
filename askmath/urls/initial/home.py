@@ -6,7 +6,6 @@ home = Home()
 urlpatterns = patterns('',
     url(r'^$', home.index),
     url(r'^home/$', home.index),
-    
     url(r'^about/$', home.about),
     url(r'^contact/$', home.contact),
     url(r'^terms/$', home.terms),
