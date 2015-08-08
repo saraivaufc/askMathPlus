@@ -5,6 +5,7 @@ class Permissions(Model):
     class Meta:
         permissions = (
                         ("access_manager", "Access Manager"),
+                        ("access_content", "Access Content"),
                         
                         ("access_manager_person", "Access Manager Person"),
                         ("read_person", "Read Person"),

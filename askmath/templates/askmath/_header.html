@@ -62,7 +62,7 @@
 					<a href="/home/manager/persons/choose_person_types/">{% trans "Persons" %}</a></li>
 				{% endif %}
             </ul>
-            {% if not perms.askmath.access_manager_person %}
+            {% if perms.askmath.access_content %}
             <div class="col-sm-3 col-md-3">
 		        <form class="navbar-form" action="/utils/filter/search/" method="POST" role="search">
 		        {% csrf_token %}
@@ -93,7 +93,7 @@
                                             {% if request.user.get_profile_image %}
                                             <img src="{{ request.user.get_profile_image.url }}">
                                             {% else %}
-                                            <img src="/static/askmath/img/metro/user.ico"></<img>   
+                                            <img src="/static/askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
                                             {% endif %}
                                         </p>
                                     </div>

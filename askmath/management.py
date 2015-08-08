@@ -105,6 +105,7 @@ askmath_group_permissions = {
         
     ],
     "student": [
+        "access_content",
         
         "read_person",
         
