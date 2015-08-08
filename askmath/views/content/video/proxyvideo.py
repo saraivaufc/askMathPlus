@@ -40,23 +40,33 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__home.index(request, message)
     
-    def view_video(self, request, id_discipline, id_lesson, id_video, message=None):
+    def view_video(self, request, id_video, id_discipline=None, id_lesson=None, message=None):
         if request.user.has_perm("askmath.read_video"):
-            try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_videos(request, id_discipline, id_lesson, message)
-            try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_videos(request, id_discipline, id_lesson, message)
             try:
                 video = VideoModel.objects.filter(id = id_video, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.VIDEO_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_videos(request, id_discipline, id_lesson, message)
+            
+            try:
+                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+            except:
+                try:
+                    lesson = video.get_lesson();
+                except:
+                    message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
+                    return self.view_videos(request, id_discipline, id_lesson, message)
+            
+            try:
+                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+            except:
+                try:
+                    discipline = lesson.disciplines.filter(exists=True, visible=True)[0]
+                except:
+                    message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
+                    return self.view_videos(request, id_discipline, id_lesson, message)
+            
+            
             if not video in lesson.get_videos():
                 message = Message(TextMessage.VIDEO_NOT_FOUND_IN_LESSON, TypeMessage.ERROR)
                 return self.view_videos(request, id_discipline, id_lesson, message)

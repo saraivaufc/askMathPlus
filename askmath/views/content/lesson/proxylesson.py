@@ -32,7 +32,7 @@ class ProxyLesson(ILesson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__home.index(request, message)
     
-    def view_lesson(self, request,id_discipline, id_lesson, message=None):
+    def view_lesson(self, request,id_discipline=None, id_lesson=None, message=None):
         if request.user.has_perm("askmath.read_lesson"):
             try:
                 lesson = LessonModel.objects.get(id = id_lesson)

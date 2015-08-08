@@ -1,0 +1,68 @@
+{% extends "askmath/index/home.html" %}
+{% load i18n %}
+
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="fg-white">
+<div class="container-fluid">
+	<h1>{% trans "Search result..." %}</h1>	
+	<div class="tile-area padding10 bg-transparent ">
+		{% if disciplines_occurrences %}
+			<h4>{% trans "Disciplines:" %}</h4>
+			<div class="tile-container">
+			{% for discipline, occurence in disciplines_occurrences %}
+				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/" class="tile-content iconic">
+				        <span class="icon mif-stack2"></span>
+				        <span class="tile-label">{{ discipline.get_title }}</span>
+				    </a>
+					<span class="tile-badge bg-red">{{ occurence }}</span>
+				</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+		
+		{% if lessons_occurrences %}
+			<h4>{% trans "Lessons:" %}</h4>
+			<div class="tile-container">
+			{% for lesson, occurence in lessons_occurrences %}
+				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				    <a href="/home/content/lessons/view/discipline=3/lesson=8/" class="tile-content iconic">
+				        <span class="icon mif-clipboard"></span>
+				        <span class="tile-label">{{ lesson.get_title }}</span>
+				    </a>
+					<span class="tile-badge bg-red">{{ occurence }}</span>
+				</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+		
+		{% if videos_occurrences %}
+			<h4>{% trans "Videos:" %}</h4>
+			<div class="tile-container">
+			{% for video, occurence in videos_occurrences %}
+				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				    <a href="/home/manager/lessons/view/lesson={{ video.id }}/" class="tile-content iconic">
+				        <span class="icon mif-film"></span>
+				        <span class="tile-label">{{ video.get_title }}</span>
+				    </a>
+					<span class="tile-badge bg-red">{{ occurence }}</span>
+				</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+		
+		{% if not lessons_occurrences and not videos_occurrences %}
+		<h1 class="text-center">{% trans "No result found!!!" %}</h1>
+		{% endif %}
+		
+	</div>
+</div>
+</div>
+
+{% endblock %}

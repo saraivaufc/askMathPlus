@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
-
 from .ifilter import IFilter
 from .filter import Filter
 from askmath.views.index import Home

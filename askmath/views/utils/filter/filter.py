@@ -4,14 +4,17 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Discipline, Lesson, Video
 from askMathPlus.settings import BASE_DIR
+from askMathPlus.settings import COLORS_ALL
 
 from .ifilter import IFilter
 import nltk, os
 nltk.data.path.append(os.path.join(BASE_DIR, 'askmath/static/askmath/filter/nltk_data/'))
 from nltk.corpus import stopwords
+import operator
 
 from askmath.views.content.discipline import ProxyDiscipline
 from askmath.views.content.lesson import ProxyLesson
+from askmath.views.content.video import ProxyVideo
 
 LANGUAGE = "portuguese"
 IGNORED_WORDS = stopwords.words(LANGUAGE)
@@ -20,23 +23,73 @@ class Filter(IFilter):
     def __init__(self):
         self.__proxy_discipline = ProxyDiscipline()
         self.__proxy_lesson = ProxyLesson()
+        self.__proxy_video = ProxyVideo()
     
     def search(self, request, expression , message=None):
         disciplines = Discipline.objects.filter(exists=True, visible=True)
         lessons = Lesson.objects.filter(exists=True, visible=True)
         videos = Video.objects.filter(exists=True, visible=True)
+        
+        #SEARCH IN DISCIPLINES BY TITLE
+        disciplines_occurrences = {}
         for discipline in disciplines:
             if discipline.get_title().upper() == expression.upper():
                 if request.user.is_authenticated():
                     return self.__proxy_lesson.view_lessons(request, discipline.id, message)
+            else:
+                occurrences = self.occurrences(discipline.get_title().upper(), expression.upper())
+                if occurrences > 0:
+                    disciplines_occurrences[discipline] = occurrences
+        disciplines_occurrences = sorted(disciplines_occurrences.items(), key=lambda x: x[1], reverse=True)
+        
+                
+        #SEARCH IN LESSONS
+        lessons_occurrences = {}
         for lesson in lessons:
             if lesson.get_title().upper() == expression.upper():
                 if request.user.is_authenticated():
                     return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
+            else:
+                occurrences = self.occurrences(lesson.get_title().upper(), expression.upper())
+                if occurrences > 0:
+                    lessons_occurrences[lesson] = occurrences
+        
+        
+        lessons_occurrences = sorted(lessons_occurrences.items(), key=lambda x: x[1], reverse=True)
+        
+        
+        #SEARCH IN VIDEOS
+        videos_occurrences = {}
+        for video in videos:
+            if video.get_title().upper() == expression.upper():
+                if request.user.is_authenticated():
+                    return self.__proxy_video.view_video(request, video.id, None, None, message)
+            else:
+                occurrences = self.occurrences(video.get_title().upper(), expression.upper())
+                if occurrences > 0:
+                    videos_occurrences[video] = occurrences
+        
+        videos_occurrences = sorted(videos_occurrences.items(), key=lambda x: x[1], reverse=True)
+        
+        
+        return render(request, "askmath/utils/filter/search.html", 
+            {'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+                    
+    def occurrences(self, text="", expression=""):
+        expression = self.expression_clean(expression).split(" ")
+        occurrences = 0
+        for i in expression:
+            try:
+                occurrences += len(self.string_matching(text, i))
+                print text,'-',i,'-',occurrences
+            except:
+                pass
+        return occurrences
+        
     
     def expression_clean(self, expression=""):
         expression = [i for i in expression.split(" ") if i  not in IGNORED_WORDS]
-        return  HttpResponse(' '.join(unicode(e) for e in expression))
+        return  ' '.join(unicode(e) for e in expression)
     
     def string_matching(self, text='', pattern=''):
         text = self.expression_clean(text)
