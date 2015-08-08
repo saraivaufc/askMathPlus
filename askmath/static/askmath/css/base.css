@@ -220,3 +220,25 @@ input:disabled {
     outline: none;
     box-shadow: none;
 }
+
+#feedback {
+	float: left;
+	position: fixed;
+	top: calc(50% - 47px);
+	right: 0;
+}
+
+#feedback a {
+	background: #FF4500;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+	border: 3px solid #fff;
+	border-right: 0;
+	display: block;
+	padding: 20px 12px;
+	transition: all .2s ease-in-out;
+}
+
+#feedback a:hover {
+	padding-right: 20px;
+}

@@ -10,7 +10,7 @@ class Contact(models.Model):
     subject = models.CharField(verbose_name=_("Subject"), max_length=100)
     message = models.TextField(verbose_name=_("Message"), max_length=2000)
     file = models.FileField(verbose_name=_("File"), upload_to = 'documents/contact_files/%Y/%m/%d',
-        help_text=_("Perform upload a file."))
+        help_text=_("Perform upload a file."), null=True, blank=True)
 
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)

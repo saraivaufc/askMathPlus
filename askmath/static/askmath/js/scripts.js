@@ -2,6 +2,50 @@ function Init(){
 	resize_window();
 };
 
+
+(function ($) {
+	$(document).ready(function ($) {
+        $('#feedback-modal').on('shown.bs.modal', function () {
+            document.getElementById('feedback-url').value = window.location.protocol + '//' + window.location.hostname + window.location.pathname + window.location.hash;
+        
+            $('#feedback-alerts').empty();
+            var $form = $('#feedback-form');
+            $form.removeClass('loading');
+            $('input:visible:first', $form).focus();
+        });
+        
+        $('#feedback-form').on('submit', function(e) {
+                var $form = $('#feedback-form');
+                    var $modal = $('#feedback-modal');
+                    var $alerts = $('#feedback-alerts');
+        
+                    $form.addClass('loading');
+                    $alerts.empty();
+                    $.post(
+                            $form.attr('action'),
+                            $form.serialize(),
+                            function (response) {
+                                if (response.ok) {
+                                    $alerts.append('<p class="alert alert-success">' + response.message + '</p>');
+        
+                                    setTimeout(function () {
+                                        $modal.modal('hide');
+                                        $alerts.empty();
+                                        $form.trigger('reset');
+                                    }, 1000);
+        
+                                } else {
+                                    $alerts.append('<p class="alert alert-danger">' + response.message + '</p>');
+                                }
+                                $form.removeClass('loading');
+                            }, 'json'
+                    );
+        
+                    e.preventDefault(); // not submit form
+        });
+        });
+})(jQuery);
+
 window.onresize = resize_window();
 
 function resize_window(){
