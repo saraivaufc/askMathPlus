@@ -37,10 +37,17 @@ class Filter(IFilter):
         p_lessons = pool.apply_async(self.search_lessons, (request, expression, lessons, message))
         p_videos = pool.apply_async(self.search_videos, (request, expression, videos, message))
         
-        
         disciplines_occurrences = p_disciplines.get()
         lessons_occurrences = p_lessons.get()
         videos_occurrences = p_videos.get()
+        
+        if type(disciplines_occurrences) == HttpResponse:
+            return disciplines_occurrences
+        if type(lessons_occurrences) == HttpResponse:
+            return lessons_occurrences
+        if type(videos_occurrences)  == HttpResponse:
+            return videos_occurrences
+        
         
         return render(request, "askmath/utils/filter/search.html", 
             {'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
