@@ -12,6 +12,7 @@ class Lesson(ILesson):
     
     def view_lessons(self, request, discipline, message = None):
         lessons = discipline.get_lessons_visible()
+        print discipline,'---', lessons
         return render(request, "askmath/content/lesson/content_view_lessons.html",
             {'request':request,'discipline': discipline, 'lessons': lessons,'colors': COLORS_ALL, 'message': message})
     

@@ -17,7 +17,7 @@ class ProxyLesson(ILesson):
         self.__lesson = Lesson()
         self.__home = Home()
   
-    def view_lessons(self, request, id_discipline, message = None):
+    def view_lessons(self, request, id_discipline, message = None):            
         if request.user.has_perm("askmath.read_lesson"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]

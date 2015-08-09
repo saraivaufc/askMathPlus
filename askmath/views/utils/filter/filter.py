@@ -50,54 +50,74 @@ class Filter(IFilter):
     def search_disciplines(self, request,expression, disciplines, message=None):
         disciplines_occurrences = {}
         for discipline in disciplines:
-            if discipline.get_title().upper() == expression.upper():
+            discipline_title = (discipline.get_title()).upper()
+            expression = expression.upper()
+            
+            if  discipline_title == expression:
                 if request.user.is_authenticated():
                     return self.__proxy_lesson.view_lessons(request, discipline.id, message)
             else:
-                occurrences = self.occurrences(discipline.get_title().upper(), expression.upper())
+                occurrences = self.occurrences(discipline_title, expression)
                 if occurrences > 0:
                     disciplines_occurrences[discipline] = occurrences
+            del discipline
+            del occurrences
+            
         disciplines_occurrences = sorted(disciplines_occurrences.items(), key=lambda x: x[1], reverse=True)
+        print "disciplines"
         return disciplines_occurrences
     
     def search_lessons(self, request, expression, lessons, message=None):        
         lessons_occurrences = {}
         for lesson in lessons:
-            if lesson.get_title().upper() == expression.upper():
+            lesson_title = (lesson.get_title()).upper() 
+            expression = expression.upper()
+            if lesson_title == expression:
                 if request.user.is_authenticated():
                     return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
             else:
-                occurrences = self.occurrences(lesson.get_title().upper(), expression.upper())
+                occurrences = self.occurrences(lesson_title, expression)
                 if occurrences > 0:
                     lessons_occurrences[lesson] = occurrences
+                    
+            del lesson
+            del occurrences
         
         
         lessons_occurrences = sorted(lessons_occurrences.items(), key=lambda x: x[1], reverse=True)
+        print 'lessons'
         return lessons_occurrences
     
     def search_videos(self, request, expression, videos, message=None):
         #SEARCH IN VIDEOS
         videos_occurrences = {}
         for video in videos:
-            if video.get_title().upper() == expression.upper():
+            video_title = (video.get_title()).upper()
+            expression = expression.upper()
+            if video_title == expression:
                 if request.user.is_authenticated():
                     return self.__proxy_video.view_video(request, video.id, None, None, message)
             else:
-                occurrences = self.occurrences(video.get_title().upper(), expression.upper())
+                occurrences = self.occurrences(video_title, expression)
                 if occurrences > 0:
                     videos_occurrences[video] = occurrences
+            del video
+            del occurrences
         
         videos_occurrences = sorted(videos_occurrences.items(), key=lambda x: x[1], reverse=True)
+        print 'videos'
         return videos_occurrences
     
                     
     def occurrences(self, text="", expression=""):
+        text = self.expression_clean(text)
         expression = self.expression_clean(expression).split(" ")
+        print "Text=",text," and Expression=",expression
         occurrences = 0
         for i in expression:
             try:
-                occurrences += len(self.string_matching(text, i))
-                print text,'-',i,'-',occurrences
+                if len(i) > 2 and len(text)>2:
+                    occurrences += len(self.string_matching(text, i))
             except:
                 pass
         return occurrences
@@ -108,7 +128,6 @@ class Filter(IFilter):
         return  ' '.join(unicode(e) for e in expression)
     
     def string_matching(self, text='', pattern=''):
-        text = self.expression_clean(text)
         m = len(pattern)
         n = len(text)
         offsets = []
@@ -129,5 +148,4 @@ class Filter(IFilter):
             if j == -1:
                 offsets.append(i + 1)
             k += skip[ord(text[k])]
-    
         return offsets
