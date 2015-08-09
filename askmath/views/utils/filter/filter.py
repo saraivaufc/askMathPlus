@@ -50,15 +50,15 @@ class Filter(IFilter):
         
         
         return render(request, "askmath/utils/filter/search.html", 
-            {'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+            {'request': request,'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
     
     
     
     def search_disciplines(self, request,expression, disciplines, message=None):
         disciplines_occurrences = {}
         for discipline in disciplines:
-            discipline_title = (discipline.get_title()).upper()
-            expression = expression.upper()
+            discipline_title = unicode(discipline.get_title()).upper())
+            expression = unicode(expression.upper())
             
             if  discipline_title == expression:
                 if request.user.is_authenticated():
@@ -77,8 +77,8 @@ class Filter(IFilter):
     def search_lessons(self, request, expression, lessons, message=None):        
         lessons_occurrences = {}
         for lesson in lessons:
-            lesson_title = (lesson.get_title()).upper() 
-            expression = expression.upper()
+            lesson_title = unicode((lesson.get_title()).upper())
+            expression = unicode(expression.upper())
             if lesson_title == expression:
                 if request.user.is_authenticated():
                     return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
@@ -99,8 +99,8 @@ class Filter(IFilter):
         #SEARCH IN VIDEOS
         videos_occurrences = {}
         for video in videos:
-            video_title = (video.get_title()).upper()
-            expression = expression.upper()
+            video_title = unicode((video.get_title()).upper())
+            expression = unicode(expression.upper())
             if video_title == expression:
                 if request.user.is_authenticated():
                     return self.__proxy_video.view_video(request, video.id, None, None, message)
@@ -117,8 +117,8 @@ class Filter(IFilter):
     
                     
     def occurrences(self, text="", expression=""):
-        text = self.expression_clean(text)
-        expression = self.expression_clean(expression).split(" ")
+        text = unicode(self.expression_clean(text))
+        expression = unicode(self.expression_clean(expression).split(" "))
         print "Text=",text," and Expression=",expression
         occurrences = 0
         for i in expression:
