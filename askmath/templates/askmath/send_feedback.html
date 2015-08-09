@@ -13,7 +13,6 @@
 				{% csrf_token %}
 				<label for="id_name">{%trans "Name:"%}</label><input class="input-control text full-size" id="id_name" maxlength="100" name="name" required="required" type="text">
 				<label for="id_email">{% trans "Email:" %}</label><input class="input-control email full-size" id="id_email" maxlength="254" name="email" required="required" type="email">
-				<label for="id_subject">{% trans "Subject:" %}</label><input class="input-control text full-size" id="id_subject" maxlength="100" name="subject" required="required" type="text">
 				<label for="id_message">{% trans "Message:" %}</label><textarea class="input-control textarea full-size" cols="40" id="id_message" maxlength="2000" name="message" required="required" rows="10"></textarea>
 				<label for="id_file">{% trans "File:" %}</label><input id="id_file" name="file" type="file"><br><span class="helptext">{% trans "Perform upload a file." %}</span>
       	</div>

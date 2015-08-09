@@ -11,12 +11,11 @@ from askmath.models.users import Contact
 class ContactForm(ModelForm):
 	class Meta:
 		model= Contact
-		fields = ("name", "email","subject","message", "file")
+		fields = ("name", "email","message", "file")
 
 		widgets = {
 			'name': TextInput(attrs={'required': 'required', 'class':'input-control text full-size'}),
 			'email': EmailInput(attrs={'required': 'required', 'class':'input-control email full-size'}),
-			'subject': TextInput(attrs={'required': 'required', 'class':'input-control text full-size'}),
 			'message': Textarea(attrs={'required': 'required', 'class':'input-control textarea full-size'}),
 		}
 
