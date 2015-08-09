@@ -16,7 +16,7 @@ class LessonForm(ModelForm):
 		model= Lesson
 		fields = ("disciplines","title", "description", "requirements", "sugestions", "maximum_hops", "visible")
 		widgets = {
-			'disciplines': SelectMultiple(attrs={'class':'input-control select'}),
+			'disciplines': SelectMultiple(attrs={'class':'input-control select', 'required':'required'}),
 			'title': TextInput(attrs={'required': 'required', 'autofocus': 'True', 'class':'input-control text', 'x-webkit-speech': 'x-webkit-speech'}),
 			'description': Textarea(attrs={'cols': 50, 'rows': 6,'required': 'required', 'class':'latex input-control textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
 			'requirements': SelectMultiple(attrs={'class':'input-control select'}),

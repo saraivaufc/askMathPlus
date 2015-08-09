@@ -32,6 +32,7 @@
 			<div class="tile-container">
 			{% for lesson, occurence in lessons_occurrences %}
 				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				{{ lesson.get_disciplines }}
 				    <a href="/home/content/lessons/view/discipline={% with lesson.get_disciplines|first as discipline %}{{ discipline.id }}{% endwith %}/lesson={{ lesson.id }}/" class="tile-content iconic">
 				        <span class="icon mif-clipboard"></span>
 				        <span class="tile-label">{{ lesson.get_title }}</span>

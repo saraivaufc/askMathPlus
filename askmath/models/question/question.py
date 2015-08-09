@@ -8,7 +8,7 @@ from iquestion import IQuestion
 class Question(IQuestion):
     lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
         help_text=_("Choose the lesson which is question belongs."))
-    position = models.IntegerField(verbose_name=_("Position"),null=True,blank=True, 
+    position = models.IntegerField(verbose_name=_("Position"),null=False,blank=False,
         help_text=_("Choose the position which is question belongs."))
     description = models.TextField(verbose_name=_("Description"), 
          help_text=_("Choose a description for question is."))

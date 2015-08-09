@@ -30,6 +30,9 @@ class Filter(IFilter):
 		disciplines = Discipline.objects.filter(exists=True, visible=True)
 		lessons = Lesson.objects.filter(exists=True, visible=True)
 		videos = Video.objects.filter(exists=True, visible=True)
+		print "\nDiscipline=", disciplines
+		print "\nLessons=",lessons
+		print "\nVideos=",videos
 		
 		pool = ThreadPool(processes=3)
 		
@@ -40,6 +43,9 @@ class Filter(IFilter):
 		disciplines_occurrences = p_disciplines.get()
 		lessons_occurrences = p_lessons.get()
 		videos_occurrences = p_videos.get()
+		print type(disciplines_occurrences), disciplines_occurrences
+		print type(lessons_occurrences), lessons_occurrences
+		print type(videos_occurrences), videos_occurrences
 		
 		if type(disciplines_occurrences) == HttpResponse:
 			return disciplines_occurrences
@@ -67,11 +73,8 @@ class Filter(IFilter):
 				occurrences = self.occurrences(discipline_title, expression)
 				if occurrences > 0:
 					disciplines_occurrences[discipline] = occurrences
-			del discipline
-			del occurrences
 			
 		disciplines_occurrences = sorted(disciplines_occurrences.items(), key=lambda x: x[1], reverse=True)
-		print "disciplines"
 		return disciplines_occurrences
 	
 	def search_lessons(self, request, expression, lessons, message=None):        
@@ -86,13 +89,9 @@ class Filter(IFilter):
 				occurrences = self.occurrences(lesson_title, expression)
 				if occurrences > 0:
 					lessons_occurrences[lesson] = occurrences
-					
-			del lesson
-			del occurrences
 		
 		
 		lessons_occurrences = sorted(lessons_occurrences.items(), key=lambda x: x[1], reverse=True)
-		print 'lessons'
 		return lessons_occurrences
 	
 	def search_videos(self, request, expression, videos, message=None):
@@ -108,18 +107,13 @@ class Filter(IFilter):
 				occurrences = self.occurrences(video_title, expression)
 				if occurrences > 0:
 					videos_occurrences[video] = occurrences
-			del video
-			del occurrences
-		
 		videos_occurrences = sorted(videos_occurrences.items(), key=lambda x: x[1], reverse=True)
-		print 'videos'
 		return videos_occurrences
 	
 					
 	def occurrences(self, text="", expression=""):
-		text = self.expression_clean(text)
+		text = self.expression_clean(text).encode('utf-8')
 		expression = self.expression_clean(expression).split(" ")
-		print "Text=",text," and Expression=",expression
 		occurrences = 0
 		for i in expression:
 			try:

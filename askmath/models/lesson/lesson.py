@@ -10,7 +10,7 @@ from askmath.models.question import Question
 from askmath.models.video import Video
 
 class Lesson(ILesson):
-    disciplines = models.ManyToManyField("Discipline",verbose_name=_("Disciplines"), null=True, blank=True,
+    disciplines = models.ManyToManyField("Discipline",verbose_name=_("Disciplines"), null=False, blank=False,
         help_text=_("Choose the disciplines which is lesson belongs."))
     title = models.CharField(verbose_name=_("Title"), max_length=50,
         help_text=_("Choose a title for lesson is."))
