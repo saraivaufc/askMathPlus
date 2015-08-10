@@ -49,4 +49,9 @@ class Permissions(Model):
                         ("read_video", "Read Video"),
                         ("write_video", "Write Video"),
                         
+                        ("access_manager_contact", "Access Manager Contact"),
+                        ("read_contact", "Read Contact"),
+                        ("write_contact", "Write Contact"),
+                        
+                        
                       )

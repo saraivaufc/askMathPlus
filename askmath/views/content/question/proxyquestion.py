@@ -4,7 +4,7 @@ from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.models.question import Item as ItemModel
 
@@ -28,7 +28,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
@@ -48,7 +48,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_initial_details(request, id_discipline, id_lesson)
@@ -68,7 +68,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -105,7 +105,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -130,7 +130,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -155,7 +155,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
@@ -175,7 +175,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)

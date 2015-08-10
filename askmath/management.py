@@ -47,6 +47,10 @@ askmath_group_permissions = {
         "read_video",
         "write_video",
         
+        "access_manager_contact",
+        "read_contact",
+        "write_contact",
+        
     ],
     "teacher": [
         "access_manager",
@@ -84,6 +88,10 @@ askmath_group_permissions = {
         "access_manager_video",
         "read_video",
         "write_video",
+        
+        "access_manager_contact",
+        "read_contact",
+        "write_contact",
         
     ],
     "assistant": [

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 import json
 
 from askmath.entities import Message, TextMessage, TypeMessage
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.views.index import Home
 
@@ -30,7 +30,7 @@ class ProxyQuestion(IQuestion):
     def view_questions(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -46,7 +46,7 @@ class ProxyQuestion(IQuestion):
     def view_questions_removed(self, request, id_lesson,  message = None):
         if request.user.has_perm("askmath.read_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -63,7 +63,7 @@ class ProxyQuestion(IQuestion):
         if request.user.has_perm("askmath.read_question"):
             lesson, question = None, None
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -87,7 +87,7 @@ class ProxyQuestion(IQuestion):
     def add_question(self, request, id_lesson, quantity_items, message=None):
         if request.user.has_perm("askmath.write_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -105,7 +105,7 @@ class ProxyQuestion(IQuestion):
     def remove_question(self, request, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.write_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -124,7 +124,7 @@ class ProxyQuestion(IQuestion):
     def edit_question(self, request, id_lesson, id_question):
         if request.user.has_perm("askmath.write_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -145,7 +145,7 @@ class ProxyQuestion(IQuestion):
     def restore_question(self, request, id_lesson,id_question):
         if request.user.has_perm("askmath.write_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -165,7 +165,7 @@ class ProxyQuestion(IQuestion):
     def sort_questions(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_question"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)

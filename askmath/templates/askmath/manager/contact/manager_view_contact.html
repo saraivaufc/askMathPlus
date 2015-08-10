@@ -1,0 +1,20 @@
+{% extends 'askmath/manager/contact/manager_view_contacts.html' %}
+{% load i18n %}
+
+{%  block content %}
+<div class="tile-content">
+<div class="cell padding10">
+	<a href="/home/manager/contacts/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
+	{% if perms.askmath.write_contact %}
+		{% if contact.exists %}
+		<a href="/home/manager/contacts/remove/contact={{ contact.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		{% endif %}
+		{% if not contact.exists %}
+		<a href="/home/manager/contacts/restore/contact={{ contact.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		{% endif %}
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+	{% include "askmath/manager/contact/_render_contact.html" %}
+</div>
+</div>
+{% endblock %}

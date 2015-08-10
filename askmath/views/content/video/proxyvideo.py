@@ -4,7 +4,7 @@ from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 
 from askmath.views.index import Home
@@ -28,7 +28,7 @@ class ProxyVideo(IVideo):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
@@ -49,7 +49,7 @@ class ProxyVideo(IVideo):
                 return self.view_videos(request, id_discipline, id_lesson, message)
             
             try:
-                lesson = LessonModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
+                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 try:
                     lesson = video.get_lesson();

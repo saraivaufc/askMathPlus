@@ -1,0 +1,34 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+
+{% block header %}
+	{% include 'askmath/manager/contact/overwrite_header.html' %}
+{% endblock %}
+
+{%  block content %}
+
+<div class="cell padding10">
+	{% if is_removed %}
+		<a href="/home/manager/contacts/view/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>
+	{% else %}
+		<a href="/home/manager/contacts/view_removed/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
+	{% endif %}
+	<hr class="thin bg-grayLighter">
+</div>
+
+<div class="tile-area padding10 bg-transparent ">
+	{% for contact in contacts %}
+		<div class="tile {{colors|random}} fg-white" data-role="tile">
+		    <a href="/home/manager/contacts/view/contact={{ contact.id }}/" class="tile-content iconic">
+		        <span class="icon mif-envelop mif-ani-vertical"></span>
+		        <span class="tile-label">{{ contact.get_name }}</span>
+		        {% if not contact.exists %}
+		        <span class="tile-badge mif-bin"></span>
+		        {% endif %}
+		    </a>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

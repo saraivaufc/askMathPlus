@@ -6,7 +6,7 @@ from .lesson import Lesson
 
 class ProxyLesson(ILesson):
     def __init__(self):
-        self.__lesson = Lesson()
+        self.__contact = Lesson()
     def get(self, request):
-        return self.__lesson.get(request)
+        return self.__contact.get(request)
         

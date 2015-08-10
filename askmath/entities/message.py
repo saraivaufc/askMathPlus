@@ -131,6 +131,22 @@ class TextMessage():
  	VIDEO_NOT_FOUND = _("Video not found.")
  	VIDEO_NOT_FOUND_IN_LESSON = _("Video not found in lesson.")
  	
+ 	#Contact
+ 	CONTACT_SUCCESS_ADD = _("Contact successfully added.")
+ 	CONTACT_ERROR_ADD = _("Error adding contact.")
+ 	
+ 	CONTACT_SUCCESS_EDIT = _("Contact successfully edit.")
+ 	CONTACT_ERROR_EDIT = _("Error edit contact.")
+ 	
+ 	CONTACT_SUCCESS_REM = _("Contact successfully removed.")
+ 	CONTACT_ERROR_REM = _("Error remove contact.")
+ 	
+ 	CONTACT_SUCCESS_RESTORE = _("Contact successfully restored.")
+	CONTACT_ERROR_RESTORE = _("Error restore contact.")
+	
+ 
+ 	CONTACT_NOT_FOUND = _("Contact not found.")
+ 	
  	
  	
 

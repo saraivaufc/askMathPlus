@@ -1,0 +1,33 @@
+{% load i18n %}
+<h3 class="text-center">{% trans "Contact" %}</h3>
+<hr class="thin bg-grayLighter">
+<table class="table bg-white">
+    <thead>
+    	<tr>
+            <th>{% trans "Nome:" %}</th>
+            <th>{{ contact.get_name }}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Email:" %}</th>
+            <th>{{ contact.get_email }}</th>
+        </tr>
+        <tr>
+   		   	<th>{% trans "Message:" %}</th>
+   		   	<th>{{ contact.get_message|safe|linebreaksbr }}</th>
+   		</tr>
+   		{% if contact.get_file %}
+        <tr>
+        	<th>{% trans "File:" %}</th>
+        	<th>
+        		<a href="{{ contact.get_file.url }}" target="_blank">
+        			{{ contact.file.size|filesizeformat }} >>> {% trans "Download File" %}
+        		</a>
+        	</th>
+        </tr>
+        {% endif %}
+        <tr>
+   		   	<th>{% trans "Date:" %}</th>
+   		   	<th>{{ contact.creation }}</th>
+   		</tr>
+    </thead>
+</table>

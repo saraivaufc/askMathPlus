@@ -6,7 +6,7 @@ from askMathPlus.settings import COLORS_ALL
 from askmath.entities import Message, TextMessage, TypeMessage
 
 from askmath.models import Discipline as DisciplineModel
-from askmath.models import Lesson as LessonModel
+from askmath.models import Lesson as ContactModel
 
 from ..istatistic import IStatistic
 from .ilesson import ILesson

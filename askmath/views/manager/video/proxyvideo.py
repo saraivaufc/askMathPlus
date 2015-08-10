@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.views.index import Home
@@ -28,7 +28,7 @@ class ProxyVideo(IVideo):
     def view_videos(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -44,7 +44,7 @@ class ProxyVideo(IVideo):
     def view_videos_removed(self, request, id_lesson,  message = None):
         if request.user.has_perm("askmath.read_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -61,7 +61,7 @@ class ProxyVideo(IVideo):
         if request.user.has_perm("askmath.read_video"):
             lesson, video = None, None
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -84,7 +84,7 @@ class ProxyVideo(IVideo):
     def add_video(self, request, id_lesson, message=None):
         if request.user.has_perm("askmath.write_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -99,7 +99,7 @@ class ProxyVideo(IVideo):
     def remove_video(self, request, id_lesson, id_video):
         if request.user.has_perm("askmath.write_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -119,7 +119,7 @@ class ProxyVideo(IVideo):
     def edit_video(self, request, id_lesson, id_video, message=None):
         if request.user.has_perm("askmath.write_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -140,7 +140,7 @@ class ProxyVideo(IVideo):
     def restore_video(self, request, id_lesson,id_video):
         if request.user.has_perm("askmath.write_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)
@@ -160,7 +160,7 @@ class ProxyVideo(IVideo):
     def sort_videos(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_video"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.choose_lesson(request , message)

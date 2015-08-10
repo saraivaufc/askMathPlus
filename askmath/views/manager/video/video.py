@@ -6,7 +6,7 @@ from askMathPlus.settings import COLORS_ALL
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.forms import VideoForm, ItemForm
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 
 from .ivideo import IVideo

@@ -14,6 +14,18 @@ class Contact(models.Model):
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     
+    def get_name(self):
+        return self.name
+    
+    def get_email(self):
+        return self.email
+    
+    def get_message(self):
+        return self.message
+    
+    def get_file(self):
+        return self.file
+    
     def delete(self):
         self.exists = False
         self.save()

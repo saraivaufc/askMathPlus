@@ -4,7 +4,7 @@ from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.models.question import Item as ItemModel
 from askmath.models.users import Student as StudentModel

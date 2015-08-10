@@ -7,5 +7,5 @@ from .contact import Contact
 
 
 __all__ = [
-    'Person','Administrator', 'Teacher', 'Assistant', 'Student', 
+    'Person','Administrator', 'Teacher', 'Assistant', 'Student', 'Contact'
 ]

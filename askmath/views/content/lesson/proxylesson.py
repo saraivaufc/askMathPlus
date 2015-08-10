@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 #MODELS
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.models.lesson import Lesson as LessonModel
+from askmath.models.lesson import Lesson as ContactModel
 
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.views.index import Home
@@ -14,7 +14,7 @@ from .lesson import Lesson
 class ProxyLesson(ILesson):
     
     def __init__(self):
-        self.__lesson = Lesson()
+        self.__contact = Lesson()
         self.__home = Home()
   
     def view_lessons(self, request, id_discipline, message = None):            
@@ -25,7 +25,7 @@ class ProxyLesson(ILesson):
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.__home.index(request, message)
             try:
-                return self.__lesson.view_lessons(request,discipline, message)
+                return self.__contact.view_lessons(request,discipline, message)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
         else:
@@ -35,7 +35,7 @@ class ProxyLesson(ILesson):
     def view_lesson(self, request,id_discipline=None, id_lesson=None, message=None):
         if request.user.has_perm("askmath.read_lesson"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = ContactModel.objects.get(id = id_lesson)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_lessons(request,message)
@@ -50,7 +50,7 @@ class ProxyLesson(ILesson):
                     return self.__home.index(request, message)
             
             try:
-                return self.__lesson.view_lesson(request,discipline, lesson)
+                return self.__contact.view_lesson(request,discipline, lesson)
             except:
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
