@@ -14,7 +14,9 @@
 		{% endif %}
 	{% endif %}
 	<hr class="thin bg-grayLighter">
-	{% include "askmath/manager/contact/_render_contact.html" %}
+		<h2 class="text-center">{{ contact.get_name }}<span class="mif-envelop place-right"></span></h2>
+	<hr class="thin bg-grayLighter">
 </div>
+	{% include "askmath/manager/contact/_render_contact.html" %}
 </div>
 {% endblock %}

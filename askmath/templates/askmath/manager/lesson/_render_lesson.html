@@ -1,6 +1,4 @@
 {% load i18n %}
-<h3 class="text-center">{% trans "Lesson" %}</h3>
-<hr class="thin bg-grayLighter">
 <table class="table bg-white">
     <thead>
     	<tr>
@@ -60,7 +58,7 @@
         </tr>
     </thead>
 </table>
-<h3 class="text-center">{% trans "Questions" %}</h3>
+<h4 class="text-center">{% trans "Questions of lesson" %}</h4>
 <hr class="thin bg-grayLighter">
 
 <div class="tile-area no-padding bg-transparent">
@@ -76,12 +74,12 @@
     </a>
 </div>
 {% empty %}
-<h3>{% trans "No Question found." %}</h3>
+<h5 class="text-center">{% trans "No Question found." %}</h5>
 {% endfor %}
 </div>
 </div>
 
-<h3 class="text-center">{% trans "Videos" %}</h3>
+<h4 class="text-center">{% trans "Videos of lesson" %}</h4>
 <hr class="thin bg-grayLighter">
 <div class="tile-area no-padding bg-transparent">
 <div class="tile-container">
@@ -99,7 +97,7 @@
 		    </a>
 		</div>
 	{% empty %}
-	<h3 class="text-center">{%trans "Lesson does not have videos."%}</h3>
+	<h5 class="text-center">{%trans "Lesson does not have videos."%}</h5>
 	{% endfor %}
 </div>
 </div>

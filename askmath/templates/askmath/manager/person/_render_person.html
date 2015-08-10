@@ -1,11 +1,13 @@
 {% load i18n %}
-<h3 class="text-center">{{ person_type|title }}</h3>
-<hr class="thin bg-grayLighter">
 <div class="col-md-4 col-md-offset-4">
-{% if person.get_profile_image %}
-<img class="img img-responsive" width="500px" height="500px" src="{{ person.get_profile_image.url }}"></img>
+<center>
+	{% if person.get_profile_image %}
+	<img class="img img-responsive" width="250px" height="250px" src="{{ person.get_profile_image.url }}"></img>
+	{% else %}
+	<img class="img img-responsive" width="250px" height="250px" src="{{ STATIC_URL }}askmath/img/metro/profile.png"></img>
+	{% endif %}
+</center>
 <hr class="thin bg-grayLighter">
-{% endif %}
 </div>
 <table class="table border bordered bg-white">
     <thead>

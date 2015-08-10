@@ -1,6 +1,4 @@
 {% load i18n %}
-<h3 class="text-center">{% trans "Contact" %}</h3>
-<hr class="thin bg-grayLighter">
 <table class="table bg-white">
     <thead>
     	<tr>
@@ -20,7 +18,7 @@
         	<th>{% trans "File:" %}</th>
         	<th>
         		<a href="{{ contact.get_file.url }}" target="_blank">
-        			{{ contact.file.size|filesizeformat }} >>> {% trans "Download File" %}
+        			{% trans "Download File" %}
         		</a>
         	</th>
         </tr>

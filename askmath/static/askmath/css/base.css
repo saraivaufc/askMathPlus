@@ -64,7 +64,11 @@ opacity */
 }
 
 .form-generic{
-	width: 100%;
+	align: center;
+}
+
+.form-generic .form-fields {
+	margin: 0 auto;
 }
 
 

@@ -38,14 +38,14 @@ class ProxyContact(IContact):
     def view_contact(self, request, id_contact, message=None):
         if request.user.has_perm("askmath.read_contact"):
             try:
-                contact = ContactModel.objects.filter(id = id_contact)[0]
+                contact = ContactModel.objects.get(id = id_contact)
             except:
                 message = Message(TextMessage.CONTACT_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_contacts(request,message)
-            try:
-                return self.__contact.view_contact(request, contact)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            #try:
+            return self.__contact.view_contact(request, contact)
+            #except:
+                #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_contacts(request,message)

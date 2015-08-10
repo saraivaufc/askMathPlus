@@ -9,28 +9,27 @@
 <div class="cell padding10">
 	<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
-</div>
-
-<div class="padding10">
-<div class="cell auto-size">
-	<h2 class="text-dark  text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
+		<div class="cell auto-size">
+			<h2 class="text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
+		</div>
 	<hr class="thin bg-grayLighter">
 </div>
 
-<ul id="list_questions_sort" class="listview ">
-{% csrf_token %}
-{% for question in questions %}
-<li class="list active" value={{ question.id }}>
-	<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
-</li>
-{% empty %}
-<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
-{% endfor %}
-</ul>
-
-<div class="text-right">
-	<button onclick="sortQuestions();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
-</div>
+<div class="padding40">
+	<ul id="list_questions_sort" class="listview ">
+	{% csrf_token %}
+	{% for question in questions %}
+	<li class="list active" value={{ question.id }}>
+		<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
+	</li>
+	{% empty %}
+	<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
+	{% endfor %}
+	</ul>
+	
+	<div class="text-right">
+		<button onclick="sortQuestions();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+	</div>
 </div>
 
 {% endblock %}

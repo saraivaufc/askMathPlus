@@ -1,7 +1,5 @@
 {% load i18n %}
 	<section>
-	<h3 class="text-center">{% trans "Question" %}</h3>
-	<hr class="thin bg-grayLighter">
 	<article>
 	<table class="table bg-white">
 	    <thead>
@@ -30,7 +28,7 @@
 	</article>
 	
 	<article>
-	<h3 class="text-center">{% trans "Items" %}</h3>
+	<h3 class="text-center">{% trans "Items of question" %}</h3>
 	<hr class="thin bg-grayLighter">
 	<ol type="A" class="list">
 	{% for item in question.get_items %}

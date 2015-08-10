@@ -5,7 +5,8 @@
 		{% csrf_token %}
 			<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 			<hr class="colorgraph">
-			{% for field in form %}
+			<div class="form-fields">
+			{% for field in form.visible_fields %}
 		        <div class="fieldWrapper">
 		            {{ field.errors }}
 		            {{ field.label_tag }}
@@ -14,7 +15,8 @@
 		            </div>
 		        </div>
 		    {% endfor %}
-			<hr class="colorgraph">
+		    <div>
+		    <hr class="colorgraph">
 			<div class="text-right">
 				<a class="button primary" onclick="window.history.back();" ><span class="mif-cancel"></span>{% trans " Cancel" %}</a>
 				<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>

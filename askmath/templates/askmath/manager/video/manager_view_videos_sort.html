@@ -8,14 +8,12 @@
 <div class="cell padding10">
 	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
+		<h3 class="text-center">{% trans "Sort Videos" %}<span class="mif-sort-asc place-right"></span></h3>
+	<hr class="thin bg-grayLighter">
+	
 </div>
 
 <div class="padding10">
-
-<h3 class="text-center">{% trans "Sort Videos" %}</h3>
-<hr class="thin bg-grayLighter">
-
-
 <ul id="list_videos_sort" class="listview ">
 {% csrf_token %}
 {% for video in videos %}

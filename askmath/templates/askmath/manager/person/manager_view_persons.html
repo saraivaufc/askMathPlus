@@ -14,6 +14,14 @@
 		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
 	{% endif %}
 	<hr class="thin bg-grayLighter">
+		{% if is_removed %}
+		<h2 class="text-center">{% trans "Persons Removed" %}
+		{% else %}
+		<h2 class="text-center">{% trans "Persons" %}
+		{% endif %}
+		<span class="mif-users place-right"></span>
+		</h2>
+	<hr class="thin bg-grayLighter">
 </div>
 
 <div class="tile-area no-padding bg-transparent ">
