@@ -2,3 +2,13 @@
 .img-avatar{
 	height: 200px;
 }
+
+.img-float-right{
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.img-float-left{
+    float: left;
+    margin: 0 0 10px 10px;
+}

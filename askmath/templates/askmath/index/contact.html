@@ -3,56 +3,53 @@
 {% load i18n %}
 
 {% block content %}
-<div class="col-xs-12  col-md-10 col-md-offset-1">
-<div>
+<div class="container">
+<div class="row">
 	<h1 class="text-center">{% trans "Contact Us" %}</h1>
 	<hr class="colorgraph">
-	<div class="container-fluid">
+	<div class="col-xs-12 col-md-6">
+		<div class="row text-center">
+			<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/pet.png" width="90%" height="100%">
+		</div>
+		<br>
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
-				<div class="row text-center">
-					<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/pet.png" width="90%" height="100%">
-				</div>
-				<br>
-				<div class="row">
-					<h3 class="text-left">{% trans "Social networks:" %}</h3>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-3">
-						<a href="http://tiqx.blogspot.com.br/" target="_blank">
-							<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/blog.png" height="15px">
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="https://plus.google.com/u/0/104181841054535213294/" target="_blank">
-							<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/googleplus.png" height="15px">
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="https://www.facebook.com/pettiqx" target="_blank">
-							<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/facebook.png" height="15px">
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="https://twitter.com/petccqx" target="_blank">
-							<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/twitter.png" height="15px">
-						</a>
-					</div>
-				</div>
+			<h3 class="text-left">{% trans "Social networks:" %}</h3>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3">
+				<a href="http://tiqx.blogspot.com.br/" target="_blank">
+					<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/blog.png" height="15px">
+				</a>
 			</div>
-			<div class="col-xs-12 col-md-6">
-				<form action="." method="post" enctype="multipart/form-data" role="form">
-					{% csrf_token %}
-					{{ form }}
-					<hr class="colorgraph">
-					<div class="text-right">
-						<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
-					</div>
-				</form>
+			<div class="col-md-3">
+				<a href="https://plus.google.com/u/0/104181841054535213294/" target="_blank">
+					<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/googleplus.png" height="15px">
+				</a>
+			</div>
+			<div class="col-md-3">
+				<a href="https://www.facebook.com/pettiqx" target="_blank">
+					<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/facebook.png" height="15px">
+				</a>
+			</div>
+			<div class="col-md-3">
+				<a href="https://twitter.com/petccqx" target="_blank">
+					<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/twitter.png" height="15px">
+				</a>
 			</div>
 		</div>
 	</div>
+	<div class="col-xs-12 col-md-6">
+		<form action="." method="post" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			{{ form }}
+			<hr class="colorgraph">
+			<div class="text-right">
+				<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+			</div>
+		</form>
+	</div>
+	{% include "askmath/index/_render_button_to_action.html" %}
 </div>
 </div>
 {% endblock %}

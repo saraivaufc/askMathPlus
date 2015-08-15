@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<article class="text-center">				
+	{% if request.user.is_authenticated %}
+		<a href="/home/" class="command-button success">
+		    <span class="icon mif-home"></span><spam>{% trans "Back to Home..." %}</spam>
+		</a>
+	{% else %}
+		<a href="/authentication/login/" class="command-button success">
+		    <span class="icon mif-play"></span>
+		    {% trans "Click here and start to learn ..." %}
+		    <small>{% trans "There are several issues and interesting videos for you." %}</small>
+		</a>
+	{% endif %}
+</article>

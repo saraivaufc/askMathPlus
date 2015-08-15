@@ -29,17 +29,7 @@
 	</div>
 </div>
 </section>
-<article>
-	<div class="container-fluid">
-	<div class="row">
-		<center>
-		<a href="/authentication/login/" class="command-button success">
-		    <span class="icon mif-play"></span>
-		    {% trans "Click here and start to learn ..." %}
-		    <small>{% trans "There are several issues and interesting videos for you." %}</small>
-		</a>
-		</center>
-	</div>
-	</div>
-</article>
+
+{% include "askmath/index/_render_button_to_action.html" %}
+
 {% endblock %}

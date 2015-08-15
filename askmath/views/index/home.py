@@ -5,7 +5,8 @@ from askmath.entities import Message, TextMessage, TypeMessage
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
 from askmath.forms import ContactForm
-from askMathPlus.settings import COLORS_ALL
+from askMathPlus.settings import COLORS_ALL, EMAIL_ADMINS, SITE_TITLE
+from django.core.mail import EmailMessage
 
 class Home():
     def index(self, request,  message = None):
@@ -30,6 +31,8 @@ class Home():
             form =  ContactForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
+                email = EmailMessage(SITE_TITLE, form.cleaned_data['message'], to=['saraiva@alu.ufc.br'])
+                email.send()
                 message = Message(TextMessage.MESSAGE_SUCCESS_SEND, TypeMessage.SUCCESS)
                 return self.index(request, message)
         else:
