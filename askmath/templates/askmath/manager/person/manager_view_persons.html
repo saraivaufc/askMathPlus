@@ -6,7 +6,7 @@
 <div class="cell auto-size padding20">
 	<a href="/home/manager/persons/choose_person_types/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if write_person %}
-		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
+		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="button primary" ><span class="mif-key"></span>{% trans " View Keys" %}</a>
 	{% endif %}
 	{% if is_removed %}
 		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>

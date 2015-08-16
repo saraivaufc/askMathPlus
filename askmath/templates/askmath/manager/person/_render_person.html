@@ -1,29 +1,27 @@
 {% load i18n %}
-<div class="col-md-4 col-md-offset-4">
-<center>
-	{% if person.get_profile_image %}
-	<img class="img img-responsive" width="250px" height="250px" src="{{ person.get_profile_image.url }}"></img>
-	{% else %}
-	<img class="img img-responsive" width="250px" height="250px" src="{{ STATIC_URL }}askmath/img/metro/profile.png"></img>
-	{% endif %}
-</center>
-<hr class="thin bg-grayLighter">
+<div class="container">
+	<center>
+		{% if person.get_profile_image %}
+		<img class="img img-responsive" width="250px" height="250px" src="{{ person.get_profile_image.url }}"></img>
+		{% else %}
+		<img class="img img-responsive" width="250px" height="250px" src="{{ STATIC_URL }}askmath/img/metro/profile.png"></img>
+		{% endif %}
+	</center>
+	<hr class="thin bg-grayLighter">
+	<table class="table border bordered bg-white">
+	    <thead>
+	    	<tr>
+	    		<td>{% trans "Name:" %}</td>
+	    		<td>{% trans "User Name:" %}</td>
+	    		<td>{% trans "Email:" %}</td>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    	<tr>
+	    		<td>{{ person.get_name }}</td>
+	    		<td>{{ person.get_username }}</td>
+	    		<td><a href="mailto:{{ person.email }}?subject=AskMath">{{ person.get_email }}</a></td>
+	    	</tr>
+	    </tbody>
+	</table>
 </div>
-<table class="table border bordered bg-white">
-    <thead>
-    	<tr>
-            <th>{% trans "Name:" %}</th>
-            <th>
-            	{{ person.get_name }}
-            </th>
-        </tr>
-        <tr>
-            <th>{% trans "User Name:" %}</th>
-            <th>{{ person.get_username }}</th>
-        </tr>
-        <tr>
-   		   	<th>{% trans "Email:" %}</th>
-   		   	<th><a href="mailto:{{ person.email }}?subject=AskMath">{{ person.get_email }}</a></th>
-   		</tr>
-    </thead>
-</table>

@@ -1,36 +1,40 @@
 {% load i18n %}
-<table class="table bg-white">
-	<thead>
-		<tr>
-			<th>{% trans "Title:" %}</th>
-			<th>{{ discipline.get_title }}</th>
-		<tr>
-		</tr>
-			<th>{% trans "Responsible:" %}</th>
-			<th>{{ discipline.get_responsible }}</th>
-		<tr>
-		</tr>
-			<th>{% trans "Is Visible:" %}</th>
-			<th>{{ discipline.is_visible }}</th>
-		<tr>
-	</thead>
-</table>
-<h4 class="text-center">{% trans "Lessons of discipline." %}</h4>
-<hr class="thin bg-grayLighter">
-<div class="tile-area no-padding bg-transparent ">
-  <div class="tile-container">
-	{% for lesson in discipline.get_lessons %}
-	  <div class="{% if forloop.counter|divisibleby:2 %}tile-wide{% else %}tile{% endif %} {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
-		  <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
-			  <span class="icon mif-clipboard"></span>
-			  <span class="tile-label">{{ lesson }}</span>
-			  {% if not lesson.exists %}
-			  <span class="tile-badge mif-bin"></span>
-			  {% endif %}
-		  </a>
+<div class="container">
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Title:" %}</h4>
+			<p class="list-group-item-text">{{ discipline.get_title }}</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Responsible:" %}</h4>
+			<p class="list-group-item-text">{{ discipline.get_responsible }}</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Is Visible:" %}</h4>
+			<p class="list-group-item-text">{{ discipline.is_visible }}</p>
+		</div>
+	</div>
+	
+	<h4 class="text-center">{% trans "Lessons of discipline." %}</h4>
+	<hr class="thin bg-grayLighter">
+	<div class="tile-area no-padding bg-transparent ">
+	  <div class="tile-container">
+		{% for lesson in discipline.get_lessons %}
+		  <div class="{% if forloop.counter|divisibleby:2 %}tile-wide{% else %}tile{% endif %} {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+			  <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
+				  <span class="icon mif-clipboard"></span>
+				  <span class="tile-label">{{ lesson }}</span>
+				  {% if not lesson.exists %}
+				  <span class="tile-badge mif-bin"></span>
+				  {% endif %}
+			  </a>
+		  </div>
+		{% empty %}
+		  <h3>{% trans "No lesson found." %}</h3>
+		{% endfor %}
 	  </div>
-	{% empty %}
-	  <h3>{% trans "No lesson found." %}</h3>
-	{% endfor %}
-  </div>
+	</div>
+	
 </div>

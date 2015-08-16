@@ -1,31 +1,34 @@
 {% load i18n %}
-<table class="table bg-white">
-    <thead>
-    	<tr>
-            <th>{% trans "Nome:" %}</th>
-            <th>{{ contact.get_name }}</th>
-        </tr>
-        <tr>
-            <th>{% trans "Email:" %}</th>
-            <th>{{ contact.get_email }}</th>
-        </tr>
-        <tr>
-   		   	<th>{% trans "Message:" %}</th>
-   		   	<th>{{ contact.get_message|safe|linebreaksbr }}</th>
-   		</tr>
-   		{% if contact.get_file %}
-        <tr>
-        	<th>{% trans "File:" %}</th>
-        	<th>
-        		<a href="{{ contact.get_file.url }}" target="_blank">
-        			{% trans "Download File" %}
-        		</a>
-        	</th>
-        </tr>
-        {% endif %}
-        <tr>
-   		   	<th>{% trans "Date:" %}</th>
-   		   	<th>{{ contact.creation }}</th>
-   		</tr>
-    </thead>
-</table>
+
+<div class="container">
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Name:" %}</h4>
+			<p class="list-group-item-text">{{ contact.get_name }}</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Email:" %}</h4>
+			<p class="list-group-item-text">{{ contact.get_email }}</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Message:" %}</h4>
+			<p class="list-group-item-text">{{ contact.get_message|safe|linebreaksbr }}</p>
+		</div>
+		
+		{% if contact.get_file %}
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "File:" %}</h4>
+			<p class="list-group-item-text">
+				<a href="{{ contact.get_file.url }}" target="_blank">{% trans "Download File" %}</a>
+			</p>
+		</div>
+		{% endif %}
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">{% trans "Date:" %}</h4>
+			<p class="list-group-item-text">{{ contact.creation }}</p>
+		</div>
+	</div>
+</div>
