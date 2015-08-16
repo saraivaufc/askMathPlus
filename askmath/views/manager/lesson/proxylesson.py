@@ -17,7 +17,7 @@ class ProxyLesson(ILesson):
         self.__home = Home()
   
     def view_lessons(self, request, message = None):
-        if request.user.has_perm("askmath.read_lesson"):
+        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__contact.view_lessons(request, message)
             except:
@@ -27,7 +27,7 @@ class ProxyLesson(ILesson):
         return self.__home.index(request, message)
     
     def view_lessons_removed(self,request, message = None):
-        if request.user.has_perm("askmath.read_lesson"):
+        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__contact.view_lessons_removed(request,  message)
             except:
@@ -37,7 +37,7 @@ class ProxyLesson(ILesson):
         return self.view_lessons(request, message)
     
     def view_lesson(self, request, id_lesson, message=None):
-        if request.user.has_perm("askmath.read_lesson"):
+        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -53,7 +53,7 @@ class ProxyLesson(ILesson):
     
     
     def add_lesson(self, request, message=None):
-        if request.user.has_perm("askmath.write_lesson"):
+        if request.user.has_perm("askmath.write_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__contact.add_lesson(request)
             except:
@@ -63,7 +63,7 @@ class ProxyLesson(ILesson):
         return self.view_lessons(request, message)
    
     def remove_lesson(self, request, id_lesson, message=None):
-        if request.user.has_perm("askmath.write_lesson"):
+        if request.user.has_perm("askmath.write_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -78,7 +78,7 @@ class ProxyLesson(ILesson):
         return self.view_lessons(request, message)
     
     def edit_lesson(self, request, id_lesson, message=None):
-        if request.user.has_perm("askmath.write_lesson"):
+        if request.user.has_perm("askmath.write_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -93,7 +93,7 @@ class ProxyLesson(ILesson):
         return self.view_lessons(request, message)
     
     def restore_lesson(self, request, id_lesson, message=None):
-        if request.user.has_perm("askmath.write_lesson"):
+        if request.user.has_perm("askmath.write_lesson")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:

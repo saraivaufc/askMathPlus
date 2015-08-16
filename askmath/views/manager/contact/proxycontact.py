@@ -16,7 +16,7 @@ class ProxyContact(IContact):
         self.__home = Home()
   
     def view_contacts(self, request, message = None):
-        if request.user.has_perm("askmath.read_contact"):
+        if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             #try:
             return self.__contact.view_contacts(request, message)
             #except:
@@ -26,7 +26,7 @@ class ProxyContact(IContact):
         return self.__home.index(request, message)
     
     def view_contacts_removed(self,request, message = None):
-        if request.user.has_perm("askmath.read_contact"):
+        if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__contact.view_contacts_removed(request,  message)
             except:
@@ -36,7 +36,7 @@ class ProxyContact(IContact):
         return self.view_contacts(request, message)
     
     def view_contact(self, request, id_contact, message=None):
-        if request.user.has_perm("askmath.read_contact"):
+        if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
             except:
@@ -51,7 +51,7 @@ class ProxyContact(IContact):
         return self.view_contacts(request,message)
     
     def remove_contact(self, request, id_contact, message=None):
-        if request.user.has_perm("askmath.write_contact"):
+        if request.user.has_perm("askmath.write_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
             except:
@@ -66,7 +66,7 @@ class ProxyContact(IContact):
         return self.view_contacts(request, message)
     
     def restore_contact(self, request, id_contact, message=None):
-        if request.user.has_perm("askmath.write_contact"):
+        if request.user.has_perm("askmath.write_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
             except:

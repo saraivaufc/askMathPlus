@@ -3,18 +3,19 @@
 {% load i18n %}
 
 {% block content %}
+<a href="https://github.com/saraivaufc/askMathPlus" target="_blank" style="position: absolute; top: 0; left: 0; border: 0; z-index: 10;">
+	<img src="{{ STATIC_URL }}askmath/img/logos/forkme.png" alt="{% trans "Fork me on GitHub" %}">
+</a>
 <section>
 	<div class="container">
 		<div class="row">
 			<section>
+				<br>
 				<figure class="text-center">
 					<img src="{{ STATIC_URL }}askmath/img/logos/logo-transparent.png" width="425px" height="204" />
 				</figure>
 				{% include "askmath/index/_render_about.html" %}
 			</section>
-			
-			{% include "askmath/index/_render_button_to_action.html" %}
-		
 		</div>
 	</div>
 </section>

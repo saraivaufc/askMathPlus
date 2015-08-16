@@ -16,7 +16,7 @@ class ProxyStatistic(IStatistic):
         self.__statistic = Statistic()
     
     def choose_type(self, request, message=None):
-        if request.user.has_perm("askmath.read_statistics"):
+        if request.user.has_perm("askmath.read_statistics")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__statistic.choose_type(request, message)
             except:

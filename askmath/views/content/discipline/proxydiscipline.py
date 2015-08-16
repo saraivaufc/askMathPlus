@@ -14,7 +14,7 @@ class ProxyDiscipline(IDiscipline):
         self.__home = Home()
         
     def view_disciplines(self, request, message = None):
-        if request.user.has_perm("askmath.read_discipline"):
+        if request.user.has_perm("askmath.read_discipline") and request.user.has_perm("askmath.access_content"):
             try:
                 return self.__discipline.view_disciplines(request, message)
             except:

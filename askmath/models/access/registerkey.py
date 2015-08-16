@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 from django.utils.crypto import get_random_string
 
 def generate_key():
-    return get_random_string(length=32)
+    return get_random_string(length=6)
 
 class RegisterKey(models.Model):
     creator = models.ForeignKey("Person", verbose_name=_("Person"))

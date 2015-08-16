@@ -18,7 +18,7 @@ class ProxyLesson(ILesson):
         self.__home = Home()
   
     def view_lessons(self, request, id_discipline, message = None):            
-        if request.user.has_perm("askmath.read_lesson"):
+        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -33,7 +33,7 @@ class ProxyLesson(ILesson):
         return self.__home.index(request, message)
     
     def view_lesson(self, request,id_discipline=None, id_lesson=None, message=None):
-        if request.user.has_perm("askmath.read_lesson"):
+        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_content"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:

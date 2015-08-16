@@ -17,7 +17,7 @@ class ProxyPerson(IPerson):
         self.__home = Home()
         
     def choose_person_types(self, request, message=None):
-        if request.user.has_perm("askmath.read_person"):
+        if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__account.choose_person_types(request, message)
             except:
@@ -27,7 +27,7 @@ class ProxyPerson(IPerson):
         return self.__home.index(request, message)
     
     def view_persons(self, request, PERSONTYPE, message=None):
-        if request.user.has_perm("askmath.read_person"):
+        if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -41,7 +41,7 @@ class ProxyPerson(IPerson):
         return self.choose_person_types(request, message)
     
     def view_persons_removed(self, request, PERSONTYPE, message=None):
-        if request.user.has_perm("askmath.read_person"):
+        if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -55,7 +55,7 @@ class ProxyPerson(IPerson):
         return self.choose_person_types(request, message)
     
     def view_person(self, request, PERSONTYPE, id_person, message=None):
-        if request.user.has_perm("askmath.read_person"):
+        if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -72,7 +72,7 @@ class ProxyPerson(IPerson):
         return self.view_persons(request, PERSONTYPE, message)
     
     def add_person(self, request, PERSONTYPE, message=None):
-        if request.user.has_perm("askmath.write_person"):
+        if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -85,7 +85,7 @@ class ProxyPerson(IPerson):
     
     
     def remove_person(self, request, PERSONTYPE, id_person, message=None):
-        if request.user.has_perm("askmath.write_person"):
+        if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -102,7 +102,7 @@ class ProxyPerson(IPerson):
         return self.view_persons(request, PERSONTYPE, message)
     
     def remove_registerkey(self, request, PERSONTYPE, id_registerkey, message=None):
-        if request.user.has_perm("askmath.write_person"):
+        if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
@@ -127,7 +127,7 @@ class ProxyPerson(IPerson):
         return self.view_persons(request, PERSONTYPE, message)
     
     def restore_person(self, request, PERSONTYPE, id_person, message=None):
-        if request.user.has_perm("askmath.write_person"):
+        if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():

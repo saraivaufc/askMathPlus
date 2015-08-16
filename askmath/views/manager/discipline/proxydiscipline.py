@@ -14,7 +14,7 @@ class ProxyDiscipline(IDiscipline):
         self.__home = Home()
         
     def view_disciplines(self, request, message = None):
-        if request.user.has_perm("askmath.read_discipline"):
+        if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__discipline.view_disciplines(request, message)
             except:
@@ -23,7 +23,7 @@ class ProxyDiscipline(IDiscipline):
             return self.__home.index(request, message)
     
     def view_disciplines_removed(self, request, message=None):
-        if request.user.has_perm("askmath.read_discipline"):
+        if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__discipline.view_disciplines_removed(request)
             except:
@@ -33,7 +33,7 @@ class ProxyDiscipline(IDiscipline):
         return self.view_disciplines(request, message)
     
     def view_discipline(self, request, id_discipline, message=None):
-        if request.user.has_perm("askmath.read_discipline"):
+        if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
             except:
@@ -49,7 +49,7 @@ class ProxyDiscipline(IDiscipline):
     
     
     def add_discipline(self, request, message=None):
-        if request.user.has_perm("askmath.write_discipline"):
+        if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__discipline.add_discipline(request)
             except:
@@ -59,7 +59,7 @@ class ProxyDiscipline(IDiscipline):
         return self.view_disciplines(request,message)
     
     def remove_discipline(self, request, id_discipline, message=None):
-        if request.user.has_perm("askmath.write_discipline"):
+        if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
             except:
@@ -74,7 +74,7 @@ class ProxyDiscipline(IDiscipline):
         return self.view_disciplines(request,message)
     
     def edit_discipline(self, request, id_discipline, message=None):
-        if request.user.has_perm("askmath.write_discipline"):
+        if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
             except:
@@ -89,7 +89,7 @@ class ProxyDiscipline(IDiscipline):
         return self.view_disciplines(request,message)
     
     def restore_discipline(self, request, id_discipline, message=None):
-        if request.user.has_perm("askmath.write_discipline"):
+        if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
             except:

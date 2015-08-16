@@ -21,7 +21,7 @@ class ProxyVideo(IVideo):
         self.__home = Home()
         
     def view_videos(self, request, id_discipline, id_lesson, message=None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -41,7 +41,7 @@ class ProxyVideo(IVideo):
         return self.__home.index(request, message)
     
     def view_video(self, request, id_video, id_discipline=None, id_lesson=None, message=None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_content"):
             try:
                 video = VideoModel.objects.filter(id = id_video, exists=True,visible=True)[0]
             except:

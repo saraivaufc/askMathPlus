@@ -31,7 +31,7 @@
 		<br>
 		<div class="container-fluid">
 			<div class="row">
-			<input type="checkbox" required> {% blocktrans %}By clicking here, you agree to the <a href="#" class="font-dark" data-toggle="modal" data-target="#terms">Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
+			<input type="checkbox" required> {% blocktrans %}By clicking here, you agree to the <a href="/terms/" target="_blank" class="font-dark">Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
 			    </span>
 			</label> 
 			</div>
@@ -46,28 +46,5 @@
 			</div>
 		</div>
 	</form>
-
-
-{% load i18n %}
-
-<!-- Modal -->
-<div class="modal fade" id="terms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg fg-black">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h2 class="modal-title text-center" id="myModalLabel">{% trans "Terms & Conditions" %}</h2>
-			</div>
-			<div class="modal-body">
-				{% include "askmath/index/_render_terms.html" %}
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="button success" data-dismiss="modal">{% trans "I Agree" %}</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
 </div>
 {% endblock  %}

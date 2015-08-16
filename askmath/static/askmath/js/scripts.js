@@ -1,5 +1,7 @@
 function Init(){
 	resize_window();
+	Preview.Init();
+	$.material.init();
 };
 
 

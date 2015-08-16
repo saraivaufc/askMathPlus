@@ -21,7 +21,7 @@ class ProxyQuestion(IQuestion):
         self.__home = Home()
     
     def view_initial_details(self, request, id_discipline, id_lesson):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -41,7 +41,7 @@ class ProxyQuestion(IQuestion):
         return self.__home.index(request, message)
         
     def view_question(self, request, id_discipline, id_lesson,message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -61,7 +61,7 @@ class ProxyQuestion(IQuestion):
         return self.__home.index(request, message)
     
     def answer_question(self, request, id_discipline, id_lesson, id_question, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -98,7 +98,7 @@ class ProxyQuestion(IQuestion):
         return self.view_question(request, id_discipline, id_lesson, message)
     
     def jump_question(self, request, id_discipline, id_lesson, id_question, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -123,7 +123,7 @@ class ProxyQuestion(IQuestion):
         return self.view_question(request, id_discipline, id_lesson, message)
 
     def choose_skipped_question(self, request, id_discipline, id_lesson, id_question, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -148,7 +148,7 @@ class ProxyQuestion(IQuestion):
         return self.view_question(request, id_discipline, id_lesson, message)
     
     def reset_lesson(self,request, id_discipline, id_lesson, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
@@ -168,7 +168,7 @@ class ProxyQuestion(IQuestion):
         return self.view_initial_details(request, id_discipline, id_lesson)
     
     def help_question(self,request, id_discipline, id_lesson,id_question, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:

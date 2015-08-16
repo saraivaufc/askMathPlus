@@ -18,7 +18,7 @@ class ProxyQuestion(IQuestion):
         self.__home = Home()
     
     def choose_lesson(self, request, message = None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__question.choose_lesson(request, message)
             except:
@@ -28,7 +28,7 @@ class ProxyQuestion(IQuestion):
         return self.__home.index(request, message)
     
     def view_questions(self, request, id_lesson, message = None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -44,7 +44,7 @@ class ProxyQuestion(IQuestion):
         return self.choose_lesson(request , message)
     
     def view_questions_removed(self, request, id_lesson,  message = None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -60,7 +60,7 @@ class ProxyQuestion(IQuestion):
         return self.view_questions(request, id_lesson, message)
     
     def view_question(self, request, id_lesson, id_question, message=None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             lesson, question = None, None
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
@@ -85,7 +85,7 @@ class ProxyQuestion(IQuestion):
         return self.view_questions(request, id_lesson, message)
     
     def add_question(self, request, id_lesson, quantity_items, message=None):
-        if request.user.has_perm("askmath.write_question"):
+        if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -103,7 +103,7 @@ class ProxyQuestion(IQuestion):
         return self.view_questions(request, id_lesson, message)
     
     def remove_question(self, request, id_lesson, id_question, message=None):
-        if request.user.has_perm("askmath.write_question"):
+        if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -122,7 +122,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
     def edit_question(self, request, id_lesson, id_question):
-        if request.user.has_perm("askmath.write_question"):
+        if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -143,7 +143,7 @@ class ProxyQuestion(IQuestion):
 
     
     def restore_question(self, request, id_lesson,id_question):
-        if request.user.has_perm("askmath.write_question"):
+        if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -163,7 +163,7 @@ class ProxyQuestion(IQuestion):
         return self.view_questions(request, id_lesson, message)
             
     def sort_questions(self, request, id_lesson, message = None):
-        if request.user.has_perm("askmath.read_question"):
+        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:

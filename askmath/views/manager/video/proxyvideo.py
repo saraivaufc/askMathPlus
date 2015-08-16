@@ -16,7 +16,7 @@ class ProxyVideo(IVideo):
         self.__home = Home()
     
     def choose_lesson(self, request, message = None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__video.choose_lesson(request, message)
             except:
@@ -26,7 +26,7 @@ class ProxyVideo(IVideo):
         return self.__home.index(request, message)
     
     def view_videos(self, request, id_lesson, message = None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -42,7 +42,7 @@ class ProxyVideo(IVideo):
         return self.choose_lesson(request , message)
     
     def view_videos_removed(self, request, id_lesson,  message = None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -58,7 +58,7 @@ class ProxyVideo(IVideo):
         return self.choose_lesson(request , message)
     
     def view_video(self, request, id_lesson, id_video, message=None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             lesson, video = None, None
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
@@ -82,7 +82,7 @@ class ProxyVideo(IVideo):
         return self.view_videos(request, id_lesson, message)
     
     def add_video(self, request, id_lesson, message=None):
-        if request.user.has_perm("askmath.write_video"):
+        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -97,7 +97,7 @@ class ProxyVideo(IVideo):
         return self.view_videos(request, id_lesson, message)
     
     def remove_video(self, request, id_lesson, id_video):
-        if request.user.has_perm("askmath.write_video"):
+        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -117,7 +117,7 @@ class ProxyVideo(IVideo):
         return self.view_videos(request, id_lesson, message)
     
     def edit_video(self, request, id_lesson, id_video, message=None):
-        if request.user.has_perm("askmath.write_video"):
+        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -138,7 +138,7 @@ class ProxyVideo(IVideo):
 
     
     def restore_video(self, request, id_lesson,id_video):
-        if request.user.has_perm("askmath.write_video"):
+        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
@@ -158,7 +158,7 @@ class ProxyVideo(IVideo):
         return self.view_videos(request, id_lesson, message)
             
     def sort_videos(self, request, id_lesson, message = None):
-        if request.user.has_perm("askmath.read_video"):
+        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:

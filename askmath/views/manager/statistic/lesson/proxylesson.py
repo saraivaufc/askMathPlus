@@ -17,7 +17,7 @@ class ProxyLesson(IStatistic, ILesson):
         self.__statistic = ProxyStatistic()
     
     def choose_lesson(self, request,message=None):
-        if request.user.has_perm("askmath.read_statistics"):
+        if request.user.has_perm("askmath.read_statistics")  and request.user.has_perm("askmath.access_manager"):
             #try:
             return self.__contact.choose_lesson(request,message)
             #except:
@@ -27,7 +27,7 @@ class ProxyLesson(IStatistic, ILesson):
         return self.view_statistics(request, message)
     
     def view_statistics(self, request,id_lesson, message=None):
-        if request.user.has_perm("askmath.read_statistics"):
+        if request.user.has_perm("askmath.read_statistics")  and request.user.has_perm("askmath.access_manager"):
             try:
                 lesson = ContactModel.objects.get(id = id_lesson)
             except:
