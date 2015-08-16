@@ -13,11 +13,13 @@
 		{% csrf_token %}
 		<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 		<hr class="colorgraph">
-		{{ form_question }}
-		{% for form_item in forms_items  %}
+		{% with form=form_question %}
+			{% include "askmath/_render_form.html" %}
+		{% endwith %}
+		{% for form in forms_items  %}
 		 <hr class="thin bg-grayLighter">
-			<h3>{% trans "Item " %}{{ form_item.prefix }}</h3>
-			{{ form_item }}
+			<h3 class="text-center">{% trans "Item" %} {{ form.prefix }}</h3>
+			{% include "askmath/_render_form.html" %}
 		{% endfor %}
 		<hr class="colorgraph">
 		<div class="text-left">

@@ -1,4 +1,4 @@
-.container, .container-fluid{
+.container, .container-fluid, .container:not(.no-responsive-future), .container-fluid:not(.no-responsive-future){
 	padding-right: 15px;
     padding-left: 15px;
 }

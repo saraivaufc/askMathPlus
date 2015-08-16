@@ -68,13 +68,16 @@ class Video(IVideo):
     def edit_video(self, request, lesson, video,  message = None):
         if request.method == "POST":
             request.POST = request.POST.copy()
-            request.POST['video-lesson'] = lesson.id
+            request.POST['lesson'] = lesson.id
             
             form = VideoForm(request.POST, request.FILES, instance=video)
             if form.is_valid():
                 video = form.save()
                 message = Message(TextMessage.VIDEO_SUCCESS_EDIT, TypeMessage.SUCCESS)
                 return self.view_video(request, lesson, video, message)
+            else:
+                print request
+                message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         else:
             form = VideoForm(instance=video)
         return render(request, "askmath/manager/video/manager_form_video.html", 

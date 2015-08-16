@@ -6,15 +6,7 @@
 			<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
 			<hr class="colorgraph">
 			<div class="form-fields">
-			{% for field in form.visible_fields %}
-		        <div class="fieldWrapper">
-		            {{ field.errors }}
-		            {{ field.label_tag }}
-		            {{ field }}
-		            <div id="{{ field.auto_id }}_div">
-		            </div>
-		        </div>
-		    {% endfor %}
+			{% include "askmath/_render_form.html" %}
 		    <div>
 		    <hr class="colorgraph">
 			<div class="text-right">

@@ -6,17 +6,17 @@ from datetime import datetime
 from iquestion import IQuestion
 
 class Question(IQuestion):
-    lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
+    lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson *"),
         help_text=_("Choose the lesson which is question belongs."))
     position = models.IntegerField(verbose_name=_("Position"),null=False,blank=False,
         help_text=_("Choose the position which is question belongs."))
-    description = models.TextField(verbose_name=_("Description"), 
+    description = models.TextField(verbose_name=_("Description *"), 
          help_text=_("Choose a description for question is."))
     items = models.ManyToManyField('Item', verbose_name=_("Items"),
          help_text=_("Choose items that this issue has."))
     help = models.TextField(verbose_name=_("Help"), null=True, blank=True, 
         help_text=_("Choose a help to this question."))
-    scores=models.IntegerField(verbose_name=_("Scores"))
+    scores=models.IntegerField(verbose_name=_("Scores *"))
     
     visible = models.BooleanField(verbose_name=_("Visible"), default=False,
         help_text=_("Select this option to leave visible question at all."))

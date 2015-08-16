@@ -7,8 +7,8 @@ def generate_key():
     return get_random_string(length=6)
 
 class RegisterKey(models.Model):
-    creator = models.ForeignKey("Person", verbose_name=_("Person"))
-    key = models.CharField(max_length=100, verbose_name=_("Key"), default=generate_key)
+    creator = models.ForeignKey("Person", verbose_name=_("Person *"))
+    key = models.CharField(max_length=100, verbose_name=_("Key *"), default=generate_key)
     in_use = models.BooleanField(default=False, verbose_name=_("In Use"))
     
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)

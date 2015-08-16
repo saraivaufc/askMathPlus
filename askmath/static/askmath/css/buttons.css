@@ -39,3 +39,7 @@
 	position:relative;
 	top:1px;
 }
+
+.modal-content .modal-footer button + button {
+    margin-bottom: 0px;
+}

@@ -10,7 +10,7 @@ from iitem import IItem
 class Item(IItem):
     position = models.IntegerField(verbose_name=_("Position"), null=True,blank=True,
          help_text=_("Choose the position which is item belongs."))
-    description = models.TextField(verbose_name=_("Description"), 
+    description = models.TextField(verbose_name=_("Description *"), 
           help_text=_("Choose a description for item is."))
     correct = models.BooleanField(verbose_name=_("Is Correct"), default=False, 
         help_text=_("Say if this item is correct."))

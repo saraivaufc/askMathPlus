@@ -10,17 +10,17 @@ from askmath.models.question import Question
 from askmath.models.video import Video
 
 class Lesson(ILesson):
-    disciplines = models.ManyToManyField("Discipline",verbose_name=_("Disciplines"), null=False, blank=False,
+    disciplines = models.ManyToManyField("Discipline",verbose_name=_("Disciplines *"), null=False, blank=False,
         help_text=_("Choose the disciplines which is lesson belongs."))
-    title = models.CharField(verbose_name=_("Title"), max_length=50,
+    title = models.CharField(verbose_name=_("Title *"), max_length=50,
         help_text=_("Choose a title for lesson is."))
-    description = models.TextField(verbose_name=_("Description"),
+    description = models.TextField(verbose_name=_("Description *"),
         help_text=_("Choose a description for lesson is."))
     requirements = models.ManyToManyField("Lesson",verbose_name=_("Requirements") , related_name="Requirements", null=True, blank=True,
         help_text=_("Choose the lessons is recommended completion before continuing this."))
     sugestions = models.ManyToManyField("Lesson",verbose_name=_("Sugestions") , related_name="Sugestions", null=True, blank=True, 
         help_text=_("Choose the lessons is recommended pursue after completing this."))
-    maximum_hops = models.IntegerField(verbose_name=_("Maximum Hops"),
+    maximum_hops = models.IntegerField(verbose_name=_("Maximum Hops *"),
         help_text=_("Choose the maximum number of hops that the student can perform this lesson."))
     
     visible = models.BooleanField(default=False,

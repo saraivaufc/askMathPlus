@@ -14,10 +14,9 @@ class VideoForm(ModelForm):
             'lesson': HiddenInput(attrs={'class':'input-control hidden full-size'}),
             'position': HiddenInput(attrs={'class':'input-control hidden full-size'}),
             'title': TextInput(attrs={'class':'input-control text', 'required': 'required', 'x-webkit-speech': 'x-webkit-speech'}),
-            'description': Textarea(attrs={'cols': 50, 'rows': 6,'required': 'required', 'class':'latex input-control  textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
+            'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex input-control  textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
             'visible': CheckboxInput(attrs={'class':'input-control checkbox'}),
         }
-        
     def clean_file(self):
         file = self.cleaned_data["file"]
         try:
