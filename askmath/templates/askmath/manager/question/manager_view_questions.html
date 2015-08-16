@@ -6,7 +6,7 @@
 <div class="cell padding10">
 	<a href="/home/manager/questions/choose_lesson/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_question %}
-		<a data-toggle="modal" data-target="#quantity_items" href="#" class="button primary" ><span class="mif-plus"></span>{% trans " View Keys" %}</a>
+		<a data-toggle="modal" data-target="#quantity_items" href="#" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
 		<a href="/home/manager/questions/sort/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>
 	{% endif %}
 	

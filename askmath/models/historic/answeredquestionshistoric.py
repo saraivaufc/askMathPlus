@@ -6,7 +6,7 @@ class AnsweredQuestionsHistoric(models.Model):
     discipline = models.ForeignKey('Discipline', verbose_name=_("Discipline"))
     lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"))
     question = models.ForeignKey('Question', verbose_name=_("Question"))
-    item = models.ForeignKey('Item', verbose_name=_("Item"))
+    items = models.ManyToManyField('Item', verbose_name=_("Items"))
     hit = models.BooleanField(default=False, verbose_name=_("Hit"))
     
     exists= models.BooleanField(default=True, verbose_name=_("Exists"))
@@ -21,8 +21,8 @@ class AnsweredQuestionsHistoric(models.Model):
     def get_question(self):
         return self.question
     
-    def get_item(self):
-        return self.item
+    def get_items(self):
+        return self.items.all()
     
     def get_hit(self):
         return self.hit

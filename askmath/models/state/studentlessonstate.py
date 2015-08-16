@@ -249,24 +249,25 @@ class StudentLessonState(IState):
             self.save_answer_question_historic(question, items, False)
             return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
     
-    def save_answer_question_historic(self, question, item, hit=False):
+    def save_answer_question_historic(self, question, items, hit=False):
         try:
             student_historic = StudentHistoric.objects.get_or_create(student = self.student)[0]
         except:
             print "Erro save_answer_question"
             return
         try:
+            print items
             answered_questions = AnsweredQuestionsHistoric(discipline=self.discipline, 
                                                            lesson = self.lesson,
                                                            question = question,
-                                                           item = item,
                                                            hit = hit)
             answered_questions.save()
+            for item in items:
+                answered_questions.items.add(item)
             student_historic.answered_questions_historic.add(answered_questions)
         except:
             print "Exception"
             return
-        
     def save_help_question_historic(self, question):
         try:
             student_historic = StudentHistoric.objects.get_or_create(student = self.student)[0]
