@@ -8,9 +8,9 @@ from .idiscipline import IDiscipline
 
 
 class Discipline(IDiscipline):
-    title = models.CharField(verbose_name=_("Title *"), max_length=100,
+    title = models.CharField(verbose_name=_("Title"), max_length=100,
         help_text=_("Choose a title for the discipline."))
-    responsible = models.CharField(verbose_name=_("Responsible *"), max_length=100,null=True, blank=True,
+    responsible = models.CharField(verbose_name=_("Responsible"), max_length=100,null=True, blank=True,
         help_text=_("Choose responsible for the discipline.") )
     
     visible = models.BooleanField(verbose_name=_("Visible"), default=False,

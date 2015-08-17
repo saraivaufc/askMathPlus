@@ -29,14 +29,19 @@ class Person(IPerson):
     def view_persons(self, request, PERSONTYPE, message=None):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
+            print "ADMIN"
             write_person = request.user.has_perm('askmath.write_administrator')
         elif PERSONTYPE == person_types.TEACHER:
+            print "TEACHER"
             write_person = request.user.has_perm('askmath.write_teacher')
         elif PERSONTYPE == person_types.ASSISTANT:
-            write_person = request.user.has_perm('askmath.write_assitant')
+            print "ASSISTANT"
+            write_person = request.user.has_perm('askmath.write_assistant')
         elif PERSONTYPE == person_types.STUDENT:
             write_person = False
+            print "STUDENT"
         else:
+            print "OTHER"
             write_person = False
             
         persons = person_types.get_persons()

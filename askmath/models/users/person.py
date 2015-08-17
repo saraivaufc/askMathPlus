@@ -5,9 +5,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.utils.translation import ugettext_lazy as _
-import re
 from django.core.mail import send_mail
-from django.core import validators
 from django.utils import timezone
 from askMathPlus import settings
 from datetime import datetime
@@ -47,12 +45,11 @@ class AbstractSystemPerson(models.Model):
         abstract = True
 
 class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
-    username = models.CharField(_("Username"), max_length=30, unique=True, db_index=True, help_text=_('Required. 30 characters or fewer.'),)
-    name = models.CharField(_("Name"), max_length=100, blank=False,null=True)
-    email = models.EmailField(_("Email"), max_length=254, unique=True, blank=False)
+    username = models.CharField(_("Username"), max_length=30, unique=True, db_index=True, help_text=_('Please enter you username.'),)
+    name = models.CharField(_("Name"), max_length=100, blank=False,null=True,help_text=_('Please enter you name.'),)
+    email = models.EmailField(_("Email"), max_length=254, unique=True, blank=False, help_text=_('Please enter you email.'),)
     is_staff = models.BooleanField(_('staff status'), default=False,
-                                   help_text=_('Designates whether the user can log into this admin '
-                                               'site.'))
+                                   help_text=_('Designates whether the user can log into this admin site.'))
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=_('Designates whether this user should be treated as '
                                                 'active. Unselect this instead of deleting accounts.'))
@@ -95,7 +92,7 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
         self.save()  
         
 class Person(AbstractPerson):
-    profile_image = models.ImageField(verbose_name=_("Profile Image"),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
+    profile_image = models.ImageField(verbose_name=_("Profile Image"),help_text=_("Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default = True)
     

@@ -32,7 +32,10 @@ class Home():
             if form.is_valid():
                 form.save()
                 email = EmailMessage(SITE_TITLE, form.cleaned_data['message'], to=['saraiva@alu.ufc.br'])
-                email.send()
+                try:
+                    email.send()
+                except:
+                    pass
                 message = Message(TextMessage.MESSAGE_SUCCESS_SEND, TypeMessage.SUCCESS)
                 return self.index(request, message)
         else:

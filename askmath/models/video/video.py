@@ -8,15 +8,15 @@ from ivideo import IVideo
 
 
 class Video(IVideo):
-	lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson *"),
+	lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
 		help_text=_("Choose the lesson which is video belongs."))
 	position = models.IntegerField(verbose_name=_("Position"),null=True,blank=True, 
 		help_text=_("Choose the position which is video belongs."))
-	title = models.CharField(verbose_name=_("Title *"), max_length=50,
+	title = models.CharField(verbose_name=_("Title"), max_length=50,
 		help_text=_("Choose a title for video is."))
 	description = models.TextField(verbose_name=_("Description"),null=True, blank=True, 
 		 help_text=_("Choose a description for video is."))
-	file = models.FileField(verbose_name=_("File *"), upload_to = 'documents/video/%Y/%m/%d',
+	file = models.FileField(verbose_name=_("File"), upload_to = 'documents/video/%Y/%m/%d',
 		help_text=_("Perform upload a file."))
 	
 	visible = models.BooleanField(verbose_name=_("Visible"), default=False,

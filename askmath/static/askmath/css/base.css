@@ -17,6 +17,13 @@ h1,h2,h3,h4,h5,h6,p{
 
 
 
+/* DIVIDERS */
+.divider-small{
+	height: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 * {
 	margin:0;
 }
@@ -240,4 +247,10 @@ input:disabled {
 
 #feedback a:hover {
 	padding-right: 20px;
+}
+
+
+.help, p.help {
+    font-size: 15px !important;
+    color: #999;
 }

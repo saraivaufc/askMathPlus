@@ -4,7 +4,6 @@ from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMu
 from django.utils.translation import ugettext_lazy as _
 
 from askmath.models import Lesson, Discipline
-
 class LessonForm(ModelForm):
 	def __init__(self,*args,**kwargs):
 		super (LessonForm,self ).__init__(*args,**kwargs)

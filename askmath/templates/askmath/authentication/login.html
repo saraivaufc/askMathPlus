@@ -8,7 +8,9 @@
    		{% csrf_token %}
       	<h2 class="form-signin-heading text-center ">  {% trans "Login" %}</h2>
       	<hr class="colorgraph">
-		{{ form.as_table }}
+		
+		{% include "askmath/_render_form.html" %}
+		
 		<a href="/authentication/recover_password/" class="font-white">{% trans "Recover Password" %}</a>
 		<hr class="colorgraph">
       	<div class="row">

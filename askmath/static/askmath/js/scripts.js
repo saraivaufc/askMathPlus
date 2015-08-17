@@ -62,10 +62,6 @@ function resize_window(){
 
 
 
-$('#openBtn').click(function(){
-	$('#myModal').modal({show:true})
-});
-
 
 
 $(function () {
@@ -235,15 +231,17 @@ $(function(){
 $("#btn-help").click(help);
 
 $(function(){
-	$(".latex").focus(function(){
+	
+	$(".latex").on("dblclick", function(){
 		var id = $(this).attr("id");
 		$('#box-latex').attr('value',id);
 		$("#latex_formula").val($(this).val());
+		Preview.Update();
 		$('#box-latex').modal();
 	});
 	
 	$("#latex_formula").keyup(function(){
-		var latex = document.getElementById("latex_formula").value;
+		var latex = document.getElementById("latex_formula").val();
 		var result = document.getElementById("MathPreview");
 		typejax.updater.init(latex, latex.length, result);
 	});
@@ -252,7 +250,7 @@ $(function(){
 		var text = $("#latex_formula").val();
 		$("#latex_formula").val("");
 		var input_form = $("#" + $('#box-latex').attr('value'));
-		input_form.text(text);
+		input_form.val(text);
 		$('#box-latex').modal('hide');
 	});
 });
@@ -266,5 +264,12 @@ $(function(){
 			$("#input-key").removeAttr("required");
 			$("#input-key").attr("disabled", "disabled");
 		}
+	});
+});
+
+
+$(function(){
+	$("input:required,textarea:required,select:required").each(function(){
+		$(this).addClass("required");
 	});
 });
