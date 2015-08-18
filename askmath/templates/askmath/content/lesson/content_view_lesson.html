@@ -7,21 +7,17 @@
 {% endblock %}
 
 {%  block tiles %}
-
-
+<div class="col-xs-12 col-sm-6 col-md-8">
 {% block tiles-left %}
-	<div class="container-metro">
-	<div class="col-xs-12  col-sm-12 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">	
-		<h3 class="text-center">{{ lesson.get_title|title }}</h3>
-		<p class="text-justify lead">
-			{{ lesson.get_description|safe|linebreaksbr }}
-		</p>
-	</div>
-	</div>
+	<h2 class="text-center">{{ lesson.get_title|title }}</h2>
+	<p class="text-justify lead">
+		{{ lesson.get_description|safe|linebreaksbr }}
+	</p>
 {% endblock %}
+</div>
 
+<div class="col-xs-12 col-sm-6 col-md-4">
 {% block tiles-rigth %}
-<div class="cell">
 <div class="tile-group">
 	<h3 class="text-left">{% trans "Options:" %}</h3>
 	<div class="tile-container">
@@ -58,10 +54,7 @@
 		</div>
 	</div>
 </div>
-
-
-</div>
 {% endblock %}
-
+</div>
 
 {% endblock %}

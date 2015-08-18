@@ -54,25 +54,11 @@
                 {% endblock %}
 					<a href="/home/manager/statistics/choose_type/">{% trans "Statistics" %}</a></li>
 				{% endif %}
-				
-				{% if perms.askmath.access_manager_person %}
-				{% block person %}
-                <li>
-                {% endblock %}
-					<a href="/home/manager/persons/choose_person_types/">{% trans "Persons" %}</a></li>
-				{% endif %}
-				
-				{% if perms.askmath.access_manager_contact %}
-				{% block contact %}
-                <li>
-                {% endblock %}
-					<a href="/home/manager/contacts/view/">{% trans "Contacts" %}</a></li>
-				{% endif %}
             </ul>
             {% if perms.askmath.access_content %}
             <form class="navbar-form navbar-left" action="/utils/filter/search/" method="POST" role="search">
             {% csrf_token %}
-            	<input id="search"  class="form-control col-lg-8"  placeholder="{% trans "Search" %}" name="search" type="text">
+            	<input id="search"  class="form-control col-lg-8"  placeholder="{% trans "Search..." %}" name="search" type="search">
           	</form>
 		    {% endif %}
             
@@ -100,9 +86,13 @@
                                     <div class="col-lg-8">
                                         <p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
                                         <p class="text-left small">{{ request.user.get_email }}</p>
-                                        <p class="text-left">
-                                            <a href="/home/person/account/view/" class="btn btn-primary btn-block btn-sm">{% trans "View Profile" %}</a>
-                                        </p>
+                                        <a href="/home/person/account/view/" class="btn button primary btn-block btn-sm">{% trans "View Profile" %}</a>
+                                        {% if perms.askmath.access_manager_person %}
+                                        <a href="/home/manager/persons/choose_person_types/" class="btn button primary btn-block btn-sm">{% trans "View Persons" %}</a>
+                                        {% endif %}
+                                        {% if perms.askmath.access_manager_contact %}
+                                        <a href="/home/manager/contacts/view/" class="btn button primary btn-block btn-sm">{% trans "View Contacts" %}</a>
+                                    	{% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -112,9 +102,7 @@
                             <div class="navbar-login navbar-login-session">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <p>
-                                            <a href="/authentication/logout/" class="btn btn-danger btn-block">{% trans "Logout" %}</a>
-                                        </p>
+                                        <p><a href="/authentication/logout/" class="btn button  danger btn-block">{% trans "Logout" %}</a></p>
                                     </div>
                                 </div>
                             </div>

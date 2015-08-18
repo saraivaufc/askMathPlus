@@ -56,7 +56,7 @@ class Filter(IFilter):
 		
 		
 		return render(request, "askmath/utils/filter/search.html", 
-			{'request': request,'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+			{'request': request, 'expression': expression ,'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
 	
 	
 	

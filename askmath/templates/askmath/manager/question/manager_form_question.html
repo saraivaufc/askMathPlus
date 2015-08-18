@@ -3,34 +3,31 @@
 
 {%  block content %}
 <div class="tile-content">
-
 <div class="cell padding10">
 	<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
 	{% include 'askmath/utils/_box_latex.html' %}
-	<div class="container-fluid">
-	<form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
-		{% csrf_token %}
-		<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
-		<hr class="colorgraph">
-		{% with form=form_question %}
-			{% include "askmath/_render_form.html" %}
-		{% endwith %}
-		{% for form in forms_items  %}
-		 <hr class="thin bg-grayLighter">
-			<h3 class="text-center">{% trans "Item" %} {{ form.prefix }}</h3>
-			{% include "askmath/_render_form.html" %}
-		{% endfor %}
-		<hr class="colorgraph">
-		<div class="text-left">
-			<button type="cancel" class="button primary" onclick="window.history.back()" ><span class="mif-cancel"></span>{% trans " cancel" %}</button>
-			<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
-		</div>
-	</form>
+	
+	<div class="container">
+		<form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
+			<hr class="colorgraph">
+			{% with form=form_question %}
+				{% include "askmath/_render_form.html" %}
+			{% endwith %}
+			{% for form in forms_items  %}
+			 <hr class="thin bg-grayLighter">
+				<h3 class="text-center">{% trans "Item" %} {{ form.prefix }}</h3>
+				{% include "askmath/_render_form.html" %}
+			{% endfor %}
+			<hr class="colorgraph">
+			<div class="text-left">
+				<button type="cancel" class="button primary" onclick="window.history.back()" ><span class="mif-cancel"></span>{% trans " cancel" %}</button>
+				<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+			</div>
+		</form>
+	</div>
 </div>
-</div>
-
-
-
 </div>
 {% endblock %}

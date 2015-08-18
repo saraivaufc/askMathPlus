@@ -24,12 +24,15 @@
 			<h1>{{ person.get_name }}</h1>
 			<h2>{{ person.get_email }}</h2>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
-			<a href="/home/person/account/edit/" class="button primary">{% trans "Edit" %}</a>
 		 </center>
 	</div>
 	<div class="col-md-6">
-		<a href="/home/person/account/alter_password/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+		<a href="/home/person/account/edit/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
 		    <span class="icon mif-pencil"></span>
+		    <span class="title">{% trans "Profile Edit" %}</span>
+		</a>
+		<a href="/home/person/account/alter_password/"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
+		    <span class="icon mif-key"></span>
 		    <span class="title">{% trans "Alter Password" %}</span>
 		</a>
 		<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">

@@ -16,54 +16,50 @@
 <div class="container-metro">
 	<section>
 		{% if lesson.get_questions_visibles|length == 0 %}
-		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		<div class="container">
 		{% else %}
 		<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
 		{% endif %}
 		{% block container-left %}
+			<div class="container-fluid">
+			<div class="row">
 			<h4 class="text-center">{% trans "Your level of experience is:" %} <span class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span></h4>
 			<center>
-				<div class="container-fluid">
-				<div class="row">
-					<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
-					<div class="rating large" data-size="large">
-						{% for i in 10|range  %}
-							{% if forloop.counter <= studentexperience.stars %}
-								<span class="star on"></span>
-							{% else %}
-								<span class="star off"></span>
-							{% endif %}
-						
-						{% endfor %}
-					</div>
-				</div>
+				<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
+				<div class="rating large" data-size="large">
+					{% for i in 10|range  %}
+						{% if forloop.counter <= studentexperience.stars %}
+							<span class="star on"></span>
+						{% else %}
+							<span class="star off"></span>
+						{% endif %}
+					
+					{% endfor %}
 				</div>
 				<hr class="transparent">
-				<div class="row">
-					{% if lesson.get_questions_visibles|length == 0 %}
-						<h3>Essa Lição não possui perguntas, espere até que o responposável por ela adicione perguntas.</h3>
-					{% elif studentlessonstate.get_percentage_completed == 100%}
-						<h3>Parabéns por concluir essa lição!!!</h3>				
-						<h4>Você pode refazer essa lição clicando no botão abaixo ou seguir para alguma das lições recomendadas na tabela ao lado.</h4>
-					{% else  %}
-						<h3>Conclua essa lição e ganhe experiencia para subir de nível!!!</h3>
-						<h4>É recomendado que você tenha concluido algumas outras lições para proceguir nesta, essas lições você pode encontrar na tabela ao lado.</h4>
-					{% endif %}
-					<br>
-					{% if lesson.get_questions_visibles|length > 0 %}
-						{% if studentlessonstate.get_percentage_completed < 100 %}	
-							<a id="btn-starter-lesson" href="/home/content/questions/view_question/discipline={{discipline.id }}/lesson={{ lesson.id }}/">
-							{% if studentlessonstate.get_percentage_completed == 0 %}	
-								{% trans "Start Lesson" %}
-							{% else %}
-								{% trans "Continue Lesson" %}
-							{% endif %}
-							</a>
+				{% if lesson.get_questions_visibles|length == 0 %}
+					<h3>Essa Lição não possui perguntas, espere até que o responposável por ela adicione perguntas.</h3>
+				{% elif studentlessonstate.get_percentage_completed == 100%}
+					<h3>Parabéns, você concluiu esta lição!!!</h3>				
+					<h4>Você pode refazer essa lição clicando no botão abaixo ou seguir para alguma das lições recomendadas na tabela ao lado.</h4>
+				{% else  %}
+					<h3>Conclua essa lição e ganhe experiencia para subir de nível!!!</h3>
+					<h4>É recomendado que você tenha concluido algumas outras lições para proceguir nesta, essas lições você pode encontrar na tabela ao lado.</h4>
+				{% endif %}
+				<br>
+				{% if lesson.get_questions_visibles|length > 0 %}
+					{% if studentlessonstate.get_percentage_completed < 100 %}	
+						<a id="btn-starter-lesson" class="btn" href="/home/content/questions/view_question/discipline={{discipline.id }}/lesson={{ lesson.id }}/">
+						{% if studentlessonstate.get_percentage_completed == 0 %}	
+							{% trans "Start Lesson" %}
 						{% else %}
-							<a id="btn-starter-lesson" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">{% trans "Reset Lesson" %}</a>
+							{% trans "Continue Lesson" %}
 						{% endif %}
+						</a>
+					{% else %}
+						<a id="btn-starter-lesson" class="btn" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">{% trans "Reset Lesson" %}</a>
 					{% endif %}
-				</div>
+				{% endif %}
 			</center>
 			<br>
 		{% endblock %}
@@ -72,7 +68,7 @@
 	
 	<aside>
 		{% if lesson.get_questions_visibles|length > 0 %}
-			<div class="col-xs-12 col-sm-5  col-md-3 col-lg-3 border">
+			<div class="col-xs-12 col-sm-5  col-md-3 col-lg-3 border fg-white">
 			{% block container-rigth %}
 				<h3 class="text-center">{{ lesson.get_title|title }}</h3>
 				<hr class="bg-white">
@@ -97,7 +93,6 @@
 						</tr>
 					</table>
 				</center>
-				<hr class="bg-white">
 				{% if studentlessonstate.get_percentage_completed == 100 %}
 					<h4>{% trans "Sugestions next lessons:" %}</h4>
 					<ul>

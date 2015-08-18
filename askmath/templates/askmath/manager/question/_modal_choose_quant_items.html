@@ -9,7 +9,7 @@
 	  <div class="modal-body">
 		<form id="form_quantity_items" action="/home/manager/questions/add/lesson={{ lesson.id }}/" method="POST" onsubmit="return updateURLQuantityItems();" >
 			{% csrf_token %}
-			<input type="number" name="quantity_items" class="input-control number" step="1" min="2" value=5 required>
+			<input type="number" name="quantity_items" step="1" value="5" min="2" max='10' required />
 	  </div>
 	  <div class="modal-footer">
 		<button type="button" class="button primary" data-dismiss="modal">{% trans "Cancel" %}</button>

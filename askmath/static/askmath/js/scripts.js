@@ -267,9 +267,3 @@ $(function(){
 	});
 });
 
-
-$(function(){
-	$("input:required,textarea:required,select:required").each(function(){
-		$(this).addClass("required");
-	});
-});

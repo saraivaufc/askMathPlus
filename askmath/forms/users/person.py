@@ -7,7 +7,6 @@ import hashlib
 
 from askmath.models.users import Person
 
-
 class PersonForm(ModelForm):
 	class Meta:
 		model= Person
@@ -39,7 +38,7 @@ class PersonLoginForm(forms.Form):
 		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
 		error_messages={'required': _('Please enter you password.')})
 
-class PersonProfile(ModelForm):
+class PersonProfile(PersonForm):
 	class Meta:
 		model= Person
 		fields = ("username", "name", "email","profile_image")

@@ -7,18 +7,19 @@
 <section>
 <div class="container-fluid">
 	<div class="row">
+		<h2 class="text-center">{% trans "Contents" %}</h2>
 		<div class="tile-group bg-transparent ">
 			{% for discipline in disciplines %}
 			{% if discipline.get_lessons_visible|length > 0 %}
 				<h4>{{ discipline|title }}</h4>
 				<div class="tile-container">
 					{% for lesson in discipline.get_lessons_visible %}
-						<div class="tile {{colors|random}} fg-white" data-role="tile">
+						<a href="/authentication/login/" class="tile {{colors|random}} fg-white" data-role="tile">
 						    <div class="tile-content iconic">
 						        <span class="icon mif-clipboard"></span>
 						        <span class="tile-label">{{ lesson.get_title }}</span>
 						    </div>
-						</div>
+						</a>
 					{% endfor %}
 				</div>
 			{% endif %}

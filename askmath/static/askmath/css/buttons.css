@@ -1,4 +1,6 @@
-
+.btn, .btn-group{
+	border-radius: 0px;
+}
 
 .btn-rounded{
 	border-radius: 30px;

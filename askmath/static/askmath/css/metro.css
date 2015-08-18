@@ -1,3 +1,6 @@
+/* TILES */
+
+
 .tile-area-controls {
     position: fixed;
     right: 40px;
@@ -16,6 +19,13 @@
     opacity: 0;
     -webkit-transform: scale(.8);
     transform: scale(.8);
+}
+
+/* END TILES */
+
+
+.breadcrumbs2 a{
+	color: #0050EF;
 }
 
 .charm.right-side {
@@ -125,16 +135,12 @@ a.tile-content{
     padding: 0.3125rem;
 }
 
-.breadcrumbs{
-	font-size: large;
+.breadcrumbs2 >li:last-child a {
+	color: blue !important;
 }
 
-.breadcrumbs>li:last-child a {
-	font-size: x-large;
-}
-
-.breadcrumbs li{
-	color: #fff !important;
+.breadcrumbs2 li a{
+	color: #000 !important;
 }
 
 

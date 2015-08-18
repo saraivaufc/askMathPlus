@@ -27,7 +27,6 @@
 <table class="table hovered border bordered bg-white">
 	<thead>
 		<tr>
-			<td>{% trans "Position:" %}</td>
 			<td>{% trans "Description:" %}</td>
 			<td>{% trans "Deficiencys:" %}</td>
 		</tr>
@@ -39,7 +38,6 @@
 		{% else %}
 		<tr>
 		{% endif %}
-			<td>{{ forloop.counter }}</td>
 			<td>{{ item.get_description|safe|linebreaksbr }}</td>
 			<td>
 				{% for deficiency in item.get_deficiencys %}
