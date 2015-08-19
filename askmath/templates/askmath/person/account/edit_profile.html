@@ -1,5 +1,10 @@
-{% extends "askmath/index/home.html" %}
+{% extends "askmath/person/account/view_profile.html" %}
 {% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/person/account/edit/"><span class="icon mif-profile"></span> <spam class="hidden-xs">{% trans "Edit Profile" %}</spam></a></li>
+{% endblock %}
 
 
 {% block header %}

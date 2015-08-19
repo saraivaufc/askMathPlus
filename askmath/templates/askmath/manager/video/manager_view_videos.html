@@ -1,9 +1,14 @@
 {% extends 'askmath/manager/video/manager_choose_lessons.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson }}</spam></a></li>
+{% endblock %}
+
+
 {%  block content %}
 <div class="cell padding10">
-	<a href="/home/manager/videos/choose_lesson/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_video %}
 		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
 		<a href="/home/manager/videos/sort/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>

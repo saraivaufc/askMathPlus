@@ -1,10 +1,15 @@
 {% extends 'askmath/manager/contact/manager_view_contacts.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if contact %}
+	<li><a href="/home/manager/contacts/view/contact={{ contact.id }}/"><span class="icon mif-envelop"></span> <spam class="hidden-xs">{{ contact.get_name }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
 {%  block content %}
-<div class="tile-content">
 <div class="cell padding10">
-	<a href="/home/manager/contacts/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_contact %}
 		{% if contact.exists %}
 		<a href="/home/manager/contacts/remove/contact={{ contact.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
@@ -13,12 +18,12 @@
 		<a href="/home/manager/contacts/restore/contact={{ contact.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
 		{% endif %}
 	{% endif %}
-	<hr class="thin bg-grayLighter">
-		<h2 class="text-center">{{ contact.get_name }}<span class="mif-envelop place-right"></span></h2>
-	<hr class="thin bg-grayLighter">
 </div>
+
+<hr class="thin bg-grayLighter">
+	<h2 class="text-center">{{ contact.get_name }}<span class="mif-envelop place-right"></span></h2>
+<hr class="thin bg-grayLighter">
 
 {% include "askmath/manager/contact/_render_contact.html" %}
 
-</div>
 {% endblock %}

@@ -14,44 +14,39 @@
             </button>
         </div>
         <div id="footer-body1" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                {% block home %}
-                <li>
-                {% endblock %}
-                	<a href="/home/">{% trans "Home" %}</a></li>
+            <ul class="nav navbar-nav">                
 				{% if perms.askmath.access_manager_discipline %}
-				
-				{% block discipline %}
-                <li>
-                {% endblock %}
+					{% block discipline %}
+	                <li>
+	                {% endblock %}
 					<a href="/home/manager/disciplines/view/">{% trans "Disciplines" %}</a></li>
 				{% endif %}
-				{% if perms.askmath.access_manager_lesson %}
 				
-				{% block lesson %}
-                <li>
-                {% endblock %}
+				{% if perms.askmath.access_manager_lesson %}
+					{% block lesson %}
+	                <li>
+	                {% endblock %}
 					<a href="/home/manager/lessons/view/">{% trans "Lessons" %}</a></li>
 				{% endif %}
-				{% if perms.askmath.access_manager_question %}
 				
-				{% block question %}
-                <li>
-                {% endblock %}
+				{% if perms.askmath.access_manager_question %}
+					{% block question %}
+	                <li>
+	                {% endblock %}
 					<a href="/home/manager/questions/choose_lesson/">{% trans "Questions" %}</a></li>
 				{% endif %}
-				{% if perms.askmath.access_manager_video %}
 				
-				{% block video %}
-                <li>
-                {% endblock %}
+				{% if perms.askmath.access_manager_video %}
+					{% block video %}
+	                <li>
+	                {% endblock %}
 					<a href="/home/manager/videos/choose_lesson/">{% trans "Videos" %}</a></li>
 				{% endif %}
-				{% if perms.askmath.access_manager_statistics %}
 				
-				{% block statistic %}
-                <li>
-                {% endblock %}
+				{% if perms.askmath.access_manager_statistics %}
+					{% block statistic %}
+	                <li>
+	                {% endblock %}
 					<a href="/home/manager/statistics/choose_type/">{% trans "Statistics" %}</a></li>
 				{% endif %}
             </ul>
@@ -62,8 +57,13 @@
           	</form>
 		    {% endif %}
             
-            {% if request.user.is_authenticated %}
             <ul class="nav navbar-nav navbar-right">
+            	<li>
+					<a href="/feed/" alt="{% trans "RSS" %}">
+						<img class="rss-icon" src="{{ STATIC_URL }}/askmath/img/icons/rss.svg">
+					</a>
+				</li>
+            	{% if request.user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
@@ -86,31 +86,44 @@
                                     <div class="col-lg-8">
                                         <p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
                                         <p class="text-left small">{{ request.user.get_email }}</p>
-                                        <a href="/home/person/account/view/" class="btn button primary btn-block btn-sm">{% trans "View Profile" %}</a>
-                                        {% if perms.askmath.access_manager_person %}
-                                        <a href="/home/manager/persons/choose_person_types/" class="btn button primary btn-block btn-sm">{% trans "View Persons" %}</a>
-                                        {% endif %}
-                                        {% if perms.askmath.access_manager_contact %}
-                                        <a href="/home/manager/contacts/view/" class="btn button primary btn-block btn-sm">{% trans "View Contacts" %}</a>
-                                    	{% endif %}
+                                        <a href="/home/person/account/view/" class="image-button btn btn-block primary">
+                                        	{% trans "View Profile" %}
+                                        	<span class="icon mif-profile bg-darkCobalt"></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <div class="navbar-login navbar-login-session">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <p><a href="/authentication/logout/" class="btn button  danger btn-block">{% trans "Logout" %}</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                        	<div class="container-fluid">
+	                        	{% if perms.askmath.access_manager_person %}
+	                            <a href="/home/manager/persons/choose_person_types/" class="image-button btn btn-block primary">
+	                            	{% trans "View Persons" %}
+	                            	<span class="icon mif-users bg-darkCobalt"></span>
+	                            </a>
+	                            {% endif %}
+	                            {% if perms.askmath.access_manager_contact %}
+	                            <a href="/home/manager/contacts/view/" class="image-button btn btn-block primary">
+	                            	{% trans "View Contacts" %}
+	                            	<span class="icon mif-envelop bg-darkCobalt"></span>
+	                            </a>
+	                        	{% endif %}
+                        	</div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                        	<div class="container-fluid">
+                        		<a href="/authentication/logout/" class="image-button btn btn-block danger">
+                        			{% trans "Logout" %}
+                        			<span class="icon mif-switch bg-darkRed"></span>
+                        		</a>
+                        	</div>
                         </li>
                     </ul>
                 </li>
+                {% endif %}
             </ul>
-            {% endif %}
         </div>
     </div>
 </nav>

@@ -65,7 +65,7 @@ class Question(IQuestion):
             form_question = QuestionForm(prefix='question')
             forms_items = [ ItemForm(prefix=i) for i in range(1, quantity_items+1)]
         return render(request, "askmath/manager/question/manager_form_question.html", 
-            {'request':request,'form_question': form_question,'forms_items': forms_items ,'lesson': lesson, 'title_form':_('Create Question'), 'message': message})
+            {'request':request,'form_question': form_question,'lesson': lesson,'forms_items': forms_items ,'lesson': lesson, 'title_form':_('Create Question'), 'message': message})
     
     def remove_question(self, request, lesson,question,  message = None):
         question.delete()
@@ -93,7 +93,7 @@ class Question(IQuestion):
             form_question = QuestionForm(instance=question, prefix='question')
             forms_items = [ ItemForm(instance=i, prefix=index+1) for index, i in enumerate(question.get_items())]
         return render(request, "askmath/manager/question/manager_form_question.html", 
-            {'request':request,'form_question': form_question,'forms_items': forms_items ,'lesson': lesson, 'title_form':_('Edit Question'), 'message': message})
+            {'request':request,'form_question': form_question,'forms_items': forms_items ,'lesson': lesson,'question':question, 'title_form':_('Edit Question'), 'message': message})
     
     
     def restore_question(self, request, lesson, question):

@@ -1,9 +1,15 @@
-{% extends 'askmath/_base.html' %}
+{% extends 'askmath/index/home.html' %}
 
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/about/"><span class="icon mif-info"></span> <spam class="hidden-xs">{% trans "About" %}</spam></a></li>
+{% endblock %}
+
+
 {% block content %}
-<a href="https://github.com/saraivaufc/askMathPlus" target="_blank" style="position: absolute; top: 0; left: 0; border: 0; z-index: 10;">
+<a href="https://github.com/saraivaufc/askMathPlus" target="_blank" style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;">
 	<img src="{{ STATIC_URL }}askmath/img/logos/forkme.png" alt="{% trans "Fork me on GitHub" %}">
 </a>
 <section>

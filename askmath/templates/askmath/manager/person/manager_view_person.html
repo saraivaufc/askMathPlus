@@ -1,10 +1,15 @@
 {% extends 'askmath/manager/person/manager_view_persons.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if person %}
+	<li><a href="/home/manager/persons/view/person_type=assistant/person={{ person.id }}/"><span class="icon mif-user"></span> <spam class="hidden-xs">{{ person.get_name }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
 {%  block content %}
-<div class="tile-content">
 <div class="cell auto-size padding20 ">
-	<a href="/home/manager/persons/view/person_type={{  person_type }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_person %}
 		{% if person.exists and write_person %}
 		<a href="/home/manager/persons/remove/person_type={{ person_type }}/person={{ person.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
@@ -13,12 +18,12 @@
 		<a href="/home/manager/persons/restore/person_type={{ person_type }}/person={{ person.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
 		{% endif %}
 	{% endif %}
-	<hr class="thin bg-grayLighter">
-		<h2 class="text-center">{{ person.get_name }}<span class="mif-user place-right"></span></h2>
-	<hr class="thin bg-grayLighter">
 </div>
+
+<hr class="thin bg-grayLighter">
+	<h2 class="text-center">{{ person.get_name }}<span class="mif-user place-right"></span></h2>
+<hr class="thin bg-grayLighter">
 
 {% include "askmath/manager/person/_render_person.html" %}
 
-</div>
 {% endblock %}

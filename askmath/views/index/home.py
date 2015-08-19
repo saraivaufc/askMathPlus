@@ -7,6 +7,7 @@ from askmath.models import Discipline
 from askmath.forms import ContactForm
 from askMathPlus.settings import COLORS_ALL, EMAIL_ADMINS, SITE_TITLE
 from django.core.mail import EmailMessage
+from askmath.models.lesson.lesson import Lesson
 
 class Home():
     def index(self, request,  message = None):
@@ -48,7 +49,16 @@ class Home():
              {'request': request, 'message': message})
 
 
-    def contents(self, request, message = None):
-        disciplines = Discipline.objects.filter(exists=True, visible=True)
-        return render(request, 'askmath/index/contents.html', 
-             {'request': request,'disciplines': disciplines,'colors': COLORS_ALL,'message': message})
+    def contents(self, request, id_lesson=None, message = None):
+        if id_lesson:
+            lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
+            if lesson:
+                return render(request, 'askmath/index/contents_details.html',
+                    {'request': request,'lesson': lesson,'colors': COLORS_ALL,'message': message})
+            else:
+                message= message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.INFO)
+                return self.contents(request, None, message)
+        else:
+            disciplines = Discipline.objects.filter(exists=True, visible=True)
+            return render(request, 'askmath/index/contents.html', 
+                {'request': request,'disciplines': disciplines,'colors': COLORS_ALL,'message': message})

@@ -1,13 +1,12 @@
 {% extends 'askmath/manager/person/manager_view_persons.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/persons/add/person_type={{ person_type }}/"><span class="icon mif-key"></span> <spam class="hidden-xs">{% trans "View Keys" %}</spam></a></li>
+{% endblock %}
+
 {%  block content %}
-<div class="tile-content">
-	<div class="cell auto-size padding20 ">
-		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
-		<hr class="thin bg-grayLighter">
-	</div>
-</div>
 
 <div class="container">	
 	<form action="." method="POST">

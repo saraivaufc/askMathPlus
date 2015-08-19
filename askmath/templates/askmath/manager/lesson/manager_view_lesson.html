@@ -1,10 +1,16 @@
 {% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if lesson %}
+		<li><a href="/home/manager/lessons/view/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
+
 {%  block content %}
-<div class="tile-content">
 <div class="cell padding10">
-	<a href="/home/manager/lessons/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_lesson %}
 		<a href="/home/manager/lessons/edit/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
 		{% if lesson.exists %}
@@ -20,11 +26,13 @@
 	{% if perms.askmath.write_video %}
 		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create Video" %}</a>
 	{% endif %}
-	<hr class="thin bg-grayLighter">
-		<h2 class="text-center">{{ lesson.get_title }}<span class="mif-clipboard place-right"></span></h2>
-	<hr class="thin bg-grayLighter">
 </div>
+	
+<hr class="thin bg-grayLighter">
+	<h2 class="text-center">{{ lesson.get_title }}<span class="mif-clipboard place-right"></span></h2>
+<hr class="thin bg-grayLighter">
+
 {% include "askmath/manager/lesson/_render_lesson.html" %}
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
-</div>
+
 {% endblock %}

@@ -55,7 +55,7 @@ class Person(IPerson):
         elif PERSONTYPE == person_types.TEACHER:
             write_person = request.user.has_perm('askmath.write_teacher')
         elif PERSONTYPE == person_types.ASSISTANT:
-            write_person = request.user.has_perm('askmath.write_assitant')
+            write_person = request.user.has_perm('askmath.write_assistant')
         elif PERSONTYPE == person_types.STUDENT:
             write_person = False
         else:
@@ -71,7 +71,7 @@ class Person(IPerson):
         elif PERSONTYPE == person_types.TEACHER:
             write_person = request.user.has_perm('askmath.write_teacher')
         elif PERSONTYPE == person_types.ASSISTANT:
-            write_person = request.user.has_perm('askmath.write_assitant')
+            write_person = request.user.has_perm('askmath.write_assistant')
         elif PERSONTYPE == person_types.STUDENT:
             write_person = request.user.has_perm('askmath.write_student')
         else:

@@ -1,6 +1,11 @@
-{% extends 'askmath/_base.html' %}
+{% extends 'askmath/index/home.html' %}
 
 {% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/terms/"><span class="icon mif-file-text"></span> <spam class="hidden-xs">{% trans "Terms of service" %}</spam></a></li>
+{% endblock %}
 
 {% block content %}
 

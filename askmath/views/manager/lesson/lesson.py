@@ -70,7 +70,7 @@ class Lesson(ILesson):
         else:
             form = LessonForm( instance = lesson)
         return render(request, "askmath/manager/lesson/manager_form_lesson.html", 
-            {'request':request,'form': form,'title_form':_('Edit Lesson'), 'message': message})
+            {'request':request,'form': form,'lesson':lesson,'title_form':_('Edit Lesson'), 'message': message})
     
     def restore_lesson(self, request,  lesson):
         lesson.restore()

@@ -1,6 +1,17 @@
 {% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/contacts/view/"><span class="icon mif-envelop"></span> <spam class="hidden-xs">{% trans "Contacts" %}</spam></a></li>
+{% endblock %}
+
+
+
+{% block header %}
+    {% include 'askmath/_header.html' %}
+{% endblock %}
+
 {%  block content %}
 
 <div class="cell padding10">

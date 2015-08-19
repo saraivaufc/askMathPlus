@@ -1,10 +1,15 @@
 {% extends 'askmath/manager/person/manager_choose_person_types.html' %}
 {% load i18n %}
 
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/persons/view/person_type={{ person_type }}/"><span class="icon mif-users"></span> <spam class="hidden-xs">{{ person_type|title }}</spam></a></li>
+{% endblock %}
+
 {%  block content %}
 
 <div class="cell auto-size padding20">
-	<a href="/home/manager/persons/choose_person_types/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if write_person %}
 		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="button primary" ><span class="mif-key"></span>{% trans " View Keys" %}</a>
 	{% endif %}

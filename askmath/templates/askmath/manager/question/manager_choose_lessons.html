@@ -1,6 +1,12 @@
 {% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/questions/choose_lesson/"><span class="icon mif-list-numbered"></span> <spam class="hidden-xs">{% trans "Questions" %}</spam></a></li>
+{% endblock %}
+
+
 {% block header %}
 	{% include 'askmath/manager/question/overwrite_header.html' %}
 {% endblock %}

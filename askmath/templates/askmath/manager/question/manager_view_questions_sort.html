@@ -3,11 +3,7 @@
 {% load i18n %}
 
 {%  block content %}
-
-<div class="tile-content">
-
 <div class="cell padding10">
-	<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
 		<div class="cell auto-size">
 			<h2 class="text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
@@ -15,7 +11,7 @@
 	<hr class="thin bg-grayLighter">
 </div>
 
-<div class="padding40">
+<div class="container">
 	<ul id="list_questions_sort" class="listview ">
 	{% csrf_token %}
 	{% for question in questions %}

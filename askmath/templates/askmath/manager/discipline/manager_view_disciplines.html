@@ -1,6 +1,11 @@
 {% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+		<li><a href="/home/manager/disciplines/view/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{% trans "Disciplines" %}</spam></a></li>
+{% endblock %}
+
 
 {% block header %}
 	{% include 'askmath/manager/discipline/overwrite_header.html' %}
@@ -31,6 +36,7 @@
 		</h2>
 	<hr class="thin bg-grayLighter">
 </div>
+
 <div class="tile-area padding10 bg-transparent">
 <div class="tile-container">
 {% for discipline in disciplines %}

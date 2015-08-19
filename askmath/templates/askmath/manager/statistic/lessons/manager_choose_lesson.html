@@ -2,6 +2,12 @@
 {% load i18n %}
 {% load askmath_tags %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/statistics/lesson/choose_lesson/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{% trans "Choose Lessons" %}</spam></a></li>
+{% endblock %}
+
+
 {%  block content %}
 
 <div class="cell padding5">

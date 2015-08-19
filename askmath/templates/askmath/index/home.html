@@ -2,11 +2,20 @@
 
 {% load i18n %}
 
-{% block header %}
-	{% include 'askmath/index/overwrite_header.html' %}
+{% block header_two %}
+<div class="container-metro">
+	<div class="menu-breadcrumbs">
+		<ul id="menu" class="breadcrumbs2 dark">
+		    {% block breadcrumbs %}
+		    <li><a href="/home/"><span class="icon mif-home"></span> {% trans "Home" %}</a></li>
+			{% endblock %}
+		</ul>
+	</div>
+</div>
 {% endblock %}
 
 {% block content %}
+
 <section>
 	<div id="text-welcome" class="jumbotron">
 		<h1 class="text-center font-white">{% trans 'Welcome to the Askmath...' %}</h1>

@@ -1,10 +1,7 @@
-{% extends 'askmath/manager/question/manager_view_questions.html' %}
+{% extends 'askmath/manager/question/manager_view_question.html' %}
 {% load i18n %}
 
 {%  block content %}
-<div class="tile-content">
-<div class="cell padding10">
-	<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	<hr class="thin bg-grayLighter">
 	{% include 'askmath/utils/_box_latex.html' %}
 	
@@ -28,6 +25,4 @@
 			</div>
 		</form>
 	</div>
-</div>
-</div>
 {% endblock %}

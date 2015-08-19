@@ -1,10 +1,16 @@
 {% extends 'askmath/manager/question/manager_view_questions.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if question %}
+	<li><a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/"><span class="icon mif-list-numbered"></span> <spam class="hidden-xs">{{ question|truncatechars:"30" }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
+
 {%  block content %}
-<div class="tile-content">
 <div class="cell padding10">
-	<a href="/home/manager/questions/view/lesson={{lesson.id}}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_question %}
 		<a href="/home/manager/questions/edit/lesson={{lesson.id}}/question={{ question.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
 		{% if question.exists %}
@@ -23,5 +29,4 @@
 	{% include "askmath/manager/question/_render_question.html" %}
 </div>
 
-</div>
 {% endblock %}

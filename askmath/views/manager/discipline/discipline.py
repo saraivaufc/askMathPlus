@@ -50,7 +50,7 @@ class Discipline(IDiscipline):
         else:
             form = DisciplineForm( instance = discipline)
         return render(request, "askmath/manager/discipline/manager_form_discipline.html", 
-            {'request':request,'form': form, 'title_form':_('Edit Discipline'), 'message': message})
+            {'request':request,'form': form,'discipline': discipline, 'title_form':_('Edit Discipline'), 'message': message})
     
     def restore_discipline(self, request, discipline):
         discipline.restore()

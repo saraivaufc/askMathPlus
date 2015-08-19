@@ -28,7 +28,9 @@ class Lesson(ILesson):
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default=True)
 
-    def get_disciplines(self):
+    def get_disciplines(self, visible=None):
+        if visible == True or visible == False:
+            return self.disciplines.filter(exists=True, visible=visible)
         return self.disciplines.filter(exists=True)
     
     def get_title(self):

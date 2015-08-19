@@ -1,7 +1,15 @@
-{% extends 'askmath/manager/statistic/manager_choose_types.html' %}
+{% extends 'askmath/manager/statistic/lessons/manager_choose_lesson.html' %}
 
 {% load i18n %}
 {% load askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if lesson %}
+	<li><a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
 
 {%  block content %}
 

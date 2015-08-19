@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^contact/$', home.contact),
     url(r'^terms/$', home.terms),
     url(r'^contents/$', home.contents),
+    url(r'^contents/lesson=(?P<id_lesson>\d+)/$', home.contents),
 )

@@ -1,18 +1,13 @@
-{% extends 'askmath/manager/video/manager_view_videos.html' %}
+{% extends 'askmath/manager/video/manager_view_video.html' %}
 {% load i18n %}
 
 {%  block content %}
-<div class="tile-content">
-
-<div class="cell padding10">
-	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
-	<hr class="thin bg-grayLighter">
-</div>
-{% include 'askmath/utils/_box_latex.html' %}
-
 <div class="container">
 	{% include "askmath/_form.html" %}
 </div>
 
 </div>
+
+{% include 'askmath/utils/_box_latex.html' %}
+
 {% endblock %}

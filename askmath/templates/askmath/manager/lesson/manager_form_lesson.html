@@ -1,16 +1,11 @@
-{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
+{% extends 'askmath/manager/lesson/manager_view_lesson.html' %}
 {% load i18n %}
 
 {%  block content %}
-<div class="tile-content">
+<div class="container">
+	{% include 'askmath/_form.html' %}
+</div>
 
-<div class="cell padding10">
-	<a href="/home/manager/lessons/view/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
-	<hr class="thin bg-grayLighter">
-	{% include 'askmath/utils/_box_latex.html' %}
-	<div class="container">
-		{% include 'askmath/_form.html' %}
-	</div>
-</div>
-</div>
+{% include 'askmath/utils/_box_latex.html' %}
+
 {% endblock %}

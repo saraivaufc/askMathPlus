@@ -81,7 +81,7 @@ class Video(IVideo):
         else:
             form = VideoForm(instance=video)
         return render(request, "askmath/manager/video/manager_form_video.html", 
-            {'request':request,'form': form, 'lesson': lesson, 'title_form':_('Edit Video'), 'message': message})
+            {'request':request,'form': form, 'lesson': lesson,'video':video, 'title_form':_('Edit Video'), 'message': message})
     
     
     def restore_video(self, request, lesson, video):

@@ -1,0 +1,63 @@
+{% extends 'askmath/index/contents.html' %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/contents/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson.get_title|title }}</spam></a></li>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+{% block tiles-left %}
+	<h2 class="text-center">{{ lesson.get_title|title }}</h2>
+	<p class="text-justify lead">
+		{{ lesson.get_description|safe|linebreaksbr }}
+	</p>
+{% endblock %}
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-4">
+{% block tiles-rigth %}
+<div class="tile-group">
+	<h3 class="text-left">{% trans "Options:" %}</h3>
+	<div class="tile-container">
+		<div class="tile {{colors|random}}">
+		    <a href="/authentication/login/" class="tile-content slide-down iconic">
+		        <span class="icon mif-list-numbered"></span>
+		        <div class="tile-label">
+		            {% trans "Questions" %}
+		        </div>
+		        <div class="slide-over bg-steel">
+		        <table class="text-center fill">
+		        	<tr>
+		        		<td> {% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </a>
+		</div>
+		
+		<div class="tile {{colors|random}}">
+		    <a href="/authentication/login/" class="tile-content slide-down iconic">
+		        <span class="icon mif-video-camera"></span>
+		        <div class="tile-label">
+		            {% trans "Videos" %}
+		        </div>
+		         <div class="slide-over bg-steel">
+		        <table class="text-center fill">
+		        	<tr>
+		        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </a>
+		</div>
+	</div>
+</div>
+{% endblock %}
+</div>
+
+{% endblock %}
