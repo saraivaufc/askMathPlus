@@ -50,8 +50,8 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/jquery-ui/jquery-ui.theme.min.css">
 		
 		<!-- Metro  -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro.min.css" >
-		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro-icons.min.css" >
+		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro.css" >
+		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro-icons.css" >
 		
 		
 		<!-- My Styles -->
@@ -63,6 +63,7 @@
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/images.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/accessibility.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/shapes.css" >
+		
 		
 		<!-- Latex Editor -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/components/editor/latex/css/equation-6.css" type="text/css">
@@ -117,7 +118,6 @@
 		</main>
 		{% include "askmath/send_feedback.html"  %}
 		
-		
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 		{% block footer %}
 			{% include 'askmath/_footer.html' %}
@@ -130,9 +130,6 @@
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery/jquery-sortable.js"></script>
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery/jquery-cookie.js"></script>
 		
-		<!-- Bootstrap -->
-		<script src="{{ STATIC_URL }}askmath/frameworks/bootstrap/js/bootstrap.min.js"></script>
-		
 		<!-- Json 2-->
 		<script src="{{ STATIC_URL }}askmath/js/json2.js"></script>
 
@@ -142,8 +139,16 @@
 		<!-- Metro -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/metro.min.js"></script>
 		
-		<!-- My Scripts -->
+		<!-- Bootstrap -->
+		<script src="{{ STATIC_URL }}askmath/frameworks/bootstrap/js/bootstrap.min.js"></script>
 		
+		
+		<!-- Noty -->
+		<script src="{{ STATIC_URL }}askmath/frameworks/noty/packaged/jquery.noty.packaged.js"></script>
+		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
+		
+		<!-- My Scripts -->
+		<script src="{{ STATIC_URL }}askmath/js/popovers.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/messages.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/cookies.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/accessibility.js"></script>

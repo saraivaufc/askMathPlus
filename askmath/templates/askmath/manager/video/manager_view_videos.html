@@ -14,9 +14,9 @@
 		<a href="/home/manager/videos/sort/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button success" ><span class="mif-undo"></span>{% trans " Undo" %}</a>
+		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button success" data-popover="undo"><span class="mif-undo"></span>{% trans " Undo" %}</a>
 	{% else %}
-		<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/" class="button warning" ><span class="mif-bin"></span>{% trans " Dump" %}</a>
+		<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/" class="button warning" data-popover="dump"><span class="mif-bin"></span>{% trans " Dump" %}</a>
 	{% endif %}
 	<hr class="thin bg-grayLighter">
 		{% if is_removed %}

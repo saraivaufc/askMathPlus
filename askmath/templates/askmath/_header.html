@@ -50,14 +50,13 @@
 					<a href="/home/manager/statistics/choose_type/">{% trans "Statistics" %}</a></li>
 				{% endif %}
             </ul>
-            {% if perms.askmath.access_content %}
-            <form class="navbar-form navbar-left" action="/utils/filter/search/" method="POST" role="search">
-            {% csrf_token %}
-            	<input id="search"  class="form-control col-lg-8"  placeholder="{% trans "Search..." %}" name="search" type="search">
-          	</form>
-		    {% endif %}
-            
             <ul class="nav navbar-nav navbar-right">
+            	{% if perms.askmath.access_content %}
+	            <form class="navbar-form navbar-left" action="/utils/filter/search/" method="POST" role="search">
+	            {% csrf_token %}
+	            	<input id="search"  class="form-control col-lg-8"  placeholder="{% trans "Search..." %}" name="search" type="search">
+	          	</form>
+			    {% endif %}
             	<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">
 						<img class="rss-icon" src="{{ STATIC_URL }}/askmath/img/icons/rss.svg">

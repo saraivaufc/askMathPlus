@@ -7,7 +7,7 @@
 	<div class="menu-breadcrumbs">
 		<ul id="menu" class="breadcrumbs2 dark">
 		    {% block breadcrumbs %}
-		    <li><a href="/home/"><span class="icon mif-home"></span> {% trans "Home" %}</a></li>
+		    <li><a href="/home/"><span class="icon mif-home"></span> <spam class="hidden-xs">{% trans "Home" %}</spam></a></li>
 			{% endblock %}
 		</ul>
 	</div>
@@ -15,9 +15,8 @@
 {% endblock %}
 
 {% block content %}
-
 <section>
-	<div id="text-welcome" class="jumbotron">
+	<div id="text-welcome">
 		<h1 class="text-center font-white">{% trans 'Welcome to the Askmath...' %}</h1>
 	</div>
 </section>
@@ -60,4 +59,5 @@
 	</div>
 	</div>
 </section>
+
 {% endblock %}

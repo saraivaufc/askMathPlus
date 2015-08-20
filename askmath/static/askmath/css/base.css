@@ -259,6 +259,7 @@ input:disabled {
 .help, p.help {
     font-size: 15px !important;
     color: #999;
+
 }
 
 
@@ -271,4 +272,9 @@ a{
 li > a, a.button, a.btn, a.shortcut-button{
 	color: #fff !important;
     text-decoration: none !important;
+}
+
+
+.popover * {
+    color: #000;
 }

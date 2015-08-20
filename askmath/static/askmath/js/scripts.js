@@ -267,3 +267,12 @@ $(function(){
 	});
 });
 
+$(function(){
+	$('[data-toggle="popover"]').mouseenter(function(){
+		$(this).popover('show');
+	});
+	
+	$('[data-toggle="popover"]').mouseleave(function(){
+		$(this).popover('hide');
+	});
+});
