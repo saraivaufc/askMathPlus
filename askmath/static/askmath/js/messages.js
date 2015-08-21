@@ -1,40 +1,33 @@
 $(function(){
-	var alert_success = $("#alert-success");
-	var alert_danger = $("#alert-danger");
-	var alert_warning = $("#alert-warning");
-	var alert_info = $("#alert-info");
-	try{
-		if(alert_success.length) {
-			$.Notify({
-			    caption: 'Success',
-			    content: alert_success.val(),
-			    type: 'success',
-			});
-		};
-		if(alert_danger.length) {
-			$.Notify({
-			    caption: 'Alert',
-			    content: alert_danger.val(),
-			    type: 'alert',
-			});
-		};
-		if (alert_warning.length) {
-			$.Notify({
-			    caption: 'Warning',
-			    content: alert_warning.val(),
-			    type: 'warning',
-			});	
-		};
+	var alerts = {};
+	var alert_type= null;
 	
-		if(alert_info.length) {
-			$.Notify({
-			    caption: 'Info',
-			    content: alert_info.val(),
-			    type: 'info',
-			});	
-		}
-	}catch(e){
-		console.log("Erro alerts");
+	var alert_success = $("#alert-success");
+	if (alert_success.length){
+		alerts[alert_success.val()] = 'success';
 	}	
+	var alert_danger = $("#alert-danger");
+	if (alert_danger.length){
+		alerts[alert_danger.val()]= 'error';
+	}
+	var alert_info = $("#alert-info");
+	if (alert_info.length){
+		alerts[alert_info.val()] = 'information';
+	}
+	var alert_warning = $("#alert-warning");
+	if (alert_warning.length){
+		alerts[alert_warning.val()] = 'warning';
+	}
+	for(var x in alerts){
+		noty({
+		    text: x,
+		    theme: 'relax',
+		    type: alerts[x],
+		    animation: {
+		        open: 'animated fadeInLeft', // Animate.css class names
+		        close: 'animated flipOutX', // Animate.css class names
+		    }
+		});
+	}
 	
 });

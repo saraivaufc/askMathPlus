@@ -1,5 +1,5 @@
-function pop(object, msn){
-	object.popover({'placement':'top', 'content': msn});
+function pop(object, msn, placement="top"){
+	object.popover({'placement': placement, 'content': msn});
 	object.popover('show');
 }
 
@@ -12,6 +12,11 @@ $(function(){
 	/* UNDO */
 	$('[data-popover="undo"]').mouseenter(function(){
 		pop($(this), 'If you want to view the items active again, click here!');
+	});
+	
+	/* SORT */
+	$('[data-popover="sort"]').mouseenter(function(){
+		pop($(this), 'You can order these items, click here!');
 	});
 	
 	

@@ -16,6 +16,11 @@ def is_false(arg):
 def replace_to_space(text, arg):
     return text.replace(arg, " ")
 
+
+@register.filter(name='class_exists')
+def class_exists(field, cl):
+    pass
+
 @register.filter(name='translate')
 def translate(text):
     try:

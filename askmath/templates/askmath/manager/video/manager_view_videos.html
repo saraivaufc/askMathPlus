@@ -11,7 +11,7 @@
 <div class="cell padding10">
 	{% if perms.askmath.write_video %}
 		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>
-		<a href="/home/manager/videos/sort/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>
+		<a href="/home/manager/videos/sort/lesson={{ lesson.id }}/" class="button primary" data-popover="sort"><span class="mif-sort-asc"></span>{% trans " Sort" %}</a>
 	{% endif %}
 	{% if is_removed %}
 		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button success" data-popover="undo"><span class="mif-undo"></span>{% trans " Undo" %}</a>
