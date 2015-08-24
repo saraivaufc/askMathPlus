@@ -1,0 +1,20 @@
+{% extends 'askmath/index/home.html' %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/policies/"><span class="icon mif-file-text"></span> <spam class="hidden-xs">{% trans "Privacy Policy" %}</spam></a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<section>
+			<h2 class="text-center">{% trans "Privacy Policy" %}</h2>
+			{% include "askmath/index/_render_policies.html" %}
+		</section>
+	</div>
+</div>
+{% endblock %}

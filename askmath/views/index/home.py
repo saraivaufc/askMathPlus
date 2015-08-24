@@ -48,6 +48,15 @@ class Home():
         return render(request, 'askmath/index/terms.html', 
              {'request': request, 'message': message})
 
+    def policies(self, request, message = None):
+        return render(request, 'askmath/index/policies.html', 
+             {'request': request, 'message': message})
+
+        
+    def credits(self, request, message = None):
+        return render(request, 'askmath/index/credits.html', 
+             {'request': request, 'message': message})
+
 
     def contents(self, request, id_lesson=None, message = None):
         if id_lesson:

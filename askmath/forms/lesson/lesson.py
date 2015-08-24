@@ -20,6 +20,6 @@ class LessonForm(ModelForm):
 			'description': Textarea(attrs={'cols': 50, 'rows': 6,'required': 'required', 'class':'latex input-control textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
 			'requirements': SelectMultiple(attrs={'class':'input-control select'}),
 			'sugestions': SelectMultiple(attrs={'class':'input-control select'}),
-			'maximum_hops': NumberInput(attrs={'required':'required', 'class':'input-control number'}),
+			'maximum_hops': NumberInput(attrs={'required':'required', 'class':'input-control number', 'min': '0'}),
 			'visible': CheckboxInput(attrs={'class':'input-control checkbox switch'}),
 		}

@@ -1,0 +1,31 @@
+{% extends 'askmath/index/home.html' %}
+
+{% load i18n %}
+{% load askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/credits/"><span class="icon mif-apps"></span> <spam class="hidden-xs">{% trans "Credits" %}</spam></a></li>
+{% endblock %}
+
+
+{% block content %}
+<section>
+	<div class="container">
+		<div class="row">
+			<section>
+				<h2 class="text-center">{% trans "Credits" %}</h2>
+				<ul class="list-group">
+					{% for title, homepage in "SITE_EXTERNAL_COMPONENTES"|settings  %}
+						<div class="product bg-steel bg-white">
+							<span class="title">{{ title }}</span>
+							<span class="homepage fg-darkBlue"><a href="{{ homepage }}">homepage</a></span>
+						</div>
+					{% endfor %}
+				</ul>
+			</section>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

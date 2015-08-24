@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
 from .. import register
 
@@ -27,3 +28,7 @@ def translate(text):
         return _(text)
     except:
         return text
+
+@register.filter(name='settings') 
+def settings_value(name):
+    return getattr(settings, name, "")

@@ -1,4 +1,5 @@
-function pop(object, msn, placement="top"){
+function pop(object, msn, placement){
+	placement = placement || "top";
 	object.popover({'placement': placement, 'content': msn});
 	object.popover('show');
 }

@@ -1,12 +1,31 @@
 {% load i18n %}
+{% load askmath_tags %}
+
 <section id="text-about" class="lead text-justify">
+{% blocktrans %}
 <p>
-Este sistema é uma iniciativa do grupo PET Tecnologia da Informação da Universidade Federal do Ceará.
-Seu objetivo é propiciar um ambiente simples, intuitivo e elegante para o estudante que quer se aprofundar 
-nos mais diversos campos da Matemática.
+This system is an initiative of the PET group Information Technology of the Federal University of Ceará. 
+Their goal is to provide a simple, intuitive and elegant environment for the student who wants to delve 
+into the most diverse fields of mathematics.
 </p>
 <p>
-Esse sistema, assim como todos os que desenvolvemos, possui código-livre e encontra-se sob a licença 
-GNU 2.0, a qual permite que você possa copiar, distribuir e modificar seu código-fonte.
+This system, as well as all those who develop, own open-source and is under license
+GNU 2.0, which allows you to copy, distribute and modify its source code.
+</p>
+{% endblocktrans %}
+
+<article>
+	<h3 class="list-heading">{% trans "Developers:" %}</h3>
+	<ul>
+		{% for name,email in "SITE_DEVELOPERS"|settings  %}
+			<li>{{ name }} - {{ email }}</li>
+		{% endfor %}
+	</ul>
+</article>
+
+<p>
+{% blocktrans %}
+The AskMath was made possible thanks to other <a href="/credits/">open source software</a>.
+{% endblocktrans %}
 </p>
 </section>

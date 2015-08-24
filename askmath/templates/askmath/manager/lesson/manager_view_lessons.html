@@ -22,15 +22,6 @@
 	{% else %}
 		<a href="/home/manager/lessons/view_removed/" class="button warning" data-popover="dump"><span class="mif-bin"></span>{% trans " Dump" %}</a>
 	{% endif %}
-	<hr class="thin bg-grayLighter">
-		{% if is_removed %}
-		<h2 class="text-center">{% trans "Lessons Removed" %}
-		{% else %}
-		<h2 class="text-center">{% trans "Lessons" %}
-		{% endif %}
-		<span class="mif-clipboard place-right"></span>
-		</h2>
-	<hr class="thin bg-grayLighter">
 </div>
 
 {% regroup disciplines by title as discipline_list %}

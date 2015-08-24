@@ -7,5 +7,6 @@ encoding//askmath/forms/question/question.py=utf-8
 encoding//askmath/forms/users/contact.py=utf-8
 encoding//askmath/forms/users/person.py=utf-8
 encoding//askmath/forms/video/video.py=utf-8
+encoding//askmath/templatetags/tags/utils/custom_tags.py=utf-8
 encoding//askmath/templatetags/tags/utils/filters.py=utf-8
 encoding//askmath/templatetags/tags/utils/statistics.py=utf-8

@@ -12,7 +12,13 @@ djangorestframework
 markdown
 django-filter
 nltk
+tox==1.7.0
+model-mommy==1.2.1
+django-discover-runner==1
+
+
 
 #sudo apt-get install postfix
 #sudo aptitude install libapache2-mod-wsgi
 #sudo easy_install django-rosetta
+#sudo apt-get install python-dev

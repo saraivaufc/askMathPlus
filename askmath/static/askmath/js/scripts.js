@@ -4,6 +4,7 @@ function Init(){
 };
 
 
+
 (function ($) {
 	$(document).ready(function ($) {
         $('#feedback-modal').on('shown.bs.modal', function () {

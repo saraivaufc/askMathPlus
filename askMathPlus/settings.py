@@ -14,11 +14,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 from django.utils.translation import ugettext_lazy as _
 import os
 from django.http import HttpRequest
+import database_info
 
 from .components_metro import *
 from .email_info import *
 from .site_info import *
-import database_info
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(__file__)
@@ -49,11 +49,15 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django.contrib.syndication',
 )
 
 THIRD_PARTY_APPS = (
-    #'rosetta',
+    'rosetta',
 )
+
+
 
 LOCAL_APPS = (
     'askmath',
@@ -129,6 +133,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

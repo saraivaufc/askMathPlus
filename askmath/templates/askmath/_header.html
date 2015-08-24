@@ -52,10 +52,18 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             	{% if perms.askmath.access_content %}
-	            <form class="navbar-form navbar-left" action="/utils/filter/search/" method="POST" role="search">
+            	<form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
 	            {% csrf_token %}
-	            	<input id="search"  class="form-control col-lg-8"  placeholder="{% trans "Search..." %}" name="search" type="search">
-	          	</form>
+					<div class="form-group">
+						<div class="btn-group">
+							<input  id="search" name="search" type="text" class="form-control" placeholder="{%  trans "Search..." %}">
+							<span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
+						</div>
+						<button id="searchbutton" type="submit" class="btn btn-submit bg-dark pull-right">
+							<span class=" glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</form>
 			    {% endif %}
             	<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">

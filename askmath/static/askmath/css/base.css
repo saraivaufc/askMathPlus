@@ -278,3 +278,34 @@ li > a, a.button, a.btn, a.shortcut-button{
 .popover * {
     color: #000;
 }
+
+
+.list-heading {
+    font-weight: normal;
+}
+
+
+/* CREDITS */
+.product {
+    margin-top: 16px;
+    overflow: auto;
+    padding: 2px;
+}
+
+.product .title {
+    float: left;
+    font-size: 110%;
+    font-weight: bold;
+    margin: 3px;
+}
+
+.product .homepage {
+    float: right;
+    margin: 3px;
+    text-align: right;
+}
+
+/* TABLES */
+caption{
+	font-size: 120%;
+}

@@ -19,14 +19,7 @@
 			<a href="/home/manager/disciplines/restore/discipline={{ discipline.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
 		{% endif %}
 	{% endif %}
-	{% if perms.askmath.write_lesson %}
-		<a href="/home/manager/lessons/add/" class="button primary" ><span class="mif-plus"></span>{% trans " Create Lesson" %}</a>
-	{% endif %}
 </div>
-
-<hr class="thin bg-grayLighter">
-	<h2 class="text-center">{{ discipline.get_title }}<span class="mif-stack2 place-right"></span></h2>
-<hr class="thin bg-grayLighter">
 
 {% include "askmath/manager/discipline/_render_discipline.html" %}
 
