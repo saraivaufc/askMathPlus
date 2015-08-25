@@ -1,16 +1,7 @@
-{% extends 'askmath/manager/manager_home.html' %}
+{% extends 'askmath/manager/person/overwrite_header.html' %}
 {% load i18n %}
 
-{% block breadcrumbs %}
-	{{ block.super }}
-	<li><a href="/home/manager/persons/choose_person_types/"><span class="icon mif-users"></span> <spam class="hidden-xs">{% trans "Persons" %}</spam></a></li>
-{% endblock %}
-
-{% block header %}
-    {% include 'askmath/_header.html' %}
-{% endblock %}
-
-{%  block content %}
+{%  block content_right %}
 
 <div class="cell auto-size padding20 ">
 	<h2 class="text-dark  text-center">{% trans "Choose Person Types" %}<span class="mif-users place-right"></span></h2>

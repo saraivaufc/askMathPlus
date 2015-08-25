@@ -9,7 +9,7 @@
 {% endblock %}
 
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_question %}
 		<a href="/home/manager/questions/edit/lesson={{lesson.id}}/question={{ question.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>

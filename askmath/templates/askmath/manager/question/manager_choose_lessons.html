@@ -1,17 +1,8 @@
-{% extends 'askmath/manager/manager_home.html' %}
+{% extends 'askmath/manager/question/overwrite_header.html' %}
+
 {% load i18n %}
 
-{% block breadcrumbs %}
-	{{ block.super }}
-	<li><a href="/home/manager/questions/choose_lesson/"><span class="icon mif-list-numbered"></span> <spam class="hidden-xs">{% trans "Questions" %}</spam></a></li>
-{% endblock %}
-
-
-{% block header %}
-	{% include 'askmath/manager/question/overwrite_header.html' %}
-{% endblock %}
-
-{%  block content %}
+{%  block content_right %}
 
 <div class="cell">
 	<h2 class="text-dark  text-center">{% trans "Choose Lesson" %}<span class="mif-clipboard place-right"></span></h2>

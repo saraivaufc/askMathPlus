@@ -1,18 +1,7 @@
-{% extends 'askmath/manager/manager_home.html' %}
+{% extends 'askmath/manager/contact/overwrite_header.html' %}
 {% load i18n %}
 
-{% block breadcrumbs %}
-	{{ block.super }}
-	<li><a href="/home/manager/contacts/view/"><span class="icon mif-envelop"></span> <spam class="hidden-xs">{% trans "Contacts" %}</spam></a></li>
-{% endblock %}
-
-
-
-{% block header %}
-    {% include 'askmath/_header.html' %}
-{% endblock %}
-
-{%  block content %}
+{%  block content_right %}
 
 <div class="cell padding10">
 	{% if is_removed %}
@@ -20,15 +9,6 @@
 	{% else %}
 		<a href="/home/manager/contacts/view_removed/" class="button warning" data-popover="dump"><span class="mif-bin"></span>{% trans " Dump" %}</a>
 	{% endif %}
-	<hr class="thin bg-grayLighter">
-		{% if is_removed %}
-		<h2 class="text-center">{% trans "Contacts Removed" %}
-		{% else %}
-		<h2 class="text-center">{% trans "Contact" %}
-		{% endif %}
-		<span class="mif-envelop place-right"></span>
-		</h2>
-	<hr class="thin bg-grayLighter">
 </div>
 
 <div class="tile-area padding10 bg-transparent ">

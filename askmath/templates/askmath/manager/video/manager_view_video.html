@@ -8,7 +8,7 @@
 	{% endif %}
 {% endblock %}
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell padding10">
 	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_video %}

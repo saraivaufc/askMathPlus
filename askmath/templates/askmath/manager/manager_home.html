@@ -2,67 +2,159 @@
 {% load i18n %}
 
 {% block content %}
-	<div class="flex-grid">
-	<div class="tile-area no-padding bg-transparent">
-    	<div class="tile-container">
-	    	{% if perms.askmath.access_manager_discipline %}
-    		<div class="tile-wide {{colors|random}} " data-role="tile">
-                <a href="/home/manager/disciplines/view/" class="tile-content iconic">
-                    <span class="icon mif-stack2"></span>
-                    <span class="tile-label">{% trans "DISCIPLINES" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            {% if perms.askmath.access_manager_lesson %}
-            <div class="tile-wide {{colors|random}}" data-role="tile">
-                <a href="/home/manager/lessons/view/" class="tile-content iconic">
-                    <span class="icon mif-clipboard"></span>
-                    <span class="tile-label">{% trans "LESSONS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            {% if perms.askmath.access_manager_question %}
-            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
-                <a href="/home/manager/questions/choose_lesson/" class="tile-content iconic">
-                    <span class="icon mif-list-numbered"></span>
-                    <span class="tile-label">{% trans "QUESTIONS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            {% if perms.askmath.access_manager_video %}
-            <div class="tile-wide  {{colors|random}}  fg-white" data-role="tile">
-               <a href="/home/manager/videos/choose_lesson/" class="tile-content iconic">
-                    <span class="icon mif-film"></span>
-                    <span class="tile-label">{% trans "VIDEOS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            {% if perms.askmath.access_manager_statistics %}
-            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
-                <a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
-                    <span class="icon mif-chart-line"></span>
-                    <span class="tile-label">{% trans "STATISTICS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            {% if perms.askmath.access_manager_person %}
-            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
-                <a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
-                    <span class="icon mif-users"></span>
-                    <span class="tile-label">{% trans "PERSONS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-            
-            {% if perms.askmath.access_manager_contact %}
-            <div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
-                <a href="/home/manager/contacts/view/" class="tile-content iconic">
-                    <span class="icon mif-envelop"></span>
-                    <span class="tile-label">{% trans "CONTACTS" %}</span>
-                </a>
-            </div>
-            {% endif %}
-    	</div>
-    </div>
+<div class="page-content">
+	<div class="flex-grid no-responsive-future container-fluid" style="height: 100%;">
+		<div class="row" style="height: 100%">
+			<div class="cell size-x200" id="cell-sidebar">
+				<ul class="sidebar">
+					{% block all_items %}
+					<li class="active">
+					{% endblock %}
+						<a href="/home/">
+							<span class="mif-apps icon"></span>
+							<span class="title hidden-xs">{% trans "All Items" %}</span>
+						</a>
+					</li>
+					{% if perms.askmath.access_manager_discipline %}
+					{% block discipline %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/disciplines/view/">
+							<span class="icon mif-stack2"></span>
+							<span class="title hidden-xs">{% trans "Disciplines" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_lesson %}
+					{% block lesson %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/lessons/view/">
+							<span class="icon mif-clipboard"></span>
+							<span class="title hidden-xs">{% trans "Lessons" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_question %}
+					{% block question %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/questions/choose_lesson/">
+							<span class="mif-list-numbered icon"></span>
+							<span class="title hidden-xs">{% trans "Questions" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_video %}
+					{% block video %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/videos/choose_lesson/">
+							<span class="icon mif-film"></span>
+							<span class="title hidden-xs">{% trans "Videos" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_statistics %}
+					{% block statistic %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/statistics/choose_type/">
+							<span class="icon mif-chart-line"></span>
+							<span class="title hidden-xs">{% trans "Statistics" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_contact %}
+					{% block message %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/contacts/view/">
+							<span class="icon mif-envelop"></span>
+							<span class="title hidden-xs">{% trans "Messages" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_person %}
+					{% block person %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/persons/choose_person_types/">
+							<span class="icon mif-users"></span>
+							<span class="title hidden-xs">{% trans "Persons" %}</span>
+						</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class="cell auto-size bg-white">
+			{% block content_right %}
+				<div class="flex-grid">
+					<div class="tile-area no-padding bg-transparent">
+						<div class="tile-container">
+							{% if perms.askmath.access_manager_discipline %}
+							<div class="tile-wide {{colors|random}} " data-role="tile">
+								<a href="/home/manager/disciplines/view/" class="tile-content iconic">
+									<span class="icon mif-stack2"></span>
+									<span class="tile-label">{% trans "DISCIPLINES" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							{% if perms.askmath.access_manager_lesson %}
+							<div class="tile-wide {{colors|random}}" data-role="tile">
+								<a href="/home/manager/lessons/view/" class="tile-content iconic">
+									<span class="icon mif-clipboard"></span>
+									<span class="tile-label">{% trans "LESSONS" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							{% if perms.askmath.access_manager_question %}
+							<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<a href="/home/manager/questions/choose_lesson/" class="tile-content iconic">
+									<span class="icon mif-list-numbered"></span>
+									<span class="tile-label">{% trans "QUESTIONS" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							{% if perms.askmath.access_manager_video %}
+							<div class="tile-wide  {{colors|random}}  fg-white" data-role="tile">
+							   <a href="/home/manager/videos/choose_lesson/" class="tile-content iconic">
+									<span class="icon mif-film"></span>
+									<span class="tile-label">{% trans "VIDEOS" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							{% if perms.askmath.access_manager_statistics %}
+							<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
+									<span class="icon mif-chart-line"></span>
+									<span class="tile-label">{% trans "STATISTICS" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							{% if perms.askmath.access_manager_person %}
+							<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
+									<span class="icon mif-users"></span>
+									<span class="tile-label">{% trans "PERSONS" %}</span>
+								</a>
+							</div>
+							{% endif %}
+							
+							{% if perms.askmath.access_manager_contact %}
+							<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<a href="/home/manager/contacts/view/" class="tile-content iconic">
+									<span class="icon mif-envelop"></span>
+									<span class="tile-label">{% trans "MESSAGES" %}</span>
+								</a>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endblock %}
+			</div>
+		</div>
 	</div>
+</div>
 {% endblock %}

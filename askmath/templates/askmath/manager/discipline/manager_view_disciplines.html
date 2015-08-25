@@ -1,22 +1,11 @@
-{% extends 'askmath/manager/manager_home.html' %}
+{% extends 'askmath/manager/discipline/overwrite_header.html' %}
 {% load i18n %}
-
-{% block breadcrumbs %}
-	{{ block.super }}
-		<li><a href="/home/manager/disciplines/view/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{% trans "Disciplines" %}</spam></a></li>
-{% endblock %}
-
-
-{% block header %}
-	{% include 'askmath/manager/discipline/overwrite_header.html' %}
-{% endblock %}
-
 
 {% block discipline %}
 <li class="active">
 {% endblock %}
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_discipline %}
 		<a href="/home/manager/disciplines/add/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>

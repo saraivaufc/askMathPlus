@@ -14,41 +14,7 @@
             </button>
         </div>
         <div id="footer-body1" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">                
-				{% if perms.askmath.access_manager_discipline %}
-					{% block discipline %}
-	                <li>
-	                {% endblock %}
-					<a href="/home/manager/disciplines/view/">{% trans "Disciplines" %}</a></li>
-				{% endif %}
-				
-				{% if perms.askmath.access_manager_lesson %}
-					{% block lesson %}
-	                <li>
-	                {% endblock %}
-					<a href="/home/manager/lessons/view/">{% trans "Lessons" %}</a></li>
-				{% endif %}
-				
-				{% if perms.askmath.access_manager_question %}
-					{% block question %}
-	                <li>
-	                {% endblock %}
-					<a href="/home/manager/questions/choose_lesson/">{% trans "Questions" %}</a></li>
-				{% endif %}
-				
-				{% if perms.askmath.access_manager_video %}
-					{% block video %}
-	                <li>
-	                {% endblock %}
-					<a href="/home/manager/videos/choose_lesson/">{% trans "Videos" %}</a></li>
-				{% endif %}
-				
-				{% if perms.askmath.access_manager_statistics %}
-					{% block statistic %}
-	                <li>
-	                {% endblock %}
-					<a href="/home/manager/statistics/choose_type/">{% trans "Statistics" %}</a></li>
-				{% endif %}
+            <ul class="nav navbar-nav">
             </ul>
             <ul class="nav navbar-nav navbar-right">
             	{% if perms.askmath.access_content %}
@@ -100,23 +66,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                        	<div class="container-fluid">
-	                        	{% if perms.askmath.access_manager_person %}
-	                            <a href="/home/manager/persons/choose_person_types/" class="image-button btn btn-block primary">
-	                            	{% trans "View Persons" %}
-	                            	<span class="icon mif-users bg-darkCobalt"></span>
-	                            </a>
-	                            {% endif %}
-	                            {% if perms.askmath.access_manager_contact %}
-	                            <a href="/home/manager/contacts/view/" class="image-button btn btn-block primary">
-	                            	{% trans "View Contacts" %}
-	                            	<span class="icon mif-envelop bg-darkCobalt"></span>
-	                            </a>
-	                        	{% endif %}
-                        	</div>
                         </li>
                         <li class="divider"></li>
                         <li>

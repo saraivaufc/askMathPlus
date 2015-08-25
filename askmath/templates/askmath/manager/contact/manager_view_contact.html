@@ -8,7 +8,7 @@
 	{% endif %}
 {% endblock %}
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_contact %}
 		{% if contact.exists %}
@@ -19,10 +19,6 @@
 		{% endif %}
 	{% endif %}
 </div>
-
-<hr class="thin bg-grayLighter">
-	<h2 class="text-center">{{ contact.get_name }}<span class="mif-envelop place-right"></span></h2>
-<hr class="thin bg-grayLighter">
 
 {% include "askmath/manager/contact/_render_contact.html" %}
 

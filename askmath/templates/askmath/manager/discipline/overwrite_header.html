@@ -1,6 +1,16 @@
-{% extends 'askmath/_header.html' %}
+{% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
+
+{% block all_items %}
+	<li>
+{% endblock %}
+
 
 {% block discipline %}
 <li class="active">
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+		<li><a href="/home/manager/disciplines/view/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{% trans "Disciplines" %}</spam></a></li>
 {% endblock %}

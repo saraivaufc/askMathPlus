@@ -1,6 +1,16 @@
-{% extends 'askmath/_header.html' %}
+{% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
+
+{% block all_items %}
+	<li>
+{% endblock %}
+
 
 {% block statistic %}
 <li class="active">
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/statistics/choose_type/"><span class="icon mif-chart-line"></span> <spam class="hidden-xs">{% trans "Statistics" %}</spam></a></li>
 {% endblock %}

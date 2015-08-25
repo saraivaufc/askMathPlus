@@ -7,7 +7,7 @@
 {% endblock %}
 
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_video %}
 		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create" %}</a>

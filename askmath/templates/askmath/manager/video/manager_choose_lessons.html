@@ -1,4 +1,5 @@
-{% extends 'askmath/manager/manager_home.html' %}
+{% extends 'askmath/manager/video/overwrite_header.html' %}
+
 {% load i18n %}
 
 {% block breadcrumbs %}
@@ -6,14 +7,7 @@
 	<li><a href="/home/manager/videos/choose_lesson/"><span class="icon mif-film"></span> <spam class="hidden-xs">{% trans "Videos" %}</spam></a></li>
 {% endblock %}
 
-
-
-{% block header %}
-    {% include 'askmath/manager/video/overwrite_header.html' %}
-{% endblock %}
-
-
-{%  block content %}
+{%  block content_right %}
 
 <div class="cell">
 	<h2 class="text-dark  text-center">{% trans "Choose Lesson" %}<span class="mif-clipboard place-right"></span></h2>

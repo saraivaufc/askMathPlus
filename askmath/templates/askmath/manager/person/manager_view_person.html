@@ -8,7 +8,7 @@
 	{% endif %}
 {% endblock %}
 
-{%  block content %}
+{%  block content_right %}
 <div class="cell auto-size padding20 ">
 	{% if perms.askmath.write_person %}
 		{% if person.exists and write_person %}
@@ -19,10 +19,6 @@
 		{% endif %}
 	{% endif %}
 </div>
-
-<hr class="thin bg-grayLighter">
-	<h2 class="text-center">{{ person.get_name }}<span class="mif-user place-right"></span></h2>
-<hr class="thin bg-grayLighter">
 
 {% include "askmath/manager/person/_render_person.html" %}
 
