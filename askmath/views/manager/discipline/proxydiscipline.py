@@ -20,6 +20,7 @@ class ProxyDiscipline(IDiscipline):
             except:
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
+            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
             return self.__home.index(request, message)
     
     def view_disciplines_removed(self, request, message=None):

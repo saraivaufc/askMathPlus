@@ -76,10 +76,10 @@ html, body {
         flex-basis: 52px;
     }
 }
-
 .sidebar{
-	background-color: #0072C6;
+    padding-left: 0px;
 }
+
 .sidebar > li:hover, .sidebar li.active{
 	background-color:#4390DF;
 	color: #fff;

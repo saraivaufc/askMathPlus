@@ -1,0 +1,87 @@
+{% extends 'askmath/_base.html' %}
+
+{% load i18n %}
+{% load askmath_tags %}
+
+{% block content %}
+<section>
+	<div class="flex-grid ">
+	<div class="container-fluid">
+		<div class="row flex-just-center ">
+			<div class="cell size5">
+				<div class="row tile-container cell-auto-size">
+					<div class="cell tile-wide bg-blue fg-white" data-role="tile">
+						<a href="/home/" class="tile-content iconic">
+							<span class="icon mif-home"></span>
+						</a>
+						<span class="tile-label">{% trans "Home" %}</span>
+					</div>
+					<div class="cell tile fg-white" data-role="tile">
+						<div class="tile-content">
+							<div class="image-container">
+								<div class="frame bg-emerald">
+									<img id="back" src="{{ STATIC_URL }}askmath/img/icons/pages_error/back.png">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row tile-container cell-auto-size" >
+					<div class="cell tile fg-white" data-role="tile">
+						<div class="tile-content">
+							<div class="image-container">
+								<div class="frame bg-lightBlue" >
+									<img src="{{ STATIC_URL }}askmath/img/icons/pages_error/number_4.png">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cell tile fg-white" data-role="tile">
+						<div class="tile-content">
+							<div class="image-container">
+								<div class="frame bg-lightGreen">
+									<img src="{{ STATIC_URL }}askmath/img/icons/pages_error/number_0.png">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cell tile fg-white" data-role="tile">
+						<div class="tile-content">
+							<div class="image-container">
+								<div class="frame bg-lightBlue">
+									<img src="{{ STATIC_URL }}askmath/img/icons/pages_error/number_4.png">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row tile-container cell-auto-size">
+					<div class="cell tile bg-lightOrange fg-white" data-role="tile">
+						<a href="/contact/" class="tile-content iconic">
+							<span class="icon mif-envelop"></span>
+						</a>
+						<span class="tile-label">{% trans "Message" %}</span>
+					</div>
+					<div class="cell tile fg-white" data-role="tile">
+						<div class="tile-content">
+							<div class="image-container">
+								<div class="frame bg-lightBlue">
+									<img src="{{ STATIC_URL }}askmath/img/icons/pages_error/exclamation.png">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cell tile bg-yellow fg-white" data-role="tile">
+						<a href="/contents/" class="tile-content iconic">
+							<span class="icon mif-books"></span>
+						</a>
+						<span class="tile-label">{% trans "Contents" %}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
+
+{% endblock %}
