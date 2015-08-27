@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if contact %}
-	<li><a href="/home/manager/contacts/view/contact={{ contact.id }}/"><span class="icon mif-envelop"></span> <spam class="hidden-xs">{{ contact.get_name }}</spam></a></li>
+	<li><a href="/home/manager/contacts/view/contact={{ contact.id }}/"><span class="icon mif-envelop"></span> <spam>{{ contact.get_name }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 

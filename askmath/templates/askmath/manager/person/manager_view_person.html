@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if person %}
-	<li><a href="/home/manager/persons/view/person_type=assistant/person={{ person.id }}/"><span class="icon mif-user"></span> <spam class="hidden-xs">{{ person.get_name }}</spam></a></li>
+	<li><a href="/home/manager/persons/view/person_type=assistant/person={{ person.id }}/"><span class="icon mif-user"></span> <spam>{{ person.get_name }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 

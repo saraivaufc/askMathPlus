@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if video %}
-	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/"><span class="icon mif-film"></span> <spam class="hidden-xs">{{ video|truncatechars:"30" }}</spam></a></li>
+	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/"><span class="icon mif-film"></span> <spam>{{ video|truncatechars:"30" }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 

@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/contents/"><span class="icon mif-books"></span> <spam class="hidden-xs">{% trans "Contents" %}</spam></a></li>
+	<li><a href="/contents/"><span class="icon mif-books"></span> <spam>{% trans "Contents" %}</spam></a></li>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<h2 class="text-center">{% trans "Contents" %}</h2>
-		<div class="tile-group bg-transparent ">
+		<div class="tile-group no-padding bg-transparent ">
 			{% for discipline in disciplines %}
 			{% if discipline.get_lessons_visible|length > 0 %}
 				<h4>{{ discipline|title }}</h4>

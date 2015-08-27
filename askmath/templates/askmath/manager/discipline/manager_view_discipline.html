@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if discipline %}
-		<li><a href="/home/manager/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{{ discipline }}</spam></a></li>
+		<li><a href="/home/manager/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam>{{ discipline }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 

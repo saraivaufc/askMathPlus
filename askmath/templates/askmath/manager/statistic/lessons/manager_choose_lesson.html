@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/statistics/lesson/choose_lesson/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{% trans "Choose Lessons" %}</spam></a></li>
+	<li><a href="/home/manager/statistics/lesson/choose_lesson/"><span class="icon mif-clipboard"></span> <spam>{% trans "Choose Lessons" %}</spam></a></li>
 {% endblock %}
 
 
@@ -16,7 +16,7 @@
 	<hr class="thin bg-grayLighter">
 </div>
 
-<div class="tile-area no-padding bg-transparent">
+<div class="tile-area padding10 bg-transparent">
 
 {% for discipline in disciplines %}
 <h4>{{ discipline.get_title|title }}</h4>

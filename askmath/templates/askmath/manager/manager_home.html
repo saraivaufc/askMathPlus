@@ -6,9 +6,9 @@
 
 {% block content %}
 <div class="page-content">
-	<div class="flex-grid">
-		<div class="container-fluid">
-			<div class="row">
+	<div class="flex-grid no-responsive-future" style="height: 100%">
+		<div class="container-fluid" >
+			<div class="row" style="height: 100%">
 				<div class="cell size-x200 bg-dark" id="cell-sidebar">
 					<ul class="sidebar bg-dark">
 						{% block all_items %}
@@ -92,18 +92,17 @@
 					</ul>
 				</div>
 				<div class="cell auto-size bg-white">
-				<div class="padding5">
-					<div class="menu-breadcrumbs">
-						<ul id="menu" class="breadcrumbs2 dark">
-						    {% block breadcrumbs %}
-						    <li><a href="/home/"><span class="icon mif-home"></span> <spam class="hidden-xs">{% trans "Home" %}</spam></a></li>
-							{% endblock %}
-						</ul>
+					<div class="padding5">
+						<div class="menu-breadcrumbs">
+							<ul id="menu" class="breadcrumbs2 dark">
+							    {% block breadcrumbs %}
+							    <li><a href="/home/"><span class="icon mif-home"></span> <spam>{% trans "Home" %}</spam></a></li>
+								{% endblock %}
+							</ul>
+						</div>
 					</div>
-				</div>
-				{% block content_right %}
-					<div class="flex-grid">
-						<div class="bg-transparent">
+					{% block content_right %}
+						<div class="flex-grid bg-transparent">
 							<div class="tile-container">
 								{% if perms.askmath.access_manager_discipline %}
 								<div class="tile-wide {{colors|random}} " data-role="tile">
@@ -164,8 +163,7 @@
 								{% endif %}
 							</div>
 						</div>
-					</div>
-				{% endblock %}
+					{% endblock %}
 				</div>
 			</div>
 		</div>

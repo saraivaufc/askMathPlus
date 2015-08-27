@@ -57,7 +57,7 @@ function resize_window(){
 	var footer = parseInt($("#footer").css("height"));
 	if ( (header + main + footer) < screean){
 		var res = screean - header - footer;
-		parseInt($("#main").css("height", (res-20) + "px"));
+		parseInt($("#main").css("height", (res) + "px"));
 	};
 }
 

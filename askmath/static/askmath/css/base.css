@@ -3,7 +3,7 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat ; 
 	background-attachment: fixed;
-	font-family: Arial,serif;
+	font-family: "helvetica","arial","sans serif"; 
 	font-size: 0.875rem;
 	color: #fff;
 	line-height: 1.1;
@@ -29,11 +29,6 @@ h1,h2,h3,h4,h5,h6,p{
 }
 html, body {
 	height: 100%;
-}
-
-
-#main{;
-	margin-bottom: 20px;
 }
 
 .v-center {

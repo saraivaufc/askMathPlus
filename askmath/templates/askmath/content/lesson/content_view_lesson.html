@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson.get_title|title }}</spam></a></li>
+	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson.get_title|title }}</spam></a></li>
 {% endblock %}
 
 {%  block tiles %}

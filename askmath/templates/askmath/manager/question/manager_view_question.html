@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if question %}
-	<li><a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/"><span class="icon mif-list-numbered"></span> <spam class="hidden-xs">{{ question|truncatechars:"30" }}</spam></a></li>
+	<li><a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/"><span class="icon mif-list-numbered"></span> <spam>{{ question|truncatechars:"30" }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 

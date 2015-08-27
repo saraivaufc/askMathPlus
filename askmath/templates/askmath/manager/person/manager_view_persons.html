@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/persons/view/person_type={{ person_type }}/"><span class="icon mif-users"></span> <spam class="hidden-xs">{{ person_type|title }}</spam></a></li>
+	<li><a href="/home/manager/persons/view/person_type={{ person_type }}/"><span class="icon mif-users"></span> <spam>{{ person_type|title }}</spam></a></li>
 {% endblock %}
 
 {%  block content_right %}

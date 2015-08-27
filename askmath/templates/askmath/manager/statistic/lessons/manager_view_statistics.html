@@ -6,7 +6,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if lesson %}
-	<li><a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam class="hidden-xs">{{ lesson }}</spam></a></li>
+	<li><a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 
