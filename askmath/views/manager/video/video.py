@@ -1,11 +1,9 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
-
-from askMathPlus.settings import COLORS_ALL
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.forms import VideoForm, ItemForm
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 
@@ -15,25 +13,25 @@ from .ivideo import IVideo
 class Video(IVideo):
     def choose_lesson(self, request, message = None):
         disciplines = []
-        for discipline in DisciplineModel.objects.filter(exists=True):
+        for discipline in CategoryModel.objects.filter(exists=True):
             if discipline.get_lessons():
                 disciplines.append(discipline) 
         return render(request, "askmath/manager/video/manager_choose_lessons.html",
-            {'request':request,'disciplines': disciplines, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'disciplines': disciplines, 'message': message})
     
     def view_videos(self, request, lesson, message = None):
         videos = lesson.get_videos()
         return render(request, "askmath/manager/video/manager_view_videos.html",
-            {'request':request,'videos': videos, 'lesson': lesson, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'videos': videos, 'lesson': lesson, 'message': message})
     
     def view_videos_removed(self, request, lesson, message = None):
         videos = VideoModel.objects.filter(exists=False,lesson = lesson.id)
         return render(request, "askmath/manager/video/manager_view_videos.html",
-            {'request':request,'videos': videos, 'lesson': lesson,'is_removed': True ,'colors': COLORS_ALL, 'message': message})
+            {'request':request,'videos': videos, 'lesson': lesson,'is_removed': True , 'message': message})
     
     def view_video(self, request, lesson, video, message = None):
         return render(request, "askmath/manager/video/manager_view_video.html", 
-            {'request':request,'lesson': lesson,'video': video , 'message': message, 'colors': COLORS_ALL })
+            {'request':request,'lesson': lesson,'video': video , 'message': message})
     
     
     
@@ -101,5 +99,5 @@ class Video(IVideo):
             except:
                 message = Message(TextMessage.VIDEO_ERROR_SORT, TypeMessage.ERROR)
         return render(request, "askmath/manager/video/manager_view_videos_sort.html",
-            {'request':request,'videos': videos, 'lesson': lesson, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'videos': videos, 'lesson': lesson, 'message': message})
     

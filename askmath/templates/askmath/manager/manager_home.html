@@ -89,6 +89,16 @@
 							</a>
 						</li>
 						{% endif %}
+						{% if perms.askmath.access_manager_forum %}
+						{% block forum %}
+						<li>
+						{% endblock %}
+							<a href="/home/manager/forum/categories/view/">
+								<span class="icon mif-bubbles"></span>
+								<span class="title hidden-xs">{% trans "Forum" %}</span>
+							</a>
+						</li>
+						{% endif %}
 					</ul>
 				</div>
 				<div class="cell auto-size bg-white">
@@ -105,7 +115,7 @@
 						<div class="flex-grid bg-transparent">
 							<div class="tile-container">
 								{% if perms.askmath.access_manager_discipline %}
-								<div class="tile-wide {{colors|random}} " data-role="tile">
+								<div class="tile-wide bg-blue " data-role="tile">
 									<a href="/home/manager/disciplines/view/" class="tile-content iconic">
 										<span class="icon mif-stack2"></span>
 										<span class="tile-label">{% trans "DISCIPLINES" %}</span>
@@ -113,7 +123,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_lesson %}
-								<div class="tile-wide {{colors|random}}" data-role="tile">
+								<div class="tile-wide bg-green " data-role="tile">
 									<a href="/home/manager/lessons/view/" class="tile-content iconic">
 										<span class="icon mif-clipboard"></span>
 										<span class="tile-label">{% trans "LESSONS" %}</span>
@@ -121,7 +131,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_question %}
-								<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<div class="tile-wide bg-darkViolet  fg-white" data-role="tile">
 									<a href="/home/manager/questions/choose_lesson/" class="tile-content iconic">
 										<span class="icon mif-list-numbered"></span>
 										<span class="tile-label">{% trans "QUESTIONS" %}</span>
@@ -129,7 +139,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_video %}
-								<div class="tile-wide  {{colors|random}}  fg-white" data-role="tile">
+								<div class="tile-wide  bg-cobalt  fg-white" data-role="tile">
 								   <a href="/home/manager/videos/choose_lesson/" class="tile-content iconic">
 										<span class="icon mif-film"></span>
 										<span class="tile-label">{% trans "VIDEOS" %}</span>
@@ -137,7 +147,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_statistics %}
-								<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<div class="tile-wide bg-yellow  fg-white" data-role="tile">
 									<a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
 										<span class="icon mif-chart-line"></span>
 										<span class="tile-label">{% trans "STATISTICS" %}</span>
@@ -145,7 +155,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_person %}
-								<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<div class="tile-wide bg-darkBrown  fg-white" data-role="tile">
 									<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
 										<span class="icon mif-users"></span>
 										<span class="tile-label">{% trans "PERSONS" %}</span>
@@ -154,10 +164,19 @@
 								{% endif %}
 								
 								{% if perms.askmath.access_manager_contact %}
-								<div class="tile-wide {{colors|random}}  fg-white" data-role="tile">
+								<div class="tile-wide bg-pink  fg-white" data-role="tile">
 									<a href="/home/manager/contacts/view/" class="tile-content iconic">
 										<span class="icon mif-envelop"></span>
 										<span class="tile-label">{% trans "MESSAGES" %}</span>
+									</a>
+								</div>
+								{% endif %}
+								
+								{% if perms.askmath.access_manager_forum %}
+								<div class="tile-wide bg-olive  fg-white" data-role="tile">
+									<a href="/home/manager/forum/categories/view/" class="tile-content iconic">
+										<span class="icon mif-bubbles"></span>
+										<span class="tile-label">{% trans "FORUM" %}</span>
 									</a>
 								</div>
 								{% endif %}

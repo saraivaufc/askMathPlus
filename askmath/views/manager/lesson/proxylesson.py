@@ -3,9 +3,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models.lesson import Lesson as ContactModel
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.entities import Message, TextMessage, TypeMessage
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 from .ilesson import ILesson
 from .lesson import Lesson
@@ -14,7 +14,7 @@ class ProxyLesson(ILesson):
     
     def __init__(self):
         self.__contact = Lesson()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
   
     def view_lessons(self, request, message = None):
         if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):
@@ -24,7 +24,7 @@ class ProxyLesson(ILesson):
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def view_lessons_removed(self,request, message = None):
         if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):

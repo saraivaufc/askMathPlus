@@ -19,7 +19,7 @@
 	<span class="tile-group-title">{% trans "Videos" %}</span>
 	<div class="tile-container">
 	{% for video in videos %}
-     <div class="tile-wide {{colors|random}}">
+     <div class="tile-wide {{ video.color }}">
 		    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-film"></span>
 		        <div class="tile-label">

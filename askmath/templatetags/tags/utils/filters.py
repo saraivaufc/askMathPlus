@@ -32,3 +32,7 @@ def translate(text):
 @register.filter(name='settings') 
 def settings_value(name):
     return getattr(settings, name, "")
+
+@register.filter(name='parameters') 
+def parameters(function, *args):
+	print args

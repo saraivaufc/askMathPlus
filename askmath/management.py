@@ -51,6 +51,14 @@ askmath_group_permissions = {
         "read_contact",
         "write_contact",
         
+        "access_manager_forum",
+        "read_category",
+        "write_category",
+        "read_topic",
+        "write_topic",
+        "read_comment",
+        "write_comment",
+        
     ],
     "teacher": [
         "access_manager",
@@ -93,6 +101,14 @@ askmath_group_permissions = {
         "read_contact",
         "write_contact",
         
+        "access_manager_forum",
+        "read_category",
+        "write_category",
+        "read_topic",
+        "write_topic",
+        "read_comment",
+        "write_comment",
+        
     ],
     "assistant": [
         "access_manager",
@@ -110,6 +126,13 @@ askmath_group_permissions = {
         "access_manager_video",
         "read_video",
         "write_video",
+        
+        "access_manager_forum",
+        "read_category",
+        "read_topic",
+        "write_topic",
+        "read_comment",
+        "write_comment",
         
     ],
     "student": [
@@ -130,6 +153,13 @@ askmath_group_permissions = {
         "read_question",
         
         "read_video",
+        
+        "read_category",      
+        "read_topic",
+        "write_topic",
+        "read_comment",
+        "write_comment",
+        
     ],
 }
 

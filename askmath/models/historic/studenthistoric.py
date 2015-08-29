@@ -2,10 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from datetime import datetime
 
-from .ihistoric import IHistoric
-
-
-class StudentHistoric(IHistoric):
+class StudentHistoric(models.Model):
     student = models.ForeignKey('Student', verbose_name=_("Student"))
     answered_questions_historic = models.ManyToManyField('AnsweredQuestionsHistoric', verbose_name=_("Answered Questions Historic"),related_name=_("Answered Questions Historic"), null=True, blank=True)
     help_questions_historic = models.ManyToManyField('HelpQuestionsHistoric',related_name=("Help Question Historic"),  verbose_name=_("Answered Questions Historic"), null=True, blank=True)

@@ -93,6 +93,8 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
         
 class Person(AbstractPerson):
     profile_image = models.ImageField(verbose_name=_("Profile Image"),help_text=_("Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
+    
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=settings.generate_color)
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default = True)
     

@@ -1,9 +1,12 @@
 eclipse.preferences.version=1
 encoding//askmath/__init__.py=utf-8
+encoding//askmath/forms/category/category.py=utf-8
+encoding//askmath/forms/comment/comment.py=utf-8
 encoding//askmath/forms/discipline/discipline.py=utf-8
 encoding//askmath/forms/lesson/lesson.py=utf-8
 encoding//askmath/forms/question/item.py=utf-8
 encoding//askmath/forms/question/question.py=utf-8
+encoding//askmath/forms/topic/topic.py=utf-8
 encoding//askmath/forms/users/contact.py=utf-8
 encoding//askmath/forms/users/person.py=utf-8
 encoding//askmath/forms/video/video.py=utf-8

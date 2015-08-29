@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.models.question import Item as ItemModel
@@ -13,22 +13,21 @@ from askmath.models.experience import StudentExperience
 from askmath.models.state import StudentLessonState
 
 from .iquestion import IQuestion
-from askMathPlus.settings import COLORS_ALL
 from django.utils.translation import ugettext_lazy as _
 from askmath.entities import ExperienceLevel
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 
 class Question(IQuestion):
     def __init__(self):
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
     
     def view_initial_details(self, request, discipline, lesson, message=None):
         try:
             student = StudentModel.objects.get(id = request.user.id)
         except:
             message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.__home.index(request, message)
+            return self.__proxy_home.index(request, message)
         
         try:
             studentexperience = StudentExperience.objects.get(student = student, exists=True)
@@ -38,7 +37,7 @@ class Question(IQuestion):
                 studentexperience.save()
             except:
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-                return self.__home.index(request, message)  
+                return self.__proxy_home.index(request, message)  
         
         experience_level = ExperienceLevel(studentexperience.level)
         
@@ -61,7 +60,7 @@ class Question(IQuestion):
             student = StudentModel.objects.get(id = request.user.id)
         except:
             message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.__home.index(request, message)
+            return self.__proxy_home.index(request, message)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)

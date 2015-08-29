@@ -23,7 +23,7 @@
 <div class="tile-area no-padding bg-transparent ">
 <div class="tile-container">
 {% for person in persons %}
-<div class="tile {{colors|random}} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+<div class="tile {{ person.color }} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
     <a href="/home/manager/persons/view/person_type={{ person_type }}/person={{ person.id }}/" class="tile-content iconic">
         {% if person.get_profile_image %}
         <div class="image-container image-format-square">

@@ -3,10 +3,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Lesson as ContactModel
-from askmath.models import Discipline as DisciplineModel
+from askmath.models import Discipline as CategoryModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from .ilesson import ILesson
-from askMathPlus.settings import COLORS_ALL
 from askmath.forms import LessonForm
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +13,7 @@ class Lesson(ILesson):
     
     def view_lessons(self, request, message = None):
         disciplines = []
-        for d in DisciplineModel.objects.filter(exists=True):
+        for d in CategoryModel.objects.filter(exists=True):
             if not d.get_lessons():
                 continue
             dict = {}
@@ -23,11 +22,11 @@ class Lesson(ILesson):
             disciplines.append(dict)
             
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
-            {'request':request,'disciplines': disciplines,'colors': COLORS_ALL, 'message': message})
+            {'request':request,'disciplines': disciplines,'message': message})
     
     def view_lessons_removed(self, request, message = None):
         disciplines = []
-        for d in DisciplineModel.objects.filter(exists=True):
+        for d in CategoryModel.objects.filter(exists=True):
             if not d.get_lessons_removed():
                 continue
             dict = {}
@@ -36,11 +35,11 @@ class Lesson(ILesson):
             disciplines.append(dict)
             
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
-            {'request':request,'disciplines': disciplines,'is_removed': True,'colors': COLORS_ALL, 'message': message})
+            {'request':request,'disciplines': disciplines,'is_removed': True,'message': message})
         
     def view_lesson(self, request,lesson,message = None):
         return render(request, "askmath/manager/lesson/manager_view_lesson.html", 
-            {'request':request,'lesson': lesson ,'message': message, 'colors': COLORS_ALL })
+            {'request':request,'lesson': lesson ,'message': message})
     
     
     

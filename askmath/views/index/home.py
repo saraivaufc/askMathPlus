@@ -5,20 +5,21 @@ from askmath.entities import Message, TextMessage, TypeMessage
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
 from askmath.forms import ContactForm
-from askMathPlus.settings import COLORS_ALL, EMAIL_ADMINS, SITE_TITLE
+from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from django.core.mail import EmailMessage
 from askmath.models.lesson.lesson import Lesson
+from .ihome import IHome
 
-class Home():
+class Home(IHome):
     def index(self, request,  message = None):
         if request.user.is_authenticated():
             if request.user.has_perm('askmath.access_manager'):
                 return render(request, 'askmath/manager/manager_home.html', 
-                    {'request':request, 'colors': COLORS_ALL, 'message': message})
+                    {'request':request, 'message': message})
             else:
                 disciplines = Discipline.objects.filter(exists=True, visible=True)
                 return render(request, 'askmath/content/discipline/content_view_disciplines.html',
-                    {'request': request,'disciplines':  disciplines ,'colors': COLORS_ALL,'message': message})
+                    {'request': request,'disciplines':  disciplines ,'message': message})
         else:
             return render(request, 'askmath/index/home.html',
                 {'request': request, 'message': message})
@@ -63,11 +64,11 @@ class Home():
             lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
             if lesson:
                 return render(request, 'askmath/index/contents_details.html',
-                    {'request': request,'lesson': lesson,'colors': COLORS_ALL,'message': message})
+                    {'request': request,'lesson': lesson,'message': message})
             else:
                 message= message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.INFO)
                 return self.contents(request, None, message)
         else:
             disciplines = Discipline.objects.filter(exists=True, visible=True)
             return render(request, 'askmath/index/contents.html', 
-                {'request': request,'disciplines': disciplines,'colors': COLORS_ALL,'message': message})
+                {'request': request,'disciplines': disciplines,'message': message})

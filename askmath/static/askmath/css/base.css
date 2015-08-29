@@ -233,6 +233,7 @@ input:disabled {
 	position: fixed;
 	top: calc(50% - 47px);
 	right: 0;
+	z-index: 1000;
 }
 
 #feedback a {

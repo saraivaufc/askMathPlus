@@ -4,10 +4,7 @@ from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from iitem import IItem
-
-
-class Item(IItem):
+class Item(models.Model):
     position = models.IntegerField(verbose_name=_("Position"), null=True,blank=True,
          help_text=_("Choose the position which is item belongs."))
     description = models.TextField(verbose_name=_("Description"), 

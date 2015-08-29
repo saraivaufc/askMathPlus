@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import Group
-from askMathPlus.settings import COLORS_ALL
 from askmath.entities import Message, TextMessage, TypeMessage
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,7 +22,7 @@ class Person(IPerson):
     def choose_person_types(self, request, message=None):
         person_types = PersonTypes()
         return render(request, "askmath/manager/person/manager_choose_person_types.html",
-            {'request':request,'person_types': person_types.get_types(), 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'person_types': person_types, 'message': message})
     
     
     def view_persons(self, request, PERSONTYPE, message=None):
@@ -46,7 +45,7 @@ class Person(IPerson):
             
         persons = person_types.get_persons()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person, 'message': message})
     
     def view_persons_removed(self, request, PERSONTYPE, message=None):
         person_types = PersonTypes(PERSONTYPE)
@@ -62,7 +61,7 @@ class Person(IPerson):
             write_person = False
         persons = person_types.get_persons_removed()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True , 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True , 'message': message})
         
     def view_person(self,request, PERSONTYPE,person, message=None ):
         person_types = PersonTypes(PERSONTYPE)
@@ -77,7 +76,7 @@ class Person(IPerson):
         else:
             write_person = False
         return render(request, "askmath/manager/person/manager_view_person.html", 
-            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person,'message': message, 'colors': COLORS_ALL })
+            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person,'message': message})
     
     
     def add_person(self,request, PERSONTYPE,message=None ):

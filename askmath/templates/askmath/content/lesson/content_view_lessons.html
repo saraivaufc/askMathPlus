@@ -16,7 +16,7 @@
 	<span class="tile-group-title">{% trans "Lessons" %}</span>
 	<div class="tile-container">
 	{% for lesson in lessons %}
-         <div class="tile-wide {{colors|random}}">
+         <div class="tile-wide {{ lesson.color }}">
 		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-clipboard"></span>
 		        <div class="tile-label">

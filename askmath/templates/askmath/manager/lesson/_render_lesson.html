@@ -66,47 +66,54 @@
 		</div>
 	</div>
 	
-	<h4 class="text-center">{% trans "Questions of lesson" %}</h4>
-	<hr class="thin bg-grayLighter">
-	
-	<div class="tile-area no-padding bg-transparent">
-		<div class="tile-container">
-		{% for question in lesson.get_questions %}
-		<div class="tile-wide {{colors|random}} {% if question.visible %}element-selected{% endif %}  fg-white" data-role="tile">
-		    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
-		        <span class="icon mif-list-numbered"></span>
-		        <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>
-		        {% if not question.exists %}
-		        <span class="tile-badge mif-bin"></span>
-		        {% endif %}
-		    </a>
-		</div>
-		{% empty %}
-		<h5 class="text-center">{% trans "No Question found." %}</h5>
-		{% endfor %}
-		</div>
-	</div>
-	
-	<h4 class="text-center">{% trans "Videos of lesson" %}</h4>
-	<hr class="thin bg-grayLighter">
-	<div class="tile-area no-padding bg-transparent">
-		<div class="tile-container">
-			{% for video in lesson.get_videos %}
-				 <div class="tile-wide {{colors|random}}">
-				    <a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
-				        <span class="icon mif-film"></span>
-				        <div class="tile-label">
-				            {{ video.get_title|title }}
-				        </div>
-				        <span class="tile-badge bg-crimson">{{ video.get_position }}</span>
-				        <div class="slide-over bg-steel">
-				        	<p class="paragraph">{{ video.get_description|safe|linebreaksbr|truncatewords:25 }}</p>
-				        </div>
-				    </a>
-				</div>
+	<section>
+		<h4 class="text-center">{% trans "Questions of lesson" %}</h4>
+		<hr class="thin bg-grayLighter">
+		
+		<div class="tile-area no-padding bg-transparent">
+			<div class="tile-container">
+			{% for question in lesson.get_questions %}
+			<div class="tile-wide {{ question.color }} {% if question.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+			    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
+			        <span class="icon mif-list-numbered"></span>
+			        <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>
+			        {% if not question.exists %}
+			        <span class="tile-badge mif-bin"></span>
+			        {% endif %}
+			    </a>
+			</div>
 			{% empty %}
-			<h5 class="text-center">{%trans "Lesson does not have videos."%}</h5>
+			<h5 class="text-center">{% trans "No Question found." %}</h5>
 			{% endfor %}
+			</div>
 		</div>
-	</div>
+	</section>
+	
+	<section>
+		<h4 class="text-center">{% trans "Videos of lesson" %}</h4>
+		<hr class="thin bg-grayLighter">
+		
+		<div class="tile-area no-padding bg-transparent">
+			<div class="tile-container">
+				{% for video in lesson.get_videos %}
+					 <div class="tile-wide {{ video.color }}">
+					    <a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
+					        <span class="icon mif-film"></span>
+					        <div class="tile-label">
+					            {{ video.get_title|title }}
+					        </div>
+					        <span class="tile-badge bg-crimson">{{ video.get_position }}</span>
+					        <div class="slide-over bg-steel">
+					        	<p class="paragraph">{{ video.get_description|safe|linebreaksbr|truncatewords:25 }}</p>
+					        </div>
+					    </a>
+					</div>
+				{% empty %}
+				<h5 class="text-center">{%trans "Lesson does not have videos."%}</h5>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+
 </div>

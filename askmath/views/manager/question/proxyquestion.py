@@ -5,7 +5,7 @@ import json
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 from .iquestion import IQuestion
 from .question import Question
@@ -15,7 +15,7 @@ class ProxyQuestion(IQuestion):
     
     def __init__(self):
         self.__question = Question()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
     
     def choose_lesson(self, request, message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
@@ -25,7 +25,7 @@ class ProxyQuestion(IQuestion):
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def view_questions(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):

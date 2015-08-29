@@ -4,14 +4,14 @@
 {%  block content_right %}
 
 <div class="cell auto-size padding20 ">
-	<h2 class="text-dark  text-center">{% trans "Choose Person Types" %}<span class="mif-users place-right"></span></h2>
-	<hr class="thin bg-grayLighter">
+    <h2 class="text-dark  text-center">{% trans "Choose Person Types" %}<span class="mif-users place-right"></span></h2>
+    <hr class="thin bg-grayLighter">
 </div>
 
 <div class="tile-area no-padding bg-transparent">
 <div class="tile-container">
-{% for type in person_types %}
-<div class="tile-wide {{colors|random}} {% if discipline.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+{% for type, values in person_types.types.items %}
+<div class="tile {{ values.color }} {% if discipline.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
     <a href="/home/manager/persons/view/person_type={{ type }}/" class="tile-content iconic">
         <span class="icon mif-users"></span>
         <span class="tile-label">{{ type|title }}</span>

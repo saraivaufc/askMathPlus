@@ -3,11 +3,10 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
+from askMathPlus.settings import generate_color
 import os
-from ivideo import IVideo
 
-
-class Video(IVideo):
+class Video(models.Model):
 	lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
 		help_text=_("Choose the lesson which is video belongs."))
 	position = models.IntegerField(verbose_name=_("Position"),null=True,blank=True, 
@@ -19,6 +18,7 @@ class Video(IVideo):
 	file = models.FileField(verbose_name=_("File"), upload_to = 'documents/video/%Y/%m/%d',
 		help_text=_("Perform upload a file."))
 	
+	color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
 	visible = models.BooleanField(verbose_name=_("Visible"), default=False,
 		help_text=_("Select this option to leave visible video at all."))
 	creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)

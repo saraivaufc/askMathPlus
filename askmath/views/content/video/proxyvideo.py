@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect
 from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 
 
@@ -18,27 +18,27 @@ from .video import Video
 class ProxyVideo(IVideo):
     def __init__(self):
         self.__video = Video()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
         
     def view_videos(self, request, id_discipline, id_lesson, message=None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             #try:
             return self.__video.view_videos(request, discipline, lesson, message)
             #except:
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def view_video(self, request, id_video, id_discipline=None, id_lesson=None, message=None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_content"):
@@ -58,7 +58,7 @@ class ProxyVideo(IVideo):
                     return self.view_videos(request, id_discipline, id_lesson, message)
             
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 try:
                     discipline = lesson.disciplines.filter(exists=True, visible=True)[0]
@@ -77,4 +77,4 @@ class ProxyVideo(IVideo):
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)

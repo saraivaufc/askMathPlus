@@ -1,0 +1,25 @@
+{% extends 'askmath/manager/forum/category/manager_view_categories.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if category %}
+		<li><a href="/home/manager/forum/categories/view/category={{ category.id }}/"><span class="icon mif-bubbles"></span> <spam>{{ category }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
+{%  block content_right %}
+<div class="cell padding5">
+	{% if perms.askmath.write_category %}	
+		<a href="/home/manager/forum/categories/edit/category={{ category.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit Category" %}</a>
+		{% if category.exists %}
+			<a href="/home/manager/forum/categories/remove/category={{ category.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove Category" %}</a>
+		{% else %}
+			<a href="/home/manager/forum/categories/restore/category={{ category.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore Category" %}</a>
+		{% endif %}
+	{% endif %}
+</div>
+
+{% include "askmath/manager/forum/category/_render_category.html" %}
+
+{% endblock %}

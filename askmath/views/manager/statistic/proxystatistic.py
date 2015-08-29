@@ -8,11 +8,11 @@ from askmath.entities import Message, TextMessage, TypeMessage
 
 from .istatistic import IStatistic
 from .statistic import Statistic
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 class ProxyStatistic(IStatistic):
     def __init__(self):
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
         self.__statistic = Statistic()
     
     def choose_type(self, request, message=None):
@@ -23,5 +23,5 @@ class ProxyStatistic(IStatistic):
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     

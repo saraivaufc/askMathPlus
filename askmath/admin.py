@@ -10,6 +10,10 @@ from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, 
 from askmath.models.state import StudentLessonState
 from askmath.models.experience import StudentExperience
 from askmath.models.access import RegisterKey, AdministratorKey, TeacherKey, AssistantKey
+from askmath.models.category import Category
+from askmath.models.topic import Topic
+from askmath.models.comment import Comment
+from askmath.models.like import Like
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -109,4 +113,21 @@ class TeacherKeyAdmin(admin.ModelAdmin):
 
 @admin.register(AssistantKey)
 class AssistantKeyAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Topic)
+class TopicAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
     pass

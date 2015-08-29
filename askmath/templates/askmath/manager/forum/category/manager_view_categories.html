@@ -1,0 +1,34 @@
+{% extends 'askmath/manager/forum/manager_forum_home.html' %}
+{% load i18n %}
+
+
+{%  block content_right %}
+<div class="cell padding5">
+	{% if perms.askmath.write_category %}
+		<a href="/home/manager/forum/categories/add/" class="button primary" ><span class="mif-plus"></span> {% trans "Create Category" %}</a>
+	{% endif %}
+	{% if is_removed %}
+		<a href="/home/manager/forum/categories/view/" class="button success" data-popover="undo"><span class="mif-undo"></span> {% trans "Undo" %}</a>
+	{% else %}
+		<a href="/home/manager/forum/categories/view_removed/" class="button warning" data-popover="dump" ><span class="mif-bin"></span> {% trans "Dump" %}</a>
+	{% endif %}
+</div>
+
+<div class="tile-area padding10 bg-transparent">
+<div class="tile-container">
+{% for category in categories %}
+<div class="tile {{ category.color }} fg-white" data-role="tile">
+    <a href="/home/manager/forum/categories/view/category={{ category.id }}/" class="tile-content iconic">
+        <span class="icon mif-bubbles"></span>
+        <span class="tile-label">{{ category }}</span>
+        {% if not category.exists %}
+        <span class="tile-badge mif-bin"></span>
+        {% endif %}
+    </a>
+</div>
+{% empty %}
+<h3 class="text-center">{% trans "No Category Found" %}</h3>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

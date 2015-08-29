@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from datetime import datetime
-from .iprogress import IProgress
 
-class StudentVideoProgress(IProgress):
+class StudentVideoProgress(models.Model):
     student = models.ForeignKey('Student', verbose_name=_("Student"))
     discipline = models.ForeignKey('Discipline', verbose_name=_("Discipline"))
     lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"))

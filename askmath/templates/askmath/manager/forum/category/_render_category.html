@@ -1,0 +1,75 @@
+{% load i18n %}
+{% load humanize %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="padding5">
+			<button data-toggle="collapse" data-parent="#accordion" href="#form_topic"  class="image-button bg-lightBlue fg-white">
+			    {% trans "Add new topic.." %}
+			    <span class="icon bg-darkBlue mif-plus"></span>
+			</button>
+			<div id="form_topic" class="collapse">
+				{% with form_topic as form %}
+				<form class="form form-generic" action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
+				{% csrf_token %}
+				{% include 'askmath/_render_form.html' %}
+				<button type="submit" class="button success">{% trans "Post" %}</button>
+				</form>
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="panel width">
+			{% for topic in topics %}
+				<div class="heading {{ topic.color }}">
+			        <span class="icon mif-bubble"></span>
+			        <span class="title fg-white">{{ topic.get_title }}</span>
+			    </div>
+			    <div class="content">
+			    	<div class="container-fluid">
+			    	<div class="row">
+						<p class="lead">{{ topic.get_description|safe|linebreaksbr }}</p>
+			    	</div>
+			    	</div>
+			    	<hr class="bg-white" />
+			    	<div class="container-fluid">
+			    	<div class="row">
+			    		<div class="col-sm-6  col-md-6">
+				    		<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button bg-green fg-white">
+							    {% trans "Comment" %}
+							    <span class="icon bg-emerald">{{ topic.get_comments|length }}</span>
+							</a>
+						</div>
+						<div class="col-sm-6 col-md-6 text-right">
+							<span class="lead padding5">
+								{% blocktrans with person=topic.person creation=topic.creation|naturaltime  %}
+									Posted for <span class="tag success">{{ person }}</span> {{ creation }}.
+								{% endblocktrans %}
+							</span>
+						</div>
+			    	</div>
+			    	</div>
+			    </div>
+			    <hr class="transparent"/>
+			{% empty %}
+			  <h3>{% trans "No topic found." %}</h3>
+			{% endfor %}
+		</div>
+	
+{#		<div class="listview padding5">#}
+{#			{% for topic in topics %}#}
+{#				<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="list {{ topic.color }} fg-white">#}
+{#					<span class="list-icon mif-bubble  icon-font-icon"></span>#}
+{#			        <span class="list-title">{{ topic.get_title }}</span>#}
+{#			        <span class="place-right tag success">{{ topic.creation|naturaltime }}</span>#}
+{#			    </a>#}
+{#			{% empty %}#}
+{#			  <h3>{% trans "No topic found." %}</h3>#}
+{#			{% endfor %}#}
+{#		</div>#}
+	</div>
+</div>

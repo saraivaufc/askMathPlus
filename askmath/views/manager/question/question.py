@@ -3,35 +3,34 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.models.question import Item as ItemModel
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from .iquestion import IQuestion
-from askMathPlus.settings import COLORS_ALL
 from askmath.forms import QuestionForm, ItemForm
 from django.utils.translation import ugettext_lazy as _
 
 class Question(IQuestion):
     def choose_lesson(self, request, message = None):
         disciplines = []
-        for discipline in DisciplineModel.objects.filter(exists=True):
+        for discipline in CategoryModel.objects.filter(exists=True):
             if discipline.get_lessons():
                 disciplines.append(discipline) 
         return render(request, "askmath/manager/question/manager_choose_lessons.html",
-            {'request':request,'disciplines': disciplines, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'disciplines': disciplines, 'message': message})
     
     def view_questions(self, request, lesson, message = None):
         questions = lesson.get_questions()
         return render(request, "askmath/manager/question/manager_view_questions.html",
-            {'request':request,'questions': questions, 'lesson': lesson, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'questions': questions, 'lesson': lesson, 'message': message})
     
     def view_questions_removed(self, request, lesson, message = None):
         questions = QuestionModel.objects.filter(exists=False,lesson = lesson.id)
         return render(request, "askmath/manager/question/manager_view_questions.html",
-            {'request':request,'questions': questions, 'lesson': lesson,'is_removed': True, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'questions': questions, 'lesson': lesson,'is_removed': True, 'message': message})
     
     def view_question(self, request, lesson, question, message = None):
         return render(request, "askmath/manager/question/manager_view_question.html", 
-            {'request':request,'lesson': lesson,'question': question , 'message': message, 'colors': COLORS_ALL })
+            {'request':request,'lesson': lesson,'question': question , 'message': message})
     
     
     
@@ -113,5 +112,5 @@ class Question(IQuestion):
             except:
                 message = Message(TextMessage.QUESTION_ERROR_SORT, TypeMessage.ERROR)
         return render(request, "askmath/manager/question/manager_view_questions_sort.html",
-            {'request':request,'questions': questions, 'lesson': lesson, 'colors': COLORS_ALL, 'message': message})
+            {'request':request,'questions': questions, 'lesson': lesson, 'message': message})
     

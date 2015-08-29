@@ -70,7 +70,11 @@ class Filter(IFilter):
 				if request.user.is_authenticated():
 					return self.__proxy_lesson.view_lessons(request, discipline.id, message)
 			else:
-				occurrences = self.occurrences(discipline_title, expression)
+				occurrences = 0
+				for title in discipline_title.split(" "):
+					if len(title) > 2:
+						occurrences += self.occurrences(title, expression)
+						print title, '>>', expression,'>>', occurrences
 				if occurrences > 0:
 					disciplines_occurrences[discipline] = occurrences
 			
@@ -86,7 +90,11 @@ class Filter(IFilter):
 				if request.user.is_authenticated():
 					return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
 			else:
-				occurrences = self.occurrences(lesson_title, expression)
+				occurrences = 0
+				for title in lesson_title.split(" "):
+					if len(title) > 2:
+						occurrences += self.occurrences(title, expression)
+						print title, '>>', expression,'>>', occurrences
 				if occurrences > 0:
 					lessons_occurrences[lesson] = occurrences
 		
@@ -118,7 +126,7 @@ class Filter(IFilter):
 		for i in expression:
 			try:
 				if len(i) > 2 and len(text)>2:
-					occurrences += len(self.string_matching(text, i))
+					occurrences += len(self.string_matching(unicode(text), unicode(i)))
 			except:
 				pass
 		return occurrences

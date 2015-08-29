@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 from askmath.models import Contact as ContactModel
 
 from .icontact import IContact
@@ -13,7 +13,7 @@ class ProxyContact(IContact):
     
     def __init__(self):
         self.__contact = Contact()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
   
     def view_contacts(self, request, message = None):
         if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
@@ -23,7 +23,7 @@ class ProxyContact(IContact):
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def view_contacts_removed(self,request, message = None):
         if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):

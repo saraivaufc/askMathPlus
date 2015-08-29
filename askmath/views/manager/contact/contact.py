@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Contact as ContactModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.views.manager.contact.icontact import IContact
-from askMathPlus.settings import COLORS_ALL
 from django.utils.translation import ugettext_lazy as _
 
 class Contact(IContact):
@@ -13,16 +12,16 @@ class Contact(IContact):
     def view_contacts(self, request, message = None):
         contacts = ContactModel.objects.filter(exists=True)
         return render(request, "askmath/manager/contact/manager_view_contacts.html",
-            {'request':request,'contacts': contacts,'is_removed': False,'colors': COLORS_ALL, 'message': message})
+            {'request':request,'contacts': contacts,'is_removed': False,'message': message})
     
     def view_contacts_removed(self, request, message = None):
         contacts = ContactModel.objects.filter(exists=False)
         return render(request, "askmath/manager/contact/manager_view_contacts.html",
-            {'request':request,'contacts': contacts,'is_removed': True,'colors': COLORS_ALL, 'message': message})
+            {'request':request,'contacts': contacts,'is_removed': True,'message': message})
         
     def view_contact(self, request,contact,message = None):
         return render(request, "askmath/manager/contact/manager_view_contact.html", 
-            {'request':request,'contact': contact ,'message': message, 'colors': COLORS_ALL })
+            {'request':request,'contact': contact ,'message': message,})
     
     def remove_contact(self, request,contact, message = None):
         contact.delete()

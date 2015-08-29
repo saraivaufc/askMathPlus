@@ -3,12 +3,12 @@ from django.shortcuts import render, redirect
 from askmath.entities import Message, TextMessage, TypeMessage
 
 #MODELS
-from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.discipline import Discipline as CategoryModel
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.question import Question as QuestionModel
 from askmath.models.question import Item as ItemModel
 
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 from .iquestion import IQuestion
 from .question import Question
@@ -18,35 +18,35 @@ class ProxyQuestion(IQuestion):
     
     def __init__(self):
         self.__question = Question()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
     
     def view_initial_details(self, request, id_discipline, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             #try:
             return self.__question.view_initial_details(request, discipline, lesson)
             #except:
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
         
     def view_question(self, request, id_discipline, id_lesson,message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
@@ -58,12 +58,12 @@ class ProxyQuestion(IQuestion):
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def answer_question(self, request, id_discipline, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -100,7 +100,7 @@ class ProxyQuestion(IQuestion):
     def jump_question(self, request, id_discipline, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -125,7 +125,7 @@ class ProxyQuestion(IQuestion):
     def choose_skipped_question(self, request, id_discipline, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_question(request, id_discipline, id_lesson, message)
@@ -150,15 +150,15 @@ class ProxyQuestion(IQuestion):
     def reset_lesson(self,request, id_discipline, id_lesson, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             #try:
             return self.__question.reset_lesson(request, discipline, lesson)
             #except:
@@ -170,15 +170,15 @@ class ProxyQuestion(IQuestion):
     def help_question(self,request, id_discipline, id_lesson,id_question, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
+                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__home.index(request, message)
+                return self.__proxy_home.index(request, message)
             try:
                 question = QuestionModel.objects.filter(id = id_question, exists=True,visible=True)[0]
             except:

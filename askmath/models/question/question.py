@@ -2,10 +2,10 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from askMathPlus.settings import generate_color
 from datetime import datetime
-from iquestion import IQuestion
 
-class Question(IQuestion):
+class Question(models.Model):
     lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
         help_text=_("Choose the lesson which is question belongs."))
     position = models.IntegerField(verbose_name=_("Position"),null=False,blank=False,
@@ -19,6 +19,7 @@ class Question(IQuestion):
     SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
     scores=models.IntegerField(verbose_name=_("Scores"), choices=SCORES)
     
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
     visible = models.BooleanField(verbose_name=_("Visible"), default=False,
         help_text=_("Select this option to leave visible question at all."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)

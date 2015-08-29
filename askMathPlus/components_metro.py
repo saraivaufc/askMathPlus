@@ -1,3 +1,5 @@
+import random
+
 COLORS = [
     "bg-lime",
     "bg-green",
@@ -42,4 +44,7 @@ COLORS_LIGHT =[
     "bg-lightOrange",
 ]
 
-COLORS_ALL = COLORS + COLORS_DARK + COLORS_LIGHT
+COLORS_ALL = COLORS + COLORS_LIGHT
+
+def generate_color():
+    return random.choice(COLORS_ALL)

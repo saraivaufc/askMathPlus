@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from datetime import datetime
-from .iexperience import IExperience
 
-class StudentExperience(IExperience):
+class StudentExperience(models.Model):
     student = models.ForeignKey('Student', verbose_name=_("Student"))
     scores = models.IntegerField(default=0,verbose_name=_("Scores"))
     max_scores = models.IntegerField(default=10,verbose_name=_("Max Scores"))

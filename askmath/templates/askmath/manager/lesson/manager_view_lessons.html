@@ -22,7 +22,7 @@
 		<div class="tile-container">
 			{% for item in discipline.list %}
 				{% for lesson in item.lessons %}
-					<div class="tile {{colors|random}} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+					<div class="tile {{ lesson.color }} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
 					    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
 					        <span class="icon mif-clipboard"></span>
 					        <span class="tile-label">{{ lesson.get_title }}</span>

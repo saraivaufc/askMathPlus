@@ -20,23 +20,29 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-            	{% if perms.askmath.access_content %}
-            	<form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
-	            {% csrf_token %}
-					<div class="form-group">
-						<div class="btn-group">
-							<input  id="search" name="search" type="text" class="form-control" placeholder="{%  trans "Search..." %}" required>
-							<span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
-						</div>
-						<button id="searchbutton" type="submit" class="btn btn-submit bg-dark pull-right">
-							<span class=" glyphicon glyphicon-search"></span>
-						</button>
-					</div>
-				</form>
-			    {% endif %}
+            	<li>
+                    <div class="container-fluid">
+                    <div class="row">
+                    {% if perms.askmath.access_content %}
+                    <form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <div class="btn-group">
+                                <input  id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
+                                <span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
+                            </div>
+                            <button id="searchbutton" type="submit" class="btn btn-submit bg-dark fg-white pull-right">
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+                    </div>
+                    </div>  
+                </li>
             	<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">
-						<img class="rss-icon" src="{{ STATIC_URL }}/askmath/img/icons/rss.png">
+						<img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.png">
 					</a>
 				</li>
             	{% if request.user.is_authenticated %}
@@ -53,9 +59,9 @@
                                     <div class="col-lg-4">
                                         <p class="text-center">
                                             {% if request.user.get_profile_image %}
-                                            <img src="{{ request.user.get_profile_image.url }}">
+                                            <img class="img" src="{{ request.user.get_profile_image.url }}">
                                             {% else %}
-                                            <img src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
+                                            <img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
                                             {% endif %}
                                         </p>
                                     </div>

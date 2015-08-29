@@ -48,8 +48,6 @@ function Init(){
         });
 })(jQuery);
 
-window.onresize = resize_window();
-
 function resize_window(){
 	var screean = parseInt($(window).height());
 	var header = parseInt($("#header").css("height"));
@@ -61,9 +59,7 @@ function resize_window(){
 	};
 }
 
-
-
-
+$(window).resize(resize_window);
 
 $(function () {
     $('.button-checkbox').each(function () {
@@ -272,4 +268,26 @@ $(function(){
 	$("#back").click(function(){
 		window.history.back();
 	});
+});
+
+
+$(function(){
+	var person = "Ciano Saraiva";
+	var date = "12 de agosto de 2014"
+	var comment = "Olá Pessoal, como vocês estão?"
+	$("list-comments").each(function(){
+		
+	});
+	$("#list-coments").append(
+		"<li class='list-group-item'>" +
+		"<span class='tag success'>" + person +"</span>"+ date +"." +
+		"<p>"+ comment +"</p></li>");
+})
+
+$("#form-comment").submit(function(){
+	var id_topic = $(this).attr("topic");
+	var id_category =$(this).attr("category");
+	var comment = $(this).find("#description").val();
+	$.get()
+	return false;
 });

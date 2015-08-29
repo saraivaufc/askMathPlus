@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block header_two %}
-<div class="padding5">
+<div class="padding10">
 	<div class="menu-breadcrumbs">
 		<ul id="menu" class="breadcrumbs2 dark">
 		    {% block breadcrumbs %}
@@ -28,14 +28,14 @@
 	<div class="cell size5">
 		<div class="row tile-container cell-auto-size">
 			<div class="cell tile bg-red fg-white" data-role="tile">
-		        <a href="/authentication/signup/" class="tile-content iconic">
-		            <span class="icon mif-clipboard"></span>
+		        <a href="/contents/" class="tile-content iconic">
+		            <span class="icon mif-books"></span>
 		        </a>
-		        <span class="tile-label">{% trans "Register" %}</span>
+		        <span class="tile-label">{% trans "Contents" %}</span>
 		    </div>
 		    <div class="cell tile-wide bg-green fg-white" data-role="tile">
 		        <a href="/authentication/login/" class="tile-content iconic">
-		            <span class="icon mif-play"></span>
+		            <span class="icon mif-play mif-ani-pass mif-ani-fast"></span>
 		        </a>
 		        <span class="tile-label">{% trans "Start here" %}</span>
 		    </div>
@@ -48,10 +48,10 @@
 		        <span class="tile-label">{% trans "About the project" %}</span>
 		    </div>
 		    <div class="cell tile bg-yellow fg-white" data-role="tile">
-		        <a href="/contents/" class="tile-content iconic">
-		            <span class="icon mif-books"></span>
+		        <a href="/home/forum/" class="tile-content iconic">
+		            <span class="icon mif-bubbles"></span>
 		        </a>
-		        <span class="tile-label">{% trans "Contents" %}</span>
+		        <span class="tile-label">{% trans "Forum" %}</span>
 		    </div>
 		</div>
 	</div>

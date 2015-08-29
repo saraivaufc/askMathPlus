@@ -27,7 +27,7 @@
 <div class="tile-area padding10 bg-transparent">
 <div class="tile-container">
 {% for question in questions %}
-<div class="tile-wide {{colors|random}} {% if question.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+<div class="tile-wide {{ question.color }} {% if question.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
     <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
         <span class="icon mif-list-numbered"></span>
         <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>

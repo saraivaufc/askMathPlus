@@ -20,7 +20,7 @@
 		<div class="tile-container">
 		{% for video2 in lesson.get_videos_visibles %}
 		{% if video != video2 %}
-	     <div class="tile {{colors|random}}">
+	     <div class="tile {{ video2.color }}">
 			    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video2.id }}/" class="tile-content slide-down iconic">
 			        <span class="icon mif-film"></span>
 			        <div class="tile-label">

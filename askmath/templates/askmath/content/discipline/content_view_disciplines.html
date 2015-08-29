@@ -9,7 +9,7 @@
 <div class="tile-group">
 	<span id="index" class="tile-group-title">{% trans "Disciplines" %}</span>
 	{% for discipline in disciplines %}
-         <div class="tile-wide {{colors|random}}">
+         <div class="tile-wide {{ discipline.color }}">
 		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-stack2"></span>
 		        <div class="tile-label">

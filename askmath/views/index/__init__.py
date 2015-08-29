@@ -1,2 +1,2 @@
-from home import Home
+from .proxyhome import ProxyHome
 

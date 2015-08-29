@@ -3,19 +3,18 @@
 
 <section id="text-about" class="lead text-justify">
 {% blocktrans %}
-<p>
-This system is an initiative of the PET group Information Technology of the Federal University of Ceará. 
-Their goal is to provide a simple, intuitive and elegant environment for the student who wants to delve 
-into the most diverse fields of mathematics.
+<p class="paragraph">
+Este projeto é uma iniciativa do grupo PET Tecnologia da Informação da Universidade Federal do Ceará.
+Nosso objetivo é provê uma simples, intuitiva e elegante plataforma para os estudantes que querem aprender mais sobre os diversos ramos da Matemática.
 </p>
-<p>
-This system, as well as all those who develop, own open-source and is under license
-GNU 2.0, which allows you to copy, distribute and modify its source code.
+<p class="paragraph">
+Assim como todos que desenvolvemos, este sistema possui código-fonte livre e está sob a licença
+GNU 2.0, permitindo assim que você possa copiar, distribuir e modificar seu código-fonte.
 </p>
 {% endblocktrans %}
 
 <article>
-	<h3 class="list-heading">{% trans "Developers:" %}</h3>
+	<h4 class="list-heading">{% trans "Developers:" %}</h4>
 	<ul>
 		{% for name,email in "SITE_DEVELOPERS"|settings  %}
 			<li>{{ name }} - {{ email }}</li>

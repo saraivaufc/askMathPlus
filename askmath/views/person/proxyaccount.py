@@ -6,13 +6,13 @@ from askmath.forms.users import PersonAlterPassword
 
 from askmath.views.person.iaccount import IAccount
 from askmath.views.person.account import Account
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 
 
 class ProxyAccount(IAccount):
     def __init__(self):
         self.__account = Account()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
         
     def view_profile(self, request, message=None):
         if request.user.is_authenticated():
@@ -22,7 +22,7 @@ class ProxyAccount(IAccount):
                 #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def edit_profile(self, request, message=None):
         if request.user.is_authenticated():
@@ -32,7 +32,7 @@ class ProxyAccount(IAccount):
             #   message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def alter_password(self, request, message = None):
         if not request.user.is_authenticated():

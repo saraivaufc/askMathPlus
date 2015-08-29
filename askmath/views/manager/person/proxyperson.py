@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.entities import PersonTypes
 from askmath.models.users import Person as PersonModel
-from askmath.views.index import Home
+from askmath.views.index import ProxyHome
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
 from .iperson import IPerson
@@ -14,7 +14,7 @@ from .person import Person
 class ProxyPerson(IPerson):
     def __init__(self):
         self.__account = Person()
-        self.__home = Home()
+        self.__proxy_home = ProxyHome()
         
     def choose_person_types(self, request, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
@@ -24,13 +24,13 @@ class ProxyPerson(IPerson):
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     def view_persons(self, request, PERSONTYPE, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
-                if PERSONTYPE in person_types.get_types():
+                if PERSONTYPE in person_types.get_types().keys():
                     return self.__account.view_persons(request, PERSONTYPE, message)
                 else:
                     message = Message(TextMessage.ERROR, TypeMessage.ERROR)
