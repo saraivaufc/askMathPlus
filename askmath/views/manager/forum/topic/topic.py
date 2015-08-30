@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.forms import TopicForm, CommentForm
 from ..category import ProxyCategory
+import json
 
 class Topic(ITopic):
     def __init__(self):
@@ -66,8 +67,18 @@ class Topic(ITopic):
     def restore_topic(self):
         pass
     
-    def like_topic(self):
-        pass
+    def like_topic(self, request, topic, message=None):
+        if request.user in topic.get_likes_persons():
+            return HttpResponse("False")
+        elif topic.like(request.user):
+            return HttpResponse(json.dumps({'result':'True','value':len(topic.get_likes())}))
+        else:
+            return HttpResponse("False")
     
-    def unlike_topic(self):
-        pass
+    def unlike_topic(self, request, topic, message=None):
+        if not request.user in topic.get_likes_persons():
+            return HttpResponse("False")
+        elif topic.unlike(request.user):
+            return HttpResponse(json.dumps({'result':'True','value':len(topic.get_likes())}))
+        else:
+            return HttpResponse("False")

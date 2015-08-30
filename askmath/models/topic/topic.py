@@ -40,6 +40,29 @@ class Topic(models.Model):
         comments = Comment.objects.filter(exists=True, topic=self.id)
         return comments
     
+    def get_comments_persons(self):
+        persons = []
+        for comment in self.get_comments():
+            persons.append(comment.get_person())
+        return persons
+    
+    def like(self, person):
+        from askmath.models import Like
+        try:
+            like = Like.objects.create(person=person)
+            self.likes.add(like)
+            return True
+        except:
+            return False
+        
+    def unlike(self, person):
+        try:
+            like = self.likes.get(person=person)
+            self.likes.remove(like)
+            return True
+        except:
+            return False
+    
     def delete(self):
         self.exists = False
         self.save()

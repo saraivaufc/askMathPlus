@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^edit/category=(?P<id_category>\d+)/topic=(?P<id_topic>\d+)/$', proxy_topic.edit_topic),
     url(r'^remove/category=(?P<id_category>\d+)/topic=(?P<id_topic>\d+)/$', proxy_topic.remove_topic),
     url(r'^restore/category=(?P<id_category>\d+)/topic=(?P<id_topic>\d+)/$', proxy_topic.restore_topic),
-    url(r'^like/category=(?P<id_category>\d+)/topic=(?P<id_topic>\d+)/$', proxy_topic.like_topic),
-    url(r'^unlike/category=(?P<id_category>\d+)/topic=(?P<id_topic>\d+)/$', proxy_topic.unlike_topic),
+    url(r'^like/topic=(?P<id_topic>\d+)/$', proxy_topic.like_topic),
+    url(r'^unlike/topic=(?P<id_topic>\d+)/$', proxy_topic.unlike_topic),
 )

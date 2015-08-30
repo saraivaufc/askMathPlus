@@ -46,3 +46,28 @@ class ProxyComment(IComment):
     
     def edit_comment(self):
         pass
+    
+    
+    def like_comment(self, request, id_comment, message=None):
+        if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
+            try:
+                comment = CommentModel.objects.filter(exists=True, id=id_comment)[0]
+            except:
+                return HttpResponse("False")
+            try:
+                return self.__comment.like_comment(request,comment, message)
+            except:
+                pass
+        return HttpResponse("None")
+    
+    def unlike_comment(self, request, id_comment, message=None):
+        if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
+            try:
+                comment = CommentModel.objects.filter(exists=True, id=id_comment)[0]
+            except:
+                return HttpResponse("False")
+            try:
+                return self.__comment.unlike_comment(request, comment, message)
+            except:
+                pass
+        return HttpResponse("None")

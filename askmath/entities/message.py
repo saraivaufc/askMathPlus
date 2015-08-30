@@ -159,6 +159,11 @@ class TextMessage():
  	
  	TOPIC_SUCCESS_RESTORE = _(u"Topic successfully restored.")
 	TOPIC_ERROR_RESTORE = _(u"Error restore topic.")
+	
+	TOPIC_SUCCESS_LIKE = _(u"Topic successfully liked.")
+	TOPIC_ERROR_LIKE = _(u"Error like topic.")
+	TOPIC_SUCCESS_UNLIKE = _(u"Topic successfully unliked.")
+	TOPIC_ERROR_UNLIKE = _(u"Error unlike topic.")
  
  	TOPIC_NOT_FOUND = _(u"Topic not found.")
  	
@@ -174,6 +179,10 @@ class TextMessage():
  	
  	COMMENT_SUCCESS_RESTORE = _(u"Comment successfully restored.")
 	COMMENT_ERROR_RESTORE = _(u"Error restore comment.")
+
+	COMMENT_SUCCESS_LIKE = _(u"Comment successfully liked.")
+	COMMENT_ERROR_LIKE = _(u"Error like comment.")
+ 
  
  	COMMENT_NOT_FOUND = _(u"Comment not found.")
  	

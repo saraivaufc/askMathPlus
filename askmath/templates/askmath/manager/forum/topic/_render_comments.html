@@ -8,14 +8,14 @@
         <span class="title fg-white">{{ comment.person.get_name }}</span>
         <div class="place-right">
         	<span class="lead">
-				{% blocktrans with creation=topic.creation|naturaltime  %}
+				{% blocktrans with creation=comment.creation|naturaltime  %}
 					<span class="tag info">{{ creation }}</span>
 				{% endblocktrans %}
 			</span>
-        	{% if request.user == topic.person %}
+        	{% if request.user == comment.person %}
 				<a href="/home/manager/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
 			{% endif %}
-			{% if topic.exists %}
+			{% if comment.exists %}
 				<a href="/home/manager/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
 			{% endif %}
         </div>
@@ -26,6 +26,33 @@
 				<p class="lead">{{ comment.get_description|linebreaksbr }}</p>
 	    	</div>
     	</div>
+    	<hr class="transparent" />
+    	<div class="container-fluid">
+	    	<div class="row">
+	    		<div class="col-sm-6 col-md-6 ">
+	    			{% if request.user in comment.get_likes_persons %}
+					<button href="/home/manager/forum/comments/unlike/comment={{ comment.id }}/" class="button-like image-button bg-green fg-white">
+					{% else %}
+					<button href="/home/manager/forum/comments/like/comment={{ comment.id }}/" class="button-like image-button bg-gray fg-white">
+					{% endif %}	
+						<span class="like-count">{{ comment.get_likes|length }}</span>
+						{% if request.user in comment.get_likes_persons %}
+					    <span class="icon mif-thumbs-up bg-emerald"></span>
+					    {% else %}
+					    <span class="icon mif-thumbs-up"></span>
+					    {% endif %}
+					</button>
+	    		</div>
+	    		<div class="col-sm-6 col-md-6  text-right">
+	    			{% if comment.file %}
+					<a href="{{ comment.file.url }}" target="_blank" class="image-button bg-gray fg-white">
+						{% trans "Downlad File" %}
+					    <span class="icon mif-folder-download"></span>
+					</a>
+					{% endif %}
+	    		</div>
+	    	</div>
+	    </div>
 	</div>
 </div>
 </div>

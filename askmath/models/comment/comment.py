@@ -26,7 +26,31 @@ class Comment(models.Model):
         return self.file
     
     def get_likes(self):
-        return self.likes.objects.filter(exists=True)
+        return self.likes.filter(exists=True)
+    
+    def get_likes_persons(self):
+        persons = []
+        for like in self.get_likes():
+            persons.append(like.get_person())
+        return persons
+    
+    def like(self, person):
+        from askmath.models import Like
+        try:
+            like = Like.objects.create(person=person)
+            self.likes.add(like)
+            return True
+        except:
+            return False
+        
+    def unlike(self, person):
+        try:
+            like = self.likes.get(person=person)
+            self.likes.remove(like)
+            return True
+        except:
+            return False
+    
     
     def delete(self):
         self.exists = False

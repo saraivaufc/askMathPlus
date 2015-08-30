@@ -5,3 +5,9 @@ class IComment():
     
     def edit_comment(self):
         pass
+    
+    def like_comment(self):
+        pass
+    
+    def unlike_comment(self):
+        pass

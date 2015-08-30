@@ -2,7 +2,7 @@ from .icomment import IComment
 from askmath.models import Comment as CommentModel
 from django.template import Context, Template
 from django.http.response import HttpResponse
-
+import json
 from ..category import ProxyCategory
 from ..topic import ProxyTopic
 
@@ -19,3 +19,20 @@ class Comment(IComment):
     
     def edit_comment(self):
         pass
+    
+    def like_comment(self, request, comment, message=None):
+        print "Plaa"
+        if request.user in comment.get_likes_persons():
+            return HttpResponse("False")
+        elif comment.like(request.user):
+            return HttpResponse(json.dumps({'result':'True','value':len(comment.get_likes())}))
+        else:
+            return HttpResponse("False")
+    
+    def unlike_comment(self, request, comment, message=None):
+        if not request.user in comment.get_likes_persons():
+            return HttpResponse("False")
+        elif comment.unlike(request.user):
+            return HttpResponse(json.dumps({'result':'True','value':len(comment.get_likes())}))
+        else:
+            return HttpResponse("False")

@@ -4,6 +4,7 @@ from askmath.models.topic import Topic as TopicModel
 from .itopic import ITopic
 from .topic import Topic
 from ..category import ProxyCategory
+from django.http.response import HttpResponseRedirect, HttpResponse
 
 class ProxyTopic(ITopic):
     def __init__(self):
@@ -96,8 +97,26 @@ class ProxyTopic(ITopic):
     def restore_topic(self):
         pass
     
-    def like_topic(self):
-        pass
+    def like_topic(self, request, id_topic, message=None):
+        if request.user.has_perm("askmath.write_topic")  and request.user.has_perm("askmath.access_manager"):
+            try:
+                topic = TopicModel.objects.filter(exists=True, id=id_topic)[0]
+            except:
+                return HttpResponse("False")
+            try:
+                return self.__topic.like_topic(request,topic, message)
+            except:
+                pass
+        return HttpResponse("None")
     
-    def unlike_topic(self):
-        pass
+    def unlike_topic(self, request,id_topic, message=None):
+        if request.user.has_perm("askmath.write_topic")  and request.user.has_perm("askmath.access_manager"):
+            try:
+                topic = TopicModel.objects.filter(exists=True, id=id_topic)[0]
+            except:
+                return HttpResponse("False")
+            try:
+                return self.__topic.unlike_topic(request, topic, message)
+            except:
+                pass
+        return HttpResponse("None")

@@ -28,17 +28,17 @@
 				<div class="heading {{ topic.color }}">
 			        <span class="icon mif-bubble"></span>
 			        <span class="title fg-white">{{ topic.person.get_name }}</span>
-			        {% if perms.askmath.white_topic and perms.askmath.access_manager_forum %}
+			        {% if perms.askmath.write_topic and perms.askmath.access_manager_forum %}
 			        <div class="place-right">
 			        	<span class="lead">
 							{% blocktrans with creation=topic.creation|naturaltime  %}
-								<span class="tag info">{{ creation }}</span>
+								{{ creation }}
 							{% endblocktrans %}
 						</span>
 			        	{% if request.user == topic.person %}
 							<a href="/home/manager/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
 						{% endif %}
-						{% if topic.exists and perms.askmath.access_forum %}
+						{% if topic.exists and perms.askmath.access_manager_forum %}
 							<a href="/home/manager/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
 						{% endif %}
 			        </div>
@@ -54,14 +54,22 @@
 			    	<div class="container-fluid">
 			    	<div class="row">
 			    		<div class="col-sm-6  col-md-6">
-				    		<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button bg-green fg-white">
+				    		<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button {% if request.user in topic.get_comments_persons %}bg-green{% else %}bg-gray{% endif %} fg-white">
 							    {{ topic.get_comments|length }}
+							    {% if request.user in topic.get_comments_persons %}
 							    <span class="icon glyphicon glyphicon-comment bg-emerald"></span>
+							    {% else %}
+							    <span class="icon glyphicon glyphicon-comment"></span>
+							    {% endif %}
 							</a>
-							<button class="image-button bg-gray fg-white">
-								{{ topic.get_likes|length }}
+							{% if request.user in topic.get_likes_persons %}
+							<button href="/home/manager/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
+							{% else %}
+							<button href="/home/manager/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
+							{% endif %}	
+								<span class="like-count">{{ topic.get_likes|length }}</span>
 								{% if request.user in topic.get_likes_persons %}
-							    <span class="icon bg-green mif-thumbs-up"></span>
+							    <span class="icon mif-thumbs-up bg-emerald"></span>
 							    {% else %}
 							    <span class="icon mif-thumbs-up"></span>
 							    {% endif %}
@@ -71,11 +79,7 @@
 							{% if topic.file %}
 							<a href="{{ topic.file.url }}" target="_blank" class="image-button bg-gray fg-white">
 								{% trans "Downlad File" %}
-								{% if request.user in topic.get_likes_persons %}
-							    <span class="icon bg-green mif-thumbs-up"></span>
-							    {% else %}
 							    <span class="icon mif-folder-download"></span>
-							    {% endif %}
 							</a>
 							{% endif %}
 						</div>

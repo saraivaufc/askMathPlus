@@ -270,24 +270,63 @@ $(function(){
 	});
 });
 
-
 $(function(){
-	var person = "Ciano Saraiva";
-	var date = "12 de agosto de 2014"
-	var comment = "Olá Pessoal, como vocês estão?"
-	$("list-comments").each(function(){
-		
+	$(".button-like").click(function(){
+		var $button = $(this);
+		var href= $(this).attr("href");
+		if($(this).hasClass("bg-green")){
+			$.get(href).done(function(data){
+				try{
+					var data =  JSON.parse(data);
+					if(data['result'] == "True"){
+						unlike($button,data['value']);
+					}
+				}catch (e){
+					console.log(e);					
+				}
+			});
+		}else{
+			$.get(href).done(function(data){
+				try{
+					var data = JSON.parse(data);
+					if(data['result'] == "True"){
+						like($button,data['value']);
+					}
+				}catch (e){
+					console.log(e);
+				}
+			});
+		};
 	});
-	$("#list-coments").append(
-		"<li class='list-group-item'>" +
-		"<span class='tag success'>" + person +"</span>"+ date +"." +
-		"<p>"+ comment +"</p></li>");
-})
-
-$("#form-comment").submit(function(){
-	var id_topic = $(this).attr("topic");
-	var id_category =$(this).attr("category");
-	var comment = $(this).find("#description").val();
-	$.get()
-	return false;
 });
+
+
+function like(buttom, likes){
+	var like_count = buttom.find(".like-count");
+	try{
+		likes = parseInt(likes);
+	}catch(e){
+		likes = parsetInt(like_count.html()) + 1;
+	}
+	buttom.removeClass("bg-gray");
+	buttom.addClass("bg-green");
+	buttom.find(".icon").addClass("bg-emerald");
+	like_count.text(likes);
+	var href= buttom.attr("href");
+	buttom.attr("href", href.replace("/like","/unlike"));
+}
+
+function unlike(buttom, likes){
+	var like_count = buttom.find(".like-count");
+	try{
+		likes = parseInt(likes);
+	}catch(e){
+		likes = parsetInt(like_count.html()) - 1;
+	}
+	buttom.addClass("bg-gray");
+	buttom.removeClass("bg-green");
+	buttom.find(".icon").removeClass("bg-emerald");
+	like_count.text(likes);
+	var href= buttom.attr("href");
+	buttom.attr("href", href.replace("/unlike","/like"));
+}
