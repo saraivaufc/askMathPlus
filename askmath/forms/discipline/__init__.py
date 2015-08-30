@@ -1,3 +1,3 @@
-from .discipline import CategoryForm
+from .discipline import DisciplineForm
 
 

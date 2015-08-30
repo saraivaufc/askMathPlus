@@ -11,7 +11,10 @@
 <div class="container">	
 	<form action="." method="POST">
 		{% csrf_token %}
-		<button class="button success" type="submit" ><span class="mif-cog"></span>{% trans " Generate Key" %}</button>
+		<button type="submit" class="image-button button-info">
+			{% trans " Generate Key" %}
+			<span class="icon mif-cog"></span>
+		</button>
 	</form>
 	
 	{% if new_register_key %}

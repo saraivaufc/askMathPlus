@@ -1,3 +1,1 @@
-from .proxyperson import ProxyPerson
-
-
+from .proxyaccount import ProxyAccount

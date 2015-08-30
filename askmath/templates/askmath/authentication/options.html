@@ -1,0 +1,156 @@
+{% extends 'askmath/index/home.html' %}
+
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/authentication/options/"><span class="icon mif-lock"></span> <spam>{% trans "Authentication" %}</spam></a></li>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+    <div class="tabcontrol" data-role="tabControl">
+    	<ul class="tabs">
+            <li><a href="#frame_sign_in">{% trans "Sign In" %}</a></li>
+            <li><a href="#frame_sign_up">{% trans "Sign Up" %}</a></li>
+            <li><a href="#frame_recover_password">{% trans "Recover Password" %}</a></li>
+        </ul>
+    
+        <div class="frames">
+            <div class="frame" id="frame_sign_in">
+           		{% with form_signin as form %}
+           		<form action="/authentication/signin/" method="POST" role="form">
+			    {% csrf_token %}
+			        <h2 class="text-light">{% trans "Login to service" %}</h2>
+			        <hr class="thin"/>
+			        <br />
+			        <div class="input-control text full-size" data-role="input">
+			            <label for="user_login">{{ form.username.label_tag }}</label>
+			            {{ form.username }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="input-control password full-size" data-role="input">
+			            <label for="user_password">{{ form.password.label_tag }}</label>
+			            {{ form.password }}
+			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="form-actions">
+						<button type="submit" class="button image-button btn-block button-primary">
+							{% trans "Sign In" %}
+							<span class="icon mif-enter"></span>
+						</button>
+			        </div>
+			    </form> 
+			    {% endwith %}
+            </div>
+            <div class="frame" id="frame_sign_up">
+				{% with form_signup as form %}
+				<form  action="/authentication/signup/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
+			    {% csrf_token %}
+			        <h2 class="text-light">{% trans "Register to service" %}</h2>
+			        <hr class="thin"/>
+			        <br />
+			        <div class="input-control text full-size" data-role="input">
+			            <label for="user_name">{{ form.name.label_tag }}</label>
+			            {{ form.name }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="input-control email full-size" data-role="input">
+			            <label for="user_email">{{ form.email.label_tag }}</label>
+			            {{ form.email }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="input-control text full-size" data-role="input">
+			            <label for="user_username">{{ form.username.label_tag }}</label>
+			            {{ form.username }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="input-control password full-size" data-role="input">
+			            <label for="user_password">{{ form.password.label_tag }}</label>
+			            {{ form.password }}
+			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			        </div>
+			        <br />
+			        <br />
+				    <div class="input-control file full-size" data-role="input">
+				        {{ form.profile_image }}
+				        <button class="button"><span class="mif-folder"></span></button>
+				    </div>
+				    <br />
+				    <br />
+				    <div class="input-control" data-role="select">
+					    <select name="type" id="select-signup">
+						    <option value="STUDENT">{% trans "Student" %}</option>
+				            <option value="ASSISTANT">{% trans "Assistant" %}</option>
+				            <option value="TEACHER">{% trans "Teacher" %}</option>
+				            <option value="ADMINISTRATOR">{% trans "Administrator" %}</option>
+					    </select>
+					</div>
+					<div class="input-control text" data-role="input">
+			            <input id="input-key" name="key" placeholder="{% trans "Enter your key" %}" disabled type="text"></input>
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <label class="switch">
+					    <input type="checkbox" required>
+					    <span class="check"></span>
+					    <span class="text-right">
+					    	{% blocktrans %}By clicking here, you agree to the <a href="/terms/" >Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
+					    </span>
+					</label>
+			        <div class="form-actions">
+						<button type="submit" class="button image-button btn-block button-primary">
+							{% trans "Sign In" %}
+							<span class="icon mif-enter"></span>
+						</button>
+			        </div>
+			    </form>
+			{% endwith %}            
+            </div>
+            <div class="frame" id="frame_recover_password">
+           		{% with form_recover_password as form %}
+           		<form action="/authentication/recover_password/" method="POST" role="form">
+			    {% csrf_token %}
+			        <h2 class="text-light">{% trans "Recover Password" %}</h2>
+			        <hr class="thin"/>
+			        <br />
+			        <div class="input-control text full-size" data-role="input">
+			            <label>{{ form.username.label_tag }}</label>
+			            {{ form.username }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="input-control email full-size" data-role="input">
+			            <label>{{ form.email.label_tag }}</label>
+			            {{ form.email }}
+			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+			        </div>
+			        <br />
+			        <br />
+			        <div class="form-actions">
+			        	<button type="submit" class="image-button btn-block button-primary">
+							{% trans "Recover" %}
+							<span class="icon mif-history"></span>
+						</button>
+			        </div>
+			    </form>
+			    {% endwith %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -11,12 +11,21 @@
 
 <div class="cell auto-size padding20">
 	{% if write_person %}
-		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="button primary" ><span class="mif-key"></span>{% trans " View Keys" %}</a>
+		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="image-button button-success">
+			{% trans "View Keys" %}
+			<span class="icon mif-key"></span>
+		</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="button success" data-popover="undo"><span class="mif-undo"></span>{% trans " Undo" %}</a>
+		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-info" data-popover="undo">
+			{% trans "Undo" %}
+			<span class="icon mif-undo"></span>
+		</a>
 	{% else %}
-		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="button warning" data-popover="dump"><span class="mif-bin"></span>{% trans " Dump" %}</a>
+		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="image-button button-warning" data-popover="dump">
+			{% trans "Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
 	{% endif %}
 </div>
 

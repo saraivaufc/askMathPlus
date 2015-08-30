@@ -42,16 +42,16 @@
 				    {% endif %}
 				</a>
 				{% if request.user in topic.get_likes_persons %}
-				<button href="/home/manager/forum/topics/unlike/category={{ category.id }}/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
+				<button href="/home/manager/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
 				{% else %}
-				<button href="/home/manager/forum/topics/like/category={{ category.id }}/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
+				<button href="/home/manager/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
 				{% endif %}	
-					<span class="like-count">{{ topic.get_likes|length }}</span>
-					{% if request.user in topic.get_likes_persons %}
-				    <span class="icon mif-thumbs-up bg-emerald"></span>
-				    {% else %}
-				    <span class="icon mif-thumbs-up"></span>
-				    {% endif %}
+				<span class="like-count">{{ topic.get_likes|length }}</span>
+				{% if request.user in topic.get_likes_persons %}
+		    	<span class="icon mif-thumbs-up bg-emerald"></span>
+		    	{% else %}
+		    	<span class="icon mif-thumbs-up"></span>
+		  		{% endif %}
 				</button>
 			</div>
 			<div class="col-sm-6 col-md-6 text-right">

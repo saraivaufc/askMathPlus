@@ -58,7 +58,7 @@ class Account(IAccount):
     def remove_account(self, request, password, message=None):
         if request.user.check_password(password):
             request.user.delete()
-            from askmath.views.authentication.proxyperson import ProxyPerson
+            from askmath.views.authentication.proxyaccount import ProxyPerson
             proxy_account = ProxyPerson()
             message = Message(TextMessage.ACCOUNT_SUCCESS_REMOVED, TypeMessage.SUCCESS)
             request.method = "GET"

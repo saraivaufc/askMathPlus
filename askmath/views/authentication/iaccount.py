@@ -1,12 +1,13 @@
-class IPerson:
-    
-    def login(self):
+class IAccount():
+    def options(self):
         pass
-    
-    def logout(self):
+    def signin(self):
         pass
     
     def signup(self):
+        pass
+    
+    def logout(self):
         pass
     
     def recover_password(self):

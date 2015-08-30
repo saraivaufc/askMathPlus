@@ -5,12 +5,21 @@
 {%  block content_right %}
 <div class="cell padding5">
 	{% if perms.askmath.write_category %}
-		<a href="/home/manager/forum/categories/add/" class="button primary" ><span class="mif-plus"></span> {% trans "Create Category" %}</a>
+		<a href="/home/manager/forum/categories/add/" class="image-button button-success">
+			{% trans "Create" %}
+			<span class="icon mif-plus"></span>
+		</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/forum/categories/view/" class="button success" data-popover="undo"><span class="mif-undo"></span> {% trans "Undo" %}</a>
+		<a href="/home/manager/forum/categories/view/" class="image-button button-info" data-popover="undo">
+			{% trans "Undo" %}
+			<span class="icon mif-undo"></span>
+		</a>
 	{% else %}
-		<a href="/home/manager/forum/categories/view_removed/" class="button warning" data-popover="dump" ><span class="mif-bin"></span> {% trans "Dump" %}</a>
+		<a href="/home/manager/forum/categories/view_removed/" class="image-button button-warning" data-popover="dump">
+			{% trans "Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
 	{% endif %}
 </div>
 

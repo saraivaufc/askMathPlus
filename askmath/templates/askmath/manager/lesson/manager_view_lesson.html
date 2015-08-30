@@ -12,19 +12,22 @@
 {%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_lesson %}
-		<a href="/home/manager/lessons/edit/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		<a href="/home/manager/lessons/edit/lesson={{ lesson.id }}/" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
 		{% if lesson.exists %}
-		<a href="/home/manager/lessons/remove/lesson={{ lesson.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		<a href="/home/manager/lessons/remove/lesson={{ lesson.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
 		{% endif %}
 		{% if not lesson.exists %}
-		<a href="/home/manager/lessons/restore/lesson={{ lesson.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		<a href="/home/manager/lessons/restore/lesson={{ lesson.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
 		{% endif %}
-	{% endif %}
-	{% if perms.askmath.write_question %}
-		<a data-toggle="modal" data-target="#quantity_items" href="#" class="button primary" ><span class="mif-plus"></span>{% trans " Create Question" %}</a>
-	{% endif %}
-	{% if perms.askmath.write_video %}
-		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="button primary" ><span class="mif-plus"></span>{% trans " Create Video" %}</a>
 	{% endif %}
 </div>
 

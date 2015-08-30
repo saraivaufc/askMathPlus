@@ -48,12 +48,16 @@ function Init(){
         });
 })(jQuery);
 
+/*
+ *  (header + main + footer) < screean
+ * */
+
 function resize_window(){
 	var screean = parseInt($(window).height());
 	var header = parseInt($("#header").css("height"));
 	var main = parseInt($("#main").css("height"));
 	var footer = parseInt($("#footer").css("height"));
-	if ( (header + main + footer) < screean){
+	if (true){
 		var res = screean - header - footer;
 		parseInt($("#main").css("height", (res) + "px"));
 	};

@@ -11,11 +11,20 @@
 {%  block content_right %}
 <div class="cell padding5">
 	{% if perms.askmath.write_category and perms.askmath.access_manager_forum  %}	
-		<a href="/home/manager/forum/categories/edit/category={{ category.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit Category" %}</a>
+		<a href="/home/manager/forum/categories/edit/category={{ category.id }}/" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
 		{% if category.exists %}
-			<a href="/home/manager/forum/categories/remove/category={{ category.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove Category" %}</a>
+			<a href="/home/manager/forum/categories/remove/category={{ category.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
 		{% else %}
-			<a href="/home/manager/forum/categories/restore/category={{ category.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore Category" %}</a>
+			<a href="/home/manager/forum/categories/restore/category={{ category.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
 		{% endif %}
 	{% endif %}
 </div>

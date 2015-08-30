@@ -1,5 +1,5 @@
 #header , #footer{
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(3, 3, 3, 0.8);
 	color: #fff;
 }
 
@@ -17,11 +17,6 @@
 	border:none;
 }
 
-
-.navbar-nav>li>a:hover, .navbar-nav>li>a:active, .navbar-nav>li>a:focus {
-    color: #fff !important;
-    background-color: rgba(0, 0, 0, 0.9);
-}
 
 .navbar-nav > li > a {
     line-height: inherit;

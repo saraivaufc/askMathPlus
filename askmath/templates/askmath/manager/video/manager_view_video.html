@@ -10,14 +10,22 @@
 
 {%  block content_right %}
 <div class="cell padding10">
-	<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="button info" ><span class="mif-arrow-left"></span>{% trans " Back" %}</a>
 	{% if perms.askmath.write_video %}
-		<a href="/home/manager/videos/edit/lesson={{ lesson.id }}/video={{ video.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		<a href="/home/manager/videos/edit/lesson={{ lesson.id }}/video={{ video.id }}/" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
 		{% if video.exists %}
-		<a href="/home/manager/videos/remove/lesson={{ lesson.id }}/video={{ video.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		<a href="/home/manager/videos/remove/lesson={{ lesson.id }}/video={{ video.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
 		{% endif %}
 		{% if not video.exists %}
-		<a href="/home/manager/videos/restore/lesson={{ lesson.id }}/video={{ video.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		<a href="/home/manager/videos/restore/lesson={{ lesson.id }}/video={{ video.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
 		{% endif %}
 	{% endif %}
 </div>

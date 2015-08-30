@@ -19,9 +19,15 @@
       </div>
       <div class="modal-footer">
       	<div class="text-right">
-	        <button type="cancel" class="button default" data-dismiss="modal">{% trans "Close" %}</button>
-	        <button type="submit" class="button success"><span class="glyphicon glyphicon-send"></span> {% trans "Send" %}</button>
-        </div>
+	        <button type="cancel" class="image-button button-default" data-dismiss="modal">
+				{% trans "Cancel" %}
+				<span class="icon mif-cancel"></span>
+			</button>
+			<button type="submit" class="image-button button-primary">
+				{% trans "Send" %}
+				<span class="icon glyphicon glyphicon-send"></span>
+			</button>
+	    </div>
         </form>
       </div>
     </div><!-- /.modal-content -->

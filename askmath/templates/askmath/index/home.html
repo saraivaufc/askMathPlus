@@ -16,8 +16,11 @@
 
 {% block content %}
 <section>
-	<div id="text-welcome">
-		<h1 class="text-center font-white">{% trans 'Welcome to the Askmath...' %}</h1>
+	<div class="container">
+		<hgroup class="text-center">
+		<h1>{% trans 'Welcome to the Askmath...' %}</h1>
+		<h4>{% trans "Aqui você poderá encontrar disversos conteúdos sobre Matemática, são várias lições com perguntas e video aulas para você." %}</h4>
+		</hgroup>
 	</div>
 </section>
 
@@ -34,7 +37,7 @@
 		        <span class="tile-label">{% trans "Contents" %}</span>
 		    </div>
 		    <div class="cell tile-wide bg-green fg-white" data-role="tile">
-		        <a href="/authentication/login/" class="tile-content iconic">
+		        <a href="/authentication/options/" class="tile-content iconic">
 		            <span class="icon mif-play mif-ani-pass mif-ani-fast"></span>
 		        </a>
 		        <span class="tile-label">{% trans "Start here" %}</span>

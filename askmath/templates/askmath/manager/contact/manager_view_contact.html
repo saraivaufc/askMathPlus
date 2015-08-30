@@ -12,10 +12,16 @@
 <div class="cell padding10">
 	{% if perms.askmath.write_contact %}
 		{% if contact.exists %}
-		<a href="/home/manager/contacts/remove/contact={{ contact.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
+		<a href="/home/manager/contacts/remove/contact={{ contact.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
 		{% endif %}
 		{% if not contact.exists %}
-		<a href="/home/manager/contacts/restore/contact={{ contact.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		<a href="/home/manager/contacts/restore/contact={{ contact.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
 		{% endif %}
 	{% endif %}
 </div>

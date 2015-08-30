@@ -3,13 +3,17 @@
 <form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
 {% csrf_token %}
 	<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
-	<hr class="colorgraph">
 	<div class="form-fields">
 		{% include "askmath/_render_form.html" %}
     </div>
-    <hr class="colorgraph">
 	<div class="text-right">
-		<a class="button primary" onclick="window.history.back();" ><span class="mif-cancel"></span>{% trans " Cancel" %}</a>
-		<button type="submit" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+		<a type="cancel" onclick="window.history.back();" class="image-button button-default">
+			{% trans "Cancel" %}
+			<span class="icon mif-cancel"></span>
+		</a>
+		<button type="submit" class="image-button button-primary">
+			{% trans "Submit" %}
+			<span class="icon mif-checkmark"></span>
+		</button>
 	</div>
 </form>

@@ -14,6 +14,10 @@
 .tile-group {
     left: 100px;
 }
+.tile-group .tile-group-title{
+	color: inherit !important;
+}
+
 
 .tile, .tile-small, .tile-sqaure, .tile-wide, .tile-large, .tile-big, .tile-super {
     opacity: 0;
@@ -131,12 +135,6 @@ a.tile-content{
 }
 
 
-
-.input-control{
-    border: 1px solid #D9D9D9;
-    padding: 0.3125rem;
-}
-
 .breadcrumbs2 >li:last-child a {
 	color: blue !important;
 }
@@ -155,4 +153,11 @@ ol, ul {
 /* TABLES */
 .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th {
     background-color: inherit;
+}
+
+
+/* TABS */
+
+.tabs li  a{
+	color: #000 !important;
 }

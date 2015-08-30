@@ -11,12 +11,20 @@
 {%  block content_right %}
 <div class="cell padding10">
 	{% if perms.askmath.write_discipline %}	
-		<a href="/home/manager/disciplines/edit/discipline={{ discipline.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit" %}</a>
+		<a href="/home/manager/disciplines/edit/discipline={{ discipline.id }}/" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
 		{% if discipline.exists %}
-			<a href="/home/manager/disciplines/remove/discipline={{ discipline.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove" %}</a>
-		{% endif %}
-		{% if not discipline.exists %}
-			<a href="/home/manager/disciplines/restore/discipline={{ discipline.id }}/" class="button warning" ><span class="mif-history"></span>{% trans " Restore" %}</a>
+		<a href="/home/manager/disciplines/remove/discipline={{ discipline.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
+		{% else %}
+		<a href="/home/manager/disciplines/restore/discipline={{ discipline.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
 		{% endif %}
 	{% endif %}
 </div>

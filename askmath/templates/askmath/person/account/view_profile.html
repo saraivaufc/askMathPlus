@@ -12,11 +12,6 @@
 
 {% block content %}
 <br>
-{% if perms.askmath.access_manager  %}
-<div class="fg-dark">
-{% else %}
-<div class="fg-white">
-{% endif %}
 <div class="container-fluid">
 	<div class="col-md-6">
 		<center>
@@ -45,7 +40,6 @@
 		</button>
 		{% include "askmath/person/account/_modal_remove_account.html" %}
 	</div>
-</div>
 </div>
 
 {% endblock %}

@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Discipline as CategoryModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from idiscipline import IDiscipline
-from askmath.forms import CategoryForm
+from askmath.forms import DisciplineForm
 from django.utils.translation import ugettext_lazy as _
 
 class Discipline(IDiscipline):
@@ -25,13 +25,13 @@ class Discipline(IDiscipline):
     
     def add_discipline(self, request, message = None):
         if request.method == "POST":
-            form = CategoryForm(request.POST)
+            form = DisciplineForm(request.POST)
             if form.is_valid():
                 discipline = form.save()
                 message = Message(TextMessage.DISCIPLINE_SUCCESS_ADD, TypeMessage.SUCCESS)
                 return self.view_discipline(request, discipline, message)
         else:
-            form = CategoryForm()
+            form = DisciplineForm()
         return render(request, "askmath/manager/discipline/manager_form_discipline.html", 
             {'request':request,'form': form, 'title_form':_('Create Discipline'), 'message': message})
     
@@ -41,13 +41,13 @@ class Discipline(IDiscipline):
         return self.view_disciplines(request, message)
     def edit_discipline(self, request, discipline, message = None):
         if request.method == 'POST':
-            form = CategoryForm(request.POST, instance = discipline)
+            form = DisciplineForm(request.POST, instance = discipline)
             if form.is_valid():
                 discipline=form.save()
                 message = Message(TextMessage.DISCIPLINE_SUCCESS_EDIT, TypeMessage.SUCCESS)
                 return self.view_discipline(request,discipline , message)
         else:
-            form = CategoryForm( instance = discipline)
+            form = DisciplineForm( instance = discipline)
         return render(request, "askmath/manager/discipline/manager_form_discipline.html", 
             {'request':request,'form': form,'discipline': discipline, 'title_form':_('Edit Discipline'), 'message': message})
     

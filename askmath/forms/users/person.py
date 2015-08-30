@@ -13,10 +13,10 @@ class PersonForm(ModelForm):
 		fields = ("username", "name", "email","password", "profile_image")
 
 		widgets = {
-			'username': TextInput(attrs={'required': 'required', 'class':'input-control text full-size', 'autofocus': 'True', 'x-webkit-speech': 'x-webkit-speech'}),
-			'name': TextInput(attrs={'required': 'required', 'class':'input-control text full-size' , 'x-webkit-speech': 'x-webkit-speech'}),
-			'email': EmailInput(attrs={'required': 'required', 'class':'input-control email full-size', 'x-webkit-speech': 'x-webkit-speech'}),
-			'password': PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size', 'x-webkit-speech': 'x-webkit-speech'}),
+			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			'name': TextInput(attrs={'required': 'required'}),
+			'email': EmailInput(attrs={'required': 'required'}),
+			'password': PasswordInput(attrs={'required': 'required'}),
 		}
 
 
@@ -32,10 +32,10 @@ class PersonForm(ModelForm):
 	
 class PersonLoginForm(forms.Form):
 	username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
-		widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
+		widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True'}), 
 		error_messages={'required': _('Please enter you username.')} )
 	password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
-		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
+		widget=forms.PasswordInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter you password.')})
 
 class PersonProfile(PersonForm):
@@ -50,10 +50,10 @@ class PersonProfile(PersonForm):
 
 class PersonRecoverPassword(forms.Form):
 	username = forms.CharField(label=_('Username'),help_text=_("Please enter you username."),
-		widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
+		widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True'}), 
 		error_messages={'required': _('Please enter you username.')})
 	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
-		widget=forms.EmailInput(attrs={'required': 'required', 'class':'input-control email full-size'}),
+		widget=forms.EmailInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter your email.')})
 	
 class PersonAlterPassword(forms.Form):

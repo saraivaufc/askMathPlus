@@ -3,22 +3,26 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
 from django.utils.translation import ugettext_lazy as _
 
-from .iperson import IPerson
-from .person import Person
+from .iaccount import IAccount
+from .account import Account
 from askmath.models.users.student import Student
 from askmath.forms.users import PersonLoginForm, PersonRecoverPassword
 
-class ProxyPerson(IPerson):
+class ProxyAccount(IAccount):
     def __init__(self):
-        self.__account = Person()
+        self.__account = Account()
     
-    def login(self, request, message = None):
+    def options(self, request, message=None):
         if request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
+        return self.__account.options(request, message)
+        
+    
+    def signin(self, request, message = None):
         if request.method == 'POST':
             form = PersonLoginForm(request.POST)
             if form.is_valid():
-                return self.__account.login(request, form)
+                return self.__account.signin(request, form)
             else:
                 return render(request, 'askmath/authentication/login.html',
                     {'request': request,'form':form, 'message': message})

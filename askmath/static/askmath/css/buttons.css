@@ -1,6 +1,87 @@
-.btn, .btn-group{
-	border-radius: 0px;
+/* MyButtons */
+
+.button{
+	color: #fff !important;
 }
+
+.button-default, .button-primary, .button-success, .button-info, .button-danger, .button-warning{
+	color: #fff !important;
+}
+
+.button-default{
+	background-color: #999 !important;
+}
+.button-default .icon{
+	background-color: #647687 !important;
+}
+
+.button-primary{
+	background-color: #3366CC !important;
+}
+.button-primary .icon{
+	background-color: #16499A !important;
+}
+
+.button-success{
+	background-color: #00CC00 !important;
+}
+.button-success .icon{
+	background-color: #60A917 !important;
+}
+
+.button-info{
+	background-color: #59CDE2 !important;
+}
+.button-info .icon{
+	background-color: #3366CC !important;
+}
+
+.button-danger{
+	background-color: #CE352C !important;
+}
+.button-danger .icon{
+	background-color: #9A161F !important;
+}
+
+.button-warning{
+	background-color: #FFCC00 !important;
+}
+.button-warning .icon{
+	background-color: #FF9900 !important;
+}
+
+
+/* BUTTON GROUPS */
+
+.button-group{
+	margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+	vertical-align: middle;
+}
+
+/* BUTTON GROUPS JUSTIFIED */
+
+.button-group-justified{
+	display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;	
+}
+
+.button-group-justified > .button, .button-group-justified > .button-group {
+    float: none;
+    display: table-cell;
+    width: 1%;
+}
+
+
+
+
+
+
+
+
 
 .btn-rounded{
 	border-radius: 30px;
@@ -11,11 +92,6 @@
 .btn-menu{
 	font-weight: 600;
 	color: #FFF !important;
-}
-
-
-.btn-block{
-	margin-bottom: 7px !important;
 }
 
 #btn-starter-lesson{
@@ -45,3 +121,6 @@
 .modal-content .modal-footer button + button {
     margin-bottom: 0px;
 }
+
+
+

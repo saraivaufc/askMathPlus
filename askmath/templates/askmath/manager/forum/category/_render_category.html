@@ -12,7 +12,10 @@
 		    	{{ form.file }}
 		    </div>
 		    <div class="form-group place-right">
-			<button type="submit" class="btn button success">{% trans "Post" %}</button>
+			<button type="submit" class="image-button button-primary">
+				{% trans "Post" %}
+				<span class="icon mif-checkmark"></span>
+			</button>
 			</div>
 			</form>
 			{% endwith %}
@@ -67,12 +70,12 @@
 							{% else %}
 							<button href="/home/manager/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
 							{% endif %}	
-								<span class="like-count">{{ topic.get_likes|length }}</span>
-								{% if request.user in topic.get_likes_persons %}
-							    <span class="icon mif-thumbs-up bg-emerald"></span>
-							    {% else %}
-							    <span class="icon mif-thumbs-up"></span>
-							    {% endif %}
+							<span class="like-count">{{ topic.get_likes|length }}</span>
+							{% if request.user in topic.get_likes_persons %}
+					    	<span class="icon mif-thumbs-up bg-emerald"></span>
+					    	{% else %}
+					    	<span class="icon mif-thumbs-up"></span>
+					  		{% endif %}
 							</button>
 						</div>
 						<div class="col-sm-6 col-md-6 text-right">

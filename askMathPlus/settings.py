@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'askMathPlus.wsgi.application'
 
 AUTH_USER_MODEL = 'askmath.Person'
 
-LOGIN_URL = '/authentication/login/'
+LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'
 
 
