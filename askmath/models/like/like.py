@@ -8,6 +8,9 @@ class Like(models.Model):
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     
+    def get_person(self):
+        return self.person
+    
     def delete(self):
         self.exists = False
         self.save()
@@ -17,7 +20,7 @@ class Like(models.Model):
         self.save()
     
     def __unicode__(self):
-        return self.person
+        return unicode(self.person)
 
     class Meta:
         ordering = ['creation']

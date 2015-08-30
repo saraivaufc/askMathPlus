@@ -6,8 +6,6 @@ from askMathPlus.settings import generate_color
 class Topic(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
     category = models.ForeignKey('Category', verbose_name=_("Category"))
-    title = models.CharField(verbose_name=_("Title"), max_length=255,
-        help_text=_("Choose a title for the topic."))
     description = models.TextField(verbose_name=_("Description"),
         help_text=_("Choose a description for the topic."))
     likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
@@ -25,14 +23,18 @@ class Topic(models.Model):
     def get_category(self):
         return self.category
     
-    def get_title(self):
-        return self.title
-    
     def get_description(self):
         return self.description
     
     def get_likes(self):
-        return self.likes.objects.filter(exists=True)
+        return self.likes.filter(exists=True)
+    
+    def get_likes_persons(self):
+        persons = []
+        for like in self.get_likes():
+            persons.append(like.get_person())
+        return persons
+    
     def get_comments(self):
         from askmath.models.comment import Comment
         comments = Comment.objects.filter(exists=True, topic=self.id)
@@ -47,7 +49,7 @@ class Topic(models.Model):
         self.save()
     
     def __unicode__(self):
-        return self.title
+        return self.description
 
     class Meta:
         ordering = ['-creation']

@@ -1,55 +1,83 @@
 {% load i18n %}
 {% load humanize %}
-
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="padding5">
-			<button data-toggle="collapse" data-parent="#accordion" href="#form_topic"  class="image-button bg-lightBlue fg-white">
-			    {% trans "Add new topic.." %}
-			    <span class="icon bg-darkBlue mif-plus"></span>
-			</button>
-			<div id="form_topic" class="collapse">
-				{% with form_topic as form %}
-				<form class="form form-generic" action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
-				{% csrf_token %}
-				{% include 'askmath/_render_form.html' %}
-				<button type="submit" class="button success">{% trans "Post" %}</button>
-				</form>
-				{% endwith %}
+	<div class="bg-grayLighter width padding10">
+		<div class="form-inline" role="form">
+			{% with form_topic as form %}
+			<form class="form form-generic" action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			<div class="form-group">
+		        {{ form.description }}
+		    	{{ form.file }}
+		    </div>
+		    <div class="form-group place-right">
+			<button type="submit" class="btn button success">{% trans "Post" %}</button>
 			</div>
+			</form>
+			{% endwith %}
 		</div>
+	</div>
 	</div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 		<div class="panel width">
 			{% for topic in topics %}
 				<div class="heading {{ topic.color }}">
 			        <span class="icon mif-bubble"></span>
-			        <span class="title fg-white">{{ topic.get_title }}</span>
+			        <span class="title fg-white">{{ topic.person.get_name }}</span>
+			        {% if perms.askmath.white_topic and perms.askmath.access_manager_forum %}
+			        <div class="place-right">
+			        	<span class="lead">
+							{% blocktrans with creation=topic.creation|naturaltime  %}
+								<span class="tag info">{{ creation }}</span>
+							{% endblocktrans %}
+						</span>
+			        	{% if request.user == topic.person %}
+							<a href="/home/manager/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
+						{% endif %}
+						{% if topic.exists and perms.askmath.access_forum %}
+							<a href="/home/manager/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
+						{% endif %}
+			        </div>
+			        {% endif %}
 			    </div>
 			    <div class="content">
 			    	<div class="container-fluid">
 			    	<div class="row">
-						<p class="lead">{{ topic.get_description|safe|linebreaksbr }}</p>
+						<p class="lead">{{ topic.get_description|linebreaksbr }}</p>
 			    	</div>
 			    	</div>
-			    	<hr class="bg-white" />
+			    	<hr class="transparent" />
 			    	<div class="container-fluid">
 			    	<div class="row">
 			    		<div class="col-sm-6  col-md-6">
 				    		<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button bg-green fg-white">
-							    {% trans "Comment" %}
-							    <span class="icon bg-emerald">{{ topic.get_comments|length }}</span>
+							    {{ topic.get_comments|length }}
+							    <span class="icon glyphicon glyphicon-comment bg-emerald"></span>
 							</a>
+							<button class="image-button bg-gray fg-white">
+								{{ topic.get_likes|length }}
+								{% if request.user in topic.get_likes_persons %}
+							    <span class="icon bg-green mif-thumbs-up"></span>
+							    {% else %}
+							    <span class="icon mif-thumbs-up"></span>
+							    {% endif %}
+							</button>
 						</div>
 						<div class="col-sm-6 col-md-6 text-right">
-							<span class="lead padding5">
-								{% blocktrans with person=topic.person creation=topic.creation|naturaltime  %}
-									Posted for <span class="tag success">{{ person }}</span> {{ creation }}.
-								{% endblocktrans %}
-							</span>
+							{% if topic.file %}
+							<a href="{{ topic.file.url }}" target="_blank" class="image-button bg-gray fg-white">
+								{% trans "Downlad File" %}
+								{% if request.user in topic.get_likes_persons %}
+							    <span class="icon bg-green mif-thumbs-up"></span>
+							    {% else %}
+							    <span class="icon mif-folder-download"></span>
+							    {% endif %}
+							</a>
+							{% endif %}
 						</div>
 			    	</div>
 			    	</div>
@@ -59,17 +87,5 @@
 			  <h3>{% trans "No topic found." %}</h3>
 			{% endfor %}
 		</div>
-	
-{#		<div class="listview padding5">#}
-{#			{% for topic in topics %}#}
-{#				<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="list {{ topic.color }} fg-white">#}
-{#					<span class="list-icon mif-bubble  icon-font-icon"></span>#}
-{#			        <span class="list-title">{{ topic.get_title }}</span>#}
-{#			        <span class="place-right tag success">{{ topic.creation|naturaltime }}</span>#}
-{#			    </a>#}
-{#			{% empty %}#}
-{#			  <h3>{% trans "No topic found." %}</h3>#}
-{#			{% endfor %}#}
-{#		</div>#}
 	</div>
 </div>

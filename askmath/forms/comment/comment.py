@@ -13,7 +13,7 @@ class CommentForm(ModelForm):
         widgets = {
             'person': HiddenInput(attrs={'class':'input-control hidden full-size'}),
             'topic': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'description': Textarea(attrs={'required': 'required','rows':'4', 'class':'input-control  textarea'}),
+            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%','autofocus':'true' ,'class':'latex input-control  textarea full-size'}),
             
         }
         

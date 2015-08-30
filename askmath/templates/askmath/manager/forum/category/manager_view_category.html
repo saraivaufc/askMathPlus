@@ -10,7 +10,7 @@
 
 {%  block content_right %}
 <div class="cell padding5">
-	{% if perms.askmath.write_category %}	
+	{% if perms.askmath.write_category and perms.askmath.access_manager_forum  %}	
 		<a href="/home/manager/forum/categories/edit/category={{ category.id }}/" class="button primary" ><span class="mif-pencil"></span>{% trans " Edit Category" %}</a>
 		{% if category.exists %}
 			<a href="/home/manager/forum/categories/remove/category={{ category.id }}/" class="button danger" ><span class="mif-cross"></span>{% trans " Remove Category" %}</a>

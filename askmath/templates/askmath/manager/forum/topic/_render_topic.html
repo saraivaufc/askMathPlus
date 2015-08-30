@@ -1,75 +1,68 @@
 {% load i18n %}
 {% load humanize %}
 
+<div class="container">
+
+<div class="example" data-text="{% trans "TOPIC" %}">
+<div class="row">
 <div class="panel width">
-	<div class="heading {{ topic.color }} fg-white">
-		<span class="icon mif-bubble"></span>
-	 	<span class="title">{{ topic.get_title }}</span>
-	</div>
+	<div class="heading {{ topic.color }}">
+        <span class="icon mif-bubble"></span>
+        <span class="title fg-white">{{ topic.person.get_name }}</span>
+        <div class="place-right">
+        	<span class="lead">
+				{% blocktrans with creation=topic.creation|naturaltime  %}
+					<span class="tag info">{{ creation }}</span>
+				{% endblocktrans %}
+			</span>
+			{% if request.user == topic.person %}
+				<a href="/home/manager/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
+			{% endif %}
+			{% if topic.exists and perms.askmath.access_manager_forum %}
+				<a href="/home/manager/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
+			{% endif %}
+        </div>
+    </div>
 	<div class="content">
 	    <div class="container-fluid">
 	    	<div class="row">
-				<p class="lead">{{ topic.get_description|safe|linebreaksbr }}</p>
+				<p class="lead">{{ topic.get_description|linebreaksbr }}</p>
 	    	</div>
     	</div>
     	<hr class="bg-white" />
     	<div class="container-fluid">
     	<div class="row">
     		<div class="col-xs-6 col-sm-6 col-md-6">
-    			<button data-toggle="collapse" data-parent="#accordion" href="#list-comments"  class="image-button bg-green fg-white">
-				    {% trans "Comment" %}
-				    <span class="icon bg-emerald">{{ topic.get_comments|length }}</span>
-				</button>
     		</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-				<span class="padding5 lead">
-					{% blocktrans with person=topic.person creation=topic.creation|naturaltime  %}
-						Posted by <span class="tag success">{{ person }}</span> {{ creation }}.
-					{% endblocktrans %}
-				</span>
 			</div>
     	</div>
     	</div>
 	</div>
 </div>
+</div>
+</div>
 
-<div class="padding5">
-{% for comment in topic.get_comments %}
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2 bg-darkBlue no-padding fg-white">
-				<div class="image-container">
-					<div class="frame">
-					{% if comment.person.profile_image %}
-					<img  src="{{ comment.person.profile_image.url }}" style="height:60px;">
-					{% else %}
-					<img src="{{ STATIC_URL }}askmath/img/metro/profile.png"></img>
-					{% endif %}
-					</div>
-				</div>
-				<span>{{ comment.person.get_name }}</span>
+{% if topic.get_comments|length %}
+	{% include "askmath/manager/forum/topic/_render_comments.html" %}
+{% endif %}
+<div class="example" data-text="{% trans "add comment" %}">
+<div class="row">
+	<div class="bg-grayLighter width padding10">
+		<div class="form-inline" role="form">
+			<form class="" action="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			<div class="form-group">
+		        {{ form.description }}
+		    	{{ form.file }}
+		    </div>
+		    <div class="form-group place-right">
+			<button type="submit" class="btn button success">{% trans "Comment" %}</button>
 			</div>
-			<div class="col-md-10 bg-lightBlue fg-white">
-				<p class="lead">{{ comment.get_description }}</p>
-				<span class="place-right">
-					{% blocktrans with creation=comment.creation|naturaltime  %}
-						Posted {{ creation }}.
-					{% endblocktrans %}
-				</span>
-			</div>
+			</form>
 		</div>
 	</div>
-	<br>
-{% empty %}
-	<li class="list-group-item">{% trans "Topic no content coments." %}</li>
-{% endfor %}
+</div>
 </div>
 
-<div class="padding5">
-	<h4>{% trans "Comment:" %}</h4>
-	<form action="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" method ="POST" enctype="multipart/form-data" role="form">
-	{% csrf_token %}
-	{% include 'askmath/_render_form.html' %}
-	<button type="submit" class="button success">{% trans "Comment" %}</button>
-	</form>
 </div>

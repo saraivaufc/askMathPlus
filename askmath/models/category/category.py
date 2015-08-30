@@ -5,7 +5,7 @@ from askMathPlus.settings import generate_color
 
 class Category(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
-    title = models.CharField(verbose_name=_("Title"), max_length=100,unique=True,
+    title = models.CharField(verbose_name=_("Title"), max_length=100,
         help_text=_("Choose a title for the category."))
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)

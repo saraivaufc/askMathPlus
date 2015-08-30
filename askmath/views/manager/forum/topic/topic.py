@@ -18,7 +18,7 @@ class Topic(ITopic):
             form = CommentForm(request.POST, request.FILES)
             if form.is_valid():
                 comment = form.save()
-                message = Message(TextMessage.TOPIC_SUCCESS_ADD, TypeMessage.SUCCESS)
+                message = Message(TextMessage.COMMENT_SUCCESS_ADD, TypeMessage.SUCCESS)
                 request.method = "GET"
                 return self.view_topic(request, category, topic, message)
         else:
@@ -36,7 +36,7 @@ class Topic(ITopic):
                 topic = form.save()
                 message = Message(TextMessage.TOPIC_SUCCESS_ADD, TypeMessage.SUCCESS)
                 request.method = "GET"
-                return self.view_topic(request, category, topic, message)
+                return self.__proxy_category.view_category(request, category.id, message)
             else:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         return self.__proxy_category.view_category(request, category.id, message)

@@ -24,10 +24,10 @@ class ProxyTopic(ITopic):
                 message = Message(TextMessage.TOPIC_NOT_FOUND, TypeMessage.ERROR)
                 return self.__proxy_category.view_category(request, id_category, message)
             
-            #try:
-            return self.__topic.view_topic(request, category, topic, message)
-            #except:
-             #   message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+            try:
+                return self.__topic.view_topic(request, category, topic, message)
+            except:
+                message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_category.view_category(request, id_category, message)
