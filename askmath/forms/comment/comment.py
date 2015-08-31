@@ -11,9 +11,9 @@ class CommentForm(ModelForm):
         model= Comment
         fields = ("person", "topic", "description","file")
         widgets = {
-            'person': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'topic': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%' ,'class':'input-control  textarea full-size'}),
+            'person': HiddenInput(attrs={'class':'hidden'}),
+            'topic': HiddenInput(attrs={'class':'hidden'}),
+            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%'}),
             
         }
         

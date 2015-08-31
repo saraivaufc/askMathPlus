@@ -12,7 +12,7 @@ class DisciplineForm(ModelForm):
         fields = ("title", "responsible", "visible")
 
         widgets = {
-            'title': TextInput(attrs={'required': 'required', 'class':'input-control text', 'autofocus': 'True', 'x-webkit-speech': 'x-webkit-speech'}),
-            'responsible': TextInput(attrs={'required': 'required', 'class':'input-control text', 'x-webkit-speech': 'x-webkit-speech'}),
-            'visible': CheckboxInput(attrs={'class':'input-control checkbox switch'}),
+            'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'responsible': TextInput(attrs={'required': 'required'}),
+            'visible': CheckboxInput(attrs={}),
         }

@@ -1,19 +1,13 @@
 {% for field in form.visible_fields %}
-	<div {% if not form.fields|length_is:'1' %} class="wrapper{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
-        {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-        {% if field.is_checkbox %}
-            {{ field.field }}{{ field.label_tag }}
-        {% else %}
-            {{ field.label_tag }}
-            {% if field.is_readonly %}
-                <p>{{ field.contents }}</p>
-            {% else %}
-                {{ field }}
-            {% endif %}
-        {% endif %}
-        {% if field.field.help_text %}
-            <p class="help">{{ field.field.help_text }}</p>
-        {% endif %}
+	<div>
+		{{ field.errors }}
+	   	{{ field.label_tag }}    
+		<div class="input-control text password email date textarea select checkbox radio full-size" data-role="select">
+			{{ field }}
+	    </div>
+	    {% if field.field.help_text %}
+	        <p class="help">{{ field.field.help_text }}</p>
+	    {% endif %}
     </div>
-    <hr class="divider-small" />
+    <hr class="divider transparent"/>
 {% endfor %}

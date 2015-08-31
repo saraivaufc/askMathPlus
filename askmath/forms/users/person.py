@@ -10,7 +10,7 @@ from askmath.models.users import Person
 class PersonForm(ModelForm):
 	class Meta:
 		model= Person
-		fields = ("username", "name", "email","password", "profile_image")
+		fields = ("username", "name", "email","password")
 
 		widgets = {
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
@@ -43,9 +43,9 @@ class PersonProfile(PersonForm):
 		model= Person
 		fields = ("username", "name", "email","profile_image")
 		widgets = {
-			'username': TextInput(attrs={'required': 'required', 'class':'input-control text full-size', 'autofocus': 'True'}),
-			'name': TextInput(attrs={'required': 'required', 'class':'input-control text full-size'}),
-			'email': EmailInput(attrs={'required': 'required', 'class':'input-control email full-size'}),
+			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			'name': TextInput(attrs={'required': 'required'}),
+			'email': EmailInput(attrs={'required': 'required'}),
 		}
 
 class PersonRecoverPassword(forms.Form):

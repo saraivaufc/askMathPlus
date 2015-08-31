@@ -101,7 +101,7 @@
 						{% endif %}
 					</ul>
 				</div>
-				<div class="cell auto-size bg-white">
+				<div class="cell auto-size">
 					<div class="padding5">
 						<div class="menu-breadcrumbs">
 							<ul id="menu" class="breadcrumbs2 dark">
@@ -131,7 +131,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_question %}
-								<div class="tile-wide bg-darkViolet  fg-white" data-role="tile">
+								<div class="tile-wide bg-darkViolet" data-role="tile">
 									<a href="/home/manager/questions/choose_lesson/" class="tile-content iconic">
 										<span class="icon mif-list-numbered"></span>
 										<span class="tile-label">{% trans "QUESTIONS" %}</span>
@@ -139,7 +139,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_video %}
-								<div class="tile-wide  bg-cobalt  fg-white" data-role="tile">
+								<div class="tile-wide  bg-cobalt" data-role="tile">
 								   <a href="/home/manager/videos/choose_lesson/" class="tile-content iconic">
 										<span class="icon mif-film"></span>
 										<span class="tile-label">{% trans "VIDEOS" %}</span>
@@ -147,7 +147,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_statistics %}
-								<div class="tile-wide bg-yellow  fg-white" data-role="tile">
+								<div class="tile-wide bg-yellow" data-role="tile">
 									<a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
 										<span class="icon mif-chart-line"></span>
 										<span class="tile-label">{% trans "STATISTICS" %}</span>
@@ -155,7 +155,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_person %}
-								<div class="tile-wide bg-darkBrown  fg-white" data-role="tile">
+								<div class="tile-wide bg-darkBrown data-role="tile">
 									<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
 										<span class="icon mif-users"></span>
 										<span class="tile-label">{% trans "PERSONS" %}</span>
@@ -164,7 +164,7 @@
 								{% endif %}
 								
 								{% if perms.askmath.access_manager_contact %}
-								<div class="tile-wide bg-pink  fg-white" data-role="tile">
+								<div class="tile-wide bg-pink" data-role="tile">
 									<a href="/home/manager/contacts/view/" class="tile-content iconic">
 										<span class="icon mif-envelop"></span>
 										<span class="tile-label">{% trans "MESSAGES" %}</span>
@@ -173,7 +173,7 @@
 								{% endif %}
 								
 								{% if perms.askmath.access_manager_forum %}
-								<div class="tile-wide bg-olive  fg-white" data-role="tile">
+								<div class="tile-wide bg-olive" data-role="tile">
 									<a href="/home/manager/forum/categories/view/" class="tile-content iconic">
 										<span class="icon mif-bubbles"></span>
 										<span class="tile-label">{% trans "FORUM" %}</span>

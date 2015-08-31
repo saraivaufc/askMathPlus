@@ -13,6 +13,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+<div class="row">
 <div class="col-md-4 col-md-offset-4">
     <div class="tabcontrol" data-role="tabControl">
     	<ul class="tabs">
@@ -57,9 +59,9 @@
 				<form  action="/authentication/signup/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
 			    {% csrf_token %}
 			        <h2 class="text-light">{% trans "Register to service" %}</h2>
-			        <hr class="thin"/>
+    				<hr class="thin"/>
 			        <br />
-			        <div class="input-control text full-size" data-role="input">
+    				<div class="input-control text full-size" data-role="input">
 			            <label for="user_name">{{ form.name.label_tag }}</label>
 			            {{ form.name }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -73,7 +75,7 @@
 			        </div>
 			        <br />
 			        <br />
-			        <div class="input-control text full-size" data-role="input">
+    				<div class="input-control text full-size" data-role="input">
 			            <label for="user_username">{{ form.username.label_tag }}</label>
 			            {{ form.username }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -87,13 +89,7 @@
 			        </div>
 			        <br />
 			        <br />
-				    <div class="input-control file full-size" data-role="input">
-				        {{ form.profile_image }}
-				        <button class="button"><span class="mif-folder"></span></button>
-				    </div>
-				    <br />
-				    <br />
-				    <div class="input-control" data-role="select">
+	            	<div class="input-control" data-role="select">
 					    <select name="type" id="select-signup">
 						    <option value="STUDENT">{% trans "Student" %}</option>
 				            <option value="ASSISTANT">{% trans "Assistant" %}</option>
@@ -105,6 +101,8 @@
 			            <input id="input-key" name="key" placeholder="{% trans "Enter your key" %}" disabled type="text"></input>
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
 			        </div>
+			        <br />
+			        <br />
 			        <label class="switch">
 					    <input type="checkbox" required>
 					    <span class="check"></span>
@@ -112,12 +110,8 @@
 					    	{% blocktrans %}By clicking here, you agree to the <a href="/terms/" >Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
 					    </span>
 					</label>
-			        <div class="form-actions">
-						<button type="submit" class="button image-button btn-block button-primary">
-							{% trans "Sign In" %}
-							<span class="icon mif-enter"></span>
-						</button>
-			        </div>
+					<br />
+					<br />
 			    </form>
 			{% endwith %}            
             </div>
@@ -150,7 +144,9 @@
 			        </div>
 			    </form>
 			    {% endwith %}
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
 {% endblock %}

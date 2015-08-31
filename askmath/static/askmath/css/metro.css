@@ -161,3 +161,19 @@ ol, ul {
 .tabs li  a{
 	color: #000 !important;
 }
+
+.tabcontrol .frames .frame {
+    background-color: #647687;
+}
+
+/* INPUTS */
+.input-control.checkbox input[type="checkbox"], .input-control.radio input[type="checkbox"], .input-control.checkbox input[type="radio"], .input-control.radio input[type="radio"] {
+    opacity: 1;
+    min-width: 30px;
+    min-height: 30px;
+    margin-left: 0px;
+}
+
+textarea{
+	max-height: 50px;
+}

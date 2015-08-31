@@ -15,11 +15,11 @@ class LessonForm(ModelForm):
 		model= Lesson
 		fields = ("disciplines","title", "description", "requirements", "sugestions", "maximum_hops", "visible")
 		widgets = {
-			'disciplines': SelectMultiple(attrs={'class':'input-control select', 'required':'required'}),
-			'title': TextInput(attrs={'required': 'required', 'autofocus': 'True', 'class':'input-control text', 'x-webkit-speech': 'x-webkit-speech'}),
-			'description': Textarea(attrs={'cols': 50, 'rows': 6,'required': 'required', 'class':'latex input-control textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
-			'requirements': SelectMultiple(attrs={'class':'input-control select'}),
-			'sugestions': SelectMultiple(attrs={'class':'input-control select'}),
-			'maximum_hops': NumberInput(attrs={'required':'required', 'class':'input-control number', 'min': '0'}),
-			'visible': CheckboxInput(attrs={'class':'input-control checkbox switch'}),
+			'disciplines': SelectMultiple(attrs={'required':'required'}),
+			'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			'description': Textarea(attrs={'cols': 50, 'rows': 6,'required': 'required'}),
+			'requirements': SelectMultiple(attrs={}),
+			'sugestions': SelectMultiple(attrs={}),
+			'maximum_hops': NumberInput(attrs={'required':'required', 'min': '0'}),
+			'visible': CheckboxInput(attrs={}),
 		}

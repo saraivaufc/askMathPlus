@@ -11,11 +11,11 @@ class VideoForm(ModelForm):
         model= Video
         fields = ("lesson", "position","title", "description","file" , "visible")
         widgets = {
-            'lesson': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'position': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'title': TextInput(attrs={'class':'input-control text', 'required': 'required', 'x-webkit-speech': 'x-webkit-speech'}),
-            'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex input-control  textarea full-size', 'x-webkit-speech': 'x-webkit-speech'}),
-            'visible': CheckboxInput(attrs={'class':'input-control checkbox'}),
+            'lesson': HiddenInput(attrs={'class':'hidden'}),
+            'position': HiddenInput(attrs={'class':'hidden'}),
+            'title': TextInput(attrs={'required': 'required'}),
+            'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex'}),
+            'visible': CheckboxInput(attrs={}),
         }
     def clean_file(self):
         file = self.cleaned_data["file"]

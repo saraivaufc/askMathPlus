@@ -11,6 +11,6 @@ class CategoryForm(ModelForm):
         fields = ("title","person")
 
         widgets = {
-            'person': HiddenInput(attrs={'class':'input-control hidden full-size'}),      
-            'title': TextInput(attrs={'required': 'required', 'class':'input-control text', 'autofocus': 'True'}),
+            'person': HiddenInput(attrs={'class':'hidden'}),      
+            'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
         }

@@ -48,19 +48,15 @@ function Init(){
         });
 })(jQuery);
 
-/*
- *  (header + main + footer) < screean
- * */
-
 function resize_window(){
 	var screean = parseInt($(window).height());
 	var header = parseInt($("#header").css("height"));
 	var main = parseInt($("#main").css("height"));
 	var footer = parseInt($("#footer").css("height"));
-	if (true){
+	if((header + main + footer) < screean){
 		var res = screean - header - footer;
-		parseInt($("#main").css("height", (res) + "px"));
-	};
+		$("#main").css("height", (res) + "px");
+	}
 }
 
 $(window).resize(resize_window);
@@ -231,15 +227,16 @@ $(function(){
 	
 $("#btn-help").click(help);
 
+
+function openEditor(box){
+	var id = box.attr("id");
+	$('#box-latex').attr('value',id);
+	$("#latex_formula").val(box.val());
+	Preview.Update();
+	$('#box-latex').modal();
+}
+
 $(function(){
-	
-	$(".latex").on("dblclick", function(){
-		var id = $(this).attr("id");
-		$('#box-latex').attr('value',id);
-		$("#latex_formula").val($(this).val());
-		Preview.Update();
-		$('#box-latex').modal();
-	});
 	
 	$("#latex_formula").keyup(function(){
 		var latex = document.getElementById("latex_formula").val();
@@ -334,3 +331,17 @@ function unlike(buttom, likes){
 	var href= buttom.attr("href");
 	buttom.attr("href", href.replace("/unlike","/like"));
 }
+
+
+$(function(){
+	$(".latex").each(function(){
+		var id = $(this).attr("id");
+		$(this).parent().append("<button value='"+id+ "' class='button button-primary button-latex'><span class='mif-file-code'></span></button>");
+	});
+	$(".button-latex").click(function(){
+		var id = $(this).attr('value');
+		var box = $('#'+ id);
+		openEditor(box);
+	});
+	
+});

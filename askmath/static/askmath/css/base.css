@@ -3,13 +3,10 @@
 body{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
 	line-height: 1.1;
-	color: #000;
 	background-color: #FFF;
 	font-weight: 400;
 	font-style: normal;
 }
-
-
 
 
 /* DIVIDERS */
@@ -140,14 +137,6 @@ opacity */
 }
 
 
-/************  FOOTER  *************/
-
-
-#footer .navbar-inverse, #header .navbar-inverse{
-	background: none;
-}
-
-/************  ENDFOOTER  *************/
 
 .container-video{
 	margin-left: auto;
@@ -156,16 +145,6 @@ opacity */
 
 .break-word {
 	white-space: pre-wrap;
-}
-/* Search */
-#submit-search{
-	min-width: 40px;
-	background-color: #211921;
-	color: #fff;
-}
-#submit-search: hover{
-	background-color: #080008;
-	color: #fff;
 }
 
 
@@ -180,7 +159,6 @@ button[disabled], html input[disabled] {
     cursor: not-allowed;
 }
 
-/*
 .input-control, .input{
 	color: #000 !important;
 }
@@ -196,7 +174,6 @@ input:disabled {
 .select.input-control{
 	padding: 0px;
 }
-
 
 .form-control{
 	border: 1px solid #D9D9D9;
@@ -218,7 +195,6 @@ input:disabled {
     box-shadow: none;
 }
 
-*/
 #feedback {
 	float: left;
 	position: fixed;
@@ -245,7 +221,7 @@ input:disabled {
 
 .help, p.help {
     font-size: 15px !important;
-    color: #000;
+    color: #00F;
 
 }
 

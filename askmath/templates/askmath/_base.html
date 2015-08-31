@@ -83,10 +83,13 @@
 		{% if perms.askmath.access_manager %}
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/manager.css" >
 		{% endif %}	
-
-		{% include "askmath/_scripts.html" %}
+		<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 		
-		
+		<!--[if (lt IE 9) & (!IEMobile)]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+		<![endif]-->
+				
 	</head>
 
 	<body onload="Init(); var a=new EqTextArea(''); a.addExportArea('eqcoderaw','htmledit'); EqEditor.init('1438691334', a,true); EqEditor.ExportButton.add(a, 'copybutton', EqnExport,'htmledit'); EqEditor.load(''); EqEditor.setAdvert(); ">		
@@ -135,19 +138,20 @@
 		<!-- Jquery Ui -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery-ui/jquery-ui.min.js"></script>
 
-		<!-- Metro -->
-		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/metro.min.js"></script>
-		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/select2.min.js"></script>
-		
 		<!-- Bootstrap -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/bootstrap/js/bootstrap.min.js"></script>
 		
+		<!-- Metro -->
+		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/metro.min.js"></script>
+		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/select2.min.js"></script>
+		<script src="{{ STATIC_URL }}askmath/frameworks/metro/js/prettify/run_prettify.js"></script>
 		
 		<!-- Noty -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/packaged/jquery.noty.packaged.js"></script>
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
 		
 		<!-- My Scripts -->
+		<script src="{{ STATIC_URL }}askmath/js/initial.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/popovers.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/messages.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/cookies.js"></script>
@@ -155,6 +159,7 @@
 		<script src="{{ STATIC_URL }}askmath/js/services.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/metro.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/scripts.js"></script>
+		
 		<script type="text/javascript">AC_FL_RunContent = 0;</script>
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_config.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_editor-combo-18.js"></script>

@@ -11,9 +11,9 @@ class TopicForm(ModelForm):
         model= Topic
         fields = ("person", "category", "description","file")
         widgets = {
-            'person': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'category': HiddenInput(attrs={'class':'input-control hidden full-size'}),
-            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%','autofocus':'true' ,'class':'latex input-control  textarea full-size'}),
+            'person': HiddenInput(attrs={'class':'hidden'}),
+            'category': HiddenInput(attrs={'class':'hidden'}),
+            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%','autofocus':'true' ,'class':'latex'}),
         }
         
     def clean_file(self):
