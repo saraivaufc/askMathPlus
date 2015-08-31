@@ -336,7 +336,7 @@ function unlike(buttom, likes){
 $(function(){
 	$(".latex").each(function(){
 		var id = $(this).attr("id");
-		$(this).parent().append("<button value='"+id+ "' class='button button-primary button-latex'><span class='mif-file-code'></span></button>");
+		$(this).parent().append("<span value='"+id+ "'  class='button-latex mif-file-code'></span>");
 	});
 	$(".button-latex").click(function(){
 		var id = $(this).attr('value');
