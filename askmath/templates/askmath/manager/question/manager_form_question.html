@@ -3,8 +3,6 @@
 
 {%  block content_right %}
 	<hr class="thin bg-grayLighter">
-	{% include 'askmath/utils/_box_latex.html' %}
-	
 	<div class="container">
 		<form  class="form form-generic" action="." method="post" enctype="multipart/form-data" role="form">
 			{% csrf_token %}
@@ -29,4 +27,5 @@
 			</div>
 		</form>
 	</div>
+{% include 'askmath/utils/latexeditor/_box_latex.html' %}
 {% endblock %}

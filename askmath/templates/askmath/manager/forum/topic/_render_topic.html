@@ -78,12 +78,9 @@
 		<div class="form-inline" role="form">
 			<form class="" action="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
 			{% csrf_token %}
-			<div class="form-group">
-		        {{ form.description }}
-		    	{{ form.file }}
-		    </div>
+			{% include "askmath/_render_form.html" %}
 		    <div class="form-group place-right">
-			<button type="submit" class="btn button success">{% trans "Comment" %}</button>
+			<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
 			</div>
 			</form>
 		</div>

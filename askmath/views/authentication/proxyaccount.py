@@ -26,19 +26,26 @@ class ProxyAccount(IAccount):
             else:
                 return render(request, 'askmath/authentication/login.html',
                     {'request': request,'form':form, 'message': message})
-        return self.__account.login(request)
+        return self.__account.options(request, message)
     
     def logout(self, request, message=None):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
-        
-        return self.__account.logout(request, message)
+        try:
+            return self.__account.logout(request, message)
+        except:
+            pass
+        return self.options(request, message)
     
-    def signup(self, request):
+    def signup(self, request, message=None):
         if request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         else:
-            return self.__account.signup(request)
+            try:
+                return self.__account.signup(request)
+            except:
+                pass
+        return self.options(request, message)
         
     def recover_password(self, request, message = None):
         if request.user.is_authenticated():
@@ -58,5 +65,5 @@ class ProxyAccount(IAccount):
                         message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                 except:
                     message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        return self.__account.recover_password(request, message=message)
+        return self.options(request, message)
     

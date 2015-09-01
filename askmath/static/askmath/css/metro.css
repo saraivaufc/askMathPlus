@@ -162,9 +162,6 @@ ol, ul {
 	color: #000 !important;
 }
 
-.tabcontrol .frames .frame {
-    background-color: #647687;
-}
 
 /* INPUTS */
 .input-control.checkbox input[type="checkbox"], .input-control.radio input[type="checkbox"], .input-control.checkbox input[type="radio"], .input-control.radio input[type="radio"] {

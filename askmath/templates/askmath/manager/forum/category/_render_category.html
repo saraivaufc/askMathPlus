@@ -2,28 +2,28 @@
 {% load humanize %}
 <div class="container">
 	<div class="row">
-	<div class="bg-grayLighter width padding10">
-		<div class="form-inline" role="form">
-			{% with form_topic as form %}
-			<form class="form form-generic" action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
-			{% csrf_token %}
-			<div class="form-group">
-		        {{ form.description }}
-		    	{{ form.file }}
-		    </div>
-		    <div class="form-group place-right">
-			<button type="submit" class="image-button button-primary">
-				{% trans "Post" %}
-				<span class="icon mif-checkmark"></span>
-			</button>
-			</div>
-			</form>
-			{% endwith %}
-		</div>
-	</div>
+	<div class="accordion large-heading" data-role="accordion">
+        <div class="frame">
+            <div class="heading">{% trans "New Topic" %}</div>
+            <div class="content">
+            	<div class="bg-grayLighter width padding10">
+					{% with form_topic as form %}
+					<form action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
+					{% csrf_token %}
+					{% include "askmath/_render_form.html" %}
+				    <button type="submit" class="image-button button-primary">
+						{% trans "Post" %}
+						<span class="icon mif-checkmark"></span>
+					</button>
+					</form>
+					{% endwith %}
+				</div>
+            </div>
+        </div>
+    </div>
 	</div>
 </div>
-
+<br />
 <div class="container">
 	<div class="row">
 		<div class="panel width">
@@ -89,7 +89,7 @@
 			    	</div>
 			    	</div>
 			    </div>
-			    <hr class="transparent"/>
+			    <br />
 			{% empty %}
 			  <h3>{% trans "No topic found." %}</h3>
 			{% endfor %}

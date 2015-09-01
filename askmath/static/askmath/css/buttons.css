@@ -1,7 +1,7 @@
 /* MyButtons */
 
 .button{
-	color: #fff !important;
+	color: #000;
 }
 
 .button-default, .button-primary, .button-success, .button-info, .button-danger, .button-warning{
@@ -121,6 +121,8 @@
 .modal-content .modal-footer button + button {
     margin-bottom: 0px;
 }
-
+.button-latex{
+	cursor: pointer;
+}
 
 

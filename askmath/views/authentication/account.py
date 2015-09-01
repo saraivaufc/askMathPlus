@@ -50,8 +50,7 @@ class Account(IAccount):
                         message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
             except:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        else:
-            return self.options(request, message)
+        return self.options(request, message)
     
     def logout(self, request, message=None):
         try:
