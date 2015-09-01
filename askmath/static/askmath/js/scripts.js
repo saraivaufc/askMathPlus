@@ -49,14 +49,9 @@ function Init(){
 })(jQuery);
 
 function resize_window(){
-	var screean = parseInt($(window).height());
-	var header = parseInt($("#header").css("height"));
-	var main = parseInt($("#main").css("height"));
+	var site = parseInt($("#site").css("height"));
 	var footer = parseInt($("#footer").css("height"));
-	if((header + main + footer) < screean){
-		var res = screean - header - footer;
-		$("#main").css("height", (res) + "px");
-	}
+	$("#site").css("min-height",(site - footer) + "px");
 }
 
 $(window).resize(resize_window);

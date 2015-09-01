@@ -88,31 +88,29 @@
 
 	<body onload="Init(); var a=new EqTextArea(''); a.addExportArea('eqcoderaw','htmledit'); EqEditor.init('1438691334', a,true); EqEditor.ExportButton.add(a, 'copybutton', EqnExport,'htmledit'); EqEditor.load(''); EqEditor.setAdvert(); ">		
 		<div id="fb-root"></div>
-		<header id="header">
-		{% include 'askmath/_no_script.html' %}
-		{% block header %}
-			{% include 'askmath/_header.html' %}
-		{% endblock %}
-		</header>	
-		<main id="main">
-			<div class="container-fluid">
-				<div class="row">
-					<section id="content">
-					{% block header_two %}
-					{% endblock %}
-					{% block content %}
-					{% endblock %}
-					</section>
-					<section id="modals"> 
-					{% block modals %}
-					{% endblock %}
-					</section>
-					<section id="messages">
-					{% include 'askmath/_messages.html' %}
-					</section>
-				</div>
-			</div>
-		</main>
+		<div id="site">
+			<header id="header">
+			{% include 'askmath/_no_script.html' %}
+			{% block header %}
+				{% include 'askmath/_header.html' %}
+			{% endblock %}
+			</header>	
+			<main id="main">
+				<section id="content">
+				{% block header_two %}
+				{% endblock %}
+				{% block content %}
+				{% endblock %}
+				</section>
+				<section id="modals"> 
+				{% block modals %}
+				{% endblock %}
+				</section>
+				<section id="messages">
+				{% include 'askmath/_messages.html' %}
+				</section>
+			</main>
+		</div>
 		{% include "askmath/send_feedback.html"  %}
 		
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">

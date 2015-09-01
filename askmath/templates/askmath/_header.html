@@ -1,17 +1,17 @@
 {% load i18n %}
 {% load askmath_tags %}
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="/home/" class="navbar-brand" itemprop="title">
-            	<img class="v-center" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" width="100%" height="100%" />
-            </a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body1">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="/home/" class="navbar-brand" rel="{% trans "Home" %}" itemprop="title">
+            	<img style="max-width:100px; margin-top: -7px;" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png"/>
+            </a>
         </div>
         <div id="footer-body1" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
