@@ -8,19 +8,21 @@
 	<div class="heading {{ topic.color }}">
         <span class="icon mif-bubble"></span>
         <span class="title fg-white">{{ topic.person.get_name }}</span>
+        {% if perms.askmath.write_topic or perms.askmath.access_forum_admin %}
         <div class="place-right">
         	<span class="lead">
 				{% blocktrans with creation=topic.creation|naturaltime  %}
-					<span>{{ creation }}</span>
+					{{ creation }}
 				{% endblocktrans %}
 			</span>
-			{% if request.user == topic.person %}
+        	{% if request.user == topic.person %}
 				<a href="/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
 			{% endif %}
-			{% if topic.exists and perms.askmath.access_manager_forum %}
+			{% if topic.exists and request.user == topic.person or perms.askmath.access_manager_forum %}
 				<a href="/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
 			{% endif %}
         </div>
+        {% endif %}
     </div>
 	<div class="content">
     	<div class="container-fluid">

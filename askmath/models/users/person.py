@@ -103,7 +103,6 @@ class Person(AbstractPerson):
     
     def __unicode__(self):
         return self.get_name()
-            
     
     def delete(self):
         self.exists = False
