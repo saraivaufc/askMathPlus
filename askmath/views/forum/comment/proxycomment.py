@@ -20,7 +20,7 @@ class ProxyComment(IComment):
         
     @method_decorator(login_required)
     def remove_comment(self, request, id_category, id_topic, id_comment, message=None):
-        if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.write_comment")  or request.user.has_perm("askmath.access_forum_admin"):
             try:
                 category = CategoryModel.objects.get(id = id_category)
             except:
