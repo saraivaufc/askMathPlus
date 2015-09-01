@@ -9,21 +9,10 @@ from askmath.models.comment import Comment
 class CommentForm(ModelForm):
     class Meta:
         model= Comment
-        fields = ("person", "topic", "description","file")
+        fields = ("person", "topic", "description")
         widgets = {
             'person': HiddenInput(attrs={'class':'hidden'}),
             'topic': HiddenInput(attrs={'class':'hidden'}),
             'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%'}),
             
         }
-        
-    def clean_file(self):
-        file = self.cleaned_data["file"]
-        try:
-            if file and file.name.find('hash_') == -1:
-                hash = hashlib.md5(file.read()).hexdigest()
-                file.name = "hash_" + "".join((hash, ".", file.name.split(".")[-1]))
-        except:
-            pass
-        return file
-        

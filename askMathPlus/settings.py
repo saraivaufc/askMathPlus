@@ -15,6 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 import os
 from django.http import HttpRequest
 import database_info
+from django.conf import global_settings
 
 from .components_metro import *
 from .email_info import *
@@ -107,6 +108,11 @@ DATABASES = {
        
     }
 }
+
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "django.core.context_processors.request",
+) 
 
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, '../askmath/locale'),

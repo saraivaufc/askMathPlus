@@ -7,9 +7,6 @@ class Comment(models.Model):
     topic = models.ForeignKey('Topic', verbose_name=_("Topic"))
     description = models.TextField(verbose_name=_("Description"))
     likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
-    file = models.FileField(verbose_name=_("File"), upload_to = 'documents/forum/comment/%Y/%m/%d',
-        help_text=_("Perform upload a file."), null=True, blank=True)
-    
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     

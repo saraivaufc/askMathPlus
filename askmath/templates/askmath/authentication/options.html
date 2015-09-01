@@ -26,11 +26,17 @@
         <div class="frames bg-steel fg-white">
             <div class="frame" id="frame_sign_in">
            		{% with form_signin as form %}
-           		<form action="/authentication/signin/" method="POST" role="form">
+           		{% if next %}
+				<form action="/authentication/options/?next={{next}}" method="post" role="form">
+				{%else%}
+				<form action="/authentication/options/" method="post" role="form">
+				{% endif %}
 			    {% csrf_token %}
 			        <h2 class="text-light">{% trans "Login to service" %}</h2>
 			        <hr class="thin"/>
 			        <br />
+			        <input type="hidden" name="next" value="{{ request.GET.next }}" />
+			        <input type="hidden" name="option" value="sign_in">
 			        <div class="input-control text full-size" data-role="input">
 			            <label for="user_login">{{ form.username.label_tag }}</label>
 			            {{ form.username }}
@@ -56,11 +62,12 @@
             </div>
             <div class="frame" id="frame_sign_up">
 				{% with form_signup as form %}
-				<form  action="/authentication/signup/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
+				<form  action="/authentication/options/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
 			    {% csrf_token %}
 			        <h2 class="text-light">{% trans "Register to service" %}</h2>
     				<hr class="thin"/>
 			        <br />
+			        <input type="hidden" name="option" value="sign_up">			
     				<div class="input-control text full-size" data-role="input">
 			            <label for="user_name">{{ form.name.label_tag }}</label>
 			            {{ form.name }}
@@ -123,11 +130,12 @@
             </div>
             <div class="frame" id="frame_recover_password">
            		{% with form_recover_password as form %}
-           		<form action="/authentication/recover_password/" method="POST" role="form">
+           		<form action="/authentication/options/" method="POST" role="form">
 			    {% csrf_token %}
 			        <h2 class="text-light">{% trans "Recover Password" %}</h2>
 			        <hr class="thin"/>
 			        <br />
+			        <input type="hidden" name="option" value="recover_password">		        
 			        <div class="input-control text full-size" data-role="input">
 			            <label>{{ form.username.label_tag }}</label>
 			            {{ form.username }}

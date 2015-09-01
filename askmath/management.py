@@ -51,7 +51,7 @@ askmath_group_permissions = {
         "read_contact",
         "write_contact",
         
-        "access_manager_forum",
+        "access_forum_admin",
         "read_category",
         "write_category",
         "read_topic",
@@ -101,7 +101,7 @@ askmath_group_permissions = {
         "read_contact",
         "write_contact",
         
-        "access_manager_forum",
+        "access_forum_admin",
         "read_category",
         "write_category",
         "read_topic",
@@ -127,7 +127,7 @@ askmath_group_permissions = {
         "read_video",
         "write_video",
         
-        "access_manager_forum",
+        "access_forum_admin",
         "read_category",
         "read_topic",
         "write_topic",
@@ -154,7 +154,7 @@ askmath_group_permissions = {
         
         "read_video",
         
-        "read_category",      
+        "read_category",
         "read_topic",
         "write_topic",
         "read_comment",

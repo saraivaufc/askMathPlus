@@ -8,7 +8,7 @@
             <div class="content">
             	<div class="bg-grayLighter width padding10">
 					{% with form_topic as form %}
-					<form action="/home/manager/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
+					<form action="/forum/topics/add/category={{ category.id }}/" method="post" enctype="multipart/form-data" role="form">
 					{% csrf_token %}
 					{% include "askmath/_render_form.html" %}
 				    <button type="submit" class="image-button button-primary">
@@ -39,10 +39,10 @@
 							{% endblocktrans %}
 						</span>
 			        	{% if request.user == topic.person %}
-							<a href="/home/manager/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
+							<a href="/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
 						{% endif %}
 						{% if topic.exists and perms.askmath.access_manager_forum %}
-							<a href="/home/manager/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
+							<a href="/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
 						{% endif %}
 			        </div>
 			        {% endif %}
@@ -57,7 +57,7 @@
 			    	<div class="container-fluid">
 			    	<div class="row">
 			    		<div class="col-sm-6  col-md-6">
-				    		<a href="/home/manager/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button {% if request.user in topic.get_comments_persons %}bg-green{% else %}bg-gray{% endif %} fg-white">
+				    		<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" class="image-button {% if request.user in topic.get_comments_persons %}bg-green{% else %}bg-gray{% endif %} fg-white">
 							    {{ topic.get_comments|length }}
 							    {% if request.user in topic.get_comments_persons %}
 							    <span class="icon glyphicon glyphicon-comment bg-emerald"></span>
@@ -66,9 +66,9 @@
 							    {% endif %}
 							</a>
 							{% if request.user in topic.get_likes_persons %}
-							<button href="/home/manager/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
+							<button href="/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
 							{% else %}
-							<button href="/home/manager/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
+							<button href="/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
 							{% endif %}	
 							<span class="like-count">{{ topic.get_likes|length }}</span>
 							{% if request.user in topic.get_likes_persons %}

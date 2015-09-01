@@ -54,7 +54,7 @@ class Permissions(Model):
                         ("write_contact", "Write Contact"),
                         
                         
-                        ("access_manager_forum", "Access Manager Forum"),
+                        ("access_forum_admin", "Access Forum Admin"),
                         ("read_category", "Read Category"),
                         ("write_category", "Write Category"),
                         

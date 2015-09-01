@@ -14,7 +14,20 @@ class ProxyAccount(IAccount):
     
     def options(self, request, message=None):
         if request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
+            return redirect(request.GET.get('next', request.user.get_absolute_url()))
+        if request.method == "POST":
+            try:
+                option = request.POST['option']
+                if option == 'sign_in':
+                    return self.signin(request, message)
+                elif option == 'sign_up':
+                    return self.signup(request, message)
+                elif option == 'recover_password':
+                    return self.recover_password(request, message)
+                else:
+                    return self.__account.options(request, message)
+            except:
+                pass
         return self.__account.options(request, message)
         
     

@@ -24,7 +24,7 @@ class Topic(ITopic):
                 return self.view_topic(request, category, topic, message)
         else:
             form = CommentForm()
-        return render(request, "askmath/manager/forum/topic/manager_view_topic.html",
+        return render(request, "askmath/forum/topic/view_topic.html",
             {'request':request,'category': category,'topic': topic,'form': form,'message': message})
     
     def add_topic(self, request, category, message=None):
@@ -37,7 +37,6 @@ class Topic(ITopic):
                 topic = form.save()
                 message = Message(TextMessage.TOPIC_SUCCESS_ADD, TypeMessage.SUCCESS)
                 request.method = "GET"
-                return self.__proxy_category.view_category(request, category.id, message)
             else:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         return self.__proxy_category.view_category(request, category.id, message)
@@ -56,7 +55,7 @@ class Topic(ITopic):
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         else:
             form = TopicForm( instance = topic)
-        return render(request, "askmath/manager/forum/topic/manager_form_topic.html", 
+        return render(request, "askmath/forum/topic/form_topic.html", 
             {'request':request,'form': form,'category': category,'topic': topic, 'title_form':_('Edit Topic'), 'message': message})
     
     def remove_topic(self, request, category, topic, message=None):

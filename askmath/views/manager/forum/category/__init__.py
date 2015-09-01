@@ -1,1 +1,0 @@
-from .proxycategory import ProxyCategory

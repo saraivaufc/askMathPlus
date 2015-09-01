@@ -5,6 +5,12 @@ class ICategory():
     def view_categories_removed(self):
         pass
     
+    def view_category(self):
+        pass
+    
+    def view_category_removed(self):
+        pass
+    
     def add_category(self):
         pass
     

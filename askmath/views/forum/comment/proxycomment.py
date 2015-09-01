@@ -4,6 +4,8 @@ from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.models import Category as CategoryModel
 from askmath.models import Topic as TopicModel
 from askmath.models import Comment as CommentModel
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .icomment import IComment
 from .comment import Comment
@@ -15,7 +17,8 @@ class ProxyComment(IComment):
         self.__comment = Comment()
         self.__proxy_category = ProxyCategory()
         self.__proxy_topic = ProxyTopic()
-    
+        
+    @method_decorator(login_required)
     def remove_comment(self, request, id_category, id_topic, id_comment, message=None):
         if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -44,10 +47,11 @@ class ProxyComment(IComment):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_topic.view_topic(request, id_category, id_topic, message)
     
+    @method_decorator(login_required)
     def edit_comment(self):
         pass
     
-    
+    @method_decorator(login_required)
     def like_comment(self, request, id_comment, message=None):
         if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -60,6 +64,7 @@ class ProxyComment(IComment):
                 pass
         return HttpResponse("None")
     
+    @method_decorator(login_required)
     def unlike_comment(self, request, id_comment, message=None):
         if request.user.has_perm("askmath.write_comment")  and request.user.has_perm("askmath.access_manager"):
             try:

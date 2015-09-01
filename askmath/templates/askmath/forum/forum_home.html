@@ -1,10 +1,15 @@
 {% extends 'askmath/index/home.html' %}
 {% load i18n %}
 
-{% block content %}
-	<div class="fg-white">
-	{% block tiles %}
-	{% endblock %}
-	</div>
-</div>
+{% block all_items %}
+	<li>
+{% endblock %}
+
+{% block forum %}
+<li class="active">
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/forum/categories/view/"><span class="icon mif-bubbles"></span> <spam>{% trans "Forum(Categories)" %}</spam></a></li>
 {% endblock %}

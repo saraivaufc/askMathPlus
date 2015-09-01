@@ -19,7 +19,7 @@ except:
 
 
 class Account(IAccount):
-    def options(self, request, message=None):
+    def options(self, request, message=None):   
         form_signin = PersonLoginForm()
         form_signup = PersonForm()
         form_recover_password = PersonRecoverPassword()
@@ -28,6 +28,19 @@ class Account(IAccount):
     
     
     def signin(self, request, form=None, message=None):
+        next = None
+        try:
+            if request.method == 'GET':
+                    next = request.GET['next']
+            elif request.method == 'POST':
+                next = request.POST['next']
+            else:
+                next = None
+        except:
+            pass
+        print next
+        print request
+        
         if request.method == "POST":
             try:
                 username =  form.cleaned_data['username']
@@ -42,8 +55,10 @@ class Account(IAccount):
                     if user:
                         login_user(request, user)
                         if request.user.is_authenticated():
-                            print "Password correct"
-                            return HttpResponseRedirect("/home/")
+                            if next:
+                                return HttpResponseRedirect(next)
+                            else:
+                                return HttpResponseRedirect("/home/")
                         else:
                             message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
                     else:
@@ -57,7 +72,7 @@ class Account(IAccount):
             logout_sys(request)
         except:
             pass
-        return self.options(request, message)
+        return HttpResponseRedirect('/authentication/options/')
     
     def signup(self, request, message=None):
         if request.method == "POST":
