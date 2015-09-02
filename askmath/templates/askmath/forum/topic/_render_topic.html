@@ -2,7 +2,7 @@
 {% load humanize %}
 <div class="panel width">
 	<div class="heading bg-lightBlue">
-		<span class="icon mif-bubble"></span>
+		<span class="icon mif-bubbles"></span>
         {% if perms.askmath.write_topic or perms.askmath.access_forum_admin %}
         <span class="title fg-white">{{ topic.get_title }}</span>
         <div class="place-right">
@@ -31,8 +31,7 @@
 		                <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 		                {% endif %}
 					</figure>
-					<h5 class="person-name">{% trans "Name:" %} {{ topic.person.get_name }}</h5>
-					<h5 class="person-registered">{% trans "Registered:" %} {{ topic.person.creation|naturalday }}</h5>	
+					<h5 class="person-name">{{ topic.person.get_name }}</h5>	
 				</div>
 			</div>
 			<div class="col-md-10 bg-grayLighter">

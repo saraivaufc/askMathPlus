@@ -13,8 +13,8 @@ class TopicForm(ModelForm):
         widgets = {
             'person': HiddenInput(attrs={'class':'hidden'}),
             'category': HiddenInput(attrs={'class':'hidden'}),
-            'title': TextInput(attrs={'required': 'required'}),
-            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%','autofocus':'true' ,'class':'latex'}),
+            'title': TextInput(attrs={'required': 'required','autofocus':'true'}),
+            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%' ,'class':'latex'}),
         }
         
     def clean_file(self):

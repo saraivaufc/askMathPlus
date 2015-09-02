@@ -54,9 +54,8 @@ class Topic(ITopic):
             form = TopicForm(request.POST, request.FILES, instance = topic)
             if form.is_valid():
                 topic=form.save()
-                message = Message(TextMessage.TOPIC_SUCCESS_EDIT, TypeMessage.SUCCESS)
-                request.method = "GET"
-                return self.view_topic(request, category, topic, message)
+                url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
+                return HttpResponseRedirect(url)
             else:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
         else:
@@ -66,8 +65,8 @@ class Topic(ITopic):
     
     def remove_topic(self, request, category, topic, message=None):
         topic.delete()
-        message = Message(TextMessage.TOPIC_SUCCESS_REM, TypeMessage.SUCCESS)
-        return self.__proxy_category.view_category(request, category.id, message)
+        url = "/forum/categories/view/category=%d/" % (category.id)
+        return HttpResponseRedirect(url)
     
     def restore_topic(self):
         pass

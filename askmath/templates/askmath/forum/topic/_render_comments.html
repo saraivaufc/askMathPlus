@@ -3,6 +3,7 @@
 {% for comment in topic.get_comments %}
 <div class="panel width">
 	<div class="heading bg-lightBlue">
+		<span class="icon mif-bubble"></span>
         {% if perms.askmath.write_comment or perms.askmath.access_forum_admin %}
         <div class="place-right">
         	<span class="lead">
@@ -30,8 +31,7 @@
 		                <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 		                {% endif %}
 					</figure>
-					<h5 class="person-name">{% trans "Name:" %} {{ comment.person.get_name }}</h5>
-					<h5 class="person-registered">{% trans "Registered:" %} {{ comment.person.creation|naturalday }}</h5>	
+					<h5 class="person-name">{{ comment.person.get_name }}</h5>	
 				</div>
 			</div>
 			<div class="col-md-10 bg-grayLighter">
