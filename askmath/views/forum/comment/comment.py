@@ -1,7 +1,7 @@
 from .icomment import IComment
 from askmath.models import Comment as CommentModel
 from django.template import Context, Template
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 import json
 from ..category import ProxyCategory
 from ..topic import ProxyTopic
@@ -14,14 +14,14 @@ class Comment(IComment):
         
     def remove_comment(self, request, category, topic, comment, message=None):
         comment.delete()
-        message = Message(TextMessage.COMMENT_SUCCESS_REM, TypeMessage.SUCCESS)
-        return self.__proxy_topic.view_topic(request, category.id, topic.id, message)
-    
-    def edit_comment(self):
-        pass
+        url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
+        return HttpResponseRedirect(url)
+        
+    def edit_comment(self, request, category, topic, comment, message=None):
+        url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
+        return HttpResponseRedirect(url)
     
     def like_comment(self, request, comment, message=None):
-        print "Plaa"
         if request.user in comment.get_likes_persons():
             return HttpResponse("False")
         elif comment.like(request.user):

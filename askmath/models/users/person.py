@@ -97,7 +97,8 @@ class Person(AbstractPerson):
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=settings.generate_color)
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default = True)
-    
+
+
     def get_profile_image(self):
         return self.profile_image
     

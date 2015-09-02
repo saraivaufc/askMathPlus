@@ -6,6 +6,7 @@ from askMathPlus.settings import generate_color
 class Topic(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
     category = models.ForeignKey('Category', verbose_name=_("Category"))
+    title = models.CharField(verbose_name=_("Title"), max_length=255)
     description = models.TextField(verbose_name=_("Description"),
         help_text=_("Choose a description for the topic."))
     likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
@@ -23,6 +24,9 @@ class Topic(models.Model):
     def get_category(self):
         return self.category
     
+    def get_title(self):
+        return self.title
+
     def get_description(self):
         return self.description
     

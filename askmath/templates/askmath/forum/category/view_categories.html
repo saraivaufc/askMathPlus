@@ -1,6 +1,6 @@
 {% extends 'askmath/forum/forum_home.html' %}
 {% load i18n %}
-
+{% load humanize %}
 
 {%  block content %}
 <div class="cell padding10">
@@ -23,21 +23,40 @@
 	{% endif %}
 </div>
 
-<div class="tile-area padding5 bg-transparent">
-<div class="tile-container">
-{% for category in categories %}
-<div class="tile-wide {{ category.color }} fg-white" data-role="tile">
-    <a href="/forum/categories/view/category={{ category.id }}/" class="tile-content iconic">
-        <span class="icon mif-bubbles"></span>
-        <span class="tile-label">{{ category }}</span>
-        {% if not category.exists %}
-        <span class="tile-badge mif-bin"></span>
-        {% endif %}
-    </a>
-</div>
-{% empty %}
-<h3 class="text-center">{% trans "No Category Found" %}</h3>
-{% endfor %}
-</div>
+<div class="padding10">
+	<table class="table table-category striped hovered border">
+		<thead>
+			<tr>
+				<th>{% trans "Category" %}</th>
+				<th>{% trans "Posts" %}</th>
+				<th>{% trans "Last Post" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+			<tr>
+				<td class="category">
+					<div>
+						<span class="icon"></span>
+						<h3 class="title">
+							<a href="/forum/categories/view/category={{ category.id }}/">{{ category.get_title }}</a>
+						</h3>
+					</div>
+					<p class="description">{{ category.get_description }}</p>
+				</td>
+				<td class="posts">{{ category.get_topics|length }}</td>
+				<td class="last_post">
+					{% if category.get_topics|length > 0 %}
+						{% with category.get_topics|first as topic  %}
+						<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">{{ topic.title }}</a>
+						<span>{{ topic.creation|naturaltime }}</span>
+						{% endwith %}
+					{% else %}
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
 {% endblock %}

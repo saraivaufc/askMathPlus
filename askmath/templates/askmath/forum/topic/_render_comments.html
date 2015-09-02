@@ -1,10 +1,8 @@
 {% load i18n %}
 {% load humanize %}
 {% for comment in topic.get_comments %}
-<div class="row">
 <div class="panel width">
-	<div class="heading bg-blue">
-        <span class="title fg-white">{{ comment.person.get_name }}</span>
+	<div class="heading bg-lightBlue">
         {% if perms.askmath.write_comment or perms.askmath.access_forum_admin %}
         <div class="place-right">
         	<span class="lead">
@@ -21,40 +19,44 @@
         </div>
         {% endif %}
     </div>
-	<div class="content">
-	    <div class="container-fluid">
-	    	<div class="row">
-				<p class="lead">{{ comment.get_description|linebreaksbr }}</p>
-	    	</div>
-    	</div>
-    	<div class="container-fluid">
-	    	<div class="row">
-	    		<div class="col-sm-6 col-md-6 ">
-	    			{% if request.user in comment.get_likes_persons %}
-					<button href="/forum/comments/unlike/comment={{ comment.id }}/" class="button-like image-button bg-green fg-white">
-					{% else %}
-					<button href="/forum/comments/like/comment={{ comment.id }}/" class="button-like image-button bg-gray fg-white">
-					{% endif %}	
-						<span class="like-count">{{ comment.get_likes|length }}</span>
-						{% if request.user in comment.get_likes_persons %}
-					    <span class="icon mif-thumbs-up bg-emerald"></span>
-					    {% else %}
-					    <span class="icon mif-thumbs-up"></span>
-					    {% endif %}
-					</button>
-	    		</div>
-	    		<div class="col-sm-6 col-md-6  text-right">
-	    			{% if comment.file %}
-					<a href="{{ comment.file.url }}" target="_blank" class="image-button bg-gray fg-white">
-						{% trans "Downlad File" %}
-					    <span class="icon mif-folder-download"></span>
-					</a>
-					{% endif %}
-	    		</div>
-	    	</div>
-	    </div>
-	</div>
-</div>
+	<div class="contant">
+		<div class="equal">
+			<div class="col-md-2 bg-grayLight">
+				<div class="person-card padding10">
+					<figure>
+						{% if comment.person.get_profile_image %}
+		                <img class="person-image" src="{{ comment.person.get_profile_image.url }}">
+		                {% else %}
+		                <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+		                {% endif %}
+					</figure>
+					<h5 class="person-name">{% trans "Name:" %} {{ comment.person.get_name }}</h5>
+					<h5 class="person-registered">{% trans "Registered:" %} {{ comment.person.creation|naturalday }}</h5>	
+				</div>
+			</div>
+			<div class="col-md-10 bg-grayLighter">
+				<div class="post-card padding10">
+					<p class="post-description lead">{{ comment.get_description|linebreaksbr }}</p>
+					<div class="post-controls">
+						<div class="col-sm-6 col-md-6">
+				    		{% if request.user in comment.get_likes_persons %}
+							<button href="/forum/comments/unlike/comment={{ comment.id }}/" class="button-like image-button bg-green fg-white">
+							{% else %}
+							<button href="/forum/comments/like/comment={{ comment.id }}/" class="button-like image-button bg-gray fg-white">
+							{% endif %}	
+								<span class="like-count">{{ comment.get_likes|length }}</span>
+								{% if request.user in comment.get_likes_persons %}
+							    <span class="icon mif-thumbs-up bg-emerald"></span>
+							    {% else %}
+							    <span class="icon mif-thumbs-up"></span>
+							    {% endif %}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
 </div>
 {% empty %}
 {% endfor %}

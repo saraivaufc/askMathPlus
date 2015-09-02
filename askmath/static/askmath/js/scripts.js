@@ -3,24 +3,6 @@ function Init(){
 	Preview.Init();
 };
 
-
-$(function(){
-	$(function(){
-            $(".select").select2({
-                placeholder: "Select a state",
-                allowClear: true
-            });
-        });
-
-    function fmtState (state) {
-        if (!state.id) { return state.text; }
-        var $state = $(
-                '<span><img src="images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
-        );
-        return $state;
-    }
-});
-
 (function ($) {
 	$(document).ready(function ($) {
         $('#feedback-modal').on('shown.bs.modal', function () {

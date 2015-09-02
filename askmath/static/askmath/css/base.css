@@ -282,3 +282,104 @@ li > a, a.button, a.btn, a.shortcut-button{
 caption{
 	font-size: 120%;
 }
+
+
+/* FORUM */
+.table-category{
+
+}
+
+.table-topic{
+
+}
+
+.table-category > tbody > tr > td.category, .table-topic > tbody > tr > td.topic{
+	text-align: left;
+}
+
+.table-category > tbody > tr > td.category > div .icon, .table-topic > tbody > tr > td.topic > div .icon{
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-origin: padding-box;
+	width: 32px;
+	height: 32px;
+	background-size: cover !important;
+	float: left;
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.table-category > tbody > tr > td.category > div .icon{
+	background-image: url("/static/askmath/img/icons/forum_read.png");
+}
+
+.table-topic > tbody > tr > td.topic > div .icon{
+	background-image: url("/static/askmath/img/icons/topic_read.png");
+}
+
+.table-category > tbody > tr > td.category > div .title, .table-topic > tbody > tr > td.topic > div .title{
+	min-height: 1px;
+	overflow: hidden;
+	padding: 0px 11px 0px 12px;
+	position: relative;
+}
+
+
+
+.table-category > tbody > tr > td.category > .description{
+	padding: 0px 11px 0px 12px;
+}
+
+.pagepost{
+	border-top-style: dotted;
+	border-top-width: 1px;
+}
+
+.pagepost > .pagelink{
+	float: left;
+    white-space: nowrap;
+}
+
+.pagepost > .postlink{
+	float: right;
+    white-space: nowrap;
+    font-weight: bold;
+	text-align: right;	
+}
+
+
+.person-card{
+	display: block;
+}
+
+.person-card > figure > .person-image{
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+    max-height: 100px;
+}
+
+.person-card  > .person-name, .person-card  > .person-registered{
+	text-align: center;
+}
+
+.post-card, .comment-card{
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.post-card > .post-description{
+	display: block;
+}
+
+.post-card > .post-controls{
+	display: block;
+}
+
+.equal, .equal > div[class*='col-'] {  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 0 auto;
+}

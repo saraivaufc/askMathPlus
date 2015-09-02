@@ -13,10 +13,12 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if topic %}
-		<li><a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/"><span class="icon mif-bubble"></span> <spam>{{ topic.get_description|truncatechars:"20" }}</spam></a></li>
+		<li><a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/"><span class="icon mif-bubble"></span> <spam>{{ topic.get_title|truncatechars:"20" }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 
 {% block content %}
-{% include "askmath/forum/topic/_render_topic.html" %}
+<div class="padding10">
+{% include "askmath/forum/topic/_render_topic.html" %}	
+</div>
 {% endblock %}

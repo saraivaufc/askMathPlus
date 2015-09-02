@@ -2,9 +2,9 @@
 
 
 .tile-area-controls {
-    position: fixed;
-    right: 40px;
-    top: 40px;
+	position: fixed;
+	right: 40px;
+	top: 40px;
 }
 
 .tile-content{
@@ -12,7 +12,7 @@
 }
 
 .tile-group {
-    left: 100px;
+	left: 100px;
 }
 .tile-group .tile-group-title{
 	color: inherit !important;
@@ -20,9 +20,9 @@
 
 
 .tile, .tile-small, .tile-sqaure, .tile-wide, .tile-large, .tile-big, .tile-super {
-    opacity: 0;
-    -webkit-transform: scale(.8);
-    transform: scale(.8);
+	opacity: 0;
+	-webkit-transform: scale(.8);
+	transform: scale(.8);
 }
 
 /* END TILES */
@@ -33,42 +33,42 @@
 }
 
 .charm.right-side {
-    width: 300px;
-    right: -300px;
+	width: 300px;
+	right: -300px;
 }
 
 #charmSettings .button {
-    margin: 5px;
+	margin: 5px;
 }
 
 @media screen and (max-width: 640px) {
-    .tile-area {
-        overflow-y: scroll;
-    }
-    .tile-area-controls {
-        display: none;
-    }
+	.tile-area {
+		overflow-y: scroll;
+	}
+	.tile-area-controls {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 320px) {
-    .tile-area {
-        overflow-y: scroll;
-    }
+	.tile-area {
+		overflow-y: scroll;
+	}
 
-    .tile-area-controls {
-        display: none;
-    }
+	.tile-area-controls {
+		display: none;
+	}
 
 }
 
 .page-content {
-    min-height: 100%;
-    height: 100%;
+	min-height: 100%;
+	height: 100%;
 }
 .table .input-control.checkbox {
-    line-height: 1;
-    min-height: 0;
-    height: auto;
+	line-height: 1;
+	min-height: 0;
+	height: auto;
 }
 
 
@@ -91,7 +91,7 @@ a.tile-content{
 }
 
 .tile-area{
-    height: inherit;
+	height: inherit;
 }
 
 .tile-area-title{
@@ -131,12 +131,12 @@ a.tile-content{
 /* LISTS  */
 
 ol, ul {
-    margin-left: 0px;
+	margin-left: 0px;
 }
 
 /* TABLES */
 .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th {
-    background-color: inherit;
+	background-color: inherit;
 }
 
 
@@ -149,10 +149,10 @@ ol, ul {
 
 /* INPUTS */
 .input-control.checkbox input[type="checkbox"], .input-control.radio input[type="checkbox"], .input-control.checkbox input[type="radio"], .input-control.radio input[type="radio"] {
-    opacity: 1;
-    min-width: 30px;
-    min-height: 30px;
-    margin-left: 0px;
+	opacity: 1;
+	min-width: 30px;
+	min-height: 30px;
+	margin-left: 0px;
 }
 
 textarea{

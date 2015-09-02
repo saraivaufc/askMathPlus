@@ -36,13 +36,16 @@ class Topic(ITopic):
             form = TopicForm(request.POST, request.FILES)
             if form.is_valid():
                 topic = form.save()
-                message = Message(TextMessage.TOPIC_SUCCESS_ADD, TypeMessage.SUCCESS)
-                request.method = "GET"
+                url = "/forum/categories/view/category=%d/" % (category.id)
+                return HttpResponseRedirect(url)
             else:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
                 return self.__proxy_category.view_category(request, category, message)
-        url = "/forum/categories/view/category=%d/" % (category.id)
-        return HttpResponseRedirect(url)
+        else:
+            form = TopicForm()
+            return render(request, "askmath/forum/topic/form_topic.html", 
+            {'request':request,'form': form,'category': category, 'title_form':_('Add Topic'), 'message': message})
+
     def edit_topic(self, request, category, topic, message=None):
         if request.method == 'POST':
             request.POST = request.POST.copy()
