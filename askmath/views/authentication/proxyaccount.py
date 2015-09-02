@@ -14,7 +14,11 @@ class ProxyAccount(IAccount):
     
     def options(self, request, message=None):
         if request.user.is_authenticated():
-            return redirect(request.GET.get('next', request.user.get_absolute_url()))
+            try:
+                return redirect(request.GET['next'])
+            except:
+                return HttpResponseRedirect('/home/')
+
         if request.method == "POST":
             try:
                 option = request.POST['option']
@@ -28,14 +32,20 @@ class ProxyAccount(IAccount):
                     return self.__account.options(request, message)
             except:
                 pass
-        return self.__account.options(request, message)
+        try:
+            return self.__account.options(request, message)
+        except:
+            return HttpResponseRedirect('/home/')
         
     
     def signin(self, request, message = None):
         if request.method == 'POST':
             form = PersonLoginForm(request.POST)
             if form.is_valid():
-                return self.__account.signin(request, form)
+                try:
+                    return self.__account.signin(request, form)
+                except:
+                    return self.options(request, message)
             else:
                 return render(request, 'askmath/authentication/login.html',
                     {'request': request,'form':form, 'message': message})
@@ -57,8 +67,7 @@ class ProxyAccount(IAccount):
             try:
                 return self.__account.signup(request)
             except:
-                pass
-        return self.options(request, message)
+                return self.options(request, message)
         
     def recover_password(self, request, message = None):
         if request.user.is_authenticated():

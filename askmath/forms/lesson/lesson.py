@@ -15,11 +15,11 @@ class LessonForm(ModelForm):
 		model= Lesson
 		fields = ("disciplines","title", "description", "requirements", "sugestions", "maximum_hops", "visible")
 		widgets = {
-			'disciplines': SelectMultiple(attrs={'required':'required'}),
+			'disciplines': SelectMultiple(attrs={'required':'required','class':'full-size'}),
 			'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex','required': 'required'}),
-			'requirements': SelectMultiple(attrs={}),
-			'sugestions': SelectMultiple(attrs={}),
+			'requirements': SelectMultiple(attrs={'class':'full-size'}),
+			'sugestions': SelectMultiple(attrs={'class':'full-size'}),
 			'maximum_hops': NumberInput(attrs={'required':'required', 'min': '0'}),
 			'visible': CheckboxInput(attrs={}),
 		}

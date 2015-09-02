@@ -4,6 +4,22 @@ function Init(){
 };
 
 
+$(function(){
+	$(function(){
+            $(".select").select2({
+                placeholder: "Select a state",
+                allowClear: true
+            });
+        });
+
+    function fmtState (state) {
+        if (!state.id) { return state.text; }
+        var $state = $(
+                '<span><img src="images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+        );
+        return $state;
+    }
+});
 
 (function ($) {
 	$(document).ready(function ($) {
@@ -339,4 +355,15 @@ $(function(){
 		openEditor(box);
 	});
 	
+});
+
+
+
+$(function(){
+	$("#menu-admin").hover(function(){
+		$("#menu-admin").removeClass('compact');
+	});
+	$("#menu-admin").mouseleave(function(){
+		$("#menu-admin").addClass('compact');
+	});
 });

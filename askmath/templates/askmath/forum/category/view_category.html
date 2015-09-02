@@ -9,7 +9,7 @@
 {% endblock %}
 
 {%  block content %}
-<div class="cell padding5">
+<div class="cell padding10">
 	{% if perms.askmath.write_category and perms.askmath.access_manager_forum  %}	
 		<a href="/forum/categories/edit/category={{ category.id }}/" class="image-button button-primary">
 			{% trans "Edit" %}

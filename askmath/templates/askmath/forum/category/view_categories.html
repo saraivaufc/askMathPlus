@@ -3,7 +3,7 @@
 
 
 {%  block content %}
-<div class="cell padding5">
+<div class="cell padding10">
 	{% if perms.askmath.write_category %}
 		<a href="/forum/categories/add/" class="image-button button-success">
 			{% trans "Create" %}
@@ -23,7 +23,7 @@
 	{% endif %}
 </div>
 
-<div class="tile-area padding10 bg-transparent">
+<div class="tile-area padding5 bg-transparent">
 <div class="tile-container">
 {% for category in categories %}
 <div class="tile-wide {{ category.color }} fg-white" data-role="tile">

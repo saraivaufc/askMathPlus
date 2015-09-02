@@ -71,22 +71,6 @@
     height: auto;
 }
 
-@media screen and (max-width: 800px){
-    #cell-sidebar {
-        flex-basis: 52px;
-    }
-}
-
-.sidebar{
-    padding-left: 0px;
-}
-
-.sidebar > li:hover, .sidebar li.active{
-	background-color:#4390DF;
-	color: #fff;
-}
-
-
 
 .tile-container-center{
 	position: relative;
