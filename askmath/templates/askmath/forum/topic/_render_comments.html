@@ -9,7 +9,7 @@
         <div class="place-right">
         	<span class="lead">
 				{% blocktrans with creation=comment.creation|naturaltime  %}
-					<span class="tag info">{{ creation }}</span>
+					{{ creation }}
 				{% endblocktrans %}
 			</span>
         	{% if request.user == comment.person %}
@@ -27,7 +27,6 @@
 				<p class="lead">{{ comment.get_description|linebreaksbr }}</p>
 	    	</div>
     	</div>
-    	<hr class="transparent" />
     	<div class="container-fluid">
 	    	<div class="row">
 	    		<div class="col-sm-6 col-md-6 ">
@@ -56,6 +55,6 @@
 	    </div>
 	</div>
 </div>
+</div>
 {% empty %}
 {% endfor %}
-</div>

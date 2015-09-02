@@ -72,18 +72,17 @@
 {% if topic.get_comments|length %}
 	{% include "askmath/forum/topic/_render_comments.html" %}
 {% endif %}
-<div class="row">
-	<div class="bg-grayLighter width padding10">
+<div class="row bg-grayLighter">
+	<div class="padding10">
 		<div class="form-inline" role="form">
 			<form class="" action="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
 			{% csrf_token %}
 			{% include "askmath/_render_form.html" %}
 		    <div class="form-group place-right">
-			<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
+				<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
 			</div>
 			</form>
 		</div>
 	</div>
 </div>
-
 </div>

@@ -26,7 +26,7 @@
 <div class="tile-area padding10 bg-transparent">
 <div class="tile-container">
 {% for category in categories %}
-<div class="tile {{ category.color }} fg-white" data-role="tile">
+<div class="tile-wide {{ category.color }} fg-white" data-role="tile">
     <a href="/forum/categories/view/category={{ category.id }}/" class="tile-content iconic">
         <span class="icon mif-bubbles"></span>
         <span class="tile-label">{{ category }}</span>

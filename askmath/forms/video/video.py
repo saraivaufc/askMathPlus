@@ -20,9 +20,9 @@ class VideoForm(ModelForm):
     def clean_file(self):
         file = self.cleaned_data["file"]
         try:
-            if file and file.name.find('hash_') == -1:
+            if file and file.name.find('file_') == -1:
                 hash = hashlib.md5(file.read()).hexdigest()
-                file.name = "hash_" + "".join((hash, ".", file.name.split(".")[-1]))
+                file.name = "file_" + "".join((hash, ".", file.name.split(".")[-1]))
         except:
             pass
         return file

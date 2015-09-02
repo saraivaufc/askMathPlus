@@ -6,9 +6,9 @@
 
 {% block content %}
 <div class="page-content">
-	<div class="flex-grid no-responsive-future" style="height: 100%">
+	<div class="flex-grid no-responsive-future" style="min-height: 100%">
 		<div class="container-fluid" >
-			<div class="row" style="height: 100%">
+			<div class="row" style="min-height: 100%">
 				<div class="cell size-x200 bg-dark" id="cell-sidebar">
 					<ul class="sidebar bg-dark">
 						{% block all_items %}
@@ -89,16 +89,6 @@
 							</a>
 						</li>
 						{% endif %}
-						{% if perms.askmath.access_manager_forum %}
-						{% block forum %}
-						<li>
-						{% endblock %}
-							<a href="/forum/">
-								<span class="icon mif-bubbles"></span>
-								<span class="title">{% trans "Forum" %}</span>
-							</a>
-						</li>
-						{% endif %}
 					</ul>
 				</div>
 				<div class="cell auto-size">
@@ -168,15 +158,6 @@
 									<a href="/home/manager/contacts/view/" class="tile-content iconic">
 										<span class="icon mif-envelop"></span>
 										<span class="tile-label">{% trans "MESSAGES" %}</span>
-									</a>
-								</div>
-								{% endif %}
-								
-								{% if perms.askmath.access_manager_forum %}
-								<div class="tile-wide bg-olive" data-role="tile">
-									<a href="/forum/" class="tile-content iconic">
-										<span class="icon mif-bubbles"></span>
-										<span class="tile-label">{% trans "FORUM" %}</span>
 									</a>
 								</div>
 								{% endif %}

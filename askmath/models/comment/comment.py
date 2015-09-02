@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class Comment(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
     topic = models.ForeignKey('Topic', verbose_name=_("Topic"))
-    description = models.TextField(verbose_name=_("Description"))
+    description = models.TextField(verbose_name=_("Comment"))
     likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)

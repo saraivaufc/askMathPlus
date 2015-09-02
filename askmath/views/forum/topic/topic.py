@@ -21,7 +21,8 @@ class Topic(ITopic):
                 comment = form.save()
                 message = Message(TextMessage.COMMENT_SUCCESS_ADD, TypeMessage.SUCCESS)
                 request.method = "GET"
-                return self.view_topic(request, category, topic, message)
+                url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
+                return HttpResponseRedirect(url)
         else:
             form = CommentForm()
         return render(request, "askmath/forum/topic/view_topic.html",
@@ -39,7 +40,9 @@ class Topic(ITopic):
                 request.method = "GET"
             else:
                 message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        return self.__proxy_category.view_category(request, category.id, message)
+                return self.__proxy_category.view_category(request, category, message)
+        url = "/forum/categories/view/category=%d/" % (category.id)
+        return HttpResponseRedirect(url)
     def edit_topic(self, request, category, topic, message=None):
         if request.method == 'POST':
             request.POST = request.POST.copy()
