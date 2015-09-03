@@ -12,19 +12,7 @@ class Topic(ITopic):
         self.__proxy_category = ProxyCategory()
         
     def view_topic(self, request, category, topic, message=None):
-        if request.method == 'POST':
-            request.POST = request.POST.copy()
-            request.POST['person'] = request.user.id
-            request.POST['topic'] = topic.id
-            form = CommentForm(request.POST, request.FILES)
-            if form.is_valid():
-                comment = form.save()
-                message = Message(TextMessage.COMMENT_SUCCESS_ADD, TypeMessage.SUCCESS)
-                request.method = "GET"
-                url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
-                return HttpResponseRedirect(url)
-        else:
-            form = CommentForm()
+        form = CommentForm()
         return render(request, "askmath/forum/topic/view_topic.html",
             {'request':request,'category': category,'topic': topic,'form': form,'message': message})
     
@@ -73,16 +61,16 @@ class Topic(ITopic):
     
     def like_topic(self, request, topic, message=None):
         if request.user in topic.get_likes_persons():
-            return HttpResponse("False")
+            return HttpResponse(json.dumps({'result':'False','value':len(topic.get_likes())}))
         elif topic.like(request.user):
             return HttpResponse(json.dumps({'result':'True','value':len(topic.get_likes())}))
         else:
-            return HttpResponse("False")
+            return HttpResponse(json.dumps({'result':'False','value':len(topic.get_likes())}))
     
     def unlike_topic(self, request, topic, message=None):
         if not request.user in topic.get_likes_persons():
-            return HttpResponse("False")
+            return HttpResponse(json.dumps({'result':'False','value':len(topic.get_likes())}))
         elif topic.unlike(request.user):
             return HttpResponse(json.dumps({'result':'True','value':len(topic.get_likes())}))
         else:
-            return HttpResponse("False")
+            return HttpResponse(json.dumps({'result':'False','value':len(topic.get_likes())}))

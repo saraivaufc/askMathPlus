@@ -1,9 +1,11 @@
 {% load i18n %}
 {% load humanize %}
+{% csrf_token %}
 {% for comment in topic.get_comments %}
 <div class="panel width">
 	<div class="heading bg-lightBlue">
 		<span class="icon mif-bubble"></span>
+        <span class="title fg-white">{% trans "Reply" %}</span>
         {% if perms.askmath.write_comment or perms.askmath.access_forum_admin %}
         <div class="place-right">
         	<span class="lead">
@@ -12,7 +14,7 @@
 				{% endblocktrans %}
 			</span>
         	{% if request.user == comment.person %}
-				<a href="/forum/comments/edit/category={{ category.id }}/topic={{ topic.id }}/comment={{ comment.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
+				<a class="comment-edit" href="#comment-{{ comment.id }}" url="/forum/comments/edit/category={{ category.id }}/topic={{ topic.id }}/comment={{ comment.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
 			{% endif %}
 			{% if comment.exists and request.user == comment.person or perms.askmath.access_forum_admin %}
 				<a href="/forum/comments/remove/category={{ category.id }}/topic={{ topic.id }}/comment={{ comment.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
@@ -36,7 +38,7 @@
 			</div>
 			<div class="col-md-10 bg-grayLighter">
 				<div class="post-card padding10">
-					<p class="post-description lead">{{ comment.get_description|linebreaksbr }}</p>
+					<p id="comment-{{ comment.id }}" class="post-description lead">{{ comment.get_description|linebreaksbr }}</p>
 					<div class="post-controls">
 						<div class="col-sm-6 col-md-6">
 				    		{% if request.user in comment.get_likes_persons %}

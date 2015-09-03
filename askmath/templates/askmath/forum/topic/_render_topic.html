@@ -82,7 +82,7 @@
 <div class="padding10 bg-grayLighter">
 	<div class="container-fluid">
 	<div class="row">
-	<form id="comment-form" action="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
+	<form id="comment-form" action="/forum/comments/add/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
 	{% csrf_token %}
 	{% include "askmath/_render_form.html" %}
 	    <div class="place-right">

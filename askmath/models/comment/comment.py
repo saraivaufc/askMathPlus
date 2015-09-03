@@ -42,8 +42,7 @@ class Comment(models.Model):
         
     def unlike(self, person):
         try:
-            like = self.likes.get(person=person)
-            self.likes.remove(like)
+            self.likes.filter(person=person).delete()
             return True
         except:
             return False

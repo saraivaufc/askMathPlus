@@ -3,8 +3,8 @@
 {% load humanize %}
 
 {%  block content %}
+{% if perms.askmath.write_category %}
 <div class="cell padding10">
-	{% if perms.askmath.write_category %}
 		<a href="/forum/categories/add/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
@@ -20,8 +20,8 @@
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
-	{% endif %}
 </div>
+{% endif %}
 
 <div class="padding10">
 	<table class="table table-category striped hovered border">

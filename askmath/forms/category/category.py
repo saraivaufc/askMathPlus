@@ -13,5 +13,5 @@ class CategoryForm(ModelForm):
         widgets = {
             'person': HiddenInput(attrs={'class':'hidden'}),      
             'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-         	'description': Textarea(attrs={'required': 'required'}),    
+         	'description': Textarea(attrs={}),    
         }

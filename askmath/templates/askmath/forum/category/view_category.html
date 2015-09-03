@@ -9,8 +9,8 @@
 {% endblock %}
 
 {%  block content %}
-<div class="cell padding10">
-	{% if perms.askmath.write_category and perms.askmath.access_manager_forum  %}	
+{% if perms.askmath.write_category and perms.askmath.access_manager_forum  %}
+<div class="cell padding10">	
 		<a href="/forum/categories/edit/category={{ category.id }}/" class="image-button button-primary">
 			{% trans "Edit" %}
 			<span class="icon mif-pencil"></span>
@@ -26,8 +26,8 @@
 			<span class="icon mif-history"></span>
 		</a>
 		{% endif %}
-	{% endif %}
 </div>
+{% endif %}
 
 {% include "askmath/forum/category/_render_category.html" %}
 {% include 'askmath/utils/latexeditor/_box_latex.html' %}

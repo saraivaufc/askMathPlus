@@ -7,7 +7,7 @@ class Category(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
     title = models.CharField(verbose_name=_("Title"), max_length=100,
         help_text=_("Choose a title for the category."))
-    description = models.TextField(verbose_name=_("Description"), max_length=100,
+    description = models.TextField(verbose_name=_("Description"), max_length=100,null=True, blank=True,
         help_text=_("Choose a description for the category."))
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)

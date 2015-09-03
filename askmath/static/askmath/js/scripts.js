@@ -3,6 +3,7 @@ function Init(){
 	Preview.Init();
 };
 
+
 (function ($) {
 	$(document).ready(function ($) {
         $('#feedback-modal').on('shown.bs.modal', function () {
@@ -348,4 +349,43 @@ $(function(){
 	$("#menu-admin").mouseleave(function(){
 		$("#menu-admin").addClass('compact');
 	});
+});
+
+
+$(function(){
+	$(".comment-edit").click(function(){
+		var url = $(this).attr("url");
+		var id = $(this).attr("href");
+		$(id).attr("temp",$(id).text()) 
+		$(id).html('<form class="form" action="'+ url +'" method="post"><div class="input-control textarea full-size no-padding"><textarea id="id_description" name="description" required col="100%">' + $(id).text() + '</textarea></div><button class="button button-default cancel">Cancel</button><button type="submit" class="button button-primary">Edit</button></form>');
+		$(id).find(".form").submit(function(){
+			var csrftoken = Cookies.get('csrftoken');
+			data = new Object();
+			data['description'] = $(this).find("#id_description").val();
+			data['csrfmiddlewaretoken'] = csrftoken;
+			$.post(url, data, function(data){
+				try{
+					var data = JSON.parse(data);
+					if(data['result'] == 'True'){
+						var textarea = $(id).find(".form").find("#id_description");
+						var text = textarea.val();
+						textarea.remove();
+						$(id).text(text);
+					}else{
+						alert("Erorr");
+					}
+				}catch(e){
+					alert("Error");
+				}
+			});
+			return false;
+		});
+
+		$(id).find(".form").find(".cancel").click(function(){
+			var textarea = $(id).find(".form").find("#id_description");
+			var text = $(id).attr("temp");
+			textarea.remove();
+			$(id).text(text);
+		});
+	})
 });

@@ -1,5 +1,5 @@
 $(function(){
-	if(readCookie("contrast")){
+	if(Cookies.get("contrast")){
 		$("body").addClass("bg-dark fg-white");	
 		$("a, h1, h2, h3").addClass("link_contrast");
 		$(".btn").addClass("btn_contrast");
@@ -8,7 +8,7 @@ $(function(){
 		button_contrast.addClass("enable-contrast");
 		button_contrast.text("High Contrast-ON [3]");
 	}
-	if(readCookie("font")){
+	if(Cookies.get("font")){
 		font_plus();
 		var button_font = $("#button-font");
 		button_font.removeClass("font-minus");
@@ -25,13 +25,13 @@ $("#button-contrast").click(function(){
 		$(this).removeClass("disable-contrast");
 		$(this).addClass("enable-contrast");
 		$(this).text("High Contrast-ON [3]");
-		generateCookie("contrast", true , 7);
+		Cookies.set("contrast", true);
 		console.log("Contrar Enable");
 	}else if($(this).hasClass("enable-contrast")){
 		$(this).removeClass("enable-contrast");
 		$(this).addClass("disable-contrast");
 		$(this).text("High Contrast-OFF [3]");
-		eraseCookie("contrast");
+		Cookies.remove("contrast");
 		console.log("Contrar Disable");
 	}
 });
