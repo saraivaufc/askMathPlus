@@ -22,7 +22,7 @@ class ProxyCategory(ICategory):
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-            return self.__proxy_home.index(request, message)
+        return self.__proxy_home.index(request, message)
     
     @method_decorator(login_required)
     def view_categories_removed(self, request, message=None):

@@ -10,6 +10,13 @@ body{
 }
 
 
+a:link    { color: red }    /* unvisited links */
+a:visited { color: blue }   /* visited links   */
+a:hover   { color: yellow } /* user hovers     */
+a:active  { color: lime }   /* active links    */
+a:focus { background: yellow }
+a:focus:hover { background: white }
+
 #site{
 	min-height: 100%;
 }
@@ -288,39 +295,85 @@ caption{
 
 /* FORUM */
 .table-category{
-
 }
 
 .table-topic{
 
 }
 
-.table-category > tbody > tr > td.category, .table-topic > tbody > tr > td.topic{
+.table-category > tbody > tr > td.category, 
+.table-topic > tbody > tr > td.topic{
+	text-align: left;
+	display: inline-block;
+}
+
+.table-category > tbody > tr > td.category > .icon, 
+.table-topic > tbody > tr > td.topic > .icon {
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: 0px 0px;
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-size: cover !important;
+	float: left;
+	display: inline-block;
+  	vertical-align: middle;
+  	line-height: normal;
+}
+
+.table-category > tbody > tr > td.category > div.details{
+	display: block;
+	padding-top: 0px;
+	line-height: 1.0;
+}
+
+
+.table-category > tbody > tr > td.category > .icon{
+	background-image: url("/static/askmath/img/icons/forum_read.png");
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;
+	
+}
+
+.table-topic > tbody > tr > td.topic > .icon{
+	background-image: url("/static/askmath/img/icons/topic_read.png");
+	width: 32px;
+	height: 32px;
+	
+}
+
+
+.table-category > tbody > tr > td.category ,
+.table-category > thead > tr > th.category{
+	text-align: left;
+}
+.table-category > tbody > tr > td.post ,
+.table-category > thead > tr > th.post{
+	text-align: center;
+}
+.table-category > tbody > tr > td.last_post ,
+.table-category > thead > tr > th.last_post{
 	text-align: left;
 }
 
-.table-category > tbody > tr > td.category > div .icon, .table-topic > tbody > tr > td.topic > div .icon{
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-origin: padding-box;
-	width: 32px;
-	height: 32px;
-	background-size: cover !important;
-	float: left;
-	overflow: hidden;
-	overflow-x: hidden;
-	overflow-y: hidden;
+.table-topic > tbody > tr > td.topic ,
+.table-topic > thead > tr > th.topic{
+	text-align: left;
 }
-.table-category > tbody > tr > td.category > div .icon{
-	background-image: url("/static/askmath/img/icons/forum_read.png");
+.table-topic > tbody > tr > td.replies ,
+.table-topic > thead > tr > th.replies{
+	text-align: center;
+}
+.table-topic > tbody > tr > td.date ,
+.table-topic > thead > tr > th.date{
+	text-align: center;
 }
 
-.table-topic > tbody > tr > td.topic > div .icon{
-	background-image: url("/static/askmath/img/icons/topic_read.png");
-}
 
-.table-category > tbody > tr > td.category > div .title, .table-topic > tbody > tr > td.topic > div .title{
+
+.table-category > tbody > tr > td.category > .details, 
+.table-topic > tbody > tr > td.topic > .details{
 	min-height: 1px;
 	overflow: hidden;
 	padding: 0px 11px 0px 12px;
@@ -329,8 +382,9 @@ caption{
 
 
 
-.table-category > tbody > tr > td.category > .description{
-	padding: 0px 11px 0px 12px;
+.table-category > tbody > tr > td.category > .details > .description{
+	padding-top: 0px;
+	font-size: 0.923em;
 }
 
 .pagepost{

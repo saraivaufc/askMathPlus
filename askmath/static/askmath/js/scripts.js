@@ -351,7 +351,6 @@ $(function(){
 	});
 });
 
-
 $(function(){
 	$(".comment-edit").click(function(){
 		var url = $(this).attr("url");
@@ -372,10 +371,8 @@ $(function(){
 						textarea.remove();
 						$(id).text(text);
 					}else{
-						alert("Erorr");
 					}
 				}catch(e){
-					alert("Error");
 				}
 			});
 			return false;

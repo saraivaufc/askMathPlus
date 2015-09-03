@@ -10,23 +10,24 @@
 			<a href="/forum/topics/add/category={{ category.id }}/">{% trans "Post new topic" %}</a>
 		</p>
 	</div>
-	<table class="table table-topic striped hovered border">
+	<table class="table table-topic hovered border">
 		<thead>
 			<tr>
-				<th>{% trans "Topic" %}</th>
-				<th>{% trans "Replies" %}</th>
-				<th>{% trans "Date" %}</th>
+				<th class="topic">{% trans "Topic" %}</th>
+				<th class="replies">{% trans "Replies" %}</th>
+				<th class="date">{% trans "Date" %}</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for topic in topics %}
 			<tr>
-				<td class="topic">
-					<div>
-						<span class="icon"></span>
-						<h5 class="title">
-							<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">{{ topic.get_title }}</a> <span>{% trans "by" %} {{ topic.person }}</span>
-						</h5>
+				<td class="topic width">
+					<div class="icon"></div>
+						<div class="details">
+							<h5 class="title">
+								<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">{{ topic.get_title }}</a> <span>{% trans "by" %} {{ topic.person }}</span>
+							</h5>
+						</div>
 					</div>
 				</td>
 				<td class="replies">{{ topic.get_comments|length }}</td>
