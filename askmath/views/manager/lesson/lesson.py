@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models import Lesson as ContactModel
-from askmath.models import Discipline as CategoryModel
+from askmath.models import Discipline as DisciplineModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from .ilesson import ILesson
 from askmath.forms import LessonForm
@@ -13,7 +13,7 @@ class Lesson(ILesson):
     
     def view_lessons(self, request, message = None):
         disciplines = []
-        for d in CategoryModel.objects.filter(exists=True):
+        for d in DisciplineModel.objects.filter(exists=True):
             if not d.get_lessons():
                 continue
             dict = {}
@@ -26,7 +26,7 @@ class Lesson(ILesson):
     
     def view_lessons_removed(self, request, message = None):
         disciplines = []
-        for d in CategoryModel.objects.filter(exists=True):
+        for d in DisciplineModel.objects.filter(exists=True):
             if not d.get_lessons_removed():
                 continue
             dict = {}

@@ -3,10 +3,9 @@
 <div class="panel width">
 	<div class="heading bg-lightBlue">
 		<span class="icon mif-bubbles"></span>
-        {% if perms.askmath.write_topic or perms.askmath.access_forum_admin %}
         <span class="title fg-white">{{ topic.get_title }}</span>
         <div class="place-right">
-        	<span class="lead">
+        	<span>
 				{% blocktrans with creation=topic.creation|naturaltime  %}
 					{{ creation }}
 				{% endblocktrans %}
@@ -18,7 +17,6 @@
 				<a href="/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
 			{% endif %}
         </div>
-        {% endif %}
     </div>
 	<div class="contant">
 		<div class="equal">
@@ -82,13 +80,23 @@
 <div class="padding10 bg-grayLighter">
 	<div class="container-fluid">
 	<div class="row">
-	<form id="comment-form" action="/forum/comments/add/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
-	{% csrf_token %}
-	{% include "askmath/_render_form.html" %}
-	    <div class="place-right">
-			<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
-		</div>
-	</form>
+		{% if request.user.is_authenticated %}
+			<form id="comment-form" action="/forum/comments/add/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			{% include "askmath/_render_form.html" %}
+			    <div class="place-right">
+					<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
+				</div>
+			</form>
+		{% else %}
+			<center>
+				<a href="/authentication/options/" class="command-button success fg-white">
+				    <span class="icon mif-enter"></span>
+				    {% trans "Want to add a comment?" %}
+				    <small>{% trans "Click here to get authorization." %}</small>
+				</a>
+			</center>
+		{% endif %}
 	</div>
 	</div>
 </div>

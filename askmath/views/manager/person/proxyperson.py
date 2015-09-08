@@ -5,6 +5,8 @@ from askmath.entities import PersonTypes
 from askmath.models.users import Person as PersonModel
 from askmath.views.index import ProxyHome
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .iperson import IPerson
 from .person import Person
@@ -15,7 +17,8 @@ class ProxyPerson(IPerson):
     def __init__(self):
         self.__account = Person()
         self.__proxy_home = ProxyHome()
-        
+    
+    @method_decorator(login_required)
     def choose_person_types(self, request, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -26,6 +29,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def view_persons(self, request, PERSONTYPE, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -40,6 +44,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.choose_person_types(request, message)
     
+    @method_decorator(login_required)
     def view_persons_removed(self, request, PERSONTYPE, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -54,6 +59,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.choose_person_types(request, message)
     
+    @method_decorator(login_required)
     def view_person(self, request, PERSONTYPE, id_person, message=None):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -71,6 +77,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_persons(request, PERSONTYPE, message)
     
+    @method_decorator(login_required)
     def add_person(self, request, PERSONTYPE, message=None):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -84,6 +91,7 @@ class ProxyPerson(IPerson):
         return self.view_persons(request, PERSONTYPE, message)
     
     
+    @method_decorator(login_required)
     def remove_person(self, request, PERSONTYPE, id_person, message=None):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -101,6 +109,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_persons(request, PERSONTYPE, message)
     
+    @method_decorator(login_required)
     def remove_registerkey(self, request, PERSONTYPE, id_registerkey, message=None):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -126,6 +135,7 @@ class ProxyPerson(IPerson):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_persons(request, PERSONTYPE, message)
     
+    @method_decorator(login_required)
     def restore_person(self, request, PERSONTYPE, id_person, message=None):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:

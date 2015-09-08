@@ -17,5 +17,5 @@ class ItemForm(ModelForm):
 			'position': HiddenInput(attrs={'class':'hidden'}),
 			'description': Textarea(attrs={'required': 'required', 'class':'latex'}),
 			'correct': CheckboxInput(attrs={}),
-			'deficiencys': SelectMultiple(attrs={}),
+			'deficiencys': SelectMultiple(attrs={'class':'full-size'}),
 		}

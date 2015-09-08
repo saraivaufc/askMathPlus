@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from askmath.models.lesson import Lesson as ContactModel
 from askmath.models.video import Video as VideoModel
 from askmath.entities import Message, TextMessage, TypeMessage
@@ -15,6 +17,7 @@ class ProxyVideo(IVideo):
         self.__video = Video()
         self.__proxy_home = ProxyHome()
     
+    @method_decorator(login_required)
     def choose_lesson(self, request, message = None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -25,6 +28,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def view_videos(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -41,6 +45,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.choose_lesson(request , message)
     
+    @method_decorator(login_required)
     def view_videos_removed(self, request, id_lesson,  message = None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -57,6 +62,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.choose_lesson(request , message)
     
+    @method_decorator(login_required)
     def view_video(self, request, id_lesson, id_video, message=None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             lesson, video = None, None
@@ -81,6 +87,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_videos(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def add_video(self, request, id_lesson, message=None):
         if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -96,6 +103,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_videos(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def remove_video(self, request, id_lesson, id_video):
         if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -116,6 +124,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_videos(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def edit_video(self, request, id_lesson, id_video, message=None):
         if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -136,7 +145,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_videos(request, id_lesson, message)
 
-    
+    @method_decorator(login_required)
     def restore_video(self, request, id_lesson,id_video):
         if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -157,6 +166,7 @@ class ProxyVideo(IVideo):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_videos(request, id_lesson, message)
             
+    @method_decorator(login_required)
     def sort_videos(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
             try:

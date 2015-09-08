@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import Message, TextMessage, TypeMessage
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from askmath.forms.users import PersonAlterPassword
 
 from askmath.views.person.iaccount import IAccount
@@ -13,7 +14,8 @@ class ProxyAccount(IAccount):
     def __init__(self):
         self.__account = Account()
         self.__proxy_home = ProxyHome()
-        
+    
+    @method_decorator(login_required)
     def view_profile(self, request, message=None):
         if request.user.is_authenticated():
             #try:
@@ -24,6 +26,7 @@ class ProxyAccount(IAccount):
             message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def edit_profile(self, request, message=None):
         if request.user.is_authenticated():
             #try:
@@ -34,12 +37,14 @@ class ProxyAccount(IAccount):
             message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def alter_password(self, request, message = None):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         else:
             return self.__account.alter_password(request, message)
-            
+    
+    @method_decorator(login_required)
     def remove_account(self, request, message=None):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")

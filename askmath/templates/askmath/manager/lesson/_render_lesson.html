@@ -4,16 +4,9 @@
 	<div class="list-group">
 		
 		<div class="list-group-item">
-			<h4 class="list-group-item-heading">{% trans "Disciplines:" %}</h4>
+			<h4 class="list-group-item-heading">{% trans "Discipline:" %}</h4>
 			<p class="list-group-item-text">
-				{% for discipline in lesson.get_disciplines %}
-        			{{ discipline }}
-        			{% if not forloop.counter == lesson.get_disciplines|length %}
-        			,
-        			{% endif %}
-        		{% empty %}
-        			{% trans "NULL" %}
-        		{% endfor %}
+				{{ lesson.get_discipline }}
 			</p>
 		</div>
 		

@@ -30,6 +30,8 @@ class Discipline(IDiscipline):
                 discipline = form.save()
                 message = Message(TextMessage.DISCIPLINE_SUCCESS_ADD, TypeMessage.SUCCESS)
                 return self.view_discipline(request, discipline, message)
+            else:
+                message = Message(TextMessage.DISCIPLINE_ERROR_ADD, TypeMessage.SUCCESS)
         else:
             form = DisciplineForm()
         return render(request, "askmath/manager/discipline/manager_form_discipline.html", 

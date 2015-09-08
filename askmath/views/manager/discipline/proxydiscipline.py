@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.views.index import ProxyHome
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .idiscipline import IDiscipline
 from .discipline import Discipline
@@ -13,6 +15,7 @@ class ProxyDiscipline(IDiscipline):
         self.__discipline = Discipline()
         self.__proxy_home = ProxyHome()
         
+    @method_decorator(login_required)
     def view_disciplines(self, request, message = None):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -23,6 +26,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def view_disciplines_removed(self, request, message=None):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -33,6 +37,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_disciplines(request, message)
     
+    @method_decorator(login_required)
     def view_discipline(self, request, id_discipline, message=None):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -48,7 +53,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_disciplines(request,message)
     
-    
+    @method_decorator(login_required)
     def add_discipline(self, request, message=None):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -59,6 +64,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_disciplines(request,message)
     
+    @method_decorator(login_required)
     def remove_discipline(self, request, id_discipline, message=None):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -74,6 +80,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_disciplines(request,message)
     
+    @method_decorator(login_required)
     def edit_discipline(self, request, id_discipline, message=None):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -89,6 +96,7 @@ class ProxyDiscipline(IDiscipline):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_disciplines(request,message)
     
+    @method_decorator(login_required)
     def restore_discipline(self, request, id_discipline, message=None):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:

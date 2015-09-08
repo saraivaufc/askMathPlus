@@ -26,7 +26,7 @@ class Comment(IComment):
             else:
                 message = Message(TextMessage.COMMENT_ERROR_ADD, TypeMessage.ERROR)
         else:
-            message = Message(TextMessage.COMMENT_ERROR_ADD, TypeMessage.ERROR)
+            pass
         return self.__proxy_topic.view_topic(request, category.id, topic.id, message)
         
     def remove_comment(self, request, category, topic, comment, message=None):

@@ -9,8 +9,11 @@ from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from django.core.mail import EmailMessage
 from askmath.models.lesson.lesson import Lesson
 from .ihome import IHome
+from askmath.utils.ratelimit.decorators import ratelimit
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-class ProxyHome(IHome):
+class ProxyHome(IHome):   
     def index(self, request,  message = None):
         if request.user.is_authenticated():
             if request.user.has_perm('askmath.access_manager'):

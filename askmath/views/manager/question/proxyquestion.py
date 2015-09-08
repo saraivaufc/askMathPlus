@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 import json
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from askmath.entities import Message, TextMessage, TypeMessage
 from askmath.models.lesson import Lesson as ContactModel
@@ -17,6 +19,7 @@ class ProxyQuestion(IQuestion):
         self.__question = Question()
         self.__proxy_home = ProxyHome()
     
+    @method_decorator(login_required)
     def choose_lesson(self, request, message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -27,6 +30,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.__proxy_home.index(request, message)
     
+    @method_decorator(login_required)
     def view_questions(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -43,6 +47,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.choose_lesson(request , message)
     
+    @method_decorator(login_required)
     def view_questions_removed(self, request, id_lesson,  message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -59,6 +64,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def view_question(self, request, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             lesson, question = None, None
@@ -84,6 +90,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def add_question(self, request, id_lesson, quantity_items, message=None):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -102,6 +109,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
     
+    @method_decorator(login_required)
     def remove_question(self, request, id_lesson, id_question, message=None):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -121,6 +129,8 @@ class ProxyQuestion(IQuestion):
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
+
+    @method_decorator(login_required)
     def edit_question(self, request, id_lesson, id_question):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -141,7 +151,7 @@ class ProxyQuestion(IQuestion):
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
 
-    
+    @method_decorator(login_required)
     def restore_question(self, request, id_lesson,id_question):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
@@ -161,7 +171,8 @@ class ProxyQuestion(IQuestion):
         else:
             message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
         return self.view_questions(request, id_lesson, message)
-            
+    
+    @method_decorator(login_required)
     def sort_questions(self, request, id_lesson, message = None):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:

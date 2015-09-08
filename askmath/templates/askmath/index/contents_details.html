@@ -25,7 +25,7 @@
 	<h3 class="text-left">{% trans "Options:" %}</h3>
 	<div class="tile-container">
 		<div class="tile bg-indigo">
-		    <a href="/authentication/login/" class="tile-content slide-down iconic">
+		    <a href="/home/content/questions/view_inicial_details/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-list-numbered"></span>
 		        <div class="tile-label">
 		            {% trans "Questions" %}
@@ -41,7 +41,7 @@
 		</div>
 		
 		<div class="tile bg-emerald">
-		    <a href="/authentication/login/" class="tile-content slide-down iconic">
+		    <a href="/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-video-camera"></span>
 		        <div class="tile-label">
 		            {% trans "Videos" %}

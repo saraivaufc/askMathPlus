@@ -13,16 +13,12 @@ class ProxyCategory(ICategory):
         self.__category = Category()
         self.__proxy_home = ProxyHome()
     
-    @method_decorator(login_required)
     def view_categories(self, request, message=None):
-        if request.user.has_perm("askmath.read_category"):
-            try:
-                return self.__category.view_categories(request, message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-        else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+        try:
+            return self.__category.view_categories(request, message)
+        except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            return self.__proxy_home.index(request, message)
     
     @method_decorator(login_required)
     def view_categories_removed(self, request, message=None):
@@ -35,21 +31,17 @@ class ProxyCategory(ICategory):
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_categories(request, message)
     
-    @method_decorator(login_required)
     def view_category(self, request, id_category, message=None):
-        if request.user.has_perm("askmath.read_category"):
-            try:
-                category = CategoryModel.objects.get(id = id_category)
-            except:
-                message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_categories(request, message)
-            try:
-                return self.__category.view_category(request, category, message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-        else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+        try:
+            category = CategoryModel.objects.get(id = id_category)
+        except:
+            message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
+            return self.view_categories(request, message)
+        try:
+            return self.__category.view_category(request, category, message)
+        except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            return self.view_categories(request, message)
     
     @method_decorator(login_required)
     def view_category_removed(self, request, id_category, message=None):

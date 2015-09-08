@@ -9,14 +9,6 @@ body{
 	line-height: 1.65;
 }
 
-
-a:link    { color: red }    /* unvisited links */
-a:visited { color: blue }   /* visited links   */
-a:hover   { color: yellow } /* user hovers     */
-a:active  { color: lime }   /* active links    */
-a:focus { background: yellow }
-a:focus:hover { background: white }
-
 #site{
 	min-height: 100%;
 }
@@ -367,7 +359,7 @@ caption{
 }
 .table-topic > tbody > tr > td.date ,
 .table-topic > thead > tr > th.date{
-	text-align: center;
+	text-align: left;
 }
 
 

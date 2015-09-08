@@ -9,7 +9,7 @@ from askmath.models.question import Question
 from askmath.models.video import Video
 
 class Lesson(models.Model):
-    disciplines = models.ManyToManyField("Discipline",verbose_name=_("Disciplines"), null=False, blank=False,
+    discipline = models.ForeignKey("Discipline",verbose_name=_("Discipline"), null=False, blank=False,
         help_text=_("Choose the disciplines which is lesson belongs."))
     title = models.CharField(verbose_name=_("Title"), max_length=50,
         help_text=_("Choose a title for lesson is."))
@@ -28,10 +28,8 @@ class Lesson(models.Model):
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default=True)
 
-    def get_disciplines(self, visible=None):
-        if visible == True or visible == False:
-            return self.disciplines.filter(exists=True, visible=visible)
-        return self.disciplines.filter(exists=True)
+    def get_discipline(self):
+        return self.discipline
     
     def get_title(self):
         return self.title
