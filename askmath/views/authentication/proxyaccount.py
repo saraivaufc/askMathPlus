@@ -47,9 +47,9 @@ class ProxyAccount(IAccount):
                 except:
                     return self.options(request, message)
             else:
-                return render(request, 'askmath/authentication/login.html',
-                    {'request': request,'form':form, 'message': message})
-        return self.__account.options(request, message)
+                pass
+        request.method = 'GET'
+        return self.options(request, message)
     
     def logout(self, request, message=None):
         if not request.user.is_authenticated():
@@ -57,7 +57,8 @@ class ProxyAccount(IAccount):
         try:
             return self.__account.logout(request, message)
         except:
-            pass
+            message = Message(TextMessage.LOGOUT_ERROR, TypeMessage.ERROR)
+        request.method = 'GET'
         return self.options(request, message)
     
     def signup(self, request, message=None):
@@ -67,7 +68,9 @@ class ProxyAccount(IAccount):
             try:
                 return self.__account.signup(request)
             except:
-                return self.options(request, message)
+                message = Message(TextMessage.USER_CREATED_ERROR, TypeMessage.ERROR)
+        request.method = 'GET'
+        return self.options(request, message)
         
     def recover_password(self, request, message = None):
         if request.user.is_authenticated():
@@ -80,12 +83,16 @@ class ProxyAccount(IAccount):
                     try:
                         user = Student.objects.get(username = str(_username), email = str(_email))
                         if user:
-                            return self.__account.recover_password(request, user)
+                            try:
+                                return self.__account.recover_password(request, user)
+                            except:
+                                message = Message(TextMessage.EMAIL_RECOVER_PASSWORD_ERROR, TypeMessage.ERROR)    
                         else:
                             message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                     except:
                         message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                 except:
                     message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+        request.method = 'GET'
         return self.options(request, message)
     

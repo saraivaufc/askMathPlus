@@ -121,7 +121,7 @@ class Account(IAccount):
                     user.groups.add(group)
                     message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
                     request.method="GET"
-                    return self.login(request,None, message)
+                    return self.signin(request,form, message)
                 else:
                     if not message:
                         message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
