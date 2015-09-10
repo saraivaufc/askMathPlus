@@ -340,17 +340,6 @@ $(function(){
 	
 });
 
-
-
-$(function(){
-	$("#menu-admin").hover(function(){
-		$("#menu-admin").removeClass('compact');
-	});
-	$("#menu-admin").mouseleave(function(){
-		$("#menu-admin").addClass('compact');
-	});
-});
-
 $(function(){
 	$(".comment-edit").click(function(){
 		var url = $(this).attr("url");

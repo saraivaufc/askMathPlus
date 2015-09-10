@@ -3,10 +3,14 @@
 body{
 	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
 	line-height: 1.1;
-	background-color: #FFF;
+	background: transparent url("../img/backgrounds/background.jpg") no-repeat center center fixed;
 	font-weight: 400;
 	font-style: normal;
-	line-height: 1.65;
+	line-height: 1.65; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 
 #site{

@@ -1,6 +1,7 @@
-#header , #footer{
-	background-color: rgba(3, 3, 3, 0.8);
-	color: #fff;
+#header > .navbar, #footer > .navbar, #menu-admin{
+    background-image: none !important;
+    background: rgba(0, 0, 0, 0.3) !important; /* browsers */
+    color: #fff !important;
 }
 
 .navbar{
