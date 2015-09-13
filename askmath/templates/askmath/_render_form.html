@@ -1,13 +1,27 @@
+{% load askmath_tags %}
+
 {% for field in form.visible_fields %}
-	<div>
-		{{ field.errors }}
+	{{ field.errors }}
+	{% if field|is_checkbox %}
+	<span class="caption">{{ field.label_tag }}</span>
+	<label class="input-control switch">
+	    {{ field }}
+	    <span class="check"></span>
+	</label>
+	{% elif field|is_radio %}
+	<span class="caption">{{ field.label_tag }}</span>
+	<label class="input-control radio">
+	    {{ field }}
+	    <span class="check"></span>
+	</label>
+	{% else %}
 	   	{{ field.label_tag }}    
-		<div class="input-control text password email date textarea select checkbox radio full-size" data-role="select">
+		<div class="input-control text password email date textarea select radio full-size" data-role="select">
 			{{ field }}
 	    </div>
-	    {% if field.field.help_text %}
-	        <p class="help">{{ field.field.help_text }}</p>
-	    {% endif %}
-    </div>
+	{% endif %}
+	{% if field.field.help_text %}
+        <p class="help">{{ field.field.help_text }}</p>
+    {% endif %}
     <br />
 {% endfor %}

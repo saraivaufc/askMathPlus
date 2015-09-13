@@ -20,15 +20,10 @@ class ProxyLesson(ILesson):
         self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
-    def view_lessons(self, request, id_discipline, message = None):            
+    def view_lessons(self, request, message = None):            
         if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_content"):
             try:
-                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
-            try:
-                return self.__contact.view_lessons(request,discipline, message)
+                return self.__contact.view_lessons(request, message)
             except:
                 message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
         else:

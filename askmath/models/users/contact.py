@@ -6,8 +6,10 @@ from datetime import datetime
 from askMathPlus.settings import generate_color
 
 class Contact(models.Model):
-    name = models.CharField(verbose_name=_("Name"), max_length=100)
-    email = models.EmailField(verbose_name=_("Email"), max_length=254)
+    name = models.CharField(verbose_name=_("Name"), max_length=100,
+        help_text=_("Enter yout name."))
+    email = models.EmailField(verbose_name=_("Email"), max_length=254,
+        help_text=_("Enter yout email."))
     message = models.TextField(verbose_name=_("Message"), max_length=2000, 
         help_text=_("Your use here tags HTML: <a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> "))
     file = models.FileField(verbose_name=_("File"), upload_to = 'documents/contact_files/%Y/%m/%d',

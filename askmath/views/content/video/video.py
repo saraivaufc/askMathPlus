@@ -8,7 +8,7 @@ from .ivideo import IVideo
 
 class Video(IVideo):
     def view_videos(self, request, discipline, lesson, message=None):
-        videos = lesson.get_videos()
+        videos = lesson.get_videos_visibles()
         return render(request, "askmath/content/video/view_videos.html",
             {'request': request, 'discipline': discipline, 'lesson': lesson,'videos': videos, 'message': message})
     

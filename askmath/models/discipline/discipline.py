@@ -27,7 +27,7 @@ class Discipline(models.Model):
         lessons = Lesson.objects.filter(exists=True, discipline = self.id)
         return lessons
     
-    def get_lessons_visible(self):
+    def get_lessons_visibles(self):
         lessons = Lesson.objects.filter(exists=True,visible=True,discipline = self.id)
         return lessons
     

@@ -1,8 +1,9 @@
 {% load i18n %}
 
-<form  action="." method="post" enctype="multipart/form-data" role="form">
+<form  class="bg-white-opacity" action="." method="post" enctype="multipart/form-data" role="form">
 {% csrf_token %}
 	<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
+	<hr class="thin">
 	<div class="form-fields">
 		{% include "askmath/_render_form.html" %}
     </div>

@@ -182,10 +182,7 @@ input:disabled {
     background: #dddddd;
 } 
 
-.input-control{
-	padding: 0px;
-	padding-left: 10px;
-}
+
 .select.input-control{
 	padding: 0px;
 }
@@ -384,7 +381,6 @@ caption{
 }
 
 .pagepost{
-	border-top-style: dotted;
 	border-top-width: 1px;
 }
 
@@ -437,4 +433,13 @@ caption{
     display: -webkit-flex;
     display: flex;
     flex:1 0 auto;
+}
+
+#welcome > h1, #welcome > h3{
+	font-family: Expressway;
+}
+
+.bg-white-opacity, .frames > .frame{
+	background: rgba(255, 255, 255, 0.5) !important; /* browsers */
+	padding: 4px 4px 4px 4px;
 }

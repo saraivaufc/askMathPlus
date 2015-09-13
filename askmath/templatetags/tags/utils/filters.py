@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
 from django.conf import settings
+from django import template
+from django.forms import CheckboxInput, RadioSelect
 
 from .. import register
 
@@ -36,3 +38,11 @@ def settings_value(name):
 @register.filter(name='parameters') 
 def parameters(function, *args):
 	print args
+
+@register.filter(name='is_checkbox')
+def is_checkbox(field):
+    return field.field.widget.__class__.__name__ == CheckboxInput().__class__.__name__
+
+@register.filter(name='is_radio')
+def is_radio(field):
+    return field.field.widget.__class__.__name__ == RadioSelect().__class__.__name__

@@ -54,6 +54,9 @@ class Video(models.Model):
 		self.exists = True
 		self.save()	
 
+	def is_visible(self):
+		return self.visible
+
 	def get_extension(self):
 		basename, extension = os.path.splitext(self.file.url) 
 		return extension

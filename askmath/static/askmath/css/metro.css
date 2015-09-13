@@ -150,8 +150,8 @@ ol, ul {
 /* INPUTS */
 .input-control.checkbox input[type="checkbox"], .input-control.radio input[type="checkbox"], .input-control.checkbox input[type="radio"], .input-control.radio input[type="radio"] {
 	opacity: 1;
-	min-width: 30px;
-	min-height: 30px;
+	min-width: 20px;
+	min-height: 20px;
 	margin-left: 0px;
 }
 

@@ -7,122 +7,122 @@
 	{{ block.super }}
 	<li>
 		<a href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/">
-			<span class="icon mif-list-numbered"></span> <spam>{% trans "Questions" %}</spam>
+			<span class="icon mif-list-numbered"></span> <span>{% trans "Questions" %}</span>
 		</a>
 	</li>
 {% endblock %}
 
 {% block tiles %}
-<div class="container-metro">
-	<section>
-		{% if lesson.get_questions_visibles|length == 0 %}
-		<div class="container">
-		{% else %}
-		<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
-		{% endif %}
-		{% block container-left %}
-			<div class="container-fluid">
-			<div class="row">
-			<h4 class="text-center">{% trans "Your level of experience is:" %} <span class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span></h4>
-			<center>
-				<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
-				<div class="rating large" data-size="large">
-					{% for i in 10|range  %}
-						{% if forloop.counter <= studentexperience.stars %}
-							<span class="star on"></span>
-						{% else %}
-							<span class="star off"></span>
-						{% endif %}
-					
-					{% endfor %}
-				</div>
-				<hr class="transparent">
-				{% if lesson.get_questions_visibles|length == 0 %}
-					<h3>Essa Lição não possui perguntas, espere até que o responposável por ela adicione perguntas.</h3>
-				{% elif studentlessonstate.get_percentage_completed == 100%}
-					<h3>Parabéns, você concluiu esta lição!!!</h3>				
-					<h4>Você pode refazer essa lição clicando no botão abaixo ou seguir para alguma das lições recomendadas na tabela ao lado.</h4>
-				{% else  %}
-					<h3>Conclua essa lição e ganhe experiencia para subir de nível!!!</h3>
-					<h4>É recomendado que você tenha concluido algumas outras lições para proceguir nesta, essas lições você pode encontrar na tabela ao lado.</h4>
-				{% endif %}
-				<br>
-				{% if lesson.get_questions_visibles|length > 0 %}
-					{% if studentlessonstate.get_percentage_completed < 100 %}	
-						<a id="btn-starter-lesson" class="btn" href="/home/content/questions/view_question/discipline={{discipline.id }}/lesson={{ lesson.id }}/">
-						{% if studentlessonstate.get_percentage_completed == 0 %}	
-							{% trans "Start Lesson" %}
-						{% else %}
-							{% trans "Continue Lesson" %}
-						{% endif %}
-						</a>
+<div class="container-fluid">
+<section>
+	{% if lesson.get_questions_visibles|length == 0 %}
+	<div class="container">
+	{% else %}
+	<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
+	{% endif %}
+	{% block container-left %}
+		<center class="bg-white-opacity">
+			<h4>
+				{% trans "Your level of experience is:" %} <span class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
+			</h4>
+			<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
+			<div class="rating large" data-size="large">
+				{% for i in 10|range  %}
+					{% if forloop.counter <= studentexperience.stars %}
+						<span class="star on"></span>
 					{% else %}
-						<a id="btn-starter-lesson" class="btn" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">{% trans "Reset Lesson" %}</a>
+						<span class="star off"></span>
 					{% endif %}
+				
+				{% endfor %}
+			</div>
+			<hr class="transparent"/>
+			{% if lesson.get_questions_visibles|length == 0 %}
+				<h3>Essa Lição não possui perguntas, espere até que o responposável por ela adicione perguntas.</h3>
+			{% elif studentlessonstate.get_percentage_completed == 100%}
+				<h3>Parabéns, você concluiu esta lição!!!</h3>				
+				<h4>Você pode refazer essa lição clicando no botão abaixo ou seguir para alguma das lições recomendadas na tabela ao lado.</h4>
+			{% else  %}
+				<h3>Conclua essa lição e ganhe experiencia para subir de nível!!!</h3>
+				<h4>É recomendado que você tenha concluido algumas outras lições para proceguir nesta, essas lições você pode encontrar na tabela ao lado.</h4>
+			{% endif %}
+			<br/>
+			{% if lesson.get_questions_visibles|length > 0 %}
+				{% if studentlessonstate.get_percentage_completed < 100 %}	
+					<a id="btn-starter-lesson" class="btn" href="/home/content/questions/view_question/discipline={{discipline.id }}/lesson={{ lesson.id }}/">
+					{% if studentlessonstate.get_percentage_completed == 0 %}	
+						{% trans "Start Lesson" %}
+					{% else %}
+						{% trans "Continue Lesson" %}
+					{% endif %}
+					</a>
+				{% else %}
+					<a id="btn-starter-lesson" class="btn" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">{% trans "Reset Lesson" %}</a>
 				{% endif %}
+			{% endif %}
+		</center>
+		<br/>
+	{% endblock %}
+	</div>
+</section>
+
+<aside>
+	{% if lesson.get_questions_visibles|length > 0 %}
+		<div class="col-xs-12 col-sm-5  col-md-3 col-lg-3 border bg-white-opacity">
+		{% block container-rigth %}
+			<h3 class="text-center">{{ lesson.get_title|title }}</h3>
+			<hr class="bg-white">
+			<h4>{% trans "Lesson progress:" %}</h4>
+			<center>
+				<div class="icon-lesson-progress">
+					<p class="v-center">
+						{{ studentlessonstate.get_percentage_completed }}%<br>
+						{% trans "Progress" %}
+					</p>
+				</div>
+				<table class="table table-bordered table-condensed text-center">
+					<tr>
+						<td>{% trans "Scores" %}</td>
+						<td>{% trans "Correct Questions" %}</td>
+						<td>{% trans "Skipped Remaining" %}</td>
+					</tr>
+					<tr>
+						<td>{{ studentlessonstate.get_scores }}</td>
+						<td>{{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
+						<td>{{ studentlessonstate.get_remaining_jump }}</td>
+					</tr>
+				</table>
 			</center>
-			<br>
+			{% if studentlessonstate.get_percentage_completed == 100 %}
+				<h4>{% trans "Sugestions next lessons:" %}</h4>
+				<ul>
+				{% for sugestion in lesson.get_sugestions %}
+					<li>
+						<a class="lead fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ sugestion.id }}/">
+						{{ sugestion.get_title }}
+						</a>
+					</li>
+				{% empty %}
+					<h5>{% trans "It has no sugestions." %}</h5>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<h4>{% trans "Requirements recommended:" %}</h4>
+				<ul>
+				{% for requirement in lesson.get_requirements %}
+					<li>
+						<a class="lead  fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ requirement.id }}/">
+						{{ requirement }}
+						</a>
+					</li>
+				{% empty %}
+					<h5>{% trans "It has no requirements." %}</h5>
+				{% endfor %}
+				</ul>
+			{% endif %}
 		{% endblock %}
 		</div>
-	</section>
-	
-	<aside>
-		{% if lesson.get_questions_visibles|length > 0 %}
-			<div class="col-xs-12 col-sm-5  col-md-3 col-lg-3 border fg-white">
-			{% block container-rigth %}
-				<h3 class="text-center">{{ lesson.get_title|title }}</h3>
-				<hr class="bg-white">
-				<h4>{% trans "Lesson progress:" %}</h4>
-				<center>
-					<div class="icon-lesson-progress">
-						<p class="v-center">
-							{{ studentlessonstate.get_percentage_completed }}%<br>
-							{% trans "Progress" %}
-						</p>
-					</div>
-					<table class="table table-bordered table-condensed text-center">
-						<tr>
-							<td>{% trans "Scores" %}</td>
-							<td>{% trans "Correct Questions" %}</td>
-							<td>{% trans "Skipped Remaining" %}</td>
-						</tr>
-						<tr>
-							<td>{{ studentlessonstate.get_scores }}</td>
-							<td>{{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
-							<td>{{ studentlessonstate.get_remaining_jump }}</td>
-						</tr>
-					</table>
-				</center>
-				{% if studentlessonstate.get_percentage_completed == 100 %}
-					<h4>{% trans "Sugestions next lessons:" %}</h4>
-					<ul>
-					{% for sugestion in lesson.get_sugestions %}
-						<li>
-							<a class="lead fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ sugestion.id }}/">
-							{{ sugestion.get_title }}
-							</a>
-						</li>
-					{% empty %}
-						<h5>{% trans "It has no sugestions." %}</h5>
-					{% endfor %}
-					</ul>
-				{% else %}
-					<h4>{% trans "Requirements recommended:" %}</h4>
-					<ul>
-					{% for requirement in lesson.get_requirements %}
-						<li>
-							<a class="lead  fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ requirement.id }}/">
-							{{ requirement }}
-							</a>
-						</li>
-					{% empty %}
-						<h5>{% trans "It has no requirements." %}</h5>
-					{% endfor %}
-					</ul>
-				{% endif %}
-			{% endblock %}
-			</div>
-		{% endif %}
-	</aside>
+	{% endif %}
+</aside>
 </div>
 {% endblock %}

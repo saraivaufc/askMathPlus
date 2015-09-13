@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 
 
 urlpatterns = patterns('',
-    url(r'^disciplines/', include('askmath.urls.content.disciplines')),
     url(r'^lessons/', include('askmath.urls.content.lessons')),
     url(r'^questions/', include('askmath.urls.content.questions')),
     url(r'^videos/', include('askmath.urls.content.videos')),

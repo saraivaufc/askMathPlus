@@ -18,7 +18,7 @@ class Home(IHome):
                     {'request':request, 'message': message})
             else:
                 disciplines = Discipline.objects.filter(exists=True, visible=True)
-                return render(request, 'askmath/content/discipline/content_view_disciplines.html',
+                return render(request, 'askmath/content/lesson/content_view_lessons.html',
                     {'request': request,'disciplines':  disciplines ,'message': message})
         else:
             return render(request, 'askmath/index/home.html',
@@ -59,15 +59,10 @@ class Home(IHome):
              {'request': request, 'message': message})
 
 
-    def contents(self, request, id_lesson=None, message = None):
-        if id_lesson:
-            lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
-            if lesson:
-                return render(request, 'askmath/index/contents_details.html',
-                    {'request': request,'lesson': lesson,'message': message})
-            else:
-                message= message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.INFO)
-                return self.contents(request, None, message)
+    def contents(self, request, lesson=None, message = None):
+        if lesson:
+            return render(request, 'askmath/index/contents_details.html',
+                {'request': request,'lesson': lesson,'message': message})
         else:
             disciplines = Discipline.objects.filter(exists=True, visible=True)
             return render(request, 'askmath/index/contents.html', 

@@ -12,66 +12,59 @@ from .ihome import IHome
 from askmath.utils.ratelimit.decorators import ratelimit
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .home import Home
 
-class ProxyHome(IHome):   
+class ProxyHome(IHome):
+    def __init__(self):
+        self.__home = Home()
     def index(self, request,  message = None):
         if request.user.is_authenticated():
-            if request.user.has_perm('askmath.access_manager'):
-                return render(request, 'askmath/manager/manager_home.html', 
-                    {'request':request, 'message': message})
-            else:
-                disciplines = Discipline.objects.filter(exists=True, visible=True)
-                return render(request, 'askmath/content/discipline/content_view_disciplines.html',
-                    {'request': request,'disciplines':  disciplines ,'message': message})
+            try:
+                return self.__home.index(request, message)
+            except:
+                pass
         else:
             return render(request, 'askmath/index/home.html',
                 {'request': request, 'message': message})
         
     def about(self, request, message = None):
-        return render(request, 'askmath/index/about.html',
-            {'request': request, 'message': message})
+        try:
+            return self.__home.about(request, message)
+        except:
+            return self.index(request, message)
     
     def contact(self, request, message = None):
-        if request.method == "POST":
-            form =  ContactForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                email = EmailMessage(SITE_TITLE, form.cleaned_data['message'], to=['saraiva@alu.ufc.br'])
-                try:
-                    email.send()
-                except:
-                    pass
-                message = Message(TextMessage.MESSAGE_SUCCESS_SEND, TypeMessage.SUCCESS)
-                return self.index(request, message)
-        else:
-            form = ContactForm()
-        return render(request, 'askmath/index/contact.html', 
-             {'request': request,'form':form,'message': message})
+        try:
+            return self.__home.contact(request, message)
+        except:
+            return self.index(request, message)
 
     def terms(self, request, message = None):
-        return render(request, 'askmath/index/terms.html', 
-             {'request': request, 'message': message})
+        try:
+            return self.__home.terms(request, message)
+        except:
+            return self.index(request, message)
 
     def policies(self, request, message = None):
-        return render(request, 'askmath/index/policies.html', 
-             {'request': request, 'message': message})
+        try:
+            return self.__home.policies(request, message)
+        except:
+            return self.index(request, message)
 
         
     def credits(self, request, message = None):
-        return render(request, 'askmath/index/credits.html', 
-             {'request': request, 'message': message})
+        try:
+            return self.__home.credits(request, message)
+        except:
+            return self.index(request, message)
 
 
     def contents(self, request, id_lesson=None, message = None):
-        if id_lesson:
+        try:
             lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
-            if lesson:
-                return render(request, 'askmath/index/contents_details.html',
-                    {'request': request,'lesson': lesson,'message': message})
-            else:
-                message= message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.INFO)
-                return self.contents(request, None, message)
-        else:
-            disciplines = Discipline.objects.filter(exists=True, visible=True)
-            return render(request, 'askmath/index/contents.html', 
-                {'request': request,'disciplines': disciplines,'message': message})
+        except:
+            lesson = None
+        try:
+            return self.__home.contents(request, lesson, message)
+        except:
+            return self.index(request, message)

@@ -1,4 +1,4 @@
-{% extends 'askmath/content/discipline/content_view_disciplines.html' %}
+{% extends 'askmath/content/content_home.html' %}
 {% load i18n %}
 
 
@@ -6,17 +6,15 @@
 	{% include 'askmath/_header.html' %}
 {% endblock %}
 
-{% block breadcrumbs %}
-	{{ block.super }}
-	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam>{{ discipline.get_title|title }}</spam></a></li>
-{% endblock %}
-
 {% block tiles %}
-<div class="tile-group">
-	<span class="tile-group-title">{% trans "Lessons" %}</span>
-	<div class="tile-container">
-	{% for lesson in lessons %}
-         <div class="tile-wide {{ lesson.color }}">
+<div class="tile-area padding10 bg-transparent">
+{% for discipline in disciplines %}
+{% if discipline.get_lessons_visibles %}
+<h4>{{ discipline.get_title|title }}</h4>
+<div class="tile-container {{ discipline.color }}">
+	<div class="tile-container fg-white">
+	{% for lesson in discipline.get_lessons_visibles %}
+        <div class="tile-wide {{ lesson.color }}">
 		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 		        <span class="icon mif-clipboard"></span>
 		        <div class="tile-label">
@@ -38,5 +36,8 @@
 	<h3 class="text-center">{%trans "Discipline does not have lessons."%}</h3>
 	{% endfor %}
 	</div>
+</div>
+{% endif %}
+{% endfor %}
 </div>
 {% endblock %}

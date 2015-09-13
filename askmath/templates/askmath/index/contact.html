@@ -13,6 +13,7 @@
 <div class="container">
 <div class="row">
 	<h2 class="text-center">{% trans "Contact Us" %}</h2>
+	<hr class="thin">
 	<div class="col-xs-12 col-md-6">
 		<div class="row text-center">
 			<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/pet.png" width="90%" height="100%">
@@ -46,16 +47,20 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-md-6">
-		<form action="." method="post" enctype="multipart/form-data" role="form">
-			{% csrf_token %}
-			{% include 'askmath/_render_form.html' %}
-			<div class="text-right">
-				<button type="submit" class="image-button button-primary" data-dismiss="modal">
-					{% trans "Send" %}
-					<span class="icon glyphicon glyphicon-send"></span>
-				</button>
-			</div>
-		</form>
+		<div class="container-fluid bg-white-opacity">
+			<form action="." method="post" enctype="multipart/form-data" role="form">
+				{% csrf_token %}
+				<h3 class="form-signin-heading text-center ">{% trans "Send your message" %}</h3>
+				<hr class="thin">
+				{% include 'askmath/_render_form.html' %}
+				<div class="text-right">
+					<button type="submit" class="image-button button-primary" data-dismiss="modal">
+						{% trans "Send" %}
+						<span class="icon glyphicon glyphicon-send"></span>
+					</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
 </div>
