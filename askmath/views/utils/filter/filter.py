@@ -56,7 +56,7 @@ class Filter(IFilter):
 			expression = expression.upper()
 			if lesson_title == expression:
 				if request.user.is_authenticated():
-					return self.__proxy_lesson.view_lesson(request, None, lesson.id , message)
+					return self.__proxy_lesson.view_lesson(request, lesson.get_discipline().id, lesson.id , message)
 			else:
 				occurrences = 0
 				for title in lesson_title.split(" "):

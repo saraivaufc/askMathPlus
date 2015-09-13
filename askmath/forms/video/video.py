@@ -4,6 +4,7 @@ from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenIn
 import hashlib
 
 from askmath.models.video import Video
+from askmath.widgets.fields import AdvancedFileInput
 
 
 class VideoForm(ModelForm):

@@ -11,8 +11,7 @@
 {% for discipline in disciplines %}
 {% if discipline.get_lessons_visibles %}
 <h4>{{ discipline.get_title|title }}</h4>
-<div class="tile-container {{ discipline.color }}">
-	<div class="tile-container fg-white">
+<div class="tile-container bg-white-opacity">
 	{% for lesson in discipline.get_lessons_visibles %}
         <div class="tile-wide {{ lesson.color }}">
 		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
@@ -35,7 +34,6 @@
 	{% empty %}
 	<h3 class="text-center">{%trans "Discipline does not have lessons."%}</h3>
 	{% endfor %}
-	</div>
 </div>
 {% endif %}
 {% endfor %}

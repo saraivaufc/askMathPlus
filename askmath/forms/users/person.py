@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.users import Person
+from askmath.widgets.fields import AdvancedFileInput
 
 class PersonForm(ModelForm):
 	class Meta:
@@ -46,6 +47,7 @@ class PersonProfile(PersonForm):
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),
+			"profile_image": AdvancedFileInput(attrs={}),
 		}
 
 class PersonRecoverPassword(forms.Form):

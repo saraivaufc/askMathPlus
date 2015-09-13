@@ -14,6 +14,6 @@ class Lesson(ILesson):
      	return render(request, "askmath/content/lesson/content_view_lessons.html",
             {'request':request,'disciplines': disciplines,'message': message})
     
-    def view_lesson(self, request,discipline, lesson,message = None):
+    def view_lesson(self, request, discipline, lesson,message = None):
         return render(request, "askmath/content/lesson/content_view_lesson.html", 
             {'request':request, 'discipline': discipline,'lesson': lesson,'message': message})

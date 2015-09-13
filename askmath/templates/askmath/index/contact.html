@@ -51,7 +51,6 @@
 			<form action="." method="post" enctype="multipart/form-data" role="form">
 				{% csrf_token %}
 				<h3 class="form-signin-heading text-center ">{% trans "Send your message" %}</h3>
-				<hr class="thin">
 				{% include 'askmath/_render_form.html' %}
 				<div class="text-right">
 					<button type="submit" class="image-button button-primary" data-dismiss="modal">

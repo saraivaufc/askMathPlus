@@ -14,9 +14,12 @@
 	    {{ field }}
 	    <span class="check"></span>
 	</label>
-	{% else %}
-	   	{{ field.label_tag }}    
-		<div class="input-control text password email date textarea select radio full-size" data-role="select">
+	{% elif field|is_file %}
+	<span class="caption">{{ field.label_tag }}</span>
+    {{ field }}
+    {% else %}
+	   	<span class="caption">{{ field.label_tag }}</span>
+	   	<div class="input-control text password email date textarea select radio full-size" data-role="select">
 			{{ field }}
 	    </div>
 	{% endif %}

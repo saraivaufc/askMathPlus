@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
 from django.conf import settings
 from django import template
-from django.forms import CheckboxInput, RadioSelect
+from django.forms import CheckboxInput, RadioSelect, ClearableFileInput
 
 from .. import register
 
@@ -46,3 +46,8 @@ def is_checkbox(field):
 @register.filter(name='is_radio')
 def is_radio(field):
     return field.field.widget.__class__.__name__ == RadioSelect().__class__.__name__
+
+
+@register.filter(name='is_file')
+def is_file(field):
+    return field.field.widget.__class__.__name__ == ClearableFileInput().__class__.__name__

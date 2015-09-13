@@ -43,7 +43,7 @@ class ProxyLesson(ILesson):
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
             except:
                 try:
-                    discipline = lesson.disciplines.filter(exists=True, visible=True)[0]
+                    discipline = lesson.get_discipline()
                 except:
                     message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
                     return self.__proxy_home.index(request, message)

@@ -96,17 +96,25 @@
 			        </div>
 			        <br />
 			        <br />
-	            	<div class="input-control" data-role="select">
-					    <select name="type" id="select-signup">
-						    <option value="STUDENT">{% trans "Student" %}</option>
-				            <option value="ASSISTANT">{% trans "Assistant" %}</option>
-				            <option value="TEACHER">{% trans "Teacher" %}</option>
-				            <option value="ADMINISTRATOR">{% trans "Administrator" %}</option>
-					    </select>
+			        <div class="col-md-6">
+			        <div class="row">
+		            	<div class="input-control full-size"  data-role="select">
+						    <select name="type"  id="select-signup" class="full-size">
+							    <option value="STUDENT">{% trans "STUDENT" %}</option>
+					            <option value="ASSISTANT">{% trans "ASSISTANT" %}</option>
+					            <option value="TEACHER">{% trans "TEACHER" %}</option>
+					            <option value="ADMINISTRATOR">{% trans "ADMINISTRATOR" %}</option>
+						    </select>
+						</div>
 					</div>
-					<div class="input-control text" data-role="input">
-			            <input id="input-key" name="key" placeholder="{% trans "Enter your key" %}" disabled type="text"></input>
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+					</div>
+					<div class="col-md-6">
+					<div class="row">
+						<div class="input-control text" data-role="input">
+				            <input id="input-key" name="key" placeholder="{% trans "Enter your key" %}" disabled type="text"></input>
+				            <button class="button helper-button clear"><span class="mif-cross"></span></button>
+				        </div>
+				    </div>
 			        </div>
 			        <br />
 			        <br />
