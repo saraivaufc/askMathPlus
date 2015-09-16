@@ -1,8 +1,13 @@
-#header > .navbar, #footer > .navbar, #menu-admin{
+#header > .navbar, #footer > .navbar, #menu-admin, #menu-admin > li > a{
     background-image: none !important;
-    background: rgba(0, 0, 0, 0.4) !important; /* browsers */
+    background-color: rgba(0, 0, 0, 0.4) !important; /* browsers */
     color: #fff !important;
 }
+
+#menu-admin > li:hover{
+    background-color: rgba(0, 0, 0, 0.2) !important; /* browsers */
+}
+
 
 .navbar{
 	margin-bottom: 0px;

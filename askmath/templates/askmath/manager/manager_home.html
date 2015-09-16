@@ -10,7 +10,7 @@
 		<div class="container-fluid" >
 			<div class="row">
 				<div>
-					<ul id="menu-admin" class="sidebar no-responsive-future darcula">
+					<ul id="menu-admin" class="sidebar no-responsive-future">
 						{% block all_items %}
 						<li class="active">
 						{% endblock %}
@@ -93,13 +93,11 @@
 				</div>
 				<div class="cell auto-size">
 					<div class="padding5">
-						<div class="menu-breadcrumbs">
-							<ul id="menu" class="breadcrumbs2 dark">
-							    {% block breadcrumbs %}
-							    <li><a href="/home/"><span class="icon mif-home"></span> <spam>{% trans "Home" %}</spam></a></li>
-								{% endblock %}
-							</ul>
-						</div>
+						<ul class="breadcrumbs2">
+						    {% block breadcrumbs %}
+						    <li><a href="/home/"><span class="icon mif-home"></span> <spam>{% trans "Home" %}</spam></a></li>
+							{% endblock %}
+						</ul>
 					</div>
 					{% block content_right %}
 						<div class="flex-grid bg-transparent">
@@ -145,7 +143,7 @@
 								</div>
 								{% endif %}
 								{% if perms.askmath.access_manager_person %}
-								<div class="tile-wide bg-darkBrown data-role="tile">
+								<div class="tile-wide bg-darkBrown" data-role="tile">
 									<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
 										<span class="icon mif-users"></span>
 										<span class="tile-label">{% trans "PERSONS" %}</span>

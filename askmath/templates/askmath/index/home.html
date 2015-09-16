@@ -4,13 +4,11 @@
 
 {% block header_two %}
 <div class="padding10">
-	<div class="menu-breadcrumbs">
-		<ul id="menu" class="breadcrumbs2 dark">
-		    {% block breadcrumbs %}
-		    <li><a href="/home/"><span class="icon mif-home"></span> <spam>{% trans "Home" %}</spam></a></li>
-			{% endblock %}
-		</ul>
-	</div>
+	<ul class="breadcrumbs2">
+	    {% block breadcrumbs %}
+	    <li><a href="/home/"><span class="icon mif-home"></span> <spam>{% trans "Home" %}</spam></a></li>
+		{% endblock %}
+	</ul>
 </div>
 {% endblock %}
 

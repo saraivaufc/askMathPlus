@@ -27,11 +27,6 @@
 
 /* END TILES */
 
-
-.breadcrumbs2 a{
-	color: #0050EF;
-}
-
 .charm.right-side {
 	width: 300px;
 	right: -300px;
@@ -116,15 +111,6 @@ a.tile-content{
 
 .tile-group-title{
 	margin-left: 10px;
-}
-
-
-.breadcrumbs2 >li:last-child a {
-	color: blue !important;
-}
-
-.breadcrumbs2 li a{
-	color: #000 !important;
 }
 
 

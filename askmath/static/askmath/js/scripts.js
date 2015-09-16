@@ -330,7 +330,7 @@ function unlike(buttom, likes){
 $(function(){
 	$(".latex").each(function(){
 		var id = $(this).attr("id");
-		$(this).parent().append("<span value='"+id+ "'  class='button-latex mif-file-code'></span>");
+		$(this).parent().prepend("<span value='"+id+ "'  class='button-latex right mif-file-code'></span>");
 	});
 	$(".button-latex").click(function(){
 		var id = $(this).attr('value');
@@ -374,4 +374,8 @@ $(function(){
 			$(id).text(text);
 		});
 	})
+});
+
+$(function(){
+    $(".accordion").accordion();
 });

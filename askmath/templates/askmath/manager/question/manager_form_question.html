@@ -9,11 +9,18 @@
 			{% with form=form_question %}
 				{% include "askmath/_render_form.html" %}
 			{% endwith %}
+			<div class="accordion">
 			{% for form in forms_items  %}
-			 <hr class="thin bg-grayLighter">
-				<h3 class="text-center">{% trans "Item" %} {{ form.prefix }}</h3>
-				{% include "askmath/_render_form.html" %}
+				<div class="frame">
+					<div class="heading">
+						{% trans "Item" %} {{ form.prefix }}
+					</div>
+					<div class="content">
+						{% include "askmath/_render_form.html" %}
+					</div>
+				</div>
 			{% endfor %}
+			</div>
 			<div class="text-right">
 				<a type="cancel" onclick="window.history.back();" class="image-button button-default">
 					{% trans "Cancel" %}
