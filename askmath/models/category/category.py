@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.utils.translation import ugettext as _
-from askMathPlus.settings import generate_color
+from askMathPlus.settings import generate_color, COLORS_ALL
 
 class Category(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
@@ -9,7 +9,8 @@ class Category(models.Model):
         help_text=_("Choose a title for the category."))
     description = models.TextField(verbose_name=_("Description"), max_length=100,null=True, blank=True,
         help_text=_("Choose a description for the category."))
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_("Choose a color for the category."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     

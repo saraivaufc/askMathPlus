@@ -1,19 +1,21 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
-from askMathPlus.settings import COLORS_ALL
+from askMathPlus.settings import generate_color, COLORS_ALL
 from askmath.models.lesson import Lesson
 
 class Discipline(models.Model):
     title = models.CharField(verbose_name=_("Title"), max_length=100,
         help_text=_("Choose a title for the discipline."))
+    
     responsible = models.CharField(verbose_name=_("Responsible"), max_length=100,null=True, blank=True,
         help_text=_("Choose responsible for the discipline.") )
     
     visible = models.BooleanField(verbose_name=_("Visible"), default=False,
         help_text=_("Select this option to leave visible discipline at all."))
 
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_("Choose a color for the discipline."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     

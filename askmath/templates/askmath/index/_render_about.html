@@ -1,29 +1,80 @@
 {% load i18n %}
 {% load askmath_tags %}
 
-<section id="text-about" class="lead text-justify">
-{% blocktrans %}
-<p class="paragraph">
-Este projeto é uma iniciativa do grupo PET Tecnologia da Informação da Universidade Federal do Ceará.
-Nosso objetivo é provê uma simples, intuitiva e elegante plataforma para os estudantes que querem aprender mais sobre os diversos ramos da Matemática.
-</p>
-<p class="paragraph">
-Assim como todos que desenvolvemos, este sistema possui código-fonte livre e está sob a <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">licença GNU 2.0</a>, permitindo assim que você possa copiar, distribuir e modificar seu código-fonte.
-</p>
-{% endblocktrans %}
-
-<article>
-	<h4 class="list-heading">{% trans "Developers:" %}</h4>
-	<ul>
-		{% for name,email in "SITE_DEVELOPERS"|settings  %}
-			<li>{{ name }} - {{ email }}</li>
-		{% endfor %}
-	</ul>
-</article>
-
-<p>
-{% blocktrans %}
-The AskMath was made possible thanks to other <a href="/credits/">open source software</a>.
-{% endblocktrans %}
-</p>
+<section id="text-about">
+<div class="accordion ">
+	<div class="frame active">
+		<div class="heading">{% trans "Who we are" %}</div>
+		<div class="content">
+			<p class="lead">
+				Este projeto é uma iniciativa do grupo PET Tecnologia da Informação da Universidade Federal do Ceará.
+			</p>
+			<figure>
+				<img class="img img-responsive" src="{{ STATIC_URL }}askmath/img/grupo-pet.jpg" alt="{% trans "PET Group Information Technology." %}">
+				<figcaption class="text-center">{% trans "PET Group Information Technology." %}</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div class="frame">
+		<div class="heading">{%  trans "Objective" %}</div>
+		<div class="content">
+			<p class="lead">
+				Nosso objetivo é provê uma simples, intuitiva e elegante plataforma para os estudantes que querem aprender mais sobre os diversos ramos da Matemática.
+			</p>
+		</div>
+	</div>
+	<div class="frame">
+		<div class="heading">{% trans "License and Source-Code." %}</div>
+		<div class="content">
+			<p class="lead">
+				Assim como todos que desenvolvemos, este sistema possui código-fonte livre e está sob a <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">licença GNU 2.0</a>, permitindo assim que você possa copiar, distribuir e modificar seu código-fonte.
+			</p>
+			<p class="lead">
+				Seu código-fonte está disponível no seguinte repositório: <a href="https://github.com/saraivaufc/askMath">https://github.com/saraivaufc/askMath</a>. 
+			</p>
+		</div>
+	</div>
+	<div class="frame">
+		<div class="heading">{% trans "Developers" %}</div>
+		<div class="content bg-grayLighter">
+			<div class="grid">
+			{% for developer in "SITE_DEVELOPERS"|settings  %}
+				<div class="cell bg-white-opacity">
+					<div class="row cells4">
+						<div class="cell">
+							<div class="image-container bordered image-format-square bg-white" style="width: 150px;">
+								<div class="frame">
+									<figure>
+										<img src="{{ developer.profile_image }}" alt="{% trans "Profile picture of" %}">
+									</figure>
+								</div>
+							</div>
+						</div>
+						<div class="cell colspan3">
+							<p class="lead">
+								{{ developer.message }}
+							</p>
+							<div>
+								<span class="tag info">{% trans "SKILLS:" %}</span>
+								{% for skill in developer.skills %}
+								<span class="tag success">{{ skill }}</span>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="frame">
+		<div class="heading">{% trans "Credits" %}</div>
+		<div class="content">
+			<p class="lead">
+			{% blocktrans %}
+			The AskMath was made possible thanks to other <a href="/credits/">open source software</a>. {% endblocktrans %}
+			</p>
+		</div>
+	</div>
+</div>
 </section>

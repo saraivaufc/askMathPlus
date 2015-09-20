@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from askMathPlus.settings import generate_color
+from askMathPlus.settings import generate_color, COLORS_ALL
 from datetime import datetime
 
 class Question(models.Model):
@@ -16,10 +16,12 @@ class Question(models.Model):
          help_text=_("Choose items that this issue has."))
     help = models.TextField(verbose_name=_("Help"), null=True, blank=True, 
         help_text=_("Choose a help to this question."))
+    
     SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
     scores=models.IntegerField(verbose_name=_("Scores"), choices=SCORES)
     
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_("Choose a color for the question."))
     visible = models.BooleanField(verbose_name=_("Visible"), default=False,
         help_text=_("Select this option to leave visible question at all."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)

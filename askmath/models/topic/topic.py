@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from datetime import datetime
-from askMathPlus.settings import generate_color
+from askMathPlus.settings import generate_color, COLORS_ALL
 
 class Topic(models.Model):
     person = models.ForeignKey('Person', verbose_name=_("Person"))
@@ -13,7 +13,8 @@ class Topic(models.Model):
     file = models.FileField(verbose_name=_("File"), upload_to = 'documents/forum/topic/%Y/%m/%d',
         help_text=_("Perform upload a file."), null=True, blank=True)
     
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_("Choose a color for the topic."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     exists = models.BooleanField(verbose_name=_("Exists"), default=True)
     

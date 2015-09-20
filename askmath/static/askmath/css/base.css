@@ -1,9 +1,12 @@
-/* background: url("../img/backgrounds/background-learner.jpg"); */
+/*
+	Background sob licence:CCO Public Domain 
+	Original version: http://magdeleine.co/photo-billy-lam-n-1/;
+*/
 
 body{
 	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
-	line-height: 1.1;
 	background: transparent url("../img/backgrounds/background.jpg") no-repeat center center fixed;
+	line-height: 1.1;
 	font-weight: 400;
 	font-style: normal;
 	line-height: 1.65; 
@@ -12,6 +15,7 @@ body{
   	-o-background-size: cover;
   	background-size: cover;
 }
+
 
 #site{
 	min-height: 100%;
@@ -52,6 +56,7 @@ body{
 .v-center {
     position:relative;
     top:50%;
+    vertical-align: middle;
     transform: translateY(-50%);
 }
 
@@ -257,14 +262,20 @@ input:disabled {
 
 /* LINKS */
 a{
-    color: #428BCA !important;
     text-decoration: underline !important;
 }
 
 li > a, a.button, a.btn, a.shortcut-button{
-	color: #000 !important;
+	text-decoration: none !important;
+}
+
+
+a.button, a.btn, a.shortcut-button{
+	color: #fff !important;
     text-decoration: none !important;
 }
+
+
 
 
 .popover * {
@@ -475,4 +486,8 @@ caption{
 .thin{
 	background: transparent;
 	background-color: transparent;	
+}
+
+#text-about{
+	text-align: justify;
 }

@@ -379,3 +379,11 @@ $(function(){
 $(function(){
     $(".accordion").accordion();
 });
+
+$(function(){
+	$("#id_color").each(function(){
+		$(this).find("option").each(function(){
+			$(this).addClass($(this).val());
+		});
+	});
+})

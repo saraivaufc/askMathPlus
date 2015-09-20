@@ -9,7 +9,7 @@ from askmath.models import Question, Discipline
 class QuestionForm(ModelForm):  
     class Meta:
         model= Question
-        fields = ("lesson", "position", "description", "items", "help", "scores", "visible")
+        fields = ("lesson", "position", "description", "items", "help", "scores","color", "visible")
         widgets = {
             'lesson': HiddenInput(attrs={'class':'hidden'}),
             'position': HiddenInput(attrs={'class':'hidden'}),
@@ -17,5 +17,6 @@ class QuestionForm(ModelForm):
             'help': Textarea(attrs={'class':'latex'}),
             'items': HiddenInput(attrs={'class':'hidden'}),
             'scores': Select(attrs={'required':'required'}),
-            'visible': CheckboxInput(attrs={}),
+            'color': Select(attrs={'required':'required','class':'full-size'}),
+            'visible': CheckboxInput(attrs={'required': 'required'}),
         }

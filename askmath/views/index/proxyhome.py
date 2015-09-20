@@ -28,27 +28,31 @@ class ProxyHome(IHome):
                 {'request': request, 'message': message})
         
     def about(self, request, message = None):
-        try:
-            return self.__home.about(request, message)
-        except:
-            return self.index(request, message)
+        #try:
+        return self.__home.about(request, message)
+        #except:
+           #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            #return self.index(request, message)
     
     def contact(self, request, message = None):
         try:
             return self.__home.contact(request, message)
         except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             return self.index(request, message)
 
     def terms(self, request, message = None):
         try:
             return self.__home.terms(request, message)
         except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             return self.index(request, message)
 
     def policies(self, request, message = None):
         try:
             return self.__home.policies(request, message)
         except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             return self.index(request, message)
 
         
@@ -56,6 +60,7 @@ class ProxyHome(IHome):
         try:
             return self.__home.credits(request, message)
         except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             return self.index(request, message)
 
 
@@ -67,4 +72,5 @@ class ProxyHome(IHome):
         try:
             return self.__home.contents(request, lesson, message)
         except:
+            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
             return self.index(request, message)

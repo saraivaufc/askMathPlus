@@ -1,0 +1,47 @@
+{% extends 'askmath/content/content_home.html' %}
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/content/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{{ discipline.get_title|title }}</spam></a></li>
+{% endblock %}
+
+{% block tiles %}
+<div class="padding10">
+	<div class="container-fluid">
+	<div class="row">
+		<div class="bg-white-opacity">
+			<h3 class="text-center">{{ discipline.get_title }}</h3>
+			<div class="tile-container">
+			{% for lesson in discipline.get_lessons_visibles %}
+		         <div class="tile-wide {{ lesson.color }}">
+				    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+				        <span class="icon mif-clipboard"></span>
+				        <div class="tile-label">
+				            {{ lesson.get_title|title }}
+				        </div>
+				        <div class="slide-over bg-steel">
+				        <table class="text-center fill">
+				        	<tr>
+				        		<td>{% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
+				        	</tr>
+				        	<tr>
+				        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+				        	</tr>
+				        </table>
+				        </div>
+				    </a>
+				</div>
+			{% empty %}
+			<h3 class="text-center">{%trans "Discipline does not have lessons."%}</h3>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+{% endblock %}

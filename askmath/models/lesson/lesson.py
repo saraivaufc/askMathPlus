@@ -4,7 +4,7 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
-from askMathPlus.settings import generate_color
+from askMathPlus.settings import generate_color, COLORS_ALL
 from askmath.models.question import Question
 from askmath.models.video import Video
 
@@ -22,7 +22,8 @@ class Lesson(models.Model):
     maximum_hops = models.IntegerField(verbose_name=_("Maximum Hops"),
         help_text=_("Choose the maximum number of hops that the student can perform this lesson."))
     
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
+    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_("Choose a color for the lesson."))
     visible = models.BooleanField(default=False,
         help_text=_("Select this option to leave visible lesson at all."))
     creation = models.DateTimeField(_('Creation'), default=datetime.now)

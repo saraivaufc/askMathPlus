@@ -31,15 +31,13 @@ class Account(IAccount):
         next = None
         try:
             if request.method == 'GET':
-                    next = request.GET['next']
+                next = request.GET['next']
             elif request.method == 'POST':
                 next = request.POST['next']
             else:
                 next = None
         except:
             pass
-        print next
-        print request
         
         if request.method == "POST":
             try:
@@ -51,9 +49,9 @@ class Account(IAccount):
                     person = False
                     message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
                 if person:
-                    user = authenticate(username=username, password=password)
-                    if user:
-                        login_user(request, user)
+                    person = authenticate(username=username, password=password)
+                    if person:
+                        login_user(request, person)
                         if request.user.is_authenticated():
                             if next:
                                 return HttpResponseRedirect(next)

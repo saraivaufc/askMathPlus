@@ -10,7 +10,11 @@ SITE_AUTHOR = _(u"Ciano Saraiva <saraiva.ufc@gmail.com>")
 SITE_TYPE  = _(u"AskMath")
 SITE_DESCRIPTION = _(u"Whether you are in college or in NASA laboratories, join the community of students who take the AskMath. There are several lessons and tutorials video for free for you.")
 SITE_KEYWORDS = _(u"Education, Mathematics, University")
-SITE_DEVELOPERS = [(u'Ciano Saraiva', u'<saraiva.ufc@gmail.com>'),]
+SITE_DEVELOPERS = [{'name':u'Ciano Saraiva', 
+					'email':u'<saraiva.ufc@gmail.com>',
+					'profile_image':u'/static/askmath/img/images_profiles/ciano.jpg',
+					'skills':[u'Python',u'Django',u'HTML',u'JavaScript',u'CSS',u'Jquery'],
+					'message':_(u'Hi! My name is Ciano Saraiva and im author of AskMath.')},]
 
 SITE_EXTERNAL_COMPONENTES = [
 	(u"Django", u"https://www.djangoproject.com/"),
