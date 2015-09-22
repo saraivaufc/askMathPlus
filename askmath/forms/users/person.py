@@ -19,17 +19,6 @@ class PersonForm(ModelForm):
 			'email': EmailInput(attrs={'required': 'required'}),
 			'password': PasswordInput(attrs={'required': 'required'}),
 		}
-
-
-	def clean_profile_image(self):
-		image = self.cleaned_data["profile_image"]
-		try:
-			if image and image.name.find('hash_') == -1:
-				hash = hashlib.md5(image.read()).hexdigest()
-				image.name = "hash_" + "".join((hash, ".", image.name.split(".")[-1]))
-		except:
-			pass
-		return image
 	
 class PersonLoginForm(forms.Form):
 	username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
@@ -47,7 +36,6 @@ class PersonProfile(PersonForm):
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),
-			"profile_image": AdvancedFileInput(attrs={}),
 		}
 
 class PersonRecoverPassword(forms.Form):

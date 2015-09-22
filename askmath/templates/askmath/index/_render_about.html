@@ -5,9 +5,11 @@
 <div class="accordion ">
 	<div class="frame active">
 		<div class="heading">{% trans "Who we are" %}</div>
-		<div class="content">
+		<div class="content  bg-grayLighter">
 			<p class="lead">
-				Este projeto é uma iniciativa do grupo PET Tecnologia da Informação da Universidade Federal do Ceará.
+				{% blocktrans %}
+				This project is an initiative of the <abbr title="Tutorial Education Program">PET</abbr> group Information Technology of the Federal University of Ceará.
+				{% endblocktrans %}
 			</p>
 			<figure>
 				<img class="img img-responsive" src="{{ STATIC_URL }}askmath/img/grupo-pet.jpg" alt="{% trans "PET Group Information Technology." %}">
@@ -17,26 +19,32 @@
 	</div>
 	<div class="frame">
 		<div class="heading">{%  trans "Objective" %}</div>
-		<div class="content">
+		<div class="content  bg-grayLighter">
 			<p class="lead">
-				Nosso objetivo é provê uma simples, intuitiva e elegante plataforma para os estudantes que querem aprender mais sobre os diversos ramos da Matemática.
+				{% blocktrans %}
+				Our goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.
+				{% endblocktrans %}
 			</p>
 		</div>
 	</div>
 	<div class="frame">
 		<div class="heading">{% trans "License and Source-Code." %}</div>
-		<div class="content">
+		<div class="content  bg-grayLighter">
 			<p class="lead">
-				Assim como todos que desenvolvemos, este sistema possui código-fonte livre e está sob a <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">licença GNU 2.0</a>, permitindo assim que você possa copiar, distribuir e modificar seu código-fonte.
+				{% blocktrans %}
+				As well as all that we have developed, this system is open source and <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">license GNU 2.0</a>, allowing you to copy, distribute and modify its source code.
+				{% endblocktrans %}
 			</p>
 			<p class="lead">
-				Seu código-fonte está disponível no seguinte repositório: <a href="https://github.com/saraivaufc/askMath">https://github.com/saraivaufc/askMath</a>. 
+				{% blocktrans %}
+				Your source code is available at the following repository: <a href="https://github.com/saraivaufc/askMath">https://github.com/saraivaufc/askMath</a>. 
+				{% endblocktrans %}
 			</p>
 		</div>
 	</div>
 	<div class="frame">
 		<div class="heading">{% trans "Developers" %}</div>
-		<div class="content bg-grayLighter">
+		<div class="content  bg-grayLighter">
 			<div class="grid">
 			{% for developer in "SITE_DEVELOPERS"|settings  %}
 				<div class="cell bg-white-opacity">
@@ -51,9 +59,9 @@
 							</div>
 						</div>
 						<div class="cell colspan3">
-							<p class="lead">
+							<h4>
 								{{ developer.message }}
-							</p>
+							</h4>
 							<div>
 								<span class="tag info">{% trans "SKILLS:" %}</span>
 								{% for skill in developer.skills %}
@@ -69,7 +77,7 @@
 	</div>
 	<div class="frame">
 		<div class="heading">{% trans "Credits" %}</div>
-		<div class="content">
+		<div class="content  bg-grayLighter">
 			<p class="lead">
 			{% blocktrans %}
 			The AskMath was made possible thanks to other <a href="/credits/">open source software</a>. {% endblocktrans %}

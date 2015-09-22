@@ -15,7 +15,7 @@
 		<ol type="A">
 			{% for item in question.get_items %}
 				<li>
-					<label class="input-control checkbox">
+					<label class="input-control checkbox small-check">
 					    <input type="checkbox"  name="item" value={{ item.id }}>
 					    <span class="check"></span>
 					    <span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>

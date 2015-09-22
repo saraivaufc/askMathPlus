@@ -12,10 +12,9 @@
 	<div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-8">
 	{% block tiles-left %}
-		<div class="container-fluid bg-white-opacity">
+		<div class="container-fluid bg-white-opacity text">
 			<div class="row">
 				<h2 class="text-center">{{ lesson.get_title|title }}</h2>
-				<hr class="thin">
 				<p class="text-justify lead">
 					{{ lesson.get_description|safe|linebreaksbr }}
 				</p>

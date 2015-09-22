@@ -14,14 +14,18 @@
 <br>
 <div class="container-fluid">
 	<div class="col-md-6">
-		<center>
-			{% if person.get_profile_image %}
-				<img class="img img-responsive" width="300px" height="200px" src="{{ person.get_profile_image.url }}"></<img>
-			{% else %}
-				<img class="img img-responsive" width="300px" height="200px" src="{{ STATIC_URL }}askmath/img/metro/profile.png"></<img>				
-		 	{% endif %}
-			<h1>{{ person.get_name }}</h1>
-			<h2>{{ person.get_email }}</h2>
+		<center >
+			<div class="image-container bordered" style="width:150px;">
+				<div class="frame">
+				{% if person.get_profile_image %}
+					<img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />
+				{% else %}
+					<img data-type='bordered' class="img img-responsive" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />				
+			 	{% endif %}
+			 	</div>
+		 	</div>
+			<h>2{{ person.get_name }}</h2>
+			<h4>{{ person.get_email }}</h4>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 		 </center>
 	</div>

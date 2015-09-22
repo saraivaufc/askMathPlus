@@ -24,9 +24,12 @@ $(".tile-area").css({
 };
 
 var addMouseWheel = function (){
-    $("body").mousewheel(function(event, delta, deltaX, deltaY){
+    $('body').on('mousewheel DOMMouseScroll MozMousePixelScroll', function(event, delta, deltaX, deltaY){
         return true;
     });
+    // $("body").mousewheel(function(event, delta, deltaX, deltaY){
+    //     return true;
+    // });
 };
 
         plugin.init();

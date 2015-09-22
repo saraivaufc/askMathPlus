@@ -6,7 +6,7 @@
 <div class="container-fluid">
 <section>
 {% if lesson.get_videos_visibles|length > 1 %}
-<div class="col-xs-12 col-sm-9  col-md-7">
+<div class="col-xs-12 col-sm-9  col-md-8">
 {% else %}
 <div class="col-xs-12 col-sm-9 col-md-8 col-md-offset-2">
 {% endif %}
@@ -20,30 +20,32 @@
 </div>
 
 {% if lesson.get_videos_visibles|length > 1 %}
-	<div class="col-xs-12 col-sm-3 col-md-5">
-	<div class="tile-group clean-margin">
-		<span class="tile-group-title">{% trans "Others Videos:" %}</span>
-		<div class="tile-container">
-		{% for video2 in lesson.get_videos_visibles %}
-		{% if video != video2 %}
-	     <div class="tile-wide {{ video2.color }}">
-			    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video2.id }}/" class="tile-content slide-down iconic">
-			        <span class="icon mif-film"></span>
-			        <div class="tile-label">
-			            {{ video2.get_title|title }}
-			        </div>
-			        <span class="tile-badge bg-crimson">{{ video2.get_position }}</span>
-			        <div class="slide-over bg-steel">
-			        	<p class="paragraph">{{ video2.get_description|safe|linebreaksbr|truncatewords:8 }}</p>
-			        </div>
-			    </a>
+	<div class="col-xs-12 col-sm-3 col-md-4">
+		<div class="row bg-white-opacity">
+			<div class="tile-group clean-margin">
+				<span class="tile-group-title">{% trans "Others Videos:" %}</span>
+				<div class="tile-container">
+				{% for video2 in lesson.get_videos_visibles %}
+				{% if video != video2 %}
+			     <div class="tile-wide {{ video2.color }}">
+					    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video2.id }}/" class="tile-content slide-down iconic">
+					        <span class="icon mif-film"></span>
+					        <div class="tile-label">
+					            {{ video2.get_title|title }}
+					        </div>
+					        <span class="tile-badge bg-crimson">{{ video2.get_position }}</span>
+					        <div class="slide-over bg-steel">
+					        	<p class="paragraph">{{ video2.get_description|safe|linebreaksbr|truncatewords:8 }}</p>
+					        </div>
+					    </a>
+					</div>
+				{% endif %}
+				{% empty %}
+				<h1 class="text-center">{%trans "Lesson does not have videos."%}</h1>
+				{% endfor %}
+				</div>
 			</div>
-		{% endif %}
-		{% empty %}
-		<h1 class="text-center">{%trans "Lesson does not have videos."%}</h1>
-		{% endfor %}
 		</div>
-	</div>
 	</div>
 {% endif %}
 </section>
