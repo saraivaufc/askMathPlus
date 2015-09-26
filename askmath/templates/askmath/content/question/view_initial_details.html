@@ -38,13 +38,19 @@
 			</div>
 			<hr class="transparent"/>
 			{% if lesson.get_questions_visibles|length == 0 %}
-				<h3>Essa Lição não possui perguntas, espere até que o responposável por ela adicione perguntas.</h3>
+				<hgroup class="text-center">
+					<h3>{% trans "This lesson does not have questions!!!" %}</h3>
+				</hgroup>
 			{% elif studentlessonstate.get_percentage_completed == 100%}
-				<h3>Parabéns, você concluiu esta lição!!!</h3>				
-				<h4>Você pode refazer essa lição clicando no botão abaixo ou seguir para alguma das lições recomendadas na tabela ao lado.</h4>
+				<hgroup class="text-center">
+					<h3>{% trans "Congratulations, you have completed this lesson !!!" %}</h3>
+					<h4>{% trans "You can redo this lesson by clicking the button below or next to some of the lessons recommended in the table below." %}</h4>
+				</hgroup>
 			{% else  %}
-				<h3>Conclua essa lição e ganhe experiencia para subir de nível!!!</h3>
-				<h4>É recomendado que você tenha concluido algumas outras lições para proceguir nesta, essas lições você pode encontrar na tabela ao lado.</h4>
+				<hgroup class="text-center">
+					<h3>{% trans "Complete this lesson and gain experience to level up !!!" %}</h3>
+					<h4>{% trans "It is recommended that you have completed some other lessons like to proceed to this, these lessons you can find in the table below." %}</h4>
+				</hgroup>
 			{% endif %}
 			<br/>
 			{% if lesson.get_questions_visibles|length > 0 %}

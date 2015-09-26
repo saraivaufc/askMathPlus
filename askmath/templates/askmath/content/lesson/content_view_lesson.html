@@ -12,8 +12,8 @@
 	<div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-8">
 	{% block tiles-left %}
-		<div class="container-fluid bg-white-opacity text">
-			<div class="row">
+		<div class="container-fluid">
+			<div class="row bg-white-opacity text">
 				<h2 class="text-center">{{ lesson.get_title|title }}</h2>
 				<p class="text-justify lead">
 					{{ lesson.get_description|safe|linebreaksbr }}

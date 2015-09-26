@@ -14,6 +14,7 @@
 <br>
 <div class="container-fluid">
 	<div class="col-md-6">
+	<div class="bg-white-opacity">
 		<center >
 			<div class="image-container bordered" style="width:150px;">
 				<div class="frame">
@@ -24,12 +25,14 @@
 			 	{% endif %}
 			 	</div>
 		 	</div>
-			<h>2{{ person.get_name }}</h2>
+			<h2>{{ person.get_name }}</h2>
 			<h4>{{ person.get_email }}</h4>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 		 </center>
 	</div>
+	</div>
 	<div class="col-md-6">
+	<div class="bg-white-opacity">
 		<a href="/home/person/account/edit/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
 		    <span class="icon mif-pencil"></span>
 		    <span class="title">{% trans "Profile Edit" %}</span>
@@ -43,6 +46,7 @@
 		    <span class="title">{% trans "Account Remove" %}</span>
 		</button>
 		{% include "askmath/person/account/_modal_remove_account.html" %}
+	</div>
 	</div>
 </div>
 

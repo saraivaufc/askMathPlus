@@ -17,12 +17,12 @@
 		</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-info" data-popover="undo">
+		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-info" >
 			{% trans "Undo" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="image-button button-warning" data-popover="dump">
+		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="image-button button-warning">
 			{% trans "Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>

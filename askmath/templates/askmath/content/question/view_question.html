@@ -5,7 +5,7 @@
 <div class="container-fluid bg-white-opacity">
 	<hgroup class="text-center">
 		<h3>{% trans "This question worth:" %} <spam id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</spam></h3>
-		<h4>{% trans "Mark <b>all</b> the correct items." %}</h4>
+		<h4>{% trans "Mark <ins>all</ins> the correct items." %}</h4>
 	</hgroup>
 	
 	<p class="lead text-justify">{{ question.get_position }}). {{ question.get_description|safe|linebreaksbr }}</p>

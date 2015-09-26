@@ -17,18 +17,18 @@
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-		<a href="/home/manager/questions/sort/lesson={{ lesson.id }}/" class="image-button button-info" data-popover="sort">
+		<a href="/home/manager/questions/sort/lesson={{ lesson.id }}/" class="image-button button-info">
 			{% trans "Sort" %}
 			<span class="icon mif-list-numbered"></span>
 		</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="image-button button-info" data-popover="undo">
+		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="image-button button-info">
 			{% trans "Undo" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/" class="image-button button-warning" data-popover="dump">
+		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/" class="image-button button-warning">
 			{% trans "Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
