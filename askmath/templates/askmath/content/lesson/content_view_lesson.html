@@ -24,45 +24,48 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-4">
-	{% block tiles-rigth %}
-	<div class="tile-group bg-white-opacity">
-		<h3 class="text-left">{% trans "Options:" %}</h3>
-		<div class="tile-container">
-			<div class="tile bg-indigo">
-			    <a href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
-			        <span class="icon mif-list-numbered"></span>
-			        <div class="tile-label">
-			            {% trans "Questions" %}
-			        </div>
-			        <div class="slide-over bg-steel">
-			        <table class="text-center fill">
-			        	<tr>
-			        		<td> {% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
-			        	</tr>
-			        </table>
-			        </div>
-			    </a>
-			</div>
-			
-			<div class="tile bg-emerald">
-			    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
-			        <span class="icon mif-video-camera"></span>
-			        <div class="tile-label">
-			            {% trans "Videos" %}
-			        </div>
-			        <div class="slide-over bg-steel">
+		<div class="container-fluid">
+		<div class="row bg-white-opacity">
+		{% block tiles-rigth %}
+		<div class="tile-group">
+			<h3 class="text-left">{% trans "Options:" %}</h3>
+			<div class="tile-container">
+				<div class="tile bg-indigo">
+				    <a href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+				        <span class="icon mif-list-numbered"></span>
+				        <div class="tile-label">
+				            {% trans "Questions" %}
+				        </div>
+				        <div class="slide-over bg-steel">
 				        <table class="text-center fill">
 				        	<tr>
-				        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+				        		<td> {% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
 				        	</tr>
 				        </table>
-			        </div>
-			    </a>
+				        </div>
+				    </a>
+				</div>
+				
+				<div class="tile bg-emerald">
+				    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+				        <span class="icon mif-video-camera"></span>
+				        <div class="tile-label">
+				            {% trans "Videos" %}
+				        </div>
+				        <div class="slide-over bg-steel">
+					        <table class="text-center fill">
+					        	<tr>
+					        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+					        	</tr>
+					        </table>
+				        </div>
+				    </a>
+				</div>
 			</div>
 		</div>
-	</div>
-	{% endblock %}
-	</div>
+		{% endblock %}
+		</div>
+		</div>
 	</div>
 </div>
 {% endblock %}

@@ -11,29 +11,50 @@
 {%  block content_right %}
 
 <div class="cell padding5">
-	<h2 class="text-dark  text-center">{% trans "Choose Lesson" %}<span class="mif-clipboard place-right"></span></h2>
-	<hr class="thin bg-grayLighter">
+	<h2 class="text-dark  text-center">
+		{% trans "Choose Lesson" %}
+	</h2>
 </div>
+
 
 <div class="tile-area padding10 bg-transparent">
-
-{% for discipline in disciplines %}
-<h4>{{ discipline.get_title|title }}</h4>
-<div class="tile-container fg-white">
-	{% for lesson in discipline.get_lessons %}
-	<div class="tile {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
-	    <a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/" class="tile-content iconic">
-	        <span class="icon mif-clipboard"></span>
-	        <span class="tile-label">{{ lesson }}</span>
-	        {% if not lesson.exists %}
-	        <span class="tile-badge mif-bin"></span>
-	        {% endif %}
-	    </a>
+	<div class="accordion">
+		{% for discipline in disciplines %}
+			{% if discipline.get_lessons_visibles %}
+			<div class="frame active">
+		        <div class="heading">{{ discipline.get_title|title }}</div>
+		        <div class="content">
+		        	<div class="tile-container">
+						{% for lesson in discipline.get_lessons_visibles %}
+					        <div class="tile-wide {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %} fg-white">
+							    <a href="/home/manager/statistics/lesson/view_statistics/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+							        <span class="icon mif-clipboard"></span>
+							        <div class="tile-label">
+							            {{ lesson.get_title|title }}
+							        </div>
+							        {% if not lesson.exists %}
+							        <span class="tile-badge mif-bin"></span>
+							        {% endif %}
+							        <div class="slide-over bg-steel">
+								        <table class="text-center fill">
+								        	<tr>
+								        		<td>{% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
+								        	</tr>
+								        	<tr>
+								        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+								        	</tr>
+								        </table>
+							        </div>
+							    </a>
+							</div>
+						{% empty %}
+						<h3 class="text-center">{%trans "Statistics does not have lessons."%}</h3>
+						{% endfor %}
+					</div>
+		        </div>
+		    </div>
+			{% endif %}
+		{% endfor %}
 	</div>
-	{% endfor %}
-</div>
-{% empty %}
-<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
-{% endfor %}
 </div>
 {% endblock %}

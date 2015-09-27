@@ -22,7 +22,7 @@
 	<div class="tile-area no-padding bg-transparent ">
 	  <div class="tile-container">
 		{% for lesson in discipline.get_lessons %}
-		  <div class="{% if forloop.counter|divisibleby:2 %}tile-wide{% else %}tile{% endif %} {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
+		  <div class="tile-wide {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
 			  <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
 				  <span class="icon mif-clipboard"></span>
 				  <span class="tile-label">{{ lesson }}</span>

@@ -35,6 +35,7 @@ class ProxyHome(IHome):
             #return self.index(request, message)
     
     def contact(self, request, message = None):
+        print request
         try:
             return self.__home.contact(request, message)
         except:

@@ -1,5 +1,5 @@
 /* Facebook */
-if (window.location.hostname !== 'localhost'){
+if (window.location.hostname !== 'localhost' || true ){
     (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id))
@@ -10,7 +10,7 @@ if (window.location.hostname !== 'localhost'){
 	}(document, 'script', 'facebook-jssdk'));
 }
 /* Google Analytics */
-if (window.location.hostname !== 'localhost'){
+if (window.location.hostname !== 'localhost' || true ){
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

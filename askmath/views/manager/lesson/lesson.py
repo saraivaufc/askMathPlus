@@ -12,15 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 class Lesson(ILesson):
     
     def view_lessons(self, request, message = None):
-        disciplines = []
-        for d in DisciplineModel.objects.filter(exists=True):
-            if not d.get_lessons():
-                continue
-            dict = {}
-            dict['title'] = d.get_title
-            dict['lessons'] = d.get_lessons()
-            disciplines.append(dict)
-            
+        disciplines = DisciplineModel.objects.filter(exists=True)
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
             {'request':request,'disciplines': disciplines,'message': message})
     

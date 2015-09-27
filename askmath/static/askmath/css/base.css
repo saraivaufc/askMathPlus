@@ -480,7 +480,7 @@ caption{
 }
 
 .bg-white-opacity.text{
-	padding: 10px 50px 40px 50px;
+	padding: 10px 50px 40px 50px !important;
 }
 
 .thin{
