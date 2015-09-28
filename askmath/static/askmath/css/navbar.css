@@ -1,8 +1,25 @@
 #header > .navbar, #footer > .navbar{
     background-image: none !important;
-    background-color: rgba(0, 114, 198, 1) !important; /* browsers */
+    background-color:  #3F51B5; /* browsers */
     color: #fff !important;
+    font-weight: bold;
 }
+#header > .navbar  a:hover, #footer > .navbar  a:hover{
+    background-color: #5c6bc0;
+}  
+
+#header > .navbar{
+    -webkit-box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
+}
+
+#footer >  .navbar{
+    -webkit-box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
+}
+
 
 .navbar{
 	margin-bottom: 0px;

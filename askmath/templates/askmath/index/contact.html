@@ -2,6 +2,13 @@
 
 {% load i18n %}
 
+{% block stylesheet %}
+<style type="text/css">
+	#feedback-modal, #feedback-modal *,#feedback,#feedback *{
+		display: none;
+	}
+</style>
+{% endblock %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
@@ -64,6 +71,7 @@
 				{% csrf_token %}
 				<h3 class="form-signin-heading text-center ">{% trans "Send your message" %}</h3>
 				{% include 'askmath/_render_form.html' %}
+				<div id="message"></div>
 				<div class="text-right">
 					<button type="submit" class="image-button button-primary" data-dismiss="modal">
 						{% trans "Send" %}
@@ -75,4 +83,19 @@
 	</div>
 </div>
 </div>
+{% endblock %}
+
+
+
+{% block scripts %}
+	{{ block.super }}
+	<script type="text/javascript">
+		var message;
+		var CaptchaCallback = function() {
+	        message = grecaptcha.render('message', {
+	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+	          'theme' : 'light'
+	        });
+	      };
+	</script>
 {% endblock %}

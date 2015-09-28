@@ -60,6 +60,7 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro-responsive.css" >
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/metro/css/metro-schemes.css" >
 
+
 		<!-- Animate -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/animate.css" >
 		
@@ -130,7 +131,7 @@
 		</footer>		
 		
 		<!-- Google Recaptcha -->
-		<script src='https://www.google.com/recaptcha/api.js'></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 
 		<!-- Jquery -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery/jquery-2.1.3.min.js"></script>
@@ -160,6 +161,15 @@
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
 		
 		{% block scripts %}
+			<script type="text/javascript">
+				var feedback_message;
+				var CaptchaCallback = function() {
+			        message = grecaptcha.render('feedback_message', {
+			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+			          'theme' : 'light'
+			        });
+			      };
+			</script>
 		{% endblock %}
 
 		<!-- My Scripts -->

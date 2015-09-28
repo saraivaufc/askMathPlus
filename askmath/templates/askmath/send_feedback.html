@@ -1,38 +1,30 @@
 {% load i18n %}
 
+{% block feedback %}
 <div class="modal fade fg-dark" id="feedback-modal">
-  <div class="modal-dialog  modal-xs">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2 class="modal-title  text-center">{% trans "Send Feedback..." %}</h2>
-      </div>
-      <div class="modal-body">
-      	<div class="container-fluid">
-      		<form action="/contact/" method="post" enctype="multipart/form-data" role="form">
-				{% csrf_token %}
-				<label for="id_name">{%trans "Name:"%}</label><input class="input-control text full-size" id="id_name" maxlength="100" name="name" required="required" type="text">
-				<label for="id_email">{% trans "Email:" %}</label><input class="input-control email full-size" id="id_email" maxlength="254" name="email" required="required" type="email">
-				<label for="id_message">{% trans "Message:" %}</label><textarea class="input-control textarea full-size" cols="40" id="id_message" maxlength="2000" name="message" required="required" rows="10"></textarea>
-				<label for="id_file">{% trans "File:" %}</label><input id="id_file" name="file" type="file"><br><span class="helptext">{% trans "Perform upload a file." %}</span>
-				<div class="g-recaptcha" data-sitekey="6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"></div>
-      	</div>
-      </div>
-      <div class="modal-footer">
-      	<div class="text-right">
-	        <button type="cancel" class="image-button button-default" data-dismiss="modal">
-				{% trans "Cancel" %}
-				<span class="icon mif-cancel"></span>
-			</button>
-			<button type="submit" class="image-button button-primary">
-				{% trans "Send" %}
-				<span class="icon glyphicon glyphicon-send"></span>
-			</button>
-	    </div>
-        </form>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+	<div class="modal-dialog  modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h2 class="modal-title  text-center">{% trans "Send Feedback..." %}</h2>
+			</div>
+			<div class="modal-body">
+				<!-- Do not change the code! -->
+				<center>
+				<a id="foxyform_embed_link_707830" href="http://www.foxyform.com/">foxyform</a>
+				</center>
+				<script type="text/javascript">
+				(function(d, t){
+				   var g = d.createElement(t),
+				       s = d.getElementsByTagName(t)[0];
+				   g.src = "http://www.foxyform.com/js.php?id=707830&sec_hash=edde5b838dd&width=350px";
+				   s.parentNode.insertBefore(g, s);
+				}(document, "script"));
+				</script>
+				<!-- Do not change the code! -->
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
@@ -42,3 +34,4 @@
 		     alt="Feedback" title="Feedback Button" height="70px"/>
 	</a>
 </div>
+{% endblock %}

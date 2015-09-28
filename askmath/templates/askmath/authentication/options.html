@@ -49,7 +49,7 @@
 			            {{ form.password }}
 			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
 			        </div>
-			        <br />
+			        <div id="recaptcha1"></div>
 			        <br />
 			        <div class="form-actions">
 						<button type="submit" class="button image-button btn-block button-primary">
@@ -125,11 +125,11 @@
 					    	{% blocktrans %}By clicking here, you agree to the <a href="/terms/" >Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
 					    </span>
 					</label>
-					<br />
+					<div id="recaptcha2"></div>
 					<br />
 					<div class="form-actions">
 						<button type="submit" class="button image-button btn-block button-primary">
-							{% trans "Sign In" %}
+							{% trans "Sign Up" %}
 							<span class="icon mif-enter"></span>
 						</button>
 			        </div>
@@ -156,7 +156,7 @@
 			            {{ form.email }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
 			        </div>
-			        <br />
+			        <div id="recaptcha3"></div>
 			        <br />
 			        <div class="form-actions">
 			        	<button type="submit" class="image-button btn-block button-primary">
@@ -171,4 +171,35 @@
 </div>
 </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script type="text/javascript">
+		var recaptcha1;
+      	var recaptcha2;
+      	var recaptcha3;
+      	var CaptchaCallback = function() {
+	        recaptcha1 = grecaptcha.render('recaptcha1', {
+	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+	          'theme' : 'light'
+	        });
+	        //Render the recaptcha1 on the element with ID "recaptcha1"
+	        recaptcha1 = grecaptcha.render('recaptcha1', {
+	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+	          'theme' : 'light'
+	        });
+	        
+	        //Render the recaptcha2 on the element with ID "recaptcha2"
+	        recaptcha2 = grecaptcha.render('recaptcha2', {
+	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+	          'theme' : 'light'
+	        });
+
+	        recaptcha3 = grecaptcha.render('recaptcha3', {
+	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+	          'theme' : 'light'
+	        });
+	      };
+	</script>
 {% endblock %}
