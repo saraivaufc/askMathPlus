@@ -107,6 +107,9 @@
 			{% endblock %}
 			</header>	
 			<main id="main">
+				<section id="messages">
+				{% include 'askmath/_messages.html' %}
+				</section>
 				<section id="content">
 				{% block header_two %}
 				{% endblock %}
@@ -116,9 +119,6 @@
 				<section id="modals"> 
 				{% block modals %}
 				{% endblock %}
-				</section>
-				<section id="messages">
-				{% include 'askmath/_messages.html' %}
 				</section>
 			</main>
 		</div>
@@ -175,7 +175,6 @@
 		<!-- My Scripts -->
 		<script src="{{ STATIC_URL }}askmath/js/initial.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/popovers.js"></script>
-		<script src="{{ STATIC_URL }}askmath/js/messages.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/cookies.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/accessibility.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/services.js"></script>

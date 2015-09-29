@@ -1,69 +1,73 @@
 # -*- coding: UTF-8 -*-
 
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
 from askmath.forms import ContactForm
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
-from django.core.mail import EmailMessage
 from askmath.models.lesson.lesson import Lesson
+from django.core.mail import send_mail
 from .ihome import IHome
+from askmath.utils.user import send_password_reset
 
 class Home(IHome):
-    def index(self, request,  message = None):
+    def index(self, request):
         if request.user.is_authenticated():
             if request.user.has_perm('askmath.access_manager'):
                 return render(request, 'askmath/manager/manager_home.html', 
-                    {'request':request, 'message': message})
+                    {'request':request})
             else:
                 disciplines = Discipline.objects.filter(exists=True, visible=True)
                 return render(request, 'askmath/content/lesson/content_view_lessons.html',
-                    {'request': request,'disciplines':  disciplines ,'message': message})
+                    {'request': request,'disciplines':  disciplines})
         else:
             return render(request, 'askmath/index/home.html',
-                {'request': request, 'message': message})
+                {'request': request})
         
-    def about(self, request, message = None):
+    def about(self, request):
         return render(request, 'askmath/index/about.html',
-            {'request': request, 'message': message})
+            {'request': request})
     
-    def contact(self, request, message = None):
+    def contact(self, request):
+        
         if request.method == "POST":
             form =  ContactForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                email = EmailMessage(SITE_TITLE, form.cleaned_data['message'], to=['saraiva@alu.ufc.br'])
                 try:
-                    email.send()
-                except:
-                    pass
-                message = Message(TextMessage.MESSAGE_SUCCESS_SEND, TypeMessage.SUCCESS)
-                return self.index(request, message)
+                    send_password_reset(request)
+                except Exception, e:
+                    print e
+                messages.success(request,TextMessage.MESSAGE_SUCCESS_SEND)
+                return self.index(request)
+            else:
+                messages.error(request, TextMessage.ERROR_FORM)
         else:
             form = ContactForm()
         return render(request, 'askmath/index/contact.html', 
-             {'request': request,'form':form,'message': message})
+             {'request': request,'form':form})
 
-    def terms(self, request, message = None):
+    def terms(self, request):
         return render(request, 'askmath/index/terms.html', 
-             {'request': request, 'message': message})
+             {'request': request})
 
-    def policies(self, request, message = None):
+    def policies(self, request):
         return render(request, 'askmath/index/policies.html', 
-             {'request': request, 'message': message})
+             {'request': request})
 
         
-    def credits(self, request, message = None):
+    def credits(self, request):
         return render(request, 'askmath/index/credits.html', 
-             {'request': request, 'message': message})
+             {'request': request})
 
 
-    def contents(self, request, lesson=None, message = None):
+    def contents(self, request, lesson=None):
         if lesson:
             return render(request, 'askmath/index/contents_details.html',
-                {'request': request,'lesson': lesson,'message': message})
+                {'request': request,'lesson': lesson})
         else:
             disciplines = Discipline.objects.filter(exists=True, visible=True)
             return render(request, 'askmath/index/contents.html', 
-                {'request': request,'disciplines': disciplines,'message': message})
+                {'request': request,'disciplines': disciplines})

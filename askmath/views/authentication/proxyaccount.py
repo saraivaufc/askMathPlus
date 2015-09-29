@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 from .iaccount import IAccount
@@ -16,63 +17,68 @@ class ProxyAccount(IAccount):
         if request.user.is_authenticated():
             try:
                 return redirect(request.GET['next'])
-            except:
+            except Exception, e:
+                print e
                 return HttpResponseRedirect('/home/')
 
         if request.method == "POST":
             try:
                 option = request.POST['option']
                 if option == 'sign_in':
-                    return self.signin(request, message)
+                    return self.signin(request)
                 elif option == 'sign_up':
-                    return self.signup(request, message)
+                    return self.signup(request)
                 elif option == 'recover_password':
-                    return self.recover_password(request, message)
+                    return self.recover_password(request)
                 else:
-                    return self.__account.options(request, message)
-            except:
-                pass
+                    return self.__account.options(request)
+            except Exception, e:
+                print e
         try:
-            return self.__account.options(request, message)
-        except:
+            return self.__account.options(request)
+        except Exception, e:
+            print e
             return HttpResponseRedirect('/home/')
         
     
-    def signin(self, request, message = None):
+    def signin(self, request):
         if request.method == 'POST':
             form = PersonLoginForm(request.POST)
             if form.is_valid():
                 try:
                     return self.__account.signin(request, form)
-                except:
-                    return self.options(request, message)
+                except Exception, e:
+                    print e
+                    return self.options(request)
             else:
-                pass
+                messages.error(request, TextMessage.ERROR_FORM)
         request.method = 'GET'
-        return self.options(request, message)
+        return self.options(request)
     
-    def logout(self, request, message=None):
+    def logout(self, request):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         try:
-            return self.__account.logout(request, message)
-        except:
-            message = Message(TextMessage.LOGOUT_ERROR, TypeMessage.ERROR)
+            return self.__account.logout(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.LOGOUT_ERROR)
         request.method = 'GET'
-        return self.options(request, message)
+        return self.options(request)
     
-    def signup(self, request, message=None):
+    def signup(self, request):
         if request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         else:
             try:
                 return self.__account.signup(request)
-            except:
-                message = Message(TextMessage.USER_CREATED_ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.USER_CREATED_ERROR)
         request.method = 'GET'
-        return self.options(request, message)
+        return self.options(request)
         
-    def recover_password(self, request, message = None):
+    def recover_password(self, request):
         if request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         else:
@@ -86,13 +92,13 @@ class ProxyAccount(IAccount):
                             try:
                                 return self.__account.recover_password(request, user)
                             except:
-                                message = Message(TextMessage.EMAIL_RECOVER_PASSWORD_ERROR, TypeMessage.ERROR)    
+                                messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
                         else:
-                            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+                            messages.error(request, TextMessage.USER_NOT_FOUND)
                     except:
-                        message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+                        messages.error(request, TextMessage.USER_NOT_FOUND)
                 except:
-                    message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+                    messages.error(request, TextMessage.ERROR_FORM)
         request.method = 'GET'
-        return self.options(request, message)
+        return self.options(request)
     

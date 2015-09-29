@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.views.index import ProxyHome
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -16,99 +17,110 @@ class ProxyDiscipline(IDiscipline):
         self.__proxy_home = ProxyHome()
         
     @method_decorator(login_required)
-    def view_disciplines(self, request, message = None):
+    def view_disciplines(self, request):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
-                return self.__discipline.view_disciplines(request, message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                return self.__discipline.view_disciplines(request)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_disciplines_removed(self, request, message=None):
+    def view_disciplines_removed(self, request):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__discipline.view_disciplines_removed(request)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def view_discipline(self, request, id_discipline, message=None):
+    def view_discipline(self, request, id_discipline):
         if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_disciplines(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_disciplines(request)
             try:
                 return self.__discipline.view_discipline(request, discipline)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def add_discipline(self, request, message=None):
+    def add_discipline(self, request):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 return self.__discipline.add_discipline(request)
-            except:
-                message = Message(TextMessage.DISCIPLINE_ERROR_ADD, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_ERROR_ADD)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def remove_discipline(self, request, id_discipline, message=None):
+    def remove_discipline(self, request, id_discipline):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_disciplines(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_disciplines(request)
             try:
                 return self.__discipline.remove_discipline(request, discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_ERROR_REM, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_ERROR_REM)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def edit_discipline(self, request, id_discipline, message=None):
+    def edit_discipline(self, request, id_discipline):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_disciplines(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_disciplines(request)
             try:
                 return self.__discipline.edit_discipline(request, discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_ERROR_EDIT, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_ERROR_EDIT)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def restore_discipline(self, request, id_discipline, message=None):
+    def restore_discipline(self, request, id_discipline):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_disciplines(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_disciplines(request)
             try:
                 return self.__discipline.restore_discipline(request, discipline)
-            except:
-                message = Message(TextMessage.DISCIPLINE_ERROR_RESTORE, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_ERROR_RESTORE)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_disciplines(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_disciplines(request)
     

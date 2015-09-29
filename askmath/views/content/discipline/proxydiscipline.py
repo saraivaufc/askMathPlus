@@ -2,7 +2,8 @@ from .idiscipline import IDiscipline
 from .discipline import Discipline
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from ..lesson import ProxyLesson
 
 from askmath.models.discipline import Discipline as DisciplineModel
@@ -15,19 +16,20 @@ class ProxyDiscipline(IDiscipline):
     	self.__proxylesson = ProxyLesson()
 
     @method_decorator(login_required)
-    def view_discipline(self, request, id_discipline, message=None):
+    def view_discipline(self, request, id_discipline):
     	if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = DisciplineModel.objects.get(id = id_discipline,exists=True)
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxylesson.view_lessons(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.__proxylesson.view_lessons(request)
             
             try:
-                return self.__discipline.view_discipline(request,discipline, message)
+                return self.__discipline.view_discipline(request,discipline)
             except Exception, e:
             	print e
-            	message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxylesson.view_lessons(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxylesson.view_lessons(request)

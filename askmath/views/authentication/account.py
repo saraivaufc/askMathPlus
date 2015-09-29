@@ -5,7 +5,8 @@ from django.contrib.auth.views import logout as logout_sys
 from django.http.response import HttpResponseRedirect
 from askmath.forms import StudentForm, AssistantForm, TeacherForm, AdministratorForm, PersonForm
 from askMathPlus.settings import LOGIN_URL
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.models.users import Student, Person as PersonModel
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from django.contrib.auth.models import Group
@@ -19,15 +20,15 @@ except:
 
 
 class Account(IAccount):
-    def options(self, request, message=None):   
+    def options(self, request):   
         form_signin = PersonLoginForm()
         form_signup = PersonForm()
         form_recover_password = PersonRecoverPassword()
         return render(request, "askmath/authentication/options.html",
-            {'request': request,'form_signin': form_signin, 'form_signup':form_signup,'form_recover_password':form_recover_password,'message':message})
+            {'request': request,'form_signin': form_signin, 'form_signup':form_signup,'form_recover_password':form_recover_password})
     
     
-    def signin(self, request, form=None, message=None):
+    def signin(self, request, form=None):
         next = None
         try:
             if request.method == 'GET':
@@ -36,8 +37,8 @@ class Account(IAccount):
                 next = request.POST['next']
             else:
                 next = None
-        except:
-            pass
+        except Exception, e:
+            print e
         
         if request.method == "POST":
             try:
@@ -45,9 +46,10 @@ class Account(IAccount):
                 password =  form.cleaned_data['password']
                 try:
                     person = PersonModel.objects.get(username=username, exists=True)
-                except:
+                except Exception, e:
+                    print e
                     person = False
-                    message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+                    messages.error(request, TextMessage.USER_NOT_FOUND)
                 if person:
                     person = authenticate(username=username, password=password)
                     if person:
@@ -58,21 +60,22 @@ class Account(IAccount):
                             else:
                                 return HttpResponseRedirect("/home/")
                         else:
-                            message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
+                            messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
                     else:
-                        message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        return self.options(request, message)
+                        messages.error(request, TextMessage.USER_NOT_FOUND)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR_FORM)
+        return self.options(request)
     
-    def logout(self, request, message=None):
+    def logout(self, request):
         try:
             logout_sys(request)
-        except:
-            pass
+        except Exception, e:
+            print e
         return HttpResponseRedirect('/authentication/options/')
     
-    def signup(self, request, message=None):
+    def signup(self, request):
         if request.method == "POST":
             request.POST = request.POST.copy()
             try:
@@ -90,7 +93,8 @@ class Account(IAccount):
                         register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
                         form = AssistantForm(request.POST, request.FILES)
                         group_name = "assistant"
-                    except:
+                    except Exception, e:
+                        print e
                         message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
                 elif type == "TEACHER":
                     try:
@@ -98,7 +102,8 @@ class Account(IAccount):
                         register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
                         form = TeacherForm(request.POST, request.FILES)
                         group_name = "teacher"
-                    except:
+                    except Exception, e:
+                        print e
                         message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
                 elif type == "ADMINISTRATOR":
                     try:
@@ -106,10 +111,11 @@ class Account(IAccount):
                         register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
                         form = AdministratorForm(request.POST, request.FILES)
                         group_name = "administrator"
-                    except:
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                    except Exception, e:
+                        print e
+                        messages.error(request, TextMessage.KEY_NOT_FOUND)
                 else:
-                    message = Message(TextMessage.USER_TYPE_NOT_FOUND, TypeMessage.ERROR)
+                    messages.error(request, TextMessage.USER_TYPE_NOT_FOUND)
                 
                 if form and form.is_valid():
                     user=form.save()
@@ -117,30 +123,30 @@ class Account(IAccount):
                         register_key.add_user(user)
                     group = Group.objects.get(name=group_name)
                     user.groups.add(group)
-                    message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
+                    messages.success(request, TextMessage.USER_CREATED_SUCCESS)
                     request.method="GET"
-                    return self.signin(request,form, message)
-                else:
-                    if not message:
-                        message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-        return self.options(request, message)
+                    return self.signin(request,form)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR_FORM)
+        return self.options(request)
         
-    def recover_password(self, request, user=None, message=None):
+    def recover_password(self, request, user=None):
         if request.method == "POST":
             import random, string
             try:
                 new_password = ''.join(random.choice(string.ascii_letters) for x in range(10))
                 user.change_password(new_password)
                 msn =  _("Dean " + str(user.get_full_name()) + ",<br><br>username = " + str(user.username) + "<br>new password = " + str(new_password) + "<br>Sincerely, Team Askmath.")
-                if user.email_user(_('AskMath - Recover Password'), str(msn)) :
-                    message = Message(TextMessage.EMAIL_RECOVER_PASSWORD_SUCCESS, TypeMessage.SUCCESS)
+                from askmath.utils.user import send_recover_password
+                if send_recover_password():
+                    messages.success(request, TextMessage.EMAIL_RECOVER_PASSWORD_SUCCESS)
                 else:
-                    message = Message(TextMessage.EMAIL_RECOVER_PASSWORD_ERROR, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.EMAIL_RECOVER_PASSWORD_ERROR, TypeMessage.ERROR)
+                    messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
             form = PersonRecoverPassword()
         else:
-            return self.options(request, message)
+            return self.options(request)
         

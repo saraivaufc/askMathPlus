@@ -5,6 +5,6 @@ from .idiscipline import IDiscipline
 
 class Discipline(IDiscipline):
     
-    def view_discipline(self, request, discipline,message = None):
+    def view_discipline(self, request, discipline):
     	return render(request, "askmath/content/discipline/content_view_discipline.html", 
-            {'request':request, 'discipline': discipline,'message': message})
+            {'request':request, 'discipline': discipline})

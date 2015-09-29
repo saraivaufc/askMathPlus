@@ -2,7 +2,8 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.views.index import ProxyHome
 from askmath.models import Contact as ContactModel
 from django.contrib.auth.decorators import login_required
@@ -18,71 +19,79 @@ class ProxyContact(IContact):
         self.__proxy_home = ProxyHome()
   
     @method_decorator(login_required)
-    def view_contacts(self, request, message = None):
-        if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
-            #try:
-            return self.__contact.view_contacts(request, message)
-            #except:
-                #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-        else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
-    
-    @method_decorator(login_required)
-    def view_contacts_removed(self,request, message = None):
+    def view_contacts(self, request):
         if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
-                return self.__contact.view_contacts_removed(request,  message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                return self.__contact.view_contacts(request, message)
+            except Exception,e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_contacts(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_contact(self, request, id_contact, message=None):
+    def view_contacts_removed(self,request):
+        if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
+            try:
+                return self.__contact.view_contacts_removed(request)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
+        else:
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_contacts(request)
+    
+    @method_decorator(login_required)
+    def view_contact(self, request, id_contact):
         if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
-            except:
-                message = Message(TextMessage.CONTACT_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_contacts(request,message)
-            #try:
-            return self.__contact.view_contact(request, contact)
-            #except:
-                #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                return self.view_contacts(request)
+            try:
+                return self.__contact.view_contact(request, contact)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_contacts(request,message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_contacts(request)
     
     @method_decorator(login_required)
-    def remove_contact(self, request, id_contact, message=None):
+    def remove_contact(self, request, id_contact):
         if request.user.has_perm("askmath.write_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
-            except:
-                message = Message(TextMessage.CONTACT_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_contacts(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                return self.view_contacts(request)
             try:
-                return self.__contact.remove_contact(request,contact, message)
-            except:
-                message = Message(TextMessage.CONTACT_ERROR_REM, TypeMessage.ERROR)
+                return self.__contact.remove_contact(request,contact)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CONTACT_ERROR_REM)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_contacts(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_contacts(request)
     
     @method_decorator(login_required)
     def restore_contact(self, request, id_contact, message=None):
         if request.user.has_perm("askmath.write_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)
-            except:
-                message = Message(TextMessage.CONTACT_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_contacts(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                return self.view_contacts(request)
             try:
                 return self.__contact.restore_contact(request, contact)
-            except:
-                message = Message(TextMessage.CONTACT_ERROR_RESTORE, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CONTACT_ERROR_RESTORE)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_contacts(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_contacts(request)

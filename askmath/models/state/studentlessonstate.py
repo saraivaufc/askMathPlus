@@ -3,7 +3,8 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from datetime import datetime
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
 
@@ -175,14 +176,16 @@ class StudentLessonState(models.Model):
         self.update_percentage_completed()
         self.save()
     
-    def add_skipped_question(self, question):
+    def add_skipped_question(self,request, question):
         #Se a licao ja tiver sido concluida
         if not self.get_question():
-            return Message(TextMessage.LESSON_SUCCESS_COMPLETED, TypeMessage.INFO)
+            messages.success(request, TextMessage.LESSON_SUCCESS_COMPLETED)
+            return
         
         #Se a questao ja tinha sido respondida corretamente antes
         if question in self.get_answered_correct_questions():
-            return Message(TextMessage.QUESTION_REPLY, TypeMessage.INFO)
+            messages.info(request, TextMessage.QUESTION_REPLY)
+            return
         
         #Se a questao ja tinha sido saltada antes
         if question in self.get_skipped_questions():
@@ -199,9 +202,11 @@ class StudentLessonState(models.Model):
         self.save()
         
         if self.get_question() == question:
-            return Message(TextMessage.QUESTION_ERROR_JUMP, TypeMessage.INFO)
+            messages.error(request, TextMessage.QUESTION_ERROR_JUMP)
+            return
         else:
-            return Message(TextMessage.QUESTION_SUCCESS_JUMP, TypeMessage.SUCCESS)
+            messages.success(request, TextMessage.QUESTION_SUCCESS_JUMP)
+            return
     
     def remove_answered_incorrect_questions(self, question):
         self.answered_incorrect_questions.remove(question)
@@ -220,10 +225,11 @@ class StudentLessonState(models.Model):
     
                 
         
-    def answer_question(self, question, items):
+    def answer_question(self, request, question, items):
         #Se a questao na pertence a essa licao
         if not question in self.lesson.get_questions():
-            return Message(TextMessage.QUESTION_NOT_FOUND_IN_LESSON, TypeMessage.SUCCESS)
+            messages.error(request, TextMessage.QUESTION_NOT_FOUND_IN_LESSON)
+            return
         
         #Se o items nao pertence a essa questao
         for item in items:
@@ -232,21 +238,26 @@ class StudentLessonState(models.Model):
                 if item.id == item_question.id:
                     exists = True
             if not exists:
-                return Message(TextMessage.ITEM_NOT_FOUND_IN_QUESTION, TypeMessage.SUCCESS)
+                messages.error(request, TextMessage.ITEM_NOT_FOUND_IN_QUESTION)
+                return
         
         try:
             items_corrects = question.get_items_corrects()
-        except:
-            return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.QUESTION_ERROR_REPLY)
+            return
         
         if set(items_corrects) == set(items):
             self.add_answered_correct_question(question)
             self.save_answer_question_historic(question, items, True)
-            return Message(TextMessage.QUESTION_SUCCESS_REPLY, TypeMessage.SUCCESS)
+            messages.success(request, TextMessage.QUESTION_SUCCESS_REPLY)
+            return
         else:
             self.add_answered_incorrect_question(question)
             self.save_answer_question_historic(question, items, False)
-            return Message(TextMessage.QUESTION_ERROR_REPLY, TypeMessage.ERROR)
+            messages.error(request, TextMessage.QUESTION_ERROR_REPLY)
+            return
     
     def save_answer_question_historic(self, question, items, hit=False):
         try:
@@ -264,14 +275,14 @@ class StudentLessonState(models.Model):
             for item in items:
                 answered_questions.items.add(item)
             student_historic.answered_questions_historic.add(answered_questions)
-        except:
-            print "Exception"
+        except Exception, e:
+            print e
             return
     def save_help_question_historic(self, question):
         try:
             student_historic = StudentHistoric.objects.get_or_create(student = self.student)[0]
-        except:
-            print "Erro save_help_question"
+        except Exception, e:
+            print e
             return
         try:
             help_questions = HelpQuestionsHistoric(discipline=self.discipline, 
@@ -279,14 +290,14 @@ class StudentLessonState(models.Model):
                                                            question = question)
             help_questions.save()
             student_historic.help_questions_historic.add(help_questions)
-        except:
-            print "Exception"
+        except  Exception, e:
+            print e
             return
     def save_skipped_question_historic(self, question):
         try:
             student_historic = StudentHistoric.objects.get_or_create(student = self.student)[0]
-        except:
-            print "Erro save_skipped_question"
+        except Exception, e:
+            print e
             return
         try:
             skipped_questions = SkippedQuestionsHistoric(discipline=self.discipline, 
@@ -294,8 +305,8 @@ class StudentLessonState(models.Model):
                                                            question = question)
             skipped_questions.save()
             student_historic.skipped_questions_historic.add(skipped_questions)
-        except:
-            print "Exception"
+        except Exception, e:
+            print e
             return
 
     def up_student_experience(self, scores):

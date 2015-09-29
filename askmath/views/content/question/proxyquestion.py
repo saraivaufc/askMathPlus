@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 #MODELS
@@ -26,63 +27,72 @@ class ProxyQuestion(IQuestion):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 return self.__question.view_initial_details(request, discipline, lesson)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_question(self, request, id_discipline, id_lesson,message=None):
+    def view_question(self, request, id_discipline, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_initial_details(request, id_discipline, id_lesson)
             try:
-                return self.__question.view_question(request, discipline, lesson, message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                return self.__question.view_question(request, discipline, lesson)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def answer_question(self, request, id_discipline, id_lesson, id_question, message=None):
+    def answer_question(self, request, id_discipline, id_lesson, id_question):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 question = QuestionModel.objects.filter(id = id_question, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.QUESTION_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.QUESTION_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             if not request.method == 'POST':
-                return self.view_question(request, id_discipline, id_lesson, message)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 items = []
                 for i in request.POST.getlist('item'):
@@ -90,113 +100,129 @@ class ProxyQuestion(IQuestion):
                     print item
                     if item:
                         items.append(item)
-            except :
-                message = Message(TextMessage.ITEM_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ITEM_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 return self.__question.answer_question(request, discipline, lesson, question, items)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_question(request, id_discipline, id_lesson, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_question(request, id_discipline, id_lesson)
     
     @method_decorator(login_required)
-    def jump_question(self, request, id_discipline, id_lesson, id_question, message=None):
+    def jump_question(self, request, id_discipline, id_lesson, id_question):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 question = QuestionModel.objects.get(id = id_question)
-            except:
-                message = Message(TextMessage.QUESTION_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.QUESTION_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 return self.__question.jump_question(request, discipline, lesson, question)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_question(request, id_discipline, id_lesson, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_question(request, id_discipline, id_lesson)
 
     @method_decorator(login_required)
-    def choose_skipped_question(self, request, id_discipline, id_lesson, id_question, message=None):
+    def choose_skipped_question(self, request, id_discipline, id_lesson, id_question):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 question = QuestionModel.objects.filter(id = id_question, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.QUESTION_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.QUESTION_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             try:
                 return self.__question.choose_skipped_question(request, discipline, lesson, question)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_question(request, id_discipline, id_lesson, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_question(request, id_discipline, id_lesson)
     
     @method_decorator(login_required)
-    def reset_lesson(self,request, id_discipline, id_lesson, message=None):
+    def reset_lesson(self,request, id_discipline, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 return self.__question.reset_lesson(request, discipline, lesson)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_initial_details(request, id_discipline, id_lesson)
     
     @method_decorator(login_required)
-    def help_question(self,request, id_discipline, id_lesson,id_question, message=None):
+    def help_question(self,request, id_discipline, id_lesson,id_question):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:
                 discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.__proxy_home.index(request)
             try:
                 question = QuestionModel.objects.filter(id = id_question, exists=True,visible=True)[0]
-            except:
-                message = Message(TextMessage.QUESTION_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_question(request, id_discipline, id_lesson, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.QUESTION_NOT_FOUND)
+                return self.view_question(request, id_discipline, id_lesson)
             
             try:
                 return self.__question.help_quetion(request, discipline, lesson, question)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_initial_details(request, id_discipline, id_lesson)

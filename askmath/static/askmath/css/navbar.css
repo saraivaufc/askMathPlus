@@ -4,20 +4,24 @@
     color: #fff !important;
     font-weight: bold;
 }
-#header > .navbar  a:hover, #footer > .navbar  a:hover{
+#header > .navbar  a:hover, #footer > .navbar  a:hover, .navbar-header:hover{
     background-color: #5c6bc0;
-}  
+}
+#header > .navbar  a.navbar-brand :hover{
+    background-color: none;
+}
+
 
 #header > .navbar{
-    -webkit-box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 11px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
 }
 
 #footer >  .navbar{
-    -webkit-box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px -4px 11px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
 }
 
 
@@ -27,6 +31,7 @@
 
 .navbar-brand {
     max-width: 50%;
+    border-radius: 0px;
 }
 
 .navbar-inverse a{

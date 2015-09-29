@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import Group
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
 from django.utils.translation import ugettext_lazy as _
 
 try:
@@ -19,13 +19,13 @@ from .iperson import IPerson
 
 class Person(IPerson):
     
-    def choose_person_types(self, request, message=None):
+    def choose_person_types(self, request):
         person_types = PersonTypes()
         return render(request, "askmath/manager/person/manager_choose_person_types.html",
-            {'request':request,'person_types': person_types, 'message': message})
+            {'request':request,'person_types': person_types})
     
     
-    def view_persons(self, request, PERSONTYPE, message=None):
+    def view_persons(self, request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
             print "ADMIN"
@@ -45,9 +45,9 @@ class Person(IPerson):
             
         persons = person_types.get_persons()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person, 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person})
     
-    def view_persons_removed(self, request, PERSONTYPE, message=None):
+    def view_persons_removed(self, request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
             write_person = request.user.has_perm('askmath.write_administrator')
@@ -61,9 +61,9 @@ class Person(IPerson):
             write_person = False
         persons = person_types.get_persons_removed()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True , 'message': message})
+            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True })
         
-    def view_person(self,request, PERSONTYPE,person, message=None ):
+    def view_person(self,request, PERSONTYPE,person ):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
             write_person = request.user.has_perm('askmath.write_administrator')
@@ -79,7 +79,7 @@ class Person(IPerson):
             {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person,'message': message})
     
     
-    def add_person(self,request, PERSONTYPE,message=None ):
+    def add_person(self,request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         new_register_key = None
         register_keys = None
@@ -98,22 +98,22 @@ class Person(IPerson):
         else:
             register_keys = None
         return render(request, "askmath/manager/person/manager_view_keys.html", 
-            {'request':request, 'person_type': PERSONTYPE ,'new_register_key': new_register_key ,'register_keys': register_keys, 'message': message})
+            {'request':request, 'person_type': PERSONTYPE ,'new_register_key': new_register_key ,'register_keys': register_keys})
 
     
-    def remove_person(self, request, PERSONTYPE, person,message=None ):
+    def remove_person(self, request, PERSONTYPE, person):
         person.delete()
-        message = Message(TextMessage.PERSON_SUCCESS_REM, TypeMessage.SUCCESS)
-        return self.view_persons(request,PERSONTYPE, message)
+        messages.error(request,TextMessage.PERSON_SUCCESS_REM)
+        return self.view_persons(request,PERSONTYPE)
     
-    def remove_registerkey(self, request, PERSONTYPE, registerkey,message=None ):
+    def remove_registerkey(self, request, PERSONTYPE, registerkey):
         if not registerkey.get_user():
             registerkey.delete()
         else:
             message = Message(TextMessage.KEY_ERROR_REMOVE_USED, TypeMessage.WARNING)
-        return self.add_person(request, PERSONTYPE, message)
+        return self.add_person(request, PERSONTYPE)
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()
-        message = Message(TextMessage.PERSON_SUCCESS_RESTORE, TypeMessage.SUCCESS)
-        return self.view_persons(request,PERSONTYPE, message)
+        messages.error(request,TextMessage.PERSON_SUCCESS_RESTORE)
+        return self.view_persons(request,PERSONTYPE)

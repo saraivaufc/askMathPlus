@@ -2,13 +2,6 @@
 
 from django.utils.translation import ugettext as _
 
-
-class TypeMessage():
-	SUCCESS = _('SUCCESS')
-	INFO = _('INFO')
-	WARNING = _('WARNING')
-	ERROR = _('ERROR')
-
 class TextMessage():
 	
 	#User
@@ -248,17 +241,3 @@ class TextMessage():
 	ACCOUNT_SUCCESS_REMOVED = _(u"Account success removed.")
 
 	SEARCH_ERROR_SIZE = _(u"Ocorreu um erro na sua busca, tente utilizar no máximo 27 caracteres na busca.")
-	
-	
-
-
-
-class Message():
-	text = ''
-	type_msg =None 
-	def __init__(self, text, type_msg):
-		self.text = unicode(text)
-		self.type_msg = type_msg
-
-	def type(self):
-		return self.type_msg

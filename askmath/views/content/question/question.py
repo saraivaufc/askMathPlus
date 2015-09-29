@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 
 #MODELS
 from askmath.models.discipline import Discipline as CategoryModel
@@ -22,28 +23,32 @@ class Question(IQuestion):
     def __init__(self):
         self.__proxy_home = ProxyHome()
     
-    def view_initial_details(self, request, discipline, lesson, message=None):
+    def view_initial_details(self, request, discipline, lesson):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.__proxy_home.index(request, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.__proxy_home.index(request)
         
         try:
             studentexperience = StudentExperience.objects.get(student = student, exists=True)
-        except:
+        except Exception, e:
+            print e
             try:
                 studentexperience = StudentExperience(student = student)
                 studentexperience.save()
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-                return self.__proxy_home.index(request, message)  
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
+                return self.__proxy_home.index(request)  
         
         experience_level = ExperienceLevel(studentexperience.level)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
             
@@ -52,19 +57,21 @@ class Question(IQuestion):
             
         return render(request, "askmath/content/question/view_initial_details.html",
             {'request': request, 'discipline': discipline, 'lesson': lesson,
-             'experience_level': experience_level, 'studentlessonstate': studentlessonstate,'studentexperience': studentexperience,  'message': message})
+             'experience_level': experience_level, 'studentlessonstate': studentlessonstate,'studentexperience': studentexperience})
     
     
-    def view_question(self, request, discipline, lesson, question=None, message=None):
+    def view_question(self, request, discipline, lesson, question=None):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.__proxy_home.index(request, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.__proxy_home.index(request)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
         
@@ -75,107 +82,119 @@ class Question(IQuestion):
         
         if not question:
             # Licao Concluida
-            message = Message(TextMessage.LESSON_SUCCESS_COMPLETED, TypeMessage.SUCCESS)
-            return self.view_initial_details(request, discipline, lesson, message)
+            messages.success(request, TextMessage.LESSON_SUCCESS_COMPLETED)
+            return self.view_initial_details(request, discipline, lesson)
         
-            
         return render(request, "askmath/content/question/view_question.html",
             {'request': request, 'discipline': discipline, 'lesson': lesson,
-             'studentlessonstate': studentlessonstate,'question': question, 'message': message})
+             'studentlessonstate': studentlessonstate,'question': question})
     
-    def answer_question(self,request, discipline, lesson, question, items, message=None):
+    def answer_question(self,request, discipline, lesson, question, items):
         if request.method == 'POST':
             try:
                 student = StudentModel.objects.get(id = request.user.id)
-            except:
-                message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_initial_details(request, discipline, lesson, message)
-            
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.USER_NOT_FOUND)
+                return self.view_initial_details(request, discipline, lesson)
             try:
                 studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-            except:
+            except Exception, e:
+                print e
                 studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
                 studentlessonstate.save()
             try:
-                message = studentlessonstate.answer_question(question, items)
-            except:
-                message =  Message(TextMessage.ERROR, TypeMessage.ERROR)
+                studentlessonstate.answer_question(request, question, items)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.METHOD_NOT_POST, TypeMessage.ERROR)
-        return self.view_question(request, discipline, lesson, None, message)
+            messages.error(request, TextMessage.METHOD_NOT_POST)
+        return self.view_question(request, discipline, lesson, None)
     
-    def jump_question(self,request, discipline, lesson, question,message=None):
+    def jump_question(self,request, discipline, lesson, question):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.view_question(request, discipline, lesson,None, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.view_question(request, discipline, lesson,None)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline, lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
         if studentlessonstate.get_remaining_jump():
             try:
-                message = studentlessonstate.add_skipped_question(question)
-            except:
-                message = Message(TextMessage.QUESTION_ERROR_JUMP, TypeMessage.WARNING)
+                studentlessonstate.add_skipped_question(request, question)
+            except Exception, e:
+                print e
+                messages.warning(request, TextMessage.QUESTION_ERROR_JUMP)
         else:
-            message = Message(TextMessage.LESSON_NOT_REMAINING_JUMPS, TypeMessage.WARNING)
-        return self.view_question(request, discipline, lesson,None, message)
+            messages.warning(request, TextMessage.LESSON_NOT_REMAINING_JUMPS)
+        return self.view_question(request, discipline, lesson,None)
     
-    def choose_skipped_question(self,request, discipline, lesson, question,message=None):
+    def choose_skipped_question(self,request, discipline, lesson, question):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.view_question(request, discipline, lesson,None, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.view_question(request, discipline, lesson,None)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline, lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
-            
+        
         studentlessonstate.remove_skipped_question(question)
-        return self.view_question(request, discipline, lesson,question, message)
+        
+        return self.view_question(request, discipline, lesson,question)
     
-    def reset_lesson(self,request, discipline, lesson,message=None):
+    def reset_lesson(self,request, discipline, lesson):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.view_initial_details(request, discipline, lesson, message)    
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.view_initial_details(request, discipline, lesson)    
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline, lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
         
         studentexperience = StudentExperience.objects.get_or_create(student = student, exists=True)[0]
         
         studentlessonstate.delete()
-        message = Message(TextMessage.LESSON_SUCCESS_RESET, TypeMessage.SUCCESS)
+        messages.success(request, TextMessage.LESSON_SUCCESS_RESET)
         studentexperience.down_scores(studentexperience.get_scores()/2)
-        return self.view_initial_details(request, discipline, lesson, message)
+        return self.view_initial_details(request, discipline, lesson)
     
-    def help_quetion(self,request, discipline, lesson, question,message=None):
+    def help_quetion(self,request, discipline, lesson, question):
         try:
             student = StudentModel.objects.get(id = request.user.id)
-        except:
-            message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-            return self.view_question(request, discipline, lesson,None, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_NOT_FOUND)
+            return self.view_question(request, discipline, lesson,None)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except:
+        except Exception, e:
+            print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline, lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
         
         try:
             studentlessonstate.add_help_question(question)
-        except:
+        except Exception, e:
+            print e
             return HttpResponse("False")
         return HttpResponse("True")

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.views.index import ProxyHome
 from askmath.models import Category as CategoryModel
 from .icategory import ICategory
@@ -13,106 +14,118 @@ class ProxyCategory(ICategory):
         self.__category = Category()
         self.__proxy_home = ProxyHome()
     
-    def view_categories(self, request, message=None):
+    def view_categories(self, request):
         try:
-            return self.__category.view_categories(request, message)
-        except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.__proxy_home.index(request, message)
+            return self.__category.view_categories(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.ERROR)
+            return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_categories_removed(self, request, message=None):
+    def view_categories_removed(self, request):
         if request.user.has_perm("askmath.read_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
-                return self.__category.view_categories_removed(request, message)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                return self.__category.view_categories_removed(request)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)
     
-    def view_category(self, request, id_category, message=None):
+    def view_category(self, request, id_category):
         try:
             category = CategoryModel.objects.get(id = id_category)
-        except:
-            message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-            return self.view_categories(request, message)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
+            return self.view_categories(request)
         try:
-            return self.__category.view_category(request, category, message)
-        except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.view_categories(request, message)
+            return self.__category.view_category(request, category)
+        except Exception, e:
+            messages.error(request, TextMessage.ERROR)
+        return self.view_categories(request)
     
     @method_decorator(login_required)
-    def view_category_removed(self, request, id_category, message=None):
+    def view_category_removed(self, request, id_category):
         if request.user.has_perm("askmath.read_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 category = CategoryModel.objects.get(id = id_category)
-            except:
-                message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_categories(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
+                return self.view_categories(request)
             try:
                 return self.__category.view_category_removed(request, category)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)
     @method_decorator(login_required)
-    def add_category(self, request, message=None):
+    def add_category(self, request):
         if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
-                return self.__category.add_category(request, message)
-            except:
-                message = Message(TextMessage.CATEGORY_ERROR_ADD, TypeMessage.ERROR)
+                return self.__category.add_category(request)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_ERROR_ADD)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)
     
     @method_decorator(login_required)
-    def remove_category(self, request, id_category, message=None):
+    def remove_category(self, request, id_category):
         if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 category = CategoryModel.objects.get(id = id_category)
-            except:
-                message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_categories(request, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
+                return self.view_categories(request)
             try:
-                return self.__category.remove_category(request, category, message)
-            except:
-                message = Message(TextMessage.CATEGORY_ERROR_REM, TypeMessage.ERROR)
+                return self.__category.remove_category(request, category)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_ERROR_REM)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)
     
     @method_decorator(login_required)
-    def edit_category(self, request, id_category, message=None):
+    def edit_category(self, request, id_category):
         if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 category = CategoryModel.objects.filter(id = id_category, exists=True)[0]
-            except:
-                message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_category(request, id_category, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
+                return self.view_category(request, id_category)
             try:
-                return self.__category.edit_category(request, category, message)
-            except:
-                message = Message(TextMessage.CATEGORY_ERROR_EDIT, TypeMessage.ERROR)
+                return self.__category.edit_category(request, category)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_ERROR_EDIT)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)
     
     @method_decorator(login_required)
-    def restore_category(self, request, id_category, message=None):
+    def restore_category(self, request, id_category):
         if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 category = CategoryModel.objects.get(id = id_category)
-            except:
-                message = Message(TextMessage.CATEGORY_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_category(request, id_category, message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
+                return self.view_category(request, id_category)
             try:
-                return self.__category.restore_category(request, category, message)
-            except:
-                message = Message(TextMessage.CATEGORY_ERROR_RESTORE, TypeMessage.ERROR)
+                return self.__category.restore_category(request, category)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.CATEGORY_ERROR_RESTORE)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_categories(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_categories(request)

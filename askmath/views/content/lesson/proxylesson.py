@@ -6,8 +6,8 @@ from django.utils.decorators import method_decorator
 #MODELS
 from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.models.lesson import Lesson as LessonModel
-
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.views.index import ProxyHome
 
 from .ilesson import ILesson
@@ -20,38 +20,43 @@ class ProxyLesson(ILesson):
         self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
-    def view_lessons(self, request, message = None):            
+    def view_lessons(self, request):            
         if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_content"):
             try:
-                return self.__contact.view_lessons(request, message)
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
+                return self.__contact.view_lessons(request)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_lesson(self, request,id_discipline=None, id_lesson=None, message=None):
+    def view_lesson(self, request,id_discipline=None, id_lesson=None):
         if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_content"):
             try:
                 lesson = LessonModel.objects.get(id = id_lesson, exists=True)
-            except:
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_lessons(request,message)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
+                return self.view_lessons(request)
             
             try:
                 discipline = DisciplineModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except:
+            except Exception, e:
+                print e
                 try:
                     discipline = lesson.get_discipline()
-                except:
-                    message = Message(TextMessage.DISCIPLINE_NOT_FOUND, TypeMessage.ERROR)
-                    return self.__proxy_home.index(request, message)
+                except Exception, e:
+                    print e
+                    messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+                    return self.__proxy_home.index(request)
             
             try:
                 return self.__contact.view_lesson(request,discipline, lesson)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_lessons(request, id_discipline, message)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
+        return self.view_lessons(request, id_discipline)

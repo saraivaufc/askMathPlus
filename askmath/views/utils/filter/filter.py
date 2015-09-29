@@ -26,16 +26,16 @@ class Filter(IFilter):
 		self.__proxy_lesson = ProxyLesson()
 		self.__proxy_video = ProxyVideo()
 	
-	def search(self, request, expression , message=None):
+	def search(self, request, expression):
 		disciplines = Discipline.objects.filter(exists=True, visible=True)
 		lessons = Lesson.objects.filter(exists=True, visible=True)
 		videos = Video.objects.filter(exists=True, visible=True)
 		
 		pool = ThreadPool(processes=3)
 		
-		p_disciplines = pool.apply_async(self.search_disciplines, (request, expression, disciplines, message))
-		p_lessons = pool.apply_async(self.search_lessons, (request, expression, lessons, message))
-		p_videos = pool.apply_async(self.search_videos, (request, expression, videos, message))
+		p_disciplines = pool.apply_async(self.search_disciplines, (request, expression, disciplines))
+		p_lessons = pool.apply_async(self.search_lessons, (request, expression, lessons))
+		p_videos = pool.apply_async(self.search_videos, (request, expression, videos))
 		
 
 		disciplines_occurrences = p_disciplines.get()
@@ -49,9 +49,9 @@ class Filter(IFilter):
 		if type(videos_occurrences)  == HttpResponse:
 			return videos_occurrences
 		return render(request, "askmath/utils/filter/search.html", 
-			{'request': request, 'expression': expression ,'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL, 'message': message})
+			{'request': request, 'expression': expression ,'disciplines_occurrences': disciplines_occurrences[:5],'lessons_occurrences': lessons_occurrences[:5],'videos_occurrences': videos_occurrences[:5],'colors': COLORS_ALL})
 	
-	def search_disciplines(self, request,expression, disciplines, message=None):
+	def search_disciplines(self, request,expression, disciplines):
 		disciplines_occurrences = {}
 		for discipline in disciplines:
 			discipline_title = (discipline.get_title()).upper()
@@ -59,7 +59,7 @@ class Filter(IFilter):
 			
 			if  discipline_title == expression:
 				if request.user.is_authenticated():
-					return self.__proxy_discipline.view_discipline(request, discipline.id, message)
+					return self.__proxy_discipline.view_discipline(request, discipline.id)
 			else:
 				occurrences = self.occurrences(discipline_title, expression)
 				if occurrences > 0:
@@ -70,14 +70,14 @@ class Filter(IFilter):
 		disciplines_occurrences = sorted(disciplines_occurrences.items(), key=lambda x: x[1], reverse=True)
 		return disciplines_occurrences
 
-	def search_lessons(self, request, expression, lessons, message=None):        
+	def search_lessons(self, request, expression, lessons):        
 		lessons_occurrences = {}
 		for lesson in lessons:
 			lesson_title = (lesson.get_title()).upper()
 			expression = expression.upper()
 			if lesson_title == expression:
 				if request.user.is_authenticated():
-					return self.__proxy_lesson.view_lesson(request, lesson.get_discipline().id, lesson.id , message)
+					return self.__proxy_lesson.view_lesson(request, lesson.get_discipline().id, lesson.id)
 			else:
 				occurrences = 0
 				for title in lesson_title.split(" "):
@@ -90,7 +90,7 @@ class Filter(IFilter):
 		lessons_occurrences = sorted(lessons_occurrences.items(), key=lambda x: x[1], reverse=True)
 		return lessons_occurrences
 	
-	def search_videos(self, request, expression, videos, message=None):
+	def search_videos(self, request, expression, videos):
 		#SEARCH IN VIDEOS
 		videos_occurrences = {}
 		for video in videos:
@@ -98,7 +98,7 @@ class Filter(IFilter):
 			expression = expression.upper()
 			if video_title == expression:
 				if request.user.is_authenticated():
-					return self.__proxy_video.view_video(request, video.id, None, None, message)
+					return self.__proxy_video.view_video(request, video.id, None, None)
 			else:
 				occurrences = self.occurrences(video_title, expression)
 				if occurrences > 0:

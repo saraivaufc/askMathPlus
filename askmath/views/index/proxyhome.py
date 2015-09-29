@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
 from askmath.forms import ContactForm
@@ -12,66 +12,66 @@ from .ihome import IHome
 from askmath.utils.ratelimit.decorators import ratelimit
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages
 from .home import Home
 
 class ProxyHome(IHome):
     def __init__(self):
         self.__home = Home()
-    def index(self, request,  message = None):
+    def index(self, request):
         if request.user.is_authenticated():
             try:
-                return self.__home.index(request, message)
-            except:
-                pass
+                return self.__home.index(request)
+            except Exception, e:
+                print e
         else:
             return render(request, 'askmath/index/home.html',
-                {'request': request, 'message': message})
+                {'request': request})
         
-    def about(self, request, message = None):
-        #try:
-        return self.__home.about(request, message)
-        #except:
-           #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            #return self.index(request, message)
+    def about(self, request):
+        try:
+            return self.__home.about(request)
+        except:
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)
     
-    def contact(self, request, message = None):
-        print request
+    def contact(self, request):
         try:
-            return self.__home.contact(request, message)
+            return self.__home.contact(request)
         except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.index(request, message)
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)
 
-    def terms(self, request, message = None):
+    def terms(self, request):
         try:
-            return self.__home.terms(request, message)
+            return self.__home.terms(request)
         except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.index(request, message)
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)
 
-    def policies(self, request, message = None):
+    def policies(self, request):
         try:
-            return self.__home.policies(request, message)
+            return self.__home.policies(request)
         except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.index(request, message)
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)
 
         
-    def credits(self, request, message = None):
+    def credits(self, request):
         try:
-            return self.__home.credits(request, message)
+            return self.__home.credits(request)
         except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.index(request, message)
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)
 
 
-    def contents(self, request, id_lesson=None, message = None):
+    def contents(self, request, id_lesson=None):
         try:
             lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
         except:
             lesson = None
         try:
-            return self.__home.contents(request, lesson, message)
+            return self.__home.contents(request, lesson)
         except:
-            message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            return self.index(request, message)
+            messages.error(request,TextMessage.ERROR)
+            return self.index(request)

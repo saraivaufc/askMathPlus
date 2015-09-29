@@ -18,7 +18,6 @@ import database_info
 from django.conf import global_settings
 
 from .components_metro import *
-from .email_info import *
 from .site_info import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -78,6 +77,35 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+
+#TEMPLATE_CONTEXT
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "django.core.context_processors.request",
+)
+
+# Keep templates in memory
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
+)
+
+
 ROOT_URLCONF = 'askMathPlus.urls'
 
 WSGI_APPLICATION = 'askMathPlus.wsgi.application'
@@ -87,6 +115,8 @@ AUTH_USER_MODEL = 'askmath.Person'
 LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'
 
+
+#RECAPTCHA
 NOCAPTCHA = True
 RECAPTCHA_USE_SSL = True
 RECAPTCHA_PUBLIC_KEY = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
@@ -114,19 +144,15 @@ DATABASES = {
        
     }
 }
+ 
 
-
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    "django.core.context_processors.request",
-) 
+# Internationalization
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, '../askmath/locale'),
     '/var/local/translations/locale',
 )
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGES = (
      ('pt', _('Portuguese')),
@@ -157,3 +183,10 @@ STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../askmath/static'),)
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 
 STATIC_URL = '/static/'
+
+
+#EMAIL
+EMAIL_ADMINS = ['saraiva.ufc@gmail.com',]
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

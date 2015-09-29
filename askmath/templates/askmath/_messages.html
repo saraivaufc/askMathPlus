@@ -1,14 +1,10 @@
 {% load i18n %}
 
-{% if message %}
-    {% if message.type == "SUCCESS" %}
-    <input type='hidden' id="alert-success" value="{{ message.text }}">
-    {% elif  message.type == "ERROR" %}
-    <input type='hidden' id="alert-danger" value="{{ message.text }}">
-    {% elif  message.type == "WARNING" %}
-    <input type='hidden' id="alert-warning" value="{{ message.text }}">
-    {% elif message.type == "INFO" %}
-    <input type='hidden' id="alert-info" value="{{ message.text }}">
-    {% else %}
-    {% endif  %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} fade in">
+        <strong>{{ message.tags|title }}!</strong> {{ message }}.
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+    {% endfor %}
 {% endif %}

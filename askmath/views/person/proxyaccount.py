@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from askmath.forms.users import PersonAlterPassword
@@ -16,45 +17,38 @@ class ProxyAccount(IAccount):
         self.__proxy_home = ProxyHome()
     
     @method_decorator(login_required)
-    def view_profile(self, request, message=None):
-        if request.user.is_authenticated():
-            #try:
-            return self.__account.view_profile(request, message)
-            #except:
-                #message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-        else:
-            message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+    def view_profile(self, request):
+        try:
+            return self.__account.view_profile(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.ERROR)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def edit_profile(self, request, message=None):
-        if request.user.is_authenticated():
-            #try:
-            return self.__account.edit_profile(request, message)
-            #except:
-            #   message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-        else:
-            message = Message(TextMessage.USER_NOT_AUTHENTICATED, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+    def edit_profile(self, request):
+        try:
+            return self.__account.edit_profile(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.ERROR)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def alter_password(self, request, message = None):
-        if not request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
-        else:
-            return self.__account.alter_password(request, message)
+    def alter_password(self, request):
+        try:
+            return self.__account.alter_password(request)
+        except Exception, e:
+            messages.error(request, TextMessage.ERROR)
+        return self.__proxy_home.index(request)    
     
     @method_decorator(login_required)
-    def remove_account(self, request, message=None):
-        if not request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
-        else:
-            if request.method == "POST":
-                try:
-                    password = request.POST['password']
-                    return self.__account.remove_account(request, password, message)
-                except:
-                    message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-            else:
-                message = Message(TextMessage.METHOD_NOT_POST, TypeMessage.ERROR)
-        return self.view_profile(request, message)
+    def remove_account(self, request):
+        if request.method == "POST":
+            try:
+                password = request.POST['password']
+                return self.__account.remove_account(request, password)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR_FORM)
+        return self.view_profile(request)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from .ifilter import IFilter
 from .filter import Filter
 from askmath.views.index import ProxyHome
@@ -10,16 +11,17 @@ class ProxyFilter(IFilter):
         self.__filter = Filter()
         self.__proxy_home = ProxyHome()
     
-    def search(self, request, message=None):
+    def search(self, request):
         if request.method == "POST":
             try:
                 expression = request.POST['search']
                 if len(expression) <= 27:
                    return self.__filter.search(request, expression ,message)
                 else:
-                    message = Message(TextMessage.SEARCH_ERROR_SIZE, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR_FORM, TypeMessage.WARNING)
-        return self.__proxy_home.index(request, message)
+                    messages.error(request, TextMessage.SEARCH_ERROR_SIZE)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR_FORM)
+        return self.__proxy_home.index(request)
             
             

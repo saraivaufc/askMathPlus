@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import Message, TextMessage, TypeMessage
+from askmath.entities import TextMessage
+from django.contrib import messages
 from askmath.entities import PersonTypes
 from askmath.models.users import Person as PersonModel
 from askmath.views.index import ProxyHome
@@ -19,98 +20,107 @@ class ProxyPerson(IPerson):
         self.__proxy_home = ProxyHome()
     
     @method_decorator(login_required)
-    def choose_person_types(self, request, message=None):
+    def choose_person_types(self, request):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
-                return self.__account.choose_person_types(request, message)
-            except:
+                return self.__account.choose_person_types(request)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.ERROR)
                 message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.__proxy_home.index(request, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.__proxy_home.index(request)
     
     @method_decorator(login_required)
-    def view_persons(self, request, PERSONTYPE, message=None):
+    def view_persons(self, request, PERSONTYPE):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types().keys():
-                    return self.__account.view_persons(request, PERSONTYPE, message)
+                    return self.__account.view_persons(request, PERSONTYPE)
                 else:
-                    message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR_GET_PARAMETERS, TypeMessage.ERROR)
+                    messages.error(request,TextMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.ERROR_GET_PARAMETERS)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.choose_person_types(request, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.choose_person_types(request)
     
     @method_decorator(login_required)
-    def view_persons_removed(self, request, PERSONTYPE, message=None):
+    def view_persons_removed(self, request, PERSONTYPE):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
-                    return self.__account.view_persons_removed(request, PERSONTYPE, message)
+                    return self.__account.view_persons_removed(request, PERSONTYPE)
                 else:
-                    message = Message(TextMessage.ERROR, TypeMessage.ERROR)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+                    messages.error(request,TextMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.choose_person_types(request, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.choose_person_types(request)
     
     @method_decorator(login_required)
-    def view_person(self, request, PERSONTYPE, id_person, message=None):
+    def view_person(self, request, PERSONTYPE, id_person):
         if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
                     person = PersonModel.objects.get(id = id_person)
-            except:
-                message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_persons(request, PERSONTYPE, message)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.view_person(request, PERSONTYPE, person)
-            except:
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_persons(request, PERSONTYPE, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.view_persons(request, PERSONTYPE)
     
     @method_decorator(login_required)
-    def add_person(self, request, PERSONTYPE, message=None):
+    def add_person(self, request, PERSONTYPE):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
                     return self.__account.add_person(request, PERSONTYPE)
-            except:
-                message = Message(TextMessage.PERSON_ERROR_ADD, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_ERROR_ADD)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_persons(request, PERSONTYPE, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.view_persons(request, PERSONTYPE)
     
     
     @method_decorator(login_required)
-    def remove_person(self, request, PERSONTYPE, id_person, message=None):
+    def remove_person(self, request, PERSONTYPE, id_person):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
                     person = PersonModel.objects.get(id = id_person)
-            except:
-                message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_persons(request, PERSONTYPE, message)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.remove_person(request, PERSONTYPE, person)
-            except:
-                message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_ERROR_REM)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_persons(request, PERSONTYPE, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.view_persons(request, PERSONTYPE)
     
     @method_decorator(login_required)
-    def remove_registerkey(self, request, PERSONTYPE, id_registerkey, message=None):
+    def remove_registerkey(self, request, PERSONTYPE, id_registerkey):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
@@ -124,31 +134,36 @@ class ProxyPerson(IPerson):
                         registerkey = AssistantKey.objects.get(id = id_registerkey)
                     else:
                         registerkey = False
-            except:
-                message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_persons(request, PERSONTYPE, message)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.remove_registerkey(request, PERSONTYPE, registerkey)
-            except:
-                message = Message(TextMessage.PERSON_ERROR_REM, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_ERROR_REM)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_persons(request, PERSONTYPE, message)
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
+        return self.view_persons(request, PERSONTYPE)
     
     @method_decorator(login_required)
-    def restore_person(self, request, PERSONTYPE, id_person, message=None):
+    def restore_person(self, request, PERSONTYPE, id_person):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:
                 person_types = PersonTypes()
                 if PERSONTYPE in person_types.get_types():
                     person = PersonModel.objects.get(id = id_person)
-            except:
-                message = Message(TextMessage.PERSON_NOT_FOUND, TypeMessage.ERROR)
-                return self.view_persons(request, PERSONTYPE, message)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.restore_person(request, PERSONTYPE, person)
-            except:
-                message = Message(TextMessage.PERSON_ERROR_RESTORE, TypeMessage.ERROR)
+            except Exception, e:
+                print e
+                messages.error(request,TextMessage.PERSON_ERROR_RESTORE)
         else:
+            messages.error(request,TextMessage.USER_NOT_PERMISSION)
             message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-        return self.view_persons(request, PERSONTYPE, message)
+        return self.view_persons(request, PERSONTYPE)

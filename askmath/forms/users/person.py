@@ -31,7 +31,7 @@ class PersonLoginForm(forms.Form):
 		error_messages={'required': _('Please enter you password.')})
 	captcha = ReCaptchaField()
 
-class PersonProfile(PersonForm):
+class PersonProfile(ModelForm):
 	class Meta:
 		model= Person
 		fields = ("username", "name", "email","profile_image")
@@ -40,6 +40,16 @@ class PersonProfile(PersonForm):
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),
 		}
+
+	def clean_profile_image(self):
+		profile_image = self.cleaned_data["profile_image"]
+		try:
+			if profile_image and profile_image.name.find('askmath') == -1:
+				hash = hashlib.md5(profile_image.read()).hexdigest()
+				profile_image.name = "askmath_" + "".join((hash, ".", profile_image.name.split(".")[-1]))
+		except:
+			pass
+		return profile_image
 
 class PersonRecoverPassword(forms.Form):
 	username = forms.CharField(label=_('Username'),help_text=_("Please enter you username."),
