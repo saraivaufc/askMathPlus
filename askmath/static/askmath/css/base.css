@@ -497,11 +497,3 @@ caption{
 ul.messages, ul.messages > li.message{
 	display: none;
 }
-
-#share-buttons img {
-	width: 100px;
-	padding: 5px;
-	border: 0;
-	box-shadow: 0;
-	display: inline;
-}

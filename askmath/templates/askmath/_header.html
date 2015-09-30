@@ -2,157 +2,195 @@
 {% load askmath_tags %}
 
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body1">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/home/" class="navbar-brand" rel="{% trans "Home" %}" itemprop="title">
-            	<img style="max-width:100px; margin-top: -7px;" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png"/>
-            </a>
-        </div>
-        <div id="footer-body1" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/home/">
-                    	<span class="icon mif-home"></span> {% trans "Home" %}
-                    </a>
-                </li>
-                <li>
-                    <a href="/forum/">
-                    	<span class="icon mif-bubbles"></span> {% trans "Forum" %}
-                    </a>
-                </li>
-                <li>
-                    <a onclick="showDialog('#shared')" href="#">
-                    <span class="icon mif-share"></span> {% trans "Shared" %}
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            	<li>
-                    <div class="container-fluid">
-                    <div class="row">
-                    {% if perms.askmath.access_content %}
-                    <form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
-                    {% csrf_token %}
-                        <div class="form-group">
-                            <div class="btn-group">
-                                <input  id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
-                                <span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
-                            </div>
-                            <button id="searchbutton" type="submit" class="btn btn-submit bg-darkBlue fg-white pull-right">
-                                <span class=" glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    </form>
-                    {% endif %}
-                    </div>
-                    </div>  
-                </li>
-            	<li>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body1">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/home/" class="navbar-brand" rel="{% trans "Home" %}" itemprop="title">
+				<img style="max-width:100px; margin-top: -7px;" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png/" />
+			</a>
+		</div>
+		<div id="footer-body1" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/home/">
+						<span class="icon mif-home"></span> {% trans "Home" %}
+					</a>
+				</li>
+				<li>
+					<a href="/forum/">
+						<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+					</a>
+				</li>
+				<li>
+					<a data-toggle="modal" data-target="#modal-shared" href="#">
+					<span class="icon mif-share"></span> {% trans "Shared" %}
+					</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<div class="container-fluid">
+					<div class="row">
+					{% if perms.askmath.access_content %}
+					<form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
+					{% csrf_token %}
+						<div class="form-group">
+							<div class="btn-group">
+								<input  id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
+								<span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
+							</div>
+							<button id="searchbutton" type="submit" class="btn btn-submit bg-darkBlue fg-white pull-right">
+								<span class=" glyphicon glyphicon-search"></span>
+							</button>
+						</div>
+					</form>
+					{% endif %}
+					</div>
+					</div>  
+				</li>
+				<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">
 						<img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg">
 					</a>
 				</li>
-            	{% if request.user.is_authenticated %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="icon mif-user"></span> 
-                        <strong>{{ request.user.get_username }}</strong>
-                        <span class="glyphicon glyphicon-chevron-down"></span>
-                    </a>
-                    <ul class="dropdown-menu bg-dark">
-                        <li>
-                            <div class="navbar-login">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <p class="text-center">
-                                            {% if request.user.get_profile_image %}
-                                            <img class="img" src="{{ request.user.get_profile_image.url }}">
-                                            {% else %}
-                                            <img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
-                                            {% endif %}
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
-                                        <p class="text-left small">{{ request.user.get_email }}</p>
-                                        <a href="/home/person/account/view/" class="image-button btn btn-block primary">
-                                        	{% trans "View Profile" %}
-                                        	<span class="icon mif-profile bg-darkCobalt"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                        	<div class="container-fluid">
-                        		<a href="/authentication/logout/" class="image-button btn btn-block danger">
-                        			{% trans "Logout" %}
-                        			<span class="icon mif-switch bg-darkRed"></span>
-                        		</a>
-                        	</div>
-                        </li>
-                    </ul>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
+				{% if request.user.is_authenticated %}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="icon mif-user"></span> 
+						<strong>{{ request.user.get_username }}</strong>
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+					<ul class="dropdown-menu bg-dark">
+						<li>
+							<div class="navbar-login">
+								<div class="row">
+									<div class="col-lg-4">
+										<p class="text-center">
+											{% if request.user.get_profile_image %}
+											<img class="img" src="{{ request.user.get_profile_image.url }}">
+											{% else %}
+											<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png/" width="100%" height="100%"></<img>   
+											{% endif %}
+										</p>
+									</div>
+									<div class="col-lg-8">
+										<p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
+										<p class="text-left small">{{ request.user.get_email }}</p>
+										<a href="/home/person/account/view/" class="image-button btn btn-block primary">
+											{% trans "View Profile" %}
+											<span class="icon mif-profile bg-darkCobalt"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<div class="container-fluid">
+								<a href="/authentication/logout/" class="image-button btn btn-block danger">
+									{% trans "Logout" %}
+									<span class="icon mif-switch bg-darkRed"></span>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
 </nav>
 
-<div data-role="dialog" data-close-button="true" id="shared">
-    <!-- I got these buttons from simplesharebuttons.com -->
-    <div id="share-buttons">
-        
-        <!-- Email -->
-        <a href="mailto:?Subject=AskMath&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.askmath.quixada.ufc.br/">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/email.png" alt="Email" />
-        </a>
-     
-        <!-- Facebook -->
-        <a href="http://www.facebook.com/sharer.php?u=http://www.askmath.quixada.ufc.br/" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/facebook.png" alt="Facebook" />
-        </a>
-        
-        <!-- Google+ -->
-        <a href="https://plus.google.com/share?url=http://www.askmath.quixada.ufc.br/" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/google.png" alt="Google" />
-        </a>
-        
-        <!-- LinkedIn -->
-        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.askmath.quixada.ufc.br/" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/linkedin.png" alt="LinkedIn" />
-        </a>
-        
-        <!-- Pinterest -->
-        <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/pinterest.png" alt="Pinterest" />
-        </a>
-        
-        <!-- Print -->
-        <a href="javascript:;" onclick="window.print()">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/print.png" alt="Print" />
-        </a>
-        
-        <!-- Reddit -->
-        <a href="http://reddit.com/submit?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/reddit.png" alt="Reddit" />
-        </a>
-        
-        <!-- Tumblr-->
-        <a href="http://www.tumblr.com/share/link?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/tumblr.png" alt="Tumblr" />
-        </a>
-         
-        <!-- Twitter -->
-        <a href="https://twitter.com/share?url=http://www.askmath.quixada.ufc.br/&amp;text=AskMath&amp;hashtags=askmath" target="_blank">
-            <img src="{{ STATIC_URL }}askmath/img/icons/shared/twitter.png" alt="Twitter" />
-        </a>
+<div id="modal-shared" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+	<!-- Modal content-->
+	<div class="modal-content">
+	  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3 class="modal-title text-center">
+			<span class="icon mif-share"></span> {% trans "Shared" %}
+			</h3>
+	  </div>
+	  	<div class="modal-body">
+		  	<div class="container-fluid">
+			  	<div class="row">
+			  	<div class="tile-area padding10 bg-transparent">
+				<div class="tile-container">
+					<!-- Email -->
+					<div class="tile-small bg-yellow" data-role="tile">
+					    <a class="tile-content" href="mailto:?Subject=AskMath&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.askmath.quixada.ufc.br/">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/email.png/">
+					    </a>
+					</div>
+				 
+					<!-- Facebook -->
+					<div class="tile-small bg-blue" data-role="tile">
+					    <a class="tile-content" href="http://www.facebook.com/sharer.php?u=http://www.askmath.quixada.ufc.br/" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/facebook.png/">
+					    </a>
+					</div>
+					
+					<!-- Google+ -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content"  href="https://plus.google.com/share?url=http://www.askmath.quixada.ufc.br/" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/google.png/">
+					    </a>
+					</div>
+					
+					<!-- LinkedIn -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content"  href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.askmath.quixada.ufc.br/" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/linkedin.png/">
+					    </a>
+					</div>
+					
+					<!-- Pinterest -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/pinterest.png/">
+					    </a>
+					</div>
+					
+					<!-- Print -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content" href="javascript:;" onclick="window.print()">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/print.png/">
+					    </a>
+					</div>
+					
+					<!-- Reddit -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content" href="http://reddit.com/submit?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/reddit.png/">
+					    </a>
+					</div>
+					
+					<!-- Tumblr-->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content" href="http://www.tumblr.com/share/link?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/tumblr.png/">
+					    </a>
+					</div>
 
-    </div>
+					<!-- Twitter -->
+					<div class="tile-small bg-red" data-role="tile">
+					    <a class="tile-content" href="https://twitter.com/share?url=http://www.askmath.quixada.ufc.br/&amp;text=AskMath&amp;hashtags=askmath" target="_blank">
+					        <img src="{{ STATIC_URL }}askmath/img/icons/shared/twitter.png/">
+					    </a>
+					</div>
+			  	</div>
+			  	</div>
+			  	</div>
+		  </div>
+	  </div>
+	  <div class="modal-footer">
+			<button type="button" class="button button-default" data-dismiss="modal">{% trans "Close" %}</button>
+	  </div>
+	</div>
+
+  </div>
 </div>
