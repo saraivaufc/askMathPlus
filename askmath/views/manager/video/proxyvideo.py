@@ -93,7 +93,7 @@ class ProxyVideo(IVideo):
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
-            message = Message(TextMessage.USER_NOT_PERMISSION,TypeMessage.ERROR)
+            messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_videos(request, id_lesson)
     
     @method_decorator(login_required)

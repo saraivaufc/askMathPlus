@@ -60,7 +60,7 @@ class Question(IQuestion):
 			form_question = QuestionForm(request.POST, prefix='question')
 			if form_question.is_valid():
 				question = form_question.save()
-				messages.error(request,TextMessage.QUESTION_SUCCESS_ADD)
+				messages.success(request,TextMessage.QUESTION_SUCCESS_ADD)
 				return self.view_question(request, lesson, question)
 			else:
 				messages.error(request,TextMessage.ERROR_FORM)
@@ -72,7 +72,7 @@ class Question(IQuestion):
 	
 	def remove_question(self, request, lesson,question):
 		question.delete()
-		messages.error(request,TextMessage.QUESTION_SUCCESS_REM)
+		messages.success(request,TextMessage.QUESTION_SUCCESS_REM)
 		return self.view_questions(request, lesson)
 	
 	def edit_question(self, request, lesson, question):
@@ -87,10 +87,11 @@ class Question(IQuestion):
 					new_item = i.save()
 					list_items.append(new_item.pk)
 			request.POST['question-items']= list_items
+			request.POST['question-position']= question.position
 			form_question = QuestionForm(request.POST, instance=question, prefix='question')
 			if form_question.is_valid():
 				question = form_question.save()
-				messages.error(request,TextMessage.QUESTION_SUCCESS_EDIT)
+				messages.success(request,TextMessage.QUESTION_SUCCESS_EDIT)
 				return self.view_question(request, lesson, question)
 			else:
 				messages.error(request,TextMessage.QUESTION_ERROR_EDIT)
@@ -103,16 +104,16 @@ class Question(IQuestion):
 	
 	def restore_question(self, request, lesson, question):
 		question.restore()
-		messages.error(request,TextMessage.QUESTION_SUCCESS_RESTORE)
+		messages.success(request,TextMessage.QUESTION_SUCCESS_RESTORE)
 		return self.view_questions(request, lesson)
 	
-	def sort_questions(self, request, lesson,new_order=None=None):
+	def sort_questions(self, request, lesson,new_order=None):
 		questions = QuestionModel.objects.filter(exists=True, visible=True,lesson = lesson.id)
 		if request.method == 'POST':    
 			try:
 				for index, i in enumerate(new_order):
 					QuestionModel.objects.filter(id = i).update(position = index + 1)
-				messages.error(request,TextMessage.QUESTION_SUCCESS_SORT)
+				messages.success(request,TextMessage.QUESTION_SUCCESS_SORT)
 				request.method = "GET"
 				return self.sort_questions(request, lesson, None)
 			except Exception, e:

@@ -13,7 +13,14 @@ from django.utils.translation import ugettext_lazy as _
 class Lesson(ILesson):
     
     def view_lessons(self, request):
-        disciplines = DisciplineModel.objects.filter(exists=True)
+        disciplines = []
+        for d in DisciplineModel.objects.filter(exists=True):
+            if not d.get_lessons():
+                continue
+            dict = {}
+            dict['title'] = d.get_title
+            dict['lessons'] = d.get_lessons()
+            disciplines.append(dict)
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
             {'request':request,'disciplines': disciplines})
     
@@ -26,11 +33,10 @@ class Lesson(ILesson):
             dict['title'] = d.get_title
             dict['lessons'] = d.get_lessons_removed()
             disciplines.append(dict)
-            
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
             {'request':request,'disciplines': disciplines,'is_removed': True})
         
-    def view_lesson(self, request,lesson,message = None):
+    def view_lesson(self, request,lesson):
         return render(request, "askmath/manager/lesson/manager_view_lesson.html", 
             {'request':request,'lesson': lesson })
     
@@ -52,14 +58,14 @@ class Lesson(ILesson):
     
     def remove_lesson(self, request,lesson):
         lesson.delete()
-        messages.error(request,TextMessage.LESSON_SUCCESS_REM)
+        messages.success(request,TextMessage.LESSON_SUCCESS_REM)
         return self.view_lessons(request)
     def edit_lesson(self, request, lesson):
         if request.method == 'POST':
             form = LessonForm(request.POST, instance = lesson)
             if form.is_valid():
                 lesson = form.save()
-                messages.error(request,TextMessage.LESSON_SUCCESS_EDIT)
+                messages.success(request,TextMessage.LESSON_SUCCESS_EDIT)
                 return self.view_lesson(request , lesson)
             else:
                 messages.error(request,TextMessage.LESSON_ERROR_EDIT)
@@ -70,5 +76,5 @@ class Lesson(ILesson):
     
     def restore_lesson(self, request,  lesson):
         lesson.restore()
-        messages.error(request,TextMessage.LESSON_SUCCESS_RESTORE)
+        messages.success(request,TextMessage.LESSON_SUCCESS_RESTORE)
         return self.view_lessons(request)

@@ -119,7 +119,7 @@ class ProxyTopic(ITopic):
             try:
                 topic = TopicModel.objects.filter(exists=True, id=id_topic)[0]
             except Exception, e:
-            print e 
+                print e 
                 return HttpResponse("False")
             try:
                 return self.__topic.like_topic(request,topic)

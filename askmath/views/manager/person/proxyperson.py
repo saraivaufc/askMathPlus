@@ -27,7 +27,6 @@ class ProxyPerson(IPerson):
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.ERROR)
-                message = Message(TextMessage.ERROR, TypeMessage.ERROR)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
         return self.__proxy_home.index(request)
@@ -165,5 +164,4 @@ class ProxyPerson(IPerson):
                 messages.error(request,TextMessage.PERSON_ERROR_RESTORE)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
-            message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
         return self.view_persons(request, PERSONTYPE)

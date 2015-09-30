@@ -13,7 +13,7 @@ class ProxyAccount(IAccount):
     def __init__(self):
         self.__account = Account()
     
-    def options(self, request, message=None):
+    def options(self, request):
         if request.user.is_authenticated():
             try:
                 return redirect(request.GET['next'])

@@ -90,13 +90,13 @@ class Video(IVideo):
         messages.success(request, TextMessage.VIDEO_SUCCESS_RESTORE)
         return self.view_videos(request, lesson)
     
-    def sort_videos(self, request, lesson,new_order=None=None):
+    def sort_videos(self, request, lesson,new_order=None):
         videos = VideoModel.objects.filter(exists=True, visible=True,lesson = lesson.id)
         if request.method == 'POST':    
             try:
                 for index, i in enumerate(new_order):
                     VideoModel.objects.filter(id = i).update(position = index + 1)
-                message = Message(TextMessage.VIDEO_SUCCESS_SORT, TypeMessage.SUCCESS)
+                    messages.success(request, VIDEO_SUCCESS_SORT)
                 request.method = "GET"
                 return self.sort_videos(request, lesson, None)
             except Exception, e:

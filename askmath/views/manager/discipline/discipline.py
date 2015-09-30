@@ -18,7 +18,7 @@ class Discipline(IDiscipline):
         return render(request, "askmath/manager/discipline/manager_view_disciplines.html", 
             {'request':request,'disciplines': disciplines,'is_removed': True})
     
-    def view_discipline(self, request, discipline,message = None):
+    def view_discipline(self, request, discipline):
         return render(request, "askmath/manager/discipline/manager_view_discipline.html", 
             {'request':request,'discipline': discipline})
     
@@ -40,7 +40,7 @@ class Discipline(IDiscipline):
     
     def remove_discipline(self, request, discipline):
         discipline.delete()
-        messages.error(request, TextMessage.DISCIPLINE_SUCCESS_REM)
+        messages.success(request, TextMessage.DISCIPLINE_SUCCESS_REM)
         return self.view_disciplines(request)
     def edit_discipline(self, request, discipline):
         if request.method == 'POST':

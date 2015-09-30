@@ -11,56 +11,48 @@
 		</a>
 	{% endif %}
 	{% if is_removed %}
-		<a href="/home/manager/lessons/view/" class="image-button button-info">
+		<a href="/home/manager/lessons/view/" class="image-button button-info" data-popover="undo">
 			{% trans "Undo" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/home/manager/lessons/view_removed/" class="image-button button-warning">
+		<a href="/home/manager/lessons/view_removed/" class="image-button button-warning" data-popover="dump">
 			{% trans "Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
 </div>
 
-<div class="tile-area padding10 bg-transparent">
+{% regroup disciplines by title as discipline_list %}
+
+<div class="tile-area padding10 bg-transparent ">
 	<div class="accordion">
-		{% for discipline in disciplines %}
-			{% if discipline.get_lessons_visibles %}
-			<div class="frame active">
-		        <div class="heading">{{ discipline.get_title|title }}</div>
-		        <div class="content">
-		        	<div class="tile-container">
-						{% for lesson in discipline.get_lessons %}
-					        <div class="tile-wide {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %} fg-white">
-							    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+	{% for discipline in discipline_list %}
+		{% if discipline.list %}
+		<div class="frame active">
+			<div class="heading">{{ discipline.grouper|title }}</div>
+			<div class="content">
+				<div class="tile-container">
+					{% for item in discipline.list %}
+						{% for lesson in item.lessons %}
+							<div class="tile {{ lesson.color }} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+							    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
 							        <span class="icon mif-clipboard"></span>
-							        <div class="tile-label">
-							            {{ lesson.get_title|title }}
-							        </div>
+							        <span class="tile-label">{{ lesson.get_title }}</span>
 							        {% if not lesson.exists %}
 							        <span class="tile-badge mif-bin"></span>
 							        {% endif %}
-							        <div class="slide-over bg-steel">
-								        <table class="text-center fill">
-								        	<tr>
-								        		<td>{% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
-								        	</tr>
-								        	<tr>
-								        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
-								        	</tr>
-								        </table>
-							        </div>
 							    </a>
 							</div>
-						{% empty %}
-						<h3 class="text-center">{%trans "Does not have lessons."%}</h3>
 						{% endfor %}
-					</div>
-		        </div>
-		    </div>
-			{% endif %}
-		{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	{% empty %}
+		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+	{% endfor %}
 	</div>
 </div>
 {% endblock %}

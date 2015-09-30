@@ -95,7 +95,7 @@ class Account(IAccount):
                         group_name = "assistant"
                     except Exception, e:
                         print e
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                        messages.error(request, TextMessage.KEY_NOT_FOUND)
                 elif type == "TEACHER":
                     try:
                         key = request.POST['key']
@@ -104,7 +104,7 @@ class Account(IAccount):
                         group_name = "teacher"
                     except Exception, e:
                         print e
-                        message = Message(TextMessage.KEY_NOT_FOUND, TypeMessage.ERROR)
+                        messages.error(request, TextMessage.KEY_NOT_FOUND)
                 elif type == "ADMINISTRATOR":
                     try:
                         key = request.POST['key']

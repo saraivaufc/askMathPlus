@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import Group
 from askmath.entities import TextMessage
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 try:
@@ -76,7 +77,7 @@ class Person(IPerson):
         else:
             write_person = False
         return render(request, "askmath/manager/person/manager_view_person.html", 
-            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person,'message': message})
+            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person})
     
     
     def add_person(self,request, PERSONTYPE):
@@ -103,17 +104,17 @@ class Person(IPerson):
     
     def remove_person(self, request, PERSONTYPE, person):
         person.delete()
-        messages.error(request,TextMessage.PERSON_SUCCESS_REM)
+        messages.success(request,TextMessage.PERSON_SUCCESS_REM)
         return self.view_persons(request,PERSONTYPE)
     
     def remove_registerkey(self, request, PERSONTYPE, registerkey):
         if not registerkey.get_user():
             registerkey.delete()
         else:
-            message = Message(TextMessage.KEY_ERROR_REMOVE_USED, TypeMessage.WARNING)
+            messages.warning(request, TextMessage.KEY_ERROR_REMOVE_USED)
         return self.add_person(request, PERSONTYPE)
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()
-        messages.error(request,TextMessage.PERSON_SUCCESS_RESTORE)
+        messages.success(request,TextMessage.PERSON_SUCCESS_RESTORE)
         return self.view_persons(request,PERSONTYPE)

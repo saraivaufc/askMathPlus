@@ -37,7 +37,7 @@ class Category(ICategory):
             form = CategoryForm(request.POST)
             if form.is_valid():
                 category = form.save()
-                message = Message(TextMessage.CATEGORY_SUCCESS_ADD, TypeMessage.SUCCESS)
+                messages.error(request, TextMessage.CATEGORY_SUCCESS_ADD)
                 return self.view_categories(request)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
@@ -71,5 +71,5 @@ class Category(ICategory):
     
     def restore_category(self, request, category):
         category.restore()
-        messages.error(request, TextMessage.CATEGORY_SUCCESS_RESTORE)
+        messages.success(request, TextMessage.CATEGORY_SUCCESS_RESTORE)
         return self.view_categories(request)

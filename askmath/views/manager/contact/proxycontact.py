@@ -22,7 +22,7 @@ class ProxyContact(IContact):
     def view_contacts(self, request):
         if request.user.has_perm("askmath.read_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
-                return self.__contact.view_contacts(request, message)
+                return self.__contact.view_contacts(request)
             except Exception,e:
                 print e
                 messages.error(request, TextMessage.ERROR)
@@ -79,7 +79,7 @@ class ProxyContact(IContact):
         return self.view_contacts(request)
     
     @method_decorator(login_required)
-    def restore_contact(self, request, id_contact, message=None):
+    def restore_contact(self, request, id_contact=None):
         if request.user.has_perm("askmath.write_contact")  and request.user.has_perm("askmath.access_manager"):
             try:
                 contact = ContactModel.objects.get(id = id_contact)

@@ -1,4 +1,10 @@
 {% load askmath_tags %}
+{% if not form.is_valid %}
+    <p>NOT VALID</p>
+    {% for errors in form.errors %}
+        {{ errors }}
+    {% endfor %}
+{% endif %}
 
 {% for field in form.visible_fields %}
 	{{ field.errors }}

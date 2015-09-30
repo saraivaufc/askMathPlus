@@ -15,8 +15,8 @@ class ProxyFilter(IFilter):
         if request.method == "POST":
             try:
                 expression = request.POST['search']
-                if len(expression) <= 27:
-                   return self.__filter.search(request, expression ,message)
+                if len(expression) <= 50:
+                   return self.__filter.search(request, expression)
                 else:
                     messages.error(request, TextMessage.SEARCH_ERROR_SIZE)
             except Exception, e:

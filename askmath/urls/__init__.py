@@ -7,8 +7,8 @@ urlpatterns = patterns('',
     
     url(r'^home/person/',  include('askmath.urls.person')),
     url(r'^home/content/',  include('askmath.urls.content')),
-    #url(r'^home/manager/', include('askmath.urls.manager')),
-    #url(r'^forum/', include('askmath.urls.forum')),
+    url(r'^home/manager/', include('askmath.urls.manager')),
+    url(r'^forum/', include('askmath.urls.forum')),
     
     url(r'^services/', include('askmath.urls.services')),
     url(r'^utils/', include('askmath.urls.utils')),

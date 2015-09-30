@@ -20,7 +20,7 @@ class Contact(IContact):
         return render(request, "askmath/manager/contact/manager_view_contacts.html",
             {'request':request,'contacts': contacts,'is_removed': True})
         
-    def view_contact(self, request,contact,message = None):
+    def view_contact(self, request,contact):
         return render(request, "askmath/manager/contact/manager_view_contact.html", 
             {'request':request,'contact': contact})
     
@@ -31,5 +31,5 @@ class Contact(IContact):
     
     def restore_contact(self, request,  contact):
         contact.restore()
-        messages.error(request, TextMessage.CONTACT_SUCCESS_RESTORE)
+        messages.success(request, TextMessage.CONTACT_SUCCESS_RESTORE)
         return self.view_contacts(request)

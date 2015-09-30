@@ -117,7 +117,6 @@ class ProxyLesson(ILesson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.LESSON_NOT_FOUND)
-                message = Message(TextMessage.LESSON_NOT_FOUND, TypeMessage.ERROR)
                 return self.view_lessons(request)
             try:
                 return self.__contact.restore_lesson(request, lesson)
