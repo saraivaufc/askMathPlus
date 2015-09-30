@@ -13,19 +13,19 @@ from .lesson import Lesson
 from ..proxystatistic import ProxyStatistic
 class ProxyLesson(IStatistic, ILesson):
     def __init__(self):
-        self.__contact = Lesson()
-        self.__statistic = ProxyStatistic()
+        self.__lesson = Lesson()
+        self.__proxystatistic = ProxyStatistic()
     
     def choose_lesson(self, request):
         if request.user.has_perm("askmath.read_statistics")  and request.user.has_perm("askmath.access_manager"):
             try:
-                return self.__contact.choose_lesson(request)
+                return self.__lesson.choose_lesson(request)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_statistics(request)
+        return self.__proxystatistic.choose_type(request)
     
     def view_statistics(self, request,id_lesson):
         if request.user.has_perm("askmath.read_statistics")  and request.user.has_perm("askmath.access_manager"):
@@ -34,14 +34,14 @@ class ProxyLesson(IStatistic, ILesson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.LESSON_NOT_FOUND)
-                return self.choose_lesson(request, 'answered_questions')
+                return self.choose_lesson(request)
             
             try:
-                return self.__contact.view_statistics(request,lesson)
+                return self.__lesson.view_statistics(request,lesson)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.__statistic.choose_type(request)
+        return self.__proxystatistic.choose_type(request)
     

@@ -493,3 +493,7 @@ caption{
 	text-align: justify;
 }
 
+
+ul.messages, ul.messages > li.message{
+	display: none;
+}

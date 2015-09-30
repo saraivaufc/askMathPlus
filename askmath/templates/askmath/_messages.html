@@ -1,10 +1,9 @@
 {% load i18n %}
 
 {% if messages %}
+	<ul class="messages">
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} fade in">
-        <strong>{{ message.tags|title }}!</strong> {{ message }}.
-         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    </div>
+    	<li class="message" value="{{ message.tags }}">{{ message }}</li>
     {% endfor %}
+    </ul>
 {% endif %}

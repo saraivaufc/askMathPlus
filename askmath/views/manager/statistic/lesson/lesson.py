@@ -11,16 +11,16 @@ from .generatestatistics import GeneratorStatistics
 
 class Lesson(IStatistic, ILesson):
         
-    def choose_lesson(self, request,statistic):
+    def choose_lesson(self, request):
         disciplines = []
         for discipline in CategoryModel.objects.filter(exists=True):
             if discipline.get_lessons():
                 disciplines.append(discipline)
         return render(request, "askmath/manager/statistic/lessons/manager_choose_lesson.html",
-            {'request': request,'disciplines': disciplines,'statistic': statistic})
+            {'request': request,'disciplines': disciplines})
     
     def view_statistics(self, request,lesson):
         generator = GeneratorStatistics()
         percentage_answered_questions = generator.get_percentage_answered_questions(lesson)
         return render(request, "askmath/manager/statistic/lessons/manager_view_statistics.html",
-            {'request': request,'lesson': lesson ,'percentage_answered_questions': percentage_answered_questions,'message': message})
+            {'request': request,'lesson': lesson ,'percentage_answered_questions': percentage_answered_questions})
