@@ -44,7 +44,7 @@ class ProxyTopic(ITopic):
                 messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
                 return self.__proxy_category.view_category(request, id_category)
             try:
-                return self.__topic.add_topic(request, category, message)
+                return self.__topic.add_topic(request, category)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.TOPIC_ERROR_ADD)
@@ -99,7 +99,7 @@ class ProxyTopic(ITopic):
             
             if topic.person == request.user or request.user.has_perm("askmath.access_forum_admin"):
                 try:
-                    return self.__topic.remove_topic(request, category, topic, message)
+                    return self.__topic.remove_topic(request, category, topic)
                 except Exception, e:
                     print e
                     messages.error(request, TextMessage.TOPIC_ERROR_REM)

@@ -497,3 +497,14 @@ caption{
 ul.messages, ul.messages > li.message{
 	display: none;
 }
+
+
+
+input, textarea{
+    font-size: 14px;
+    background: #FFF none repeat scroll 0% 0%;
+    padding: 5px;
+    border: 1px solid #C7C8CA;
+    box-shadow: 3px 3px 5px #E7E7E7 inset;
+    outline: medium none;
+}

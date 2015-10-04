@@ -237,3 +237,7 @@ textarea{
 .breadcrumbs2 > li > a > [class*=mif] {
   vertical-align: -10%;
 }
+
+ul#menu-options > li > a {
+	text-align: center;
+} 
