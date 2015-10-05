@@ -11,12 +11,14 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="padding10">
-	<div class="container-fluid">
-	<div class="row">
-		<div class="bg-white-opacity">
-			<h3 class="text-center">{{ discipline.get_title }}</h3>
-			<div class="tile-container">
+<div class="panel">
+	<div class="heading text-center">
+		<span class="icon mif-clipboard text-left"></span>
+        <span class="title">{{ discipline.get_title }}</span>
+    </div>
+    <div class="content">
+	    <div class="container-fluid">
+		    <div class="row">
 			{% for lesson in discipline.get_lessons_visibles %}
 		         <div class="tile-wide {{ lesson.color }}">
 				    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
@@ -41,7 +43,6 @@
 			{% endfor %}
 			</div>
 		</div>
-	</div>
 	</div>
 </div>
 {% endblock %}

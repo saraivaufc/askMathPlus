@@ -1,0 +1,41 @@
+{% extends 'askmath/content/content_home.html' %}
+{% load i18n %}
+
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+{% block tiles %}
+<div class="panel">
+	<div class="heading text-center">
+		<span class="icon mif-stack text-left"></span>
+        <span class="title">{% trans "Disciplines" %}</span>
+    </div>
+    <div class="content">
+	    <div class="container-fluid">
+		    <div class="row">
+			{% for discipline in disciplines %}
+				{% if discipline.get_lessons_visibles %}
+				<div class="tile-wide {{ discipline.color }}">
+				    <a href="/home/content/disciplines/view/discipline={{ discipline.id }}/" class="tile-content slide-down iconic">
+				        <span class="icon mif-clipboard"></span>
+				        <div class="tile-label">
+				        	{{ discipline.get_title|title }}
+				        </div>
+				        <div class="slide-over bg-steel">
+				        <table class="text-center fill">
+				        	<tr>
+				        		<td>{% trans "All Lessons" %} : {{ discipline.get_lessons_visibles|length }}</td>
+				        	</tr>
+				        </table>
+				        </div>
+				    </a>
+				</div>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

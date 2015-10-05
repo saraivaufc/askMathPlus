@@ -19,9 +19,7 @@ class Home(IHome):
                 return render(request, 'askmath/manager/manager_home.html', 
                     {'request':request})
             else:
-                disciplines = Discipline.objects.filter(exists=True, visible=True)
-                return render(request, 'askmath/content/lesson/content_view_lessons.html',
-                    {'request': request,'disciplines':  disciplines})
+                return HttpResponseRedirect("/home/content/disciplines/view/")
         else:
             return render(request, 'askmath/index/home.html',
                 {'request': request})

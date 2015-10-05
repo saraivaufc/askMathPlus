@@ -1,9 +1,8 @@
-{% extends 'askmath/content/lesson/content_view_lessons.html' %}
+{% extends 'askmath/content/discipline/content_view_discipline.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam>{{ discipline.get_title|title }}</spam></a></li>
 	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson.get_title|title }}</spam></a></li>
 {% endblock %}
 
@@ -25,13 +24,13 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<div class="container-fluid">
-		<div class="row bg-white-opacity">
+		<div class="row">
 		{% block tiles-rigth %}
-		<div class="tile-group">
+		<div class="tile-group bg-white-opacity">
 			<h3 class="text-left">{% trans "Options:" %}</h3>
 			<div class="tile-container">
 				<div class="tile bg-indigo">
-				    <a href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+				    <a href="/home/content/questions/view_inicial_details/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 				        <span class="icon mif-list-numbered"></span>
 				        <div class="tile-label">
 				            {% trans "Questions" %}
@@ -47,17 +46,17 @@
 				</div>
 				
 				<div class="tile bg-emerald">
-				    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+				    <a href="/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 				        <span class="icon mif-video-camera"></span>
 				        <div class="tile-label">
 				            {% trans "Videos" %}
 				        </div>
-				        <div class="slide-over bg-steel">
-					        <table class="text-center fill">
-					        	<tr>
-					        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
-					        	</tr>
-					        </table>
+				         <div class="slide-over bg-steel">
+				        <table class="text-center fill">
+				        	<tr>
+				        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
+				        	</tr>
+				        </table>
 				        </div>
 				    </a>
 				</div>
