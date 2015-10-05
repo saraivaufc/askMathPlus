@@ -11,13 +11,24 @@
 {% block content %}
 <section>
 	<div class="container">
-		<div class="row bg-white-opacity text">
-			<br />
-			<figure class="text-center">
-				<img src="{{ STATIC_URL }}askmath/img/logos/logo-transparent.png" alt="{% trans "System logo." %}" width="425px" height="204" />
-			</figure>
-			<br />
-			{% include "askmath/index/_render_about.html" %}
+		<div class="row">
+		<div class="panel width">
+			<div class="heading text-center">
+				<span class="icon mif-info text-left"></span>
+			    <span class="title">{% trans "About" %}</span>
+			</div>
+			<div class="contant">
+				<div class="container-fluid">
+					<div class="row">
+						<br />
+						<figure class="text-center">
+							<img src="{{ STATIC_URL }}askmath/img/logos/logo-transparent.png" alt="{% trans "System logo." %}" width="425px" height="204" />
+						</figure>
+						<br />
+						{% include "askmath/index/_render_about.html" %}			
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

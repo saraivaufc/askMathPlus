@@ -10,11 +10,20 @@
 {% block content %}
 
 <div class="container">
-	<div class="row bg-white-opacity text card">
-		<section>
-			<h2 class="text-center">{% trans "Terms & Conditions" %}</h2>
-			{% include "askmath/index/_render_terms.html" %}
-		</section>
+	<div class="row">
+		<div class="panel width">
+			<div class="heading text-center">
+				<span class="icon mif-file-text text-left"></span>
+				<span class="title">{% trans "Terms & Conditions" %}</span>
+			</div>
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						{% include "askmath/index/_render_terms.html" %}		
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}

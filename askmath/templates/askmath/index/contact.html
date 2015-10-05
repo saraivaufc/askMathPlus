@@ -18,67 +18,77 @@
 
 {% block content %}
 <div class="container">
-<div class="row bg-white-opacity text">
-	<h2 class="text-center">{% trans "Contact Us" %}</h2>
-	<hr class="thin">
-	<div class="col-xs-12 col-md-6">
-		<div class="row text-center">
-			<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/pet.png" alt="{% trans "Logo PET information technology group." %}" width="90%" height="100%">
+<div class="row">
+	<div class="panel width">
+		<div class="heading text-center">
+			<span class="icon mif-envelop text-left"></span>
+        	<span class="title">{% trans "Contact Us" %}</span>
 		</div>
-		<br>
-		<div class="row">
-			<h3 class="text-left">{% trans "Social networks:" %}</h3>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-3">
-				<figure>
-					<a href="http://tiqx.blogspot.com.br/" target="_blank">
-						<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/blog.png" alt="{% trans "Blog PET Information Technology." %}" height="15px">
-					</a>
-					<figcaption class="text-center">{% trans "Blog" %}</figcaption>
-				</figure>
-			</div>
-			<div class="col-md-3">
-				<figure>
-					<a href="https://plus.google.com/u/0/104181841054535213294/" target="_blank">
-						<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/googleplus.png" alt="{% trans "GooglePlus PET Information Technology." %}" height="15px">
-					</a>
-					<figcaption class="text-center">{% trans "Google+" %}</figcaption>
-				</figure>
-			</div>
-			<div class="col-md-3">
-				<figure>
-					<a href="https://www.facebook.com/pettiqx" target="_blank">
-						<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/facebook.png" alt="{% trans "Facebook PET Information Technology." %}" height="15px">
-					</a>
-					<figcaption class="text-center">{% trans "Facebook" %}</figcaption>
-				</figure>
-			</div>
-			<div class="col-md-3">
-				<figure>
-					<a href="https://twitter.com/petccqx" target="_blank">
-						<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/twitter.png" alt="{% trans "Twitter PET Information Technology." %}" height="15px">
-					</a>
-					<figcaption class="text-center">{% trans "Twitter" %}</figcaption>
-				</figure>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-md-6">
-		<div class="container-fluid">
-			<form action="." method="post" enctype="multipart/form-data" role="form">
-				{% csrf_token %}
-				<h3 class="form-signin-heading text-center ">{% trans "Send your message" %}</h3>
-				{% include 'askmath/_render_form.html' %}
-				<div id="message"></div>
-				<div class="text-right">
-					<button type="submit" class="image-button button-primary" data-dismiss="modal">
-						{% trans "Send" %}
-						<span class="icon glyphicon glyphicon-send"></span>
-					</button>
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="row text-center">
+							<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/pet.png" alt="{% trans "Logo PET information technology group." %}" width="90%" height="100%">
+						</div>
+						<br>
+						<div class="row">
+							<h3 class="text-left">{% trans "Social networks:" %}</h3>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-3">
+								<figure>
+									<a href="http://tiqx.blogspot.com.br/" target="_blank">
+										<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/blog.png" alt="{% trans "Blog PET Information Technology." %}" height="15px">
+									</a>
+									<figcaption class="text-center">{% trans "Blog" %}</figcaption>
+								</figure>
+							</div>
+							<div class="col-md-3">
+								<figure>
+									<a href="https://plus.google.com/u/0/104181841054535213294/" target="_blank">
+										<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/googleplus.png" alt="{% trans "GooglePlus PET Information Technology." %}" height="15px">
+									</a>
+									<figcaption class="text-center">{% trans "Google+" %}</figcaption>
+								</figure>
+							</div>
+							<div class="col-md-3">
+								<figure>
+									<a href="https://www.facebook.com/pettiqx" target="_blank">
+										<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/facebook.png" alt="{% trans "Facebook PET Information Technology." %}" height="15px">
+									</a>
+									<figcaption class="text-center">{% trans "Facebook" %}</figcaption>
+								</figure>
+							</div>
+							<div class="col-md-3">
+								<figure>
+									<a href="https://twitter.com/petccqx" target="_blank">
+										<img class="img-responsive" src="{{ STATIC_URL }}askmath/img/logos/twitter.png" alt="{% trans "Twitter PET Information Technology." %}" height="15px">
+									</a>
+									<figcaption class="text-center">{% trans "Twitter" %}</figcaption>
+								</figure>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="container-fluid">
+							<form action="." method="post" enctype="multipart/form-data" role="form">
+								{% csrf_token %}
+								<h3 class="form-signin-heading text-center ">{% trans "Send your message" %}</h3>
+								{% include 'askmath/_render_form.html' %}
+								<div id="message"></div>
+								<div class="text-right">
+									<button type="submit" class="image-button button-primary" data-dismiss="modal">
+										{% trans "Send" %}
+										<span class="icon glyphicon glyphicon-send"></span>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
