@@ -49,9 +49,9 @@ class Permissions(Model):
                         ("read_video", "Read Video"),
                         ("write_video", "Write Video"),
                         
-                        ("access_manager_contact", "Access Manager Contact"),
-                        ("read_contact", "Read Contact"),
-                        ("write_contact", "Write Contact"),
+                        ("access_manager_message", "Access Manager Message"),
+                        ("read_message", "Read Message"),
+                        ("write_message", "Write Message"),
                         
                         
                         ("access_forum_admin", "Access Forum Admin"),

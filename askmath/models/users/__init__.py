@@ -3,9 +3,9 @@ from .assistant import Assistant
 from .person import Person
 from .student import Student
 from .teacher import Teacher
-from .contact import Contact
+from .message import Message
 
 
 __all__ = [
-    'Person','Administrator', 'Teacher', 'Assistant', 'Student', 'Contact'
+    'Person','Administrator', 'Teacher', 'Assistant', 'Student', 'Message'
 ]

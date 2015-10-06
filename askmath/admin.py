@@ -3,7 +3,7 @@ from django.contrib import admin
 from askmath.models.discipline import Discipline
 from askmath.models.lesson import Lesson
 from askmath.models.question import Question, Item
-from askmath.models.users import Person, Administrator, Teacher, Assistant, Student, Contact
+from askmath.models.users import Person, Administrator, Teacher, Assistant, Student, Message
 from askmath.models.video import Video
 from askmath.models.progress import StudentQuestionProgress, StudentVideoProgress
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
@@ -20,8 +20,8 @@ class PersonAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
     pass
 
 

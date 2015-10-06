@@ -160,7 +160,7 @@ LANGUAGES = (
      ('es', _('Spanish')),
 )
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'pt'
 
 TIME_ZONE = 'America/Fortaleza'
 

@@ -200,19 +200,19 @@ class TextMessage():
 
 	
 	#Person
- 	PERSON_SUCCESS_ADD = _(u"Person successfully added.")
- 	PERSON_ERROR_ADD = _(u"Error adding person.")
+ 	USER_SUCCESS_ADD = _(u"User successfully added.")
+ 	USER_ERROR_ADD = _(u"Error adding user.")
  	
- 	PERSON_SUCCESS_EDIT = _(u"Person successfully edit.")
- 	PERSON_ERROR_EDIT = _(u"Error edit person.")
+ 	USER_SUCCESS_EDIT = _(u"User successfully edit.")
+ 	USER_ERROR_EDIT = _(u"Error edit user.")
  	
- 	PERSON_SUCCESS_REM = _(u"Person successfully removed.")
- 	PERSON_ERROR_REM = _(u"Error remove person.")
+ 	USER_SUCCESS_REM = _(u"User successfully removed.")
+ 	USER_ERROR_REM = _(u"Error remove user.")
  	
- 	PERSON_SUCCESS_RESTORE = _(u"Person successfully restored.")
-	PERSON_ERROR_RESTORE = _(u"Error restore person.")
+ 	USER_SUCCESS_RESTORE = _(u"User successfully restored.")
+	USER_ERROR_RESTORE = _(u"Error restore user.")
  
- 	PERSON_NOT_FOUND = _(u"Person not found.")
+ 	USER_NOT_FOUND = _(u"User not found.")
  	
  	#Statistics
  	
@@ -240,4 +240,4 @@ class TextMessage():
 	#ACCOUNT
 	ACCOUNT_SUCCESS_REMOVED = _(u"Account success removed.")
 
-	SEARCH_ERROR_SIZE = _(u"Ocorreu um erro na sua busca, tente utilizar no máximo 27 caracteres na busca.")
+	SEARCH_ERROR_SIZE = _(u"There was an error in your search, try using no more than 27 characters in the search.")

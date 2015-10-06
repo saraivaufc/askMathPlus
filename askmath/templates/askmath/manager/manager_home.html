@@ -69,11 +69,11 @@
 							</a>
 						</li>
 						{% endif %}
-						{% if perms.askmath.access_manager_contact %}
+						{% if perms.askmath.access_manager_message %}
 						{% block message %}
 						<li>
 						{% endblock %}
-							<a href="/home/manager/contacts/view/">
+							<a href="/home/manager/messages/view/">
 								<span class="icon mif-envelop"></span>
 								<span class="title">{% trans "Messages" %}</span>
 							</a>
@@ -151,9 +151,9 @@
 								</div>
 								{% endif %}
 								
-								{% if perms.askmath.access_manager_contact %}
+								{% if perms.askmath.access_manager_message %}
 								<div class="tile-wide bg-pink" data-role="tile">
-									<a href="/home/manager/contacts/view/" class="tile-content iconic">
+									<a href="/home/manager/messages/view/" class="tile-content iconic">
 										<span class="icon mif-envelop"></span>
 										<span class="tile-label">{% trans "MESSAGES" %}</span>
 									</a>

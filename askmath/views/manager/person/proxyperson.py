@@ -72,7 +72,7 @@ class ProxyPerson(IPerson):
                     person = PersonModel.objects.get(id = id_person)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                messages.error(request,TextMessage.USER_NOT_FOUND)
                 return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.view_person(request, PERSONTYPE, person)
@@ -92,7 +92,7 @@ class ProxyPerson(IPerson):
                     return self.__account.add_person(request, PERSONTYPE)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_ERROR_ADD)
+                messages.error(request,TextMessage.USER_ERROR_ADD)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
         return self.view_persons(request, PERSONTYPE)
@@ -107,13 +107,13 @@ class ProxyPerson(IPerson):
                     person = PersonModel.objects.get(id = id_person)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                messages.error(request,TextMessage.USER_NOT_FOUND)
                 return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.remove_person(request, PERSONTYPE, person)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_ERROR_REM)
+                messages.error(request,TextMessage.USER_ERROR_REM)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
         return self.view_persons(request, PERSONTYPE)
@@ -135,13 +135,13 @@ class ProxyPerson(IPerson):
                         registerkey = False
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                messages.error(request,TextMessage.USER_NOT_FOUND)
                 return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.remove_registerkey(request, PERSONTYPE, registerkey)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_ERROR_REM)
+                messages.error(request,TextMessage.USER_ERROR_REM)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
         return self.view_persons(request, PERSONTYPE)
@@ -155,13 +155,13 @@ class ProxyPerson(IPerson):
                     person = PersonModel.objects.get(id = id_person)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_NOT_FOUND)
+                messages.error(request,TextMessage.USER_NOT_FOUND)
                 return self.view_persons(request, PERSONTYPE)
             try:
                 return self.__account.restore_person(request, PERSONTYPE, person)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.PERSON_ERROR_RESTORE)
+                messages.error(request,TextMessage.USER_ERROR_RESTORE)
         else:
             messages.error(request,TextMessage.USER_NOT_PERMISSION)
         return self.view_persons(request, PERSONTYPE)

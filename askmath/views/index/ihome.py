@@ -7,7 +7,7 @@ class IHome():
     def about(self):
         pass
     
-    def contact(self):
+    def message(self):
         pass
 
     def terms(self):

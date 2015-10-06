@@ -26,7 +26,7 @@ class Account(IAccount):
             form = PersonProfile(request.POST, request.FILES, instance=person)
             if form.is_valid():
                 form.save()
-                messages.success(request, TextMessage.PERSON_SUCCESS_EDIT)
+                messages.success(request, TextMessage.USER_SUCCESS_EDIT)
                 return self.view_profile(request)
         else:
             form = PersonProfile(instance=person)

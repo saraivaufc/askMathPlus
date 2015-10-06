@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 from datetime import datetime
 from askMathPlus.settings import generate_color
 
-class Contact(models.Model):
+class Message(models.Model):
     name = models.CharField(verbose_name=_("Name"), max_length=100,
         help_text=_("Enter yout name."))
     email = models.EmailField(verbose_name=_("Email"), max_length=254,
@@ -44,5 +44,5 @@ class Contact(models.Model):
         
     class Meta:
         ordering = ['creation']
-        verbose_name = _("Contact")
-        verbose_name_plural = _("Contacts")
+        verbose_name = _("Message")
+        verbose_name_plural = _("Messages")

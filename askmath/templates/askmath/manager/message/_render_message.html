@@ -4,31 +4,31 @@
 	<div class="list-group">
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">{% trans "Name:" %}</h4>
-			<p class="list-group-item-text">{{ contact.get_name }}</p>
+			<p class="list-group-item-text">{{ message_model.get_name }}</p>
 		</div>
 		
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">{% trans "Email:" %}</h4>
-			<p class="list-group-item-text">{{ contact.get_email }}</p>
+			<p class="list-group-item-text">{{ message_model.get_email }}</p>
 		</div>
 		
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">{% trans "Message:" %}</h4>
-			<p class="list-group-item-text">{{ contact.get_message|safe|linebreaksbr }}</p>
+			<p class="list-group-item-text">{{ message_model.get_message|safe|linebreaksbr }}</p>
 		</div>
 		
-		{% if contact.get_file %}
+		{% if message_model.get_file %}
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">{% trans "File:" %}</h4>
 			<p class="list-group-item-text">
-				<a href="{{ contact.get_file.url }}" target="_blank">{% trans "Download File" %}</a>
+				<a href="{{ message_model.get_file.url }}" target="_blank">{% trans "Download File" %}</a>
 			</p>
 		</div>
 		{% endif %}
 		
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">{% trans "Date:" %}</h4>
-			<p class="list-group-item-text">{{ contact.creation }}</p>
+			<p class="list-group-item-text">{{ message_model.creation }}</p>
 		</div>
 	</div>
 </div>

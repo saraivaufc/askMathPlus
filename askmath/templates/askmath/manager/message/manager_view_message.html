@@ -1,0 +1,31 @@
+{% extends 'askmath/manager/message/manager_view_messages.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if message_model %}
+	<li><a href="/home/manager/messages/view/message={{ message_model.id }}/"><span class="icon mif-envelop"></span> <spam>{{ message_model.get_name }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
+{%  block content_right %}
+<div class="cell padding10">
+	{% if perms.askmath.write_message %}
+		{% if message_model.exists %}
+		<a href="/home/manager/messages/remove/message={{ message_model.id }}/" class="image-button button-danger">
+			{% trans "Remove" %}
+			<span class="icon mif-cross"></span>
+		</a>
+		{% endif %}
+		{% if not message_model.exists %}
+		<a href="/home/manager/messages/restore/message={{ message_model.id }}/" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+</div>
+
+{% include "askmath/manager/message/_render_message.html" %}
+
+{% endblock %}

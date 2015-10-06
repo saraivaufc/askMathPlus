@@ -5,13 +5,13 @@ from django.forms import ModelForm, TextInput, EmailInput, FileInput, Textarea
 from django.utils.translation import ugettext_lazy as _
 import hashlib
 
-from askmath.models.users import Contact
+from askmath.models.users import Message
 from captcha.fields import ReCaptchaField
 
-class ContactForm(ModelForm):
+class MessageForm(ModelForm):
 	captcha = ReCaptchaField()
 	class Meta:
-		model= Contact
+		model= Message
 		fields = ("name", "email","message", "file","captcha")
 
 		widgets = {

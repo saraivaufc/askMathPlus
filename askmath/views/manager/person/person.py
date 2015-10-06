@@ -104,7 +104,7 @@ class Person(IPerson):
     
     def remove_person(self, request, PERSONTYPE, person):
         person.delete()
-        messages.success(request,TextMessage.PERSON_SUCCESS_REM)
+        messages.success(request,TextMessage.USER_SUCCESS_REM)
         return self.view_persons(request,PERSONTYPE)
     
     def remove_registerkey(self, request, PERSONTYPE, registerkey):
@@ -116,5 +116,5 @@ class Person(IPerson):
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()
-        messages.success(request,TextMessage.PERSON_SUCCESS_RESTORE)
+        messages.success(request,TextMessage.USER_SUCCESS_RESTORE)
         return self.view_persons(request,PERSONTYPE)

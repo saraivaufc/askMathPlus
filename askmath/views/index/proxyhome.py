@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
-from askmath.forms import ContactForm
+from askmath.forms import MessageForm
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from django.core.mail import EmailMessage
 from askmath.models.lesson.lesson import Lesson
@@ -35,9 +35,9 @@ class ProxyHome(IHome):
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
     
-    def contact(self, request):
+    def message(self, request):
         try:
-            return self.__home.contact(request)
+            return self.__home.message(request)
         except:
             messages.error(request,TextMessage.ERROR)
             return self.index(request)

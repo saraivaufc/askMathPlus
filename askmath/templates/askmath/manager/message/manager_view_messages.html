@@ -1,0 +1,34 @@
+{% extends 'askmath/manager/message/overwrite_header.html' %}
+{% load i18n %}
+
+{%  block content_right %}
+
+<div class="cell padding10">
+	{% if is_removed %}
+		<a href="/home/manager/messages/view/" class="image-button button-info">
+			{% trans "Undo" %}
+			<span class="icon mif-undo"></span>
+		</a>
+	{% else %}
+		<a href="/home/manager/messages/view_removed/" class="image-button button-warning">
+			{% trans "Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
+	{% endif %}
+</div>
+
+<div class="tile-area padding10 bg-transparent ">
+	{% for message_model in messages_model %}
+		<div class="tile {{ message_model.color }} fg-white" data-role="tile">
+		    <a href="/home/manager/messages/view/message={{ message_model.id }}/" class="tile-content iconic">
+		        <span class="icon mif-envelop mif-ani-vertical"></span>
+		        <span class="tile-label">{{ message_model.get_name }}</span>
+		        {% if not message_model.exists %}
+		        <span class="tile-badge mif-bin"></span>
+		        {% endif %}
+		    </a>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

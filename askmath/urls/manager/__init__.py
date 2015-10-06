@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     url(r'^videos/', include('askmath.urls.manager.videos')),
     url(r'^statistics/', include('askmath.urls.manager.statistics.statistics')),
     url(r'^persons/', include('askmath.urls.manager.persons')),
-    url(r'^contacts/', include('askmath.urls.manager.contacts')),
+    url(r'^messages/', include('askmath.urls.manager.messages')),
 )

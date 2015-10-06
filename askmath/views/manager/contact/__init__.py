@@ -1,1 +1,0 @@
-from .proxycontact import ProxyContact

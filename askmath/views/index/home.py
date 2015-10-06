@@ -5,7 +5,7 @@ from askmath.entities import TextMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
-from askmath.forms import ContactForm
+from askmath.forms import MessageForm
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from askmath.models.lesson.lesson import Lesson
 from django.core.mail import send_mail
@@ -28,10 +28,10 @@ class Home(IHome):
         return render(request, 'askmath/index/about.html',
             {'request': request})
     
-    def contact(self, request):
+    def message(self, request):
         
         if request.method == "POST":
-            form =  ContactForm(request.POST, request.FILES)
+            form =  MessageForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
                 try:
@@ -43,8 +43,8 @@ class Home(IHome):
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
-            form = ContactForm()
-        return render(request, 'askmath/index/contact.html', 
+            form = MessageForm()
+        return render(request, 'askmath/index/message.html', 
              {'request': request,'form':form})
 
     def terms(self, request):
