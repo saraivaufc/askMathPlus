@@ -18,7 +18,7 @@ SITE_DEVELOPERS = [{'name':u'Ciano Saraiva',
 
 SITE_EXTERNAL_COMPONENTES = [
 	(u"Django", u"https://www.djangoproject.com/"),
-	(u"Rosetta", u"https://pypi.python.org/pypi/django-rosetta"),
+	(u"Rosetta Package", u"https://pypi.python.org/pypi/django-rosetta"),
 	(u"Python", u"https://www.python.org/"),
 	(u"Metro Ui CSS", u"https://metroui.org.ua/"),
 	(u"Bootstrap", u"http://getbootstrap.com/"),
@@ -30,5 +30,6 @@ SITE_EXTERNAL_COMPONENTES = [
 	(u"WebKit", u"http://www.webkit.org/"),
 	(u"Web Animation", u"https://github.com/web-animations/web-animations-js"),
 	(u"Select2", u"https://select2.github.io/"),
-	(u"Captcha", u"https://github.com/praekelt/django-recaptcha"),                        
+	(u"ReCaptcha Google", u"https://www.google.com/recaptcha"),
+	(u"Captcha Package", u"https://github.com/praekelt/django-recaptcha"),
 ]
