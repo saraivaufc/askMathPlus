@@ -15,5 +15,5 @@ class AssistantKey(RegisterKey):
         
     class Meta:
         ordering = ['user']
-        verbose_name = _("Assistant Key")
-        verbose_name_plural = _("Assistants Key")
+        verbose_name = _(u"Assistant Key")
+        verbose_name_plural = _(u"Assistants Key")

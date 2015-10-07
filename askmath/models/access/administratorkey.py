@@ -15,5 +15,5 @@ class AdministratorKey(RegisterKey):
         
     class Meta:
         ordering = ['user']
-        verbose_name = _("Administrator Key")
-        verbose_name_plural = _("Administrators Key")
+        verbose_name = _(u"Administrator Key")
+        verbose_name_plural = _(u"Administrators Key")

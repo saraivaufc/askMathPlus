@@ -16,9 +16,9 @@ except:
     from md5 import new as md5
 
 class AbstractSystemPerson(models.Model):
-    location = models.CharField(_("location"), max_length=75, blank=True, null=True)
-    last_seen = models.DateTimeField(_("last seen"), auto_now=True)
-    last_ip = models.GenericIPAddressField(_("last ip"), blank=True, null=True)
+    location = models.CharField(_(u"location"), max_length=75, blank=True, null=True)
+    last_seen = models.DateTimeField(_(u"last seen"), auto_now=True)
+    last_ip = models.GenericIPAddressField(_(u"last ip"), blank=True, null=True)
     is_administrator = models.BooleanField(_('administrator status'), default=False,blank=True )
     is_moderator = models.BooleanField(_('moderator status'), default=False, blank=True)
     
@@ -45,15 +45,14 @@ class AbstractSystemPerson(models.Model):
         abstract = True
 
 class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
-    username = models.CharField(_("Username"), max_length=30, unique=True, db_index=True, help_text=_('Please enter you username.'),)
-    name = models.CharField(_("Name"), max_length=100, blank=False,null=True,help_text=_('Please enter you name.'),)
-    email = models.EmailField(_("Email"), max_length=254, unique=True, blank=False, help_text=_('Please enter you email.'),)
-    is_staff = models.BooleanField(_('staff status'), default=False,
-                                   help_text=_('Designates whether the user can log into this admin site.'))
+    username = models.CharField(_(u"Username"), max_length=30, unique=True, db_index=True, help_text=_(u'Please enter you username.'),)
+    name = models.CharField(_(u"Name"), max_length=100, blank=False,null=True,help_text=_(u'Please enter you name.'),)
+    email = models.EmailField(_(u"Email"), max_length=254, unique=True, blank=False, help_text=_(u'Please enter you email.'),)
+    is_staff = models.BooleanField(_(u'staff status'), default=False,
+                                   help_text=_(u'Designates whether the user can log into this admin site.'))
     is_active = models.BooleanField(_('active'), default=True,
-                                    help_text=_('Designates whether this user should be treated as '
-                                                'active. Unselect this instead of deleting accounts.'))
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+                                    help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
+    date_joined = models.DateTimeField(_(u'date joined'), default=timezone.now)
     objects = UserManager()
     
     def get_short_name(self):
@@ -89,10 +88,10 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
         self.save()  
         
 class Person(AbstractPerson):
-    profile_image = models.ImageField(verbose_name=_("Profile Image"),help_text=_("Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
+    profile_image = models.ImageField(verbose_name=_(u"Profile Image"),help_text=_(u"Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
     
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=settings.generate_color)
-    creation = models.DateTimeField(_('Creation'), default=datetime.now)
+    color = models.CharField(verbose_name=_(u'Color'), max_length=50, default=settings.generate_color)
+    creation = models.DateTimeField(_(u'Creation'), default=datetime.now)
     exists = models.BooleanField(default = True)
 
 
@@ -116,5 +115,5 @@ class Person(AbstractPerson):
         swappable = 'AUTH_USER_MODEL'
         app_label = 'askmath'
         ordering = ['-date_joined', ]
-        verbose_name = _('person')
-        verbose_name_plural = _('persons')
+        verbose_name = _(u'person')
+        verbose_name_plural = _(u'persons')

@@ -10,5 +10,5 @@ from person import Person
 class Administrator(Person):
 
 	class Meta(Person.Meta):
-		verbose_name = _('administrator')
-		verbose_name_plural = _('administrators')
+		verbose_name = _(u"Administrator")
+		verbose_name_plural = _(u"Administrators")

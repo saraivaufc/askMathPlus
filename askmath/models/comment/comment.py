@@ -3,12 +3,12 @@ from datetime import  datetime
 from django.utils.translation import ugettext_lazy as _
 
 class Comment(models.Model):
-    person = models.ForeignKey('Person', verbose_name=_("Person"))
-    topic = models.ForeignKey('Topic', verbose_name=_("Topic"))
-    description = models.TextField(verbose_name=_("Comment"))
-    likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
+    topic = models.ForeignKey('Topic', verbose_name=_(u"Topic"))
+    description = models.TextField(verbose_name=_(u"Comment"))
+    likes = models.ManyToManyField('Like', verbose_name=_(u"Likes"), null=True, blank=True)
+    creation = models.DateTimeField(verbose_name=_(u'Creation'), default=datetime.now)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_person(self):
         return self.person
@@ -61,5 +61,5 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['creation']
-        verbose_name = _("Comment")
-        verbose_name_plural = _("Comments")
+        verbose_name = _(u"Comment")
+        verbose_name_plural = _(u"Comments")

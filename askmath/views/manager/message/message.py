@@ -26,10 +26,10 @@ class Message(IMessage):
     
     def remove_message(self, request,message_model):
         message_model.delete()
-        messages.success(request, TextMessage.CONTACT_SUCCESS_REM)
+        messages.success(request, TextMessage.MESSAGE_SUCCESS_REM)
         return self.view_messages(request)
     
     def restore_message(self, request,  message_model):
         message_model.restore()
-        messages.success(request, TextMessage.CONTACT_SUCCESS_RESTORE)
+        messages.success(request, TextMessage.MESSAGE_SUCCESS_RESTORE)
         return self.view_messages(request)

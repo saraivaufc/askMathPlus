@@ -6,26 +6,26 @@ from askMathPlus.settings import generate_color, COLORS_ALL
 from datetime import datetime
 
 class Question(models.Model):
-    lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
-        help_text=_("Choose the lesson which is question belongs."))
-    position = models.IntegerField(verbose_name=_("Position"),null=False,blank=False,
-        help_text=_("Choose the position which is question belongs."))
-    description = models.TextField(verbose_name=_("Description"), 
-         help_text=_("Choose a description for question is."))
-    items = models.ManyToManyField('Item', verbose_name=_("Items"),
-         help_text=_("Choose items that this issue has."))
-    help = models.TextField(verbose_name=_("Help"), null=True, blank=True, 
-        help_text=_("Choose a help to this question."))
+    lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"),
+        help_text=_(u"Choose the lesson which is question belongs."))
+    position = models.IntegerField(verbose_name=_(u"Position"),null=False,blank=False,
+        help_text=_(u"Choose the position which is question belongs."))
+    description = models.TextField(verbose_name=_(u"Description"), 
+         help_text=_(u"Choose a description for question is."))
+    items = models.ManyToManyField('Item', verbose_name=_(u"Items"),
+         help_text=_(u"Choose items that this issue has."))
+    help = models.TextField(verbose_name=_(u"Help"), null=True, blank=True, 
+        help_text=_(u"Choose a help to this question."))
     
     SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
-    scores=models.IntegerField(verbose_name=_("Scores"), choices=SCORES)
+    scores=models.IntegerField(verbose_name=_(u"Scores"), choices=SCORES)
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
-        help_text=_("Choose a color for the question."))
-    visible = models.BooleanField(verbose_name=_("Visible"), default=False,
-        help_text=_("Select this option to leave visible question at all."))
+        help_text=_(u"Choose a color for the question."))
+    visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
+        help_text=_(u"Select this option to leave visible question at all."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_lesson(self):
         return self.lesson
@@ -83,5 +83,5 @@ class Question(models.Model):
         
     class Meta:
         ordering = ['position']
-        verbose_name = _("Question")
-        verbose_name_plural = _("Questions")
+        verbose_name = _(u"Question")
+        verbose_name_plural = _(u"Questions")

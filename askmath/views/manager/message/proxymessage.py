@@ -49,7 +49,7 @@ class ProxyMessage(IMessage):
                 message_model = MessageModel.objects.get(id = id_message)
             except Exception, e:
                 print e
-                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
                 return self.view_messages(request)
             try:
                 return self.__message.view_message(request, message_model)
@@ -67,13 +67,13 @@ class ProxyMessage(IMessage):
                 message = MessageModel.objects.get(id = id_message)
             except Exception, e:
                 print e
-                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
                 return self.view_messages(request)
             try:
                 return self.__message.remove_message(request,message)
             except Exception, e:
                 print e
-                messages.error(request, TextMessage.CONTACT_ERROR_REM)
+                messages.error(request, TextMessage.MESSAGE_ERROR_REM)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_messages(request)
@@ -85,13 +85,13 @@ class ProxyMessage(IMessage):
                 message = MessageModel.objects.get(id = id_message)
             except Exception, e:
                 print e
-                messages.error(request, TextMessage.CONTACT_NOT_FOUND)
+                messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
                 return self.view_messages(request)
             try:
                 return self.__message.restore_message(request, message)
             except Exception, e:
                 print e
-                messages.error(request, TextMessage.CONTACT_ERROR_RESTORE)
+                messages.error(request, TextMessage.MESSAGE_ERROR_RESTORE)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_messages(request)

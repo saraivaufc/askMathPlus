@@ -180,20 +180,20 @@ class TextMessage():
  	COMMENT_NOT_FOUND = _(u"Comment not found.")
  	
  	#Contact
- 	CONTACT_SUCCESS_ADD = _(u"Contact successfully added.")
- 	CONTACT_ERROR_ADD = _(u"Error adding contact.")
+ 	MESSAGE_SUCCESS_ADD = _(u"Message successfully added.")
+ 	MESSAGE_ERROR_ADD = _(u"Error adding message.")
  	
- 	CONTACT_SUCCESS_EDIT = _(u"Contact successfully edit.")
- 	CONTACT_ERROR_EDIT = _(u"Error edit contact.")
+ 	MESSAGE_SUCCESS_EDIT = _(u"Message successfully edit.")
+ 	MESSAGE_ERROR_EDIT = _(u"Error edit message.")
  	
- 	CONTACT_SUCCESS_REM = _(u"Contact successfully removed.")
- 	CONTACT_ERROR_REM = _(u"Error remove contact.")
+ 	MESSAGE_SUCCESS_REM = _(u"Message successfully removed.")
+ 	MESSAGE_ERROR_REM = _(u"Error remove message.")
  	
- 	CONTACT_SUCCESS_RESTORE = _(u"Contact successfully restored.")
-	CONTACT_ERROR_RESTORE = _(u"Error restore contact.")
+ 	MESSAGE_SUCCESS_RESTORE = _(u"Message successfully restored.")
+	MESSAGE_ERROR_RESTORE = _(u"Error restore message.")
 	
  
- 	CONTACT_NOT_FOUND = _(u"Contact not found.")
+ 	MESSAGE_NOT_FOUND = _(u"Message not found.")
  	
  	
  	

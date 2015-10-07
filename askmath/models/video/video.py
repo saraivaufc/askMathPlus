@@ -7,23 +7,23 @@ from askMathPlus.settings import generate_color, COLORS_ALL
 import os
 
 class Video(models.Model):
-	lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"),
-		help_text=_("Choose the lesson which is video belongs."))
-	position = models.IntegerField(verbose_name=_("Position"),null=True,blank=True, 
-		help_text=_("Choose the position which is video belongs."))
-	title = models.CharField(verbose_name=_("Title"), max_length=50,
-		help_text=_("Choose a title for video is."))
-	description = models.TextField(verbose_name=_("Description"),null=True, blank=True, 
-		 help_text=_("Choose a description for video is."))
-	file = models.FileField(verbose_name=_("File"), upload_to = 'documents/video/%Y/%m/%d',
-		help_text=_("Perform upload a file."))
+	lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"),
+		help_text=_(u"Choose the lesson which is video belongs."))
+	position = models.IntegerField(verbose_name=_(u"Position"),null=True,blank=True, 
+		help_text=_(u"Choose the position which is video belongs."))
+	title = models.CharField(verbose_name=_(u"Title"), max_length=50,
+		help_text=_(u"Choose a title for video is."))
+	description = models.TextField(verbose_name=_(u"Description"),null=True, blank=True, 
+		 help_text=_(u"Choose a description for video is."))
+	file = models.FileField(verbose_name=_(u"File"), upload_to = 'documents/video/%Y/%m/%d',
+		help_text=_(u"Perform upload a file."))
 	
-	color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
-		help_text=_("Choose a color for the video."))
-	visible = models.BooleanField(verbose_name=_("Visible"), default=False,
-		help_text=_("Select this option to leave visible video at all."))
-	creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-	exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+	color = models.CharField(verbose_name=_(u"Color"), max_length=50, default=generate_color, choices=COLORS_ALL,
+		help_text=_(u"Choose a color for the video."))
+	visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
+		help_text=_(u"Select this option to leave visible video at all."))
+	creation = models.DateTimeField(verbose_name=_(u"Creation"), default=datetime.now)
+	exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
 	
 	def get_lesson(self):
 		return self.lesson
@@ -80,5 +80,5 @@ class Video(models.Model):
 
 	class Meta:
 		ordering = ['position']
-		verbose_name = _("Video")
-		verbose_name_plural = _("Videos")
+		verbose_name = _(u"Video")
+		verbose_name_plural = _(u"Videos")

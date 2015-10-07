@@ -167,15 +167,6 @@
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
 		
 		{% block scripts %}
-			<script type="text/javascript">
-				var feedback_message;
-				var CaptchaCallback = function() {
-			        message = grecaptcha.render('feedback_message', {
-			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-			          'theme' : 'light'
-			        });
-			      };
-			</script>
 		{% endblock %}
 
 		<!-- My Scripts -->

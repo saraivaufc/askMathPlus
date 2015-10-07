@@ -6,18 +6,18 @@ from datetime import datetime
 from askMathPlus.settings import generate_color
 
 class Message(models.Model):
-    name = models.CharField(verbose_name=_("Name"), max_length=100,
-        help_text=_("Enter yout name."))
-    email = models.EmailField(verbose_name=_("Email"), max_length=254,
-        help_text=_("Enter yout email."))
-    message = models.TextField(verbose_name=_("Message"), max_length=2000, 
-        help_text=_("Your use here tags HTML: <a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> "))
-    file = models.FileField(verbose_name=_("File"), upload_to = 'documents/contact_files/%Y/%m/%d',
-        help_text=_("Perform upload a file."), null=True, blank=True)
+    name = models.CharField(verbose_name=_(u"Name"), max_length=100,
+        help_text=_(u"Enter yout name."))
+    email = models.EmailField(verbose_name=_(u"Email"), max_length=254,
+        help_text=_(u"Enter yout email."))
+    message = models.TextField(verbose_name=_(u"Message"), max_length=2000, 
+        help_text=_(u"Your use here tags HTML: <a href='' title=''> <abbr title=''> <acronym title=''> <b> <blockquote cite=''> <cite> <code> <del datetime=''> <em> <i> <q cite=''> <strike> <strong> "))
+    file = models.FileField(verbose_name=_(u"File"), upload_to = 'documents/contact_files/%Y/%m/%d',
+        help_text=_(u"Perform upload a file."), null=True, blank=True)
 
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color)
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    color = models.CharField(verbose_name=_(u"Color"), max_length=50, default=generate_color)
+    creation = models.DateTimeField(verbose_name=_(u"Creation"), default=datetime.now)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_name(self):
         return self.name
@@ -44,5 +44,5 @@ class Message(models.Model):
         
     class Meta:
         ordering = ['creation']
-        verbose_name = _("Message")
-        verbose_name_plural = _("Messages")
+        verbose_name = _(u"Message")
+        verbose_name_plural = _(u"Messages")

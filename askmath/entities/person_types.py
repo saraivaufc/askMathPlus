@@ -3,10 +3,10 @@ from askmath.models.users import Administrator, Teacher, Assistant, Student
 from askmath.forms.users import AdministratorForm, TeacherForm, AssistantForm, StudentForm
 from django.utils.translation import ugettext as _
 class PersonTypes():
-	ADMIN = _("administrator")
-	TEACHER = _("teacher")
-	ASSISTANT = _("assistant")
-	STUDENT = _("student")
+	ADMIN = _(u"administrator")
+	TEACHER = _(u"teacher")
+	ASSISTANT = _(u"assistant")
+	STUDENT = _(u"student")
 	
 	def __init__(self, PERSONTYPE=None):
 		self.PERSONTYPE = PERSONTYPE

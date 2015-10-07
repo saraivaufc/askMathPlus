@@ -4,19 +4,19 @@ from datetime import datetime
 from askMathPlus.settings import generate_color, COLORS_ALL
 
 class Topic(models.Model):
-    person = models.ForeignKey('Person', verbose_name=_("Person"))
-    category = models.ForeignKey('Category', verbose_name=_("Category"))
-    title = models.CharField(verbose_name=_("Title"), max_length=255)
-    description = models.TextField(verbose_name=_("Description"),
-        help_text=_("Choose a description for the topic."))
-    likes = models.ManyToManyField('Like', verbose_name=_("Likes"), null=True, blank=True)
-    file = models.FileField(verbose_name=_("File"), upload_to = 'documents/forum/topic/%Y/%m/%d',
-        help_text=_("Perform upload a file."), null=True, blank=True)
+    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
+    category = models.ForeignKey('Category', verbose_name=_(u"Category"))
+    title = models.CharField(verbose_name=_(u"Title"), max_length=255)
+    description = models.TextField(verbose_name=_(u"Description"),
+        help_text=_(u"Choose a description for the topic."))
+    likes = models.ManyToManyField('Like', verbose_name=_(u"Likes"), null=True, blank=True)
+    file = models.FileField(verbose_name=_(u"File"), upload_to = 'documents/forum/topic/%Y/%m/%d',
+        help_text=_(u"Perform upload a file."), null=True, blank=True)
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
-        help_text=_("Choose a color for the topic."))
+        help_text=_(u"Choose a color for the topic."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     
     def get_person(self):
@@ -80,5 +80,5 @@ class Topic(models.Model):
 
     class Meta:
         ordering = ['-creation']
-        verbose_name = _("Topic")
-        verbose_name_plural = _("Topics")
+        verbose_name = _(u"Topic")
+        verbose_name_plural = _(u"Topics")

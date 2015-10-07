@@ -8,5 +8,5 @@ from person import Person
 class Student(Person):
 
 	class Meta(Person.Meta):
-		verbose_name = _('student')
-		verbose_name_plural = _('students')
+		verbose_name = _(u'Student')
+		verbose_name_plural = _(u'Students')

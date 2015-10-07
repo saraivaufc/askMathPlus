@@ -5,17 +5,17 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 class Item(models.Model):
-    position = models.IntegerField(verbose_name=_("Position"), null=True,blank=True,
-         help_text=_("Choose the position which is item belongs."))
-    description = models.TextField(verbose_name=_("Description"), 
-          help_text=_("Choose a description for item is."))
-    correct = models.BooleanField(verbose_name=_("Is Correct"), default=False, 
-        help_text=_("Say if this item is correct."))
-    deficiencys = models.ManyToManyField('Lesson', verbose_name=_("Deficiencys"), null=True, blank=True,
-        help_text=_("Choose possible deficiencies that the student may have if he opts for this item.")) 
+    position = models.IntegerField(verbose_name=_(u"Position"), null=True,blank=True,
+         help_text=_(u"Choose the position which is item belongs."))
+    description = models.TextField(verbose_name=_(u"Description"), 
+          help_text=_(u"Choose a description for item is."))
+    correct = models.BooleanField(verbose_name=_(u"Is Correct"), default=False, 
+        help_text=_(u"Say if this item is correct."))
+    deficiencys = models.ManyToManyField('Lesson', verbose_name=_(u"Deficiencys"), null=True, blank=True,
+        help_text=_(u"Choose possible deficiencies that the student may have if he opts for this item.")) 
     
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     
     def get_position(self):
@@ -55,5 +55,5 @@ class Item(models.Model):
 
     class Meta:
         ordering = ['position']
-        verbose_name = _("Item")
-        verbose_name_plural = _("Items")
+        verbose_name = _(u"Item")
+        verbose_name_plural = _(u"Items")

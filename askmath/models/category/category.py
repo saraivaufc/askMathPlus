@@ -4,15 +4,15 @@ from django.utils.translation import ugettext as _
 from askMathPlus.settings import generate_color, COLORS_ALL
 
 class Category(models.Model):
-    person = models.ForeignKey('Person', verbose_name=_("Person"))
-    title = models.CharField(verbose_name=_("Title"), max_length=100,
-        help_text=_("Choose a title for the category."))
-    description = models.TextField(verbose_name=_("Description"), max_length=100,null=True, blank=True,
-        help_text=_("Choose a description for the category."))
-    color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
-        help_text=_("Choose a color for the category."))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
+    title = models.CharField(verbose_name=_(u"Title"), max_length=100,
+        help_text=_(u"Choose a title for the category."))
+    description = models.TextField(verbose_name=_(u"Description"), max_length=100,null=True, blank=True,
+        help_text=_(u"Choose a description for the category."))
+    color = models.CharField(verbose_name=_(u'Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
+        help_text=_(u"Choose a color for the category."))
+    creation = models.DateTimeField(verbose_name=_(u'Creation'), default=datetime.now)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_person(self):
         return self.person
@@ -46,5 +46,5 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['title']
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
+        verbose_name = _(u"Category")
+        verbose_name_plural = _(u"Categories")

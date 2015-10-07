@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import sys    # sys.setdefaultencoding is cancelled by site.py
+reload(sys)    # to re-enable sys.setdefaultencoding()
+sys.setdefaultencoding('utf-8')
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.utils.translation import ugettext_lazy as _
@@ -155,7 +159,7 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = (
-     ('pt', _('Portuguese')),
+     ('pt_BR', _('Portuguese Brazilian')),
      ('en', _('English')),
      ('es', _('Spanish')),
 )

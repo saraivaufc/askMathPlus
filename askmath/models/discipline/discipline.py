@@ -5,19 +5,19 @@ from askMathPlus.settings import generate_color, COLORS_ALL
 from askmath.models.lesson import Lesson
 
 class Discipline(models.Model):
-    title = models.CharField(verbose_name=_("Title"), max_length=100,
-        help_text=_("Choose a title for the discipline."))
+    title = models.CharField(verbose_name=_(u"Title"), max_length=100,
+        help_text=_(u"Choose a title for the discipline."))
     
-    responsible = models.CharField(verbose_name=_("Responsible"), max_length=100,null=True, blank=True,
-        help_text=_("Choose responsible for the discipline.") )
+    responsible = models.CharField(verbose_name=_(u"Responsible"), max_length=100,null=True, blank=True,
+        help_text=_(u"Choose responsible for the discipline.") )
     
-    visible = models.BooleanField(verbose_name=_("Visible"), default=False,
-        help_text=_("Select this option to leave visible discipline at all."))
+    visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
+        help_text=_(u"Select this option to leave visible discipline at all."))
 
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
-        help_text=_("Choose a color for the discipline."))
+        help_text=_(u"Choose a color for the discipline."))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
-    exists = models.BooleanField(verbose_name=_("Exists"), default=True)
+    exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_title(self):
         return self.title
@@ -53,5 +53,5 @@ class Discipline(models.Model):
 
     class Meta:
         ordering = ['title']
-        verbose_name = _("Discipline")
-        verbose_name_plural = _("Disciplines")
+        verbose_name = _(u"Discipline")
+        verbose_name_plural = _(u"Disciplines")

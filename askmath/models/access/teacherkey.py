@@ -14,5 +14,5 @@ class TeacherKey(RegisterKey):
         
     class Meta:
         ordering = ['user']
-        verbose_name = _("Teacher Key")
-        verbose_name_plural = _("Teachers Key")
+        verbose_name = _(u"Teacher Key")
+        verbose_name_plural = _(u"Teachers Key")

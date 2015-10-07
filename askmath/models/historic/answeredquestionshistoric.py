@@ -3,14 +3,14 @@ from django.utils.translation import ugettext as _
 from datetime import datetime
 
 class AnsweredQuestionsHistoric(models.Model):
-    discipline = models.ForeignKey('Discipline', verbose_name=_("Discipline"))
-    lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"))
-    question = models.ForeignKey('Question', verbose_name=_("Question"))
-    items = models.ManyToManyField('Item', verbose_name=_("Items"))
-    hit = models.BooleanField(default=False, verbose_name=_("Hit"))
+    discipline = models.ForeignKey('Discipline', verbose_name=_(u"Discipline"))
+    lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"))
+    question = models.ForeignKey('Question', verbose_name=_(u"Question"))
+    items = models.ManyToManyField('Item', verbose_name=_(u"Items"))
+    hit = models.BooleanField(default=False, verbose_name=_(u"Hit"))
     
-    exists= models.BooleanField(default=True, verbose_name=_("Exists"))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
+    creation = models.DateTimeField(verbose_name=_(u"Creation"), default=datetime.now)
     
     def get_discipline(self):
         return self.discipline
@@ -33,5 +33,5 @@ class AnsweredQuestionsHistoric(models.Model):
     
     class Meta:
         ordering = ['-discipline']
-        verbose_name = _("Answered Question Historic")
-        verbose_name_plural = _("Answered Questions Historic")
+        verbose_name = _(u"Answered Question Historic")
+        verbose_name_plural = _(u"Answered Questions Historic")

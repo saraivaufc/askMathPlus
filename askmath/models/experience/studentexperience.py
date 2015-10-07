@@ -3,11 +3,11 @@ from django.utils.translation import ugettext as _
 from datetime import datetime
 
 class StudentExperience(models.Model):
-    student = models.ForeignKey('Student', verbose_name=_("Student"))
-    scores = models.IntegerField(default=0,verbose_name=_("Scores"))
-    max_scores = models.IntegerField(default=10,verbose_name=_("Max Scores"))
-    level = models.IntegerField(default=1,verbose_name=_("Level"))
-    stars = models.IntegerField(default=0,verbose_name=_("Stars"))
+    student = models.ForeignKey('Student', verbose_name=_(u"Student"))
+    scores = models.IntegerField(default=0,verbose_name=_(u"Scores"))
+    max_scores = models.IntegerField(default=10,verbose_name=_(u"Max Scores"))
+    level = models.IntegerField(default=1,verbose_name=_(u"Level"))
+    stars = models.IntegerField(default=0,verbose_name=_(u"Stars"))
     creation = models.DateTimeField(_('Creation'), default=datetime.now)
     exists = models.BooleanField(default=True)
     
@@ -77,5 +77,5 @@ class StudentExperience(models.Model):
 
     class Meta:
         ordering = ['-student']
-        verbose_name = _("Student Experience")
-        verbose_name_plural = _("Student Experiences")
+        verbose_name = _(u"Student Experience")
+        verbose_name_plural = _(u"Student Experiences")

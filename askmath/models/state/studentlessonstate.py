@@ -9,21 +9,21 @@ from datetime import datetime
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
 
 class StudentLessonState(models.Model):
-    student = models.ForeignKey('Student', verbose_name=_("Student"))
-    discipline = models.ForeignKey('Discipline', verbose_name=_("Discipline"))
-    lesson = models.ForeignKey('Lesson', verbose_name=_("Lesson"))
-    scores = models.IntegerField(default=0,verbose_name=_("Scores"))
-    remaining_jump = models.IntegerField(default=0,verbose_name=_("Remaining Jump"))
-    hits_followed = models.IntegerField(default=0, verbose_name=_("Hits Followed"))
-    errors_followed = models.IntegerField(default=0, verbose_name=_("Errors Followed"))
-    percentage_completed= models.IntegerField(default=0, verbose_name=_("Percentage Completed"))
+    student = models.ForeignKey('Student', verbose_name=_(u"Student"))
+    discipline = models.ForeignKey('Discipline', verbose_name=_(u"Discipline"))
+    lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"))
+    scores = models.IntegerField(default=0,verbose_name=_(u"Scores"))
+    remaining_jump = models.IntegerField(default=0,verbose_name=_(u"Remaining Jump"))
+    hits_followed = models.IntegerField(default=0, verbose_name=_(u"Hits Followed"))
+    errors_followed = models.IntegerField(default=0, verbose_name=_(u"Errors Followed"))
+    percentage_completed= models.IntegerField(default=0, verbose_name=_(u"Percentage Completed"))
     
-    answered_correct_questions = models.ManyToManyField('Question',related_name="Answered Correct Questions", verbose_name=_("Answered Questions"), null=True, blank=True)
-    answered_incorrect_questions = models.ManyToManyField('Question',related_name="Answered Incorrect Questions", verbose_name=_("Answered Questions"), null=True, blank=True)
-    skipped_questions = models.ManyToManyField('Question',related_name="Skipped Questions", verbose_name=_("Skipped Questions"), null=True, blank=True)
-    help_questions = models.ManyToManyField('Question',related_name="Help Questions",verbose_name=_("Help Questions"), null=True, blank=True)
+    answered_correct_questions = models.ManyToManyField('Question',related_name="Answered Correct Questions", verbose_name=_(u"Answered Questions"), null=True, blank=True)
+    answered_incorrect_questions = models.ManyToManyField('Question',related_name="Answered Incorrect Questions", verbose_name=_(u"Answered Questions"), null=True, blank=True)
+    skipped_questions = models.ManyToManyField('Question',related_name="Skipped Questions", verbose_name=_(u"Skipped Questions"), null=True, blank=True)
+    help_questions = models.ManyToManyField('Question',related_name="Help Questions",verbose_name=_(u"Help Questions"), null=True, blank=True)
     
-    exists= models.BooleanField(default=True, verbose_name=_("Exists"))
+    exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
     creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
     
     #GETS
@@ -336,5 +336,5 @@ class StudentLessonState(models.Model):
     
     class Meta:
         ordering = ['-discipline']
-        verbose_name = _("Student Lesson State")
-        verbose_name_plural = _("Students Lessons State")
+        verbose_name = _(u"Student Lesson State")
+        verbose_name_plural = _(u"Students Lessons State")
