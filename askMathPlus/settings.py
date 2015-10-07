@@ -159,12 +159,12 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = (
-     ('pt_BR', _('Portuguese Brazilian')),
+     ('pt_BR', _('Brazilian Portuguese')),
      ('en', _('English')),
      ('es', _('Spanish')),
 )
 
-LANGUAGE_CODE = 'pt'
+LANGUAGE_CODE = 'pt_BR'
 
 TIME_ZONE = 'America/Fortaleza'
 

@@ -1,24 +1,26 @@
-/* Facebook */
-if (window.location.hostname !== 'localhost' || true ){
-    (function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4&appId=1609151119355933";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-}
-/* Google Analytics */
-if (window.location.hostname !== 'localhost' || true ){
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-66026376-1', 'auto');
-	  ga('send', 'pageview');
-};
+$(function(){
+	/* Facebook */
+	if (window.location.hostname !== 'localhost' || true ){
+	    (function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4&appId=1609151119355933";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	}
+	/* Google Analytics */
+	if (window.location.hostname !== 'localhost' || true ){
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-66026376-1', 'auto');
+		  ga('send', 'pageview');
+	};
+})
 
 
 /* MathJax */
@@ -68,4 +70,4 @@ PreviewDone: function () {
 	this.SwapBuffers();
 }};
 Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
-Preview.callback.autoReset = true;  // make sure it can run more than once
+Preview.callback.autoReset = true;  // make sure it can run more than once	
