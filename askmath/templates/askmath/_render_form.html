@@ -2,53 +2,47 @@
 
 {% for field in form.visible_fields %}
 	{{ field.errors }}
+	<span class="caption {% if field.field.required %}required{% endif %}">
+		{{ field.label_tag }}
+	</span>
 	{% if field|is_checkbox %}
-		<span class="caption">{{ field.label_tag }}</span>
 		<label class="input-control switch">
 		    {{ field }}
 		    <span class="check"></span>
 		</label>
 	{% elif field|is_radio %}
-		<span class="caption">{{ field.label_tag }}</span>
 		<label class="input-control radio">
 		    {{ field }}
 		    <span class="check"></span>
 		</label>
 	{% elif field|is_select %}
-		<span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control full-size" data-role="select">
 		    {{ field }}
 		</div>
 	{% elif field|is_file %}
-		<span class="caption">{{ field.label_tag }}</span>
 	    {{ field }}
     {% elif field|is_text or field|is_text %}
-	    <span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control text full-size">
 		    {{ field }}
 		</div>
 	{% elif field|is_textarea %}
-	    <span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control textarea full-size">
 		    {{ field }}
 		</div>
 	{% elif field|is_email %}
-		<span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control email full-size">
 		    {{ field }}
 		</div>
 	{% elif field|is_number %}
-		<span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control number">
 		    {{ field }}
 		</div>
 	{% elif field|is_password %}
-	    <span class="caption">{{ field.label_tag }}</span>
 		<div class="input-control password full-size">
 		    {{ field }}
 		</div>
     {% else %}
-
+    	{{ field }}
 	{% endif %}
 	<p class="help">{{ field.field.help_text }}</p>
 {% endfor %}

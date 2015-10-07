@@ -100,7 +100,6 @@
 	</head>
 
 	<body onload="Init(); var a=new EqTextArea(''); a.addExportArea('eqcoderaw','htmledit'); EqEditor.init('1438691334', a,true); EqEditor.ExportButton.add(a, 'copybutton', EqnExport,'htmledit'); EqEditor.load(''); EqEditor.setAdvert(); ">		
-		<div id="fb-root"></div>
 		<div id="site">
 			<header id="header">
 			{% include 'askmath/_no_script.html' %}
@@ -124,8 +123,7 @@
 				</section>
 			</main>
 		</div>
-		{% include "askmath/send_feedback.html"  %}
-		
+	
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 		{% block footer %}
 			{% include 'askmath/_footer.html' %}
@@ -183,5 +181,6 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_config.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_editor-combo-18.js"></script>
 		
+		{% include "askmath/send_feedback.html"  %}
 	</body>
 </html>

@@ -1,10 +1,9 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenInput, FileInput, Select
+from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenInput, ClearableFileInput, Select
 import hashlib
 
 from askmath.models.video import Video
-from askmath.widgets.fields import AdvancedFileInput
 
 
 class VideoForm(ModelForm):
@@ -16,6 +15,7 @@ class VideoForm(ModelForm):
             'position': HiddenInput(attrs={'class':'hidden'}),
             'title': TextInput(attrs={'required': 'required'}),
             'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex'}),
+            'file': ClearableFileInput(attrs={'required': 'required'}),
             'color': Select(attrs={'required': 'required','class':'full-size'}),
             'visible': CheckboxInput(attrs={}),
         }

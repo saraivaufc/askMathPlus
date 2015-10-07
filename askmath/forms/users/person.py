@@ -39,6 +39,7 @@ class PersonProfile(ModelForm):
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),
+			'profile_image': AdvancedFileInput(attrs={}),
 		}
 
 	def clean_profile_image(self):
