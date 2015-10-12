@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
-from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea, NumberInput
+from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea, NumberInput, DateInput, DateTimeInput, URLInput
 
 from .. import register
 
@@ -38,7 +38,20 @@ def is_email(field):
 def is_textarea(field):
     return field.field.widget.__class__.__name__ == Textarea().__class__.__name__
 
-
 @register.filter(name='is_number')
 def is_number(field):
     return field.field.widget.__class__.__name__ == NumberInput().__class__.__name__
+
+@register.filter(name='is_date')
+def is_date(field):
+    return field.field.widget.__class__.__name__ == DateInput().__class__.__name__
+
+
+@register.filter(name='is_datetime')
+def is_datetime(field):
+    return field.field.widget.__class__.__name__ == DateTimeInput().__class__.__name__
+
+
+@register.filter(name='is_url')
+def is_url(field):
+    return field.field.widget.__class__.__name__ == URLInput().__class__.__name__

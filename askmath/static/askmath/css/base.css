@@ -16,14 +16,18 @@ body{
   	background-size: cover;
 }
 
+html, body {
+    height: 100%;
+}
+.page-content {
+    min-height: 100%;
+    height: 100%;
+}
 
 #site{
 	min-height: 100%;
 }
 
-#content{
-	margin-bottom: 20px;
-}
 
 /* DIVIDERS */
 .divider{
@@ -509,6 +513,10 @@ input['text'],input['email'],input['password'], textarea{
     outline: medium none;
 }
 
-span.caption.required{
-	color: red;
+span.required{
+	font-weight: bold;
+}
+
+label.caption{
+	margin-bottom: 0px;
 }

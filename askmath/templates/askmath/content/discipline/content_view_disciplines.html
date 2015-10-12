@@ -14,8 +14,8 @@
         <span class="title">{% trans "Disciplines" %}</span>
     </div>
     <div class="content">
-	    <div class="container-fluid">
-		    <div class="row">
+	 	<div class="tile-area padding5 bg-transparent">
+		    <div class="tile-container">
 			{% for discipline in disciplines %}
 				{% if discipline.get_lessons_visibles %}
 				<div class="tile-wide {{ discipline.color }}">

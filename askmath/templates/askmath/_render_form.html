@@ -1,48 +1,28 @@
+{% load i18n %}
 {% load askmath_tags %}
 
 {% for field in form.visible_fields %}
-	{{ field.errors }}
-	<span class="caption {% if field.field.required %}required{% endif %}">
-		{{ field.label_tag }}
-	</span>
 	{% if field|is_checkbox %}
-		<label class="input-control switch">
-		    {{ field }}
-		    <span class="check"></span>
-		</label>
+		{% include 'askmath/fields/checkbox.html' %}
 	{% elif field|is_radio %}
-		<label class="input-control radio">
-		    {{ field }}
-		    <span class="check"></span>
-		</label>
+		{% include 'askmath/fields/radio.html' %}
 	{% elif field|is_select %}
-		<div class="input-control full-size" data-role="select">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/select.html' %}
 	{% elif field|is_file %}
-	    {{ field }}
-    {% elif field|is_text or field|is_text %}
-		<div class="input-control text full-size">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/file.html' %}
+    {% elif field|is_text  %}
+    	{% include 'askmath/fields/text.html' %}
 	{% elif field|is_textarea %}
-		<div class="input-control textarea full-size">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/textarea.html' %}
 	{% elif field|is_email %}
-		<div class="input-control email full-size">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/email.html' %}
 	{% elif field|is_number %}
-		<div class="input-control number">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/number.html' %}
+	{% elif field|is_date %}
+		{% include 'askmath/fields/date.html' %}
 	{% elif field|is_password %}
-		<div class="input-control password full-size">
-		    {{ field }}
-		</div>
+		{% include 'askmath/fields/password.html' %}
     {% else %}
-    	{{ field }}
+    	{% include 'askmath/fields/field.html' %}
 	{% endif %}
-	<p class="help">{{ field.field.help_text }}</p>
 {% endfor %}

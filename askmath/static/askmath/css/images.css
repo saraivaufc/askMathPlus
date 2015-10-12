@@ -12,3 +12,18 @@
     float: left;
     margin: 0 0 10px 10px;
 }
+
+#sidebar-admin-card{
+}
+
+#sidebar-admin-card > .image-container > .image-title{
+	position: relative;
+	background-color: rgba(0,0,0,0.4);
+	margin-top: -40px;
+	text-align: center;
+	text-shadow: 2px 2px #000;
+	font-weight: bold;
+}
+#sidebar-admin-card > .image-container > .frame > .img{
+	background-color: #FFF;
+}

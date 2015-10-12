@@ -31,28 +31,32 @@ class ProxyHome(IHome):
     def about(self, request):
         try:
             return self.__home.about(request)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
     
     def message(self, request):
         try:
             return self.__home.message(request)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
 
     def terms(self, request):
         try:
             return self.__home.terms(request)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
 
     def policies(self, request):
         try:
             return self.__home.policies(request)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
 
@@ -60,7 +64,8 @@ class ProxyHome(IHome):
     def credits(self, request):
         try:
             return self.__home.credits(request)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)
 
@@ -68,10 +73,12 @@ class ProxyHome(IHome):
     def contents(self, request, id_lesson=None):
         try:
             lesson = Lesson.objects.filter(exists=True, visible=True, id=id_lesson)[0]
-        except:
+        except Exception, e:
+            print e
             lesson = None
         try:
             return self.__home.contents(request, lesson)
-        except:
+        except Exception, e:
+            print e
             messages.error(request,TextMessage.ERROR)
             return self.index(request)

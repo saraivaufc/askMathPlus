@@ -39,6 +39,7 @@ class ProxyAccount(IAccount):
         try:
             return self.__account.alter_password(request)
         except Exception, e:
+            print e
             messages.error(request, TextMessage.ERROR)
         return self.__proxy_home.index(request)    
     

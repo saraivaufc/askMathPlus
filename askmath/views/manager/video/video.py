@@ -40,15 +40,13 @@ class Video(IVideo):
         if request.method == "POST":
             request.POST = request.POST.copy()
             request.POST['lesson'] = lesson.id
-            
             try:
-                print lesson.get_videos_visibles()
                 positions = map(lambda x: x.position, lesson.get_videos())
-            except:
-                positions = [0]
-            if not positions:
-                positions = [0]
-            print positions
+            except Exception, e:
+                print e
+                positions = [0,]
+            if not positions or len(positions):
+                positions = [0,]
             request.POST['position']= max(positions)+1
             form = VideoForm(request.POST, request.FILES)
             if form.is_valid():

@@ -1,11 +1,12 @@
-{% extends 'askmath/index/home.html' %}
+{% extends 'askmath/index/home_authentication.html' %}
 {% load i18n %}
 
-{% block content %}
-	<div>
-	{% block tiles %}
-
-	{% endblock %}
+{% block content_right %}
+	<div class="flex-grid bg-transparent">
+		<div class="tile-container">
+		{% block tiles %}		
+		{% endblock %}
+		</div>
 	</div>
 </div>
 {% endblock %}

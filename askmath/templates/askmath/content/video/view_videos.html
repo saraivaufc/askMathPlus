@@ -22,8 +22,8 @@
 	        <span class="title">{% trans "Videos" %}</span>
 	    </div>
 	    <div class="content">
-	    	<div class="container-fluid">
-	    		<div class="row">
+	    	<div class="tile-area padding5 bg-transparent">
+		    	<div class="tile-container">
 	    			{% for video in videos %}
 				     <div class="tile-wide {{ video.color }}">
 						    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">

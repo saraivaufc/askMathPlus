@@ -1,4 +1,4 @@
-{% extends "askmath/index/home.html" %}
+{% extends 'askmath/index/home_authentication.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
@@ -10,13 +10,13 @@
 	{% include 'askmath/_header.html' %}
 {% endblock %}
 
-{% block content %}
+{% block content_right %}
 <br>
 <div class="container-fluid">
 	<div class="col-md-6">
 	<div class="bg-white-opacity">
 		<center >
-			<div class="image-container bordered" style="width:150px;">
+			<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
 				<div class="frame">
 				{% if person.get_profile_image %}
 					<img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />

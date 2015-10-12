@@ -21,8 +21,10 @@
 			    <div class="content">
 				    <div class="container-fluid">
 					    <div class="row">
-					    {% include "askmath/utils/video/_render_video.html" %}
-						<p class="lead">{{ video.get_description|safe|linebreaksbr }}</p>
+					    	{% include "askmath/utils/video/_render_video.html" %}
+						</div>
+						<div>
+							<p class="lead">{{ video.get_description|safe|linebreaksbr }}</p>
 					    </div>
 					</div>
 				</div>

@@ -32,11 +32,11 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				{% if perms.askmath.access_content %}
 				<li>
 					<div class="container-fluid">
 					<div class="row">
-					{% if perms.askmath.access_content %}
-					<form class="navbar-form pull-left form-search" action="/utils/filter/search/" method="POST" role="search">
+					<form class="navbar-form pull-center form-search" action="/utils/filter/search/" method="POST" role="search">
 					{% csrf_token %}
 						<div class="form-group">
 							<div class="btn-group">
@@ -48,58 +48,15 @@
 							</button>
 						</div>
 					</form>
-					{% endif %}
 					</div>
 					</div>  
 				</li>
+				{% endif %}
 				<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">
 						<img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg">
 					</a>
 				</li>
-				{% if request.user.is_authenticated %}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="icon mif-user"></span> 
-						<strong>{{ request.user.get_username }}</strong>
-						<span class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-					<ul class="dropdown-menu bg-white fg-dark">
-						<li>
-							<div class="navbar-login">
-								<div class="row">
-									<div class="col-lg-4">
-										<p class="text-center">
-											{% if request.user.get_profile_image %}
-											<img class="img" src="{{ request.user.get_profile_image.url }}">
-											{% else %}
-											<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
-											{% endif %}
-										</p>
-									</div>
-									<div class="col-lg-8">
-										<p class="text-left"><strong>{{ request.user.get_name }}</strong></p>
-										<p class="text-left small">{{ request.user.get_email }}</p>
-										<a href="/home/person/account/view/" class="image-button btn btn-block primary">
-											{% trans "View Profile" %}
-											<span class="icon mif-profile bg-darkCobalt"></span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<div class="container-fluid">
-								<a href="/authentication/logout/" class="image-button btn btn-block danger">
-									{% trans "Logout" %}
-									<span class="icon mif-switch bg-darkRed"></span>
-								</a>
-							</div>
-						</li>
-					</ul>
-				</li>
-				{% endif %}
 			</ul>
 		</div>
 	</div>
