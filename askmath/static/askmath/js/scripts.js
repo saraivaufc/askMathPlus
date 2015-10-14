@@ -414,71 +414,11 @@ var isMobile = {
     }
 };
 
-
-
-$(function(){
-	var jPM = $.jPanelMenu({
-	    menu: '#cell-sidebar',
-	    trigger: '#slide'
-	});
-})
-
-
-
-function showControls(){
-    var  charm = $("#charmControls");
-
-    if (charm.data('hidden') == undefined) {charm.data('hidden', true);}
-
-    if (!charm.data('hidden')) {
-
-        charm.animate({
-            right: -300
-        });
-
-        charm.data('hidden', true);
+function showCharm(id){
+    var  charm = $(id).data("charm");
+    if (charm.element.data("opened") === true) {
+        charm.close();
     } else {
-        charm.animate({
-            right: 0
-        });
-        charm.data('hidden', false);
+        charm.open();
     }
 }
-
-
-
-$(function(){
-    var current_tile_area_scheme = localStorage.getItem('tile-area-scheme') || "tile-area-scheme-dark";
-    $(".tile-area").removeClass (function (index, css) {
-        return (css.match (/(^|\s)tile-area-scheme-\S+/g) || []).join(' ');
-    }).addClass(current_tile_area_scheme);
-
-    $(".schemeButtons .button").hover(
-            function(){
-                var b = $(this);
-                var scheme = "tile-area-scheme-" +  b.data('scheme');
-                $(".tile-area").removeClass (function (index, css) {
-                    return (css.match (/(^|\s)tile-area-scheme-\S+/g) || []).join(' ');
-                }).addClass(scheme);
-            },
-            function(){
-                $(".tile-area").removeClass (function (index, css) {
-                    return (css.match (/(^|\s)tile-area-scheme-\S+/g) || []).join(' ');
-                }).addClass(current_tile_area_scheme);
-            }
-    );
-
-    $(".schemeButtons .button").on("click", function(){
-        var b = $(this);
-        var scheme = "tile-area-scheme-" +  b.data('scheme');
-
-        $(".tile-area").removeClass (function (index, css) {
-            return (css.match (/(^|\s)tile-area-scheme-\S+/g) || []).join(' ');
-        }).addClass(scheme);
-
-        current_tile_area_scheme = scheme;
-        localStorage.setItem('tile-area-scheme', scheme);
-
-        showSettings();
-    });
-});

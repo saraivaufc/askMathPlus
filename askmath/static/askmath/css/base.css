@@ -192,11 +192,6 @@ opacity */
 
 /* INPUTS */
 
-input[type=search] {
-  box-sizing: inherit;
-  appearance: textfield;
-}
-
 button[disabled], html input[disabled] {
     cursor: not-allowed;
 }

@@ -1,58 +1,24 @@
-#header > .navbar, #footer > .navbar{
+#header > .h-menu, #footer > .h-menu{
     background-image: none !important;
     background-color:  rgba(0,0,0,0.3); /* browsers */
     color: #fff !important;
     font-weight: bold;
 }
-#header > .navbar  a:hover, #footer > .navbar  a:hover, .navbar-header:hover{
+#header > .h-menu  a:hover, #footer > .h-menu  a:hover, .navbar-header:hover{
     background-color: #5c6bc0;
 }
-#header > .navbar  a.navbar-brand :hover{
-    background-color: none;
+
+.h-menu{
+    color: #fff;
+    border:none;
 }
 
-
-.navbar{
-	margin-bottom: 0px;
-}
-
-.navbar-brand {
-    max-width: 50%;
-    border-radius: 0px;
-}
-
-.navbar-inverse a{
+.h-menu a{
 	color: #fff !important;
 }
 
-
-.navbar-inverse{
-	color: #fff;
-	border:none;
-}
-
-
 .navbar-nav > li > a {
     line-height: inherit;
-}
-
-
-.navbar a{
-	color: #fff;
-}
-
-.navbar-login
-{
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-
-.navbar-login-session
-{
-    padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
 }
 
 .icon-size
@@ -69,25 +35,6 @@
 	width: 20px;
 	height: 20px;
 }
-
-#searchclear {
-    position: absolute;
-    right: 5px;
-    top: 0;
-    bottom: 0;
-    height: 14px;
-    margin: auto;
-    font-size: 14px;
-    cursor: pointer;
-}
-#searchbutton{
-	height: 2.125rem;
-}
-
-.form-search{
-    width: 100%;
-}
-
 
 /* SIDEBAR */
 .sidebar > li{
@@ -111,4 +58,8 @@
 
 #sidebar-admin-card{
     display: block; 
+}
+
+.controls > .image-container{
+    max-width: 225px;
 }

@@ -2,21 +2,21 @@
 {% load askmath_tags %}
 
 <section id="text-about">
-<div class="accordion ">
-	<div class="frame active">
-		<div class="heading">{% trans "Who we are" %}</div>
-		<div class="content  bg-grayLighter">
-			<p class="lead">
-				{% blocktrans %}
-				This project is an initiative of the <abbr title="Tutorial Education Program">PET</abbr> group Information Technology of the Federal University of Ceará.
-				{% endblocktrans %}
-			</p>
-			<figure>
-				<img class="img img-responsive" src="{{ STATIC_URL }}askmath/img/grupo-pet.jpg" alt="{% trans "PET Group Information Technology." %}">
-				<figcaption class="text-center">{% trans "PET Group Information Technology." %}</figcaption>
-			</figure>
-		</div>
+<div class="content  bg-grayLighter">
+	<div class="container-fluid">
+		<p class="lead">
+			{% blocktrans %}
+			This project is an initiative of the <abbr title="Tutorial Education Program">PET</abbr> group Information Technology of the Federal University of Ceará.
+			{% endblocktrans %}
+		</p>
+		<figure>
+			<img class="img img-responsive" src="{{ STATIC_URL }}askmath/img/grupo-pet.jpg" alt="{% trans "PET Group Information Technology." %}">
+			<figcaption class="text-center">{% trans "PET Group Information Technology." %}</figcaption>
+		</figure>
 	</div>
+</div>
+
+<div class="accordion ">
 	<div class="frame">
 		<div class="heading">{%  trans "Objective" %}</div>
 		<div class="content  bg-grayLighter">

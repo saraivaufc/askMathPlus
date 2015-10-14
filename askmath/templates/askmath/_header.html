@@ -1,8 +1,41 @@
 {% load i18n %}
 {% load askmath_tags %}
 
-<div class="charm right-side padding5 bg-grayDark" id="charmControls">
-    <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showControls()"><span class="mif-cross"></span></button>
+
+<ul id="menu-header" class="h-menu">
+	<li>
+		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Controls" %}">
+			<span class="icon mif-lg mif-apps"></span>
+		</a>
+	</li>
+    <li>
+    	<a href="/home/">
+			<span class="icon mif-home"></span> {% trans "Home" %}
+		</a>
+    </li>
+    <li>
+    	<a href="/forum/">
+			<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+		</a>
+    </li>
+    <li>
+    	<a data-toggle="modal" data-target="#modal-shared" href="#">
+			<span class="icon mif-share"></span> {% trans "Shared" %}
+		</a>
+    </li>
+    {% if perms.askmath.access_content %}
+    <form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
+    <li class="place-right no-hovered">
+        <div class="input-control text" style="width: 250px; margin-right: 10px">
+            <input id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
+            <button class="button" type="submit"><span class="mif-search"></span></button>
+        </div>
+    </li>
+    </form>
+    {% endif %}
+</ul>
+
+<div id="charmControls" data-role="charm" data-position="left">
     <hr class="thin"/>
     <div class="controls">
     	<div class="image-container">
@@ -17,7 +50,7 @@
             	<span>{{ request.user.get_short_name }}</span>
             </h3>
         </div>
-        <ul class="sidebar navy">
+        <ul class="sidebar darcula">
 			<li>
 				<a href="/home/person/account/view/">
 					<span class="icon mif-profile"></span>
@@ -123,71 +156,6 @@
 
 
 
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body1">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="/home/" class="navbar-brand" rel="{% trans "Home" %}" itemprop="title">
-				<img style="max-width:100px; margin-top: -7px;" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
-			</a>
-		</div>
-		<div id="footer-body1" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li>
-					<a href="/home/">
-						<span class="icon mif-home"></span> {% trans "Home" %}
-					</a>
-				</li>
-				<li>
-					<a href="/forum/">
-						<span class="icon mif-bubbles"></span> {% trans "Forum" %}
-					</a>
-				</li>
-				<li>
-					<a data-toggle="modal" data-target="#modal-shared" href="#">
-					<span class="icon mif-share"></span> {% trans "Shared" %}
-					</a>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				{% if perms.askmath.access_content %}
-				<li>
-					<div class="container-fluid">
-					<div class="row">
-					<form class="navbar-form pull-center form-search" action="/utils/filter/search/" method="POST" role="search">
-					{% csrf_token %}
-						<div class="form-group">
-							<div class="btn-group">
-								<input  id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
-								<span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
-							</div>
-							<button id="searchbutton" type="submit" class="btn btn-submit bg-darkBlue fg-white pull-right">
-								<span class=" glyphicon glyphicon-search"></span>
-							</button>
-						</div>
-					</form>
-					</div>
-					</div>  
-				</li>
-				{% endif %}
-				<li>
-					<a href="/feed/" alt="{% trans "RSS" %}">
-						<img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg">
-					</a>
-				</li>
-				<li>
-					<a href="#" onclick="showControls();" alt="{% trans "Controls" %}">
-						<span class="icon mif-2x mif-apps"></span>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
 
 <div id="modal-shared" class="modal fade" role="dialog">
   <div class="modal-dialog">
