@@ -4,9 +4,14 @@
     color: #fff !important;
     font-weight: bold;
 }
-#header > .h-menu  a:hover, #footer > .h-menu  a:hover, .navbar-header:hover{
-    background-color: #5c6bc0;
+#header > .h-menu  a:hover, #footer > .h-menu  a:hover{
+    background-color: #888;
 }
+#header > .h-menu  a.logo:hover{
+    background-color: #888 !important;
+}
+
+
 
 .h-menu{
     color: #fff;
@@ -62,4 +67,18 @@
 
 .controls > .image-container{
     max-width: 225px;
+}
+
+#charmControls{
+    display: none;
+}
+
+.logo{
+    min-width:100%; min-height:100%;
+}
+
+.logo > .image-logo{
+    min-width:100%;
+    min-height:100%;
+    padding-top: 7px; 
 }

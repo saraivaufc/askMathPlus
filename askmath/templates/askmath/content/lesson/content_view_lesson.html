@@ -7,33 +7,30 @@
 {% endblock %}
 
 {%  block tiles %}
-<div class="container-fluid">
-	<div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-8">
-	{% block tiles-left %}
-		<div class="container-fluid">
-			<div class="row">
-				<div class="panel width">
-					<div class="heading">
-				        <span class="icon mif-clipboard"></span>
-				        <span class="title">{{ lesson.get_title|title }}</span>
-				    </div>
-				    <div class="content">
-				    	<p class="text-justify lead">
-							{{ lesson.get_description|safe|linebreaksbr }}
-						</p>
-				    </div>
-				</div>
+		<div class="row">
+		{% block tiles-left %}
+			<div class="panel width">
+				<div class="heading text-center">
+			        <span class="icon mif-clipboard text-left"></span>
+			        <span class="title">{{ lesson.get_title|title }}</span>
+			    </div>
+			    <div class="content">
+			    	<p class="text-justify lead">
+						{{ lesson.get_description|safe|linebreaksbr }}
+					</p>
+			    </div>
 			</div>
+		{% endblock %}
 		</div>
-	{% endblock %}
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="row">
 		{% block tiles-rigth %}
 		<div class="panel width">
-			<div class="heading">
-		        <span class="icon mif-play"></span>
+			<div class="heading text-center">
+		        <span class="icon mif-play text-left"></span>
 		        <span class="title">{% trans "Options" %}</span>
 		    </div>
 		    <div class="content">
@@ -75,6 +72,6 @@
 		    </div>
 		</div>
 		{% endblock %}
+		</div>
 	</div>
-</div>
 {% endblock %}

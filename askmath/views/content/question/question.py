@@ -66,7 +66,7 @@ class Question(IQuestion):
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.__proxy_home.index(request)
+            return self.view_initial_details(request, discipline, lesson)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)

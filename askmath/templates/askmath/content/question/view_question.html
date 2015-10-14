@@ -5,27 +5,27 @@
 <div class="container-fluid bg-white-opacity">
 	<hgroup class="text-center">
 		<h3>{% trans "This question worth:" %} <spam id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</spam></h3>
-		<h4>{% trans "Mark <ins>all</ins> the correct items." %}</h4>
+		<h4>{% trans "Mark <ins title='Several items can correct this.'>all</ins> the correct items." %}</h4>
 	</hgroup>
 	
 	<p class="lead text-justify">{{ question.get_position }}). {{ question.get_description|safe|linebreaksbr }}</p>
 	<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
 	<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
 		{% csrf_token %}
-		<ol type="A">
+		<div class="container-fluid">
 			{% for item in question.get_items %}
-				<li>
+				<div class="row">
 					<label class="input-control checkbox small-check">
 					    <input type="checkbox"  name="item" value={{ item.id }}>
 					    <span class="check"></span>
 					    <span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>
 					</label>
-				</li>
+				</div>
 			{% empty %}
 				</ol>
 				<p>{% trans "Not Item Found!!!" %}</p>
 			{% endfor %}
-		</ol>
+		</div>
 		<div id="lower-menu"  class="btn-group btn-group-justified">
 			<div class="btn-group">
 				<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
