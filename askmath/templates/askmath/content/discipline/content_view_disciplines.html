@@ -7,14 +7,13 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="padding10">
 <div class="panel width">
 	<div class="heading">
 		<span class="icon mif-stack"></span>
         <span class="title">{% trans "Disciplines" %}</span>
     </div>
     <div class="content">
-	 	<div class="tile-area padding5 bg-transparent">
+	 	<div class="tile-area no-padding bg-transparent">
 		    <div class="tile-container">
 			{% for discipline in disciplines %}
 				{% if discipline.get_lessons_visibles %}
@@ -38,6 +37,5 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 
 {%  block content_right %}
 
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_lesson %}
 		<a href="/home/manager/lessons/add/" class="image-button button-success">
 			{% trans "Create" %}
@@ -24,8 +24,6 @@
 </div>
 
 {% regroup disciplines by title as discipline_list %}
-
-<div class="tile-area padding10 bg-transparent ">
 	<div class="accordion">
 	{% for discipline in discipline_list %}
 		{% if discipline.list %}
@@ -54,5 +52,4 @@
 		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
 	{% endfor %}
 	</div>
-</div>
 {% endblock %}

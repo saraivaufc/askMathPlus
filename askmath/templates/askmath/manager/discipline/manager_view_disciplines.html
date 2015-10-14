@@ -6,7 +6,7 @@
 {% endblock %}
 
 {%  block content_right %}
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_discipline %}
 		<a href="/home/manager/disciplines/add/" class="image-button button-success">
 			{% trans "Create" %}
@@ -26,7 +26,7 @@
 	{% endif %}
 </div>
 
-<div class="tile-area padding10 bg-transparent">
+<div class="tile-area bg-transparent">
 <div class="tile-container">
 {% for discipline in disciplines %}
 <div class="tile-wide {{ discipline.color }} {% if discipline.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">

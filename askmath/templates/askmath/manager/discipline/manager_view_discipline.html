@@ -9,7 +9,7 @@
 {% endblock %}
 
 {%  block content_right %}
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_discipline %}	
 		<a href="/home/manager/disciplines/edit/discipline={{ discipline.id }}/" class="image-button button-primary">
 			{% trans "Edit" %}

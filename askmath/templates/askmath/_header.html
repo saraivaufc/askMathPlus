@@ -1,6 +1,128 @@
 {% load i18n %}
 {% load askmath_tags %}
 
+<div class="charm right-side padding5 bg-grayDark" id="charmControls">
+    <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showControls()"><span class="mif-cross"></span></button>
+    <hr class="thin"/>
+    <div class="controls">
+    	<div class="image-container">
+            <div class="frame">
+            	{% if request.user.get_profile_image %}
+				<img class="img" src="{{ request.user.get_profile_image.url }}">
+				{% else %}
+				<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
+				{% endif %}
+            </div>
+            <h3 class="image-title fg-white text-center">
+            	<span>{{ request.user.get_short_name }}</span>
+            </h3>
+        </div>
+        <ul class="sidebar navy">
+			<li>
+				<a href="/home/person/account/view/">
+					<span class="icon mif-profile"></span>
+					<span class="title">{% trans "Profile" %}</span>
+				</a>
+			</li>
+			{% if perms.askmath.access_manager %}
+			<li>
+                <a class="dropdown-toggle" href="#">
+                	<span class="icon mif-tree"></span>
+                	<span class="title">{% trans "Contents" %}</span>
+                </a>
+                <ul class="d-menu" data-role="dropdown">
+                    {% if perms.askmath.access_manager_discipline %}
+					{% block discipline %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/disciplines/view/">
+							<span class="icon mif-stack2"></span>
+							<span class="title">{% trans "Disciplines" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_lesson %}
+					{% block lesson %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/lessons/view/">
+							<span class="icon mif-clipboard"></span>
+							<span class="title">{% trans "Lessons" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_question %}
+					{% block question %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/questions/choose_lesson/">
+							<span class="mif-list-numbered icon"></span>
+							<span class="title">{% trans "Questions" %}</span>
+						</a>
+					</li>
+					{% endif %}
+					{% if perms.askmath.access_manager_video %}
+					{% block video %}
+					<li>
+					{% endblock %}
+						<a href="/home/manager/videos/choose_lesson/">
+							<span class="icon mif-film"></span>
+							<span class="title">{% trans "Videos" %}</span>
+						</a>
+					</li>
+					{% endif %}
+                </ul>
+            </li>
+			{% endif %}
+			
+			{% if perms.askmath.access_manager_statistics %}
+			{% block statistic %}
+			<li>
+			{% endblock %}
+				<a href="/home/manager/statistics/choose_type/">
+					<span class="icon mif-chart-line"></span>
+					<span class="title">{% trans "Statistics" %}</span>
+				</a>
+			</li>
+			{% endif %}
+			{% if perms.askmath.access_manager_message %}
+			{% block message %}
+			<li>
+			{% endblock %}
+				<a href="/home/manager/messages/view/">
+					<span class="icon mif-envelop"></span>
+					<span class="title">{% trans "Messages" %}</span>
+				</a>
+			</li>
+			{% endif %}
+			{% if perms.askmath.access_manager_person %}
+			{% block person %}
+			<li>
+			{% endblock %}
+				<a href="/home/manager/persons/choose_person_types/">
+					<span class="icon mif-users"></span>
+					<span class="title">{% trans "Persons" %}</span>
+				</a>
+			</li>
+			{% endif %}
+			<li>
+				<a href="/help/">
+					<span class="icon mif-flag"></span>
+					<span class="title">{% trans "Help" %}</span>
+				</a>
+			</li>
+			<li>
+				<a href="/authentication/logout/">
+					<span class="icon mif-switch"></span>
+					<span class="title">{% trans "Logout" %}</span>
+				</a>
+			</li>
+		</ul>
+    </div>
+</div>
+
+
+
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -55,6 +177,11 @@
 				<li>
 					<a href="/feed/" alt="{% trans "RSS" %}">
 						<img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="#" onclick="showControls();" alt="{% trans "Controls" %}">
+						<span class="icon mif-2x mif-apps"></span>
 					</a>
 				</li>
 			</ul>

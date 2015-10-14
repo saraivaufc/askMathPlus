@@ -9,7 +9,7 @@
 {% endblock %}
 
 {%  block content_right %}
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_message %}
 		{% if message_model.exists %}
 		<a href="/home/manager/messages/remove/message={{ message_model.id }}/" class="image-button button-danger">

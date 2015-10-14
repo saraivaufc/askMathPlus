@@ -1,6 +1,6 @@
 #header > .navbar, #footer > .navbar{
     background-image: none !important;
-    background-color:  #3F51B5; /* browsers */
+    background-color:  rgba(0,0,0,0.3); /* browsers */
     color: #fff !important;
     font-weight: bold;
 }
@@ -89,9 +89,23 @@
 }
 
 
+/* SIDEBAR */
+.sidebar > li{
+    padding-left: 10px;
+}
+.sidebar > li > a > .title{
+    vertical-align: middle;
+    padding: none !important;
+}
+
+@media screen and (max-width: 800px){
+    #cell-sidebar {
+        flex-basis: 52px;
+    }
+}
+
 #cell-sidebar{
     min-height: 100% !important;
-    background-color: #0072C6 !important;
 }
 
 

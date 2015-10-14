@@ -28,8 +28,7 @@
 /* END TILES */
 
 .charm.right-side {
-	width: 300px;
-	right: -300px;
+	width: 225px;
 }
 
 #charmSettings .button {
@@ -251,17 +250,6 @@ ul#menu-options > li > a {
 	border-radius: 0px;
 }
 
-/* SIDEBAR */
-.sidebar > li{
-	padding-left: 10px;
-}
-.sidebar > li > a > .title{
-	vertical-align: middle;
-	padding: none !important;
-}
-
-@media screen and (max-width: 800px){
-    #cell-sidebar {
-        flex-basis: 52px;
-    }
+#charmControls{
+	overflow-y: auto !important; 
 }

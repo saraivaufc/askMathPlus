@@ -9,9 +9,22 @@
 	<div class="flex-grid no-responsive-future" style="height: 100%;">
 		<div class="container-fluid">
 		<div class="row" style="height: 100%">
+			<div class="cell auto-size" style="height: 100%">
+				<div class="padding10">
+					<ul class="breadcrumbs2">
+					    {% block breadcrumbs %}
+					    <li><a href="/home/"><span class="icon mif-home"></span></a></li>
+						{% endblock %}
+					</ul>
+					{% block content_right %}
+					{% endblock %}
+				</div>
+			</div>
+
+			{% comment %}
 			{% block content_left %}
-			<div class="cell size-x200 hidden-xs"  id="cell-sidebar" style="height:100%;">
-				<div id="sidebar-admin-card">
+			<div class="cell  hidden-xs"  id="cell-sidebar" style="height:100%;">
+				<!-- <div id="sidebar-admin-card">
 					<div class="image-container">
 	                    <div class="frame">
 	                    	{% if request.user.get_profile_image %}
@@ -24,122 +37,10 @@
 	                    	<span>{{ request.user.get_short_name }}</span>
 	                    </div>
 	                </div>
-				</div>
-				<ul class="sidebar navy">
-					<li>
-						<a href="/home/person/account/view/">
-							<span class="icon mif-profile"></span>
-							<span class="title">{% trans "Profile" %}</span>
-						</a>
-					</li>
-					{% if perms.askmath.access_manager %}
-					<li>
-	                    <a class="dropdown-toggle" href="#">
-	                    	<span class="icon mif-tree"></span>
-	                    	<span class="title">{% trans "Contents" %}</span>
-	                    </a>
-	                    <ul class="d-menu" data-role="dropdown">
-	                        {% if perms.askmath.access_manager_discipline %}
-							{% block discipline %}
-							<li>
-							{% endblock %}
-								<a href="/home/manager/disciplines/view/">
-									<span class="icon mif-stack2"></span>
-									<span class="title">{% trans "Disciplines" %}</span>
-								</a>
-							</li>
-							{% endif %}
-							{% if perms.askmath.access_manager_lesson %}
-							{% block lesson %}
-							<li>
-							{% endblock %}
-								<a href="/home/manager/lessons/view/">
-									<span class="icon mif-clipboard"></span>
-									<span class="title">{% trans "Lessons" %}</span>
-								</a>
-							</li>
-							{% endif %}
-							{% if perms.askmath.access_manager_question %}
-							{% block question %}
-							<li>
-							{% endblock %}
-								<a href="/home/manager/questions/choose_lesson/">
-									<span class="mif-list-numbered icon"></span>
-									<span class="title">{% trans "Questions" %}</span>
-								</a>
-							</li>
-							{% endif %}
-							{% if perms.askmath.access_manager_video %}
-							{% block video %}
-							<li>
-							{% endblock %}
-								<a href="/home/manager/videos/choose_lesson/">
-									<span class="icon mif-film"></span>
-									<span class="title">{% trans "Videos" %}</span>
-								</a>
-							</li>
-							{% endif %}
-	                    </ul>
-	                </li>
-					{% endif %}
-					
-					{% if perms.askmath.access_manager_statistics %}
-					{% block statistic %}
-					<li>
-					{% endblock %}
-						<a href="/home/manager/statistics/choose_type/">
-							<span class="icon mif-chart-line"></span>
-							<span class="title">{% trans "Statistics" %}</span>
-						</a>
-					</li>
-					{% endif %}
-					{% if perms.askmath.access_manager_message %}
-					{% block message %}
-					<li>
-					{% endblock %}
-						<a href="/home/manager/messages/view/">
-							<span class="icon mif-envelop"></span>
-							<span class="title">{% trans "Messages" %}</span>
-						</a>
-					</li>
-					{% endif %}
-					{% if perms.askmath.access_manager_person %}
-					{% block person %}
-					<li>
-					{% endblock %}
-						<a href="/home/manager/persons/choose_person_types/">
-							<span class="icon mif-users"></span>
-							<span class="title">{% trans "Persons" %}</span>
-						</a>
-					</li>
-					{% endif %}
-					<li>
-						<a href="/help/">
-							<span class="icon mif-flag"></span>
-							<span class="title">{% trans "Help" %}</span>
-						</a>
-					</li>
-					<li>
-						<a href="/authentication/logout/">
-							<span class="icon mif-switch"></span>
-							<span class="title">{% trans "Logout" %}</span>
-						</a>
-					</li>
-				</ul>
+				</div> -->
 				</div>
 			{% endblock %}
-			
-			<div class="cell auto-size" style="height: 100%">
-				<div class="padding10">
-					<ul class="breadcrumbs2">
-					    {% block breadcrumbs %}
-					    <li><a href="/home/"><span class="icon mif-home"></span></a></li>
-						{% endblock %}
-					</ul>
-				</div>
-				{% block content_right %}
-				{% endblock %}
-			</div>
+			{% endcomment %}
 		</div>
 		</div>
 	</div>
