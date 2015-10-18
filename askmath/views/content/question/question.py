@@ -17,19 +17,21 @@ from .iquestion import IQuestion
 from django.utils.translation import ugettext_lazy as _
 from askmath.entities import ExperienceLevel
 from askmath.views.index import ProxyHome
+from askmath.views.content.lesson import ProxyLesson
 
 
 class Question(IQuestion):
     def __init__(self):
         self.__proxy_home = ProxyHome()
-    
-    def view_initial_details(self, request, discipline, lesson):
+        self.__proxy_lesson = ProxyLesson()
+
+    def view_question(self, request, discipline, lesson, question=None):
         try:
             student = StudentModel.objects.get(id = request.user.id)
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.__proxy_home.index(request)
+            return self.__proxy_lesson.view_lesson(request, discipline.id, lesson.id)
         
         try:
             studentexperience = StudentExperience.objects.get(student = student, exists=True)
@@ -51,29 +53,6 @@ class Question(IQuestion):
             print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
-            
-        
-        studentlessonstate.update()
-            
-        return render(request, "askmath/content/question/view_initial_details.html",
-            {'request': request, 'discipline': discipline, 'lesson': lesson,
-             'experience_level': experience_level, 'studentlessonstate': studentlessonstate,'studentexperience': studentexperience})
-    
-    
-    def view_question(self, request, discipline, lesson, question=None):
-        try:
-            student = StudentModel.objects.get(id = request.user.id)
-        except Exception, e:
-            print e
-            messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.view_initial_details(request, discipline, lesson)
-        
-        try:
-            studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
-        except Exception, e:
-            print e
-            studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
-            studentlessonstate.save()
         
         studentlessonstate.update()
         
@@ -81,13 +60,12 @@ class Question(IQuestion):
         question = studentlessonstate.get_question(question, True)
         
         if not question:
-            # Licao Concluida
-            messages.success(request, TextMessage.LESSON_SUCCESS_COMPLETED)
-            return self.view_initial_details(request, discipline, lesson)
-        
+            lesson_complete = True
+        else:
+            lesson_complete = False
         return render(request, "askmath/content/question/view_question.html",
             {'request': request, 'discipline': discipline, 'lesson': lesson,
-             'studentlessonstate': studentlessonstate,'question': question})
+             'studentlessonstate': studentlessonstate,'lesson_complete': lesson_complete ,'experience_level': experience_level,'question': question})
     
     def answer_question(self,request, discipline, lesson, question, items):
         if request.method == 'POST':
@@ -96,7 +74,7 @@ class Question(IQuestion):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_NOT_FOUND)
-                return self.view_initial_details(request, discipline, lesson)
+                return self.__proxy_lesson.view_lesson(request, discipline.id, lesson.id)
             try:
                 studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
             except Exception, e:
@@ -162,7 +140,7 @@ class Question(IQuestion):
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.view_initial_details(request, discipline, lesson)    
+            return self.__proxy_lesson.view_lesson(request, discipline.id, lesson.id)   
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
@@ -176,7 +154,7 @@ class Question(IQuestion):
         studentlessonstate.delete()
         messages.success(request, TextMessage.LESSON_SUCCESS_RESET)
         studentexperience.down_scores(studentexperience.get_scores()/2)
-        return self.view_initial_details(request, discipline, lesson)
+        return self.view_question(request, discipline, lesson)
     
     def help_quetion(self,request, discipline, lesson, question):
         try:

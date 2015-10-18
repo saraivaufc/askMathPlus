@@ -23,30 +23,6 @@ class ProxyQuestion(IQuestion):
         self.__proxy_home = ProxyHome()
     
     @method_decorator(login_required)
-    def view_initial_details(self, request, id_discipline, id_lesson):
-        if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
-            try:
-                discipline = CategoryModel.objects.filter(id = id_discipline, exists=True,visible=True)[0]
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-                return self.__proxy_home.index(request)
-            try:
-                lesson = ContactModel.objects.filter(id = id_lesson, exists=True,visible=True)[0]
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.LESSON_NOT_FOUND)
-                return self.__proxy_home.index(request)
-            try:
-                return self.__question.view_initial_details(request, discipline, lesson)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR)
-        else:
-            messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.__proxy_home.index(request)
-    
-    @method_decorator(login_required)
     def view_question(self, request, id_discipline, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_content"):
             try:

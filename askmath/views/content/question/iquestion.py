@@ -1,8 +1,5 @@
 class IQuestion():
     
-    def view_initial_details(self):
-        pass
-    
     def view_finale_details(self):
         pass
     
