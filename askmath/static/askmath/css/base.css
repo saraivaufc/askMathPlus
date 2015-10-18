@@ -516,3 +516,12 @@ span.required{
 label.caption{
 	margin-bottom: 0px;
 }
+
+
+.list-group > .list-group-item{
+	color:  #000;
+}
+
+.no-hover:hover{
+	background-color: transparent !important;
+}

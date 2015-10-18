@@ -8,7 +8,7 @@
 
 {% block tiles %}
 <div class="tile-area no-padding bg-transparent">
-    <div class="tile-container">
+	<div class="tile-container">
 	{% for discipline in disciplines %}
 		{% if discipline.get_lessons_visibles %}
 		<div class="tile-wide {{ discipline.color }}">

@@ -64,28 +64,58 @@ class StudentLessonState(models.Model):
     def get_help_questions(self):
         return self.help_questions.filter(exists=True, visible=True)
     
-    def get_question(self):
-        questions_all = set(self.lesson.get_questions_visibles())
-        answered_correct_questions = set(self.get_answered_correct_questions())
-        answered_incorrect_questions = set(self.get_answered_incorrect_questions())
-        skipped_questions = set(self.get_skipped_questions())
+    def get_question(self,last_question=None, definitive=False):
+        print "\nLasta question:", last_question
+        questions_all = list(self.lesson.get_questions_visibles())
+        print "QUestions ALL:", questions_all
+        answered_correct_questions = list(self.get_answered_correct_questions()) 
+        print "Questoes corretas:", answered_correct_questions
+        answered_incorrect_questions = list(self.get_answered_incorrect_questions())
+        print "QUestoes incorretas:", answered_incorrect_questions
+        skipped_questions = list(self.get_skipped_questions())
+        print "Questoes Saltos:", skipped_questions
         
-        questions_remaining = ((questions_all.difference(answered_correct_questions)).difference(answered_incorrect_questions)).difference(skipped_questions)
+        questions_all = set(questions_all)
+        answered_correct_questions = set(answered_correct_questions)
+        answered_incorrect_questions = set(answered_incorrect_questions)
+        skipped_questions = set(skipped_questions)
+        last_question_list = set([last_question,])
+        
+        questions_remaining = (((questions_all.difference(answered_correct_questions)).difference(answered_incorrect_questions)).difference(skipped_questions)).difference(last_question_list);
+        
+        if last_question in skipped_questions: skipped_questions.remove(last_question)
+        if last_question in answered_incorrect_questions: answered_incorrect_questions.remove(last_question) 
+        
         questions = None
         if questions_remaining:
+            print "Se tiver questoes restantes para serem respondidas..."
             questions = list(questions_remaining)
-        elif skipped_questions:
+        elif skipped_questions and not answered_incorrect_questions:
+            print "Se existir mais de duas questoes saltadas e nenhuma que foi respondida incorretamente..."
             questions = list(skipped_questions)
-        elif answered_incorrect_questions:
+        elif answered_incorrect_questions and not skipped_questions:
+            print "Se existir mais de duas questoes que foram respondidas incorretamente e nao existir nenhuma que foi saltada"
             questions = list(answered_incorrect_questions)
-        
+        elif skipped_questions and answered_incorrect_questions:
+            print "cobra"
+            questions = list(skipped_questions)
+        elif not skipped_questions and not answered_incorrect_questions and last_question in answered_correct_questions:
+            print "Se não existir mais nenhuma questao saltada e nem que foi respondida errada e a questao en questao ja tiver sido resolvida"    
+            return None
+        elif not skipped_questions and not answered_incorrect_questions and not last_question in answered_correct_questions:
+            print "javali"    
+            questions = [last_question,]
+            
         if questions:      
             questions.sort()
             question = questions[0]
-            if question in self.get_skipped_questions():
-                self.remove_skipped_question(question) 
+            if question in self.get_skipped_questions() and definitive:
+                self.remove_skipped_question(question)
+                print "Cavalo7"
+            print "Cavalo9"
             return question
         else:
+            print "Cavalo9"
             return None
     
     
@@ -129,7 +159,7 @@ class StudentLessonState(models.Model):
     
     def add_answered_correct_question(self, question):
         #Se a licao ja tiver sido concluida
-        if not self.get_question():
+        if not self.get_question(question):
             return
         
         #Se a questao ja tinha sido respondida corretamente antes
@@ -155,7 +185,7 @@ class StudentLessonState(models.Model):
     
     def add_answered_incorrect_question(self, question):
         #Se a licao ja tiver sido concluida
-        if not self.get_question():
+        if not self.get_question(question):
             return
         
         #Se a quesao ja tinha sido respondida corretamente antes
@@ -178,7 +208,7 @@ class StudentLessonState(models.Model):
     
     def add_skipped_question(self,request, question):
         #Se a licao ja tiver sido concluida
-        if not self.get_question():
+        if not self.get_question(question):
             messages.success(request, TextMessage.LESSON_SUCCESS_COMPLETED)
             return
         
@@ -195,14 +225,12 @@ class StudentLessonState(models.Model):
         #Se a questao ja tinha sido respondida incorretamente antes
         if question in self.get_answered_incorrect_questions():
             self.remove_answered_incorrect_questions(question)
-            
         self.skipped_questions.add(question)
         self.save_skipped_question_historic(question)
         self.down_remaining_jump()
         self.save()
-        
-        if self.get_question() == question:
-            messages.error(request, TextMessage.QUESTION_ERROR_JUMP)
+        if self.get_question(question) == question:
+            messages.warning(request, TextMessage.QUESTION_IMPOSSIBLE_JUMP)
             return
         else:
             messages.success(request, TextMessage.QUESTION_SUCCESS_JUMP)
@@ -305,6 +333,7 @@ class StudentLessonState(models.Model):
                                                            question = question)
             skipped_questions.save()
             student_historic.skipped_questions_historic.add(skipped_questions)
+            student_historic.save()
         except Exception, e:
             print e
             return

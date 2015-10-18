@@ -8,11 +8,11 @@
 		<h4>{% trans "Mark <ins title='Several items can correct this.'>all</ins> the correct items." %}</h4>
 	</hgroup>
 	
-	<p class="lead text-justify">{{ question.get_position }}). {{ question.get_description|safe|linebreaksbr }}</p>
+	<div class="container-fluid">
+	<p class="lead text-justify">{{ question.get_description|safe|linebreaksbr }}</p>
 	<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
 	<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
 		{% csrf_token %}
-		<div class="container-fluid">
 			{% for item in question.get_items %}
 				<div class="row">
 					<label class="input-control checkbox small-check">
@@ -25,7 +25,7 @@
 				</ol>
 				<p>{% trans "Not Item Found!!!" %}</p>
 			{% endfor %}
-		</div>
+	</div>
 		<div id="lower-menu"  class="btn-group btn-group-justified">
 			<div class="btn-group">
 				<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>

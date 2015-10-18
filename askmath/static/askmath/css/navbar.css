@@ -8,7 +8,7 @@
     background-color: #888;
 }
 #header > .h-menu  a.logo:hover{
-    background-color: #888 !important;
+    background-color: #888;
 }
 
 
@@ -74,7 +74,9 @@
 }
 
 .logo{
-    min-width:100%; min-height:100%;
+    min-width:100%; 
+    min-height:100%;
+    margin-left: 0px;
 }
 
 .logo > .image-logo{
@@ -82,3 +84,4 @@
     min-height:100%;
     padding-top: 7px; 
 }
+

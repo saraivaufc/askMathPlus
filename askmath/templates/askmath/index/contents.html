@@ -8,33 +8,27 @@
 {% endblock %}
 
 {% block content %}
-
-<section>
+<section class="padding10">
 <div class="container-fluid">
 	<div class="row">
-	    <div class="accordion padding10">
-			{% for discipline in disciplines %}
-			{% if discipline.get_lessons_visibles|length > 0 %}
-			<div class="frame active">
-	            <div class="heading">{{ discipline|title }}</div>
-	            <div class="content">
-	            	<div class="tile-container">
-						{% for lesson in discipline.get_lessons_visibles %}
-							<a href="/contents/lesson={{ lesson.id }}/" class="tile-wide {{ lesson.color }} fg-white">
-							    <div class="tile-content iconic">
-							        <span class="icon mif-clipboard"></span>
-							        <span class="tile-label">{{ lesson.get_title }}</span>
-							    </div>
-							</a>
-						{% endfor %}
-					</div>
-	            </div>
-	        </div>
-			{% endif %}
-			{% empty %}
-				<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
-			{% endfor %}
-		</div>
+		{% for discipline in disciplines %}
+		{% if discipline.get_lessons_visibles|length > 0 %}
+			<h4 class="fg-white">{{ discipline|title }}</h4>
+        	<div class="tile-container">
+				{% for lesson in discipline.get_lessons_visibles %}
+					<a href="/contents/lesson={{ lesson.id }}/" class="tile-wide {{ lesson.color }} fg-white">
+					    <div class="tile-content iconic">
+					        <span class="icon mif-clipboard"></span>
+					        <span class="tile-label">{{ lesson.get_title }}</span>
+					    </div>
+					</a>
+				{% endfor %}
+			</div>
+			<br />
+		{% endif %}
+		{% empty %}
+			<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+		{% endfor %}
 	</div>
 </div>
 </section>

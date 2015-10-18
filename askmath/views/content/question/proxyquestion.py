@@ -133,11 +133,11 @@ class ProxyQuestion(IQuestion):
                 print e
                 messages.error(request, TextMessage.QUESTION_NOT_FOUND)
                 return self.view_question(request, id_discipline, id_lesson)
-            try:
-                return self.__question.jump_question(request, discipline, lesson, question)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR)
+#             try:
+            return self.__question.jump_question(request, discipline, lesson, question)
+#             except Exception, e:
+#                 print e
+#                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_question(request, id_discipline, id_lesson)

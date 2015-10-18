@@ -2,14 +2,16 @@
 {% load askmath_tags %}
 
 <ul id="menu-header" class="h-menu">
+	{% if request.user.is_authenticated %}
 	<li>
 		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Controls" %}">
 			<span class="icon mif-lg mif-menu"></span>
 		</a>
 	</li>
-	<li class="no-padding">
-		<a href="/home/"  class="logo no-padding no-margin" rel="{% trans "Home" %}"  itemprop="title">
-			<img class="image-logo no-margin" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
+	{% endif %}
+	<li>
+		<a href="/home/"  class="logo no-padding" rel="{% trans "Home" %}"  itemprop="title">
+			<img class="image-logo no-margin no-hover" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
 		</a>
 	</li>
     <li>
@@ -20,6 +22,11 @@
     <li>
     	<a href="/forum/">
 			<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+		</a>
+    </li>
+    <li>
+    	<a data-toggle="modal" data-target="#modal-shared" href="#">
+			<span class="icon mif-share"></span> {% trans "Shared" %}
 		</a>
     </li>
     {% if perms.askmath.access_content %}
@@ -34,6 +41,7 @@
     {% endif %}
 </ul>
 
+{% if request.user.is_authenticated %}
 <div id="charmControls" data-role="charm" data-position="left">
     <hr class="thin"/>
     <div class="controls">
@@ -140,10 +148,11 @@
 					</li>
 					{% endif %}
 					<li>
-				    	<a data-toggle="modal" data-target="#modal-shared" href="#">
-							<span class="icon mif-share"></span> {% trans "Shared" %}
+						<a href="/help/">
+							<span class="icon mif-chart-line"></span>
+							<span class="title">{% trans "Performance" %}</span>
 						</a>
-				    </li>
+					</li>
 					<li>
 						<a href="/help/">
 							<span class="icon mif-flag"></span>
@@ -161,6 +170,7 @@
 		</div>
     </div>
 </div>
+{% endif %}
 
 
 

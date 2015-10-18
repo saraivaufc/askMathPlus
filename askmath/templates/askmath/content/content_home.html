@@ -1,9 +1,13 @@
 {% extends 'askmath/index/home_authentication.html' %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+	<li><a href="/home/"><span class="icon mif-home"></span></a></li>
+{% endblock %}
+
 {% block content_right %}
 	<div class="flex-grid bg-transparent">
-		<div class="tile-container fg-white">
+		<div class="tile-container">
 		{% block tiles %}		
 		{% endblock %}
 		</div>

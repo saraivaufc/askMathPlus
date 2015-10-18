@@ -77,8 +77,8 @@ class Question(IQuestion):
         
         studentlessonstate.update()
         
-        if not question:
-            question = studentlessonstate.get_question()
+        print "Pegar questao:"
+        question = studentlessonstate.get_question(question, True)
         
         if not question:
             # Licao Concluida
@@ -110,15 +110,16 @@ class Question(IQuestion):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.METHOD_NOT_POST)
-        return self.view_question(request, discipline, lesson, None)
+        return self.view_question(request, discipline, lesson, question)
     
     def jump_question(self,request, discipline, lesson, question):
+        print "Questao a ser saltada:",question
         try:
             student = StudentModel.objects.get(id = request.user.id)
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.view_question(request, discipline, lesson,None)
+            return self.view_question(request, discipline, lesson,question)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
@@ -134,7 +135,7 @@ class Question(IQuestion):
                 messages.warning(request, TextMessage.QUESTION_ERROR_JUMP)
         else:
             messages.warning(request, TextMessage.LESSON_NOT_REMAINING_JUMPS)
-        return self.view_question(request, discipline, lesson,None)
+        return self.view_question(request, discipline, lesson,question)
     
     def choose_skipped_question(self,request, discipline, lesson, question):
         try:
@@ -142,7 +143,7 @@ class Question(IQuestion):
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.view_question(request, discipline, lesson,None)
+            return self.view_question(request, discipline, lesson,question)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
@@ -183,7 +184,7 @@ class Question(IQuestion):
         except Exception, e:
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
-            return self.view_question(request, discipline, lesson,None)
+            return self.view_question(request, discipline, lesson,question)
         
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)

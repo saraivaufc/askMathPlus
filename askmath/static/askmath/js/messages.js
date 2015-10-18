@@ -5,8 +5,8 @@ $(function(){
 		    theme: 'relax',
 		    type: $(this).attr("value"),
 		    animation: {
-		        open: 'animated fadeInLeft', // Animate.css class names
-		        close: 'animated flipOutX', // Animate.css class names
+		        open: 'animated bounceInUp', // Animate.css class names
+		        close: 'animated bounceOutDown', // Animate.css class names
 		    }
 		});
 	});

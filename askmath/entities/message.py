@@ -98,6 +98,7 @@ class TextMessage():
  	QUESTION_SUCCESS_JUMP = _(u"Jump realization with successfully.")
  	QUESTION_JUMP = _(u"Question is jump.")
  	QUESTION_ERROR_JUMP = _(u"Question error in jump.")
+ 	QUESTION_IMPOSSIBLE_JUMP = _(u"Impossible to make the leap.")
  	
  	QUESTION_NOT_FOUND_IN_LESSON = _(u"Question not found in lesson.")
  	
