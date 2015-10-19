@@ -59,7 +59,7 @@ class Question(IQuestion):
         print "Pegar questao:"
         question = studentlessonstate.get_question(question, True)
         
-        if not question:
+        if not question and len(lesson.get_questions_visibles()) > 0:
             lesson_complete = True
         else:
             lesson_complete = False

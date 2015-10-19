@@ -570,3 +570,11 @@ label.caption{
 	background-color: #FFA500;
 	color: #fff;
 }
+
+#question_status{
+	font-weight: bold;
+}
+
+.jumbotron{
+	border-radius: 0px !important; 
+}

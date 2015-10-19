@@ -18,18 +18,20 @@
 	<div class="container">
 	{% else %}
 	<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
-		<div class="row">
-		{% endif %}
+	{% endif %}
 		{% block container-left %}
-			<div class="container-fluid bg-white-opacity">
-				<div class="">
-					<div class="meter">
-					  <span class="text-center fg-white" style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
+			<div class="bg-white-opacity">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="meter">
+						  <span class="text-center fg-white" style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
+						</div>
 					</div>
 				</div>
-				<div class="">
-					<div class="flex-just-center">
-						<table class="table table-bordered table-condensed text-center">
+
+				<div class="container-fluid">
+					<div class="row">
+						<table id="question_status" class="table table-bordered table-condensed text-center no-margin">
 							<tr>
 								<td>{% trans "Scores" %} : {{ studentlessonstate.get_scores }}</td>
 								<td>{% trans "Correct Questions" %} : {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
@@ -39,56 +41,75 @@
 					</div>
 				</div>
 				{% if question and lesson_complete == False %}
-				<div class="">
-					<p class="lead text-justify">
-						{{ question.get_description|safe|linebreaksbr }} <span id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</span>
-					</p>
-					<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
-					<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
-						{% csrf_token %}
-							{% for item in question.get_items %}
-								<div class="row">
-									<label class="input-control checkbox small-check">
-									    <input type="checkbox"  name="item" value={{ item.id }}>
-									    <span class="check"></span>
-									    <span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>
-									</label>
+				<div class="container-fluid">
+					<div class="row">
+						<p class="lead text-justify">
+							{{ question.get_description|safe|linebreaksbr }} <span id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</span>
+						</p>
+						<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
+						<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
+							{% csrf_token %}
+								{% for item in question.get_items %}
+									<div class="row">
+										<label class="input-control checkbox small-check">
+										    <input type="checkbox"  name="item" value={{ item.id }}>
+										    <span class="check"></span>
+										    <span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>
+										</label>
+									</div>
+								{% empty %}
+									<p>{% trans "Not Item Found!!!" %}</p>
+								{% endfor %}
+							<div id="lower-menu"  class="btn-group btn-group-justified">
+								<div class="btn-group">
+									<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
+							  	</div>
+							  	<div class="btn-group">
+							  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></a>
 								</div>
-							{% empty %}
-								</ol>
-								<p>{% trans "Not Item Found!!!" %}</p>
-							{% endfor %}
-						<div id="lower-menu"  class="btn-group btn-group-justified">
-							<div class="btn-group">
-								<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
-						  	</div>
-						  	<div class="btn-group">
-						  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></a>
+								<div class="btn-group">
+								    <a class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></a>
+								</div>
+								<div class="btn-group">
+									<a data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></a>
+								</div>
+								<div class="btn-group">
+									<a class="btn danger button"  href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="mif-cross icon"></span> <spam class="hidden-xs">{% trans "Exit" %}</spam></a>
+								</div>
 							</div>
-							<div class="btn-group">
-							    <a class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></a>
-							</div>
-							<div class="btn-group">
-								<a data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></a>
-							</div>
-							<div class="btn-group">
-								<a class="btn danger button"  href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="mif-cross icon"></span> <spam class="hidden-xs">{% trans "Exit" %}</spam></a>
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 				{% elif not question and lesson_complete %}
-				<div class="text-center">
-					<h1>Parabéns, lição completa!!!</h1>
-					<a id="btn-starter-lesson" class="btn" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">{% trans "Reser Lesson" %}</a>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="jumbotron">
+							<h2 class="align-center">Parabéns, lição completa!!!</h2>
+							<br />
+							<br />
+							<center>
+								<a id="btn-starter-lesson" class="btn" href="/home/content/questions/reset_lesson/discipline={{discipline.id }}/lesson={{ lesson.id }}/">
+									{% trans "Reser Lesson" %}
+								</a>
+							</center>
+						</div>
+					</div>
 				</div>
 				{% elif not question and lesson_complete == False %}
-				<div>
-					<h1>Não existe questões para essa lição.</h1>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="jumbotron">
+							<h2 class="align-center">Não existe questões para essa lição.</h2>
+							<br />
+							<br />
+						</div>
+					</div>
 				</div>
 				{% else %}
-				<div>
-					<h1>Ocorreu um erro ao carregar as peguntas.</h1>
+				<div class="container-fluid">
+					<div class="row">
+						<h1>Ocorreu um erro ao carregar as peguntas.</h1>
+					</div>
 				</div>
 				{% endif %}
 
@@ -125,7 +146,7 @@
 							<div class="list-group">
 								{% for question2 in studentlessonstate.get_skipped_questions %}
 									{% if question != question2 %}		
-										<a href="/home/content/questions/choose_skipped_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question2.id }}/" class="list-group-item">{{ question2.get_position }}) {{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
+										<a href="/home/content/questions/choose_skipped_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question2.id }}/" class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
 									{% endif %}
 								{% endfor %}
 							</div>
@@ -160,7 +181,6 @@
 				{% endif %}
 			</div>
 		{% endblock %}
-		</div>
 	</div>
 </section>
 
