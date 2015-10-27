@@ -24,32 +24,26 @@
 </div>
 
 {% regroup disciplines by title as discipline_list %}
-	<div class="accordion">
 	{% for discipline in discipline_list %}
 		{% if discipline.list %}
-		<div class="frame active">
-			<div class="heading">{{ discipline.grouper|title }}</div>
-			<div class="content">
-				<div class="tile-container">
-					{% for item in discipline.list %}
-						{% for lesson in item.lessons %}
-							<div class="tile-wide {{ lesson.color }} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
-							    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
-							        <span class="icon mif-clipboard"></span>
-							        <span class="tile-label">{{ lesson.get_title }}</span>
-							        {% if not lesson.exists %}
-							        <span class="tile-badge mif-bin"></span>
-							        {% endif %}
-							    </a>
-							</div>
-						{% endfor %}
-					{% endfor %}
-				</div>
-			</div>
+		<label>{{ discipline.grouper|title }}</label>
+		<div class="tile-container">
+			{% for item in discipline.list %}
+				{% for lesson in item.lessons %}
+					<div class="tile-wide {{ lesson.color }} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
+					    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
+					        <span class="icon mif-clipboard"></span>
+					        <span class="tile-label">{{ lesson.get_title }}</span>
+					        {% if not lesson.exists %}
+					        <span class="tile-badge mif-bin"></span>
+					        {% endif %}
+					    </a>
+					</div>
+				{% endfor %}
+			{% endfor %}
 		</div>
 		{% endif %}
 	{% empty %}
 		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
 	{% endfor %}
-	</div>
 {% endblock %}

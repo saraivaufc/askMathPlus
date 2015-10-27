@@ -11,7 +11,7 @@
 
 {%  block content_right %}
 
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_question %}
 		<a data-toggle="modal" data-target="#quantity_items" href="#" class="image-button button-success">
 			{% trans "Create" %}
@@ -35,25 +35,17 @@
 	{% endif %}
 </div>
 
-<div class="tile-area padding10 bg-transparent">
-<div class="tile-container">
+<div class="listview bg-white fg-dark " data-role="listview">
 {% for question in questions %}
-<div class="tile-wide {{ question.color }} {% if question.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
-    <a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="tile-content iconic">
-        <span class="icon mif-list-numbered"></span>
-        <span class="tile-label">{{ question.get_description|safe|linebreaksbr|truncatewords:10 }}</span>
-        {% if not question.exists %}
-        <span class="tile-badge mif-bin"></span>
-        {% endif %}
-    </a>
-</div>
+<a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="list">
+	<span class="list-icon mif-list-numbered"></span>
+	<span class="list-title">{{ question.get_description|safe|linebreaksbr }}</span>
+</a>
 {% empty %}
 <h3 class="text-center">{% trans "Not Questions Found" %}</h3>
 {% endfor %}
 </div>
-</div>
 
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
-
 </div>
 {% endblock %}

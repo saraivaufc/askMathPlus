@@ -9,7 +9,7 @@
 		</a>
 	</li>
 	{% endif %}
-	<li>
+	<li class="logo-system">
 		<a href="/home/"  class="logo no-padding" rel="{% trans "Home" %}"  itemprop="title">
 			<img class="image-logo no-margin no-hover" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
 		</a>
@@ -31,7 +31,7 @@
     </li>
     {% if perms.askmath.access_content %}
     <form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
-    <li class="place-right no-hovered">
+    <li class="search place-right no-hovered">
         <div class="input-control text" style="width: 250px; margin-right: 10px">
             <input id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
             <button class="button bg-dark fg-white" type="submit"><span class="mif-search"></span></button>
@@ -147,12 +147,16 @@
 						</a>
 					</li>
 					{% endif %}
+					{% if perms.askmath.access_content %}
 					<li>
 						<a href="/help/">
 							<span class="icon mif-chart-line"></span>
 							<span class="title">{% trans "Performance" %}</span>
 						</a>
 					</li>
+					{% elif perms.askmath.access_manager %}
+					
+					{% endif %}
 					<li>
 						<a href="/help/">
 							<span class="icon mif-flag"></span>

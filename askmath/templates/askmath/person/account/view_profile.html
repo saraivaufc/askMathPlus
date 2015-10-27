@@ -13,7 +13,7 @@
 {% block content_right %}
 <br>
 <div class="container-fluid">
-	<div class="col-md-6">
+	<div class="col-md-6 col-md-offset-3">
 	<div class="bg-white-opacity">
 		<center >
 			<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
@@ -29,23 +29,19 @@
 			<h4>{{ person.get_email }}</h4>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 		 </center>
-	</div>
-	</div>
-	<div class="col-md-6">
-	<div class="bg-white-opacity">
-		<a href="/home/person/account/edit/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
-		    <span class="icon mif-pencil"></span>
-		    <span class="title">{% trans "Profile Edit" %}</span>
-		</a>
-		<a href="/home/person/account/alter_password/"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
-		    <span class="icon mif-key"></span>
-		    <span class="title">{% trans "Password Alter" %}</span>
-		</a>
-		<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
-		    <span class="icon mif-cross"></span>
-		    <span class="title">{% trans "Account Remove" %}</span>
-		</button>
-		{% include "askmath/person/account/_modal_remove_account.html" %}
+			 <a href="/home/person/account/edit/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+			    <span class="icon mif-pencil"></span>
+			    <span class="title">{% trans "Profile Edit" %}</span>
+			</a>
+			<a href="/home/person/account/alter_password/"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
+			    <span class="icon mif-key"></span>
+			    <span class="title">{% trans "Password Alter" %}</span>
+			</a>
+			<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
+			    <span class="icon mif-cross"></span>
+			    <span class="title">{% trans "Account Remove" %}</span>
+			</button>
+			{% include "askmath/person/account/_modal_remove_account.html" %}
 	</div>
 	</div>
 </div>

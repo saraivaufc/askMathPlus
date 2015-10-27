@@ -7,10 +7,11 @@
 #header > .h-menu  a:hover, #footer > .h-menu  a:hover{
     background-color: #888;
 }
-#header > .h-menu  a.logo:hover{
-    background-color: #888;
-}
 
+#menu-header > li.logo-system:hover ,#menu-header > li.search:hover{
+    background-color: inherit;
+    background-image: none;
+}
 
 
 .h-menu{
@@ -76,12 +77,16 @@
 .logo{
     min-width:100%; 
     min-height:100%;
-    margin-left: 0px;
+    margin-left: 10px;
 }
 
 .logo > .image-logo{
     min-width:100%;
     min-height:100%;
-    padding-top: 7px; 
+    padding-top: 7px;
 }
 
+li.search{
+    margin-top: 5px;
+    margin-bottom: 5px;   
+}
