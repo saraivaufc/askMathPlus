@@ -1,10 +1,9 @@
-#header > .h-menu, #footer > .h-menu{
+#header  .app-bar, #footer .h-menu{
     background-image: none !important;
-    background-color:  rgba(0,0,0,0.3); /* browsers */
+    background-color:  rgba(0,0,0,0.3) !important; /* browsers */
     color: #fff !important;
-    font-weight: bold;
 }
-#header > .h-menu  a:hover, #footer > .h-menu  a:hover{
+#header > .app-bar  a:hover, #footer > .h-menu  a:hover{
     background-color: #888;
 }
 
@@ -77,16 +76,11 @@
 .logo{
     min-width:100%; 
     min-height:100%;
-    margin-left: 10px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .logo > .image-logo{
     min-width:100%;
     min-height:100%;
-    padding-top: 7px;
-}
-
-li.search{
-    margin-top: 5px;
-    margin-bottom: 5px;   
 }
