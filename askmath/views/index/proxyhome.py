@@ -24,8 +24,7 @@ class ProxyHome(IHome):
                 return self.__home.index(request)
             except Exception, e:
                 print e
-        else:
-            return render(request, 'askmath/index/home.html',
+        return render(request, 'askmath/index/home.html',
                 {'request': request})
         
     def about(self, request):
