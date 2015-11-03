@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
 from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea, NumberInput, DateInput, DateTimeInput, URLInput
+from captcha.fields import ReCaptchaField
 
 from .. import register
 
@@ -55,3 +56,7 @@ def is_datetime(field):
 @register.filter(name='is_url')
 def is_url(field):
     return field.field.widget.__class__.__name__ == URLInput().__class__.__name__
+
+@register.filter(name='is_captcha')
+def is_captcha(field):
+    return field.field.widget.__class__.__name__ == ReCaptchaField().__class__.__name__

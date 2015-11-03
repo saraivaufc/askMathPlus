@@ -22,6 +22,8 @@
 		{% include 'askmath/fields/date.html' %}
 	{% elif field|is_password %}
 		{% include 'askmath/fields/password.html' %}
+    {% elif field|is_captcha %}
+    	{% include 'askmath/fields/captcha.html' %}
     {% else %}
     	{% include 'askmath/fields/field.html' %}
 	{% endif %}
