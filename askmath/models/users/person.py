@@ -56,11 +56,14 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
     objects = UserManager()
     
     def get_short_name(self):
-        list_names = self.name.split(" ")
-        if len(list_names) > 2:
-            return list_names[0]+" "+list_names[len(list_names)-1]
+        if self.name:
+            list_names = self.name.split(" ")
+            if len(list_names) > 2:
+                return list_names[0]+" "+list_names[len(list_names)-1]
+            else:
+                return " ".join(list_names)
         else:
-            return " ".join(list_names)
+            return self.username
     
     def get_username(self):
         return self.username
