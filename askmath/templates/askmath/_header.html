@@ -148,6 +148,8 @@
 						</a>
 					</li>
 					{% endif %}
+
+					{% comment %}
 					{% if perms.askmath.access_content %}
 					<li>
 						<a href="/help/">
@@ -164,6 +166,7 @@
 							<span class="title">{% trans "Help" %}</span>
 						</a>
 					</li>
+					{% endcomment %}
 					<li>
 						<a href="/authentication/logout/">
 							<span class="icon mif-switch"></span>
