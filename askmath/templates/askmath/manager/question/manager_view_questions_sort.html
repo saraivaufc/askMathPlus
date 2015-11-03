@@ -3,26 +3,25 @@
 {% load i18n %}
 
 {%  block content_right %}
-<div class="cell padding10">
-	<div class="cell auto-size">
-			<h2 class="text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
-	</div>
+<div class="cell">
+	<h2 class="text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
 </div>
 
-<div class="container">
-	<ul id="list_questions_sort" class="listview ">
+	<div id="list_questions_sort" class="listview bg-white fg-dark " data-role="listview">
 	{% csrf_token %}
 	{% for question in questions %}
-	<li class="list active" value={{ question.id }}>
+	<li class="list cursor-move" value={{ question.id }}>
+		<span class="list-icon mif-list-numbered"></span>
 		<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
 	</li>
 	{% empty %}
 	<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
 	{% endfor %}
-	</ul>
+	</div>
 	
 	<div class="text-right">
-		<button onclick="sortQuestions();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
+		<button onclick="sortQuestions();" class="button success" >
+		<span class="mif-checkmark"></span> {% trans "Submit" %}</button>
 	</div>
 </div>
 

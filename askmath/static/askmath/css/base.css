@@ -578,3 +578,9 @@ label.caption{
 .jumbotron{
 	border-radius: 0px !important; 
 }
+
+
+/* CURSORES */
+.cursor-move{
+	cursor:move !important;
+}
