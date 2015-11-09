@@ -7,9 +7,8 @@
     background-color: #888;
 }
 
-#menu-header > li.logo-system:hover ,#menu-header > li.search:hover{
-    background-color: inherit;
-    background-image: none;
+#menu-header > li.search{
+    background-color:transparent;
 }
 
 

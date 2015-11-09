@@ -10,6 +10,7 @@ pytz
 South>=0.7.4
 djangorestframework
 markdown
+django-nocaptcha-recaptcha
 django-filter
 nltk
 tox==1.7.0
