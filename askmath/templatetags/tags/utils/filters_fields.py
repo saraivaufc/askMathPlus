@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
 from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea, NumberInput, DateInput, DateTimeInput, URLInput
-from captcha.fields import ReCaptchaField
+from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 from .. import register
 
@@ -59,4 +59,4 @@ def is_url(field):
 
 @register.filter(name='is_captcha')
 def is_captcha(field):
-    return field.field.widget.__class__.__name__ == ReCaptchaField().__class__.__name__
+    return field.field.widget.__class__.__name__ == NoReCaptchaField().__class__.__name__

@@ -6,10 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.users import Message
-from captcha.fields import ReCaptchaField
+from nocaptcha_recaptcha.fields import NoReCaptchaField
+
 
 class MessageForm(ModelForm):
-	captcha = ReCaptchaField()
+	captcha = NoReCaptchaField()
 	class Meta:
 		model= Message
 		fields = ("name", "email","message", "file","captcha")

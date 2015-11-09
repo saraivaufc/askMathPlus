@@ -38,6 +38,7 @@ class ProxyAccount(IAccount):
             return self.__account.options(request)
         except Exception, e:
             print e
+            messages.error(request, TextMessage.ERROR)
             return HttpResponseRedirect('/home/')
         
     

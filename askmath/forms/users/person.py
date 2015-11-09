@@ -7,13 +7,13 @@ import hashlib
 
 from askmath.models.users import Person
 from askmath.widgets.fields import AdvancedFileInput
-from captcha.fields import ReCaptchaField
+from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 class PersonForm(ModelForm):
-	#captcha = ReCaptchaField()
+	captcha = NoReCaptchaField()
 	class Meta:
 		model= Person
-		fields = ("username", "name", "email","password")
+		fields = ("username", "name", "email","password", "captcha")
 
 		widgets = {
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
@@ -29,7 +29,7 @@ class PersonLoginForm(forms.Form):
 	password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
 		widget=forms.PasswordInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter you password.')})
-	#captcha = ReCaptchaField()
+	captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Solved this problem.'))
 
 class PersonProfile(ModelForm):
 	class Meta:
@@ -56,7 +56,7 @@ class PersonRecoverPassword(forms.Form):
 	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
 		widget=forms.EmailInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter your email.')})
-	#captcha = ReCaptchaField()
+	captcha = NoReCaptchaField()
 	
 class PersonAlterPassword(forms.Form):
 	old_password = forms.CharField(label=_('Old Password'),help_text=_("Please enter you old password."),

@@ -1,9 +1,9 @@
-#header  .app-bar, #footer .h-menu{
+#header  .h-menu, #footer .h-menu{
     background-image: none !important;
     background-color:  rgba(0,0,0,0.3) !important; /* browsers */
     color: #fff !important;
 }
-#header > .app-bar  a:hover, #footer > .h-menu  a:hover{
+#header > .h-menu  a:hover, #footer > .h-menu  a:hover{
     background-color: #888;
 }
 

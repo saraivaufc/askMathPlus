@@ -62,12 +62,13 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'askmath',
-    'captcha',
+    'nocaptcha_recaptcha',
 )
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 TEMPLATE_DIRS = (
     'askmath/templates',
+    'nocaptcha_recaptcha/templates',
 )
 
 
@@ -121,10 +122,11 @@ LOGOUT_URL = '/authentication/logout/'
 
 
 #RECAPTCHA
-NOCAPTCHA = True
-RECAPTCHA_USE_SSL = True
-RECAPTCHA_PUBLIC_KEY = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
-RECAPTCHA_PRIVATE_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc"
+# RECAPTCHA_PUBLIC_KEY = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
+# RECAPTCHA_PRIVATE_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc"
+
+NORECAPTCHA_SITE_KEY  = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
+NORECAPTCHA_SECRET_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc" 
 
 
 ADMINS = ( ('Ciano Saraiva','saraiva.ufc@gmail.com'), )

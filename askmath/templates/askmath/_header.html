@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load askmath_tags %}
-<div class="app-bar darcula" data-role="appbar">
-<ul id="menu-header" class="app-bar-menu">
+<ul id="menu-header" class="h-menu">
 	{% if request.user.is_authenticated %}
 	<li>
 		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Controls" %}">
@@ -11,7 +10,7 @@
 	{% endif %}
 	<li class="logo-system">
 		<a href="/home/"  class="logo no-padding" rel="{% trans "Home" %}"  itemprop="title">
-			<img class="image-logo no-margin no-hover" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
+			<img class="image-logo no-margin no-padding" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
 		</a>
 	</li>
 	<li>
@@ -74,11 +73,6 @@
 		</ul>
 	</li>
 	{% endif %}
-	<li>
-		<a data-toggle="modal" data-target="#modal-shared" href="#">
-			<span class="icon mif-share"></span> {% trans "Shared" %}
-		</a>
-	</li>
 	{% if perms.askmath.access_content %}
 	<li class="search place-right no-hovered">
 		<form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
@@ -90,7 +84,6 @@
 	</li>
 	{% endif %}
 </ul>
-</div>
 
 {% if request.user.is_authenticated %}
 <div id="charmControls" data-role="charm" data-position="left">

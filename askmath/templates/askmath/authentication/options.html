@@ -6,13 +6,15 @@
 	{% include 'askmath/_header.html' %}
 {% endblock %}
 
-
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li><a href="/authentication/options/"><span class="icon mif-lock"></span> <spam>{% trans "Authentication" %}</spam></a></li>
 {% endblock %}
 
 {% block content %}
+
+{% include 'nocaptcha_recaptcha/script_include.html' with multiple_recaptcha=True %}
+
 <div class="container-fluid">
 <div class="row">
 <div class="col-md-4 col-md-offset-4">
@@ -36,22 +38,7 @@
 			        <hr class="thin"/>
 			        <input type="hidden" name="next" value="{{ request.GET.next }}" />
 			        <input type="hidden" name="option" value="sign_in">
-			        <div class="input-control text full-size" data-role="input">
-			        	{{ form.username.errors }}
-			            <label for="user_login">{{ form.username.label_tag }}</label>
-			            {{ form.username }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <br />
-			        <br />
-			        <div class="input-control password full-size" data-role="input">
-			            {{ form.password.errors }}
-			            <label for="user_password">{{ form.password.label_tag }}</label>
-			            {{ form.password }}
-			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-			        </div>
-			        <div id="recaptcha1"></div>
-			        <br />
+			        {% include "askmath/_render_form.html" %}
 			        <div class="form-actions">
 						<button type="submit" class="button image-button btn-block button-primary">
 							{% trans "Sign In" %}
@@ -68,41 +55,10 @@
 			        <h2 class="text-light text-center">{% trans "Sign Up" %}</h2>
 			        <hr class="thin"/>
 			        <input type="hidden" name="option" value="sign_up">			
-    				<div class="input-control text full-size" data-role="input">
-			            {{ form.name.errors }}
-			            <label for="user_name">{{ form.name.label_tag }}</label>
-			            {{ form.name }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <br />
-			        <br />
-			        <div class="input-control email full-size" data-role="input">
-			            {{ form.email.errors }}
-			            <label for="user_email">{{ form.email.label_tag }}</label>
-			            {{ form.email }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <br />
-			        <br />
-    				<div class="input-control text full-size" data-role="input">
-			            {{ form.username.errors }}
-			            <label for="user_username">{{ form.username.label_tag }}</label>
-			            {{ form.username }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <br />
-			        <br />
-			        <div class="input-control password full-size" data-role="input">
-			            {{ form.password.errors }}
-			            <label for="user_password">{{ form.password.label_tag }}</label>
-			            {{ form.password }}
-			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-			        </div>
-			        <br />
-			        <br />
+    				 {% include "askmath/_render_form.html" %}
 			        <div class="col-md-6">
 			        <div class="row">
-		            	<div class="input-control full-size"  data-role="select">
+		            	<div class="input-control full-size">
 						    <select name="type"  id="select-signup" class="full-size">
 							    <option value="STUDENT">{% trans "STUDENT" %}</option>
 					            <option value="ASSISTANT">{% trans "ASSISTANT" %}</option>
@@ -147,14 +103,7 @@
 			    	<h2 class="text-light text-center">{% trans "Recover Password" %}</h2>
 			        <hr class="thin"/>
 			        <input type="hidden" name="option" value="recover_password">		        
-			        <div class="input-control email full-size" data-role="input">
-			            {{ form.email.errors }}
-			            <label>{{ form.email.label_tag }}</label>
-			            {{ form.email }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <div id="recaptcha3"></div>
-			        <br />
+			        {% include "askmath/_render_form.html" %}
 			        <div class="form-actions">
 			        	<button type="submit" class="image-button btn-block button-primary">
 							{% trans "Recover" %}
@@ -168,32 +117,4 @@
 </div>
 </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-{{ block.super }}
-<script type="text/javascript">
-	var recaptcha1;
-  	var recaptcha2;
-  	var recaptcha3;
-  	var CaptchaCallback = function() {
-        recaptcha1 = grecaptcha.render('recaptcha1', {
-          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-          'theme' : 'light'
-        });
-        
-        //Render the recaptcha2 on the element with ID "recaptcha2"
-        recaptcha2 = grecaptcha.render('recaptcha2', {
-          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-          'theme' : 'light'
-        });
-
-        recaptcha3 = grecaptcha.render('recaptcha3', {
-          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-          'theme' : 'light'
-        });
-      };
-</script>
-<!-- Google Recaptcha -->
-<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 {% endblock %}

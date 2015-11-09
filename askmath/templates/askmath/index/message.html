@@ -17,6 +17,7 @@
 
 
 {% block content %}
+{% include 'nocaptcha_recaptcha/script_include.html' %}
 <div class="container">
 <div class="row">
 	<div class="panel width">
@@ -93,19 +94,4 @@
 	</div>
 </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-	{{ block.super }}
-	<script type="text/javascript">
-		var message;
-		var CaptchaCallback = function() {
-	        message = grecaptcha.render('message', {
-	          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-	          'theme' : 'light'
-	        });
-	      };
-	</script>
-	<!-- Google Recaptcha -->
-	<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 {% endblock %}
