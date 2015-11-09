@@ -95,8 +95,6 @@
 </div>
 {% endblock %}
 
-
-
 {% block scripts %}
 	{{ block.super }}
 	<script type="text/javascript">
@@ -108,4 +106,6 @@
 	        });
 	      };
 	</script>
+	<!-- Google Recaptcha -->
+	<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 {% endblock %}

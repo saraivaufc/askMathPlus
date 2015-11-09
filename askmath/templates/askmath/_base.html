@@ -128,10 +128,7 @@
 		{% block footer %}
 			{% include 'askmath/_footer.html' %}
 		{% endblock %}
-		</footer>		
-		
-		<!-- Google Recaptcha -->
-		<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
+		</footer>
 
 		<!-- Google -->
 		<script src="https://apis.google.com/js/plusone.js"></script>
@@ -166,8 +163,6 @@
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/packaged/jquery.noty.packaged.js"></script>
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
 		
-		{% block scripts %}
-		{% endblock %}
 
 		<!-- My Scripts -->
 		<script src="{{ STATIC_URL }}askmath/js/initial.js"></script>
@@ -183,6 +178,9 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_config.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_editor-combo-18.js"></script>
 		
+		{% block scripts %}
+		{% endblock %}
+
 		{% include "askmath/send_feedback.html"  %}
 	</body>
 </html>

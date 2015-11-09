@@ -37,6 +37,7 @@
 			        <input type="hidden" name="next" value="{{ request.GET.next }}" />
 			        <input type="hidden" name="option" value="sign_in">
 			        <div class="input-control text full-size" data-role="input">
+			        	{{ form.username.errors }}
 			            <label for="user_login">{{ form.username.label_tag }}</label>
 			            {{ form.username }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -44,6 +45,7 @@
 			        <br />
 			        <br />
 			        <div class="input-control password full-size" data-role="input">
+			            {{ form.password.errors }}
 			            <label for="user_password">{{ form.password.label_tag }}</label>
 			            {{ form.password }}
 			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
@@ -67,6 +69,7 @@
 			        <hr class="thin"/>
 			        <input type="hidden" name="option" value="sign_up">			
     				<div class="input-control text full-size" data-role="input">
+			            {{ form.name.errors }}
 			            <label for="user_name">{{ form.name.label_tag }}</label>
 			            {{ form.name }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -74,6 +77,7 @@
 			        <br />
 			        <br />
 			        <div class="input-control email full-size" data-role="input">
+			            {{ form.email.errors }}
 			            <label for="user_email">{{ form.email.label_tag }}</label>
 			            {{ form.email }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -81,6 +85,7 @@
 			        <br />
 			        <br />
     				<div class="input-control text full-size" data-role="input">
+			            {{ form.username.errors }}
 			            <label for="user_username">{{ form.username.label_tag }}</label>
 			            {{ form.username }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -88,6 +93,7 @@
 			        <br />
 			        <br />
 			        <div class="input-control password full-size" data-role="input">
+			            {{ form.password.errors }}
 			            <label for="user_password">{{ form.password.label_tag }}</label>
 			            {{ form.password }}
 			            <button class="button helper-button reveal"><span class="mif-looks"></span></button>
@@ -141,14 +147,8 @@
 			    	<h2 class="text-light text-center">{% trans "Recover Password" %}</h2>
 			        <hr class="thin"/>
 			        <input type="hidden" name="option" value="recover_password">		        
-			        <div class="input-control text full-size" data-role="input">
-			            <label>{{ form.username.label_tag }}</label>
-			            {{ form.username }}
-			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
-			        </div>
-			        <br />
-			        <br />
 			        <div class="input-control email full-size" data-role="input">
+			            {{ form.email.errors }}
 			            <label>{{ form.email.label_tag }}</label>
 			            {{ form.email }}
 			            <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -163,37 +163,37 @@
 			        </div>
 			    </form>
 			    {% endwith %}
-
-			<script type="text/javascript">
-				var recaptcha1;
-		      	var recaptcha2;
-		      	var recaptcha3;
-		      	var CaptchaCallback = function() {
-			        recaptcha1 = grecaptcha.render('recaptcha1', {
-			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-			          'theme' : 'light'
-			        });
-			        //Render the recaptcha1 on the element with ID "recaptcha1"
-			        recaptcha1 = grecaptcha.render('recaptcha1', {
-			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-			          'theme' : 'light'
-			        });
-			        
-			        //Render the recaptcha2 on the element with ID "recaptcha2"
-			        recaptcha2 = grecaptcha.render('recaptcha2', {
-			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-			          'theme' : 'light'
-			        });
-
-			        recaptcha3 = grecaptcha.render('recaptcha3', {
-			          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
-			          'theme' : 'light'
-			        });
-			      };
-			</script>
 		</div>
 	</div>
 </div>
 </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+	var recaptcha1;
+  	var recaptcha2;
+  	var recaptcha3;
+  	var CaptchaCallback = function() {
+        recaptcha1 = grecaptcha.render('recaptcha1', {
+          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+          'theme' : 'light'
+        });
+        
+        //Render the recaptcha2 on the element with ID "recaptcha2"
+        recaptcha2 = grecaptcha.render('recaptcha2', {
+          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+          'theme' : 'light'
+        });
+
+        recaptcha3 = grecaptcha.render('recaptcha3', {
+          'sitekey' : '6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n', //Replace this with your Site key
+          'theme' : 'light'
+        });
+      };
+</script>
+<!-- Google Recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 {% endblock %}
