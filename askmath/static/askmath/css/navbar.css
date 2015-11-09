@@ -22,10 +22,6 @@
 	color: #fff !important;
 }
 
-.navbar-nav > li > a {
-    line-height: inherit;
-}
-
 .icon-size
 {
     font-size: 87px;
@@ -73,11 +69,17 @@
     display: none;
 }
 
+
+.logo-system{
+    height: 100%;
+}
+
+.logo-system > a > img{
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
 .logo{
-    min-width:100%; 
-    min-height:100%;
-    max-width: 100%;
-    max-height: 100%;
 }
 
 .logo > .image-logo{
