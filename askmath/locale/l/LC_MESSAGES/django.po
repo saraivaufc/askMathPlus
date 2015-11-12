@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-14 01:37-0300\n"
+"POT-Creation-Date: 2015-11-11 21:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "User does not have permission."
 msgstr ""
 
-#: askmath/entities/message.py:9 askmath/entities/message.py:215
+#: askmath/entities/message.py:9 askmath/entities/message.py:216
 msgid "User not found."
 msgstr ""
 
@@ -273,303 +273,307 @@ msgstr ""
 msgid "Question error in jump."
 msgstr ""
 
-#: askmath/entities/message.py:102
+#: askmath/entities/message.py:101
+msgid "Impossible to make the leap."
+msgstr ""
+
+#: askmath/entities/message.py:103
 msgid "Question not found in lesson."
 msgstr ""
 
-#: askmath/entities/message.py:105
+#: askmath/entities/message.py:106
 msgid "Item not found."
 msgstr ""
 
-#: askmath/entities/message.py:106
+#: askmath/entities/message.py:107
 msgid "Item not found in question."
 msgstr ""
 
-#: askmath/entities/message.py:109
+#: askmath/entities/message.py:110
 msgid "Video successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:110
+#: askmath/entities/message.py:111
 msgid "Error adding video."
 msgstr ""
 
-#: askmath/entities/message.py:112
+#: askmath/entities/message.py:113
 msgid "Video successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:113
+#: askmath/entities/message.py:114
 msgid "Error edit video."
 msgstr ""
 
-#: askmath/entities/message.py:115
+#: askmath/entities/message.py:116
 msgid "Video successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:116
+#: askmath/entities/message.py:117
 msgid "Error remove video."
 msgstr ""
 
-#: askmath/entities/message.py:118
+#: askmath/entities/message.py:119
 msgid "Video successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:119
+#: askmath/entities/message.py:120
 msgid "Error restore video."
 msgstr ""
 
-#: askmath/entities/message.py:121
+#: askmath/entities/message.py:122
 msgid "Video successfully sorted."
 msgstr ""
 
-#: askmath/entities/message.py:122
+#: askmath/entities/message.py:123
 msgid "Error sorted video."
 msgstr ""
 
-#: askmath/entities/message.py:124
+#: askmath/entities/message.py:125
 msgid "Video not found."
 msgstr ""
 
-#: askmath/entities/message.py:125
+#: askmath/entities/message.py:126
 msgid "Video not found in lesson."
 msgstr ""
 
-#: askmath/entities/message.py:129
+#: askmath/entities/message.py:130
 msgid "Category successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:130
+#: askmath/entities/message.py:131
 msgid "Error adding category."
 msgstr ""
 
-#: askmath/entities/message.py:132
+#: askmath/entities/message.py:133
 msgid "Category successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:133
+#: askmath/entities/message.py:134
 msgid "Error edit category."
 msgstr ""
 
-#: askmath/entities/message.py:135
+#: askmath/entities/message.py:136
 msgid "Category successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:136
+#: askmath/entities/message.py:137
 msgid "Error remove category."
 msgstr ""
 
-#: askmath/entities/message.py:138
+#: askmath/entities/message.py:139
 msgid "Category successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:139
+#: askmath/entities/message.py:140
 msgid "Error restore category."
 msgstr ""
 
-#: askmath/entities/message.py:141
+#: askmath/entities/message.py:142
 msgid "Category not found."
 msgstr ""
 
-#: askmath/entities/message.py:144
+#: askmath/entities/message.py:145
 msgid "Topic successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:145
+#: askmath/entities/message.py:146
 msgid "Error adding topic."
 msgstr ""
 
-#: askmath/entities/message.py:147
+#: askmath/entities/message.py:148
 msgid "Topic successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:148
+#: askmath/entities/message.py:149
 msgid "Error edit topic."
 msgstr ""
 
-#: askmath/entities/message.py:150
+#: askmath/entities/message.py:151
 msgid "Topic successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:151
+#: askmath/entities/message.py:152
 msgid "Error remove topic."
 msgstr ""
 
-#: askmath/entities/message.py:153
+#: askmath/entities/message.py:154
 msgid "Topic successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:154
+#: askmath/entities/message.py:155
 msgid "Error restore topic."
 msgstr ""
 
-#: askmath/entities/message.py:156
+#: askmath/entities/message.py:157
 msgid "Topic successfully liked."
 msgstr ""
 
-#: askmath/entities/message.py:157
+#: askmath/entities/message.py:158
 msgid "Error like topic."
 msgstr ""
 
-#: askmath/entities/message.py:158
+#: askmath/entities/message.py:159
 msgid "Topic successfully unliked."
 msgstr ""
 
-#: askmath/entities/message.py:159
+#: askmath/entities/message.py:160
 msgid "Error unlike topic."
 msgstr ""
 
-#: askmath/entities/message.py:161
+#: askmath/entities/message.py:162
 msgid "Topic not found."
 msgstr ""
 
-#: askmath/entities/message.py:164
+#: askmath/entities/message.py:165
 msgid "Comment successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:165
+#: askmath/entities/message.py:166
 msgid "Error adding comment."
 msgstr ""
 
-#: askmath/entities/message.py:167
+#: askmath/entities/message.py:168
 msgid "Comment successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:168
+#: askmath/entities/message.py:169
 msgid "Error edit comment."
 msgstr ""
 
-#: askmath/entities/message.py:170
+#: askmath/entities/message.py:171
 msgid "Comment successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:171
+#: askmath/entities/message.py:172
 msgid "Error remove comment."
 msgstr ""
 
-#: askmath/entities/message.py:173
+#: askmath/entities/message.py:174
 msgid "Comment successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:174
+#: askmath/entities/message.py:175
 msgid "Error restore comment."
 msgstr ""
 
-#: askmath/entities/message.py:176
+#: askmath/entities/message.py:177
 msgid "Comment successfully liked."
 msgstr ""
 
-#: askmath/entities/message.py:177
+#: askmath/entities/message.py:178
 msgid "Error like comment."
 msgstr ""
 
-#: askmath/entities/message.py:180
+#: askmath/entities/message.py:181
 msgid "Comment not found."
 msgstr ""
 
-#: askmath/entities/message.py:183
+#: askmath/entities/message.py:184
 msgid "Message successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:184
+#: askmath/entities/message.py:185
 msgid "Error adding message."
 msgstr ""
 
-#: askmath/entities/message.py:186
+#: askmath/entities/message.py:187
 msgid "Message successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:187
+#: askmath/entities/message.py:188
 msgid "Error edit message."
 msgstr ""
 
-#: askmath/entities/message.py:189
+#: askmath/entities/message.py:190
 msgid "Message successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:190
+#: askmath/entities/message.py:191
 msgid "Error remove message."
 msgstr ""
 
-#: askmath/entities/message.py:192
+#: askmath/entities/message.py:193
 msgid "Message successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:193
+#: askmath/entities/message.py:194
 msgid "Error restore message."
 msgstr ""
 
-#: askmath/entities/message.py:196
+#: askmath/entities/message.py:197
 msgid "Message not found."
 msgstr ""
 
-#: askmath/entities/message.py:203
+#: askmath/entities/message.py:204
 msgid "User successfully added."
 msgstr ""
 
-#: askmath/entities/message.py:204
+#: askmath/entities/message.py:205
 msgid "Error adding user."
 msgstr ""
 
-#: askmath/entities/message.py:206
+#: askmath/entities/message.py:207
 msgid "User successfully edit."
 msgstr ""
 
-#: askmath/entities/message.py:207
+#: askmath/entities/message.py:208
 msgid "Error edit user."
 msgstr ""
 
-#: askmath/entities/message.py:209
+#: askmath/entities/message.py:210
 msgid "User successfully removed."
 msgstr ""
 
-#: askmath/entities/message.py:210
+#: askmath/entities/message.py:211
 msgid "Error remove user."
 msgstr ""
 
-#: askmath/entities/message.py:212
+#: askmath/entities/message.py:213
 msgid "User successfully restored."
 msgstr ""
 
-#: askmath/entities/message.py:213
+#: askmath/entities/message.py:214
 msgid "Error restore user."
 msgstr ""
 
-#: askmath/entities/message.py:219
+#: askmath/entities/message.py:220
 msgid "Statistic not found."
 msgstr ""
 
-#: askmath/entities/message.py:224
+#: askmath/entities/message.py:225
 msgid "Error pick up the parameters."
 msgstr ""
 
-#: askmath/entities/message.py:227
+#: askmath/entities/message.py:228
 msgid "No results found."
 msgstr ""
 
-#: askmath/entities/message.py:230
+#: askmath/entities/message.py:231
 msgid "Method not is POST."
 msgstr ""
 
-#: askmath/entities/message.py:231
+#: askmath/entities/message.py:232
 msgid "Method not is GET."
 msgstr ""
 
-#: askmath/entities/message.py:234
+#: askmath/entities/message.py:235
 msgid "Message successfully send."
 msgstr ""
 
-#: askmath/entities/message.py:237
+#: askmath/entities/message.py:238
 msgid "Key not found."
 msgstr ""
 
-#: askmath/entities/message.py:238
+#: askmath/entities/message.py:239
 msgid "Error removing the key, user ever used."
 msgstr ""
 
-#: askmath/entities/message.py:241
+#: askmath/entities/message.py:242
 msgid "Account success removed."
 msgstr ""
 
-#: askmath/entities/message.py:243
+#: askmath/entities/message.py:244
 msgid ""
 "There was an error in your search, try using no more than 27 characters in "
 "the search."
@@ -599,13 +603,11 @@ msgstr ""
 msgid "The AskMath is reported here!"
 msgstr ""
 
-#: askmath/forms/users/person.py:26 askmath/forms/users/person.py:56
-#: askmath/models/users/person.py:48
+#: askmath/forms/users/person.py:26 askmath/models/users/person.py:48
 msgid "Username"
 msgstr ""
 
 #: askmath/forms/users/person.py:26 askmath/forms/users/person.py:28
-#: askmath/forms/users/person.py:56 askmath/forms/users/person.py:58
 #: askmath/models/users/person.py:48
 msgid "Please enter you username."
 msgstr ""
@@ -618,41 +620,49 @@ msgstr ""
 msgid "Please enter you password."
 msgstr ""
 
-#: askmath/forms/users/person.py:59 askmath/models/users/message.py:11
+#: askmath/forms/users/person.py:32
+msgid "Captcha"
+msgstr ""
+
+#: askmath/forms/users/person.py:32
+msgid "Solve this problem."
+msgstr ""
+
+#: askmath/forms/users/person.py:56 askmath/models/users/message.py:11
 #: askmath/models/users/person.py:50
 msgid "Email"
 msgstr ""
 
-#: askmath/forms/users/person.py:59 askmath/models/users/person.py:50
+#: askmath/forms/users/person.py:56 askmath/models/users/person.py:50
 msgid "Please enter you email."
 msgstr ""
 
-#: askmath/forms/users/person.py:61
+#: askmath/forms/users/person.py:58
 msgid "Please enter your email."
 msgstr ""
 
-#: askmath/forms/users/person.py:65
+#: askmath/forms/users/person.py:62
 msgid "Old Password"
 msgstr ""
 
-#: askmath/forms/users/person.py:65 askmath/forms/users/person.py:67
+#: askmath/forms/users/person.py:62 askmath/forms/users/person.py:64
 msgid "Please enter you old password."
 msgstr ""
 
-#: askmath/forms/users/person.py:68
+#: askmath/forms/users/person.py:65
 msgid "New Password"
 msgstr ""
 
-#: askmath/forms/users/person.py:68 askmath/forms/users/person.py:70
-#: askmath/forms/users/person.py:71
+#: askmath/forms/users/person.py:65 askmath/forms/users/person.py:67
+#: askmath/forms/users/person.py:68
 msgid "Please enter you new password."
 msgstr ""
 
-#: askmath/forms/users/person.py:71
+#: askmath/forms/users/person.py:68
 msgid "Confirm Password"
 msgstr ""
 
-#: askmath/forms/users/person.py:73
+#: askmath/forms/users/person.py:70
 msgid "Please repeat your new password."
 msgstr ""
 
@@ -701,7 +711,7 @@ msgstr ""
 #: askmath/models/question/item.py:17 askmath/models/question/question.py:27
 #: askmath/models/state/studentlessonstate.py:27
 #: askmath/models/topic/topic.py:18 askmath/models/users/message.py:19
-#: askmath/models/users/person.py:98 askmath/models/video/video.py:25
+#: askmath/models/users/person.py:101 askmath/models/video/video.py:25
 msgid "Creation"
 msgstr ""
 
@@ -762,7 +772,7 @@ msgstr ""
 #: askmath/models/discipline/discipline.py:17
 #: askmath/models/lesson/lesson.py:25 askmath/models/question/question.py:23
 #: askmath/models/topic/topic.py:16 askmath/models/users/message.py:18
-#: askmath/models/users/person.py:97 askmath/models/video/video.py:21
+#: askmath/models/users/person.py:100 askmath/models/video/video.py:21
 msgid "Color"
 msgstr ""
 
@@ -835,8 +845,7 @@ msgid "Discipline"
 msgstr ""
 
 #: askmath/models/discipline/discipline.py:57
-#: askmath/templates/askmath/_header.html:73
-#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:13
+#: askmath/templates/askmath/_header.html:39
 #: askmath/templates/askmath/manager/discipline/overwrite_header.html:15
 #: askmath/templates/askmath/manager/statistic/manager_choose_types.html:18
 msgid "Disciplines"
@@ -854,7 +863,7 @@ msgstr ""
 #: askmath/models/experience/studentexperience.py:7
 #: askmath/models/question/question.py:21
 #: askmath/models/state/studentlessonstate.py:15
-#: askmath/templates/askmath/content/question/view_initial_details.html:96
+#: askmath/templates/askmath/content/question/view_question.html:37
 msgid "Scores"
 msgstr ""
 
@@ -989,7 +998,7 @@ msgid "Select this option to leave visible lesson at all."
 msgstr ""
 
 #: askmath/models/lesson/lesson.py:99
-#: askmath/templates/askmath/_header.html:83
+#: askmath/templates/askmath/_header.html:49
 #: askmath/templates/askmath/manager/lesson/overwrite_header.html:15
 #: askmath/templates/askmath/manager/statistic/manager_choose_types.html:25
 msgid "Lessons"
@@ -1070,8 +1079,7 @@ msgid "Choose items that this issue has."
 msgstr ""
 
 #: askmath/models/question/question.py:17
-#: askmath/templates/askmath/_header.html:144
-#: askmath/templates/askmath/content/question/view_question.html:34
+#: askmath/templates/askmath/content/question/view_question.html:69
 msgid "Help"
 msgstr ""
 
@@ -1088,9 +1096,9 @@ msgid "Select this option to leave visible question at all."
 msgstr ""
 
 #: askmath/models/question/question.py:87
-#: askmath/templates/askmath/_header.html:93
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:46
-#: askmath/templates/askmath/content/question/view_initial_details.html:10
+#: askmath/templates/askmath/_header.html:59
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:42
+#: askmath/templates/askmath/content/question/view_question.html:10
 #: askmath/templates/askmath/index/contents_details.html:48
 #: askmath/templates/askmath/manager/question/overwrite_header.html:15
 msgid "Questions"
@@ -1118,7 +1126,7 @@ msgid "Answered Questions"
 msgstr ""
 
 #: askmath/models/state/studentlessonstate.py:23
-#: askmath/templates/askmath/content/question/view_question.html:76
+#: askmath/templates/askmath/content/question/view_question.html:144
 msgid "Skipped Questions"
 msgstr ""
 
@@ -1126,11 +1134,11 @@ msgstr ""
 msgid "Help Questions"
 msgstr ""
 
-#: askmath/models/state/studentlessonstate.py:339
+#: askmath/models/state/studentlessonstate.py:368
 msgid "Student Lesson State"
 msgstr ""
 
-#: askmath/models/state/studentlessonstate.py:340
+#: askmath/models/state/studentlessonstate.py:369
 msgid "Students Lessons State"
 msgstr ""
 
@@ -1198,7 +1206,7 @@ msgid ""
 msgstr ""
 
 #: askmath/models/users/message.py:48
-#: askmath/templates/askmath/_header.html:127
+#: askmath/templates/askmath/_header.html:130
 #: askmath/templates/askmath/manager/message/overwrite_header.html:15
 msgid "Messages"
 msgstr ""
@@ -1249,19 +1257,19 @@ msgstr ""
 msgid "date joined"
 msgstr ""
 
-#: askmath/models/users/person.py:95
+#: askmath/models/users/person.py:98
 msgid "Profile Image"
 msgstr ""
 
-#: askmath/models/users/person.py:95
+#: askmath/models/users/person.py:98
 msgid "Please enter you profile image."
 msgstr ""
 
-#: askmath/models/users/person.py:122
+#: askmath/models/users/person.py:125
 msgid "person"
 msgstr ""
 
-#: askmath/models/users/person.py:123
+#: askmath/models/users/person.py:126
 msgid "persons"
 msgstr ""
 
@@ -1301,10 +1309,9 @@ msgstr ""
 msgid "Select this option to leave visible video at all."
 msgstr ""
 
-#: askmath/models/video/video.py:84 askmath/templates/askmath/_header.html:103
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:62
+#: askmath/models/video/video.py:84 askmath/templates/askmath/_header.html:69
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:58
 #: askmath/templates/askmath/content/video/view_videos.html:12
-#: askmath/templates/askmath/content/video/view_videos.html:22
 #: askmath/templates/askmath/index/contents_details.html:64
 #: askmath/templates/askmath/manager/video/overwrite_header.html:6
 msgid "Videos"
@@ -1314,26 +1321,31 @@ msgstr ""
 msgid "System for teaching math."
 msgstr ""
 
-#: askmath/templates/askmath/_footer.html:15
+#: askmath/templates/askmath/_footer.html:10
 msgid "About Us"
 msgstr ""
 
-#: askmath/templates/askmath/_footer.html:16
+#: askmath/templates/askmath/_footer.html:13
 #: askmath/templates/askmath/index/message.html:15
-#: askmath/templates/askmath/index/message.html:25
+#: askmath/templates/askmath/index/message.html:26
 msgid "Contact Us"
 msgstr ""
 
-#: askmath/templates/askmath/_footer.html:17
+#: askmath/templates/askmath/_footer.html:16
 #: askmath/templates/askmath/index/terms.html:7
 msgid "Terms of service"
 msgstr ""
 
-#: askmath/templates/askmath/_footer.html:18
+#: askmath/templates/askmath/_footer.html:19
 msgid "Privacy policy"
 msgstr ""
 
-#: askmath/templates/askmath/_footer.html:19
+#: askmath/templates/askmath/_footer.html:22
+#: askmath/templates/askmath/_header.html:187
+msgid "Shared"
+msgstr ""
+
+#: askmath/templates/askmath/_footer.html:25
 msgid "RSS"
 msgstr ""
 
@@ -1348,39 +1360,28 @@ msgstr ""
 #: askmath/templates/askmath/_form.html:16
 #: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:16
 #: askmath/templates/askmath/manager/question/manager_form_question.html:30
+#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:24
 msgid "Submit"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:7
+#: askmath/templates/askmath/_header.html:6
 msgid "Controls"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:13
+#: askmath/templates/askmath/_header.html:12
+#: askmath/templates/askmath/_header.html:18
 #: askmath/templates/askmath/index/404.html:17
 #: askmath/templates/askmath/index/500.html:17
 msgid "Home"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:18
+#: askmath/templates/askmath/_header.html:23
 #: askmath/templates/askmath/forum/forum_home.html:14
 #: askmath/templates/askmath/index/home.html:55
 msgid "Forum"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:23
-#: askmath/templates/askmath/_header.html:167
-msgid "Shared"
-msgstr ""
-
 #: askmath/templates/askmath/_header.html:30
-msgid "Search disciplines and lessons..."
-msgstr ""
-
-#: askmath/templates/askmath/_header.html:57
-msgid "Profile"
-msgstr ""
-
-#: askmath/templates/askmath/_header.html:64
 #: askmath/templates/askmath/index/404.html:78
 #: askmath/templates/askmath/index/500.html:78
 #: askmath/templates/askmath/index/contents.html:7
@@ -1388,24 +1389,32 @@ msgstr ""
 msgid "Contents"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:117
+#: askmath/templates/askmath/_header.html:80
+msgid "Search disciplines and lessons..."
+msgstr ""
+
+#: askmath/templates/askmath/_header.html:110
+msgid "Profile"
+msgstr ""
+
+#: askmath/templates/askmath/_header.html:120
 #: askmath/templates/askmath/manager/statistic/overwrite_header.html:15
 msgid "Statistics"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:137
+#: askmath/templates/askmath/_header.html:140
 #: askmath/templates/askmath/manager/person/overwrite_header.html:15
 #: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
 msgid "Persons"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:150
+#: askmath/templates/askmath/_header.html:167
 msgid "Logout"
 msgstr ""
 
-#: askmath/templates/askmath/_header.html:243
-#: askmath/templates/askmath/content/question/view_question.html:62
-#: askmath/templates/askmath/content/question/view_question.html:88
+#: askmath/templates/askmath/_header.html:263
+#: askmath/templates/askmath/content/question/view_question.html:130
+#: askmath/templates/askmath/content/question/view_question.html:156
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:14
 msgid "Close"
 msgstr ""
@@ -1437,212 +1446,172 @@ msgid ""
 "\"_blank\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:12
+#: askmath/templates/askmath/authentication/options.html:11
 msgid "Authentication"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:21
-#: askmath/templates/askmath/authentication/options.html:35
-#: askmath/templates/askmath/authentication/options.html:55
+#: askmath/templates/askmath/authentication/options.html:23
+#: askmath/templates/askmath/authentication/options.html:37
+#: askmath/templates/askmath/authentication/options.html:44
 msgid "Sign In"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:22
-#: askmath/templates/askmath/authentication/options.html:66
-#: askmath/templates/askmath/authentication/options.html:130
+#: askmath/templates/askmath/authentication/options.html:24
+#: askmath/templates/askmath/authentication/options.html:55
+#: askmath/templates/askmath/authentication/options.html:92
 msgid "Sign Up"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:23
-#: askmath/templates/askmath/authentication/options.html:141
+#: askmath/templates/askmath/authentication/options.html:25
+#: askmath/templates/askmath/authentication/options.html:103
 msgid "Recover Password"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:101
+#: askmath/templates/askmath/authentication/options.html:63
 msgid "STUDENT"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:102
+#: askmath/templates/askmath/authentication/options.html:64
 msgid "ASSISTANT"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:103
+#: askmath/templates/askmath/authentication/options.html:65
 msgid "TEACHER"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:104
+#: askmath/templates/askmath/authentication/options.html:66
 msgid "ADMINISTRATOR"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:112
+#: askmath/templates/askmath/authentication/options.html:74
 msgid "Enter your key"
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:123
+#: askmath/templates/askmath/authentication/options.html:85
 msgid ""
 "By clicking here, you agree to the <a href=\"/terms/\" >Terms and "
 "Conditions</a> set out by this site, including our Cookie Use."
 msgstr ""
 
-#: askmath/templates/askmath/authentication/options.html:160
+#: askmath/templates/askmath/authentication/options.html:109
 msgid "Recover"
 msgstr ""
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:33
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:51
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:26
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:47
 #: askmath/templates/askmath/index/contents_details.html:53
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:35
+#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:29
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:41
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:36
+#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:31
 msgid "All Questions"
 msgstr ""
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:36
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:67
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:29
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:63
 #: askmath/templates/askmath/index/contents_details.html:69
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:38
+#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:32
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:44
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:39
+#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:34
 msgid "All Videos"
 msgstr ""
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:43
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:36
 msgid "Discipline does not have lessons."
 msgstr ""
 
-#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:29
+#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:23
 msgid "All Lessons"
 msgstr ""
 
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:37
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:33
 #: askmath/templates/askmath/index/contents_details.html:39
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:30
 msgid "Options"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_initial_details.html:26
-msgid "Your level of experience is:"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:42
-msgid "This lesson does not have questions!!!"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:46
-msgid "Congratulations, you have completed this lesson !!!"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:47
-msgid ""
-"You can redo this lesson by clicking the button below or next to some of the "
-"lessons recommended in the table below."
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:51
-msgid "Complete this lesson and gain experience to level up !!!"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:52
-msgid ""
-"It is recommended that you have completed some other lessons like to proceed "
-"to this, these lessons you can find in the table below."
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:60
-msgid "Start Lesson"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:62
-msgid "Continue Lesson"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:66
-msgid "Reset Lesson"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:83
-msgid "Progress"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:97
+#: askmath/templates/askmath/content/question/view_question.html:38
 msgid "Correct Questions"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_initial_details.html:98
+#: askmath/templates/askmath/content/question/view_question.html:39
 msgid "Skipped Remaining"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_initial_details.html:109
-msgid "Sugestions next lessons:"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:118
-msgid "It has no sugestions."
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:122
-msgid "Requirements recommended:"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_initial_details.html:131
-msgid "It has no requirements."
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_question.html:7
-msgid "This question worth:"
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_question.html:7
+#: askmath/templates/askmath/content/question/view_question.html:48
 msgid "Points"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:8
-msgid "Mark <ins>all</ins> the correct items."
-msgstr ""
-
-#: askmath/templates/askmath/content/question/view_question.html:26
+#: askmath/templates/askmath/content/question/view_question.html:62
 msgid "Not Item Found!!!"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:31
+#: askmath/templates/askmath/content/question/view_question.html:66
 #: askmath/templates/askmath/forum/topic/_render_comments.html:8
 msgid "Reply"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:37
+#: askmath/templates/askmath/content/question/view_question.html:72
 msgid "Jump"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:40
+#: askmath/templates/askmath/content/question/view_question.html:75
 msgid "Review Jumps"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:43
+#: askmath/templates/askmath/content/question/view_question.html:78
 msgid "Exit"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:56
+#: askmath/templates/askmath/content/question/view_question.html:93
+msgid "Reser Lesson"
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:124
 msgid "Help Question"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:101
+#: askmath/templates/askmath/content/question/view_question.html:169
 msgid "Your Jump is Question?"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:105
+#: askmath/templates/askmath/content/question/view_question.html:173
 msgid "Not, is error!"
 msgstr ""
 
-#: askmath/templates/askmath/content/question/view_question.html:108
+#: askmath/templates/askmath/content/question/view_question.html:176
 msgid "Yes, jump!"
 msgstr ""
 
-#: askmath/templates/askmath/content/video/view_video.html:43
+#: askmath/templates/askmath/content/question/view_question.html:196
+msgid "Progress"
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:202
+msgid "Your level of experience is:"
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:223
+msgid "Sugestions next lessons:"
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:232
+msgid "It has no sugestions."
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:236
+msgid "Requirements recommended:"
+msgstr ""
+
+#: askmath/templates/askmath/content/question/view_question.html:245
+msgid "It has no requirements."
+msgstr ""
+
+#: askmath/templates/askmath/content/video/view_video.html:39
 msgid "Others Videos"
 msgstr ""
 
-#: askmath/templates/askmath/content/video/view_video.html:63
-#: askmath/templates/askmath/content/video/view_videos.html:40
+#: askmath/templates/askmath/content/video/view_video.html:58
+#: askmath/templates/askmath/content/video/view_videos.html:33
 #: askmath/templates/askmath/manager/lesson/_render_lesson.html:105
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:52
 msgid "Lesson does not have videos."
@@ -1841,8 +1810,8 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: askmath/templates/askmath/index/contents.html:35
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:52
+#: askmath/templates/askmath/index/contents.html:30
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:47
 msgid "Not Lessons Found"
 msgstr ""
 
@@ -1862,51 +1831,51 @@ msgstr ""
 msgid "About the project"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:32
+#: askmath/templates/askmath/index/message.html:33
 msgid "Logo PET information technology group."
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:36
+#: askmath/templates/askmath/index/message.html:37
 msgid "Social networks:"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:43
+#: askmath/templates/askmath/index/message.html:44
 msgid "Blog PET Information Technology."
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:45
+#: askmath/templates/askmath/index/message.html:46
 msgid "Blog"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:51
+#: askmath/templates/askmath/index/message.html:52
 msgid "GooglePlus PET Information Technology."
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:53
+#: askmath/templates/askmath/index/message.html:54
 msgid "Google+"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:59
+#: askmath/templates/askmath/index/message.html:60
 msgid "Facebook PET Information Technology."
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:61
+#: askmath/templates/askmath/index/message.html:62
 msgid "Facebook"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:67
+#: askmath/templates/askmath/index/message.html:68
 msgid "Twitter PET Information Technology."
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:69
+#: askmath/templates/askmath/index/message.html:70
 msgid "Twitter"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:78
+#: askmath/templates/askmath/index/message.html:79
 msgid "Send your message"
 msgstr ""
 
-#: askmath/templates/askmath/index/message.html:83
+#: askmath/templates/askmath/index/message.html:84
 msgid "Send"
 msgstr ""
 
@@ -1944,7 +1913,7 @@ msgstr ""
 msgid "No lesson found."
 msgstr ""
 
-#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:42
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:41
 msgid "Not Disciplines Found"
 msgstr ""
 
@@ -2051,7 +2020,7 @@ msgstr ""
 msgid "Choose Person Types"
 msgstr ""
 
-#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:21
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:20
 msgid "Not Type Person Found"
 msgstr ""
 
@@ -2102,7 +2071,7 @@ msgstr ""
 msgid "Choose Lesson"
 msgstr ""
 
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:45
+#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:39
 msgid "Question does not have lessons."
 msgstr ""
 
@@ -2111,18 +2080,13 @@ msgstr ""
 msgid "Sort"
 msgstr ""
 
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:51
-#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:20
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:45
+#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:18
 msgid "Not Questions Found"
 msgstr ""
 
-#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:8
+#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:7
 msgid "Sort Questions"
-msgstr ""
-
-#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:25
-#: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:22
-msgid " Submit"
 msgstr ""
 
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:7
@@ -2157,7 +2121,7 @@ msgstr ""
 msgid "Lesson:"
 msgstr ""
 
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:46
+#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:41
 msgid "Video does not have lessons."
 msgstr ""
 
@@ -2167,6 +2131,10 @@ msgstr ""
 
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:18
 msgid "Not Videos Found"
+msgstr ""
+
+#: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:22
+msgid " Submit"
 msgstr ""
 
 #: askmath/templates/askmath/person/account/_modal_remove_account.html:7
@@ -2212,15 +2180,15 @@ msgstr ""
 msgid "Registered in:"
 msgstr ""
 
-#: askmath/templates/askmath/person/account/view_profile.html:38
+#: askmath/templates/askmath/person/account/view_profile.html:34
 msgid "Profile Edit"
 msgstr ""
 
-#: askmath/templates/askmath/person/account/view_profile.html:42
+#: askmath/templates/askmath/person/account/view_profile.html:38
 msgid "Password Alter"
 msgstr ""
 
-#: askmath/templates/askmath/person/account/view_profile.html:46
+#: askmath/templates/askmath/person/account/view_profile.html:42
 msgid "Account Remove"
 msgstr ""
 
@@ -2508,7 +2476,7 @@ msgstr ""
 msgid "New notification: %(topic_name)s"
 msgstr ""
 
-#: askmath/views/authentication/account.py:140
+#: askmath/views/authentication/account.py:152
 msgid "Dean "
 msgstr ""
 
@@ -2558,4 +2526,8 @@ msgstr ""
 
 #: askmath/views/manager/video/video.py:83
 msgid "Edit Video"
+msgstr ""
+
+#: nocaptcha_recaptcha/fields.py:21
+msgid "Incorrect, please try again."
 msgstr ""

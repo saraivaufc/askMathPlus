@@ -29,7 +29,7 @@ class PersonLoginForm(forms.Form):
 	password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
 		widget=forms.PasswordInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter you password.')})
-	captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Solved this problem.'))
+	captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Solve this problem.'))
 
 class PersonProfile(ModelForm):
 	class Meta:
