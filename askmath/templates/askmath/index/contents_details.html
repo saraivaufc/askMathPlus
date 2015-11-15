@@ -42,7 +42,7 @@
 		    	<div class="container-fluid">
 		    	<div class="row">
 			    	<div class="tile bg-indigo">
-					    <a href="/home/content/questions/view_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
+					    <a href="/home/content/questions/view_question/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
 					        <span class="icon mif-list-numbered"></span>
 					        <div class="tile-label">
 					            {% trans "Questions" %}

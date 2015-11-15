@@ -1,26 +1,14 @@
 {% load i18n %}
 {% load askmath_tags %}
 <ul id="menu-header" class="h-menu">
-	{% if request.user.is_authenticated %}
 	<li>
-		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Controls" %}">
+		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Menu" %}">
 			<span class="icon mif-lg mif-menu"></span>
 		</a>
 	</li>
-	{% endif %}
 	<li class="logo-system">
 		<a href="/home/"  class="logo no-padding no-margin" rel="{% trans "Home" %}"  itemprop="title">
 			<img class="image-logo no-margin" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
-		</a>
-	</li>
-	<li>
-		<a href="/home/">
-			<span class="icon mif-home"></span> {% trans "Home" %}
-		</a>
-	</li>
-	<li>
-		<a href="/forum/">
-			<span class="icon mif-bubbles"></span> {% trans "Forum" %}
 		</a>
 	</li>
 	{% if perms.askmath.access_manager %}
@@ -74,22 +62,19 @@
 	</li>
 	{% endif %}
 	{% if perms.askmath.access_content %}
-	<li class="search place-right no-hovered">
-		<form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
-			<div class="input-control text" style="width: 250px; margin-right: 10px">
-				<input id="search" name="search" type="text" size="27" maxlength="27" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>
-				<button class="button bg-dark fg-white" type="submit"><span class="mif-search"></span></button>
-			</div>
-		</form>
+	<li class="place-right">
+		<a href="#" onclick="showCharm('#charmSearch');">
+			<span class="icon mif-search mif-lg"></span>
+		</a>
 	</li>
 	{% endif %}
 </ul>
 
-{% if request.user.is_authenticated %}
 <div id="charmControls" data-role="charm" data-position="left">
 	<hr class="thin"/>
 	<div class="controls">
-		<div class="image-container">
+		{% if request.user.is_authenticated %}
+		<div id="profile" class="image-container">
 			<div class="frame">
 				{% if request.user.get_profile_image %}
 				<img class="img" src="{{ request.user.get_profile_image.url }}">
@@ -97,20 +82,39 @@
 				<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
 				{% endif %}
 			</div>
-			<h3 class="image-title fg-white text-center">
-				<span>{{ request.user.get_short_name }}</span>
-			</h3>
+			<label class="image-title fg-white text-center">
+					{{ request.user.get_short_name }}
+			</label>
 		</div>
-		<div class="container-fluid">
+		{% else %}
+		<div id="profile" class="image-container">
+			<div class="frame">
+				<img class="img" src="{{ STATIC_URL }}askmath/img/logos/logo-profile.png">
+			</div>
+		</div>
+		{% endif %}
+		<div id="controls" class="container-fluid">
 			<div class="row">
 				<ul class="v-menu width subdown darcula">
 					<li>
+						<a href="/home/">
+							<span class="icon mif-home"></span>
+							<span class="title">{% trans "Home" %}</span>
+						</a>
+					</li>
+					<li>
+						<a href="/forum/">
+							<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+						</a>
+					</li>
+					{% if request.user.is_authenticated %}
+					<li>
 						<a href="/home/person/account/view/">
-							<span class="icon mif-profile"></span>
+							<span class="icon mif-user"></span>
 							<span class="title">{% trans "Profile" %}</span>
 						</a>
 					</li>
-					
+					{% endif %}
 					{% if perms.askmath.access_manager_statistics %}
 					{% block statistic %}
 					<li>
@@ -143,36 +147,66 @@
 					{% endif %}
 
 					{% comment %}
-					{% if perms.askmath.access_content %}
-					<li>
-						<a href="/help/">
-							<span class="icon mif-chart-line"></span>
-							<span class="title">{% trans "Performance" %}</span>
-						</a>
-					</li>
-					{% elif perms.askmath.access_manager %}
-					
-					{% endif %}
-					<li>
-						<a href="/help/">
-							<span class="icon mif-flag"></span>
-							<span class="title">{% trans "Help" %}</span>
-						</a>
-					</li>
+						{% if perms.askmath.access_content %}
+						<li>
+							<a href="/help/">
+								<span class="icon mif-chart-line"></span>
+								<span class="title">{% trans "Performance" %}</span>
+							</a>
+						</li>
+						{% elif perms.askmath.access_manager %}
+						
+						{% endif %}
+						<li>
+							<a href="/help/">
+								<span class="icon mif-flag"></span>
+								<span class="title">{% trans "Help" %}</span>
+							</a>
+						</li>
 					{% endcomment %}
+					{% if request.user.is_authenticated %}
 					<li>
 						<a href="/authentication/logout/">
 							<span class="icon mif-switch"></span>
 							<span class="title">{% trans "Logout" %}</span>
 						</a>
 					</li>
+					{% else %}
+					<li>
+						<a href="/authentication/options/">
+							<span class="icon mif-enter"></span>
+							<span class="title">{% trans "Enter" %}</span>
+						</a>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-{% endif %}
 
+<div id="charmSearch" data-role="charm" data-position="right" class="charm right-side bg-grayDark">
+        <h1 class="text-light text-center">{% trans "Search" %}</h1>
+        <hr class="thin"/>
+        <br />
+        <div class="input-control text full-size">
+            <label>
+                <span class="dropdown-toggle drop-marker-light">Anywhere</span>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a onclick="setSearchPlace(this)">Anywhere</a></li>
+                    <li><a onclick="setSearchPlace(this)">Options</a></li>
+                    <li><a onclick="setSearchPlace(this)">Files</a></li>
+                    <li><a onclick="setSearchPlace(this)">Internet</a></li>
+                </ul>
+            </label>
+            <form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
+				<div class="input-control text">
+					<input id="search" name="search" type="text" maxlength="100" class="form-control" placeholder="{%  trans "Search disciplines and lessons..." %}" required>			
+					<button class="button"><span class="mif-search"></span></button>
+				</div>
+			</form>
+        </div>
+    </div>
 
 
 

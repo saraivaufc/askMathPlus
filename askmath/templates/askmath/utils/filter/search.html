@@ -16,7 +16,7 @@
 			<h4>{% trans "Disciplines:" %}</h4>
 			<div class="tile-container">
 			{% for discipline, occurence in disciplines_occurrences %}
-				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				<div class="tile-wide {{ discipline.color }} fg-white" data-role="tile">
 				    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/" class="tile-content iconic">
 				        <span class="icon mif-stack2"></span>
 				        <span class="tile-label">{{ discipline.get_title }}</span>
@@ -31,7 +31,7 @@
 			<h4>{% trans "Lessons:" %}</h4>
 			<div class="tile-container">
 			{% for lesson, occurence in lessons_occurrences %}
-				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				<div class="tile-wide {{ lesson.color }} fg-white" data-role="tile">
 					<a href="/home/content/lessons/view/discipline={% with lesson.get_disciplines|first as discipline %}{{ discipline.id }}{% endwith %}/lesson={{ lesson.id }}/" class="tile-content iconic">
 				        <span class="icon mif-clipboard"></span>
 				        <span class="tile-label">{{ lesson.get_title }}</span>
@@ -46,7 +46,7 @@
 			<h4>{% trans "Videos:" %}</h4>
 			<div class="tile-container">
 			{% for video, occurence in videos_occurrences %}
-				<div class="tile {{colors|random}} fg-white" data-role="tile">
+				<div class="tile-wide {{ video.color }} fg-white" data-role="tile">
 				    <a href="/home/content/videos/view/discipline={% with video.get_lesson.get_disciplines|first as discipline %}{{ discipline.id }}{% endwith %}/lesson={{ video.get_lesson.id }}/video={{ video.id }}/" class="tile-content iconic">
 				        <span class="icon mif-film"></span>
 				        <span class="tile-label">{{ video.get_title }}</span>

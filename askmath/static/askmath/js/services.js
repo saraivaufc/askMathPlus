@@ -14,6 +14,11 @@ $(function(){
 		}
 	});
 	$("#search").autocomplete({
-		source: searchValues
+		source: searchValues,
+		open: function(){
+        setTimeout(function () {
+	            $('.ui-autocomplete').css('z-index', 99999999999999);
+	        }, 0);
+	    }
 	});
 });

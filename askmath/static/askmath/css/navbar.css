@@ -64,21 +64,9 @@
     max-width: 225px;
 }
 
-#charmControls{
-    display: none;
-}
-
-
 .logo-system{
     height: 100%;
-}
-
-.logo-system > a > img{
-    padding-left: 10px;
-    padding-top: 5px;
-}
-
-.logo{
+    margin-top: 5px;
 }
 
 .logo > .image-logo{

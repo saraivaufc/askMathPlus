@@ -584,3 +584,22 @@ label.caption{
 .cursor-move{
 	cursor:move !important;
 }
+
+
+#profile, #controls{
+	border: 1px solid #fff;
+}
+
+#profile  > .image-title{
+	position: absolute;
+	margin-top: -30px;
+}
+
+#profile  > .image-title > a{
+	color: #fff !important;
+	text-shadow: 2px 2px #000;
+}
+
+#profile  > .image-title > a:hover{
+	color: blue !important;
+}
