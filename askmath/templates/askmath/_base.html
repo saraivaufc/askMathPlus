@@ -102,32 +102,34 @@
 	<body onload="Init(); var a=new EqTextArea(''); a.addExportArea('eqcoderaw','htmledit'); EqEditor.init('1438691334', a,true); EqEditor.ExportButton.add(a, 'copybutton', EqnExport,'htmledit'); EqEditor.load(''); EqEditor.setAdvert(); ">		
 		<div id="site">
 			<header id="header">
-			{% include 'askmath/_no_script.html' %}
-			{% block header %}
-				{% include 'askmath/_header.html' %}
-			{% endblock %}
+				{% include 'askmath/_no_script.html' %}
+				{% block header %}
+					{% include 'askmath/_header.html' %}
+				{% endblock %}
 			</header>	
 			<main id="main">
 				<section id="messages">
-				{% include 'askmath/_messages.html' %}
+					{% block messages %} 
+					{% include 'askmath/_messages.html' %}
+					{% endblock %}
 				</section>
 				<section id="content">
-				{% block header_two %}
-				{% endblock %}
-				{% block content %}
-				{% endblock %}
+					{% block header_two %}
+					{% endblock %}
+					{% block content %}
+					{% endblock %}
 				</section>
 				<section id="modals"> 
-				{% block modals %}
-				{% endblock %}
+					{% block modals %}
+					{% endblock %}
 				</section>
 			</main>
 		</div>
 	
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-		{% block footer %}
-			{% include 'askmath/_footer.html' %}
-		{% endblock %}
+			{% block footer %}
+				{% include 'askmath/_footer.html' %}
+			{% endblock %}
 		</footer>
 
 		<!-- Google -->

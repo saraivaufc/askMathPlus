@@ -10,10 +10,10 @@ from askmath.widgets.fields import AdvancedFileInput
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 class PersonForm(ModelForm):
-	captcha = NoReCaptchaField()
+	#captcha = NoReCaptchaField()
 	class Meta:
 		model= Person
-		fields = ("username", "name", "email","password", "captcha")
+		fields = ("username", "name", "email","password")
 
 		widgets = {
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
@@ -29,7 +29,7 @@ class PersonLoginForm(forms.Form):
 	password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
 		widget=forms.PasswordInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter you password.')})
-	captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Solve this problem.'))
+	#captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Check the option.'))
 
 class PersonProfile(ModelForm):
 	class Meta:
