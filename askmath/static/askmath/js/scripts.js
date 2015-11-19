@@ -422,3 +422,8 @@ function showCharm(id){
         charm.open();
     }
 }
+
+
+function validConfirmPassword(field){
+	alert(field.text());
+}

@@ -11,15 +11,16 @@ from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 class PersonForm(ModelForm):
 	#captcha = NoReCaptchaField()
+	confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_('Please enter you password.'))
 	class Meta:
 		model= Person
-		fields = ("username", "name", "email","password")
-
+		fields = ("username", "name", "email","password","confirm_password")
 		widgets = {
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),
 			'password': PasswordInput(attrs={'required': 'required'}),
+			'confirm_password': PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'})
 		}
 	
 class PersonLoginForm(forms.Form):
