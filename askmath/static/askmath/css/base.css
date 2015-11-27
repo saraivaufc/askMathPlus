@@ -603,3 +603,8 @@ label.caption{
 #profile  > .image-title > a:hover{
 	color: blue !important;
 }
+
+
+#charmControls, #charmSearch{
+	display: none;
+}

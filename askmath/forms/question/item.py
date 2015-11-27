@@ -1,6 +1,6 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, HiddenInput
+from django.forms import ModelForm, TextInput, RadioSelect, Textarea, SelectMultiple, NumberInput, HiddenInput
 from django.utils.translation import ugettext_lazy as _
 
 from askmath.models import Item, Discipline, Lesson
@@ -16,6 +16,6 @@ class ItemForm(ModelForm):
 		widgets = {
 			'position': HiddenInput(attrs={'class':'hidden'}),
 			'description': Textarea(attrs={'required': 'required', 'class':'latex'}),
-			'correct': CheckboxInput(attrs={}),
+			'correct': RadioSelect(attrs={}),
 			'deficiencys': SelectMultiple(attrs={'class':'full-size'}),
 		}

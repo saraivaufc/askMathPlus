@@ -112,7 +112,6 @@ class Account(IAccount):
             else:
                 messages.error(request, TextMessage.USER_TYPE_NOT_FOUND)
                 return self.options(request)
-        
         if form and form.is_valid():
             user=form.save()
             if register_key:
@@ -123,13 +122,20 @@ class Account(IAccount):
             request.method="GET"
             return self.signin(request,form)
         else:
-            username = form.cleaned_data['username']
-            if len(PersonModel.objects.filter(username = username)):
-                messages.error(request, "Nome de usuario existente")
-            email = form.cleaned_data['email']
-            if len(PersonModel.objects.filter(email = email)):
-                messages.error(request, "Email existente")
-            messages.error(request, TextMessage.ERROR_FORM)
+            try:
+                username = form.cleaned_data['username']
+                if len(PersonModel.objects().filter(username = username)):
+                    print 'Usuario existente\n'
+                    messages.error(request, "Nome de usuario existente")
+            except Exception, e:
+                print e
+            try:
+                email = form.cleaned_data['email']
+                if len(PersonModel.objects.filter(email = email)):
+                    print 'Email existente\n'
+                    messages.error(request, "Email existente")
+            except Exception, e:
+                print e
         return self.options(request, True)
         
     def recover_password(self, request, user=None):

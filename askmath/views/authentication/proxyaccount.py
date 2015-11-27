@@ -56,7 +56,7 @@ class ProxyAccount(IAccount):
                 print "casa"
                 messages.error(request, TextMessage.ERROR_FORM)
         request.method = 'GET'
-        return self.options(request)
+        return self.__account.options(request)
     
     def signup(self, request): 
         if request.user.is_authenticated():
@@ -72,7 +72,7 @@ class ProxyAccount(IAccount):
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         request.method = 'GET'
-        return self.options(request)
+        return self.__account.options(request)
         
     def recover_password(self, request):
         if request.user.is_authenticated():
@@ -96,7 +96,7 @@ class ProxyAccount(IAccount):
             except:
                 messages.error(request, TextMessage.ERROR_FORM)
         request.method = 'GET'
-        return self.options(request)
+        return self.__account.options(request)
     
     def logout(self, request):
         try:
@@ -105,4 +105,4 @@ class ProxyAccount(IAccount):
             print e
             messages.error(request, TextMessage.LOGOUT_ERROR)
         request.method = 'GET'
-        return self.options(request)
+        return self.__account.options(request)
