@@ -45,28 +45,19 @@ class Account(IAccount):
                 print e
                 messages.error(request, TextMessage.ERROR_FORM)
                 return self.options(request, True)
-
-            try:
-                person = PersonModel.objects.get(username=username, exists=True)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.USER_NOT_FOUND)
-                return self.options(request, False)
+            
+            person = authenticate(username=username, password=password)
             if person:
-                person = authenticate(username=username, password=password)
-                if person:
-                    login_user(request, person)
-                    if request.user.is_authenticated():
-                        if next:
-                            return HttpResponseRedirect(next)
-                        else:
-                            return HttpResponseRedirect("/home/")
+                login_user(request, person)
+                if request.user.is_authenticated():
+                    if next:
+                        return HttpResponseRedirect(next)
                     else:
-                        messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
+                        return HttpResponseRedirect("/home/")
                 else:
-                    messages.error(request, TextMessage.PASSWORD_INCORRECT)
+                    messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
             else:
-                messages.error(request, TextMessage.USER_NOT_FOUND)
+                messages.error(request, TextMessage.PASSWORD_INCORRECT)
         return self.options(request, False)
     
     def signup(self, request):
