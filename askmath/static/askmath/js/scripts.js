@@ -422,3 +422,14 @@ function showCharm(id){
         charm.open();
     }
 }
+
+
+function validConfirmPassword(){
+	if($("input[name='password']").val() != $("input[name='confirm_password']").val() ){
+	    $("input[name='password']").css("border", "#FF0000 solid 1px")
+	    $("input[name='confirm_password']").css("border", "#FF0000 solid 1px")
+	}else{
+		$("input[name='password']").css("border", "#FFF solid 0px");
+	    $("input[name='confirm_password']").css("border", "#FFF solid 0px");
+	}
+}

@@ -47,6 +47,7 @@
 							<p class="lead text-justify">
 								{{ question.get_description|safe|linebreaksbr }} <span id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</span>
 							</p>
+							<span>Marque todos os itens corretos.</span>
 							<input type="hidden" name="url_help" value="/home/content/questions/help/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" />
 							<form id="form-question" action="/home/content/questions/answer_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" method="POST">
 								{% csrf_token %}
