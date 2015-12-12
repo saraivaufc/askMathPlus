@@ -17,9 +17,11 @@
     border:none;
 }
 
-.h-menu a{
+.h-menu a, .h-menu .icon{
 	color: #fff !important;
 }
+
+
 
 .icon-size
 {

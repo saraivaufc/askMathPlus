@@ -6,10 +6,12 @@ from askmath.entities import TextMessage
 from django.contrib import messages
 
 from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.views.index import ProxyHome
 
 class ProxyDiscipline(IDiscipline):
     def __init__(self):
     	self.__discipline = Discipline()
+        self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
     def view_discipline(self, request, id_discipline):
@@ -40,4 +42,4 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
+        return self.__proxy_home.index(request)

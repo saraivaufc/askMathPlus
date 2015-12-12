@@ -91,7 +91,6 @@ class Filter(IFilter):
 		return lessons_occurrences
 	
 	def search_videos(self, request, expression, videos):
-		#SEARCH IN VIDEOS
 		videos_occurrences = {}
 		for video in videos:
 			video_title = (video.get_title()).upper()
@@ -110,14 +109,14 @@ class Filter(IFilter):
 	def occurrences(self, text="", expression=""):
 		text = self.expression_clean(text).encode('utf-8')
 		expression = self.expression_clean(expression).split(" ")
-		occurrences = 0
+		occurrences_count = 0
 		for i in expression:
 			try:
 				if len(i) > 2 and len(text)>2:
-					occurrences += len(self.string_matching(unicode(text), unicode(i)))
+					occurrences_count += len(self.string_matching(unicode(text), unicode(i)))
 			except:
 				pass
-		return occurrences
+		return occurrences_count
 		
 	
 	def expression_clean(self, expression=""):

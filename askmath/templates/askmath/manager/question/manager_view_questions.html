@@ -35,16 +35,16 @@
 	{% endif %}
 </div>
 
-<div class="listview bg-white fg-dark " data-role="listview">
+<ul class="list-group">
 {% for question in questions %}
-<a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="list">
+<a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="list-group-item">
 	<span class="list-icon mif-list-numbered"></span>
 	<span class="list-title">{{ question.get_description|safe|linebreaksbr }}</span>
 </a>
 {% empty %}
 <h3 class="text-center">{% trans "Not Questions Found" %}</h3>
 {% endfor %}
-</div>
+</ul>
 
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
 </div>
