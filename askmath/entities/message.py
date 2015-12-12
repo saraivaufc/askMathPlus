@@ -20,6 +20,7 @@ class TextMessage():
 	
 	
 	CHANGED_PASSWORD_SUCCESS = _(u"Password changed success.")
+	USERNAME_OR_PASSWORD_INCORRECT = _(u"Username or password incorrect.")
 	PASSWORD_INCORRECT = _(u"Password incorrect.")
 
 

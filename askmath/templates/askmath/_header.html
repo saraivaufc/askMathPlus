@@ -86,7 +86,9 @@
 				{% endif %}
 			</div>
 			<label class="image-title fg-white text-center">
+				<a href="">
 					{{ request.user.get_short_name }}
+				</a>
 			</label>
 		</div>
 		{% else %}
@@ -99,17 +101,6 @@
 		<div id="controls" class="container-fluid">
 			<div class="row">
 				<ul class="v-menu width subdown darcula">
-					<li>
-						<a href="/home/">
-							<span class="icon mif-home"></span>
-							<span class="title">{% trans "Home" %}</span>
-						</a>
-					</li>
-					<li>
-						<a href="/forum/">
-							<span class="icon mif-bubbles"></span> {% trans "Forum" %}
-						</a>
-					</li>
 					{% if request.user.is_authenticated %}
 					<li>
 						<a href="/home/person/account/view/">
@@ -118,6 +109,12 @@
 						</a>
 					</li>
 					{% endif %}
+					
+					<li>
+						<a href="/forum/">
+							<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+						</a>
+					</li>
 					{% if perms.askmath.access_manager_statistics %}
 					{% block statistic %}
 					<li>

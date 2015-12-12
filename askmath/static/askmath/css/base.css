@@ -598,6 +598,7 @@ label.caption{
 #profile  > .image-title > a{
 	color: #fff !important;
 	text-shadow: 2px 2px #000;
+	text-decoration: none !important; 
 }
 
 #profile  > .image-title > a:hover{

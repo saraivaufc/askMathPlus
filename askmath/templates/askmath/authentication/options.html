@@ -20,9 +20,27 @@
 <div class="col-md-4 col-md-offset-4">
     <div class="tabcontrol" data-role="tabControl">
     	<ul id="menu-options" class="tabs">
-            <li><a href="#frame_sign_in">{% trans "Sign In" %}</a></li>
-            <li><a href="#frame_sign_up">{% trans "Sign Up" %}</a></li>
-            <li><a href="#frame_recover_password">{% trans "Recover Password" %}</a></li>
+            {% if tab_actived == 'sign_in' %}
+            <li class="active">
+            {% else %}
+            <li>
+            {% endif %}
+            	<a href="#frame_sign_in">{% trans "Sign In" %}</a>
+            </li>
+            {% if tab_actived == 'sign_up' %}
+            <li class="active">
+            {% else %}
+            <li>
+            {% endif %}
+            	<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
+            </li>
+            {% if tab_actived == 'recover_password' %}
+            <li class="active">
+            {% else %}
+            <li>
+            {% endif %}
+            	<a href="#frame_recover_password">{% trans "Recover Password" %}</a>
+            </li>
         </ul>
     
         <div class="frames">

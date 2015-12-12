@@ -58,7 +58,7 @@ class PersonRecoverPassword(forms.Form):
 	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
 		widget=forms.EmailInput(attrs={'required': 'required'}),
 		error_messages={'required': _('Please enter your email.')})
-	captcha = NoReCaptchaField()
+	#captcha = NoReCaptchaField()
 	
 class PersonAlterPassword(forms.Form):
 	old_password = forms.CharField(label=_('Old Password'),help_text=_("Please enter you old password."),

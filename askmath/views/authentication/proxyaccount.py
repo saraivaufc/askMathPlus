@@ -21,88 +21,73 @@ class ProxyAccount(IAccount):
                 return redirect(request.GET['next'])
             except Exception, e:
                 print e
-                return HttpResponseRedirect('/home/')
+                return self.__proxy_home.index(request)
 
         if request.method == "POST":
             try:
                 option = request.POST['option']
+                if option == 'sign_in':
+                    return self.signin(request)
+                elif option == 'sign_up':
+                    return self.signup(request)
+                elif option == 'recover_password':
+                    return self.recover_password(request)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
-                return self.__proxy_home.index(request)
-                
-            if option == 'sign_in':
-                return self.signin(request)
-            elif option == 'sign_up':
-                return self.signup(request)
-            elif option == 'recover_password':
-                return self.recover_password(request)
-            
-        return self.__account.options(request)    
+        return self.__account.options(request) 
     
     def signin(self, request):
-        if request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
-        if request.method == 'POST':
-            form = PersonLoginForm(request.POST)
-            if form.is_valid():
-                try:
-                    return self.__account.signin(request, form)
-                except Exception, e:
-                    print e
-                    messages.error(request, TextMessage.USER_CREATED_ERROR)
-                    return self.options(request)
-            else:
-                print "casa"
-                messages.error(request, TextMessage.ERROR_FORM)
-        request.method = 'GET'
-        return self.__account.options(request)
-    
-    def signup(self, request): 
-        if request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
-        
-        if request.method == 'POST':
+        form = PersonLoginForm(request.POST, request.FILES)
+        if form.is_valid():
             try:
-                return self.__account.signup(request)
+                return self.__account.signin(request, form)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_CREATED_ERROR)
-                return self.options(request)
-            else:
-                messages.error(request, TextMessage.ERROR_FORM)
-        request.method = 'GET'
+                return self.__account.options(request)
+        else:
+            print "signin - FORM INVALID"
+            messages.error(request, TextMessage.ERROR_FORM)
+        return self.__account.options(request)
+    
+    def signup(self, request):
+        try:
+            return self.__account.signup(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.USER_CREATED_ERROR)
+            return self.__account.options(request)
+        else:
+            messages.error(request, TextMessage.ERROR_FORM)
         return self.__account.options(request)
         
     def recover_password(self, request):
-        if request.user.is_authenticated():
-            return HttpResponseRedirect("/home/")
-        
-        if request.method == "POST":
+        try:
+            _username = request.POST['username']
+            _email    = request.POST['email']
             try:
-                _username = request.POST['username']
-                _email    = request.POST['email']
-                try:
-                    user = Student.objects.get(username = str(_username), email = str(_email))
-                    if user:
-                        try:
-                            return self.__account.recover_password(request, user)
-                        except:
-                            messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
-                    else:
-                        messages.error(request, TextMessage.USER_NOT_FOUND)
-                except:
+                user = Student.objects.get(username = str(_username), email = str(_email))
+                if user:
+                    try:
+                        return self.__account.recover_password(request, user)
+                    except:
+                        messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
+                else:
                     messages.error(request, TextMessage.USER_NOT_FOUND)
-            except:
-                messages.error(request, TextMessage.ERROR_FORM)
-        request.method = 'GET'
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.USER_NOT_FOUND)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.ERROR_FORM)
+
         return self.__account.options(request)
-    
+
     def logout(self, request):
         try:
             return self.__account.logout(request)
         except Exception, e:
             print e
             messages.error(request, TextMessage.LOGOUT_ERROR)
-        request.method = 'GET'
         return self.__account.options(request)

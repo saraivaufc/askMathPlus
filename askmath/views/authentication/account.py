@@ -20,13 +20,39 @@ except:
 
 
 class Account(IAccount):
-    def options(self, request, populate=False):
-        if not populate or request.method == 'POST':
+    def options(self, request):
+        form_signin = None
+        form_signup = None
+        form_recover_password = None
+        tab_actived = None
+
+        if request.method == 'POST':
+            try:
+                option = request.POST['option']
+                if option == 'sign_in':
+                    form_signin = PersonLoginForm(request.POST)
+                    tab_actived = 'sign_in'
+                elif option == 'sign_up':
+                    form_signup = PersonForm(request.POST)
+                    tab_actived = 'sign_up'
+                elif option == 'recover_password':
+                    form_recover_password = PersonRecoverPassword(request.POST)
+                    tab_actived = 'recover_password'
+            except Exception, e:
+                print e
+        if not form_signin:
             form_signin = PersonLoginForm()
+        if not form_signup:
             form_signup = PersonForm()
+        if not form_recover_password:
             form_recover_password = PersonRecoverPassword()
+
         return render(request, "askmath/authentication/options.html",
-            {'request': request,'form_signin': form_signin, 'form_signup':form_signup,'form_recover_password':form_recover_password})
+            {'request': request, 
+            'form_signin': form_signin, 
+            'form_signup':form_signup, 
+            'form_recover_password':form_recover_password,
+            'tab_actived': tab_actived})
     
     
     def signin(self, request, form=None):
@@ -44,7 +70,7 @@ class Account(IAccount):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR_FORM)
-                return self.options(request, True)
+                return self.options(request)
             
             person = authenticate(username=username, password=password)
             if person:
@@ -57,8 +83,8 @@ class Account(IAccount):
                 else:
                     messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
             else:
-                messages.error(request, TextMessage.PASSWORD_INCORRECT)
-        return self.options(request, False)
+                messages.error(request, TextMessage.USERNAME_OR_PASSWORD_INCORRECT)
+        return self.options(request)
     
     def signup(self, request):
         request.POST = request.POST.copy()
@@ -112,22 +138,8 @@ class Account(IAccount):
             messages.success(request, TextMessage.USER_CREATED_SUCCESS)
             request.method="GET"
             return self.signin(request,form)
-        else:
-            try:
-                username = form.cleaned_data['username']
-                if len(PersonModel.objects().filter(username = username)):
-                    print 'Usuario existente\n'
-                    messages.error(request, "Nome de usuario existente")
-            except Exception, e:
-                print e
-            try:
-                email = form.cleaned_data['email']
-                if len(PersonModel.objects.filter(email = email)):
-                    print 'Email existente\n'
-                    messages.error(request, "Email existente")
-            except Exception, e:
-                print e
-        return self.options(request, True)
+
+        return self.options(request)
         
     def recover_password(self, request, user=None):
         if request.method == "POST":
@@ -146,7 +158,7 @@ class Account(IAccount):
                 messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
             form = PersonRecoverPassword()
         else:
-            return self.options(request, True)
+            return self.options(request)
     
     def logout(self, request):
         try:

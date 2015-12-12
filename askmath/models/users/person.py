@@ -46,7 +46,7 @@ class AbstractSystemPerson(models.Model):
 
 class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
     username = models.CharField(_(u"Username"), max_length=30, unique=True, db_index=True, help_text=_(u'Please enter you username.'),)
-    name = models.CharField(_(u"Name"), max_length=100, blank=False,null=True,help_text=_(u'Please enter you name.'),)
+    name = models.CharField(_(u"Full Name "), max_length=100, blank=False,null=True,help_text=_(u'Please enter you full name.'),)
     email = models.EmailField(_(u"Email"), max_length=254, unique=True, blank=False, help_text=_(u'Please enter you email.'),)
     is_staff = models.BooleanField(_(u'staff status'), default=False,
                                    help_text=_(u'Designates whether the user can log into this admin site.'))
