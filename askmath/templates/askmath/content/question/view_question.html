@@ -76,7 +76,7 @@
 										<a data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></a>
 									</div>
 									<div class="btn-group">
-										<a class="btn danger button"  href="/home/content/questions/view_inicial_details/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="mif-cross icon"></span> <spam class="hidden-xs">{% trans "Exit" %}</spam></a>
+										<a class="btn danger button"  href="/home/content/questions/view_inicial_details/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/"><span class="mif-cross icon"></span> <spam class="hidden-xs">{% trans "Exit" %}</spam></a>
 									</div>
 								</div>
 							</form>
