@@ -16,7 +16,7 @@ nltk
 tox==1.7.0
 model-mommy==1.2.1
 django-discover-runner==1
-
+python-social-auth
 
 
 #sudo apt-get install postfix

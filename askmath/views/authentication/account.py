@@ -50,8 +50,7 @@ class Account(IAccount):
         return render(request, "askmath/authentication/options.html",
             {'request': request, 
             'form_signin': form_signin, 
-            'form_signup':form_signup, 
-            'form_recover_password':form_recover_password,
+            'form_signup':form_signup,
             'tab_actived': tab_actived})
     
     

@@ -34,13 +34,6 @@
             {% endif %}
             	<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
             </li>
-            {% if tab_actived == 'recover_password' %}
-            <li class="active">
-            {% else %}
-            <li>
-            {% endif %}
-            	<a href="#frame_recover_password">{% trans "Recover Password" %}</a>
-            </li>
         </ul>
     
         <div class="frames">
@@ -125,24 +118,27 @@
 			    </form>
 			{% endwith %}            
             </div>
-            <div class="frame" id="frame_recover_password">
-           		{% with form_recover_password as form %}
-           		<form action="/authentication/options/" method="POST" role="form">
-			    {% csrf_token %}
-			    	<hr class="thin"/>
-			        <input type="hidden" name="option" value="recover_password">		        
-			        {% include "askmath/_render_form.html" %}
-			        <div class="form-actions">
-			        	<button type="submit" class="image-button btn-block button-primary">
-							{% trans "Recover" %}
-							<span class="icon mif-history"></span>
-						</button>
-			        </div>
-			    </form>
-			    {% endwith %}
-		</div>
 	</div>
 </div>
 </div>
 </div>
 {% endblock %}
+
+{% comment %}
+<div class="frame" id="frame_recover_password">
+	{% with form_recover_password as form %}
+	<form action="/authentication/options/" method="POST" role="form">
+    {% csrf_token %}
+    	<hr class="thin"/>
+        <input type="hidden" name="option" value="recover_password">		        
+        {% include "askmath/_render_form.html" %}
+        <div class="form-actions">
+        	<button type="submit" class="image-button btn-block button-primary">
+				{% trans "Recover" %}
+				<span class="icon mif-history"></span>
+			</button>
+        </div>
+    </form>
+    {% endwith %}
+</div>
+{% endcomment %}
