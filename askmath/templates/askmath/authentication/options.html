@@ -52,28 +52,29 @@
 				<form action="/authentication/options/" method="post" role="form">
 				{% endif %}
 			    {% csrf_token %}
-			        <h2 class="text-light text-center">{% trans "Sign In" %}</h2>
-			        <hr class="thin"/>
 			        <input type="hidden" name="next" value="{{ request.GET.next }}" />
 			        <input type="hidden" name="option" value="sign_in">
+			        <hr class="thin"/>
 			        {% include "askmath/_render_form.html" %}
-			        <ul>
-			        <li>
-			        	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-			        </li>
-				    <li>
-				       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
-				    </li>
-				    <li>
-				    	<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
-				    </li>
-				    </ul>
 			        <div class="form-actions">
 						<button type="submit" class="button image-button btn-block button-primary">
 							{% trans "Sign In" %}
 							<span class="icon mif-enter"></span>
 						</button>
 			        </div>
+			        <hr class="thin"/>
+			        <div class="social-buttons">
+				        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-facebook">
+	            			<span class="fa fa-facebook"></span> Sign in with Facebook
+	          			</a>
+	          			<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-block btn-social btn-google">
+			            	<span class="fa fa-google-plus"></span> Sign in with Google
+			          	</a>
+				        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn btn-block btn-social btn-twitter">
+			            	<span class="fa fa-twitter"></span> Sign in with Twitter
+			          	</a>
+			        </div>
+			        
 			    </form> 
 			    {% endwith %}
             </div>
@@ -81,7 +82,6 @@
 				{% with form_signup as form %}
 				<form  action="/authentication/options/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
 			    {% csrf_token %}
-			        <h2 class="text-light text-center">{% trans "Sign Up" %}</h2>
 			        <hr class="thin"/>
 			        <input type="hidden" name="option" value="sign_up">			
     				 {% include "askmath/_render_form.html" %}
@@ -129,8 +129,7 @@
            		{% with form_recover_password as form %}
            		<form action="/authentication/options/" method="POST" role="form">
 			    {% csrf_token %}
-			    	<h2 class="text-light text-center">{% trans "Recover Password" %}</h2>
-			        <hr class="thin"/>
+			    	<hr class="thin"/>
 			        <input type="hidden" name="option" value="recover_password">		        
 			        {% include "askmath/_render_form.html" %}
 			        <div class="form-actions">
