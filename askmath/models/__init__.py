@@ -1,6 +1,5 @@
 from .discipline import *
 from .lesson import *
-from .permissions import *
 from .question import *
 from .video import *
 from .users import *

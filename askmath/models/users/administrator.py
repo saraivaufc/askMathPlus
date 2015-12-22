@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from person import Person
 
-
 class Administrator(Person):
 
 	class Meta(Person.Meta):

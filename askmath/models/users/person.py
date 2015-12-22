@@ -5,10 +5,11 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 from django.core.mail import send_mail
 from django.utils import timezone
 from askMathPlus import settings
-from datetime import datetime
+from django.contrib.auth.models import Group, Permission
 
 try:
     from hashlib import md5
@@ -97,9 +98,13 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 class Person(AbstractPerson):
     profile_image = models.ImageField(verbose_name=_(u"Profile Image"),help_text=_(u"Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
     color = models.CharField(verbose_name=_(u'Color'), max_length=50, default=settings.generate_color)
-    creation = models.DateTimeField(_(u'Creation'), default=datetime.now)
+    creation = models.DateTimeField(_(u'Creation'), default=timezone.now)
     exists = models.BooleanField(default = True)
 
+    def save(self, *args, **kwargs):
+        super(Person, self).save(*args, **kwargs)
+        group = Group.objects.get(name=settings.DEFAULT_GROUP_NAME)
+        self.groups.add(group)
 
     def get_profile_image(self):
         return self.profile_image

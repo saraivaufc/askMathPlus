@@ -3,7 +3,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from askMathPlus.settings import generate_color, COLORS_ALL
-from datetime import datetime
+from django.utils import timezone
 
 class Question(models.Model):
     lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"),
@@ -24,7 +24,7 @@ class Question(models.Model):
         help_text=_(u"Choose a color for the question."))
     visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
         help_text=_(u"Select this option to leave visible question at all."))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_lesson(self):

@@ -1,13 +1,13 @@
 from django.db import models
-from datetime import  datetime
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 class Comment(models.Model):
     person = models.ForeignKey('Person', verbose_name=_(u"Person"))
     topic = models.ForeignKey('Topic', verbose_name=_(u"Topic"))
     description = models.TextField(verbose_name=_(u"Comment"))
     likes = models.ManyToManyField('Like', verbose_name=_(u"Likes"), null=True, blank=True)
-    creation = models.DateTimeField(verbose_name=_(u'Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_(u'Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_person(self):

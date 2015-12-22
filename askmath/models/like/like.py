@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 
 class Like(models.Model):
     person = models.ForeignKey('Person', verbose_name=_(u"Person"))
     
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_person(self):

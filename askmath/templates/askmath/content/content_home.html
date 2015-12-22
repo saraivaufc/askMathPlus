@@ -7,7 +7,30 @@
 
 {% block content_right %}
 	<div class="tile-container">
-	{% block tiles %}		
+	{% block tiles %}
+	<div class="tile-area no-padding bg-transparent">
+		<div class="tile-container">
+		{% for discipline in disciplines %}
+			{% if discipline.get_lessons_visibles %}
+			<div class="tile-wide {{ discipline.color }}">
+			    <a href="/home/content/disciplines/view/discipline={{ discipline.id }}/" class="tile-content slide-down iconic">
+			        <span class="icon mif-clipboard"></span>
+			        <div class="tile-label">
+			        	{{ discipline.get_title|title }}
+			        </div>
+			        <div class="slide-over bg-steel">
+			        <table class="text-center fill">
+			        	<tr>
+			        		<td>{% trans "All Lessons" %} : {{ discipline.get_lessons_visibles|length }}</td>
+			        	</tr>
+			        </table>
+			        </div>
+			    </a>
+			</div>
+			{% endif %}
+		{% endfor %}
+		</div>
+	</div>
 	{% endblock %}
 	</div>
 {% endblock %}

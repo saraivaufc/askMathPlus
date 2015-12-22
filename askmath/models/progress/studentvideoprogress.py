@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 
 class StudentVideoProgress(models.Model):
     student = models.ForeignKey('Student', verbose_name=_(u"Student"))
@@ -9,7 +9,7 @@ class StudentVideoProgress(models.Model):
     video = models.ForeignKey('Video', verbose_name=_(u"Video"))
     
     exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     
     def get_discipline(self):
         return self.discipline

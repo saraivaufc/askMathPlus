@@ -8,6 +8,8 @@ from askmath.models import Discipline
 from askmath.forms import MessageForm
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from askmath.models.lesson.lesson import Lesson
+from askmath.models.discipline import Discipline as DisciplineModel
+
 from django.core.mail import send_mail
 from .ihome import IHome
 from askmath.utils.user import send_password_reset
@@ -18,11 +20,12 @@ class Home(IHome):
             if request.user.has_perm('askmath.access_manager'):
                 return render(request, 'askmath/manager/manager_home.html', 
                     {'request':request})
-            else:
-                return HttpResponseRedirect("/home/content/disciplines/view/")
-        else:
-            return render(request, 'askmath/index/home.html',
-                {'request': request})
+            elif request.user.has_perm('askmath.access_content'):
+                disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
+                return render(request, 'askmath/content/content_home.html', 
+                    {'request':request, 'disciplines': disciplines})
+        
+        return render(request, 'askmath/index/home.html', {'request': request})
         
     def about(self, request):
         return render(request, 'askmath/index/about.html',

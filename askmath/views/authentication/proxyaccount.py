@@ -85,6 +85,7 @@ class ProxyAccount(IAccount):
         return self.__account.options(request)
 
     def logout(self, request):
+        print 'casacasa'
         try:
             return self.__account.logout(request)
         except Exception, e:

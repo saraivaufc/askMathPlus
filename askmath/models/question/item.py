@@ -1,8 +1,8 @@
 #-*- encoding=UTF-8 -*-
 
-from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 
 class Item(models.Model):
     position = models.IntegerField(verbose_name=_(u"Position"), null=True,blank=True,
@@ -14,7 +14,7 @@ class Item(models.Model):
     deficiencys = models.ManyToManyField('Lesson', verbose_name=_(u"Deficiencys"), null=True, blank=True,
         help_text=_(u"Choose possible deficiencies that the student may have if he opts for this item.")) 
     
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     

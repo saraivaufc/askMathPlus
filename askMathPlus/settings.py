@@ -23,6 +23,8 @@ from django.conf import global_settings
 
 from .components_metro import *
 from .site_info import *
+from .config import *
+from .social import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(__file__)
@@ -43,6 +45,10 @@ ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
+DEFAULT_GROUP_NAME = 'student'
+
+
+
 DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,6 +62,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'rosetta',
+    'social.apps.django_app.default',
 )
 
 
@@ -64,6 +71,7 @@ LOCAL_APPS = (
     'askmath',
     'nocaptcha_recaptcha',
 )
+
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 TEMPLATE_DIRS = (
@@ -96,6 +104,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
@@ -110,6 +120,13 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 #     )),
 # )
 
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 ROOT_URLCONF = 'askMathPlus.urls'
 
@@ -131,18 +148,9 @@ DEFAULT_FROM_EMAIL= 'saraiva.ufc@gmail.com'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default' : {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': database_info.NAME,                      
-       'USER': database_info.USER,
-       'PASSWORD': database_info.PASSWORD,
-       'HOST': database_info.HOST,
-       'PORT': database_info.PORT,
-       
     }
 }
  
@@ -169,7 +177,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 

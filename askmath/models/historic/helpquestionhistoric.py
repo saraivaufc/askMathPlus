@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 
 class HelpQuestionsHistoric(models.Model):
     discipline = models.ForeignKey('Discipline', verbose_name=_(u"Discipline"))
@@ -8,7 +8,7 @@ class HelpQuestionsHistoric(models.Model):
     question = models.ForeignKey('Question', verbose_name=_(u"Question"))
     
     exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     
     def get_discipline(self):
         return self.discipline

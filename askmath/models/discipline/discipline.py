@@ -1,6 +1,6 @@
-from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
 from askmath.models.lesson import Lesson
 
@@ -16,7 +16,7 @@ class Discipline(models.Model):
 
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
         help_text=_(u"Choose a color for the discipline."))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     def get_title(self):

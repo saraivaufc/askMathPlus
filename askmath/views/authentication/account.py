@@ -1,7 +1,7 @@
 from .iaccount import IAccount
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login as login_user
-from django.contrib.auth.views import logout as logout_sys
+from django.contrib.auth import logout as auth_logout
 from django.http.response import HttpResponseRedirect
 from askmath.forms import StudentForm, AssistantForm, TeacherForm, AdministratorForm, PersonForm
 from askMathPlus.settings import LOGIN_URL
@@ -161,8 +161,9 @@ class Account(IAccount):
             return self.options(request)
     
     def logout(self, request):
+        print "magaiver"
         try:
-            logout_sys(request)
+            auth_logout(request)
         except Exception, e:
             print e
         return self.options(request)

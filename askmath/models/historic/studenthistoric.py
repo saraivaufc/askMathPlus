@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 
 class StudentHistoric(models.Model):
     student = models.ForeignKey('Student', verbose_name=_(u"Student"))
@@ -9,7 +9,7 @@ class StudentHistoric(models.Model):
     skipped_questions_historic = models.ManyToManyField('SkippedQuestionsHistoric',related_name=("Skipped Question Historic"),  verbose_name=_(u"Answered Questions Historic"), null=True, blank=True)
     
     exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     
     def get_student(self):
         return self.student

@@ -1,9 +1,7 @@
 #-*- encoding=UTF-8 -*-
-
-
-from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
 from askmath.models.question import Question
 from askmath.models.video import Video
@@ -26,7 +24,7 @@ class Lesson(models.Model):
         help_text=_(u"Choose a color for the lesson."))
     visible = models.BooleanField(default=False,
         help_text=_(u"Select this option to leave visible lesson at all."))
-    creation = models.DateTimeField(_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(_('Creation'), default=timezone.now)
     exists = models.BooleanField(default=True)
 
     def get_discipline(self):

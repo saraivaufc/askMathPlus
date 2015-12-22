@@ -1,8 +1,8 @@
 #-*- encoding=UTF-8 -*-
 
-from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
 import os
 
@@ -22,7 +22,7 @@ class Video(models.Model):
 		help_text=_(u"Choose a color for the video."))
 	visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
 		help_text=_(u"Select this option to leave visible video at all."))
-	creation = models.DateTimeField(verbose_name=_(u"Creation"), default=datetime.now)
+	creation = models.DateTimeField(verbose_name=_(u"Creation"), default=timezone.now)
 	exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
 	
 	def get_lesson(self):

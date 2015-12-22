@@ -3,9 +3,9 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 from askmath.entities import TextMessage
 from django.contrib import messages
-from datetime import datetime
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
 
 class StudentLessonState(models.Model):
@@ -24,7 +24,7 @@ class StudentLessonState(models.Model):
     help_questions = models.ManyToManyField('Question',related_name="Help Questions",verbose_name=_(u"Help Questions"), null=True, blank=True)
     
     exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     
     #GETS
     def get_student(self):

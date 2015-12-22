@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
 
 class Topic(models.Model):
@@ -15,7 +15,7 @@ class Topic(models.Model):
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
         help_text=_(u"Choose a color for the topic."))
-    creation = models.DateTimeField(verbose_name=_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)
     
     

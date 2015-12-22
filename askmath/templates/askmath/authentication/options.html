@@ -57,6 +57,17 @@
 			        <input type="hidden" name="next" value="{{ request.GET.next }}" />
 			        <input type="hidden" name="option" value="sign_in">
 			        {% include "askmath/_render_form.html" %}
+			        <ul>
+			        <li>
+			        	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+			        </li>
+				    <li>
+				       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+				    </li>
+				    <li>
+				    	<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
+				    </li>
+				    </ul>
 			        <div class="form-actions">
 						<button type="submit" class="button image-button btn-block button-primary">
 							{% trans "Sign In" %}

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
+from django.utils import timezone
 
 class StudentExperience(models.Model):
     student = models.ForeignKey('Student', verbose_name=_(u"Student"))
@@ -8,7 +8,7 @@ class StudentExperience(models.Model):
     max_scores = models.IntegerField(default=10,verbose_name=_(u"Max Scores"))
     level = models.IntegerField(default=1,verbose_name=_(u"Level"))
     stars = models.IntegerField(default=0,verbose_name=_(u"Stars"))
-    creation = models.DateTimeField(_('Creation'), default=datetime.now)
+    creation = models.DateTimeField(_('Creation'), default=timezone.now)
     exists = models.BooleanField(default=True)
     
     def get_student(self):
