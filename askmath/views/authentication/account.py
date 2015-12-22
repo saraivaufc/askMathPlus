@@ -166,5 +166,5 @@ class Account(IAccount):
             auth_logout(request)
         except Exception, e:
             print e
-        return self.options(request)
+        return HttpResponseRedirect('/authentication/options/')
         
