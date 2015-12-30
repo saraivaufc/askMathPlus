@@ -18,13 +18,11 @@ sys.setdefaultencoding('utf-8')
 from django.utils.translation import ugettext_lazy as _
 import os
 from django.http import HttpRequest
-import database_info
 from django.conf import global_settings
 
-from .components_metro import *
 from .site_info import *
-from .config import *
 from .social import *
+from .components_metro import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(__file__)
@@ -48,9 +46,8 @@ ALLOWED_HOSTS = ['localhost']
 DEFAULT_GROUP_NAME = 'student'
 
 
-
+#Apps
 DJANGO_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -59,14 +56,10 @@ DJANGO_APPS = (
     'django.contrib.humanize',
     'django.contrib.syndication',
 )
-
 THIRD_PARTY_APPS = (
     'rosetta',
     'social.apps.django_app.default',
 )
-
-
-
 LOCAL_APPS = (
     'askmath',
     'nocaptcha_recaptcha',
@@ -74,26 +67,12 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+
+#Templates
 TEMPLATE_DIRS = (
     'askmath/templates',
     'nocaptcha_recaptcha/templates',
 )
-
-
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-
-
 #TEMPLATE_CONTEXT
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -121,6 +100,21 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 # )
 
 
+#Middleware
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
@@ -137,12 +131,54 @@ AUTH_USER_MODEL = 'askmath.Person'
 LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'
 
+
+#Recaptca
 NORECAPTCHA_SITE_KEY  = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
 NORECAPTCHA_SECRET_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc" 
 
 
+
+#Admin
 ADMINS = ( ('Ciano Saraiva','saraiva.ufc@gmail.com'), )
+
+
+#EMAIL
+EMAIL_ADMINS = ['saraiva.ufc@gmail.com',]
 DEFAULT_FROM_EMAIL= 'saraiva.ufc@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'saraiva.ufc@gmail.com'
+EMAIL_HOST_PASSWORD = '*************************'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+#Social Auth
+SOCIAL_AUTH_USER_MODEL = 'askmath.Student'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
+SOCIAL_AUTH_LOGIN_URL = '/'
+SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
+SOCIAL_AUTH_FORCE_EMAIL_VALIDATION = True
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+)
+
+
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -192,23 +228,6 @@ STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../askmath/static'),)
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 
 STATIC_URL = '/static/'
-
-
-#EMAIL
-EMAIL_ADMINS = ['saraiva.ufc@gmail.com',]
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-
-
-
-
-
-
-
-
-
 
 
 LOGGING = {

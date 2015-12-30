@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-
 from .iaccount import IAccount
 from .account import Account
 from askmath.models.users.student import Student

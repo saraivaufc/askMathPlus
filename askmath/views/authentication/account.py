@@ -12,6 +12,7 @@ from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 from askmath.forms.users import PersonLoginForm, PersonRecoverPassword, PersonAlterPassword
+from django.core.mail import EmailMessage
 
 try:
     from hashlib import md5

@@ -1,24 +1,21 @@
 {% load i18n %}
-<div class="container">
-	<div class="list-group">
-		<div class="list-group-item">
-			<h4 class="list-group-item-heading">{% trans "Title:" %}</h4>
-			<p class="list-group-item-text">{{ discipline.get_title }}</p>
-		</div>
-		
-		<div class="list-group-item">
-			<h4 class="list-group-item-heading">{% trans "Responsible:" %}</h4>
-			<p class="list-group-item-text">{{ discipline.get_responsible }}</p>
-		</div>
-		
-		<div class="list-group-item">
-			<h4 class="list-group-item-heading">{% trans "Is Visible:" %}</h4>
-			<p class="list-group-item-text">{{ discipline.is_visible }}</p>
-		</div>
-	</div>
-	
-	<h4 class="text-center">{% trans "Lessons of discipline." %}</h4>
-	<hr class="thin bg-grayLighter">
+<div class="container bg-white">
+	<table class="table  hovered cell-hovered border bordered">
+	<tr>
+		<td>{% trans "Title:" %}</td>
+		<td>{{ discipline.get_title }}</td>
+	</tr>
+	<tr>
+		<td>{% trans "Responsible:" %}</td>
+		<td>{{ discipline.get_responsible }}</td>
+	</tr>
+	<tr>
+		<td>{% trans "Is Visible:" %}</td>
+		<td>{{ discipline.is_visible }}</td>
+	</tr>
+	</table>
+	<section>
+	<h4 class="text-center fg-black">{% trans "Lessons of discipline." %}</h4>
 	<div class="tile-area no-padding bg-transparent ">
 	  <div class="tile-container">
 		{% for lesson in discipline.get_lessons %}
@@ -36,5 +33,5 @@
 		{% endfor %}
 	  </div>
 	</div>
-	
+	</section>
 </div>

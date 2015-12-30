@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="container">
+<div class="container bg-white">
 	<div class="list-group">
 		
 		<div class="list-group-item">
@@ -58,10 +58,9 @@
 			<p class="list-group-item-text">{{ lesson.is_visible }}</p>
 		</div>
 	</div>
-	
+	<hr class="thin bg-grayDark">
 	<section>
-		<h4 class="text-center">{% trans "Questions of lesson" %}</h4>
-		<hr class="thin bg-grayLighter">
+		<h4 class="text-center fg-black">{% trans "Questions of lesson" %}</h4>
 		
 		<div class="tile-area no-padding bg-transparent">
 			<div class="tile-container">
@@ -81,10 +80,9 @@
 			</div>
 		</div>
 	</section>
-	
+	<hr class="thin bg-grayDark">
 	<section>
-		<h4 class="text-center">{% trans "Videos of lesson" %}</h4>
-		<hr class="thin bg-grayLighter">
+		<h4 class="text-center fg-black">{% trans "Videos of lesson" %}</h4>
 		
 		<div class="tile-area no-padding bg-transparent">
 			<div class="tile-container">

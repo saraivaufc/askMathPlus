@@ -12,8 +12,8 @@ class DisciplineForm(ModelForm):
         fields = ("title", "responsible", "color", "visible")
 
         widgets = {
-            'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-            'responsible': TextInput(attrs={'required': 'required'}),
-            'color': Select(attrs={'required': 'required','class':'full-size'}),
+            'title': TextInput(attrs={'autofocus': 'True'}),
+            'responsible': TextInput(attrs={}),
+            'color': Select(attrs={}),
             'visible': CheckboxInput(attrs={}),
         }

@@ -17,7 +17,7 @@
 
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-4 col-md-offset-4">
+<div class="col-sm-12 col-sm-6 col-sm-offset-3  col-md-4 col-md-offset-4">
 	<div class="tabcontrol" data-role="tabControl">
 		<ul id="menu-options" class="tabs">
 			{% if tab_actived == 'sign_in' %}
@@ -55,7 +55,7 @@
 							<span class="icon mif-enter"></span>
 						</button>
 					</div>
-					<label class="text-center">Or</label>
+					<p class="text-center">{% trans "Or" %}</p>
 					<div class="btn-group btn-group-justified" role="group" aria-label="...">
 						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-social btn-facebook">
 							<span class="fa fa-facebook"></span>Facebook
@@ -67,6 +67,8 @@
 							<span class="fa fa-twitter"></span>Twitter
 						</a>
 					</div>
+					<br>
+					<a href="{% url 'reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
 				</form> 
 				{% endwith %}
 			</div>

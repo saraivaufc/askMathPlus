@@ -9,5 +9,4 @@ urlpatterns = patterns('',
     url(r'^signin/$', proxy_account.signin),
     url(r'^signup/$', proxy_account.signup),
     url(r'^logout/$', proxy_account.logout),
-    url(r'^recover_password/$', proxy_account.recover_password),
 )
