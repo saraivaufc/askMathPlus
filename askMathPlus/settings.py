@@ -144,10 +144,10 @@ ADMINS = ( ('Ciano Saraiva','saraiva.ufc@gmail.com'), )
 
 #EMAIL
 EMAIL_ADMINS = ['saraiva.ufc@gmail.com',]
-DEFAULT_FROM_EMAIL= 'saraiva.ufc@gmail.com'
+DEFAULT_FROM_EMAIL= 'askmathplus@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'saraiva.ufc@gmail.com'
-EMAIL_HOST_PASSWORD = '*************************'
+EMAIL_HOST_USER = 'askmathplus@gmail.com'
+EMAIL_HOST_PASSWORD = 'macacoaranha'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -184,10 +184,17 @@ SOCIAL_AUTH_PIPELINE = (
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    }, 'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+            'NAME': 'askmath',
+            'USER': 'postgres',
+            'PASSWORD': 'macacoaranha',
+            'HOST': '200.129.39.113',
+            'PORT': '6969',
+        }
 }
  
 
