@@ -13,3 +13,7 @@ encoding//askmath/forms/video/video.py=utf-8
 encoding//askmath/templatetags/tags/utils/custom_tags.py=utf-8
 encoding//askmath/templatetags/tags/utils/filters.py=utf-8
 encoding//askmath/templatetags/tags/utils/statistics.py=utf-8
+encoding//askmath/utils/decorators.py=utf-8
+encoding//askmath/utils/markdown/block.py=utf-8
+encoding//askmath/utils/timezone.py=utf-8
+encoding//askmath/utils/user/email.py=utf-8

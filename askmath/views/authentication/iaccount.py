@@ -9,6 +9,3 @@ class IAccount():
     
     def logout(self):
         pass
-    
-    def recover_password(self):
-        pass

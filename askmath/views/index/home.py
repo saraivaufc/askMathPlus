@@ -5,14 +5,13 @@ from askmath.entities import TextMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from askmath.models import Discipline
-from askmath.forms import MessageForm
+from askmath.forms import MessageForm, MessageFormRecaptcha
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 from askmath.models.lesson.lesson import Lesson
 from askmath.models.discipline import Discipline as DisciplineModel
 
 from django.core.mail import send_mail
 from .ihome import IHome
-from askmath.utils.user import send_password_reset
 
 class Home(IHome):
     def index(self, request):
@@ -34,19 +33,21 @@ class Home(IHome):
     def message(self, request):
         
         if request.method == "POST":
-            form =  MessageForm(request.POST, request.FILES)
+            if request.user.is_authenticated():
+                form = MessageForm(request.POST, request.FILES)
+            else:
+                form = MessageFormRecaptcha(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                try:
-                    send_password_reset(request)
-                except Exception, e:
-                    print e
                 messages.success(request,TextMessage.MESSAGE_SUCCESS_SEND)
                 return self.index(request)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
-            form = MessageForm()
+            if request.user.is_authenticated():
+                form = MessageForm()
+            else:
+                form = MessageFormRecaptcha()
         return render(request, 'askmath/index/message.html', 
              {'request': request,'form':form})
 

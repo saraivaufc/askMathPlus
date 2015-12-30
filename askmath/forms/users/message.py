@@ -10,10 +10,9 @@ from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 
 class MessageForm(ModelForm):
-	captcha = NoReCaptchaField()
 	class Meta:
 		model= Message
-		fields = ("name", "email","message", "file","captcha")
+		fields = ("name", "email","message", "file")
 
 		widgets = {
 			'name': TextInput(attrs={'required': 'required', 'class':'input-control text full-size'}),
@@ -31,3 +30,9 @@ class MessageForm(ModelForm):
 		except:
 			pass
 		return file
+
+class MessageFormRecaptcha(MessageForm):
+	captcha = NoReCaptchaField()
+	class Meta:
+		model= MessageForm.Meta.model
+		fields = ("name", "email","message", "file","captcha")

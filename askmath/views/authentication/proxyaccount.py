@@ -60,28 +60,6 @@ class ProxyAccount(IAccount):
         else:
             messages.error(request, TextMessage.ERROR_FORM)
         return self.__account.options(request)
-        
-    def recover_password(self, request):
-        try:
-            _username = request.POST['username']
-            _email    = request.POST['email']
-            try:
-                user = Student.objects.get(username = str(_username), email = str(_email))
-                if user:
-                    try:
-                        return self.__account.recover_password(request, user)
-                    except:
-                        messages.error(request, TextMessage.EMAIL_RECOVER_PASSWORD_ERROR)
-                else:
-                    messages.error(request, TextMessage.USER_NOT_FOUND)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.USER_NOT_FOUND)
-        except Exception, e:
-            print e
-            messages.error(request, TextMessage.ERROR_FORM)
-
-        return self.__account.options(request)
 
     def logout(self, request):
         try:
