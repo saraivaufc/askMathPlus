@@ -7,7 +7,7 @@
 		<h4 class="modal-title">{% trans "How many items this issue have?" %}</h4>
 	  </div>
 	  <div class="modal-body">
-		<form id="form_quantity_items" action="/home/manager/questions/add/lesson={{ lesson.id }}/" method="POST" onsubmit="return updateURLQuantityItems();" >
+		<form id="form_quantity_items" action="/home/manager/questions/add/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" method="POST" onsubmit="return updateURLQuantityItems();" >
 			{% csrf_token %}
 			<input type="number" name="quantity_items" step="1" value="5" min="2" max='10' required />
 	  </div>

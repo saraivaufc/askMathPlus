@@ -1,17 +1,10 @@
 class IVideo():
-    
-    def choose_lesson(self):
-        pass
-    
+
     def view_videos(self):
         pass
     
     def view_videos_removed(self):
         pass
-    
-    def view_video(self):
-        pass
-    
     
     def add_video(self):
         pass

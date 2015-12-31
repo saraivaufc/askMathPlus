@@ -11,31 +11,18 @@ from askmath.forms import QuestionForm, ItemForm
 from django.utils.translation import ugettext_lazy as _
 
 class Question(IQuestion):
-	def choose_lesson(self, request):
-		disciplines = []
-		for discipline in CategoryModel.objects.filter(exists=True):
-			if discipline.get_lessons():
-				disciplines.append(discipline) 
-		return render(request, "askmath/manager/question/manager_choose_lessons.html",
-			{'request':request,'disciplines': disciplines})
 	
-	def view_questions(self, request, lesson):
+	def view_questions(self, request, lesson, discipline):
 		questions = lesson.get_questions()
 		return render(request, "askmath/manager/question/manager_view_questions.html",
-			{'request':request,'questions': questions, 'lesson': lesson})
+			{'request':request,'discipline': discipline,'lesson': lesson, 'questions': questions})
 	
-	def view_questions_removed(self, request, lesson):
+	def view_questions_removed(self, request,lesson, discipline):
 		questions = QuestionModel.objects.filter(exists=False,lesson = lesson.id)
 		return render(request, "askmath/manager/question/manager_view_questions.html",
-			{'request':request,'questions': questions, 'lesson': lesson,'is_removed': True})
+			{'request':request,'discipline': discipline,'lesson': lesson, 'questions': questions ,'is_removed': True})
 	
-	def view_question(self, request, lesson, question):
-		return render(request, "askmath/manager/question/manager_view_question.html", 
-			{'request':request,'lesson': lesson,'question': question })
-	
-	
-	
-	def add_question(self, request, lesson, quantity_items=5):
+	def add_question(self, request,lesson, discipline, quantity_items=5):
 		if request.method == "POST":
 			request.POST = request.POST.copy()
 			request.POST['question-lesson'] = lesson.id
@@ -61,21 +48,21 @@ class Question(IQuestion):
 			if form_question.is_valid():
 				question = form_question.save()
 				messages.success(request,TextMessage.QUESTION_SUCCESS_ADD)
-				return self.view_question(request, lesson, question)
+				return self.view_questions(request, lesson, discipline)
 			else:
 				messages.error(request,TextMessage.ERROR_FORM)
 		else:
 			form_question = QuestionForm(prefix='question')
 			forms_items = [ ItemForm(prefix=i) for i in range(1, quantity_items+1)]
 		return render(request, "askmath/manager/question/manager_form_question.html", 
-			{'request':request,'form_question': form_question,'lesson': lesson,'forms_items': forms_items ,'lesson': lesson, 'title_form':_('Create Question')})
+			{'request':request,'form_question': form_question,'lesson': lesson,'discipline': discipline,'forms_items': forms_items ,'lesson': lesson, 'title_form':_('Create Question')})
 	
-	def remove_question(self, request, lesson,question):
+	def remove_question(self, request,question, lesson, discipline):
 		question.delete()
 		messages.success(request,TextMessage.QUESTION_SUCCESS_REM)
-		return self.view_questions(request, lesson)
+		return self.view_questions(request, lesson, discipline)
 	
-	def edit_question(self, request, lesson, question):
+	def edit_question(self, request, question, lesson, discipline):
 		if request.method == "POST":
 			request.POST = request.POST.copy()
 			request.POST['question-lesson'] = lesson.id
@@ -92,22 +79,22 @@ class Question(IQuestion):
 			if form_question.is_valid():
 				question = form_question.save()
 				messages.success(request,TextMessage.QUESTION_SUCCESS_EDIT)
-				return self.view_question(request, lesson, question)
+				return self.view_questions(request, lesson, discipline)
 			else:
 				messages.error(request,TextMessage.QUESTION_ERROR_EDIT)
 		else:
 			form_question = QuestionForm(instance=question, prefix='question')
 			forms_items = [ ItemForm(instance=i, prefix=index+1) for index, i in enumerate(question.get_items())]
 		return render(request, "askmath/manager/question/manager_form_question.html", 
-			{'request':request,'form_question': form_question,'forms_items': forms_items ,'lesson': lesson,'question':question, 'title_form':_('Edit Question')})
+			{'request':request,'form_question': form_question,'forms_items': forms_items ,'question':question, 'lesson': lesson,'discipline': discipline, 'title_form':_('Edit Question')})
 	
 	
-	def restore_question(self, request, lesson, question):
+	def restore_question(self, request, question, lesson, discipline):
 		question.restore()
 		messages.success(request,TextMessage.QUESTION_SUCCESS_RESTORE)
-		return self.view_questions(request, lesson)
+		return self.view_questions(request, lesson, discipline)
 	
-	def sort_questions(self, request, lesson,new_order=None):
+	def sort_questions(self,request,lesson, discipline,new_order=None):
 		questions = QuestionModel.objects.filter(exists=True, visible=True,lesson = lesson.id)
 		if request.method == 'POST':    
 			try:
@@ -120,5 +107,5 @@ class Question(IQuestion):
 				print e
 				messages.error(request,TextMessage.QUESTION_ERROR_SORT)
 		return render(request, "askmath/manager/question/manager_view_questions_sort.html",
-			{'request':request,'questions': questions, 'lesson': lesson})
+			{'request':request,'questions': questions, 'lesson': lesson,'discipline':discipline})
 	

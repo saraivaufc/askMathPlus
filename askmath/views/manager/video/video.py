@@ -12,31 +12,18 @@ from .ivideo import IVideo
 
 
 class Video(IVideo):
-    def choose_lesson(self, request):
-        disciplines = []
-        for discipline in CategoryModel.objects.filter(exists=True):
-            if discipline.get_lessons():
-                disciplines.append(discipline) 
-        return render(request, "askmath/manager/video/manager_choose_lessons.html",
-            {'request':request,'disciplines': disciplines})
     
-    def view_videos(self, request, lesson):
+    def view_videos(self, request, lesson, discipline):
         videos = lesson.get_videos()
         return render(request, "askmath/manager/video/manager_view_videos.html",
-            {'request':request,'videos': videos, 'lesson': lesson})
+            {'request':request,'discipline': discipline ,'lesson': lesson, 'videos': videos})
     
-    def view_videos_removed(self, request, lesson):
+    def view_videos_removed(self, request, lesson, discipline):
         videos = VideoModel.objects.filter(exists=False,lesson = lesson.id)
         return render(request, "askmath/manager/video/manager_view_videos.html",
-            {'request':request,'videos': videos, 'lesson': lesson,'is_removed': True })
+            {'request':request, 'discipline': discipline,'lesson': lesson,'videos': videos,'is_removed': True })
     
-    def view_video(self, request, lesson, video):
-        return render(request, "askmath/manager/video/manager_view_video.html", 
-            {'request':request,'lesson': lesson,'video': video })
-    
-    
-    
-    def add_video(self, request, lesson):
+    def add_video(self, request, lesson, discipline):
         if request.method == "POST":
             request.POST = request.POST.copy()
             request.POST['lesson'] = lesson.id
@@ -52,20 +39,20 @@ class Video(IVideo):
             if form.is_valid():
                 video = form.save()
                 messages.success(request, TextMessage.VIDEO_SUCCESS_ADD)
-                return self.view_video(request, lesson, video)
+                return self.view_videos(request, lesson, discipline)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
             form = VideoForm()
         return render(request, "askmath/manager/video/manager_form_video.html", 
-            {'request':request,'form': form,'lesson': lesson, 'title_form':_('Create Video')})
+            {'request':request,'form': form,'discipline': discipline,'lesson': lesson, 'title_form':_('Create Video')})
     
-    def remove_video(self, request, lesson, video):
+    def remove_video(self, request,video, lesson, discipline):
         video.delete()
         messages.success(request, TextMessage.VIDEO_SUCCESS_REM)
-        return self.view_videos(request, lesson)
+        return self.view_videos(request, lesson, discipline)
     
-    def edit_video(self, request, lesson, video):
+    def edit_video(self, request,video, lesson, discipline):
         if request.method == "POST":
             request.POST = request.POST.copy()
             request.POST['lesson'] = lesson.id
@@ -74,32 +61,32 @@ class Video(IVideo):
             if form.is_valid():
                 video = form.save()
                 messages.success(request, TextMessage.VIDEO_SUCCESS_EDIT)
-                return self.view_video(request, lesson, video)
+                return self.view_videos(request, lesson, discipline)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
             form = VideoForm(instance=video)
         return render(request, "askmath/manager/video/manager_form_video.html", 
-            {'request':request,'form': form, 'lesson': lesson,'video':video, 'title_form':_('Edit Video')})
+            {'request':request,'form': form,'discipline': discipline, 'lesson': lesson,'video':video, 'title_form':_('Edit Video')})
     
     
-    def restore_video(self, request, lesson, video):
+    def restore_video(self, request, video, lesson, discipline):
         video.restore()
         messages.success(request, TextMessage.VIDEO_SUCCESS_RESTORE)
-        return self.view_videos(request, lesson)
+        return self.view_videos(request, lesson, discipline)
     
-    def sort_videos(self, request, lesson,new_order=None):
+    def sort_videos(self, request, lesson, discipline ,new_order=None):
         videos = VideoModel.objects.filter(exists=True, visible=True,lesson = lesson.id)
         if request.method == 'POST':    
             try:
                 for index, i in enumerate(new_order):
                     VideoModel.objects.filter(id = i).update(position = index + 1)
-                    messages.success(request, VIDEO_SUCCESS_SORT)
+                    messages.success(request, TextMessage.VIDEO_SUCCESS_SORT)
                 request.method = "GET"
-                return self.sort_videos(request, lesson, None)
+                return self.sort_videos(request, lesson, discipline, None)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_ERROR_SORT)
         return render(request, "askmath/manager/video/manager_view_videos_sort.html",
-            {'request':request,'videos': videos, 'lesson': lesson})
+            {'request':request,'discipline': discipline, 'lesson': lesson,'videos': videos})
     

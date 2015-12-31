@@ -1,17 +1,10 @@
 class IQuestion():
-    
-    def choose_lesson(self):
-        pass
-    
+
     def view_questions(self):
         pass
     
     def view_questions_removed(self):
         pass
-    
-    def view_question(self):
-        pass
-    
     
     def add_question(self):
         pass

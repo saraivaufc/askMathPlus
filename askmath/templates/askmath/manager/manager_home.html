@@ -72,12 +72,8 @@
 			{{ discipline.is_visible }}
         </td>
         <td class="sortable-column">
-			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">{% trans "Go to lessons" %}</a>
+			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">{% trans "Lessons" %}</a>
         </td>
-		
-	</tr>
-	{% empty %}
-	<h3 class="text-center">{% trans "Not Disciplines Found" %}</h3>
 	{% endfor %}
 	</tbody>
 </table>

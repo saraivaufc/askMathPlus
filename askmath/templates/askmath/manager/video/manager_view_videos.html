@@ -1,56 +1,93 @@
-{% extends 'askmath/manager/video/manager_choose_lessons.html' %}
+{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
+	{% if lesson %}
+	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
+	{% endif %}
 {% endblock %}
 
 
 {%  block content_right %}
-<div class="cell padding10">
+<div class="cell">
 	{% if perms.askmath.write_video %}
-		<a href="/home/manager/videos/add/lesson={{ lesson.id }}/" class="image-button button-success">
+		<a id="button-video-create" href="/home/manager/videos/add/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-		<a href="/home/manager/videos/sort/lesson={{ lesson.id }}/" class="image-button button-info">
-			{% trans "Sort" %}
-			<span class="icon mif-list-numbered"></span>
+	{% endif %}
+	{% if perms.askmath.write_video %}
+		<a id="button-video-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
 		</a>
 	{% endif %}
+	{% if perms.askmath.write_video %}
+		{% if is_removed %}
+		<a id="button-video-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-video-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	{% if perms.askmath.write_video %}
+	<a id="button-video-sort" href="/home/manager/videos/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
+		{% trans "Sort" %}
+		<span class="icon mif-list-numbered"></span>
+	</a>
+	{% endif %}
+	
 	{% if is_removed %}
-		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/" class="image-button button-info">
-			{% trans "Undo" %}
+		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/" class="image-button">
-			{% trans "Dump" %}
+		<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
 </div>
 
 
-<div class="tile-area padding10 bg-transparent">
-<div class="tile-container">
+
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Position" %}</td>
+			<td>{% trans "Title" %}</td>
+			<td>{% trans "Description" %}</td>
+			<td>{% trans "File" %}</td>
+			<td>{% trans "Visible" %}</td>
+		</tr>
+	</thead>
+	<tbody>
 	{% for video in videos %}
-	 <div class="tile-wide {{ video.color }}">
-		    <a href="/home/manager/videos/view/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
-		        <span class="icon mif-film"></span>
-		        <div class="tile-label">
-		            {{ video.get_title|title }}
-		        </div>
-		        <span class="tile-badge bg-crimson">{{ video.get_position }}</span>
-		        <div class="slide-over bg-steel">
-		        	<p class="paragraph">{{ video.get_description|safe|linebreaksbr|truncatewords:25 }}</p>
-		        </div>
-		    </a>
-		</div>
-	{% empty %}
-	<h3 class="text-center">{%trans "Lesson does not have videos."%}</h3>
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" video_id="{{ video.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_video">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ video.get_position }}</td>
+		<td class="sortable-column">{{ video.get_title }}</td>
+		<td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>
+		<td><a href="{{ video.get_file.url }}" target="_blank">{% trans "View file" %}</a></td>
+		<td>{{ video.is_visible }}</td>
+	</tr>
 	{% endfor %}
-</div>
-</div>
+	</tbody>
+</table>
+
+{% include "askmath/manager/question/_modal_choose_quant_items.html" %}
+
 {% endblock %}

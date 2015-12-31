@@ -56,32 +56,6 @@ class ProxyLesson(ILesson):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_lessons(request, id_discipline)
-
-    @method_decorator(login_required)    
-    def view_lesson(self, request, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.read_lesson")  and request.user.has_perm("askmath.access_manager"):
-            try:
-                lesson = LessonModel.objects.get(id = id_lesson)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.LESSON_NOT_FOUND)
-                return self.view_lessons(request, id_discipline)
-            
-            try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-                self.__proxy_discipline.view_disciplines(request)
-                
-            try:
-                return self.__lesson.view_lesson(request, lesson, discipline)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR)
-        else:
-            messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_lessons(request, id_discipline)
     
     @method_decorator(login_required)
     def add_lesson(self, request, id_discipline):

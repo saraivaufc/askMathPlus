@@ -54,6 +54,7 @@
 			<td>{% trans "Sugestions" %}</td>
 			<td>{% trans "Maximum Hops" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
+			<td>{% trans "Option" %}</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -73,62 +74,13 @@
 		<td class="sortable-column">
 			{{ discipline.is_visible }}
         </td>
+        <td class="sortable-column">
+			<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">{% trans "Questions" %}</a>
+			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">{% trans "Videos" %}</a>
+        </td>
 		
 	</tr>
-	{% empty %}
-	<h3 class="text-center">{% trans "Not Disciplines Found" %}</h3>
 	{% endfor %}
 	</tbody>
 </table>
 {% endblock %}
-
-{% comment %}  
-
-{%  block content_right %}
-
-<div class="cell">
-	{% if perms.askmath.write_lesson %}
-		<a href="/home/manager/lessons/add/" class="image-button button-success">
-			{% trans "Create" %}
-			<span class="icon mif-plus"></span>
-		</a>
-	{% endif %}
-	{% if is_removed %}
-		<a href="/home/manager/lessons/view/" class="image-button button-info" data-popover="undo">
-			{% trans "Undo" %}
-			<span class="icon mif-undo"></span>
-		</a>
-	{% else %}
-		<a href="/home/manager/lessons/view_removed/" class="image-button button-warning" data-popover="dump">
-			{% trans "Dump" %}
-			<span class="icon mif-bin"></span>
-		</a>
-	{% endif %}
-</div>
-
-{% regroup disciplines by title as discipline_list %}
-	{% for discipline in discipline_list %}
-		{% if discipline.list %}
-		<label>{{ discipline.grouper|title }}</label>
-		<div class="tile-container">
-			{% for item in discipline.list %}
-				{% for lesson in item.lessons %}
-					<div class="tile-wide {{ lesson.color }} {% if lesson.visible %}element-selected{% endif %}  fg-white" data-role="tile">
-					    <a href="/home/manager/lessons/view/lesson={{ lesson.id }}/" class="tile-content iconic">
-					        <span class="icon mif-clipboard"></span>
-					        <span class="tile-label">{{ lesson.get_title }}</span>
-					        {% if not lesson.exists %}
-					        <span class="tile-badge mif-bin"></span>
-					        {% endif %}
-					    </a>
-					</div>
-				{% endfor %}
-			{% endfor %}
-		</div>
-		{% endif %}
-	{% empty %}
-		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
-	{% endfor %}
-{% endblock %}
-
-{% endcomment %}

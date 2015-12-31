@@ -5,11 +5,7 @@ class ILesson():
     
     def view_lessons_removed(self):
         pass
-    
-    def view_lesson(self):
-        pass
-    
-    
+ 
     def add_lesson(self):
         pass
     

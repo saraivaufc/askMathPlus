@@ -1,51 +1,95 @@
-{% extends 'askmath/manager/question/manager_choose_lessons.html' %}
+{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if lesson %}
-	<li><a href="/home/manager/questions/view/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
+	<li><a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 
 
 {%  block content_right %}
-
 <div class="cell">
 	{% if perms.askmath.write_question %}
-		<a data-toggle="modal" data-target="#quantity_items" href="#" class="image-button button-success">
+		<a id="button-question-create" data-toggle="modal" data-target="#quantity_items" href="#" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-		<a href="/home/manager/questions/sort/lesson={{ lesson.id }}/" class="image-button button-info">
-			{% trans "Sort" %}
-			<span class="icon mif-list-numbered"></span>
+	{% endif %}
+	{% if perms.askmath.write_question %}
+		<a id="button-question-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
 		</a>
 	{% endif %}
+	{% if perms.askmath.write_question %}
+		{% if is_removed %}
+		<a id="button-question-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-question-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	{% if perms.askmath.write_question %}
+	<a id="button-question-sort" href="/home/manager/questions/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
+		{% trans "Sort" %}
+		<span class="icon mif-list-numbered"></span>
+	</a>
+	{% endif %}
+	
 	{% if is_removed %}
-		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/" class="image-button button-info">
-			{% trans "Undo" %}
+		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/" class="image-button button-warning">
-			{% trans "Dump" %}
+		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
 </div>
 
-<ul class="list-group">
-{% for question in questions %}
-<a href="/home/manager/questions/view/lesson={{ lesson.id }}/question={{ question.id }}/" class="list-group-item">
-	<span class="list-icon mif-list-numbered"></span>
-	<span class="list-title">{{ question.get_description|safe|linebreaksbr }}</span>
-</a>
-{% empty %}
-<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
-{% endfor %}
-</ul>
+
+
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Position" %}</td>
+			<td>{% trans "Description" %}</td>
+			<td>{% trans "Items" %}</td>
+			<td>{% trans "Help" %}</td>
+			<td>{% trans "Scores" %}</td>
+			<td>{% trans "Visible" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for question in questions %}
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" question_id="{{ question.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_question">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ question.get_position }}</td>
+		<td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
+		<td><a href="">{% trans "View items" %}</a></td>
+		<td class="sortable-column">{{ question.get_help }}</td>
+		<td class="sortable-column">{{ question.get_scores }}</td>
+		<td>{{ question.is_visible }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
 
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
-</div>
+
 {% endblock %}

@@ -21,12 +21,6 @@ class Lesson(ILesson):
         lessons = discipline.get_lessons_removed()
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
             {'request':request,'discipline': discipline,'lessons': lessons,'is_removed': True})
-        
-    def view_lesson(self, request,lesson, discipline):
-        return render(request, "askmath/manager/lesson/manager_view_lesson.html", 
-            {'request':request,'discipline': discipline, 'lesson': lesson })
-    
-    
     
     def add_lesson(self, request, discipline):
         if request.method == "POST":
