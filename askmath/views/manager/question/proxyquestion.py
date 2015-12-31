@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 
 from askmath.entities import TextMessage
 from django.contrib import messages
-from askmath.models.lesson import Lesson as ContactModel
+from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.question import Question as QuestionModel
 from askmath.views.index import ProxyHome
 
@@ -36,7 +36,7 @@ class ProxyQuestion(IQuestion):
     def view_questions(self, request, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -55,7 +55,7 @@ class ProxyQuestion(IQuestion):
     def view_questions_removed(self, request, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -75,7 +75,7 @@ class ProxyQuestion(IQuestion):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             lesson, question = None, None
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -103,7 +103,7 @@ class ProxyQuestion(IQuestion):
     def add_question(self, request, id_lesson, quantity_items):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -124,7 +124,7 @@ class ProxyQuestion(IQuestion):
     def remove_question(self, request, id_lesson, id_question):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -148,7 +148,7 @@ class ProxyQuestion(IQuestion):
     def edit_question(self, request, id_lesson, id_question):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -172,7 +172,7 @@ class ProxyQuestion(IQuestion):
     def restore_question(self, request, id_lesson,id_question):
         if request.user.has_perm("askmath.write_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)
@@ -196,7 +196,7 @@ class ProxyQuestion(IQuestion):
     def sort_questions(self, request, id_lesson):
         if request.user.has_perm("askmath.read_question")  and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = ContactModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id = id_lesson)
             except Exception, e:
                 print e
                 messages.error(request,TextMessage.LESSON_NOT_FOUND)

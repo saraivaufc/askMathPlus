@@ -5,6 +5,8 @@ from django.utils.translation import ugettext as _
 from askMathPlus.settings import generate_color, COLORS_ALL
 from django.utils import timezone
 
+SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
+
 class Question(models.Model):
     lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"),
         help_text=_(u"Choose the lesson which is question belongs."))
@@ -17,7 +19,6 @@ class Question(models.Model):
     help = models.TextField(verbose_name=_(u"Help"), null=True, blank=True, 
         help_text=_(u"Choose a help to this question."))
     
-    SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
     scores=models.IntegerField(verbose_name=_(u"Scores"), choices=SCORES)
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,

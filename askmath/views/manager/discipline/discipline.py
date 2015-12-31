@@ -18,19 +18,13 @@ class Discipline(IDiscipline):
         return render(request, "askmath/manager/discipline/manager_view_disciplines.html", 
             {'request':request,'disciplines': disciplines,'is_removed': True})
     
-    def view_discipline(self, request, discipline):
-        return render(request, "askmath/manager/discipline/manager_view_discipline.html", 
-            {'request':request,'discipline': discipline})
-    
-    
-    
     def add_discipline(self, request):
         if request.method == "POST":
             form = DisciplineForm(request.POST)
             if form.is_valid():
                 discipline = form.save()
                 messages.success(request, TextMessage.DISCIPLINE_SUCCESS_ADD)
-                return self.view_discipline(request, discipline)
+                return self.view_disciplines(request)
             else:
                 messages.error(request, TextMessage.DISCIPLINE_ERROR_ADD)
         else:
@@ -48,7 +42,7 @@ class Discipline(IDiscipline):
             if form.is_valid():
                 discipline=form.save()
                 messages.success(request, TextMessage.DISCIPLINE_SUCCESS_EDIT)
-                return self.view_discipline(request,discipline)
+                return self.view_disciplines(request)
             else:
                 messages.error(request, TextMessage.DISCIPLINE_ERROR_EDIT)
         else:

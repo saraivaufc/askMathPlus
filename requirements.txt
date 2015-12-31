@@ -19,6 +19,7 @@ django-discover-runner==1
 python-social-auth
 
 
+
 #sudo apt-get install postfix
 #sudo aptitude install libapache2-mod-wsgi
 #sudo easy_install django-rosetta

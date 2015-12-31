@@ -2,6 +2,89 @@
 {% load i18n %}
 
 {%  block content_right %}
+<div class="cell">
+	{% if perms.askmath.write_lesson %}
+		<a id="button-lesson-create" href="/home/manager/lessons/add/discipline={{ discipline.id }}/" class="image-button button-success">
+			{% trans "Create" %}
+			<span class="icon mif-plus"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_lesson %}
+		<a id="button-lesson-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_lesson %}
+		{% if is_removed %}
+		<a id="button-lesson-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-lesson-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	
+	{% if is_removed %}
+		<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Close Dump" %}
+			<span class="icon mif-undo"></span>
+		</a>
+	{% else %}
+		<a href="/home/manager/lessons/view_removed/discipline={{ discipline.id }}/" class="image-button button-warning">
+			{% trans "Open Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
+	{% endif %}
+</div>
+
+
+
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Title" %}</td>
+			<td>{% trans "Description" %}</td>
+			<td>{% trans "Requirements" %}</td>
+			<td>{% trans "Sugestions" %}</td>
+			<td>{% trans "Maximum Hops" %}</td>
+			<td style="width: 20px">{% trans "Visible" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for lesson in lessons %}
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_lesson">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ lesson.get_title }}</td>
+		<td class="sortable-column">{{ lesson.get_description|truncatechars:"255" }}</td>
+		<td class="sortable-column">{{ lesson.get_requirements }}</td>
+		<td class="sortable-column">{{ lesson.get_sugestions }}</td>
+		<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
+		<td class="sortable-column">
+			{{ discipline.is_visible }}
+        </td>
+		
+	</tr>
+	{% empty %}
+	<h3 class="text-center">{% trans "Not Disciplines Found" %}</h3>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
+
+{% comment %}  
+
+{%  block content_right %}
 
 <div class="cell">
 	{% if perms.askmath.write_lesson %}
@@ -47,3 +130,5 @@
 		<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
 	{% endfor %}
 {% endblock %}
+
+{% endcomment %}

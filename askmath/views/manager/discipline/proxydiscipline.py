@@ -41,24 +41,6 @@ class ProxyDiscipline(IDiscipline):
         return self.view_disciplines(request)
     
     @method_decorator(login_required)
-    def view_discipline(self, request, id_discipline):
-        if request.user.has_perm("askmath.read_discipline")  and request.user.has_perm("askmath.access_manager"):
-            try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-                return self.view_disciplines(request)
-            try:
-                return self.__discipline.view_discipline(request, discipline)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR)
-        else:
-            messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
-    
-    @method_decorator(login_required)
     def add_discipline(self, request):
         if request.user.has_perm("askmath.write_discipline")  and request.user.has_perm("askmath.access_manager"):
             try:

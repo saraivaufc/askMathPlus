@@ -1,0 +1,24 @@
+Criar{
+	button-discipline-create,
+	Create,
+	mif-plus,
+	button-success,
+},
+Editar{
+	button-discipline-edit,
+	Edit,
+	mif-pencil,
+	button-primary,
+},
+Remover{
+	button-discipline-delete,
+	Delete,
+	mif-minus,
+	button-danger,
+},
+Restaurar{
+	button-discipline-restore,
+	Restore,
+	mif-history,
+	button-info,
+}

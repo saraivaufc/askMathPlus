@@ -12,69 +12,57 @@ from django.utils.translation import ugettext_lazy as _
 
 class Lesson(ILesson):
     
-    def view_lessons(self, request):
-        disciplines = []
-        for d in DisciplineModel.objects.filter(exists=True):
-            if not d.get_lessons():
-                continue
-            dict = {}
-            dict['title'] = d.get_title
-            dict['lessons'] = d.get_lessons()
-            disciplines.append(dict)
+    def view_lessons(self, request, discipline):
+        lessons = discipline.get_lessons()
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
-            {'request':request,'disciplines': disciplines})
+            {'request':request,'discipline': discipline,'lessons': lessons})
     
-    def view_lessons_removed(self, request):
-        disciplines = []
-        for d in DisciplineModel.objects.filter(exists=True):
-            if not d.get_lessons_removed():
-                continue
-            dict = {}
-            dict['title'] = d.get_title
-            dict['lessons'] = d.get_lessons_removed()
-            disciplines.append(dict)
+    def view_lessons_removed(self, request, discipline):
+        lessons = discipline.get_lessons_removed()
         return render(request, "askmath/manager/lesson/manager_view_lessons.html",
-            {'request':request,'disciplines': disciplines,'is_removed': True})
+            {'request':request,'discipline': discipline,'lessons': lessons,'is_removed': True})
         
-    def view_lesson(self, request,lesson):
+    def view_lesson(self, request,lesson, discipline):
         return render(request, "askmath/manager/lesson/manager_view_lesson.html", 
-            {'request':request,'lesson': lesson })
+            {'request':request,'discipline': discipline, 'lesson': lesson })
     
     
     
-    def add_lesson(self, request):
+    def add_lesson(self, request, discipline):
         if request.method == "POST":
+            request.POST['discipline'] = discipline.id
             form = LessonForm(request.POST)
             if form.is_valid():
                 lesson = form.save()
                 messages.success(request,TextMessage.LESSON_SUCCESS_ADD)
-                return self.view_lesson(request, lesson)
+                return self.view_lessons(request, discipline)
             else:
                 messages.error(request,TextMessage.LESSON_ERROR_ADD)
         else:
             form = LessonForm()
         return render(request, "askmath/manager/lesson/manager_form_lesson.html", 
-            {'request':request,'form': form,'title_form':_('Create Lesson')})
+            {'request':request,'discipline': discipline,'form': form,'title_form':_('Create Lesson')})
     
-    def remove_lesson(self, request,lesson):
+    def remove_lesson(self, request,lesson, discipline):
         lesson.delete()
         messages.success(request,TextMessage.LESSON_SUCCESS_REM)
-        return self.view_lessons(request)
-    def edit_lesson(self, request, lesson):
+        return self.view_lessons(request, discipline)
+    def edit_lesson(self, request, lesson, discipline):
         if request.method == 'POST':
+            request.POST['discipline'] = discipline.id
             form = LessonForm(request.POST, instance = lesson)
             if form.is_valid():
                 lesson = form.save()
                 messages.success(request,TextMessage.LESSON_SUCCESS_EDIT)
-                return self.view_lesson(request , lesson)
+                return self.view_lessons(request , discipline)
             else:
                 messages.error(request,TextMessage.LESSON_ERROR_EDIT)
         else:
             form = LessonForm( instance = lesson)
         return render(request, "askmath/manager/lesson/manager_form_lesson.html", 
-            {'request':request,'form': form,'lesson':lesson,'title_form':_('Edit Lesson')})
+            {'request':request,'form': form,'discipline': discipline, 'lesson':lesson,'title_form':_('Edit Lesson')})
     
-    def restore_lesson(self, request,  lesson):
+    def restore_lesson(self, request,  lesson, discipline):
         lesson.restore()
         messages.success(request,TextMessage.LESSON_SUCCESS_RESTORE)
-        return self.view_lessons(request)
+        return self.view_lessons(request, discipline)

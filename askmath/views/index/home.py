@@ -17,8 +17,9 @@ class Home(IHome):
     def index(self, request):
         if request.user.is_authenticated():
             if request.user.has_perm('askmath.access_manager'):
+                disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
                 return render(request, 'askmath/manager/manager_home.html', 
-                    {'request':request})
+                    {'request':request, 'disciplines': disciplines})
             elif request.user.has_perm('askmath.access_content'):
                 disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
                 return render(request, 'askmath/content/content_home.html', 

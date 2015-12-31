@@ -1,6 +1,6 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, ModelMultipleChoiceField,Select
+from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, ModelMultipleChoiceField,Select, HiddenInput
 from django.utils.translation import ugettext_lazy as _
 
 from askmath.models import Lesson, Discipline
@@ -15,7 +15,7 @@ class LessonForm(ModelForm):
 		model= Lesson
 		fields = ("discipline","title", "description", "requirements", "sugestions", "maximum_hops","color", "visible")
 		widgets = {
-			'discipline': Select(attrs={'required':'required','class':'full-size','autofocus': 'True'}),
+			'discipline': HiddenInput(attrs={}),
 			'title': TextInput(attrs={'required': 'required'}),
 			'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex','required': 'required'}),
 			'requirements': SelectMultiple(attrs={'class':'full-size'}),

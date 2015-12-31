@@ -12,5 +12,5 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/lessons/view/"><span class="icon mif-clipboard"></span> <spam>{% trans "Lessons" %}</spam></a></li>
+	<li><a href="/home/manager/lessons/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam>{{ discipline.get_title }}</spam></a></li>
 {% endblock %}

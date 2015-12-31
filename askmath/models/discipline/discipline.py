@@ -8,8 +8,8 @@ class Discipline(models.Model):
     title = models.CharField(verbose_name=_(u"Title"), max_length=100,
         help_text=_(u"Choose a title for the discipline."))
     
-    responsible = models.CharField(verbose_name=_(u"Responsible"), max_length=100,
-        help_text=_(u"Choose responsible for the discipline.") )
+    responsible = models.ForeignKey('Teacher',related_name="Responsible", verbose_name=_('Responsible'), null=True, blank=True,
+        help_text=_(u"Choose responsible for the discipline."))
     
     visible = models.BooleanField(verbose_name=_(u"Visible"), default=False,
         help_text=_(u"Select this option to leave visible discipline at all."))

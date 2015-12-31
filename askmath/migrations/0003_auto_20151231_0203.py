@@ -7,14 +7,14 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('askmath', '0004_auto_20151007_0054'),
+        ('askmath', '0002_auto_20151231_0153'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='person',
-            name='name',
-            field=models.CharField(help_text='Please enter you full name.', max_length=100, null=True, verbose_name='Full Name '),
+            model_name='discipline',
+            name='responsible',
+            field=models.ForeignKey(related_name='Responsible', to='askmath.Teacher', help_text='Escolha uma respons\xe1vel para a disciplina.'),
             preserve_default=True,
         ),
     ]
