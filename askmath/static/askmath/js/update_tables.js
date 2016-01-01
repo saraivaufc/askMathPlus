@@ -65,3 +65,32 @@ $("input[name='radio_video']").change(function(){
 	$("#button-video-delete").attr("href",url_delete);
 	$("#button-video-restore").attr("href",url_restore);
 });
+
+//CATEGORY
+$("input[name='radio_category']").change(function(){
+	if($(this).prop( "checked", true ) ){
+		var url_edit = "/forum/categories/edit/category="+ $(this).attr('category_id') + "/";
+		var url_delete = "/forum/categories/remove/category="+ $(this).attr('category_id') + "/";
+		var url_restore = "/forum/categories/restore/category="+ $(this).attr('category_id') + "/";
+	}else{
+		var url_edit = "#";
+		var url_delete = "#";
+		var url_restore = "#";
+	};
+	$("#button-category-edit").attr("href",url_edit);
+	$("#button-category-delete").attr("href",url_delete);
+	$("#button-category-restore").attr("href",url_restore);
+});
+
+//TOPIC
+$("input[name='radio_topic']").change(function(){
+	if($(this).prop( "checked", true ) ){
+		var url_delete = "/forum/topics/remove/category="+ $(this).attr('category_id') + "/topic="+ $(this).attr('topic_id') +"/";
+		var url_restore = "/forum/topics/restore/category="+ $(this).attr('category_id') + "/topic="+ $(this).attr('topic_id') +"/";
+	}else{
+		var url_delete = "#";
+		var url_restore = "#";
+	};
+	$("#button-topic-delete").attr("href",url_delete);
+	$("#button-topic-restore").attr("href",url_restore);
+});

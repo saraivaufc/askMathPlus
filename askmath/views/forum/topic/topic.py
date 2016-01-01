@@ -12,11 +12,21 @@ class Topic(ITopic):
     def __init__(self):
         self.__proxy_category = ProxyCategory()
         
+    def view_topics(self, request, category):
+        topics = category.get_topics()
+        return render(request, "askmath/forum/topic/view_topics.html", 
+            {'request':request,'category': category,'topics':topics})
+    
+    def view_topics_removed(self, request, category):
+        topics = category.get_topics_removed()
+        return render(request, "askmath/forum/topic/view_topics.html", 
+            {'request':request,'category': category,'topics':topics,'is_removed':True})
+
     def view_topic(self, request, category, topic):
         form = CommentForm()
         return render(request, "askmath/forum/topic/view_topic.html",
             {'request':request,'category': category,'topic': topic,'form': form})
-    
+
     def add_topic(self, request, category):
         if request.method == "POST":
             request.POST = request.POST.copy()
@@ -25,8 +35,8 @@ class Topic(ITopic):
             form = TopicForm(request.POST, request.FILES)
             if form.is_valid():
                 topic = form.save()
-                url = "/forum/categories/view/category=%d/" % (category.id)
-                return HttpResponseRedirect(url)
+                messages.success(request, TextMessage.TOPIC_SUCCESS_ADD)
+                return self.view_topics(request, category)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -42,8 +52,8 @@ class Topic(ITopic):
             form = TopicForm(request.POST, request.FILES, instance = topic)
             if form.is_valid():
                 topic=form.save()
-                url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
-                return HttpResponseRedirect(url)
+                messages.success(request, TextMessage.TOPIC_SUCCESS_EDIT)
+                return self.view_topic(request, category, topic)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -53,11 +63,13 @@ class Topic(ITopic):
     
     def remove_topic(self, request, category, topic):
         topic.delete()
-        url = "/forum/categories/view/category=%d/" % (category.id)
-        return HttpResponseRedirect(url)
+        messages.success(request, TextMessage.TOPIC_SUCCESS_REM)
+        return self.view_topics(request, category)
     
-    def restore_topic(self):
-        pass
+    def restore_topic(self, request, category, topic):
+        topic.restore()
+        messages.success(request, TextMessage.TOPIC_SUCCESS_RESTORE)
+        return self.view_topics(request, category)
     
     def like_topic(self, request, topic):
         if request.user in topic.get_likes_persons():

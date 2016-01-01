@@ -5,18 +5,34 @@
 {%  block content %}
 {% if perms.askmath.write_category %}
 <div class="cell padding10">
-		<a href="/forum/categories/add/" class="image-button button-success">
+		<a id="button-category-create" href="/forum/categories/add/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
+		<a id="button-category-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
+		{% if is_removed %}
+		<a id="button-category-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-category-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+
 	{% if is_removed %}
-		<a href="/forum/categories/view/" class="image-button button-info" data-popover="undo">
-			{% trans "Undo" %}
+		<a href="/forum/categories/view/" class="image-button button-warning">
+			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
-		<a href="/forum/categories/view_removed/" class="image-button button-warning" data-popover="dump">
-			{% trans "Dump" %}
+		<a href="/forum/categories/view_removed/" class="image-button button-warning">
+			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
@@ -26,9 +42,12 @@
 <div class="container-fluid">
 <div class="row">
 <div class="padding10">
-	<table class="table table-category hovered border bg-white-opacity">
+	<table class="dataTable border bordered" data-role="datatable">
 		<thead>
 			<tr>
+				{% if perms.askmath.write_category %}
+				<th style="width: 10px"></th>
+				{% endif %}
 				<th class="category" >{% trans "Category" %}</th>
 				<th class="post" >{% trans "Posts" %}</th>
 				<th class="last_post" >{% trans "Last Post" %}</th>
@@ -37,17 +56,31 @@
 		<tbody>
 			{% for category in categories %}
 			<tr>
-				<td class="category width">
+				{% if perms.askmath.write_category %}
+				<td>
+		            <label class="input-control radio small-check no-margin">
+		                <input type="radio" category_id="{{ category.id }}" name="radio_category">
+		                <span class="check"></span>
+		            </label>
+		        </td>
+		        {% endif %}
+				<td class="sortable-column category width">
 					<div class="icon"></div>
 					<div class="details">
 						<h4 class="title">
-							<a class="fg-dark" href="/forum/categories/view/category={{ category.id }}/">{{ category.get_title }}</a>
+							{{ category.get_title }}
 						</h4>
 						<div class="description">{{ category.get_description }}</div>
 					</div>
 				</td>
-				<td class="post">{{ category.get_topics|length }}</td>
-				<td class="last_post">
+				<td class="sortable-column post">
+					<a href="/forum/topics/view/category={{ category.id }}/">
+						{% blocktrans with topics=category.get_topics|length  %}
+						See {{ topics }} posts
+						{% endblocktrans %}
+					</a>
+				</td>
+				<td class="sortable-column last_post">
 					{% if category.get_topics|length > 0 %}
 						{% with category.get_topics|first as topic  %}
 						<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">

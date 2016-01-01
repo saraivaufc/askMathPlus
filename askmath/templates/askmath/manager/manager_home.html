@@ -54,7 +54,7 @@
 			<td>{% trans "Title" %}</td>
 			<td>{% trans "Responsible" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
-			<td>{% trans "Option" %}</td>
+			<td>{% trans "Lessons" %}</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -72,7 +72,11 @@
 			{{ discipline.is_visible }}
         </td>
         <td class="sortable-column">
-			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">{% trans "Lessons" %}</a>
+			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">
+				{% blocktrans with lessons=discipline.get_lessons|length  %}
+				See {{ lessons }} lessons
+				{% endblocktrans %}
+			</a>
         </td>
 	{% endfor %}
 	</tbody>

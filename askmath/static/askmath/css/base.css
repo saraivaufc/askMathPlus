@@ -317,114 +317,6 @@ caption{
 
 
 /* FORUM */
-.table-category{
-}
-
-.table-topic{
-
-}
-
-.table-category > tbody > tr > td.category, 
-.table-topic > tbody > tr > td.topic{
-	text-align: left;
-	display: inline-block;
-}
-
-.table-category > tbody > tr > td.category > .icon, 
-.table-topic > tbody > tr > td.topic > .icon {
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position: 0px 0px;
-	background-clip: border-box;
-	background-origin: padding-box;
-	background-size: cover !important;
-	float: left;
-	display: inline-block;
-  	vertical-align: middle;
-  	line-height: normal;
-}
-
-.table-category > tbody > tr > td.category > div.details{
-	display: block;
-	padding-top: 0px;
-	line-height: 1.0;
-}
-
-
-.table-category > tbody > tr > td.category > .icon{
-	background-image: url("/static/askmath/img/icons/forum_read.png");
-	vertical-align: middle;
-	width: 50px;
-	height: 50px;
-	
-}
-
-.table-topic > tbody > tr > td.topic > .icon{
-	background-image: url("/static/askmath/img/icons/topic_read.png");
-	width: 32px;
-	height: 32px;
-	
-}
-
-
-.table-category > tbody > tr > td.category ,
-.table-category > thead > tr > th.category{
-	text-align: left;
-}
-.table-category > tbody > tr > td.post ,
-.table-category > thead > tr > th.post{
-	text-align: center;
-}
-.table-category > tbody > tr > td.last_post ,
-.table-category > thead > tr > th.last_post{
-	text-align: left;
-}
-
-.table-topic > tbody > tr > td.topic ,
-.table-topic > thead > tr > th.topic{
-	text-align: left;
-}
-.table-topic > tbody > tr > td.replies ,
-.table-topic > thead > tr > th.replies{
-	text-align: center;
-}
-.table-topic > tbody > tr > td.date ,
-.table-topic > thead > tr > th.date{
-	text-align: left;
-}
-
-
-
-.table-category > tbody > tr > td.category > .details, 
-.table-topic > tbody > tr > td.topic > .details{
-	min-height: 1px;
-	overflow: hidden;
-	padding: 0px 11px 0px 12px;
-	position: relative;
-}
-
-
-
-.table-category > tbody > tr > td.category > .details > .description{
-	padding-top: 0px;
-	font-size: 0.923em;
-}
-
-.pagepost{
-	border-top-width: 1px;
-}
-
-.pagepost > .pagelink{
-	float: left;
-    white-space: nowrap;
-}
-
-.pagepost > .postlink{
-	float: right;
-    white-space: nowrap;
-    font-weight: bold;
-	text-align: right;	
-}
 
 
 .person-card{
@@ -612,3 +504,9 @@ label.caption{
 	display: none;
 }
 
+
+.dataTables_wrapper{
+	background-color: #fff;
+	color: #000;
+	padding: 0px 5px 0px 5px;
+}

@@ -81,7 +81,7 @@
 		<td class="sortable-column">{{ video.get_position }}</td>
 		<td class="sortable-column">{{ video.get_title }}</td>
 		<td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>
-		<td><a href="{{ video.get_file.url }}" target="_blank">{% trans "View file" %}</a></td>
+		<td><a href="{{ video.get_file.url }}" target="_blank">{% trans "See file" %}</a></td>
 		<td>{{ video.is_visible }}</td>
 	</tr>
 	{% endfor %}

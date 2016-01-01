@@ -14,56 +14,6 @@
 	<li>
 		<a href="/home/">{% trans "Home" %}</a>
 	</li>
-	{% if perms.askmath.access_manager %}
-	<li>
-		<a class="dropdown-toggle" href="#">
-			<span class="icon mif-tree"></span>
-			<span class="title">{% trans "Contents" %}</span>
-		</a>
-		<ul class="d-menu bg-dark" data-role="dropdown">
-			{% if perms.askmath.access_manager_discipline %}
-			{% block discipline %}
-			<li>
-			{% endblock %}
-				<a href="/home/manager/disciplines/view/">
-					<span class="icon mif-stack2"></span>
-					<span class="title">{% trans "Disciplines" %}</span>
-				</a>
-			</li>
-			{% endif %}
-			{% if perms.askmath.access_manager_lesson %}
-			{% block lesson %}
-			<li>
-			{% endblock %}
-				<a href="/home/manager/lessons/view/">
-					<span class="icon mif-clipboard"></span>
-					<span class="title">{% trans "Lessons" %}</span>
-				</a>
-			</li>
-			{% endif %}
-			{% if perms.askmath.access_manager_question %}
-			{% block question %}
-			<li>
-			{% endblock %}
-				<a href="/home/manager/questions/choose_lesson/">
-					<span class="mif-list-numbered icon"></span>
-					<span class="title">{% trans "Questions" %}</span>
-				</a>
-			</li>
-			{% endif %}
-			{% if perms.askmath.access_manager_video %}
-			{% block video %}
-			<li>
-			{% endblock %}
-				<a href="/home/manager/videos/choose_lesson/">
-					<span class="icon mif-film"></span>
-					<span class="title">{% trans "Videos" %}</span>
-				</a>
-			</li>
-			{% endif %}
-		</ul>
-	</li>
-	{% endif %}
 	{% if perms.askmath.access_content %}
 	<li class="place-right">
 		<a href="#" onclick="showCharm('#charmSearch');">

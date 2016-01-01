@@ -54,7 +54,7 @@
 			<td>{% trans "Sugestions" %}</td>
 			<td>{% trans "Maximum Hops" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
-			<td>{% trans "Option" %}</td>
+			<td>{% trans "Questions / Videos" %}</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -75,8 +75,16 @@
 			{{ discipline.is_visible }}
         </td>
         <td class="sortable-column">
-			<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">{% trans "Questions" %}</a>
-			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">{% trans "Videos" %}</a>
+			<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
+				{% blocktrans with questions=lesson.get_questions|length  %}
+				See {{ questions }} questions
+				{% endblocktrans %}
+			</a>/
+			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
+				{% blocktrans with videos=lesson.get_videos|length  %}
+				See {{ videos }} videos
+				{% endblocktrans %}
+			</a>
         </td>
 		
 	</tr>

@@ -1,7 +1,13 @@
 class ITopic():
+    def view_topics(self):
+        pass
+
+    def view_topics_removed(self):
+        pass
+
     def view_topic(self):
         pass
-    
+
     def add_topic(self):
         pass
     

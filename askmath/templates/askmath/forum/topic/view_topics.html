@@ -1,0 +1,92 @@
+{% extends 'askmath/forum/category/view_categories.html' %}
+{% load i18n %}
+{% load humanize %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if category %}
+		<li><a href="/forum/topics/view/category={{ category.id }}/"><span class="icon mif-bubbles"></span> <spam>{{ category }}</spam></a></li>
+	{% endif %}
+{% endblock %}
+
+{%  block content %}
+<div class="cell padding10">
+		<a id="button-topic-create" href="/forum/topics/add/category={{ category.id }}/" class="image-button button-success">
+			{% trans "Post new topic" %}
+			<span class="icon mif-plus"></span>
+		</a>
+		{% if perms.askmath.access_forum_admin %}
+			{% if is_removed %}
+			<a id="button-topic-restore" href="#" class="image-button button-info">
+				{% trans "Restore" %}
+				<span class="icon mif-history"></span>
+			</a>
+			{% else %}
+			<a id="button-topic-delete" href="#" class="image-button button-danger">
+				{% trans "Delete" %}
+				<span class="icon mif-minus"></span>
+			</a>
+			{% endif %}
+
+		{% if is_removed %}
+			<a href="/forum/topics/view/category={{ category.id }}/" class="image-button button-warning">
+				{% trans "Close Dump" %}
+				<span class="icon mif-undo"></span>
+			</a>
+		{% else %}
+			<a href="/forum/topics/view_removed/category={{ category.id }}/" class="image-button button-warning">
+				{% trans "Open Dump" %}
+				<span class="icon mif-bin"></span>
+			</a>
+		{% endif %}
+		{% endif %}
+</div>
+
+<div class="container-fluid">
+<div class="row">
+<div class="padding10">
+	<table class="dataTable border bordered" data-role="datatable">
+		<thead>
+			<tr>
+				{% if perms.askmath.access_forum_admin %}
+				<th style="width: 10px"></th>
+				{% endif %}
+				<th class="topics">{% trans "Topic" %}</th>
+				<th class="replies">{% trans "Replies" %}</th>
+				<th class="date">{% trans "Date" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for topic in topics %}
+			<tr>
+				{% if perms.askmath.access_forum_admin %}
+				<td>
+		            <label class="input-control radio small-check no-margin">
+		                <input type="radio" category_id="{{ category.id }}" topic_id="{{ topic.id }}" name="radio_topic">
+		                <span class="check"></span>
+		            </label>
+		        </td>
+		        {% endif %}
+				<td class="topic width">
+					<div class="icon"></div>
+						<div class="details">
+							<h5 class="title">
+								<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">{{ topic.get_title }}</a> <span>{% trans "by" %} {{ topic.person }}</span>
+							</h5>
+						</div>
+					</div>
+				</td>
+				<td class="replies">{{ topic.get_comments|length }}</td>
+				<td class="sortable-colum date">
+					{{ topic.creation|naturaltime }}	
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% include 'askmath/utils/latexeditor/_box_latex.html' %}
+</div>
+</div>
+{% endblock %}
