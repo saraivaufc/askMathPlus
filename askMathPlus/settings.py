@@ -48,6 +48,7 @@ DEFAULT_GROUP_NAME = 'student'
 
 #Apps
 DJANGO_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -92,10 +93,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 # Keep templates in memory
-# TEMPLATE_LOADERS = (
-#     ('django.template.loaders.cached.Loader', (
-#         'django.template.loaders.filesystem.Loader',
-#         'django.template.loaders.app_directories.Loader',
+# TEMPLATE_LOAFAjango.template.loaders.app_directories.Loader',
 #     )),
 # )
 
@@ -143,7 +141,7 @@ ADMINS = ( ('Ciano Saraiva','saraiva.ufc@gmail.com'), )
 
 
 #EMAIL
-EMAIL_ADMINS = ['saraiva.ufc@gmail.com',]
+EMAIL_ADMINS = ['saraiva.ufc@gmail.com','askmathplus@gmail.com']
 DEFAULT_FROM_EMAIL= 'askmathplus@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'askmathplus@gmail.com'

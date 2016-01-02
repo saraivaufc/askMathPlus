@@ -132,11 +132,10 @@ class Account(IAccount):
                 messages.error(request, TextMessage.USER_TYPE_NOT_FOUND)
                 return self.options(request)
         if form and form.is_valid():
-            user=form.save()
+            user=form.save(commit=False)
+            user.save(group=group_name)
             if register_key:
                 register_key.add_user(user)
-            group = Group.objects.get(name=group_name)
-            user.groups.add(group)
             messages.success(request, TextMessage.USER_CREATED_SUCCESS)
             request.method="GET"
             return self.signin(request,form)

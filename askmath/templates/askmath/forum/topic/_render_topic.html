@@ -37,6 +37,8 @@
 					<p class="post-description lead">{{ topic.get_description|linebreaksbr }}</p>
 					<div class="post-controls">
 						<div class="col-sm-6 col-md-6">
+							<h1>{{topic.get_likes_persons}}</h1>
+							<h1>{{ request.userdd }}</h1> 
 							{% if request.user in topic.get_likes_persons %}
 							<button href="/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
 							{% else %}

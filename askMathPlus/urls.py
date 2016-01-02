@@ -10,6 +10,7 @@ import settings
 
 urlpatterns = patterns('',
     url(r'^', include(askmath_urls)),
+    url(r'^admin/', include(admin.site.urls), name='admin'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     url(r'^feed/$', LessonsLatests()),
 )

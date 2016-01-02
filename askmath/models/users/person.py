@@ -101,9 +101,9 @@ class Person(AbstractPerson):
     creation = models.DateTimeField(_(u'Creation'), default=timezone.now)
     exists = models.BooleanField(default = True)
 
-    def save(self, *args, **kwargs):
+    def save(self,group=settings.DEFAULT_GROUP_NAME, *args, **kwargs):
         super(Person, self).save(*args, **kwargs)
-        group = Group.objects.get(name=settings.DEFAULT_GROUP_NAME)
+        group = Group.objects.get(name=group)
         self.groups.add(group)
 
     def get_profile_image(self):
