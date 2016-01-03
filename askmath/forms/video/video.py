@@ -9,14 +9,13 @@ from askmath.models.video import Video
 class VideoForm(ModelForm):
     class Meta:
         model= Video
-        fields = ("lesson", "position","title", "description","file", "color" , "visible")
+        fields = ("lesson", "position","title", "description","file", "visible")
         widgets = {
             'lesson': HiddenInput(attrs={'class':'hidden'}),
             'position': HiddenInput(attrs={'class':'hidden'}),
             'title': TextInput(attrs={'required': 'required'}),
             'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex'}),
             'file': ClearableFileInput(attrs={'required': 'required'}),
-            'color': Select(attrs={'required': 'required','class':'full-size'}),
             'visible': CheckboxInput(attrs={}),
         }
     def clean_file(self):

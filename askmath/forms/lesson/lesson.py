@@ -13,7 +13,7 @@ class LessonForm(ModelForm):
 		
 	class Meta:
 		model= Lesson
-		fields = ("discipline","title", "description", "requirements", "sugestions", "maximum_hops","color", "visible")
+		fields = ("discipline","title", "description", "requirements", "sugestions", "maximum_hops", "visible")
 		widgets = {
 			'discipline': HiddenInput(attrs={}),
 			'title': TextInput(attrs={'required': 'required'}),
@@ -21,6 +21,5 @@ class LessonForm(ModelForm):
 			'requirements': SelectMultiple(attrs={'class':'full-size'}),
 			'sugestions': SelectMultiple(attrs={'class':'full-size'}),
 			'maximum_hops': NumberInput(attrs={'required':'required', 'min': '0'}),
-			'color': Select(attrs={'required': 'required','class':'full-size'}),
 			'visible': CheckboxInput(attrs={}),
 		}

@@ -8,11 +8,10 @@ from askmath.models.category import Category
 class CategoryForm(ModelForm):
     class Meta:
         model= Category
-        fields = ("title","description","person", "color")
+        fields = ("title","description","person")
 
         widgets = {
             'person': HiddenInput(attrs={'class':'hidden'}),      
             'title': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-         	'description': Textarea(attrs={}),    
-         	'color': Select(attrs={'required': 'required','class':'full-size'}),
+         	'description': Textarea(attrs={}),
         }

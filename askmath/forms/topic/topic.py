@@ -9,13 +9,12 @@ from askmath.models.topic import Topic
 class TopicForm(ModelForm):
     class Meta:
         model= Topic
-        fields = ("person", "category", "title", "description","file","color")
+        fields = ("person", "category", "title", "description","file")
         widgets = {
             'person': HiddenInput(attrs={'class':'hidden'}),
             'category': HiddenInput(attrs={'class':'hidden'}),
             'title': TextInput(attrs={'required': 'required','autofocus':'true'}),
             'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%' ,'class':'latex'}),
-            'color': Select(attrs={'required': 'required','class':'full-size'}),
         }
         
     def clean_file(self):

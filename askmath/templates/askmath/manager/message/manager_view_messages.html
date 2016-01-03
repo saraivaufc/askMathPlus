@@ -1,39 +1,76 @@
 {% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
+{% load humanize %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li><a href="/home/manager/messages/view/"><span class="icon mif-envelop"></span> <spam>{% trans "Messages" %}</spam></a></li>
 {% endblock %}
 
-
 {%  block content_right %}
-
 <div class="cell">
+	{% if perms.askmath.write_message %}
+		{% if is_removed %}
+		<a id="button-message-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-message-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	
 	{% if is_removed %}
-		<a href="/home/manager/messages/view/" class="image-button button-info">
-			{% trans "Undo" %}
+		<a href="/home/manager/messages/view/" class="image-button button-warning">
+			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
 		<a href="/home/manager/messages/view_removed/" class="image-button button-warning">
-			{% trans "Dump" %}
+			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
 </div>
 
-<div class="cell">
-{% for message_model in messages_model %}
-	<div class="tile {{ message_model.color }} fg-white" data-role="tile">
-	    <a href="/home/manager/messages/view/message={{ message_model.id }}/" class="tile-content iconic">
-	        <span class="icon mif-envelop mif-ani-vertical"></span>
-	        <span class="tile-label">{{ message_model.get_name }}</span>
-	        {% if not message_model.exists %}
-	        <span class="tile-badge mif-bin"></span>
-	        {% endif %}
-	    </a>
-	</div>
-{% endfor %}
-</div>
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Name" %}</td>
+			<td>{% trans "Email" %}</td>
+			<td>{% trans "Message" %}</td>
+			<td>{% trans "File" %}</td>
+			<td>{% trans "Date" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for message in messages_model %}
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" message_id="{{ message.id }}" name="radio_message">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ message.get_name }}</td>
+		<td class="sortable-column">{{ message.get_email }}</td>
+		<td class="sortable-column">{{ message.get_message|safe|linebreaksbr }}</td>
+		<td class="sortable-column">
+			{% if message.get_file %}
+			<a href="{{ message.get_file.url }}" target="_blank">
+				{% trans "Download File" %}
+			</a>
+			{% else %}
+				{% trans "No file" %}
+			{% endif %}
+		</td>
+		<td class="sortable-column">{{ message.creation|naturaltime }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
 {% endblock %}

@@ -13,11 +13,10 @@ class DisciplineForm(ModelForm):
         self.fields['responsible'].queryset = TeacherModel.objects.filter(exists=True)
     class Meta:
         model= Discipline
-        fields = ("title", "responsible", "color", "visible")
+        fields = ("title", "responsible", "visible")
 
         widgets = {
             'title': TextInput(attrs={'autofocus': 'True'}),
             'responsible': Select(attrs={}),
-            'color': Select(attrs={'required':'required'}),
             'visible': CheckboxInput(attrs={}),
         }

@@ -1,8 +1,23 @@
-Django>=1.7,<1.8
+defusedxml==0.4.1
+Django==1.7.11
 django-nocaptcha-recaptcha==0.0.18
-python-social-auth==0.2.13
-Pillow>=2.6,<2.7
+django-rosetta==0.7.8
+microsofttranslator==0.7
 nltk==3.1
+oauthlib==1.0.3
+Pillow==2.6.2
+polib==1.0.7
+psycopg2==2.6.1
+PyJWT==1.4.0
+python-openid==2.2.5
+python-social-auth==0.2.13
+python3-openid==3.0.9
+requests==2.9.1
+requests-oauthlib==0.6.0
+six==1.10.0
+wheel==0.24.0
+
+
 
 #sudo apt-get install postfix
 #sudo aptitude install libapache2-mod-wsgi

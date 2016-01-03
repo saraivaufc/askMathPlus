@@ -20,10 +20,6 @@ class Message(IMessage):
         return render(request, "askmath/manager/message/manager_view_messages.html",
             {'request':request,'messages_model': messages_model,'is_removed': True})
         
-    def view_message(self, request,message_model):
-        return render(request, "askmath/manager/message/manager_view_message.html", 
-            {'request':request,'message_model': message_model})
-    
     def remove_message(self, request,message_model):
         message_model.delete()
         messages.success(request, TextMessage.MESSAGE_SUCCESS_REM)

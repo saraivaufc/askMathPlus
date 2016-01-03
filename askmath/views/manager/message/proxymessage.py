@@ -41,25 +41,7 @@ class ProxyMessage(IMessage):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_messages(request)
-    
-    @method_decorator(login_required)
-    def view_message(self, request, id_message):
-        if request.user.has_perm("askmath.read_message")  and request.user.has_perm("askmath.access_manager"):
-            try:
-                message_model = MessageModel.objects.get(id = id_message)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
-                return self.view_messages(request)
-            try:
-                return self.__message.view_message(request, message_model)
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR)
-        else:
-            messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_messages(request)
-    
+        
     @method_decorator(login_required)
     def remove_message(self, request, id_message):
         if request.user.has_perm("askmath.write_message")  and request.user.has_perm("askmath.access_manager"):
