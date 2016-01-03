@@ -47,8 +47,8 @@ class Category(ICategory):
             form = CategoryForm(request.POST, instance = category)
             if form.is_valid():
                 category=form.save()
-                messages.success(request, TextMessage.CATEGORY_SUCCESS_ADD)
-                return self.view_categories(request, category)
+                messages.success(request, TextMessage.CATEGORY_SUCCESS_EDIT)
+                return self.view_categories(request)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
                 

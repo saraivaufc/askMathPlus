@@ -120,3 +120,13 @@ $("input[name='radio_message']").change(function(){
 	$("#button-message-delete").attr("href",url_delete);
 	$("#button-message-restore").attr("href",url_restore);
 });
+
+//Key
+$("input[name='radio_register_key']").change(function(){
+	if($(this).prop( "checked", true ) ){
+		var url_delete = "/home/manager/persons/remove_registerkey/person_type="+ $(this).attr('person_type') +"/registerkey="+ $(this).attr('register_key_id') +"/";
+	}else{
+		var url_delete = "#";
+	};
+	$("#button-register_key-delete").attr("href",url_delete);
+});

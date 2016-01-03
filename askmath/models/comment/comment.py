@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Comment(models.Model):
-    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
+    person = models.ForeignKey(User, verbose_name=_(u"Person"))
     topic = models.ForeignKey('Topic', verbose_name=_(u"Topic"))
     description = models.TextField(verbose_name=_(u"Comment"))
     likes = models.ManyToManyField('Like', verbose_name=_(u"Likes"), null=True, blank=True)
