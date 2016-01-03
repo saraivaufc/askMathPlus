@@ -9,47 +9,79 @@
 
 {%  block content_right %}
 
-<div class="cell auto-size padding20">
+<div class="cell">
 	{% if write_person %}
 		<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="image-button button-success">
 			{% trans "View Keys" %}
 			<span class="icon mif-key"></span>
 		</a>
 	{% endif %}
+	{% if perms.askmath.write_person %}
+		{% if is_removed %}
+		<a id="button-person-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-person-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	
 	{% if is_removed %}
-		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-info" >
-			{% trans "Undo" %}
+		<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-warning">
+			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 	{% else %}
 		<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="image-button button-warning">
-			{% trans "Dump" %}
+			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
 	{% endif %}
 </div>
 
-<div class="tile-area no-padding bg-transparent ">
-<div class="tile-container">
-{% for person in persons %}
-<div class="tile {{ person.color }} {% if lesson.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
-    <a href="/home/manager/persons/view/person_type={{ person_type }}/person={{ person.id }}/" class="tile-content iconic">
-        {% if person.get_profile_image %}
-        <div class="image-container image-format-square">
-        <img alt="" src="{{ person.get_profile_image.url }}">
-        </div>
-        {% else %}
-        <span class="icon mif-user"></span>
-        {% endif %}
-        <span class="tile-label">{{ person.get_name }}</span>
-        {% if not person.exists %}
-        <span class="tile-badge mif-bin"></span>
-        {% endif %}
-    </a>
-</div>
-{% empty %}
-<h3 class="text-center">{% trans "Not Person Found" %}</h3>
-{% endfor %}
-</div>
-</div>
+
+
+<table class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Name" %}</td>
+			<td>{% trans "Username" %}</td>
+			<td>{% trans "Email" %}</td>
+			<td>{% trans "Profile Image" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for person in persons %}
+			<tr>
+				<td>
+		            <label class="input-control radio small-check no-margin">
+		                <input type="radio" person_id="{{ person.id }}" person_type="{{ person_type }}" name="radio_person">
+		                <span class="check"></span>
+		            </label>
+		        </td>
+				<td>{{ person.get_name }}</td>
+				<td>{{ person.get_username }}</td>
+				<td>
+					<a href="mailto:{{ person.get_email }}">
+						{{ person.get_email }}
+					</a>
+				</td>
+				<td class="align-center no-padding">
+					<div class="image-container nopadding image-format-square" style="height: 50px;">
+			     	   	{% if person.get_profile_image %}
+			     	  		<img alt="" src="{{ person.get_profile_image.url }}">
+			        	{% else %}
+			        		<img alt="" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+			        	{% endif %}
+			        </div>
+				</td>
+			</tr>
+		{% endfor %}		
+	</tbody>
+</table>
 {% endblock %}

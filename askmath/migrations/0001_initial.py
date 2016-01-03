@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import askmath.models.access.registerkey
-import datetime
 import django.utils.timezone
+import datetime
+import askmath.models.access.registerkey
 from django.conf import settings
 import askMathPlus.components_metro
 
@@ -16,51 +16,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Person',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('password', models.CharField(max_length=128, verbose_name='password')),
-                ('last_login', models.DateTimeField(default=django.utils.timezone.now, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
-                ('location', models.CharField(max_length=75, null=True, verbose_name='location', blank=True)),
-                ('last_seen', models.DateTimeField(auto_now=True, verbose_name='last seen')),
-                ('last_ip', models.GenericIPAddressField(null=True, verbose_name='last ip', blank=True)),
-                ('is_administrator', models.BooleanField(default=False, verbose_name='administrator status')),
-                ('is_moderator', models.BooleanField(default=False, verbose_name='moderator status')),
-                ('username', models.CharField(help_text='Please enter you username.', unique=True, max_length=30, verbose_name='Username', db_index=True)),
-                ('name', models.CharField(help_text='Please enter you full name.', max_length=100, null=True, verbose_name='Full Name ')),
-                ('email', models.EmailField(help_text='Please enter you email.', unique=True, max_length=254, verbose_name='Email')),
-                ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
-                ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
-                ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('profile_image', models.ImageField(default=None, upload_to='documents/image/profile_image/%Y/%m/%d', blank=True, help_text='Please enter you profile image.', null=True, verbose_name='Profile Image')),
-                ('color', models.CharField(default=askMathPlus.components_metro.generate_color, max_length=50, verbose_name='Color')),
-                ('creation', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Creation')),
-                ('exists', models.BooleanField(default=True)),
-            ],
-            options={
-                'ordering': ['-date_joined'],
-                'abstract': False,
-                'verbose_name_plural': 'persons',
-                'db_table': 'auth_user',
-                'verbose_name': 'person',
-                'swappable': 'AUTH_USER_MODEL',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Administrator',
-            fields=[
-                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'abstract': False,
-                'verbose_name': 'Administrator',
-                'verbose_name_plural': 'Administrators',
-            },
-            bases=('askmath.person',),
-        ),
         migrations.CreateModel(
             name='AdministratorKey',
             fields=[
@@ -91,18 +46,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Hist\xf3rico de Quest\xf5es Resolvidas',
             },
             bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Assistant',
-            fields=[
-                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'abstract': False,
-                'verbose_name': 'Assistant',
-                'verbose_name_plural': 'Assistants',
-            },
-            bases=('askmath.person',),
         ),
         migrations.CreateModel(
             name='AssistantKey',
@@ -254,6 +197,47 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='Person',
+            fields=[
+                ('user_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('profile_image', models.ImageField(default=None, upload_to='documents/image/profile_image/%Y/%m/%d', blank=True, help_text='Please enter you profile image.', null=True, verbose_name='Profile Image')),
+                ('color', models.CharField(default=askMathPlus.components_metro.generate_color, max_length=50, verbose_name='Color')),
+                ('creation', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Creation')),
+                ('exists', models.BooleanField(default=True)),
+            ],
+            options={
+                'ordering': ['-date_joined'],
+                'abstract': False,
+                'verbose_name': 'person',
+                'verbose_name_plural': 'persons',
+            },
+            bases=('auth.user',),
+        ),
+        migrations.CreateModel(
+            name='Assistant',
+            fields=[
+                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='askmath.Person')),
+            ],
+            options={
+                'abstract': False,
+                'verbose_name': 'Assistant',
+                'verbose_name_plural': 'Assistants',
+            },
+            bases=('askmath.person',),
+        ),
+        migrations.CreateModel(
+            name='Administrator',
+            fields=[
+                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='askmath.Person')),
+            ],
+            options={
+                'abstract': False,
+                'verbose_name': 'Administrator',
+                'verbose_name_plural': 'Administrators',
+            },
+            bases=('askmath.person',),
+        ),
+        migrations.CreateModel(
             name='Question',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -295,7 +279,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Student',
             fields=[
-                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='askmath.Person')),
             ],
             options={
                 'abstract': False,
@@ -405,7 +389,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Teacher',
             fields=[
-                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('person_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='askmath.Person')),
             ],
             options={
                 'abstract': False,
@@ -422,7 +406,7 @@ class Migration(migrations.Migration):
                 ('in_use', models.BooleanField(default=False, verbose_name='Em Uso')),
                 ('creation', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Cria\xe7\xe3o')),
                 ('exists', models.BooleanField(default=True, verbose_name='Existe')),
-                ('creator', models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL)),
+                ('creator', models.ForeignKey(verbose_name='Pessoa', to='askmath.Person')),
                 ('user', models.ForeignKey(related_name='Teacher', blank=True, to='askmath.Teacher', null=True)),
             ],
             options={
@@ -444,7 +428,7 @@ class Migration(migrations.Migration):
                 ('exists', models.BooleanField(default=True, verbose_name='Existe')),
                 ('category', models.ForeignKey(verbose_name='Categoria', to='askmath.Category')),
                 ('likes', models.ManyToManyField(to='askmath.Like', null=True, verbose_name='Curtis', blank=True)),
-                ('person', models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL)),
+                ('person', models.ForeignKey(verbose_name='Pessoa', to='askmath.Person')),
             ],
             options={
                 'ordering': ['-creation'],
@@ -483,7 +467,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='like',
             name='person',
-            field=models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name='Pessoa', to='askmath.Person'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -507,7 +491,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='discipline',
             name='responsible',
-            field=models.ForeignKey(verbose_name='Respons\xe1vel', to='askmath.Teacher', help_text='Escolha uma respons\xe1vel para a disciplina.'),
+            field=models.ForeignKey(related_name='Responsible', blank=True, to='askmath.Teacher', help_text='Escolha uma respons\xe1vel para a disciplina.', null=True, verbose_name='Respons\xe1vel'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -519,7 +503,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='person',
-            field=models.ForeignKey(verbose_name='Person', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name='Person', to='askmath.Person'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -531,13 +515,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='category',
             name='person',
-            field=models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name='Pessoa', to='askmath.Person'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='assistantkey',
             name='creator',
-            field=models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name='Pessoa', to='askmath.Person'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -573,25 +557,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='administratorkey',
             name='creator',
-            field=models.ForeignKey(verbose_name='Pessoa', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name='Pessoa', to='askmath.Person'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='administratorkey',
             name='user',
             field=models.ForeignKey(related_name='Administrator', blank=True, to='askmath.Administrator', null=True),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='person',
-            name='groups',
-            field=models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Group', blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of his/her group.', verbose_name='groups'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='person',
-            name='user_permissions',
-            field=models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Permission', blank=True, help_text='Specific permissions for this user.', verbose_name='user permissions'),
             preserve_default=True,
         ),
     ]

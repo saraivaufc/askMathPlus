@@ -15,11 +15,12 @@ class PersonForm(ModelForm):
 		widget=PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'}))
 	class Meta:
 		model= Person
-		fields = ("name", "email","username", "password","confirm_password")
+		fields = ("first_name","last_name", "email","username", "password","confirm_password")
 		widgets = {
-			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			'name': TextInput(attrs={'required': 'required'}),
+			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'email': EmailInput(attrs={'required': 'required'}),
+			'username': TextInput(attrs={'required': 'required'}),
 			'password': PasswordInput(attrs={'required': 'required'}),
 			'confirm_password': PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'})
 		}
@@ -36,8 +37,11 @@ class PersonLoginForm(forms.Form):
 class PersonProfile(ModelForm):
 	class Meta:
 		model= Person
-		fields = ("username", "name", "email","profile_image")
+		fields = ("first_name","last_name", "username","email","profile_image")
 		widgets = {
+			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+			
 			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'name': TextInput(attrs={'required': 'required'}),
 			'email': EmailInput(attrs={'required': 'required'}),

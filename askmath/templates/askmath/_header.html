@@ -140,15 +140,6 @@
         <hr class="thin"/>
         <br />
         <div class="input-control text full-size">
-            <label>
-                <span class="dropdown-toggle drop-marker-light">Anywhere</span>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a onclick="setSearchPlace(this)">Anywhere</a></li>
-                    <li><a onclick="setSearchPlace(this)">Options</a></li>
-                    <li><a onclick="setSearchPlace(this)">Files</a></li>
-                    <li><a onclick="setSearchPlace(this)">Internet</a></li>
-                </ul>
-            </label>
             <form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
 				<div class="input-control text">
 					<input id="search" name="search" type="text" maxlength="100" class="form-control" required>			

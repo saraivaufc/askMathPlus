@@ -3,22 +3,27 @@
 
 {%  block content_right %}
 
-<div class="cell auto-size padding20 ">
-    <h2 class="text-dark  text-center">{% trans "Choose Person Types" %}</h2>
-</div>
+<table class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td>{% trans "Type" %}</td>
+			<td>{% trans "Quantity" %}</td>
+			<td>{% trans "Options" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for type, values in person_types.types.items %}
+			<tr>
+				<td>{{ type|title }}</td>
+				<td>{{ values|length }}</td>
+				<td>
+					<a href="/home/manager/persons/view/person_type={{ type }}/">
+						{% trans "See persons" %}
+					</a>
+				</td>
+			</tr>
+		{% endfor %}		
+	</tbody>
+</table>
 
-<div class="tile-area no-padding bg-transparent">
-<div class="tile-container">
-{% for type, values in person_types.types.items %}
-<div class="tile {{ values.color }} {% if discipline.is_visible %}element-selected{% endif %}  fg-white" data-role="tile">
-    <a href="/home/manager/persons/view/person_type={{ type }}/" class="tile-content iconic">
-        <span class="icon mif-users"></span>
-        <span class="tile-label">{{ type|title }}</span>
-    </a>
-</div>
-{% empty %}
-<h3 class="text-center">{% trans "Not Type Person Found" %}</h3>
-{% endfor %}
-</div>
-</div>
 {% endblock %}

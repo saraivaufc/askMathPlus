@@ -20,6 +20,7 @@ from .iperson import IPerson
 
 class Person(IPerson):
     
+    
     def choose_person_types(self, request):
         person_types = PersonTypes()
         return render(request, "askmath/manager/person/manager_choose_person_types.html",
@@ -63,22 +64,6 @@ class Person(IPerson):
         persons = person_types.get_persons_removed()
         return render(request, "askmath/manager/person/manager_view_persons.html",
             {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True })
-        
-    def view_person(self,request, PERSONTYPE,person ):
-        person_types = PersonTypes(PERSONTYPE)
-        if PERSONTYPE == person_types.ADMIN:
-            write_person = request.user.has_perm('askmath.write_administrator')
-        elif PERSONTYPE == person_types.TEACHER:
-            write_person = request.user.has_perm('askmath.write_teacher')
-        elif PERSONTYPE == person_types.ASSISTANT:
-            write_person = request.user.has_perm('askmath.write_assistant')
-        elif PERSONTYPE == person_types.STUDENT:
-            write_person = request.user.has_perm('askmath.write_student')
-        else:
-            write_person = False
-        return render(request, "askmath/manager/person/manager_view_person.html", 
-            {'request':request,'person': person,'person_type': PERSONTYPE,'write_person': write_person})
-    
     
     def add_person(self,request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)

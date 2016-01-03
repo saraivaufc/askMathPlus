@@ -64,26 +64,6 @@ class ProxyPerson(IPerson):
         return self.choose_person_types(request)
     
     @method_decorator(login_required)
-    def view_person(self, request, PERSONTYPE, id_person):
-        if request.user.has_perm("askmath.read_person")  and request.user.has_perm("askmath.access_manager"):
-            try:
-                person_types = PersonTypes()
-                if PERSONTYPE in person_types.get_types():
-                    person = PersonModel.objects.get(id = id_person)
-            except Exception, e:
-                print e
-                messages.error(request,TextMessage.USER_NOT_FOUND)
-                return self.view_persons(request, PERSONTYPE)
-            try:
-                return self.__account.view_person(request, PERSONTYPE, person)
-            except Exception, e:
-                print e
-                messages.error(request,TextMessage.ERROR)
-        else:
-            messages.error(request,TextMessage.USER_NOT_PERMISSION)
-        return self.view_persons(request, PERSONTYPE)
-    
-    @method_decorator(login_required)
     def add_person(self, request, PERSONTYPE):
         if request.user.has_perm("askmath.write_person")  and request.user.has_perm("askmath.access_manager"):
             try:

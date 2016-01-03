@@ -18,10 +18,10 @@
 	</form>
 	
 	{% if new_register_key %}
-		<h3>{%  trans "Created Key" %} : <span class="tag success">{{ new_register_key }}</span></h3>
+		<h3 class="fg-white">{%  trans "Created Key" %} : <span class="tag success">{{ new_register_key }}</span></h3>
 	{% endif %}	
 	
-	<table class="table hovered border bordered bg-white">
+	<table class="dataTable border bordered" data-role="datatable">
 		<thead>
 			<tr>
 				<td>{% trans "Key" %}</td>
@@ -38,8 +38,8 @@
 					<td>{{ register_key.user }}</td>
 					<td>
 					{% if not register_key.user %}
-					<a href="/home/manager/persons/remove_registerkey/person_type={{ person_type }}/registerkey={{ register_key.id }}/">
-						<span class="icon mif-cross fg-red text-center"></span>
+					<a class="fg-red" href="/home/manager/persons/remove_registerkey/person_type={{ person_type }}/registerkey={{ register_key.id }}/">
+						{% trans "Delete" %}
 					</a>
 					{% endif %}
 					</td>

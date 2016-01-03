@@ -10,10 +10,12 @@ class PersonTypes():
 	
 	def __init__(self, PERSONTYPE=None):
 		self.PERSONTYPE = PERSONTYPE
-		self.types = {self.ADMIN : {"color": "bg-indigo"}, 
-					  self.TEACHER : {"color":"bg-yellow"},
-					  self.ASSISTANT : {"color": "bg-emerald"},
-					  self.STUDENT : {"color": "bg-darkCyan"},}
+		self.types = {
+					  self.ADMIN : Administrator.objects.filter(exists=True), 
+					  self.TEACHER : Teacher.objects.filter(exists=True),
+					  self.ASSISTANT : Assistant.objects.filter(exists=True),
+					  self.STUDENT : Student.objects.filter(exists=True),
+					  }
 	
 	def get_types(self):
 		return self.types

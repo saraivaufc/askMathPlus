@@ -94,3 +94,16 @@ $("input[name='radio_topic']").change(function(){
 	$("#button-topic-delete").attr("href",url_delete);
 	$("#button-topic-restore").attr("href",url_restore);
 });
+
+//PERSON
+$("input[name='radio_person']").change(function(){
+	if($(this).prop( "checked", true ) ){
+		var url_delete = "/home/manager/persons/remove/person_type="+ $(this).attr('person_type') +"/person="+ $(this).attr('person_id') +"/";
+		var url_restore = "/home/manager/persons/restore/person_type="+ $(this).attr('person_type') +"/person="+ $(this).attr('person_id') +"/";
+	}else{
+		var url_delete = "#";
+		var url_restore = "#";
+	};
+	$("#button-person-delete").attr("href",url_delete);
+	$("#button-person-restore").attr("href",url_restore);
+});

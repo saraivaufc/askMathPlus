@@ -43,9 +43,6 @@ ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
-DEFAULT_GROUP_NAME = 'student'
-
-
 #Apps
 DJANGO_APPS = (
     'django.contrib.admin',
@@ -124,7 +121,7 @@ ROOT_URLCONF = 'askMathPlus.urls'
 
 WSGI_APPLICATION = 'askMathPlus.wsgi.application'
 
-AUTH_USER_MODEL = 'askmath.Person'
+AUTH_USER_MODEL = 'auth.User'
 
 LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'

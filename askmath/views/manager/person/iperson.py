@@ -8,10 +8,7 @@ class IPerson():
     
     def view_persons_removed(self):
         pass
-    
-    def view_person(self):
-        pass
-    
+
     def add_person(self):
         pass
     
