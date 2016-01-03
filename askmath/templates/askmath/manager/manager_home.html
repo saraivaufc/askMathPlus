@@ -4,81 +4,43 @@
 {% block header_two %}
 {% endblock %}
 
-{%  block content_right %}
-<div class="cell">
-	{% if perms.askmath.write_discipline %}
-		<a id="button-discipline-create" href="/home/manager/disciplines/add/" class="image-button button-success">
-			{% trans "Create" %}
-			<span class="icon mif-plus"></span>
-		</a>
-	{% endif %}
-	{% if perms.askmath.write_discipline %}
-		<a id="button-discipline-edit" href="#" class="image-button button-primary">
-			{% trans "Edit" %}
-			<span class="icon mif-pencil"></span>
-		</a>
-	{% endif %}
-	{% if perms.askmath.write_discipline %}
-		{% if is_removed %}
-		<a id="button-discipline-restore" href="#" class="image-button button-info">
-			{% trans "Restore" %}
-			<span class="icon mif-history"></span>
-		</a>
-		{% else %}
-		<a id="button-discipline-delete" href="#" class="image-button button-danger">
-			{% trans "Delete" %}
-			<span class="icon mif-minus"></span>
-		</a>
-		{% endif %}
-	{% endif %}
-	
-	{% if is_removed %}
-		<a href="/home/manager/disciplines/view/" class="image-button button-warning">
-			{% trans "Close Dump" %}
-			<span class="icon mif-undo"></span>
-		</a>
-	{% else %}
-		<a href="/home/manager/disciplines/view_removed/" class="image-button button-warning">
-			{% trans "Open Dump" %}
-			<span class="icon mif-bin"></span>
-		</a>
-	{% endif %}
-</div>
-
-
-
-<table  class="dataTable border bordered" data-role="datatable">
-	<thead>
-		<tr>
-			<td style="width: 10px"></td>
-			<td>{% trans "Title" %}</td>
-			<td>{% trans "Responsible" %}</td>
-			<td style="width: 20px">{% trans "Visible" %}</td>
-			<td>{% trans "Lessons" %}</td>
-		</tr>
-	</thead>
-	<tbody>
-	{% for discipline in disciplines %}
-	<tr>
-		<td>
-            <label class="input-control radio small-check no-margin">
-                <input type="radio" discipline_id="{{ discipline.id }}" name="radio_discipline">
-                <span class="check"></span>
-            </label>
-        </td>
-		<td class="sortable-column">{{ discipline.get_title }}</td>
-		<td class="sortable-column">{{ discipline.get_responsible }}</td>
-		<td class="sortable-column">
-			{{ discipline.is_visible }}
-        </td>
-        <td class="sortable-column">
-			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">
-				{% blocktrans with lessons=discipline.get_lessons|length  %}
-				See {{ lessons }} lessons
-				{% endblocktrans %}
-			</a>
-        </td>
-	{% endfor %}
-	</tbody>
-</table>
+{% block content_right %}
+	<div class="flex-grid bg-transparent">
+		<div class="tile-container">
+				{% if perms.askmath.access_manager_discipline %}
+				<div class="tile-wide bg-blue " data-role="tile">
+					<a href="/home/manager/disciplines/view/" class="tile-content iconic">
+						<span class="icon mif-stack2"></span>
+						<span class="tile-label">{% trans "DISCIPLINES" %}</span>
+					</a>
+				</div>
+				{% endif %}
+				
+				{% if perms.askmath.access_manager_statistics %}
+				<div class="tile-wide bg-yellow" data-role="tile">
+					<a href="/home/manager/statistics/choose_type/" class="tile-content iconic">
+						<span class="icon mif-chart-line"></span>
+						<span class="tile-label">{% trans "STATISTICS" %}</span>
+					</a>
+				</div>
+				{% endif %}
+				{% if perms.askmath.access_manager_person %}
+				<div class="tile-wide bg-darkBrown" data-role="tile">
+					<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
+						<span class="icon mif-users"></span>
+						<span class="tile-label">{% trans "PERSONS" %}</span>
+					</a>
+				</div>
+				{% endif %}
+				
+				{% if perms.askmath.access_manager_message %}
+				<div class="tile-wide bg-pink" data-role="tile">
+					<a href="/home/manager/messages/view/" class="tile-content iconic">
+						<span class="icon mif-envelop"></span>
+						<span class="tile-label">{% trans "MESSAGES" %}</span>
+					</a>
+				</div>
+				{% endif %}
+		</div>
+	</div>
 {% endblock %}

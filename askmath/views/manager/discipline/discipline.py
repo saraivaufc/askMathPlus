@@ -10,12 +10,12 @@ from django.utils.translation import ugettext_lazy as _
 class Discipline(IDiscipline):
     def view_disciplines(self, request):
         disciplines = CategoryModel.objects.filter(exists=True)
-        return render(request, "askmath/manager/manager_home.html",
+        return render(request, "askmath/manager/discipline/manager_view_disciplines.html",
             {'request':request,'disciplines': disciplines})
     
     def view_disciplines_removed(self, request):
         disciplines = CategoryModel.objects.filter(exists=False)
-        return render(request, "askmath/manager/manager_home.html", 
+        return render(request, "askmath/manager/discipline/manager_view_disciplines.html", 
             {'request':request,'disciplines': disciplines,'is_removed': True})
     
     def add_discipline(self, request):

@@ -1,5 +1,11 @@
-{% extends 'askmath/manager/person/overwrite_header.html' %}
+{% extends 'askmath/manager/manager_home.html' %}
 {% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/persons/choose_person_types/"><span class="icon mif-users"></span> <spam>{% trans "Persons" %}</spam></a></li>
+{% endblock %}
+
 
 {%  block content_right %}
 

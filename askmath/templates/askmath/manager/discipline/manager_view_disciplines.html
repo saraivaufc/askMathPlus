@@ -1,0 +1,87 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/disciplines/view/"><span class="icon mif-stack2"></span> <spam>{% trans "Disciplines" %}</spam></a></li>
+{% endblock %}
+
+
+{%  block content_right %}
+<div class="cell">
+	{% if perms.askmath.write_discipline %}
+		<a id="button-discipline-create" href="/home/manager/disciplines/add/" class="image-button button-success">
+			{% trans "Create" %}
+			<span class="icon mif-plus"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_discipline %}
+		<a id="button-discipline-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_discipline %}
+		{% if is_removed %}
+		<a id="button-discipline-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-discipline-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	
+	{% if is_removed %}
+		<a href="/home/manager/disciplines/view/" class="image-button button-warning">
+			{% trans "Close Dump" %}
+			<span class="icon mif-undo"></span>
+		</a>
+	{% else %}
+		<a href="/home/manager/disciplines/view_removed/" class="image-button button-warning">
+			{% trans "Open Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
+	{% endif %}
+</div>
+
+
+
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Title" %}</td>
+			<td>{% trans "Responsible" %}</td>
+			<td style="width: 20px">{% trans "Visible" %}</td>
+			<td>{% trans "Lessons" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for discipline in disciplines %}
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" discipline_id="{{ discipline.id }}" name="radio_discipline">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ discipline.get_title }}</td>
+		<td class="sortable-column">{{ discipline.get_responsible }}</td>
+		<td class="sortable-column">
+			{{ discipline.is_visible }}
+        </td>
+        <td class="sortable-column">
+			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">
+				{% blocktrans with lessons=discipline.get_lessons|length  %}
+				See {{ lessons }} lessons
+				{% endblocktrans %}
+			</a>
+        </td>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -1,4 +1,4 @@
-from discipline import Discipline
+from .discipline import Discipline
 
 
 __all__ = ['Discipline']

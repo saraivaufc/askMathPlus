@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
-import sys    # sys.setdefaultencoding is cancelled by site.py
-reload(sys)    # to re-enable sys.setdefaultencoding()
+import sys
+from imp import reload
+reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
@@ -26,7 +27,6 @@ from .components_metro import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(__file__)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -56,11 +56,11 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
     'rosetta',
+    'nocaptcha_recaptcha',
     'social.apps.django_app.default',
 )
 LOCAL_APPS = (
     'askmath',
-    'nocaptcha_recaptcha',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -179,7 +179,7 @@ SOCIAL_AUTH_PIPELINE = (
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'sqlite3': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }, 'default': {

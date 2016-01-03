@@ -4,7 +4,11 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if lesson %}
-	<li><a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson }}</spam></a></li>
+	<li>
+		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
+			<span class="icon mif-film"></span> <span>{% blocktrans with lesson=lesson.get_title %}Videos of {{ lesson }}{% endblocktrans %}</span>
+		</a>
+	</li>
 	{% endif %}
 {% endblock %}
 

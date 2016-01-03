@@ -1,5 +1,14 @@
-{% extends 'askmath/manager/lesson/overwrite_header.html' %}
+{% extends 'askmath/manager/discipline/manager_view_disciplines.html' %}
 {% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">
+			<span class="icon mif-clipboard"></span> <span>{% blocktrans with discipline=discipline.get_title %}Lessons of {{ discipline }}{% endblocktrans %}</span>
+		</a>
+	</li>
+{% endblock %}
 
 {%  block content_right %}
 <div class="cell">
