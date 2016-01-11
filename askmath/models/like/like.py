@@ -1,10 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 class Like(models.Model):
-    person = models.ForeignKey(User, verbose_name=_(u"Person"))
+    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
     
     creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
     exists = models.BooleanField(verbose_name=_(u"Exists"), default=True)

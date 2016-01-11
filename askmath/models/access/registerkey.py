@@ -2,13 +2,12 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils import timezone
 from django.utils.crypto import get_random_string
-from django.contrib.auth.models import User
 
 def generate_key():
     return get_random_string(length=6)
 
 class RegisterKey(models.Model):
-    creator = models.ForeignKey(User, verbose_name=_(u"Creator"))
+    creator = models.ForeignKey('Person', verbose_name=_(u"Creator"))
     key = models.CharField(max_length=100, verbose_name=_(u"Key"), default=generate_key)
     in_use = models.BooleanField(default=False, verbose_name=_(u"In Use"))
     

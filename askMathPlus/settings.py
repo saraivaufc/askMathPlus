@@ -121,7 +121,7 @@ ROOT_URLCONF = 'askMathPlus.urls'
 
 WSGI_APPLICATION = 'askMathPlus.wsgi.application'
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'askmath.Person'
 
 LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'
@@ -179,10 +179,10 @@ SOCIAL_AUTH_PIPELINE = (
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }, 'default': {
+    }, 'postgres': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
             'NAME': 'askmath',
             'USER': 'postgres',

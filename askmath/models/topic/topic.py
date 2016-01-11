@@ -2,10 +2,9 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
-from django.contrib.auth.models import User
 
 class Topic(models.Model):
-    person = models.ForeignKey(User, verbose_name=_(u"Person"))
+    person = models.ForeignKey('Person', verbose_name=_(u"Person"))
     category = models.ForeignKey('Category', verbose_name=_(u"Category"))
     title = models.CharField(verbose_name=_(u"Title"), max_length=255)
     description = models.TextField(verbose_name=_(u"Description"),

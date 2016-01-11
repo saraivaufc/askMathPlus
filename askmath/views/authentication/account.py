@@ -58,14 +58,12 @@ class Account(IAccount):
     
     
     def signin(self, request, form=None):
-        print 8
         try:
             if request.method == 'GET': next = request.GET['next']
             elif request.method == 'POST': next = request.POST['next']
             else: next = None
         except Exception, e:
             print e
-        print 9
         if request.method == "POST":
             try:
                 username =  form.cleaned_data['username']
@@ -77,9 +75,7 @@ class Account(IAccount):
             
             person = authenticate(username=username, password=password)
             if person:
-                print 10
                 login_user(request, person)
-                print 11
                 if request.user.is_authenticated():
                     if next:
                         return HttpResponseRedirect(next)
@@ -89,7 +85,6 @@ class Account(IAccount):
                     messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
             else:
                 messages.error(request, TextMessage.USERNAME_OR_PASSWORD_INCORRECT)
-        print 12
         return self.options(request)
     
     def signup(self, request):
