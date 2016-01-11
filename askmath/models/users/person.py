@@ -125,7 +125,7 @@ class Person(AbstractPerson):
         return self.profile_image
     
     def __unicode__(self):
-        return self.get_name()
+        return self.get_full_name()
     
     def delete(self):
         self.exists = False
