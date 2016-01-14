@@ -8,7 +8,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <spam class="hidden-xs">{{ discipline.get_title|title }}</spam></a></li>
+	<li><a href="/home/content/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <span class="hidden-xs">{{ discipline.get_title|title }}</span></a></li>
 {% endblock %}
 
 {% block tiles %}

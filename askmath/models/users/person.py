@@ -16,6 +16,25 @@ try:
 except:
     from md5 import new as md5
 
+
+class PersonManager(UserManager):
+    def create_user(self, username, password=None, group='student'):
+        print 'create_user'
+        email = username + '@email.com'
+        user = self.model(
+            username    = username,
+            email       = email,
+        )
+        user.set_password(password)
+        user.save(group= group)
+        return user
+
+    def create_superuser(self, username, password):
+        print 'create_superuser'
+        user = self.create_user(username, password, 'administrator')
+        return user
+
+
 class AbstractSystemPerson(models.Model):
     location = models.CharField(_(u"location"), max_length=75, blank=True, null=True)
     last_seen = models.DateTimeField(_(u"last seen"), auto_now=True)
@@ -55,7 +74,7 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_(u'date joined'), default=timezone.now)
-    objects = UserManager()
+    objects = PersonManager()
 
     def get_first_name(self):
         return self.first_name

@@ -7,7 +7,7 @@ from .idiscipline import IDiscipline
 class Discipline(IDiscipline):
     
     def view_discipline(self, request, discipline):
-        return render(request, "askmath/content/content_home.html", 
+        return render(request, "askmath/content/discipline/content_view_discipline.html", 
             {'request':request, 'discipline': discipline})
 
     def view_disciplines(self, request):
