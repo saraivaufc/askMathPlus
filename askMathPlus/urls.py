@@ -7,12 +7,18 @@ from askmath import urls as askmath_urls
 from askmath.feeds import LessonsLatests
 import settings
 
+from django.views.i18n import javascript_catalog
+
+js_info_dict = {
+    'packages': ('manager',),
+}
 
 urlpatterns = patterns('',
     url(r'^', include(askmath_urls)),
     url(r'^admin/', include(admin.site.urls), name='admin'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     url(r'^feed/$', LessonsLatests()),
+    url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 )
 
 if 'rosetta' in settings.INSTALLED_APPS:

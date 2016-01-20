@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-22 02:32-0300\n"
+"POT-Creation-Date: 2016-01-20 19:51-0300\n"
 "PO-Revision-Date: 2015-12-22 02:36-0234\n"
 "Last-Translator: Anonymous User <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.6\n"
 
@@ -53,7 +53,7 @@ msgstr "Usuário não encontrado."
 
 #: askmath/entities/message.py:10
 msgid "Incorrect password."
-msgstr "Senha  incorreta."
+msgstr "Senha incorreta."
 
 #: askmath/entities/message.py:11
 msgid "User is authenticated."
@@ -613,67 +613,70 @@ msgstr "AskMath"
 msgid "The AskMath is reported here!"
 msgstr "O AskMath é reportado aqui!"
 
-#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:70
+#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:74
 msgid "Confirm Password"
 msgstr "Confirme a Senha"
 
-#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:31
-#: askmath/forms/users/person.py:33
+#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:32
+#: askmath/forms/users/person.py:34
 msgid "Please enter you password."
 msgstr "Por favor, entre com sua senha."
 
-#: askmath/forms/users/person.py:28 askmath/models/users/person.py:49
+#: askmath/forms/users/person.py:29 askmath/models/users/person.py:70
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:53
 msgid "Username"
 msgstr "Nome de Usuário"
 
-#: askmath/forms/users/person.py:28 askmath/forms/users/person.py:30
-#: askmath/models/users/person.py:49
+#: askmath/forms/users/person.py:29 askmath/forms/users/person.py:31
+#: askmath/models/users/person.py:70
 msgid "Please enter you username."
 msgstr "Por favor, entre com seu nome de usuário."
 
-#: askmath/forms/users/person.py:31
+#: askmath/forms/users/person.py:32
 msgid "Password"
 msgstr "Senha"
 
-#: askmath/forms/users/person.py:58 askmath/models/users/message.py:11
-#: askmath/models/users/person.py:51
+#: askmath/forms/users/person.py:62 askmath/models/users/message.py:11
+#: askmath/models/users/person.py:71
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:44
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:54
 msgid "Email"
 msgstr "Email"
 
-#: askmath/forms/users/person.py:58 askmath/models/users/person.py:51
+#: askmath/forms/users/person.py:62 askmath/models/users/person.py:71
 msgid "Please enter you email."
 msgstr "Por favor, entre com seu email."
 
-#: askmath/forms/users/person.py:60
+#: askmath/forms/users/person.py:64
 msgid "Please enter your email."
 msgstr "Por favor, entre com seu email."
 
-#: askmath/forms/users/person.py:64
+#: askmath/forms/users/person.py:68
 msgid "Old Password"
 msgstr "Antiga Senha"
 
-#: askmath/forms/users/person.py:64 askmath/forms/users/person.py:66
+#: askmath/forms/users/person.py:68 askmath/forms/users/person.py:70
 msgid "Please enter you old password."
 msgstr "Por favor, entre com sua antiga senha."
 
-#: askmath/forms/users/person.py:67
+#: askmath/forms/users/person.py:71
 msgid "New Password"
 msgstr "Nova Senha"
 
-#: askmath/forms/users/person.py:67 askmath/forms/users/person.py:69
-#: askmath/forms/users/person.py:70
+#: askmath/forms/users/person.py:71 askmath/forms/users/person.py:73
+#: askmath/forms/users/person.py:74
 msgid "Please enter you new password."
 msgstr "Por favor, entre com sua nova senha."
 
-#: askmath/forms/users/person.py:72
+#: askmath/forms/users/person.py:76
 msgid "Please repeat your new password."
 msgstr "Por favor, repita sua nova senha."
 
-#: askmath/models/access/administratorkey.py:18
+#: askmath/models/access/administratorkey.py:19
 msgid "Administrator Key"
 msgstr "Chave do Administrador"
 
-#: askmath/models/access/administratorkey.py:19
+#: askmath/models/access/administratorkey.py:20
 msgid "Administrators Key"
 msgstr "Chaves dos Administradores"
 
@@ -686,13 +689,12 @@ msgid "Assistants Key"
 msgstr "Chave do Assistente"
 
 #: askmath/models/access/registerkey.py:10
-#: askmath/models/category/category.py:7 askmath/models/comment/comment.py:6
-#: askmath/models/like/like.py:6 askmath/models/topic/topic.py:7
-msgid "Person"
-msgstr "Pessoa"
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:31
+msgid "Creator"
+msgstr "Criador"
 
 #: askmath/models/access/registerkey.py:11
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:27
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:30
 msgid "Key"
 msgstr "Chave"
 
@@ -701,7 +703,7 @@ msgid "In Use"
 msgstr "Em Uso"
 
 #: askmath/models/access/registerkey.py:14
-#: askmath/models/category/category.py:14 askmath/models/comment/comment.py:10
+#: askmath/models/category/category.py:14 askmath/models/comment/comment.py:11
 #: askmath/models/discipline/discipline.py:19
 #: askmath/models/experience/studentexperience.py:11
 #: askmath/models/historic/answeredquestionshistoric.py:13
@@ -711,15 +713,15 @@ msgstr "Em Uso"
 #: askmath/models/lesson/lesson.py:27 askmath/models/like/like.py:8
 #: askmath/models/progress/studentquestionprogress.py:12
 #: askmath/models/progress/studentvideoprogress.py:12
-#: askmath/models/question/item.py:17 askmath/models/question/question.py:27
+#: askmath/models/question/item.py:17 askmath/models/question/question.py:28
 #: askmath/models/state/studentlessonstate.py:27
 #: askmath/models/topic/topic.py:18 askmath/models/users/message.py:19
-#: askmath/models/users/person.py:101 askmath/models/video/video.py:25
+#: askmath/models/users/person.py:123 askmath/models/video/video.py:25
 msgid "Creation"
 msgstr "Criação"
 
 #: askmath/models/access/registerkey.py:15
-#: askmath/models/category/category.py:15 askmath/models/comment/comment.py:11
+#: askmath/models/category/category.py:15 askmath/models/comment/comment.py:12
 #: askmath/models/discipline/discipline.py:20
 #: askmath/models/historic/answeredquestionshistoric.py:12
 #: askmath/models/historic/helpquestionhistoric.py:10
@@ -727,7 +729,7 @@ msgstr "Criação"
 #: askmath/models/historic/studenthistoric.py:11 askmath/models/like/like.py:9
 #: askmath/models/progress/studentquestionprogress.py:11
 #: askmath/models/progress/studentvideoprogress.py:11
-#: askmath/models/question/item.py:18 askmath/models/question/question.py:28
+#: askmath/models/question/item.py:18 askmath/models/question/question.py:29
 #: askmath/models/state/studentlessonstate.py:26
 #: askmath/models/topic/topic.py:19 askmath/models/users/message.py:20
 #: askmath/models/video/video.py:26
@@ -750,10 +752,18 @@ msgstr "Chave do Professor"
 msgid "Teachers Key"
 msgstr "Chaves dos Professores"
 
+#: askmath/models/category/category.py:7 askmath/models/comment/comment.py:7
+#: askmath/models/like/like.py:6 askmath/models/topic/topic.py:7
+msgid "Person"
+msgstr "Pessoa"
+
 #: askmath/models/category/category.py:8
 #: askmath/models/discipline/discipline.py:8
 #: askmath/models/lesson/lesson.py:12 askmath/models/topic/topic.py:9
 #: askmath/models/video/video.py:14
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:57
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:60
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:70
 msgid "Title"
 msgstr "Título"
 
@@ -762,8 +772,11 @@ msgid "Choose a title for the category."
 msgstr "Escolha um título para a categoria."
 
 #: askmath/models/category/category.py:10 askmath/models/lesson/lesson.py:14
-#: askmath/models/question/item.py:10 askmath/models/question/question.py:13
+#: askmath/models/question/item.py:10 askmath/models/question/question.py:15
 #: askmath/models/topic/topic.py:10 askmath/models/video/video.py:16
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:61
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:70
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:71
 msgid "Description"
 msgstr "Descrição"
 
@@ -773,9 +786,9 @@ msgstr "Escolha uma descrição para a categoria."
 
 #: askmath/models/category/category.py:12
 #: askmath/models/discipline/discipline.py:17
-#: askmath/models/lesson/lesson.py:23 askmath/models/question/question.py:23
+#: askmath/models/lesson/lesson.py:23 askmath/models/question/question.py:24
 #: askmath/models/topic/topic.py:16 askmath/models/users/message.py:18
-#: askmath/models/users/person.py:100 askmath/models/video/video.py:21
+#: askmath/models/users/person.py:122 askmath/models/video/video.py:21
 msgid "Color"
 msgstr "Cor"
 
@@ -784,7 +797,7 @@ msgid "Choose a color for the category."
 msgstr "Escolha uma cor para a categoria."
 
 #: askmath/models/category/category.py:49 askmath/models/topic/topic.py:8
-#: askmath/templates/askmath/forum/category/view_categories.html:32
+#: askmath/templates/askmath/forum/category/view_categories.html:51
 msgid "Category"
 msgstr "Categoria"
 
@@ -792,22 +805,22 @@ msgstr "Categoria"
 msgid "Categories"
 msgstr "Categorias"
 
-#: askmath/models/comment/comment.py:7 askmath/models/topic/topic.py:83
-#: askmath/templates/askmath/forum/category/_render_category.html:16
+#: askmath/models/comment/comment.py:8 askmath/models/topic/topic.py:83
+#: askmath/templates/askmath/forum/topic/view_topics.html:54
 msgid "Topic"
 msgstr "Tópico"
 
-#: askmath/models/comment/comment.py:8 askmath/models/comment/comment.py:64
-#: askmath/templates/askmath/forum/topic/_render_topic.html:88
+#: askmath/models/comment/comment.py:9 askmath/models/comment/comment.py:65
+#: askmath/templates/askmath/forum/topic/_render_topic.html:89
 msgid "Comment"
 msgstr "Comentário"
 
-#: askmath/models/comment/comment.py:9 askmath/models/like/like.py:28
+#: askmath/models/comment/comment.py:10 askmath/models/like/like.py:28
 #: askmath/models/topic/topic.py:12
 msgid "Likes"
 msgstr "Curtis"
 
-#: askmath/models/comment/comment.py:65
+#: askmath/models/comment/comment.py:66
 msgid "Comments"
 msgstr "Comentários"
 
@@ -816,6 +829,7 @@ msgid "Choose a title for the discipline."
 msgstr "Escolha uma título para a disciplina."
 
 #: askmath/models/discipline/discipline.py:11
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:58
 msgid "Responsible"
 msgstr "Responsável"
 
@@ -824,7 +838,11 @@ msgid "Choose responsible for the discipline."
 msgstr "Escolha uma responsável para a disciplina."
 
 #: askmath/models/discipline/discipline.py:14
-#: askmath/models/question/question.py:25 askmath/models/video/video.py:23
+#: askmath/models/question/question.py:26 askmath/models/video/video.py:23
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:59
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:65
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:74
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:73
 msgid "Visible"
 msgstr "Visível"
 
@@ -848,9 +866,8 @@ msgid "Discipline"
 msgstr "Disciplina"
 
 #: askmath/models/discipline/discipline.py:57
-#: askmath/templates/askmath/_header.html:30
-#: askmath/templates/askmath/manager/discipline/overwrite_header.html:15
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:18
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:6
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:23
 msgid "Disciplines"
 msgstr "Disciplinas"
 
@@ -864,9 +881,10 @@ msgid "Student"
 msgstr "Estudante"
 
 #: askmath/models/experience/studentexperience.py:7
-#: askmath/models/question/question.py:21
+#: askmath/models/question/question.py:22
 #: askmath/models/state/studentlessonstate.py:15
 #: askmath/templates/askmath/content/question/view_question.html:37
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:73
 msgid "Scores"
 msgstr "Pontos"
 
@@ -896,7 +914,7 @@ msgstr "Experiências dos Estudantes"
 #: askmath/models/lesson/lesson.py:96
 #: askmath/models/progress/studentquestionprogress.py:8
 #: askmath/models/progress/studentvideoprogress.py:8
-#: askmath/models/question/question.py:9
+#: askmath/models/question/question.py:11
 #: askmath/models/state/studentlessonstate.py:14
 #: askmath/models/video/video.py:10
 msgid "Lesson"
@@ -906,12 +924,13 @@ msgstr "Lição"
 #: askmath/models/historic/helpquestionhistoric.py:8
 #: askmath/models/historic/skippedquestionhistoric.py:8
 #: askmath/models/progress/studentquestionprogress.py:9
-#: askmath/models/question/question.py:86
+#: askmath/models/question/question.py:87
 msgid "Question"
 msgstr "Questão"
 
 #: askmath/models/historic/answeredquestionshistoric.py:9
-#: askmath/models/question/item.py:59 askmath/models/question/question.py:15
+#: askmath/models/question/item.py:59 askmath/models/question/question.py:17
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:71
 msgid "Items"
 msgstr "Itens"
 
@@ -967,6 +986,7 @@ msgid "Choose a description for lesson is."
 msgstr "Escolha uma descrição para a lição."
 
 #: askmath/models/lesson/lesson.py:16
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:62
 msgid "Requirements"
 msgstr "Requisitos"
 
@@ -975,6 +995,7 @@ msgid "Choose the lessons is recommended completion before continuing this."
 msgstr "Escolha as lição que são recomendadas seguir antes de iniciar esta."
 
 #: askmath/models/lesson/lesson.py:18
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:63
 msgid "Sugestions"
 msgstr "Sugestões"
 
@@ -983,6 +1004,7 @@ msgid "Choose the lessons is recommended pursue after completing this."
 msgstr "Escolha as lição que são recomendadas seguir após a conclusão desta."
 
 #: askmath/models/lesson/lesson.py:20
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:64
 msgid "Maximum Hops"
 msgstr "Máximo de Saltos"
 
@@ -1001,9 +1023,8 @@ msgid "Select this option to leave visible lesson at all."
 msgstr "Escolha esta opção para tornar a lição visível à todos."
 
 #: askmath/models/lesson/lesson.py:97
-#: askmath/templates/askmath/_header.html:40
-#: askmath/templates/askmath/manager/lesson/overwrite_header.html:15
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:25
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:60
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:30
 msgid "Lessons"
 msgstr "Lições"
 
@@ -1029,8 +1050,10 @@ msgstr "Vídeo"
 msgid "Video Progress"
 msgstr "Progresso do Vídeo"
 
-#: askmath/models/question/item.py:8 askmath/models/question/question.py:11
+#: askmath/models/question/item.py:8 askmath/models/question/question.py:13
 #: askmath/models/video/video.py:12
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:69
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:69
 msgid "Position"
 msgstr "Posição"
 
@@ -1067,45 +1090,44 @@ msgstr ""
 msgid "Item"
 msgstr "Item"
 
-#: askmath/models/question/question.py:10
+#: askmath/models/question/question.py:12
 msgid "Choose the lesson which is question belongs."
 msgstr "Escolha uma lição para esta pergunta."
 
-#: askmath/models/question/question.py:12
+#: askmath/models/question/question.py:14
 msgid "Choose the position which is question belongs."
 msgstr "Escolha uma posição para esta pergunta."
 
-#: askmath/models/question/question.py:14
+#: askmath/models/question/question.py:16
 msgid "Choose a description for question is."
 msgstr "Escolha uma descrição para esta pergunta."
 
-#: askmath/models/question/question.py:16
+#: askmath/models/question/question.py:18
 msgid "Choose items that this issue has."
 msgstr "Escolha os itens que esta pergunta tem."
 
-#: askmath/models/question/question.py:17
-#: askmath/templates/askmath/content/question/view_question.html:70
+#: askmath/models/question/question.py:19
+#: askmath/templates/askmath/content/question/view_question.html:69
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:72
 msgid "Help"
 msgstr "Ajuda"
 
-#: askmath/models/question/question.py:18
+#: askmath/models/question/question.py:20
 msgid "Choose a help to this question."
 msgstr "Escolha uma ajuda para esta pergunta."
 
-#: askmath/models/question/question.py:24
+#: askmath/models/question/question.py:25
 msgid "Choose a color for the question."
 msgstr "Escolha uma cor para esta questão."
 
-#: askmath/models/question/question.py:26
+#: askmath/models/question/question.py:27
 msgid "Select this option to leave visible question at all."
 msgstr "Selecione esta opção para tornar esta questão visível à todos."
 
-#: askmath/models/question/question.py:87
-#: askmath/templates/askmath/_header.html:50
+#: askmath/models/question/question.py:88
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:42
 #: askmath/templates/askmath/content/question/view_question.html:10
 #: askmath/templates/askmath/index/contents_details.html:48
-#: askmath/templates/askmath/manager/question/overwrite_header.html:15
 msgid "Questions"
 msgstr "Questões"
 
@@ -1131,7 +1153,7 @@ msgid "Answered Questions"
 msgstr "Questões Respondidas"
 
 #: askmath/models/state/studentlessonstate.py:23
-#: askmath/templates/askmath/content/question/view_question.html:145
+#: askmath/templates/askmath/content/question/view_question.html:144
 msgid "Skipped Questions"
 msgstr "Questões Saltadas"
 
@@ -1153,6 +1175,9 @@ msgstr "Escolha uma descrição para esse tópico."
 
 #: askmath/models/topic/topic.py:13 askmath/models/users/message.py:15
 #: askmath/models/video/video.py:18
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:46
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:72
+#: env/lib/python2.7/site-packages/django/db/models/fields/files.py:225
 msgid "File"
 msgstr "Arquivo"
 
@@ -1186,6 +1211,8 @@ msgid "Assistants"
 msgstr "Assistentes"
 
 #: askmath/models/users/message.py:9
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:43
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:52
 msgid "Name"
 msgstr "Nome"
 
@@ -1200,6 +1227,7 @@ msgstr "Entre com seu email."
 #: askmath/models/users/message.py:13 askmath/models/users/message.py:47
 #: askmath/templates/askmath/index/404.html:63
 #: askmath/templates/askmath/index/500.html:63
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:45
 msgid "Message"
 msgstr "Mensagem"
 
@@ -1214,54 +1242,60 @@ msgstr ""
 "datetime = ''> <em> <i> <q cite = \"\"> <strike> <strong>"
 
 #: askmath/models/users/message.py:48
-#: askmath/templates/askmath/_header.html:134
-#: askmath/templates/askmath/manager/message/overwrite_header.html:15
+#: askmath/templates/askmath/_header.html:91
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:7
 msgid "Messages"
 msgstr "Mensagens"
 
-#: askmath/models/users/person.py:20
+#: askmath/models/users/person.py:39
 msgid "location"
 msgstr "localização"
 
-#: askmath/models/users/person.py:21
+#: askmath/models/users/person.py:40
 msgid "last seen"
 msgstr "visto pela última vez"
 
-#: askmath/models/users/person.py:22
+#: askmath/models/users/person.py:41
 msgid "last ip"
 msgstr "último ip"
 
-#: askmath/models/users/person.py:23
+#: askmath/models/users/person.py:42
 msgid "administrator status"
 msgstr "status de administrador"
 
-#: askmath/models/users/person.py:24
+#: askmath/models/users/person.py:43
 msgid "moderator status"
 msgstr "estado de moderador"
 
-#: askmath/models/users/person.py:50
-msgid "Full Name "
-msgstr "Nome Completo"
+#: askmath/models/users/person.py:68
+msgid "First Name "
+msgstr "Primeiro Nome"
 
-#: askmath/models/users/person.py:50
-#, fuzzy
-#| msgid "Please enter you name."
-msgid "Please enter you full name."
-msgstr "Por favor, entre com seu nome completo."
+#: askmath/models/users/person.py:68
+msgid "Please enter you first name."
+msgstr "Por favor, entre com seu primeiro nome."
 
-#: askmath/models/users/person.py:52
+#: askmath/models/users/person.py:69
+msgid "Last Name "
+msgstr "ùltimo Nome"
+
+#: askmath/models/users/person.py:69
+msgid "Please enter you last name."
+msgstr "Por favor, entre com seu último nome."
+
+#: askmath/models/users/person.py:72
 msgid "staff status"
 msgstr "estado de auxiliar"
 
-#: askmath/models/users/person.py:53
+#: askmath/models/users/person.py:73
 msgid "Designates whether the user can log into this admin site."
 msgstr "Designa se o usuário pode entrar neste site administrativo."
 
-#: askmath/models/users/person.py:54
+#: askmath/models/users/person.py:74
 msgid "active"
 msgstr "ativo"
 
-#: askmath/models/users/person.py:55
+#: askmath/models/users/person.py:75
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1269,23 +1303,24 @@ msgstr ""
 "Designa se este usuário deve ser tratado como ativo. Desmarque essa em vez "
 "de excluir contas."
 
-#: askmath/models/users/person.py:56
+#: askmath/models/users/person.py:76
 msgid "date joined"
 msgstr "data de cadastro"
 
-#: askmath/models/users/person.py:99
+#: askmath/models/users/person.py:121
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:55
 msgid "Profile Image"
 msgstr "Imagem de Perfil"
 
-#: askmath/models/users/person.py:99
+#: askmath/models/users/person.py:121
 msgid "Please enter you profile image."
 msgstr "Por favor, entre com uma imagem de perfil."
 
-#: askmath/models/users/person.py:129
+#: askmath/models/users/person.py:163
 msgid "person"
 msgstr "pessoa"
 
-#: askmath/models/users/person.py:130
+#: askmath/models/users/person.py:164
 msgid "persons"
 msgstr "pessoas"
 
@@ -1325,11 +1360,10 @@ msgstr "Escolha uma cor para o vídeo."
 msgid "Select this option to leave visible video at all."
 msgstr "Selecione esta opção para tornar esse vídeo visível à todos."
 
-#: askmath/models/video/video.py:84 askmath/templates/askmath/_header.html:60
+#: askmath/models/video/video.py:84
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:58
 #: askmath/templates/askmath/content/video/view_videos.html:12
 #: askmath/templates/askmath/index/contents_details.html:64
-#: askmath/templates/askmath/manager/video/overwrite_header.html:6
 msgid "Videos"
 msgstr "Vídeos"
 
@@ -1357,7 +1391,7 @@ msgid "Privacy policy"
 msgstr "Politicas de Privacidade"
 
 #: askmath/templates/askmath/_footer.html:22
-#: askmath/templates/askmath/_header.html:221
+#: askmath/templates/askmath/_header.html:169
 msgid "Shared"
 msgstr "Compartilhar"
 
@@ -1367,6 +1401,7 @@ msgstr "RSS"
 
 #: askmath/templates/askmath/_form.html:12
 #: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:15
+#: askmath/templates/askmath/manager/question/_modal_items.html:42
 #: askmath/templates/askmath/manager/question/manager_form_question.html:26
 #: askmath/templates/askmath/person/account/alter_password.html:19
 #: askmath/templates/askmath/send_feedback.html:22
@@ -1375,6 +1410,7 @@ msgstr "Cancelar"
 
 #: askmath/templates/askmath/_form.html:16
 #: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:16
+#: askmath/templates/askmath/manager/question/_modal_items.html:43
 #: askmath/templates/askmath/manager/question/manager_form_question.html:30
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:24
 msgid "Submit"
@@ -1385,56 +1421,49 @@ msgid "Menu"
 msgstr "Menu"
 
 #: askmath/templates/askmath/_header.html:10
-#: askmath/templates/askmath/_header.html:15
+#: askmath/templates/askmath/_header.html:16
 #: askmath/templates/askmath/index/404.html:17
 #: askmath/templates/askmath/index/500.html:17
 msgid "Home"
 msgstr "Início"
 
 #: askmath/templates/askmath/_header.html:21
-#: askmath/templates/askmath/index/404.html:78
-#: askmath/templates/askmath/index/500.html:78
-#: askmath/templates/askmath/index/contents.html:7
-#: askmath/templates/askmath/index/home.html:35
-msgid "Contents"
-msgstr "Conteúdos"
-
-#: askmath/templates/askmath/_header.html:108
-msgid "Profile"
-msgstr "Perfil"
-
-#: askmath/templates/askmath/_header.html:115
+#: askmath/templates/askmath/_header.html:72
 #: askmath/templates/askmath/forum/forum_home.html:14
 #: askmath/templates/askmath/index/home.html:55
 msgid "Forum"
 msgstr "Fórum"
 
-#: askmath/templates/askmath/_header.html:124
-#: askmath/templates/askmath/manager/statistic/overwrite_header.html:15
+#: askmath/templates/askmath/_header.html:65
+msgid "Profile"
+msgstr "Perfil"
+
+#: askmath/templates/askmath/_header.html:81
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:7
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: askmath/templates/askmath/_header.html:144
-#: askmath/templates/askmath/manager/person/overwrite_header.html:15
+#: askmath/templates/askmath/_header.html:101
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:6
 #: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
 msgid "Persons"
 msgstr "Pessoas"
 
-#: askmath/templates/askmath/_header.html:172
+#: askmath/templates/askmath/_header.html:129
 msgid "Logout"
 msgstr "Sair"
 
-#: askmath/templates/askmath/_header.html:179
+#: askmath/templates/askmath/_header.html:136
 msgid "Enter"
 msgstr "Entrar"
 
-#: askmath/templates/askmath/_header.html:190
+#: askmath/templates/askmath/_header.html:147
 msgid "Search"
 msgstr "Buscar"
 
-#: askmath/templates/askmath/_header.html:297
-#: askmath/templates/askmath/content/question/view_question.html:131
-#: askmath/templates/askmath/content/question/view_question.html:157
+#: askmath/templates/askmath/_header.html:245
+#: askmath/templates/askmath/content/question/view_question.html:130
+#: askmath/templates/askmath/content/question/view_question.html:156
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:14
 msgid "Close"
 msgstr "Fechar"
@@ -1461,15 +1490,14 @@ msgstr "Diminuir Fonte - Atalho # 4"
 
 #: askmath/templates/askmath/_no_script.html:4
 msgid ""
-"For full functionality of this site it is necessary to enable "
-"JavaScript.<br> Here are the <a href=\"http://www.enable-"
-"javascript.com/pt/\" target=\"_blank\">instructions on how to enable "
-"JavaScript in your browser </a>."
+"For full functionality of this site it is necessary to enable JavaScript."
+"<br> Here are the <a href=\"http://www.enable-javascript.com/pt/\" target="
+"\"_blank\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 "Para obter a funcionalidade completa deste site é necessário habilitar o "
-"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a "
-"href=\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript"
-" no seu navegador </a>."
+"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a href="
+"\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript no "
+"seu navegador </a>."
 
 #: askmath/templates/askmath/authentication/options.html:11
 msgid "Authentication"
@@ -1481,31 +1509,41 @@ msgid "Sign In"
 msgstr "Entrar"
 
 #: askmath/templates/askmath/authentication/options.html:35
-#: askmath/templates/askmath/authentication/options.html:113
+#: askmath/templates/askmath/authentication/options.html:115
 msgid "Sign Up"
 msgstr "Registrar-se"
 
-#: askmath/templates/askmath/authentication/options.html:84
+#: askmath/templates/askmath/authentication/options.html:58
+msgid "Or"
+msgstr ""
+
+#: askmath/templates/askmath/authentication/options.html:71
+#, fuzzy
+#| msgid "Reset my password"
+msgid "Forgot your password ?"
+msgstr "Alterar minha senha"
+
+#: askmath/templates/askmath/authentication/options.html:86
 msgid "STUDENT"
 msgstr "ESTUDANTE"
 
-#: askmath/templates/askmath/authentication/options.html:85
+#: askmath/templates/askmath/authentication/options.html:87
 msgid "ASSISTANT"
 msgstr "ASSISTENTE"
 
-#: askmath/templates/askmath/authentication/options.html:86
+#: askmath/templates/askmath/authentication/options.html:88
 msgid "TEACHER"
 msgstr "PROFESSOR"
 
-#: askmath/templates/askmath/authentication/options.html:87
+#: askmath/templates/askmath/authentication/options.html:89
 msgid "ADMINISTRATOR"
 msgstr "ADMINISTRADOR"
 
-#: askmath/templates/askmath/authentication/options.html:95
+#: askmath/templates/askmath/authentication/options.html:97
 msgid "Enter your key"
 msgstr "Entre com sua chave"
 
-#: askmath/templates/askmath/authentication/options.html:106
+#: askmath/templates/askmath/authentication/options.html:108
 msgid ""
 "By clicking here, you agree to the <a href=\"/terms/\" >Terms and "
 "Conditions</a> set out by this site, including our Cookie Use."
@@ -1513,35 +1551,31 @@ msgstr ""
 "Clicando aqui, você concorda com os <a href=\"/terms/\"> Termos e Condições "
 "</a> estabelecido por este site, incluindo o nosso uso de cookies."
 
-#: askmath/templates/askmath/content/content_home.html:24
+#: askmath/templates/askmath/content/content_home.html:23
 msgid "All Lessons"
 msgstr "Todas as Lições"
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:26
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:27
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:47
 #: askmath/templates/askmath/index/contents_details.html:53
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:29
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:41
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:31
 msgid "All Questions"
 msgstr "Todas as Questões"
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:29
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:30
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:63
 #: askmath/templates/askmath/index/contents_details.html:69
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:32
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:44
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:34
 msgid "All Videos"
 msgstr "Todos os Vídeo"
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:36
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:37
 msgid "Discipline does not have lessons."
 msgstr "Disciplina não encontrada na lição."
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:33
 #: askmath/templates/askmath/index/contents_details.html:39
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:30
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:17
 msgid "Options"
 msgstr "Opções"
 
@@ -1557,70 +1591,70 @@ msgstr "Saltos Restantes"
 msgid "Points"
 msgstr "Pontos"
 
-#: askmath/templates/askmath/content/question/view_question.html:63
+#: askmath/templates/askmath/content/question/view_question.html:62
 msgid "Not Item Found!!!"
 msgstr "Nenhum item encontrado."
 
-#: askmath/templates/askmath/content/question/view_question.html:67
+#: askmath/templates/askmath/content/question/view_question.html:66
 #: askmath/templates/askmath/forum/topic/_render_comments.html:8
 msgid "Reply"
 msgstr "Responder"
 
-#: askmath/templates/askmath/content/question/view_question.html:73
+#: askmath/templates/askmath/content/question/view_question.html:72
 msgid "Jump"
 msgstr "Saltar"
 
-#: askmath/templates/askmath/content/question/view_question.html:76
+#: askmath/templates/askmath/content/question/view_question.html:75
 msgid "Review Jumps"
 msgstr "Rever Saltos"
 
-#: askmath/templates/askmath/content/question/view_question.html:79
+#: askmath/templates/askmath/content/question/view_question.html:78
 msgid "Exit"
 msgstr "Sair"
 
-#: askmath/templates/askmath/content/question/view_question.html:94
+#: askmath/templates/askmath/content/question/view_question.html:93
 #, fuzzy
 #| msgid "Reset Lesson"
 msgid "Reser Lesson"
 msgstr "Reiniciar Lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:125
+#: askmath/templates/askmath/content/question/view_question.html:124
 msgid "Help Question"
 msgstr "Ajuda da Questão"
 
-#: askmath/templates/askmath/content/question/view_question.html:170
+#: askmath/templates/askmath/content/question/view_question.html:169
 msgid "Your Jump is Question?"
 msgstr "Você quer saltar uma pergunta?"
 
-#: askmath/templates/askmath/content/question/view_question.html:174
+#: askmath/templates/askmath/content/question/view_question.html:173
 msgid "Not, is error!"
 msgstr "Não, isso foi um erro!"
 
-#: askmath/templates/askmath/content/question/view_question.html:177
+#: askmath/templates/askmath/content/question/view_question.html:176
 msgid "Yes, jump!"
 msgstr "Sim, saltar!"
 
-#: askmath/templates/askmath/content/question/view_question.html:197
+#: askmath/templates/askmath/content/question/view_question.html:196
 msgid "Progress"
 msgstr "Progresso"
 
-#: askmath/templates/askmath/content/question/view_question.html:203
+#: askmath/templates/askmath/content/question/view_question.html:202
 msgid "Your level of experience is:"
 msgstr "Seu nível de experiencia é:"
 
-#: askmath/templates/askmath/content/question/view_question.html:224
+#: askmath/templates/askmath/content/question/view_question.html:223
 msgid "Sugestions next lessons:"
 msgstr "Sugestão para próximas lições:"
 
-#: askmath/templates/askmath/content/question/view_question.html:233
+#: askmath/templates/askmath/content/question/view_question.html:232
 msgid "It has no sugestions."
 msgstr "Não existe sugestões."
 
-#: askmath/templates/askmath/content/question/view_question.html:237
+#: askmath/templates/askmath/content/question/view_question.html:236
 msgid "Requirements recommended:"
 msgstr "Requisitos recomentados:"
 
-#: askmath/templates/askmath/content/question/view_question.html:246
+#: askmath/templates/askmath/content/question/view_question.html:245
 msgid "It has no requirements."
 msgstr "Não existe requisitos."
 
@@ -1630,8 +1664,6 @@ msgstr "Outros Vídeos."
 
 #: askmath/templates/askmath/content/video/view_video.html:58
 #: askmath/templates/askmath/content/video/view_videos.html:33
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:105
-#: askmath/templates/askmath/manager/video/manager_view_videos.html:52
 msgid "Lesson does not have videos."
 msgstr "Lição não possui vídeos."
 
@@ -1639,59 +1671,89 @@ msgstr "Lição não possui vídeos."
 msgid "This field in required."
 msgstr "Este campo é obrigatório."
 
-#: askmath/templates/askmath/forum/category/_render_category.html:10
-msgid "Post new topic"
-msgstr "Postar novo tópico"
-
-#: askmath/templates/askmath/forum/category/_render_category.html:17
-msgid "Replies"
-msgstr "Respostas"
-
-#: askmath/templates/askmath/forum/category/_render_category.html:18
-msgid "Date"
-msgstr "Data"
-
-#: askmath/templates/askmath/forum/category/_render_category.html:28
-msgid "by"
-msgstr "por"
-
 #: askmath/templates/askmath/forum/category/view_categories.html:9
-#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:12
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:9
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:17
-#: askmath/templates/askmath/manager/video/manager_view_videos.html:14
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:14
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:17
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:20
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:20
 msgid "Create"
 msgstr "Criar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:14
-#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:18
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:15
-#: askmath/templates/askmath/manager/message/manager_view_messages.html:9
-#: askmath/templates/askmath/manager/person/manager_view_persons.html:21
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:27
-#: askmath/templates/askmath/manager/video/manager_view_videos.html:24
-msgid "Undo"
-msgstr "Desfazer"
+#: askmath/templates/askmath/forum/category/view_categories.html:13
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:20
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:23
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:26
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:26
+msgid "Edit"
+msgstr "Editar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:19
-#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:23
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:20
-#: askmath/templates/askmath/manager/message/manager_view_messages.html:14
-#: askmath/templates/askmath/manager/person/manager_view_persons.html:26
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:32
-#: askmath/templates/askmath/manager/video/manager_view_videos.html:29
-msgid "Dump"
+#: askmath/templates/askmath/forum/category/view_categories.html:18
+#: askmath/templates/askmath/forum/topic/view_topics.html:21
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:27
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:30
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:15
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:22
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:33
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:33
+msgid "Restore"
+msgstr "Restaurar"
+
+#: askmath/templates/askmath/forum/category/view_categories.html:23
+#: askmath/templates/askmath/forum/topic/view_topics.html:26
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:32
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:35
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:20
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:17
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:27
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:38
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:38
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:371
+msgid "Delete"
+msgstr ""
+
+#: askmath/templates/askmath/forum/category/view_categories.html:30
+#: askmath/templates/askmath/forum/topic/view_topics.html:33
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:40
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:43
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:28
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:35
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:52
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:52
+#, fuzzy
+#| msgid "Close"
+msgid "Close Dump"
+msgstr "Fechar"
+
+#: askmath/templates/askmath/forum/category/view_categories.html:35
+#: askmath/templates/askmath/forum/topic/view_topics.html:38
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:45
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:48
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:33
+#: askmath/templates/askmath/manager/person/manager_view_persons.html:40
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:57
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:57
+#, fuzzy
+#| msgid "Dump"
+msgid "Open Dump"
 msgstr "Lixeira"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:33
+#: askmath/templates/askmath/forum/category/view_categories.html:52
 msgid "Posts"
 msgstr "Postagens"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:34
+#: askmath/templates/askmath/forum/category/view_categories.html:53
 msgid "Last Post"
 msgstr "Última postagem"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:56
+#: askmath/templates/askmath/forum/category/view_categories.html:78
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\tSee %(topics)s posts\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: askmath/templates/askmath/forum/category/view_categories.html:89
 #, python-format
 msgid ""
 "\n"
@@ -1701,36 +1763,8 @@ msgstr ""
 "\n"
 "<h6>%(creation)s por %(person)s.</h6>"
 
-#: askmath/templates/askmath/forum/category/view_category.html:15
-#: askmath/templates/askmath/manager/discipline/manager_view_discipline.html:15
-#: askmath/templates/askmath/manager/lesson/manager_view_lesson.html:16
-#: askmath/templates/askmath/manager/question/manager_view_question.html:16
-#: askmath/templates/askmath/manager/video/manager_view_video.html:15
-msgid "Edit"
-msgstr "Editar"
-
-#: askmath/templates/askmath/forum/category/view_category.html:20
-#: askmath/templates/askmath/manager/discipline/manager_view_discipline.html:20
-#: askmath/templates/askmath/manager/lesson/manager_view_lesson.html:21
-#: askmath/templates/askmath/manager/message/manager_view_message.html:16
-#: askmath/templates/askmath/manager/person/manager_view_person.html:16
-#: askmath/templates/askmath/manager/question/manager_view_question.html:21
-#: askmath/templates/askmath/manager/video/manager_view_video.html:20
-msgid "Remove"
-msgstr "Remover"
-
-#: askmath/templates/askmath/forum/category/view_category.html:25
-#: askmath/templates/askmath/manager/discipline/manager_view_discipline.html:25
-#: askmath/templates/askmath/manager/lesson/manager_view_lesson.html:27
-#: askmath/templates/askmath/manager/message/manager_view_message.html:22
-#: askmath/templates/askmath/manager/person/manager_view_person.html:22
-#: askmath/templates/askmath/manager/question/manager_view_question.html:27
-#: askmath/templates/askmath/manager/video/manager_view_video.html:26
-msgid "Restore"
-msgstr "Restaurar"
-
 #: askmath/templates/askmath/forum/topic/_render_comments.html:11
-#: askmath/templates/askmath/forum/topic/_render_topic.html:9
+#: askmath/templates/askmath/forum/topic/_render_topic.html:10
 #, python-format
 msgid ""
 "\n"
@@ -1740,26 +1774,54 @@ msgstr ""
 "\n"
 "%(creation)s"
 
-#: askmath/templates/askmath/forum/topic/_render_topic.html:64
+#: askmath/templates/askmath/forum/topic/_render_topic.html:65
 msgid "Downlad File"
 msgstr "Baixar Arquivo"
 
-#: askmath/templates/askmath/forum/topic/_render_topic.html:95
+#: askmath/templates/askmath/forum/topic/_render_topic.html:96
 msgid "Want to add a comment?"
 msgstr "Deseja adicionar um comentário?"
 
-#: askmath/templates/askmath/forum/topic/_render_topic.html:96
+#: askmath/templates/askmath/forum/topic/_render_topic.html:97
 msgid "Click here to get authorization."
 msgstr "Clique aqui para obter autorização."
+
+#: askmath/templates/askmath/forum/topic/view_topics.html:15
+msgid "Post new topic"
+msgstr "Postar novo tópico"
+
+#: askmath/templates/askmath/forum/topic/view_topics.html:55
+msgid "Replies"
+msgstr "Respostas"
+
+#: askmath/templates/askmath/forum/topic/view_topics.html:56
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:47
+msgid "Date"
+msgstr "Data"
+
+#: askmath/templates/askmath/forum/topic/view_topics.html:74
+msgid "by"
+msgstr "por"
+
+#: askmath/templates/askmath/index/404.html:78
+#: askmath/templates/askmath/index/500.html:78
+#: askmath/templates/askmath/index/contents.html:7
+#: askmath/templates/askmath/index/home.html:35
+msgid "Contents"
+msgstr "Conteúdos"
 
 #: askmath/templates/askmath/index/_render_about.html:8
 msgid ""
 "\n"
-"\t\t\tThis project is an initiative of the <abbr title=\"Tutorial Education Program\">PET</abbr> group Information Technology of the Federal University of Ceará.\n"
+"\t\t\tThis project is an initiative of the <abbr title=\"Tutorial Education "
+"Program\">PET</abbr> group Information Technology of the Federal University "
+"of Ceará.\n"
 "\t\t\t"
 msgstr ""
 "\n"
-"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do Ceará."
+"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação "
+"Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do "
+"Ceará."
 
 #: askmath/templates/askmath/index/_render_about.html:13
 #: askmath/templates/askmath/index/_render_about.html:14
@@ -1773,11 +1835,14 @@ msgstr "Objetivo"
 #: askmath/templates/askmath/index/_render_about.html:24
 msgid ""
 "\n"
-"\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
+"\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for "
+"students who want to learn more about the different branches of "
+"mathematics.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para estudantes que querem aprender mais sobre os diferentes ramos da matemática."
+"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para "
+"estudantes que querem aprender mais sobre os diferentes ramos da matemática."
 
 #: askmath/templates/askmath/index/_render_about.html:31
 msgid "License and Source-Code."
@@ -1786,20 +1851,30 @@ msgstr "Licença e Código-fonte."
 #: askmath/templates/askmath/index/_render_about.html:34
 msgid ""
 "\n"
-"\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target=\"_blank\">license GNU 2.0</a>, allowing you to copy, distribute and modify its source code.\n"
+"\t\t\t\tAs well as all that we have developed, this system is open source "
+"and <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target="
+"\"_blank\">license GNU 2.0</a>, allowing you to copy, distribute and modify "
+"its source code.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, distribuir e modificar seu código-fonte."
+"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e "
+"esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" "
+"target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, "
+"distribuir e modificar seu código-fonte."
 
 #: askmath/templates/askmath/index/_render_about.html:39
 msgid ""
 "\n"
-"\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
+"\t\t\t\tYour source code is available at the following repository: <a href="
+"\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github."
+"com/saraivaufc/askMathPlus</a>. \n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"Seu código fonte está disponível no seguinte repositório: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/saraivaufc/askMath </a>."
+"Seu código fonte está disponível no seguinte repositório: <a href=\"https://"
+"github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/"
+"saraivaufc/askMath </a>."
 
 #: askmath/templates/askmath/index/_render_about.html:46
 msgid "Developers"
@@ -1822,10 +1897,12 @@ msgstr "Créditos"
 #: askmath/templates/askmath/index/_render_about.html:82
 msgid ""
 "\n"
-"\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>. "
+"\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/"
+"\">open source software</a>. "
 msgstr ""
 "\n"
-"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software open source </a>."
+"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software "
+"open source </a>."
 
 #: askmath/templates/askmath/index/about.html:7
 #: askmath/templates/askmath/index/about.html:18
@@ -1833,7 +1910,6 @@ msgid "About"
 msgstr "Sobre"
 
 #: askmath/templates/askmath/index/contents.html:30
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:47
 msgid "Not Lessons Found"
 msgstr "Nenhuma lição encontrada."
 
@@ -1912,215 +1988,162 @@ msgstr "Politicas de Privacidade"
 msgid "Terms & Conditions"
 msgstr "Termos e Condições"
 
-#: askmath/templates/askmath/manager/discipline/_render_discipline.html:5
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:14
-#: askmath/templates/askmath/manager/video/_render_video.html:11
-msgid "Title:"
-msgstr "Título: "
+#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:79
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "\t\t\t\t\t%(creation)s\n"
+#| "\t\t\t\t"
+msgid ""
+"\n"
+"\t\t\t\tSee %(lessons)s lessons\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"%(creation)s"
 
-#: askmath/templates/askmath/manager/discipline/_render_discipline.html:10
-msgid "Responsible:"
-msgstr "Responsável:"
-
-#: askmath/templates/askmath/manager/discipline/_render_discipline.html:15
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:57
-#: askmath/templates/askmath/manager/question/_render_question.html:20
-#: askmath/templates/askmath/manager/video/_render_video.html:21
-msgid "Is Visible:"
-msgstr "Estar Visível: "
-
-#: askmath/templates/askmath/manager/discipline/_render_discipline.html:20
-msgid "Lessons of discipline."
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:8
+#, fuzzy, python-format
+#| msgid "Lessons of discipline."
+msgid "Lessons of %(discipline)s"
 msgstr "Lições da disciplina."
 
-#: askmath/templates/askmath/manager/discipline/_render_discipline.html:35
-msgid "No lesson found."
-msgstr "Nenhuma lição encontrada."
-
-#: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:41
-msgid "Not Disciplines Found"
-msgstr "Nenhuma disciplina encontrada."
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:7
-msgid "Discipline:"
-msgstr "Disciplina:"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:19
-#: askmath/templates/askmath/manager/question/_render_question.html:5
-#: askmath/templates/askmath/manager/video/_render_video.html:16
-msgid "Description:"
-msgstr "Descrição:"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:24
-msgid "Requirements:"
-msgstr "Requisitos:"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:32
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:46
-#: askmath/templates/askmath/manager/question/_render_question.html:47
-msgid "NULL"
-msgstr "VAZIO"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:38
-msgid "Sugestions:"
-msgstr "Sugestões:"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:52
-msgid "Maximum Hops:"
-msgstr "Máximo de Saltos:"
-
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:63
-msgid "Questions of lesson"
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:66
+#, fuzzy
+#| msgid "Questions of lesson"
+msgid "Questions / Videos"
 msgstr "Questões da lição"
 
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:79
-msgid "No Question found."
-msgstr "Nenhuma questão encontrada."
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:88
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "\t\t\t\t\t%(creation)s\n"
+#| "\t\t\t\t"
+msgid ""
+"\n"
+"\t\t\t\tSee %(questions)s questions\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"%(creation)s"
 
-#: askmath/templates/askmath/manager/lesson/_render_lesson.html:86
-msgid "Videos of lesson"
-msgstr "Vídeos da lição."
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:93
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\tSee %(videos)s videos\n"
+"\t\t\t\t"
+msgstr ""
 
 #: askmath/templates/askmath/manager/manager_home.html:14
 msgid "DISCIPLINES"
 msgstr "DISCIPLINAS"
 
-#: askmath/templates/askmath/manager/manager_home.html:22
-msgid "LESSONS"
-msgstr "LIÇÕES"
-
-#: askmath/templates/askmath/manager/manager_home.html:30
-msgid "QUESTIONS"
-msgstr "QUESTÕES"
-
-#: askmath/templates/askmath/manager/manager_home.html:38
-msgid "VIDEOS"
-msgstr "VÍDEOS"
-
-#: askmath/templates/askmath/manager/manager_home.html:46
+#: askmath/templates/askmath/manager/manager_home.html:23
 msgid "STATISTICS"
 msgstr "ESTATÍSTICAS"
 
-#: askmath/templates/askmath/manager/manager_home.html:54
+#: askmath/templates/askmath/manager/manager_home.html:31
 msgid "PERSONS"
 msgstr "PESSOAS"
 
-#: askmath/templates/askmath/manager/manager_home.html:63
+#: askmath/templates/askmath/manager/manager_home.html:40
 msgid "MESSAGES"
 msgstr "MENSAGENS"
 
-#: askmath/templates/askmath/manager/message/_render_message.html:6
-#: askmath/templates/askmath/manager/person/_render_person.html:14
-msgid "Name:"
-msgstr "Nome:"
-
-#: askmath/templates/askmath/manager/message/_render_message.html:11
-#: askmath/templates/askmath/manager/person/_render_person.html:16
-msgid "Email:"
-msgstr "Email:"
-
-#: askmath/templates/askmath/manager/message/_render_message.html:16
-msgid "Message:"
-msgstr "Mensagem:"
-
-#: askmath/templates/askmath/manager/message/_render_message.html:22
-msgid "File:"
-msgstr "Arquivo:"
-
-#: askmath/templates/askmath/manager/message/_render_message.html:24
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:65
 msgid "Download File"
 msgstr "Baixar Arquivo"
 
-#: askmath/templates/askmath/manager/message/_render_message.html:30
-msgid "Date:"
-msgstr "Data:"
+#: askmath/templates/askmath/manager/message/manager_view_messages.html:68
+#, fuzzy
+#| msgid "Profile"
+msgid "No file"
+msgstr "Perfil"
 
-#: askmath/templates/askmath/manager/person/_render_person.html:15
-msgid "User Name:"
-msgstr "Nome de Usuário:"
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:15
+msgid "Type"
+msgstr ""
 
-#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:7
-msgid "Choose Person Types"
-msgstr "Escolha o Tipo de Pessoa"
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:16
+msgid "Quantity"
+msgstr ""
 
-#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:20
-msgid "Not Type Person Found"
-msgstr "Nenhuma tipo de pessoa encontrado"
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:27
+#, fuzzy
+#| msgid "persons"
+msgid "See persons"
+msgstr "pessoas"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:6
 #: askmath/templates/askmath/manager/person/manager_view_persons.html:15
 msgid "View Keys"
 msgstr "Ver Chaves"
 
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:15
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:13
 msgid " Generate Key"
 msgstr "Gerar Chave"
 
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:21
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:23
 msgid "Created Key"
 msgstr "Criar Chave"
 
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:28
-msgid "Creator"
-msgstr "Criador"
-
-#: askmath/templates/askmath/manager/person/manager_view_keys.html:29
+#: askmath/templates/askmath/manager/person/manager_view_keys.html:32
 msgid "User"
 msgstr "Usuário"
 
-#: askmath/templates/askmath/manager/person/manager_view_persons.html:51
-msgid "Not Person Found"
-msgstr "Nenhuma Pessoa Encontrada"
-
 #: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:7
+#: askmath/templates/askmath/manager/question/_modal_items.html:7
 msgid "How many items this issue have?"
 msgstr "Quantos itens esta questão terá? "
 
-#: askmath/templates/askmath/manager/question/_render_question.html:10
-msgid "Help:"
-msgstr "Ajuda:"
-
-#: askmath/templates/askmath/manager/question/_render_question.html:15
-msgid "Scores:"
-msgstr "Pontos:"
-
-#: askmath/templates/askmath/manager/question/_render_question.html:28
+#: askmath/templates/askmath/manager/question/_modal_items.html:13
 #, fuzzy
 #| msgid "Item"
 msgid "Item:"
 msgstr "Item"
 
-#: askmath/templates/askmath/manager/question/_render_question.html:29
+#: askmath/templates/askmath/manager/question/_modal_items.html:14
 msgid "Deficiencys:"
 msgstr "Deficiências:"
 
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:9
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:15
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:9
-msgid "Choose Lesson"
-msgstr "Escolha uma lição"
+#: askmath/templates/askmath/manager/question/_modal_items.html:32
+msgid "NULL"
+msgstr "VAZIO"
 
-#: askmath/templates/askmath/manager/question/manager_choose_lessons.html:39
-msgid "Question does not have lessons."
-msgstr "Questão não possui lição."
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:9
+#, fuzzy, python-format
+#| msgid "Questions of lesson"
+msgid "Questions of %(lesson)s"
+msgstr "Questões da lição"
 
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:21
-#: askmath/templates/askmath/manager/video/manager_view_videos.html:18
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:45
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:45
 msgid "Sort"
 msgstr "Ordenar"
 
-#: askmath/templates/askmath/manager/question/manager_view_questions.html:45
-#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:18
-msgid "Not Questions Found"
-msgstr "Nenhuma Questão Encontrada."
+#: askmath/templates/askmath/manager/question/manager_view_questions.html:88
+#, fuzzy
+#| msgid "View Keys"
+msgid "View items"
+msgstr "Ver Chaves"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:7
 msgid "Sort Questions"
 msgstr "Ordenar Questões"
 
+#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:18
+msgid "Not Questions Found"
+msgstr "Nenhuma Questão Encontrada."
+
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:7
 msgid "Choose Lessons"
 msgstr "Escolha as lições"
+
+#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:15
+msgid "Choose Lesson"
+msgstr "Escolha uma lição"
 
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:51
 msgid "Statistics does not have lessons."
@@ -2142,17 +2165,21 @@ msgstr "Saltos"
 msgid "Helps"
 msgstr "Ajudas"
 
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:9
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:14
 msgid "Choose Type of Statistic"
 msgstr "Escolha o Tipo de Estatísticas"
 
-#: askmath/templates/askmath/manager/video/_render_video.html:6
-msgid "Lesson:"
-msgstr "Lição:"
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:9
+#, fuzzy, python-format
+#| msgid "Videos of lesson"
+msgid "Videos of %(lesson)s"
+msgstr "Vídeos da lição."
 
-#: askmath/templates/askmath/manager/video/manager_choose_lessons.html:41
-msgid "Video does not have lessons."
-msgstr "Vídeo não possui lições."
+#: askmath/templates/askmath/manager/video/manager_view_videos.html:88
+#, fuzzy
+#| msgid "View Profile"
+msgid "See file"
+msgstr "Ver Perfil"
 
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:7
 msgid "Sort Videos"
@@ -2181,10 +2208,12 @@ msgstr ""
 "insira sua senha para continuar..."
 
 #: askmath/templates/askmath/person/account/_modal_remove_account.html:18
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:548
 msgid "No"
 msgstr "Não"
 
 #: askmath/templates/askmath/person/account/_modal_remove_account.html:19
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:547
 msgid "Yes"
 msgstr "Sim"
 
@@ -2229,6 +2258,7 @@ msgstr "Enviar Feedback..."
 
 #: askmath/templates/askmath/user/password_reset_complete.html:7
 #: askmath/templates/askmath/user/password_reset_complete.html:11
+#: askmath/templates/registration/password_change_done.html:12
 msgid "Password change successful"
 msgstr "Senha alterada com sucesso"
 
@@ -2241,6 +2271,7 @@ msgid "Password reset confirmation"
 msgstr "Confirmação de alteração de senha"
 
 #: askmath/templates/askmath/user/password_reset_confirm.html:11
+#: askmath/templates/registration/password_reset_confirm.html:16
 msgid "Enter new password"
 msgstr "Entre com sua senha"
 
@@ -2249,6 +2280,7 @@ msgid "Save"
 msgstr "Salvar"
 
 #: askmath/templates/askmath/user/password_reset_confirm.html:21
+#: askmath/templates/registration/password_reset_confirm.html:33
 msgid "Password reset unsuccessful"
 msgstr "Redefinição de senha malsucedida"
 
@@ -2282,6 +2314,7 @@ msgstr ""
 "o endereço que você registrou, e verifique a sua pasta de spam."
 
 #: askmath/templates/askmath/user/password_reset_email.html:2
+#: askmath/templates/registration/password_reset_email.html:2
 #, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
@@ -2291,24 +2324,29 @@ msgstr ""
 "para sua conta de usuário em  %(site_name)s."
 
 #: askmath/templates/askmath/user/password_reset_email.html:4
+#: askmath/templates/registration/password_reset_email.html:4
 msgid "Please go to the following page and choose a new password:"
 msgstr "Por favor, vá para a seguinte página e escolhar uma nova senha:"
 
 #: askmath/templates/askmath/user/password_reset_email.html:9
+#: askmath/templates/registration/password_reset_email.html:10
 msgid "Thanks for using our site!"
 msgstr "Obrigado por usar o nosso site!"
 
 #: askmath/templates/askmath/user/password_reset_email.html:11
+#: askmath/templates/registration/password_reset_email.html:12
 #, python-format
 msgid "The %(site_name)s team"
 msgstr "Equipe do %(site_name)s"
 
 #: askmath/templates/askmath/user/password_reset_form.html:5
 #: askmath/templates/askmath/user/password_reset_form.html:9
+#: askmath/templates/registration/password_change_form.html:12
 msgid "Password reset"
 msgstr "Senha alterada"
 
 #: askmath/templates/askmath/user/password_reset_form.html:15
+#: askmath/templates/registration/password_reset_form.html:26
 msgid "Reset my password"
 msgstr "Alterar minha senha"
 
@@ -2353,6 +2391,104 @@ msgstr ""
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:15
 msgid "Save changes"
 msgstr "Salvar alterações"
+
+#: askmath/templates/registration/password_change_done.html:7
+#, fuzzy
+#| msgid "Password reset"
+msgid "Password Reset Change"
+msgstr "Senha alterada"
+
+#: askmath/templates/registration/password_change_done.html:14
+#, fuzzy
+#| msgid "Password changed success."
+msgid "Your password was changed."
+msgstr "Senha alterada com sucesso."
+
+#: askmath/templates/registration/password_change_form.html:7
+#, fuzzy
+#| msgid "Password changed success."
+msgid "Password Change Form"
+msgstr "Senha alterada com sucesso."
+
+#: askmath/templates/registration/password_change_form.html:14
+#: askmath/templates/registration/password_reset_form.html:19
+msgid "Forgotten your password? Enter your email addess below,"
+msgstr ""
+
+#: askmath/templates/registration/password_change_form.html:20
+#: askmath/templates/registration/password_reset_confirm.html:27
+#, fuzzy
+#| msgid "Reset my password"
+msgid "Change my password"
+msgstr "Alterar minha senha"
+
+#: askmath/templates/registration/password_reset_complete.html:7
+#: askmath/templates/registration/password_reset_complete.html:16
+#, fuzzy
+#| msgid "Password reset confirmation"
+msgid "Password reset complete"
+msgstr "Confirmação de alteração de senha"
+
+#: askmath/templates/registration/password_reset_complete.html:19
+msgid "Your password has been set.  You may go ahead and log in now"
+msgstr "Sua senha foi definida. Você pode ir em frente e entrar agora"
+
+#: askmath/templates/registration/password_reset_complete.html:20
+#, python-format
+msgid "Go to <a href='%(login_url)s'>Log in</a>..."
+msgstr "Vá para <a href='%(login_url)s'>Log in</a>..."
+
+#: askmath/templates/registration/password_reset_confirm.html:7
+#, fuzzy
+#| msgid "Password reset confirmation"
+msgid "Password Reset Confirm"
+msgstr "Confirmação de alteração de senha"
+
+#: askmath/templates/registration/password_reset_confirm.html:20
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr "Por favor digite sua nova senha duas vezes para que possamos verificar a introduziu em "
+"corretamente."
+
+#: askmath/templates/registration/password_reset_confirm.html:34
+#, fuzzy
+#| msgid ""
+#| "The password reset link was invalid, possibly because it has already been "
+#| "used. Please request a new password reset."
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"O link de redefinição de senha esta inválido, possivelmente porque ele já "
+"foi utilizado. Por favor, solicite uma nova redefinição de senha."
+
+#: askmath/templates/registration/password_reset_done.html:7
+#: askmath/templates/registration/password_reset_done.html:16
+#, fuzzy
+#| msgid "Password reset"
+msgid "Password Reset Done"
+msgstr "Senha alterada"
+
+#: askmath/templates/registration/password_reset_done.html:19
+#, fuzzy
+#| msgid "Password reset successful"
+msgid "Password reset successful!!!"
+msgstr "Senha alterada com sucesso"
+
+#: askmath/templates/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: askmath/templates/registration/password_reset_form.html:7
+#, fuzzy
+#| msgid "Password reset"
+msgid "Password Reset"
+msgstr "Senha alterada"
+
+#: askmath/templates/registration/password_reset_form.html:16
+msgid "Reset Password"
+msgstr "Alterar Senha"
 
 #: askmath/utils/markdown/utils/quote.py:19
 #, python-format
@@ -2500,80 +2636,1212 @@ msgstr "(GMT +11:30) Norfolk Island"
 msgid "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
 msgstr "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
 
-#: askmath/utils/user/email.py:41
-msgid "Reset Password"
-msgstr "Alterar Senha"
-
-#: askmath/utils/user/email.py:48
-msgid "User activation"
-msgstr "Ativação de usuário"
-
-#: askmath/utils/user/email.py:56
-msgid "Email change"
-msgstr "Email alterado"
-
-#: askmath/utils/user/email.py:65
-#, python-format
-msgid "New notification: %(topic_name)s"
-msgstr "Nova notificação: %(topic_name)s"
-
-#: askmath/views/authentication/account.py:149
-msgid "Dean "
-msgstr "Querido"
-
-#: askmath/views/forum/category/category.py:47
+#: askmath/views/forum/category/category.py:36
 msgid "Create Category"
 msgstr "Criar uma Categoria"
 
-#: askmath/views/forum/category/category.py:69
+#: askmath/views/forum/category/category.py:58
 msgid "Edit Category"
 msgstr "Editar Categoria"
 
-#: askmath/views/forum/topic/topic.py:35
+#: askmath/views/forum/topic/topic.py:45
 msgid "Add Topic"
 msgstr "Adicionar Tópico"
 
-#: askmath/views/forum/topic/topic.py:52
+#: askmath/views/forum/topic/topic.py:62
 msgid "Edit Topic"
 msgstr "Editar Tópico"
 
-#: askmath/views/manager/discipline/discipline.py:39
+#: askmath/views/manager/discipline/discipline.py:33
 msgid "Create Discipline"
 msgstr "Criar Disciplina"
 
-#: askmath/views/manager/discipline/discipline.py:57
+#: askmath/views/manager/discipline/discipline.py:51
 msgid "Edit Discipline"
 msgstr "Editar Disciplina"
 
-#: askmath/views/manager/lesson/lesson.py:57
+#: askmath/views/manager/lesson/lesson.py:38
 msgid "Create Lesson"
 msgstr "Criar Lição"
 
-#: askmath/views/manager/lesson/lesson.py:75
+#: askmath/views/manager/lesson/lesson.py:57
 msgid "Edit Lesson"
 msgstr "Editar Lição"
 
-#: askmath/views/manager/question/question.py:71
+#: askmath/views/manager/question/question.py:58
 msgid "Create Question"
 msgstr "Criar Questão"
 
-#: askmath/views/manager/question/question.py:102
+#: askmath/views/manager/question/question.py:89
 msgid "Edit Question"
 msgstr "Editar Questão"
 
-#: askmath/views/manager/video/video.py:61
+#: askmath/views/manager/video/video.py:48
 msgid "Create Video"
 msgstr "Criar Vídeo"
 
-#: askmath/views/manager/video/video.py:83
+#: askmath/views/manager/video/video.py:70
 msgid "Edit Video"
 msgstr "Editar Vídeo"
 
+#: env/lib/python2.7/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/contrib/staticfiles/apps.py:8
+#, fuzzy
+#| msgid "Statistics"
+msgid "Static Files"
+msgstr "Estatísticas"
+
+#: env/lib/python2.7/site-packages/django/contrib/syndication/apps.py:8
+#, fuzzy
+#| msgid "Authentication"
+msgid "Syndication"
+msgstr "Autenticação"
+
+#: env/lib/python2.7/site-packages/django/contrib/webdesign/apps.py:8
+msgid "Web Design"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:21
+msgid "Enter a valid value."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:77
+#: env/lib/python2.7/site-packages/django/forms/fields.py:664
+msgid "Enter a valid URL."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:112
+msgid "Enter a valid integer."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:123
+msgid "Enter a valid email address."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:188
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:191
+#: env/lib/python2.7/site-packages/django/core/validators.py:210
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:196
+#: env/lib/python2.7/site-packages/django/core/validators.py:211
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:206
+#: env/lib/python2.7/site-packages/django/core/validators.py:209
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:232
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1075
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:239
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:258
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:265
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:274
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/core/validators.py:285
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/db/models/base.py:971
+#: env/lib/python2.7/site-packages/django/forms/models.py:716
+msgid "and"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/base.py:973
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:104
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:105
+#, fuzzy
+#| msgid "This field in required."
+msgid "This field cannot be null."
+msgstr "Este campo é obrigatório."
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:106
+#, fuzzy
+#| msgid "This field in required."
+msgid "This field cannot be blank."
+msgstr "Este campo é obrigatório."
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:111
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:118
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:852
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1582
+msgid "Integer"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:856
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1580
+#, python-format
+msgid "'%(value)s' value must be an integer."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:931
+#, python-format
+msgid "'%(value)s' value must be either True or False."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:933
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1009
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1070
+msgid "Comma-separated integers"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1085
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1087
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1194
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1090
+msgid "Date (without time)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1192
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1196
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1200
+msgid "Date (with time)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1306
+#, python-format
+msgid "'%(value)s' value must be a decimal number."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1308
+msgid "Decimal number"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
+#, fuzzy
+#| msgid "Email change"
+msgid "Email address"
+msgstr "Email alterado"
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
+#, fuzzy
+#| msgid "File"
+msgid "File path"
+msgstr "Arquivo"
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1546
+#, python-format
+msgid "'%(value)s' value must be a float."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1548
+msgid "Floating point number"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1632
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1647
+msgid "IPv4 address"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1677
+msgid "IP address"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1756
+#, python-format
+msgid "'%(value)s' value must be either None, True or False."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1758
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1818
+msgid "Positive integer"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1830
+msgid "Positive small integer"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1843
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1872
+msgid "Small integer"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1879
+msgid "Text"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1902
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1904
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1907
+msgid "Time"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1989
+msgid "URL"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2012
+msgid "Raw binary data"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/files.py:375
+msgid "Image"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/related.py:1606
+#, python-format
+msgid "%(model)s instance with pk %(pk)r does not exist."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/related.py:1608
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/related.py:1798
+msgid "One-to-one relationship"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/db/models/fields/related.py:1868
+msgid "Many-to-many relationship"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:55
+#, fuzzy
+#| msgid "This field in required."
+msgid "This field is required."
+msgstr "Este campo é obrigatório."
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:225
+#, fuzzy
+#| msgid "Enter yout name."
+msgid "Enter a whole number."
+msgstr "Entre com seu nome."
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:268
+#: env/lib/python2.7/site-packages/django/forms/fields.py:305
+#, fuzzy
+#| msgid "Enter yout name."
+msgid "Enter a number."
+msgstr "Entre com seu nome."
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:307
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:311
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:315
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:426
+#: env/lib/python2.7/site-packages/django/forms/fields.py:1132
+msgid "Enter a valid date."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:450
+#: env/lib/python2.7/site-packages/django/forms/fields.py:1133
+#, fuzzy
+#| msgid "Enter yout name."
+msgid "Enter a valid time."
+msgstr "Entre com seu nome."
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:472
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:553
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:554
+msgid "No file was submitted."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:555
+msgid "The submitted file is empty."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:557
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:560
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:621
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:771
+#: env/lib/python2.7/site-packages/django/forms/fields.py:860
+#: env/lib/python2.7/site-packages/django/forms/models.py:1205
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:861
+#: env/lib/python2.7/site-packages/django/forms/fields.py:976
+#: env/lib/python2.7/site-packages/django/forms/models.py:1204
+msgid "Enter a list of values."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/fields.py:977
+#, fuzzy
+#| msgid "Enter yout name."
+msgid "Enter a complete value."
+msgstr "Entre com seu nome."
+
+#. Translators: This is the default suffix added to form field labels
+#: env/lib/python2.7/site-packages/django/forms/forms.py:122
+msgid ":"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/forms.py:192
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: env/lib/python2.7/site-packages/django/forms/forms.py:620
+msgid ":?.!"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:95
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:332
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:339
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:367
+#: env/lib/python2.7/site-packages/django/forms/formsets.py:369
+msgid "Order"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:710
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:714
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:720
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:728
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:1030
+msgid "The inline foreign key did not match the parent instance primary key."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:1096
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:1207
+#, python-format
+msgid "\"%(pk)s\" is not a valid value for a primary key."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/models.py:1218
+msgid ""
+"Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/utils.py:157
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:350
+msgid "Currently"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:351
+msgid "Change"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:352
+msgid "Clear"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:546
+msgid "Unknown"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:855
+msgid "yes,no,maybe"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:884
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:896
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:898
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:900
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:902
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:904
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/template/defaultfilters.py:906
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:59
+msgid "p.m."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:60
+msgid "a.m."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:65
+msgid "PM"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:66
+msgid "AM"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:149
+msgid "midnight"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dateformat.py:151
+msgid "noon"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Student"
+msgid "Sun"
+msgstr "Estudante"
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "January"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "February"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+#, fuzzy
+#| msgid "Search"
+msgid "March"
+msgstr "Buscar"
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "April"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "May"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "June"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "July"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "August"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "September"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "October"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "November"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:20
+msgid "December"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jan"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "feb"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "mar"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "apr"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "may"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jun"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "jul"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "aug"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "sep"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "oct"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "nov"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "dec"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:33
+#, fuzzy
+#| msgid "Search"
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "Buscar"
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:35
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:36
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:37
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:38
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:39
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:40
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:41
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:42
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:47
+#, fuzzy
+#| msgid "Search"
+msgctxt "alt. month"
+msgid "March"
+msgstr "Buscar"
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:49
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:50
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:51
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:52
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:53
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:54
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:55
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/dates.py:56
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/ipv6.py:10
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/text.py:76
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s..."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/text.py:245
+#, fuzzy
+#| msgid "Sort"
+msgid "or"
+msgstr "Ordenar"
+
+#. Translators: This string is used as a separator between list elements
+#: env/lib/python2.7/site-packages/django/utils/text.py:264
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:57
+msgid ", "
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:25
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:26
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:27
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:28
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:29
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:30
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python2.7/site-packages/django/utils/timesince.py:46
+msgid "0 minutes"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:105
+msgid "Forbidden"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:106
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:110
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:115
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:120
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:125
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/csrf.py:129
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:43
+msgid "No year specified"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:99
+msgid "No month specified"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:158
+msgid "No day specified"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:214
+msgid "No week specified"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:369
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:397
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:650
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/dates.py:682
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/list.py:62
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/list.py:67
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/generic/list.py:158
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/views/static.py:54
+msgid "Directory indexes are not allowed here."
+msgstr "Diretório de índices não são permitidos aqui."
+
+#: env/lib/python2.7/site-packages/django/views/static.py:56
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr "\"%(path)s\" não existe"
+
+#: env/lib/python2.7/site-packages/django/views/static.py:96
+#, python-format
+msgid "Index of %(directory)s"
+msgstr "Índice do %(directory)s"
+
+#: env/lib/python2.7/site-packages/nocaptcha_recaptcha/fields.py:21
 #: nocaptcha_recaptcha/fields.py:21
 #, fuzzy
 #| msgid "Incorrect password."
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid "Undo"
+#~ msgstr "Desfazer"
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "Title:"
+#~ msgstr "Título: "
+
+#~ msgid "Responsible:"
+#~ msgstr "Responsável:"
+
+#~ msgid "Is Visible:"
+#~ msgstr "Estar Visível: "
+
+#~ msgid "No lesson found."
+#~ msgstr "Nenhuma lição encontrada."
+
+#~ msgid "Not Disciplines Found"
+#~ msgstr "Nenhuma disciplina encontrada."
+
+#~ msgid "Discipline:"
+#~ msgstr "Disciplina:"
+
+#~ msgid "Description:"
+#~ msgstr "Descrição:"
+
+#~ msgid "Requirements:"
+#~ msgstr "Requisitos:"
+
+#~ msgid "Sugestions:"
+#~ msgstr "Sugestões:"
+
+#~ msgid "Maximum Hops:"
+#~ msgstr "Máximo de Saltos:"
+
+#~ msgid "No Question found."
+#~ msgstr "Nenhuma questão encontrada."
+
+#~ msgid "LESSONS"
+#~ msgstr "LIÇÕES"
+
+#~ msgid "QUESTIONS"
+#~ msgstr "QUESTÕES"
+
+#~ msgid "VIDEOS"
+#~ msgstr "VÍDEOS"
+
+#~ msgid "Name:"
+#~ msgstr "Nome:"
+
+#~ msgid "Email:"
+#~ msgstr "Email:"
+
+#~ msgid "Message:"
+#~ msgstr "Mensagem:"
+
+#~ msgid "File:"
+#~ msgstr "Arquivo:"
+
+#~ msgid "Date:"
+#~ msgstr "Data:"
+
+#~ msgid "User Name:"
+#~ msgstr "Nome de Usuário:"
+
+#~ msgid "Choose Person Types"
+#~ msgstr "Escolha o Tipo de Pessoa"
+
+#~ msgid "Not Type Person Found"
+#~ msgstr "Nenhuma tipo de pessoa encontrado"
+
+#~ msgid "Not Person Found"
+#~ msgstr "Nenhuma Pessoa Encontrada"
+
+#~ msgid "Help:"
+#~ msgstr "Ajuda:"
+
+#~ msgid "Scores:"
+#~ msgstr "Pontos:"
+
+#~ msgid "Question does not have lessons."
+#~ msgstr "Questão não possui lição."
+
+#~ msgid "Lesson:"
+#~ msgstr "Lição:"
+
+#~ msgid "Video does not have lessons."
+#~ msgstr "Vídeo não possui lições."
+
+#~ msgid "User activation"
+#~ msgstr "Ativação de usuário"
+
+#~ msgid "New notification: %(topic_name)s"
+#~ msgstr "Nova notificação: %(topic_name)s"
+
+#~ msgid "Dean "
+#~ msgstr "Querido"
 
 #~ msgid "Captcha"
 #~ msgstr "Captcha"
@@ -2600,18 +3868,18 @@ msgstr "Erro, tente novamente."
 #~ msgstr "Parabéns, você completou esta lição !!!"
 
 #~ msgid ""
-#~ "You can redo this lesson by clicking the button below or next to some of the"
-#~ " lessons recommended in the table below."
+#~ "You can redo this lesson by clicking the button below or next to some of "
+#~ "the lessons recommended in the table below."
 #~ msgstr ""
-#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de algumas"
-#~ " das lições recomendadas na tabela abaixo."
+#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de "
+#~ "algumas das lições recomendadas na tabela abaixo."
 
 #~ msgid "Complete this lesson and gain experience to level up !!!"
 #~ msgstr "Conclua esta lição e ganhar experiência para subir de nível !!!"
 
 #~ msgid ""
-#~ "It is recommended that you have completed some other lessons like to proceed"
-#~ " to this, these lessons you can find in the table below."
+#~ "It is recommended that you have completed some other lessons like to "
+#~ "proceed to this, these lessons you can find in the table below."
 #~ msgstr ""
 #~ "Recomenda-se que você tenha concluído algumas outras lições antes de "
 #~ "prosseguir nesta lição, essas lições você pode encontrar na tabela abaixo."

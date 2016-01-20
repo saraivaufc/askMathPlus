@@ -134,15 +134,15 @@ NORECAPTCHA_SECRET_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc"
 
 
 #Admin
-ADMINS = ( ('Ciano Saraiva','saraiva.ufc@gmail.com'), )
+ADMINS = ( (u'Ciano Saraiva',u'saraiva.ufc@gmail.com'), )
 
 
 #EMAIL
-EMAIL_ADMINS = ['saraiva.ufc@gmail.com','askmathplus@gmail.com']
-DEFAULT_FROM_EMAIL= 'askmathplus@gmail.com'
+EMAIL_ADMINS = [u'saraiva.ufc@gmail.com',u'askmathplus@gmail.com']
+DEFAULT_FROM_EMAIL= u'askmathplus@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'askmathplus@gmail.com'
-EMAIL_HOST_PASSWORD = 'macacoaranha'
+EMAIL_HOST_USER = u'askmathplus@gmail.com'
+EMAIL_HOST_PASSWORD = u'macacoaranha'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
