@@ -17,6 +17,7 @@
 {% block tiles %}
 <div class="tile-area no-padding bg-transparent">
 	<div class="tile-container">
+		<h3 class="text-center page-title">{% trans "Videos" %}</h3>
 		{% for video in videos %}
 	     <div class="tile-wide {{ video.color }}">
 			    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">

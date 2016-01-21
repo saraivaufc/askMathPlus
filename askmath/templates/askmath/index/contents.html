@@ -12,7 +12,8 @@
 <div class="container-fluid">
 	<div class="row">
 		{% for discipline in disciplines %}
-			<h4>{{ discipline|title }}</h4>
+		{% if discipline.get_lessons_visibles %}
+			<h4 class="page-title">{{ discipline|title }}</h4>
         	<div class="tile-container">
 				{% for lesson in discipline.get_lessons_visibles %}
 					<a href="/contents/lesson={{ lesson.id }}/" class="tile {{ lesson.color }} fg-white">
@@ -24,6 +25,7 @@
 				{% endfor %}
 			</div>
 			<br />
+		{% endif %}
 		{% empty %}
 			<h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
 		{% endfor %}

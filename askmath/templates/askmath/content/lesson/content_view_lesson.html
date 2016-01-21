@@ -35,37 +35,45 @@
 		    <div class="content">
 		    	<div class="container-fluid">
 		    	<div class="row">
-			    	<div class="tile bg-indigo">
-					    <a href="/home/content/questions/view_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
-					        <span class="icon mif-list-numbered"></span>
-					        <div class="tile-label">
-					            {% trans "Questions" %}
-					        </div>
-					        <div class="slide-over bg-steel">
-					        <table class="text-center fill">
-					        	<tr>
-					        		<td> {% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
-					        	</tr>
-					        </table>
-					        </div>
-					    </a>
-					</div>
-					
-					<div class="tile bg-emerald">
-					    <a href="/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
-					        <span class="icon mif-video-camera"></span>
-					        <div class="tile-label">
-					            {% trans "Videos" %}
-					        </div>
-					         <div class="slide-over bg-steel">
-					        <table class="text-center fill">
-					        	<tr>
-					        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
-					        	</tr>
-					        </table>
-					        </div>
-					    </a>
-					</div>
+
+
+			    <button class="command-button success" onclick="window.location='/home/content/questions/view_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/'">
+			        <span class="icon mif-list-numbered"></span>
+			       {% trans "Questions" %}
+			        <small>São {{ lesson.get_questions_visibles|length }} questões criadas especialmente para você</small>
+			    </button>
+			    <button class="command-button info" onclick="window.location='/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/'">
+			        <span class="icon mif-video-camera"></span>
+			        {% trans "Videos" %}
+			        <small>Temos {{ lesson.get_questions_visibles|length }} vídeo-aulas para ampliar seus conhecimentos</small>
+			    </button>
+			    {% if studentlessonstate.get_percentage_completed == 100 %}
+					<h5>{% trans "Sugestions next lessons:" %}</h5>
+					<ul>
+					{% for sugestion in lesson.get_sugestions %}
+						<li>
+							<a class="lead fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ sugestion.id }}/">
+							{{ sugestion.get_title }}
+							</a>
+						</li>
+					{% empty %}
+						<h5>{% trans "It has no sugestions." %}</h5>
+					{% endfor %}
+					</ul>
+				{% else %}
+					<h5>{% trans "Recomendamos concluir as lições abaixo antes de prosseguir:" %}</h5>
+					<ul>
+					{% for requirement in lesson.get_requirements %}
+						<li>
+							<a class="lead  fg-darkBlue" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ requirement.id }}/">
+							{{ requirement }}
+							</a>
+						</li>
+					{% empty %}
+						<h5>{% trans "It has no requirements." %}</h5>
+					{% endfor %}
+					</ul>
+				{% endif %}
 				</div>
 				</div>
 		    </div>

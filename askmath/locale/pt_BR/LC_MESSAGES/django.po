@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 09:34-0300\n"
+"POT-Creation-Date: 2016-01-21 15:59-0300\n"
 "PO-Revision-Date: 2015-12-22 02:36-0234\n"
 "Last-Translator: Anonymous User <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -887,7 +887,6 @@ msgstr "Estudante"
 #: askmath/models/experience/studentexperience.py:7
 #: askmath/models/question/question.py:22
 #: askmath/models/state/studentlessonstate.py:15
-#: askmath/templates/askmath/content/question/view_question.html:37
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:73
 msgid "Scores"
 msgstr "Pontos"
@@ -1111,7 +1110,6 @@ msgid "Choose items that this issue has."
 msgstr "Escolha os itens que esta pergunta tem."
 
 #: askmath/models/question/question.py:19
-#: askmath/templates/askmath/content/question/view_question.html:69
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:72
 msgid "Help"
 msgstr "Ajuda"
@@ -1246,7 +1244,6 @@ msgstr ""
 "datetime = ''> <em> <i> <q cite = \"\"> <strike> <strong>"
 
 #: askmath/models/users/message.py:48
-#: askmath/templates/askmath/_header.html:107
 #: askmath/templates/askmath/manager/message/manager_view_messages.html:7
 msgid "Messages"
 msgstr "Mensagens"
@@ -1395,7 +1392,7 @@ msgid "Privacy policy"
 msgstr "Politicas de Privacidade"
 
 #: askmath/templates/askmath/_footer.html:23
-#: askmath/templates/askmath/_header.html:156
+#: askmath/templates/askmath/_header.html:91
 msgid "Shared"
 msgstr "Compartilhar"
 
@@ -1428,7 +1425,7 @@ msgstr "Início"
 
 #: askmath/templates/askmath/_header.html:17
 #: askmath/templates/askmath/forum/forum_home.html:14
-#: askmath/templates/askmath/index/home.html:54
+#: askmath/templates/askmath/index/home.html:55
 msgid "Forum"
 msgstr "Fórum"
 
@@ -1436,36 +1433,23 @@ msgstr "Fórum"
 msgid "Enter"
 msgstr "Entrar"
 
-#: askmath/templates/askmath/_header.html:40
-msgid "Search"
-msgstr "Buscar"
-
-#: askmath/templates/askmath/_header.html:77
-#, fuzzy
-#| msgid "Account Remove"
+#: askmath/templates/askmath/_header.html:49
 msgid "Account"
-msgstr "Remover Conta"
+msgstr "Conta"
 
-#: askmath/templates/askmath/_header.html:81
+#: askmath/templates/askmath/_header.html:53
 msgid "Profile"
 msgstr "Perfil"
 
-#: askmath/templates/askmath/_header.html:87
+#: askmath/templates/askmath/_header.html:59
 msgid "Logout"
 msgstr "Sair"
 
-#: askmath/templates/askmath/_header.html:97
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:7
-msgid "Statistics"
-msgstr "Estatísticas"
+#: askmath/templates/askmath/_header.html:74
+msgid "Search"
+msgstr "Buscar"
 
-#: askmath/templates/askmath/_header.html:117
-#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:6
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
-msgid "Persons"
-msgstr "Pessoas"
-
-#: askmath/templates/askmath/_header.html:232
+#: askmath/templates/askmath/_header.html:167
 #: askmath/templates/askmath/content/question/view_question.html:127
 #: askmath/templates/askmath/content/question/view_question.html:153
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:14
@@ -1554,15 +1538,14 @@ msgstr ""
 "</a> estabelecido por este site, incluindo o nosso uso de cookies."
 
 #: askmath/templates/askmath/content/content_home.html:12
-msgid "Courses Available"
-msgstr "Disciplinas Disponíveis"
+msgid "Cursos"
+msgstr ""
 
 #: askmath/templates/askmath/content/content_home.html:24
 msgid "All Lessons"
 msgstr "Todas as Lições"
 
 #: askmath/templates/askmath/content/discipline/content_view_discipline.html:16
-#| msgid "Lessons"
 msgid "Lessons of"
 msgstr "Lições de"
 
@@ -1582,13 +1565,17 @@ msgstr "Todos os Vídeo"
 
 #: askmath/templates/askmath/content/discipline/content_view_discipline.html:38
 msgid "Discipline does not have lessons."
-msgstr "Disciplina não encontrada na lição."
+msgstr "Disciplina não possui lições."
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:33
 #: askmath/templates/askmath/index/contents_details.html:39
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:17
 msgid "Options"
 msgstr "Opções"
+
+#: askmath/templates/askmath/content/question/view_question.html:37
+msgid "Accumulated Points"
+msgstr "Pontos Acumulados"
 
 #: askmath/templates/askmath/content/question/view_question.html:38
 msgid "Correct Questions"
@@ -1610,6 +1597,10 @@ msgstr "Nenhum item encontrado."
 #: askmath/templates/askmath/forum/topic/_render_comments.html:8
 msgid "Reply"
 msgstr "Responder"
+
+#: askmath/templates/askmath/content/question/view_question.html:69
+msgid "Pedir Ajuda"
+msgstr ""
 
 #: askmath/templates/askmath/content/question/view_question.html:72
 msgid "Jump"
@@ -1641,27 +1632,23 @@ msgstr "Não, isso foi um erro!"
 msgid "Yes, jump!"
 msgstr "Sim, saltar!"
 
-#: askmath/templates/askmath/content/question/view_question.html:193
-msgid "Progress"
-msgstr "Progresso"
-
-#: askmath/templates/askmath/content/question/view_question.html:199
+#: askmath/templates/askmath/content/question/view_question.html:195
 msgid "Your level of experience is:"
 msgstr "Seu nível de experiencia é:"
 
-#: askmath/templates/askmath/content/question/view_question.html:220
+#: askmath/templates/askmath/content/question/view_question.html:216
 msgid "Sugestions next lessons:"
 msgstr "Sugestão para próximas lições:"
 
-#: askmath/templates/askmath/content/question/view_question.html:229
+#: askmath/templates/askmath/content/question/view_question.html:225
 msgid "It has no sugestions."
 msgstr "Não existe sugestões."
 
-#: askmath/templates/askmath/content/question/view_question.html:233
-msgid "Requirements recommended:"
-msgstr "Requisitos recomentados:"
+#: askmath/templates/askmath/content/question/view_question.html:229
+msgid "Requirements for this lesson:"
+msgstr "Requisitos para esta lição:"
 
-#: askmath/templates/askmath/content/question/view_question.html:242
+#: askmath/templates/askmath/content/question/view_question.html:238
 msgid "It has no requirements."
 msgstr "Não existe requisitos."
 
@@ -1809,7 +1796,7 @@ msgstr "por"
 #: askmath/templates/askmath/index/404.html:78
 #: askmath/templates/askmath/index/500.html:78
 #: askmath/templates/askmath/index/contents.html:7
-#: askmath/templates/askmath/index/home.html:34
+#: askmath/templates/askmath/index/home.html:35
 msgid "Contents"
 msgstr "Conteúdos"
 
@@ -1917,14 +1904,18 @@ msgid "Not Lessons Found"
 msgstr "Nenhuma lição encontrada."
 
 #: askmath/templates/askmath/index/home.html:19
-msgid "Welcome to the Askmath..."
-msgstr "Seja Bem Vindo ao AskMath..."
+msgid "Seja bem vindo ao AskMath"
+msgstr ""
 
-#: askmath/templates/askmath/index/home.html:40
+#: askmath/templates/askmath/index/home.html:20
+msgid "Aprenda matemática a qualquer hora, de qualquer lugar"
+msgstr ""
+
+#: askmath/templates/askmath/index/home.html:41
 msgid "Start here"
 msgstr "Comece aqui"
 
-#: askmath/templates/askmath/index/home.html:48
+#: askmath/templates/askmath/index/home.html:49
 msgid "About the project"
 msgstr "Sobre este projeto"
 
@@ -2000,6 +1991,7 @@ msgstr ""
 "%(creation)s"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:8
+#, python-format
 msgid "Lessons of %(discipline)s"
 msgstr "Lições de %(discipline)s"
 
@@ -2056,6 +2048,11 @@ msgstr "Baixar Arquivo"
 #| msgid "Profile"
 msgid "No file"
 msgstr "Perfil"
+
+#: askmath/templates/askmath/manager/person/manager_choose_person_types.html:6
+#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
+msgid "Persons"
+msgstr "Pessoas"
 
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:15
 msgid "Type"
@@ -2159,6 +2156,10 @@ msgstr "Saltos"
 #: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:107
 msgid "Helps"
 msgstr "Ajudas"
+
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:7
+msgid "Statistics"
+msgstr "Estatísticas"
 
 #: askmath/templates/askmath/manager/statistic/manager_choose_types.html:14
 msgid "Choose Type of Statistic"
@@ -3739,6 +3740,15 @@ msgstr "Índice do %(directory)s"
 #| msgid "Incorrect password."
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid "Progress"
+#~ msgstr "Progresso"
+
+#~ msgid "Courses available"
+#~ msgstr "Cursos disponíveis"
+
+#~ msgid "Welcome to the Askmath..."
+#~ msgstr "Seja Bem Vindo ao AskMath..."
 
 #~ msgid "Menu"
 #~ msgstr "Menu"

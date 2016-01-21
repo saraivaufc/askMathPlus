@@ -509,3 +509,15 @@ label.caption{
 .app-bar-element > a{
 	color: #fff;
 }
+
+.page-title{
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+	color:#FFF;
+	background-color: #4390df;
+	margin-bottom:5px;
+	padding:15px;
+}
+
+.command-button {
+    padding: 8px 2rem 1px 4rem;
+}

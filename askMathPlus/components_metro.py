@@ -47,7 +47,7 @@ COLORS_LIGHT = (
     ("bg-lightOrange",_("Light Orange")),
 )
 
-COLORS_ALL = COLORS + COLORS_LIGHT
+COLORS_ALL = COLORS + COLORS_LIGHT + COLORS_DARK
 
 def generate_color():
     choose = random.choice(COLORS_ALL)

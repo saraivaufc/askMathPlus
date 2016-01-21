@@ -434,7 +434,7 @@ function validConfirmPassword(){
 	}
 }
 
-// $(function(){
-// 	$.formHelp({
-// 	});	
-// })
+$(function(){
+	$.formHelp({
+	});	
+})

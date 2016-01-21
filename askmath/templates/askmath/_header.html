@@ -30,7 +30,7 @@
         <a class="dropdown-toggle fg-white"><span class="mif-user"></span> {{ request.user.get_full_name }}</a>
         <div class="app-bar-drop-container bg-white fg-dark place-right"
                 data-role="dropdown" data-no-close="true">
-            <div class="padding20">
+            <div>
             	<div id="profile" class="image-container">
 					<div class="frame">
 						{% if request.user.get_profile_image %}
@@ -45,12 +45,17 @@
 						</a>
 					</label>
 				</div>
-                <ul class="v-menu width subdown darcula">
-					<li class="menu-title">{% trans "Account" %}</li>
+                <ul class="v-menu width subdown navy">
 					<li>
 						<a href="/home/person/account/view/">
 							<span class="icon mif-user"></span>
 							<span class="title">{% trans "Profile" %}</span>
+						</a>
+					</li>
+					<li>
+						<a href="/home/person/account/view/">
+							<span class="icon mif-help"></span>
+							<span class="title">{% trans "Help" %}</span>
 						</a>
 					</li>
 					<li>
@@ -61,18 +66,16 @@
 					</li>
 				</ul>
             </div>
-            </br>
-            </br>
         </div>
     </div>
 	{% endif %}
 
 	{% if perms.askmath.access_content %}
-	<div class="app-bar-element place-right no-hovered">
+	<div class="app-bar-element place-right no-hover">
 		<form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
             <div class="input-control text" style="width: 250px; margin-right: 10px">
                 <input id="search" name="search" type="text" maxlength="100" type="text" placeholder="{% trans "Search" %}..." required>
-                <button class="button"><span class="mif-search"></span></button>
+                <button class="button"><span class="mif-search fg-darkBlue"></span></button>
             </div>
         </form>
 	</div>

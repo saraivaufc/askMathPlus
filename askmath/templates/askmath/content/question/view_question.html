@@ -34,7 +34,7 @@
 						<div class="row">
 							<table id="question_status" class="table table-bordered table-condensed text-center no-margin bg-white">
 								<tr>
-									<td>{% trans "Scores" %} : {{ studentlessonstate.get_scores }}</td>
+									<td>{% trans "Accumulated Points" %} : {{ studentlessonstate.get_scores }}</td>
 									<td>{% trans "Correct Questions" %} : {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
 									<td>{% trans "Skipped Remaining" %} : {{ studentlessonstate.get_remaining_jump }}</td>
 								</tr>
@@ -53,7 +53,7 @@
 									{% for item in question.get_items %}
 										<div class="row">
 											<label class="input-control radio small-check">
-											    <input type="radio"  name="item" value={{ item.id }}>
+											    <input type="radio"  name="item" value={{ item.id }} required>
 											    <span class="check"></span>
 											    <span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>
 											</label>
@@ -66,7 +66,7 @@
 										<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
 								  	</div>
 								  	<div class="btn-group">
-								  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></a>
+								  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Pedir Ajuda" %}</spam></a>
 									</div>
 									<div class="btn-group">
 									    <a class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></a>
@@ -188,10 +188,6 @@
 		<div class="col-xs-12 col-sm-5  col-md-3 col-lg-3">
 			{% block container-rigth %}
 				<div class="panel width">
-					<div class="heading text-center">
-						<span class="icon mif-chart-dots text-left"></span>
-						<span class="title">{% trans "Progress" %}</span>
-					</div>
 					<div class="content">
 						<div class="container-fluid">
 							<div class="row">
@@ -214,35 +210,6 @@
 									{% endfor %}
 								</div>
 							</div>
-							
-							
-							{% if studentlessonstate.get_percentage_completed == 100 %}
-								<h5>{% trans "Sugestions next lessons:" %}</h5>
-								<ul>
-								{% for sugestion in lesson.get_sugestions %}
-									<li>
-										<a class="lead fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ sugestion.id }}/">
-										{{ sugestion.get_title }}
-										</a>
-									</li>
-								{% empty %}
-									<h5>{% trans "It has no sugestions." %}</h5>
-								{% endfor %}
-								</ul>
-							{% else %}
-								<h5>{% trans "Requirements recommended:" %}</h5>
-								<ul>
-								{% for requirement in lesson.get_requirements %}
-									<li>
-										<a class="lead  fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ requirement.id }}/">
-										{{ requirement }}
-										</a>
-									</li>
-								{% empty %}
-									<h5>{% trans "It has no requirements." %}</h5>
-								{% endfor %}
-								</ul>
-							{% endif %}
 						</div>	
 					</div>
 				</div>
