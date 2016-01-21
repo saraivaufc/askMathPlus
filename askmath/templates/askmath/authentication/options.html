@@ -17,8 +17,11 @@
 
 <div class="container-fluid">
 <div class="row">
+
 <div class="col-sm-12 col-sm-6 col-sm-offset-3  col-md-4 col-md-offset-4">
-	<div class="tabcontrol" data-role="tabControl">
+	
+
+	<div class="tabcontrol"  id="tab-control" data-role="tabControl">
 		<ul id="menu-options" class="tabs">
 			{% if tab_actived == 'sign_in' %}
 			<li class="active">
@@ -117,29 +120,20 @@
 						</button>
 					</div>
 				</form>
-			{% endwith %}            
+				{% endwith %}            
 			</div>
+		</div>
 	</div>
 </div>
 </div>
 </div>
 {% endblock %}
 
-{% comment %}
-<div class="frame" id="frame_recover_password">
-	{% with form_recover_password as form %}
-	<form action="/authentication/options/" method="POST" role="form">
-	{% csrf_token %}
-		<hr class="thin"/>
-		<input type="hidden" name="option" value="recover_password">		        
-		{% include "askmath/_render_form.html" %}
-		<div class="form-actions">
-			<button type="submit" class="image-button btn-block button-primary">
-				{% trans "Recover" %}
-				<span class="icon mif-history"></span>
-			</button>
-		</div>
-	</form>
-	{% endwith %}
-</div>
-{% endcomment %}
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+	    $(function(){
+	        $("#tabcontrol").tabcontrol();
+	    })
+	</script>
+{% endblock %}
