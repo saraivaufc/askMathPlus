@@ -1515,13 +1515,11 @@ msgstr "Registrar-se"
 
 #: askmath/templates/askmath/authentication/options.html:58
 msgid "Or"
-msgstr ""
+msgstr "Ou"
 
 #: askmath/templates/askmath/authentication/options.html:71
-#, fuzzy
-#| msgid "Reset my password"
 msgid "Forgot your password ?"
-msgstr "Alterar minha senha"
+msgstr "Esqueceu a senha?"
 
 #: askmath/templates/askmath/authentication/options.html:86
 msgid "STUDENT"
@@ -1709,7 +1707,7 @@ msgstr "Restaurar"
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:38
 #: env/lib/python2.7/site-packages/django/forms/formsets.py:371
 msgid "Delete"
-msgstr ""
+msgstr "Apagar"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:30
 #: askmath/templates/askmath/forum/topic/view_topics.html:33
@@ -1719,10 +1717,8 @@ msgstr ""
 #: askmath/templates/askmath/manager/person/manager_view_persons.html:35
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:52
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:52
-#, fuzzy
-#| msgid "Close"
 msgid "Close Dump"
-msgstr "Fechar"
+msgstr "Fechar Lixeira"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:35
 #: askmath/templates/askmath/forum/topic/view_topics.html:38
@@ -1732,10 +1728,8 @@ msgstr "Fechar"
 #: askmath/templates/askmath/manager/person/manager_view_persons.html:40
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:57
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:57
-#, fuzzy
-#| msgid "Dump"
 msgid "Open Dump"
-msgstr "Lixeira"
+msgstr "Abrir Lixeira"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:52
 msgid "Posts"

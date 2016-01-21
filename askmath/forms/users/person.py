@@ -10,69 +10,76 @@ from askmath.widgets.fields import AdvancedFileInput
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 class PersonForm(ModelForm):
-	#captcha = NoReCaptchaField()
-	confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_('Please enter you password.'), 
-		widget=PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'}))
-	class Meta:
-		model= Person
-		fields = ("first_name","last_name", "email","username", "password","confirm_password")
-		widgets = {
-			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			'email': EmailInput(attrs={'required': 'required'}),
-			'username': TextInput(attrs={'required': 'required'}),
-			'password': PasswordInput(attrs={'required': 'required'}),
-			'confirm_password': PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'})
-		}
-	
+    #captcha = NoReCaptchaField()
+    confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_('Please enter you password.'), 
+        widget=PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'}))
+    class Meta:
+        model= Person
+        fields = ("first_name","last_name", "email","username", "password","confirm_password")
+        widgets = {
+            'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'email': EmailInput(attrs={'required': 'required'}),
+            'username': TextInput(attrs={'required': 'required'}),
+            'password': PasswordInput(attrs={'required': 'required'}),
+            'confirm_password': PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'})
+        }
+    def clean_confirm_password(self):
+        password1 = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('confirm_password')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(_("The two password fields didn't match."))
+        return password2
+    
 class PersonLoginForm(forms.Form):
-	username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
-		widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True'}), 
-		error_messages={'required': _('Please enter you username.')} )
-	password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
-		widget=forms.PasswordInput(attrs={'required': 'required'}),
-		error_messages={'required': _('Please enter you password.')})
-	#captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Check the option.'))
+    username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
+        widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True'}), 
+        error_messages={'required': _('Please enter you username.')} )
+    password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
+        widget=forms.PasswordInput(attrs={'required': 'required'}),
+        error_messages={'required': _('Please enter you password.')})
+    #captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Check the option.'))
 
 class PersonProfile(ModelForm):
-	class Meta:
-		model= Person
-		fields = ("first_name","last_name", "username","email","profile_image")
-		widgets = {
-			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			
-			'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-			'name': TextInput(attrs={'required': 'required'}),
-			'email': EmailInput(attrs={'required': 'required'}),
-			'profile_image': AdvancedFileInput(attrs={}),
-		}
+    class Meta:
+        model= Person
+        fields = ("first_name","last_name", "username","email","profile_image")
+        widgets = {
+            'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            
+            'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'name': TextInput(attrs={'required': 'required'}),
+            'email': EmailInput(attrs={'required': 'required'}),
+            'profile_image': AdvancedFileInput(attrs={}),
+        }
 
-	def clean_profile_image(self):
-		profile_image = self.cleaned_data["profile_image"]
-		try:
-			if profile_image and profile_image.name.find('askmath') == -1:
-				hash = hashlib.md5(profile_image.read()).hexdigest()
-				profile_image.name = "askmath_" + "".join((hash, ".", profile_image.name.split(".")[-1]))
-		except:
-			pass
-		return profile_image
+    def clean_profile_image(self):
+        profile_image = self.cleaned_data["profile_image"]
+        try:
+            if profile_image and profile_image.name.find('askmath') == -1:
+                hash = hashlib.md5(profile_image.read()).hexdigest()
+                profile_image.name = "askmath_" + "".join((hash, ".", profile_image.name.split(".")[-1]))
+        except:
+            pass
+        return profile_image
 
 class PersonRecoverPassword(forms.Form):
-	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
-		widget=forms.EmailInput(attrs={'required': 'required'}),
-		error_messages={'required': _('Please enter your email.')})
-	#captcha = NoReCaptchaField()
-	
+    email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
+        widget=forms.EmailInput(attrs={'required': 'required'}),
+        error_messages={'required': _('Please enter your email.')})
+    #captcha = NoReCaptchaField()
+    
 class PersonAlterPassword(forms.Form):
-	old_password = forms.CharField(label=_('Old Password'),help_text=_("Please enter you old password."),
-		widget=forms.PasswordInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
-		error_messages={'required': _('Please enter you old password.')} )
-	new_password = forms.CharField(label=_('New Password'),help_text=_("Please enter you new password."), 
-		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
-		error_messages={'required': _('Please enter you new password.')})
-	confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_("Please enter you new password."),
-		widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
-		error_messages={'required': _('Please repeat your new password.')})
+    old_password = forms.CharField(label=_('Old Password'),help_text=_("Please enter you old password."),
+        widget=forms.PasswordInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
+        error_messages={'required': _('Please enter you old password.')} )
+    new_password = forms.CharField(label=_('New Password'),help_text=_("Please enter you new password."), 
+        widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
+        error_messages={'required': _('Please enter you new password.')})
+    confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_("Please enter you new password."),
+        widget=forms.PasswordInput(attrs={'required': 'required', 'class':'input-control password full-size'}),
+        error_messages={'required': _('Please repeat your new password.')})
 
 

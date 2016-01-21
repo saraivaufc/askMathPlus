@@ -24,7 +24,7 @@
 				<div class="bg-white-opacity">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="meter">
+							<div class="meter bg-grayLight">
 							  <span class="text-center fg-white" style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
 							</div>
 						</div>
@@ -32,7 +32,7 @@
 
 					<div class="container-fluid">
 						<div class="row">
-							<table id="question_status" class="table table-bordered table-condensed text-center no-margin">
+							<table id="question_status" class="table table-bordered table-condensed text-center no-margin bg-white">
 								<tr>
 									<td>{% trans "Scores" %} : {{ studentlessonstate.get_scores }}</td>
 									<td>{% trans "Correct Questions" %} : {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
@@ -202,9 +202,9 @@
 							<div class="row">
 								<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
 							</div>
-							<div class="row">
+							<div class="row text-center">
 								<div class="rating large" data-size="large">
-									{% for i in 10|range  %}
+									{% for i in 5|range  %}
 										{% if forloop.counter <= studentexperience.stars %}
 											<span class="star on"></span>
 										{% else %}

@@ -425,7 +425,7 @@ function showCharm(id){
 
 
 function validConfirmPassword(){
-	if($("input[name='password']").val() != $("input[name='confirm_password']").val() ){
+	if($("input[name='password']").text() != $("input[name='confirm_password']").text() ){
 	    $("input[name='password']").css("border", "#FF0000 solid 1px")
 	    $("input[name='confirm_password']").css("border", "#FF0000 solid 1px")
 	}else{
@@ -433,3 +433,8 @@ function validConfirmPassword(){
 	    $("input[name='confirm_password']").css("border", "#FFF solid 0px");
 	}
 }
+
+// $(function(){
+// 	$.formHelp({
+// 	});	
+// })

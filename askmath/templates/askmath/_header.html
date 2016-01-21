@@ -1,36 +1,51 @@
 {% load i18n %}
 {% load askmath_tags %}
-<ul id="menu-header" class="h-menu">
-	<li>
-		<a href="#" onclick="showCharm('#charmControls');" alt="{% trans "Menu" %}">
-			<span class="icon mif-lg mif-menu"></span>
-		</a>
-	</li>
-	<li class="logo-system">
-		<a href="/home/"  class="logo no-padding no-margin" rel="{% trans "Home" %}"  itemprop="title">
-			<img class="image-logo no-margin" src="{{ STATIC_URL }}askmath/img/logos/logo-white.png" />
-		</a>
-	</li>
-	<li>
-		<a href="/home/">
-			{% trans "Home" %}
-		</a>
-	</li>
-	<li>
-		<a href="/forum/">
-			{% trans "Forum" %}
-		</a>
-	</li>
-	{% if perms.askmath.access_content %}
-	<li class="place-right">
-		<a href="#" onclick="showCharm('#charmSearch');">
-			<span class="icon mif-search mif-lg"></span>
-		</a>
-	</li>
-	{% endif %}
-</ul>
+<div class="app-bar navy" data-role="appbar">
+	<a class="app-bar-element branding" href="/home/">
+		{% SETTINGS "SITE_NAME" %}
+	</a>
+	 <span class="app-bar-divider"></span>
 
-<div id="charmControls" data-role="charm" data-position="left">
+	<ul class="app-bar-menu">
+		<li>
+			<a href="/home/">
+				{% trans "Home" %}
+			</a>
+		</li>
+		<li>
+			<a href="/forum/">
+				{% trans "Forum" %}
+			</a>
+		</li>
+	</ul>
+
+	{% if not request.user.is_authenticated %}
+	<div class="app-bar-element place-right">
+		<a href="/authentication/options/">
+			<span class="mif-enter"></span> {% trans "Enter" %}
+		</a>
+	</div>
+	{% else %}
+	<div class="app-bar-element place-right">
+		<a href="#" class="dropdown-toggle" onclick="showCharm('#charmControls');">
+			<span class="mif-user"></span> {{ request.user.get_full_name }}
+		</a>
+	</div>
+	{% endif %}
+
+	{% if perms.askmath.access_content %}
+	<div class="app-bar-element place-right no-hovered">
+		<form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
+            <div class="input-control text" style="width: 250px; margin-right: 10px">
+                <input id="search" name="search" type="text" maxlength="100" type="text" placeholder="{% trans "Search" %}..." required>
+                <button class="button"><span class="mif-search"></span></button>
+            </div>
+        </form>
+	</div>
+	{% endif %}
+</div>
+
+<div id="charmControls" data-role="charm" data-position="right">
 	<hr class="thin"/>
 	<div class="controls">
 		{% if request.user.is_authenticated %}
@@ -59,19 +74,20 @@
 			<div class="row">
 				<ul class="v-menu width subdown darcula">
 					{% if request.user.is_authenticated %}
+					<li class="menu-title">{% trans "Account" %}</li>
 					<li>
 						<a href="/home/person/account/view/">
 							<span class="icon mif-user"></span>
 							<span class="title">{% trans "Profile" %}</span>
 						</a>
 					</li>
-					{% endif %}
-					
 					<li>
-						<a href="/forum/">
-							<span class="icon mif-bubbles"></span> {% trans "Forum" %}
+						<a href="/authentication/logout/">
+							<span class="icon mif-switch"></span>
+							<span class="title">{% trans "Logout" %}</span>
 						</a>
 					</li>
+					{% endif %}
 					{% if perms.askmath.access_manager_statistics %}
 					{% block statistic %}
 					<li>
@@ -121,40 +137,11 @@
 							</a>
 						</li>
 					{% endcomment %}
-					{% if request.user.is_authenticated %}
-					<li>
-						<a href="/authentication/logout/">
-							<span class="icon mif-switch"></span>
-							<span class="title">{% trans "Logout" %}</span>
-						</a>
-					</li>
-					{% else %}
-					<li>
-						<a href="/authentication/options/">
-							<span class="icon mif-enter"></span>
-							<span class="title">{% trans "Enter" %}</span>
-						</a>
-					</li>
-					{% endif %}
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div id="charmSearch" data-role="charm" data-position="right" class="charm right-side bg-grayDark">
-        <h1 class="text-light text-center">{% trans "Search" %}</h1>
-        <hr class="thin"/>
-        <br />
-        <div class="input-control text full-size">
-            <form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
-				<div class="input-control text">
-					<input id="search" name="search" type="text" maxlength="100" class="form-control" required>			
-					<button class="button"><span class="mif-search"></span></button>
-				</div>
-			</form>
-        </div>
-    </div>
 
 
 

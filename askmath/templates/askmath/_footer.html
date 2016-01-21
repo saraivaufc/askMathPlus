@@ -1,31 +1,33 @@
 {% load i18n %}
 {% load askmath_tags %}
-<ul id="menu-footer" class="h-menu">
-    <li>
-        <a href="#" itemprop="title">
-            <span>© 2015 - {% SETTINGS "SITE_COMPANY" %}</span>
-        </a>
-    </li>
-    <li>
-        <a href="/about/">{% trans "About Us" %}</a>
-    </li>
-    <li>
-        <a href="/message/">{% trans "Contact Us" %}</a>
-    </li>
-    <li>
-        <a href="/terms/">{% trans "Terms of service" %}</a>
-    </li>
-    <li>
-        <a href="/policies/">{% trans "Privacy policy" %}</a>
-    </li>
-    <li>
-        <a data-toggle="modal" data-target="#modal-shared" href="#">{% trans "Shared" %}</a>
-    </li>
-    <li>
-        <a href="/feed/" alt="{% trans "RSS" %}">
-            <img class="rss-icon img img-responsive" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg"></a>
-    </li>
-</ul>
+<div class='app-bar drop-up'>
+    <ul class="app-bar-menu">
+        <li>
+            <a href="#" itemprop="title">
+                <span>© 2015 - {% SETTINGS "SITE_COMPANY" %}</span>
+            </a>
+        </li>
+        <li>
+            <a href="/about/">{% trans "About Us" %}</a>
+        </li>
+        <li>
+            <a href="/message/">{% trans "Contact Us" %}</a>
+        </li>
+        <li>
+            <a href="/terms/">{% trans "Terms of service" %}</a>
+        </li>
+        <li>
+            <a href="/policies/">{% trans "Privacy policy" %}</a>
+        </li>
+        <li>
+            <a data-toggle="modal" data-target="#modal-shared" href="#">{% trans "Shared" %}</a>
+        </li>
+        <li>
+            <a href="/feed/" alt="{% trans "RSS" %}">
+                <img class="rss-icon" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg"></a>
+        </li>
+    </ul>
+</div>
 {% comment %}  
 
 {% endcomment %}

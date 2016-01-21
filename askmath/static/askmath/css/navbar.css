@@ -1,25 +1,3 @@
-#header  .h-menu, #footer .h-menu{
-    background-image: none !important;
-    background-color:  rgba(0,0,0,0.3) !important; /* browsers */
-    color: #fff !important;
-}
-#header > .h-menu  a:hover, #footer > .h-menu  a:hover{
-    background-color: #888;
-}
-
-#menu-header > li.search{
-    background-color:transparent;
-}
-
-
-.h-menu{
-    color: #fff;
-    border:none;
-}
-
-.h-menu a, .h-menu .icon{
-	color: #fff !important;
-}
 
 
 

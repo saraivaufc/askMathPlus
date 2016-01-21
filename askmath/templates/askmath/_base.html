@@ -68,6 +68,13 @@
 		<!-- Animate -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/animate.css" >
 		
+
+		<!-- Latex Editor -->
+		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/components/editor/latex/css/equation-6.css" type="text/css">
+
+		<!-- Jquery Form Helps -->
+		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/jquery-form-helps/css/formhelp.css" >
+
 		{% block stylesheet %}
 		{% endblock %}
 		
@@ -81,8 +88,6 @@
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/shapes.css" >
 		
 		
-		<!-- Latex Editor -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/components/editor/latex/css/equation-6.css" type="text/css">
 		
 		<!-- RESPONSIVE -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/base.css">
@@ -151,6 +156,8 @@
 		<!-- Jquery Ui -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/jquery-ui/jquery-ui.min.js"></script>
 
+
+
 		<!-- Select2 -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/select2/select2.min.js"></script>
 
@@ -169,6 +176,16 @@
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/packaged/jquery.noty.packaged.js"></script>
 		<script src="{{ STATIC_URL }}askmath/frameworks/noty/themes/relax.js"></script>
 
+
+		<script type="text/javascript">AC_FL_RunContent = 0;</script>
+		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_config.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_editor-combo-18.js"></script>
+		
+
+		<!-- Jquery form Helps -->
+		<script src="{{ STATIC_URL }}askmath/frameworks/jquery-form-helps/formhelp.js"></script>
+
+
 		<!-- My Scripts -->
 		<script src="{{ STATIC_URL }}askmath/js/initial.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/popovers.js"></script>
@@ -179,11 +196,9 @@
 		<script src="{{ STATIC_URL }}askmath/js/metro.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/update_tables.js"></script>
 		<script src="{{ STATIC_URL }}askmath/js/scripts.js"></script>
-		
-		<script type="text/javascript">AC_FL_RunContent = 0;</script>
-		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_config.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }}askmath/components/editor/latex/js/eq_editor-combo-18.js"></script>
-		
+	
+
+
 		{% block scripts %}
 		{% endblock %}
 		{% comment %}  

@@ -13,6 +13,7 @@
 
 {% block tiles %}
 <div class="tile-area no-padding bg-transparent">
+<h4>{% trans "Lessons of" %} {{ discipline.get_title }}</h4>
     <div class="tile-container">
 	{% for lesson in discipline.get_lessons_visibles %}
          <div class="tile-wide {{ lesson.color }}">

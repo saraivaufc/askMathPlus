@@ -253,3 +253,8 @@ ul#menu-options > li > a {
 #charmControls{
 	overflow-y: auto !important; 
 }
+
+
+.meter{
+	border-radius: 0px !important;
+}
