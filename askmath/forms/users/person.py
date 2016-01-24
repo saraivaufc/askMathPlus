@@ -8,18 +8,25 @@ import hashlib
 from askmath.models.users import Person
 from askmath.widgets.fields import AdvancedFileInput
 from nocaptcha_recaptcha.fields import NoReCaptchaField
-from askmath.entities import person_types 
+from askmath.entities import person_types
+from django.contrib.auth.hashers import make_password
+
 
 
 class PersonForm(ModelForm):
     #captcha = NoReCaptchaField()
+    password = forms.CharField(label=_('Password'), 
+                                help_text=_('Please enter you password.'),
+                                widget=forms.PasswordInput)
     confirm_password = forms.CharField(label=_('Confirm Password'), 
-                                        help_text=_('Please enter you password.'),)
+                                        help_text=_('Please confirm you password.'),
+                                        widget=forms.PasswordInput(attrs={'onkeyup':'validConfirmPassword();'}))
     user_type = forms.ChoiceField(label=_("User Type"), 
                              help_text=_('Please enter you type user.'), 
                              choices=person_types.TYPES, 
                              initial='STUDENT',)
     key = forms.CharField(label=_('Access Key'), help_text=_(u'Please enter you access key.'), required=False) 
+    
     class Meta:
         model= Person
         fields = ("first_name","last_name", "email","username", "password","confirm_password","user_type", "key")
@@ -27,18 +34,30 @@ class PersonForm(ModelForm):
             'first_name': TextInput(attrs={'autofocus': 'True'}),
             'last_name': TextInput(),
             'email': EmailInput(),
-            'username': TextInput(),
+            'username': TextInput(attrs={}),
             'password': PasswordInput(attrs={}),
-            'confirm_password': PasswordInput(attrs={'onkeyup':'validConfirmPassword();'}),
-            'user_type' : Select(attrs={''}),
         }
+    def clean_password(self):
+        password = str(self.cleaned_data.get('password'))
+        print "Password=",password
+        return make_password(password=password,
+                                          salt='50000',
+                                          hasher='md5')
+
     def clean_confirm_password(self):
-        password1 = self.cleaned_data.get('password')
-        password2 = self.cleaned_data.get('confirm_password')
-        if password1 and password2:
-            if password1 != password2:
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+        print "Confirm passowrd=",confirm_password
+        confirm_password = make_password(password=confirm_password,
+                                          salt='50000',
+                                          hasher='md5')
+
+        print password, '==', confirm_password
+
+        if password and confirm_password:
+            if password != confirm_password:
                 raise forms.ValidationError(_("The two password fields didn't match."))
-        return password2
+        return confirm_password
     
 class PersonLoginForm(forms.Form):
     username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
@@ -47,13 +66,6 @@ class PersonLoginForm(forms.Form):
     password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
         widget=forms.PasswordInput(attrs={'required': 'required'}),
         error_messages={'required': _('Please enter you password.')})
-
-    def clean_username(self):
-        data = self.cleaned_data['username']
-        if Person.objects.filter(username=data).exists():
-            raise ValidationError(_(u'Username already taken.'))
-        return data
-            
 
 class PersonProfile(ModelForm):
     class Meta:

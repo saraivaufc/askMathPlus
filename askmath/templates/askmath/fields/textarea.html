@@ -5,7 +5,7 @@
     	   type="text"
     	   name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
     	   title="{{ field.help_text }}" 
-    	   {% if field.required %}required{% endif %}>
+    	   {% if field.field.required %}required{% endif %}>
     	   {% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}
     </textarea>
 </div>

@@ -438,13 +438,15 @@ function showCharm(id){
 }
 
 
-
-function validConfirmPassword(){
-	if($("input[name='password']").text() != $("input[name='confirm_password']").text() ){
-	    $("input[name='password']").css("border", "#FF0000 solid 1px")
-	    $("input[name='confirm_password']").css("border", "#FF0000 solid 1px")
-	}else{
-		$("input[name='password']").css("border", "#FFF solid 0px");
-	    $("input[name='confirm_password']").css("border", "#FFF solid 0px");
-	}
-}
+$(function(){
+	$("#signUpForm  input[name=confirm_password]").change(function(){
+		
+		if($("#signUpForm input[name='password']").text() != $("#signUpForm input[name='confirm_password']").text() ){
+		    $("#signUpForm input[name='password']").css("border", "#FF0000 solid 1px")
+		    $("#signUpForm input[name='confirm_password']").css("border", "#FF0000 solid 1px")
+		}else{
+			$("#signUpForm input[name='password']").css("border", "#FFF solid 0px");
+		    $("#signUpForm input[name='confirm_password']").css("border", "#FFF solid 0px");
+		}
+	});
+});

@@ -40,12 +40,20 @@
 			    <button class="command-button success" onclick="window.location='/home/content/questions/view_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/'">
 			        <span class="icon mif-list-numbered"></span>
 			       {% trans "Questions" %}
-			        <small>São {{ lesson.get_questions_visibles|length }} questões criadas especialmente para você</small>
+			        <small>
+			        {% blocktrans with qtd_questions=lesson.get_questions_visibles|length %}
+			        	 Are {{ qtd_questions }} questions issues created especially for you.
+			        {% endblocktrans %}
+			       </small>
 			    </button>
 			    <button class="command-button info" onclick="window.location='/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/'">
 			        <span class="icon mif-video-camera"></span>
 			        {% trans "Videos" %}
-			        <small>Temos {{ lesson.get_questions_visibles|length }} vídeo-aulas para ampliar seus conhecimentos</small>
+			        <small>
+			        {% blocktrans with qtd_videos=lesson.get_videos_visibles|length %}
+			        	 We have {{ qtd_videos }} Video lessons to expand their knowledge.
+			        {% endblocktrans %}
+					</small>
 			    </button>
 			    {% if studentlessonstate.get_percentage_completed == 100 %}
 					<h5>{% trans "Sugestions next lessons:" %}</h5>
@@ -61,7 +69,7 @@
 					{% endfor %}
 					</ul>
 				{% else %}
-					<h5>{% trans "Recomendamos concluir as lições abaixo antes de prosseguir:" %}</h5>
+					<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
 					<ul>
 					{% for requirement in lesson.get_requirements %}
 						<li>

@@ -88,8 +88,8 @@ class Account(IAccount):
         return self.options(request)
     
     def signup(self, request):
+        print request
         request.POST = request.POST.copy()
-        request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
         
         type = request.POST['user_type']
         form = None

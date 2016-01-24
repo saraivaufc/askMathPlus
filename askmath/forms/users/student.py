@@ -6,3 +6,5 @@ from askmath.models import Student
 class StudentForm(PersonForm):
     class Meta(PersonForm.Meta):
         model= Student
+
+ 

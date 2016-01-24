@@ -76,7 +76,7 @@
 			</div>
 			<div class="frame" id="frame_sign_up">
 				{% with form_signup as form %}
-				<form  action="/authentication/options/" method="POST" enctype="multipart/form-data" onSubmit="return validateSigup();" role="form">
+				<form  id="signUpForm" action="/authentication/options/" method="POST" enctype="multipart/form-data"  role="form">
 				{% csrf_token %}
 					<hr class="thin"/>
 					<input type="hidden" name="option" value="sign_up">			
@@ -103,13 +103,4 @@
 </div>
 </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-{{ block.super }}
-<script type="text/javascript">
-	    $(function(){
-	        $("#tabcontrol").tabcontrol();
-	    })
-	</script>
 {% endblock %}

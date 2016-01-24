@@ -29,6 +29,7 @@ class PersonManager(UserManager):
         return user
 
     def create_superuser(self, username, email=None,  password=None):
+
         print 'create_superuser'
         user = self.create_user(username,email , password, 'administrator')
         return user
@@ -67,7 +68,8 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
     first_name = models.CharField(_(u"First Name "), max_length=100, blank=False,null=True,help_text=_(u'Please enter you first name.'),)
     last_name = models.CharField(_(u"Last Name "), max_length=100, blank=False,null=True,help_text=_(u'Please enter you last name.'),)
     username = models.CharField(_(u"Username"), max_length=30, unique=True, db_index=True, help_text=_(u'Please enter you username.'),)
-    email = models.EmailField(_(u"Email"), max_length=254, unique=True, blank=False, help_text=_(u'Please enter you email.'),)
+    email = models.EmailField(_(u"Email"), max_length=254, unique=True, blank=False, help_text=_(u'Please enter you email.'),)    
+
     is_staff = models.BooleanField(_(u'staff status'), default=False,
                                    help_text=_(u'Designates whether the user can log into this admin site.'))
     is_active = models.BooleanField(_('active'), default=True,
