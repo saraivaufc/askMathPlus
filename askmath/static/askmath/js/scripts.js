@@ -247,16 +247,30 @@ $(function(){
 	});
 });
 
+function showKey(){
+	$("input[name='key']").removeAttr("disabled");
+	$("label[for='id_key']").css({'display': 'block'});
+	$("input[name='key']").css({'display': 'block'});
+	$("input[name='key']").attr("required","required");
+}
+
+function hideKey(){
+	$("input[name='key']").removeAttr("required");
+	$("input[name='key']").attr("disabled", "disabled");
+	$("label[for='id_key']").css({'display': 'none'});
+	$("input[name='key']").css({'display': 'none'});
+}
+
 $(function(){
-	$("#select-signup").change(function(){
+	hideKey();
+	$("select[name='user_type']").change(function(){
 		if($(this).val() != "STUDENT"){
-			$("#input-key").removeAttr("disabled");
-			$("#input-key").attr("required","required");
+			showKey();
 		}else{
-			$("#input-key").removeAttr("required");
-			$("#input-key").attr("disabled", "disabled");
+			hideKey();
 		}
 	});
+
 });
 
 $(function(){
@@ -424,6 +438,7 @@ function showCharm(id){
 }
 
 
+
 function validConfirmPassword(){
 	if($("input[name='password']").text() != $("input[name='confirm_password']").text() ){
 	    $("input[name='password']").css("border", "#FF0000 solid 1px")
@@ -433,8 +448,3 @@ function validConfirmPassword(){
 	    $("input[name='confirm_password']").css("border", "#FFF solid 0px");
 	}
 }
-
-$(function(){
-	$.formHelp({
-	});	
-})

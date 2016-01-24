@@ -91,7 +91,7 @@ class Account(IAccount):
         request.POST = request.POST.copy()
         request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
         
-        type = request.POST['type']
+        type = request.POST['user_type']
         form = None
         register_key = None
         

@@ -1,6 +1,11 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
 	<div class="input-control number">
-	    {{ field }}
+	     <input id="{{ field.auto_id }}" 
+    	   type="number"
+    	   name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
+    	   value="{% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}"
+    	   title="{{ field.help_text }}" 
+    	   {% if field.required %}required{% endif %}
+    />
 	</div>
-{% include 'askmath/fields/help.html' %}

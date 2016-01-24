@@ -1,28 +1,36 @@
 #-*- encoding=utf-8 -*-
 
 from django import forms
-from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput
+from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput, Select
 from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.users import Person
 from askmath.widgets.fields import AdvancedFileInput
 from nocaptcha_recaptcha.fields import NoReCaptchaField
+from askmath.entities import person_types 
+
 
 class PersonForm(ModelForm):
     #captcha = NoReCaptchaField()
-    confirm_password = forms.CharField(label=_('Confirm Password'), help_text=_('Please enter you password.'), 
-        widget=PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'}))
+    confirm_password = forms.CharField(label=_('Confirm Password'), 
+                                        help_text=_('Please enter you password.'),)
+    user_type = forms.ChoiceField(label=_("User Type"), 
+                             help_text=_('Please enter you type user.'), 
+                             choices=person_types.TYPES, 
+                             initial='STUDENT',)
+    key = forms.CharField(label=_('Access Key'), help_text=_(u'Please enter you access key.'), required=False) 
     class Meta:
         model= Person
-        fields = ("first_name","last_name", "email","username", "password","confirm_password")
+        fields = ("first_name","last_name", "email","username", "password","confirm_password","user_type", "key")
         widgets = {
-            'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-            'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-            'email': EmailInput(attrs={'required': 'required'}),
-            'username': TextInput(attrs={'required': 'required'}),
-            'password': PasswordInput(attrs={'required': 'required'}),
-            'confirm_password': PasswordInput(attrs={'required': 'required', 'onchange':'validConfirmPassword();'})
+            'first_name': TextInput(attrs={'autofocus': 'True'}),
+            'last_name': TextInput(),
+            'email': EmailInput(),
+            'username': TextInput(),
+            'password': PasswordInput(attrs={}),
+            'confirm_password': PasswordInput(attrs={'onkeyup':'validConfirmPassword();'}),
+            'user_type' : Select(attrs={''}),
         }
     def clean_confirm_password(self):
         password1 = self.cleaned_data.get('password')
@@ -39,7 +47,13 @@ class PersonLoginForm(forms.Form):
     password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
         widget=forms.PasswordInput(attrs={'required': 'required'}),
         error_messages={'required': _('Please enter you password.')})
-    #captcha = NoReCaptchaField(label=_("Captcha"), help_text=_('Check the option.'))
+
+    def clean_username(self):
+        data = self.cleaned_data['username']
+        if Person.objects.filter(username=data).exists():
+            raise ValidationError(_(u'Username already taken.'))
+        return data
+            
 
 class PersonProfile(ModelForm):
     class Meta:

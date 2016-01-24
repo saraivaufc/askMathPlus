@@ -1,23 +1,25 @@
 {% load i18n %}
 
 <!-- Falta traduzir isso daqui -->
-<div id="nav-accessibillity" class="container-fluid">
-<div class="row">
-<div class="col-xs-6 col-sm-3 col-md-3 text-center hidden-xs">
-	<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %} [1]
-	</a>
-</div>
-<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-	<a href="#" class="disable-contrast" id="button-contrast" accesskey="2" title="{% trans "On/Off High Contrast - Shortcut #3" %}">High Contrast-OFF [2]
-	</a>
-</div>
-<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-	<a href="#" class="font-minus" id="increase-font" accesskey="3" title="{% trans "Increase Font - Shortcut #4" %}">Increase Font [3]
-	</a>
-</div>
-<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-	<a href="#" class="font-minus" id="decrease-font" accesskey="4" title="{% trans "Decrease Font - Shortcut #4" %}">Decrease Font [4]
-	</a>
-</div>
-</div>
+<div id="nav-accessibillity">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-6 col-sm-3 col-md-3 text-right">
+				<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %} [1]
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
+				<a href="#" class="disable-contrast" id="button-contrast" accesskey="2" title="{% trans "On/Off High Contrast - Shortcut #3" %}">{% trans "High Contrast-OFF" %} [2]
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
+				<a href="#" class="font-minus" id="increase-font" accesskey="3" title="{% trans "Increase Font - Shortcut #4" %}">{% trans "Increase Font" %} [3]
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
+				<a href="#" class="font-minus" id="decrease-font" accesskey="4" title="{% trans "Decrease Font - Shortcut #4" %}">{% trans "Decrease Font" %} [4]
+				</a>
+			</div>
+		</div>
+	</div>
 </div>

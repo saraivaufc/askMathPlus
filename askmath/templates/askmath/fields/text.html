@@ -1,6 +1,12 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
-	<div  class="input-control text full-size">
-	    {{ field }}
-	</div>
-{% include 'askmath/fields/help.html' %}
+<div  class="input-control text full-size" data-role="input">
+    <input id="{{ field.auto_id }}" 
+    	   type="text"
+    	   name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
+    	   value="{% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}"
+    	   title="{{ field.help_text }}" 
+    	   {% if field.required %}required{% endif %}
+    />
+    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+</div>

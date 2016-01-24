@@ -1,6 +1,13 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
-	<div class="input-control full-size" data-role="select">
-	    {{ field }}
-	</div>
-{% include 'askmath/fields/help.html' %}
+<div class="input-control full-size" data-role="select">
+    <select id="{{ field.auto_id }}" 
+	   		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
+	   		value="{% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}"
+	   		title="{{ field.help_text }}" 
+	   		{% if field.required %}required{% endif %}>
+	   {% for id, name in field.field.choices %}
+		    <option value="{{ id }}"{% if field.initial == id %} selected{% endif %}>{{ name }}</option>
+		{% endfor %}
+	</select>
+</div>

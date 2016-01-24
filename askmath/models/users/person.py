@@ -18,9 +18,8 @@ except:
 
 
 class PersonManager(UserManager):
-    def create_user(self, username, password=None, group='student'):
+    def create_user(self, username, email=None, password=None ,group='student'):
         print 'create_user'
-        email = username + '@email.com'
         user = self.model(
             username    = username,
             email       = email,
@@ -29,9 +28,9 @@ class PersonManager(UserManager):
         user.save(group= group)
         return user
 
-    def create_superuser(self, username, password):
+    def create_superuser(self, username, email=None,  password=None):
         print 'create_superuser'
-        user = self.create_user(username, password, 'administrator')
+        user = self.create_user(username,email , password, 'administrator')
         return user
 
 

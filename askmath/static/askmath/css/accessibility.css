@@ -1,18 +1,8 @@
-#nav-accessibillity a{
-	color: #fff;
+.highcontrast{
+	background-color: #000 !important;
+  	color: yellow !important;
 }
 
-.contrast{
-	background-color: #191919 !important;
-	color: #fff !important;
-}
-
-.link_contrast{
-	color: #ff0 !important;
-}
-
-.btn_contrast{
-	background: none !important;
-	background-color: #ff0 !important;
-	color: #000 !important;
+.highcontrast *{
+  	color: yellow !important;
 }

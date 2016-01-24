@@ -1,7 +1,12 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
-	<label class="input-control radio">
-	    {{ field }}
-	    <span class="check"></span>
-	</label>
-{% include 'askmath/fields/help.html' %}
+<label class="input-control radio">
+     <input id="{{ field.auto_id }}" 
+	   type="radio"
+	   name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
+	   value="{% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}"
+	   title="{{ field.help_text }}" 
+	   {% if field.required %}required{% endif %}
+	/>
+    <span class="check"></span>
+</label>

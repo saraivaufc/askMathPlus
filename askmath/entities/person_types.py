@@ -1,7 +1,16 @@
 #-*- encoding=UTF-8 -*-
 from askmath.models.users import Administrator, Teacher, Assistant, Student
-from askmath.forms.users import AdministratorForm, TeacherForm, AssistantForm, StudentForm
 from django.utils.translation import ugettext as _
+
+
+TYPES = (
+	('STUDENT', _(u"Student")),
+	('ASSISTANT', _(u"Assistant")),
+	('TEACHER', _(u"Teacher")),
+	('ADMINISTRATOR', _(u"Administrator")),
+)
+
+
 class PersonTypes():
 	ADMIN = _(u"administrator")
 	TEACHER = _(u"teacher")
@@ -45,6 +54,7 @@ class PersonTypes():
 			return []
 		
 	def get_person_form(self, method=None, files=None, instance=None):
+		from askmath.forms.users import AdministratorForm, TeacherForm, AssistantForm, StudentForm
 		if self.PERSONTYPE == self.ADMIN:
 			return AdministratorForm(method, files, instance=instance)
 		elif self.PERSONTYPE == self.TEACHER:

@@ -8,19 +8,21 @@ $(function(){
 		button_contrast.addClass("enable-contrast");
 		button_contrast.text("High Contrast-ON [3]");
 	}
-	if(Cookies.get("font")){
-		font_plus();
+	var font_size  = Cookies.get("font");
+	if(font_size === undefined){
+
+	}else{
+		set_font(font_size);
 		var button_font = $("#button-font");
 		button_font.removeClass("font-minus");
 		button_font.addClass("font-plus");
 		button_font.text("Big Font-ON [4]");
+	
 	}
 });
 
 $("#button-contrast").click(function(){
-	$("body").toggleClass("bg-dark fg-white");
-	$("a, h1, h2, h3").toggleClass("link_contrast");
-	$(".btn").toggleClass("btn_contrast");
+	$("body").toggleClass("highcontrast");
 	if($(this).hasClass("disable-contrast")){
 		$(this).removeClass("disable-contrast");
 		$(this).addClass("enable-contrast");
@@ -37,24 +39,28 @@ $("#button-contrast").click(function(){
 });
 
 $("#increase-font").click(function(){
-	font_plus();
+	alter_font(2);
 });
 
 $("#decrease-font").click(function(){
-	font_minus();
+	alter_font(-2);
 });
 
 
-function font_plus(){
-	$("*e").each(function(){
-		var font = parseInt($(this).css("font-size")) + 1;
+function set_font(size){
+	$("h1, h2, h3, h4, h5, h6, p, label, a").each(function(){
+		var font = parseInt($(this).css("font-size")) + parseInt(size);
 		$(this).css({"font-size": font + "px" });
 	});
 }
 
-function font_minus(){
-	var font_p = $("p").css("font-size") - 4;
-	var font_a = $("a").css("font-size") - 4;
-	$("p").css({"font-size": font_p + "px" });
-	$("a").css({"font-size": font_a + "px" });
+function alter_font(size){
+	set_font(size);
+	var font = Cookies.get("font");
+	if(font === undefined){
+		font = size;
+	}else{
+		font = parseInt(font) + parseInt(size);
+	}
+	Cookies.set("font", font);
 }
