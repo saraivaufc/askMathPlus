@@ -189,6 +189,20 @@ opacity */
 	white-space: pre-wrap;
 }
 
+/* LINKS */
+a{
+	text-decoration: underline;
+}
+
+.app-bar a, .button a, .tabs a,  .image-button{
+	text-decoration: none !important;
+}
+
+.btn-social{
+	text-decoration: none !important;
+	color: #fff !important;
+}
+
 
 /* INPUTS */
 
@@ -259,19 +273,6 @@ input:disabled {
     color: #888;
 
 }
-
-
-/* LINKS */
-li > a, a.button, a.btn, a.shortcut-button{
-	text-decoration: none !important;
-}
-
-
-a.button, a.btn, a.shortcut-button{
-	color: #fff !important;
-    text-decoration: none !important;
-}
-
 
 
 
@@ -483,7 +484,7 @@ label.caption{
 #profile  > .image-title > a{
 	color: #fff !important;
 	text-shadow: 2px 2px #000;
-	text-decoration: none !important; 
+	text-decoration: none !important;
 }
 
 #profile  > .image-title > a:hover{

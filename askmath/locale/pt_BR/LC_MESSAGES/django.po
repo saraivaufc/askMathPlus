@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-24 13:06-0300\n"
+"POT-Creation-Date: 2016-01-28 14:42-0300\n"
 "PO-Revision-Date: 2015-12-22 02:36-0234\n"
 "Last-Translator: Anonymous User <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -650,34 +650,24 @@ msgid "Confirm Password"
 msgstr "Confirme a Senha"
 
 #: askmath/forms/users/person.py:22
-#, fuzzy
-#| msgid "Please enter you password."
 msgid "Please confirm you password."
-msgstr "Por favor, entre com sua senha."
+msgstr "Por favor, confirme sua senha."
 
 #: askmath/forms/users/person.py:24
-#, fuzzy
-#| msgid "User Name:"
 msgid "User Type"
-msgstr "Nome de Usuário:"
+msgstr "Tipo de Usuário"
 
 #: askmath/forms/users/person.py:25
-#, fuzzy
-#| msgid "Please enter you username."
 msgid "Please enter you type user."
-msgstr "Por favor, entre com seu nome de usuário."
+msgstr "Por favor, entre com seu typo de usuário."
 
 #: askmath/forms/users/person.py:28
-#, fuzzy
-#| msgid "Teachers Key"
 msgid "Access Key"
-msgstr "Chaves dos Professores"
+msgstr "Chave de Acesso"
 
 #: askmath/forms/users/person.py:28
-#, fuzzy
-#| msgid "Please enter you last name."
 msgid "Please enter you access key."
-msgstr "Por favor, entre com seu último nome."
+msgstr "Por favor, entre com sua chave de acesso."
 
 #: askmath/forms/users/person.py:59
 msgid "The two password fields didn't match."
@@ -1317,7 +1307,7 @@ msgstr "Por favor, entre com seu primeiro nome."
 
 #: askmath/models/users/person.py:69
 msgid "Last Name "
-msgstr "ùltimo Nome"
+msgstr "Último Nome"
 
 #: askmath/models/users/person.py:69
 msgid "Please enter you last name."
@@ -2034,10 +2024,8 @@ msgid "Lessons of %(discipline)s"
 msgstr "Lições de %(discipline)s"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:66
-#, fuzzy
-#| msgid "Questions of lesson"
 msgid "Questions / Videos"
-msgstr "Questões da lição"
+msgstr "Questões/ Vídeos"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:88
 #, fuzzy, python-format
@@ -2082,10 +2070,8 @@ msgid "Download File"
 msgstr "Baixar Arquivo"
 
 #: askmath/templates/askmath/manager/message/manager_view_messages.html:68
-#, fuzzy
-#| msgid "Profile"
 msgid "No file"
-msgstr "Perfil"
+msgstr "Nenhum arquivo"
 
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:6
 #: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
@@ -2101,10 +2087,8 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:27
-#, fuzzy
-#| msgid "persons"
 msgid "See persons"
-msgstr "pessoas"
+msgstr "Ver pessoas"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:6
 #: askmath/templates/askmath/manager/person/manager_view_persons.html:15
@@ -2129,8 +2113,6 @@ msgid "How many items this issue have?"
 msgstr "Quantos itens esta questão terá? "
 
 #: askmath/templates/askmath/manager/question/_modal_items.html:13
-#, fuzzy
-#| msgid "Item"
 msgid "Item:"
 msgstr "Item"
 
@@ -2154,10 +2136,8 @@ msgid "Sort"
 msgstr "Ordenar"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:88
-#, fuzzy
-#| msgid "View Keys"
 msgid "View items"
-msgstr "Ver Chaves"
+msgstr "Ver itens"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:7
 msgid "Sort Questions"
@@ -2204,16 +2184,13 @@ msgid "Choose Type of Statistic"
 msgstr "Escolha o Tipo de Estatísticas"
 
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:9
-#, fuzzy, python-format
-#| msgid "Videos of lesson"
+#, python-format
 msgid "Videos of %(lesson)s"
-msgstr "Vídeos da lição."
+msgstr "Vídeos de %(lesson)s"
 
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:88
-#, fuzzy
-#| msgid "View Profile"
 msgid "See file"
-msgstr "Ver Perfil"
+msgstr "Ver arquivo"
 
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:7
 msgid "Sort Videos"
@@ -2427,22 +2404,16 @@ msgid "Save changes"
 msgstr "Salvar alterações"
 
 #: askmath/templates/registration/password_change_done.html:7
-#, fuzzy
-#| msgid "Password reset"
 msgid "Password Reset Change"
 msgstr "Senha alterada"
 
 #: askmath/templates/registration/password_change_done.html:14
-#, fuzzy
-#| msgid "Password changed success."
 msgid "Your password was changed."
-msgstr "Senha alterada com sucesso."
+msgstr "Sua senha foi alterada."
 
 #: askmath/templates/registration/password_change_form.html:7
-#, fuzzy
-#| msgid "Password changed success."
 msgid "Password Change Form"
-msgstr "Senha alterada com sucesso."
+msgstr "Senha alterada no Formulário"
 
 #: askmath/templates/registration/password_change_form.html:14
 #: askmath/templates/registration/password_reset_form.html:19
@@ -2451,17 +2422,13 @@ msgstr "Esqueceu sua senha? Digite seu email abaixo,"
 
 #: askmath/templates/registration/password_change_form.html:20
 #: askmath/templates/registration/password_reset_confirm.html:27
-#, fuzzy
-#| msgid "Reset my password"
 msgid "Change my password"
 msgstr "Alterar minha senha"
 
 #: askmath/templates/registration/password_reset_complete.html:7
 #: askmath/templates/registration/password_reset_complete.html:16
-#, fuzzy
-#| msgid "Password reset confirmation"
 msgid "Password reset complete"
-msgstr "Confirmação de alteração de senha"
+msgstr "Alteração de senha completa"
 
 #: askmath/templates/registration/password_reset_complete.html:19
 msgid "Your password has been set.  You may go ahead and log in now"
@@ -2473,8 +2440,6 @@ msgid "Go to <a href='%(login_url)s'>Log in</a>..."
 msgstr "Vá para <a href='%(login_url)s'>Log in</a>..."
 
 #: askmath/templates/registration/password_reset_confirm.html:7
-#, fuzzy
-#| msgid "Password reset confirmation"
 msgid "Password Reset Confirm"
 msgstr "Confirmação de alteração de senha"
 
@@ -2487,10 +2452,6 @@ msgstr ""
 "introduziu em corretamente."
 
 #: askmath/templates/registration/password_reset_confirm.html:34
-#, fuzzy
-#| msgid ""
-#| "The password reset link was invalid, possibly because it has already been "
-#| "used. Please request a new password reset."
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a new password reset."
@@ -2500,24 +2461,18 @@ msgstr ""
 
 #: askmath/templates/registration/password_reset_done.html:7
 #: askmath/templates/registration/password_reset_done.html:16
-#, fuzzy
-#| msgid "Password reset"
 msgid "Password Reset Done"
 msgstr "Senha alterada"
 
 #: askmath/templates/registration/password_reset_done.html:19
-#, fuzzy
-#| msgid "Password reset successful"
 msgid "Password reset successful!!!"
-msgstr "Senha alterada com sucesso"
+msgstr "Senha alterada com sucesso!!!"
 
 #: askmath/templates/registration/password_reset_email.html:8
 msgid "Your username, in case you've forgotten:"
 msgstr "Seu nome de usuário, caso você tenha esquecido:"
 
 #: askmath/templates/registration/password_reset_form.html:7
-#, fuzzy
-#| msgid "Password reset"
 msgid "Password Reset"
 msgstr "Senha alterada"
 
@@ -2724,14 +2679,10 @@ msgid "Site Maps"
 msgstr "Mapa do Site"
 
 #: env/lib/python2.7/site-packages/django/contrib/staticfiles/apps.py:8
-#, fuzzy
-#| msgid "Statistics"
 msgid "Static Files"
-msgstr "Estatísticas"
+msgstr "Arquivos Estaticos"
 
 #: env/lib/python2.7/site-packages/django/contrib/syndication/apps.py:8
-#, fuzzy
-#| msgid "Authentication"
 msgid "Syndication"
 msgstr "Autenticação"
 
@@ -2836,14 +2787,10 @@ msgid "Value %(value)r is not a valid choice."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:105
-#, fuzzy
-#| msgid "This field in required."
 msgid "This field cannot be null."
 msgstr "Este campo é obrigatório."
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:106
-#, fuzzy
-#| msgid "This field in required."
 msgid "This field cannot be blank."
 msgstr "Este campo é obrigatório."
 
@@ -2941,10 +2888,8 @@ msgid "Decimal number"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
-#, fuzzy
-#| msgid "Email change"
 msgid "Email address"
-msgstr "Email alterado"
+msgstr "Endereço de email"
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
 #, fuzzy

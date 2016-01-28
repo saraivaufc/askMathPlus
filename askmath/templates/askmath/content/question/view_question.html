@@ -66,13 +66,13 @@
 										<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
 								  	</div>
 								  	<div class="btn-group">
-								  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></a>
+								  		<button id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></button>
 									</div>
 									<div class="btn-group">
-									    <a class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></a>
+									    <button class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></button>
 									</div>
 									<div class="btn-group">
-										<a data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></a>
+										<button data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></button>
 									</div>
 								</div>
 							</form>
