@@ -1,5 +1,5 @@
 function active_constrast(){
-	$("body").addClass("bg-dark fg-white");	
+	$("body").addClass("highcontrast");	
 	
 	var button_contrast = $("#button-contrast");
 	button_contrast.removeClass("disable-contrast");
@@ -8,7 +8,7 @@ function active_constrast(){
 }
 
 function disable_constrast(){
-	$("body").removeClass("bg-dark fg-white");	
+	$("body").removeClass("highcontrast");	
 
 	var button_contrast = $("#button-contrast");
 	button_contrast.removeClass("enable-contrast");

@@ -8,6 +8,8 @@
 		{% include 'askmath/fields/radio.html' %}
 	{% elif field|is_select %}
 		{% include 'askmath/fields/select.html' %}
+	{% elif field|is_select_multiple %}
+		{% include 'askmath/fields/select_multiple.html' %}
 	{% elif field|is_file %}
 		{% include 'askmath/fields/file.html' %}
     {% elif field|is_text  %}

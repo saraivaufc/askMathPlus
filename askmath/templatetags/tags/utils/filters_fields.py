@@ -25,7 +25,12 @@ def is_password(field):
 
 @register.filter(name='is_select')
 def is_select(field):
-    return field.field.widget.__class__.__name__ == Select().__class__.__name__ or field.field.widget.__class__.__name__ == SelectMultiple().__class__.__name__
+    return field.field.widget.__class__.__name__ == Select().__class__.__name__ 
+
+@register.filter(name='is_select_multiple')
+def is_select(field):
+    return field.field.widget.__class__.__name__ == SelectMultiple().__class__.__name__
+
 
 @register.filter(name='is_text')
 def is_text(field):
