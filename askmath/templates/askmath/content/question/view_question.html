@@ -66,13 +66,13 @@
 										<button type="submit" class="btn success button"/><span class="mif-checkmark icon"></span> <spam class="hidden-xs">{% trans "Reply" %}</spam></button>
 								  	</div>
 								  	<div class="btn-group">
-								  		<button id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></button>
+								  		<a id="btn-help" class="btn info button"  data-toggle="modal" data-target="#help" {% ifequal question.get_help|length 0 %}disabled{% endifequal %}><span class="mif-help icon"></span> <spam class="hidden-xs">{% trans "Help" %}</spam></a>
 									</div>
 									<div class="btn-group">
-									    <button class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></button>
+									    <a class="btn warning button"   data-toggle="modal" data-target="#jump_question" {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}><span class="mif-redo icon"></span> <spam class="hidden-xs">{% trans "Jump" %}</spam></a>
 									</div>
 									<div class="btn-group">
-										<button data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></button>
+										<a data-toggle="modal" class="btn primary button"  data-target="#skipped_questions" {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions  %}disabled{% endif %}><span class="mif-history icon"></span> <spam class="hidden-xs">{% trans "Review Jumps" %}</spam></a>
 									</div>
 								</div>
 							</form>
@@ -109,73 +109,6 @@
 							<h1>Ocorreu um erro ao carregar as peguntas.</h1>
 						</div>
 					</div>
-					{% endif %}
-
-					{% ifnotequal question.get_help|length 0 %}
-					<!-- Modal Help -->
-					<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-xs fg-black">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h3 class="modal-title text-center" id="myModalLabel">{% trans "Help Question" %}</h3>
-								</div>
-								<div class="modal-body">
-									<p class="lead">{{ question.get_help|safe|linebreaksbr }}</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="button default" data-dismiss="modal">{% trans "Close" %}</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-					{% endifnotequal %}
-
-					{% if studentlessonstate.get_skipped_questions %}
-					<!-- Modal kipped Questions -->
-					<div class="modal fade" id="skipped_questions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg fg-black">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h3 class="modal-title text-center" id="myModalLabel">{% trans "Skipped Questions" %}</h3>
-								</div>
-								<div class="modal-body">
-								<div class="list-group">
-									{% for question2 in studentlessonstate.get_skipped_questions %}
-										{% if question != question2 %}		
-											<a href="/home/content/questions/choose_skipped_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question2.id }}/" class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
-										{% endif %}
-									{% endfor %}
-								</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="button default" data-dismiss="modal">{% trans "Close" %}</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-					{% endif %}
-					
-					{% if studentlessonstate.get_remaining_jump > 0 %}
-					<!-- Modal Jump Question Questions -->
-					<div class="modal fade" id="jump_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-xs fg-black">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h3 class="modal-title text-center" id="myModalLabel">{% trans "Your Jump is Question?" %}</h3>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="button primary" data-dismiss="modal">
-										{% trans "Not, is error!" %}
-									</button>
-									<a href="/home/content/questions/jump_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" class="button success">
-									{% trans "Yes, jump!" %}
-									</a>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
 					{% endif %}
 				</div>
 			{% endblock %}
@@ -216,9 +149,74 @@
 		</div>
 	{% endif %}
 </aside>
+
+{% ifnotequal question.get_help|length 0 %}
+<!-- Modal Help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xs fg-black">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 class="modal-title text-center" id="myModalLabel">{% trans "Help Question" %}</h3>
+			</div>
+			<div class="modal-body">
+				<p class="lead">{{ question.get_help|safe|linebreaksbr }}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button default" data-dismiss="modal">{% trans "Close" %}</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endifnotequal %}
+
+{% if studentlessonstate.get_skipped_questions %}
+<!-- Modal kipped Questions -->
+<div class="modal fade" id="skipped_questions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg fg-black">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 class="modal-title text-center" id="myModalLabel">{% trans "Skipped Questions" %}</h3>
+			</div>
+			<div class="modal-body">
+			<div class="list-group">
+				{% for question2 in studentlessonstate.get_skipped_questions %}
+					{% if question != question2 %}		
+						<a href="/home/content/questions/choose_skipped_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question2.id }}/" class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
+					{% endif %}
+				{% endfor %}
+			</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button default" data-dismiss="modal">{% trans "Close" %}</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endif %}
+
+{% if studentlessonstate.get_remaining_jump > 0 %}
+<!-- Modal Jump Question Questions -->
+<div class="modal fade" id="jump_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xs fg-black">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title text-center" id="myModalLabel">{% trans "Your Jump is Question?" %}</h3>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button primary" data-dismiss="modal">
+					{% trans "Not, is error!" %}
+				</button>
+				<a href="/home/content/questions/jump_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/question={{ question.id }}/" class="button success">
+				{% trans "Yes, jump!" %}
+				</a>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endif %}
+
+
 {% endblock %}
-
-
-
-{% load i18n %}
 
