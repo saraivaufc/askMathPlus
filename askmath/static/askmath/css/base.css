@@ -194,7 +194,7 @@ a{
 	text-decoration: underline;
 }
 
-.app-bar a, .button a, .tabs a,  .image-button{
+.app-bar a, .button a, .tabs a,  .image-button, .shortcut-button{
 	text-decoration: none !important;
 }
 
@@ -516,7 +516,7 @@ label.caption{
 	color:#FFF;
 	background-color: #4390df;
 	margin-bottom:5px;
-	padding:15px;
+	padding:5px;
 }
 
 .command-button {
