@@ -19,7 +19,7 @@ class Question(models.Model):
     help = models.TextField(verbose_name=_(u"Help"), null=True, blank=True, 
         help_text=_(u"Choose a help to this question."))
     
-    scores=models.IntegerField(verbose_name=_(u"Scores"), choices=SCORES)
+    scores=models.IntegerField(verbose_name=_(u"Scores"), choices=SCORES, default=5)
     
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
         help_text=_(u"Choose a color for the question."))
