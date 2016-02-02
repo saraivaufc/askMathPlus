@@ -65,15 +65,10 @@ class StudentLessonState(models.Model):
         return self.help_questions.filter(exists=True, visible=True)
     
     def get_question(self,last_question=None, definitive=False):
-        print "\nLasta question:", last_question
         questions_all = list(self.lesson.get_questions_visibles())
-        print "QUestions ALL:", questions_all
         answered_correct_questions = list(self.get_answered_correct_questions()) 
-        print "Questoes corretas:", answered_correct_questions
         answered_incorrect_questions = list(self.get_answered_incorrect_questions())
-        print "QUestoes incorretas:", answered_incorrect_questions
         skipped_questions = list(self.get_skipped_questions())
-        print "Questoes Saltos:", skipped_questions
         
         questions_all = set(questions_all)
         answered_correct_questions = set(answered_correct_questions)
@@ -253,55 +248,42 @@ class StudentLessonState(models.Model):
     
                 
         
-    def answer_question(self, request, question, items):
+    def answer_question(self, request, question, item):
         #Se a questao na pertence a essa licao
         if not question in self.lesson.get_questions():
             messages.error(request, TextMessage.QUESTION_NOT_FOUND_IN_LESSON)
             return
-        
-        #Se o items nao pertence a essa questao
-        for item in items:
-            exists = False
-            for item_question in question.get_items():
-                if item.id == item_question.id:
-                    exists = True
-            if not exists:
-                messages.error(request, TextMessage.ITEM_NOT_FOUND_IN_QUESTION)
-                return
-        
-        try:
-            items_corrects = question.get_items_corrects()
-        except Exception, e:
-            print e
-            messages.error(request, TextMessage.QUESTION_ERROR_REPLY)
+        #Se o item nao pertence a essa questao
+        for item_question in question.get_items():
+            if item.id == item_question.id:
+                exists = True
+        if not exists:
+            messages.error(request, TextMessage.ITEM_NOT_FOUND_IN_QUESTION)
             return
+        if question.get_item_correct() and ((question.get_item_correct()).id == item.id):
         
-        if set(items_corrects) == set(items):
             self.add_answered_correct_question(question)
-            self.save_answer_question_historic(question, items, True)
+            self.save_answer_question_historic(question, item, True)
             messages.success(request, TextMessage.QUESTION_SUCCESS_REPLY)
             return
         else:
             self.add_answered_incorrect_question(question)
-            self.save_answer_question_historic(question, items, False)
+            self.save_answer_question_historic(question, item, False)
             messages.error(request, TextMessage.QUESTION_ERROR_REPLY)
             return
-    
-    def save_answer_question_historic(self, question, items, hit=False):
+    def save_answer_question_historic(self, question, item, hit=False):
         try:
             student_historic = StudentHistoric.objects.get_or_create(student = self.student)[0]
-        except:
-            print "Erro save_answer_question"
+        except Exception, e:
+            print e
             return
         try:
-            print items
             answered_questions = AnsweredQuestionsHistoric(discipline=self.discipline, 
                                                            lesson = self.lesson,
                                                            question = question,
-                                                           hit = hit)
+                                                           hit = hit,
+                                                           item=item)
             answered_questions.save()
-            for item in items:
-                answered_questions.items.add(item)
             student_historic.answered_questions_historic.add(answered_questions)
         except Exception, e:
             print e

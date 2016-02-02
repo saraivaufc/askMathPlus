@@ -3,10 +3,10 @@ from django.utils.translation import ugettext as _
 from django.utils import timezone
 
 class AnsweredQuestionsHistoric(models.Model):
-    discipline = models.ForeignKey('Discipline', verbose_name=_(u"Discipline"))
-    lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"))
-    question = models.ForeignKey('Question', verbose_name=_(u"Question"))
-    items = models.ManyToManyField('Item', verbose_name=_(u"Items"))
+    discipline = models.ForeignKey('Discipline',related_name=_('Discipline'), verbose_name=_(u"Discipline"))
+    lesson = models.ForeignKey('Lesson', related_name=_('Lesson'), verbose_name=_(u"Lesson"))
+    question = models.ForeignKey('Question',related_name=_('Question'), verbose_name=_(u"Question"))
+    item = models.ForeignKey('Item', related_name=_('Item'), verbose_name=_(u"Item"))
     hit = models.BooleanField(default=False, verbose_name=_(u"Hit"))
     
     exists= models.BooleanField(default=True, verbose_name=_(u"Exists"))
@@ -21,8 +21,8 @@ class AnsweredQuestionsHistoric(models.Model):
     def get_question(self):
         return self.question
     
-    def get_items(self):
-        return self.items.all()
+    def get_item(self):
+        return self.item
     
     def get_hit(self):
         return self.hit

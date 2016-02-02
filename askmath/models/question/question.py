@@ -47,8 +47,8 @@ class Question(models.Model):
     def get_items(self):
         return self.items.filter(exists=True)
     
-    def get_items_corrects(self):
-        return self.items.filter(exists=True, correct=True)
+    def get_item_correct(self):
+        return (self.items.filter(exists=True, correct=True))[0]
     
     def get_help(self):
         return self.help

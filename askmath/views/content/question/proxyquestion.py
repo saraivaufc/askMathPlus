@@ -70,18 +70,13 @@ class ProxyQuestion(IQuestion):
             if not request.method == 'POST':
                 return self.view_question(request, id_discipline, id_lesson)
             try:
-                items = []
-                for i in request.POST.getlist('item'):
-                    item = ItemModel.objects.get(id = i)
-                    print item
-                    if item:
-                        items.append(item)
+                item = ItemModel.objects.get(id=int(request.POST['item']))
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ITEM_NOT_FOUND)
                 return self.view_question(request, id_discipline, id_lesson)
             try:
-                return self.__question.answer_question(request, discipline, lesson, question, items)
+                return self.__question.answer_question(request, discipline, lesson, question, item)
             except Exception, e:
                 messages.error(request, TextMessage.ERROR)
         else:
@@ -109,11 +104,11 @@ class ProxyQuestion(IQuestion):
                 print e
                 messages.error(request, TextMessage.QUESTION_NOT_FOUND)
                 return self.view_question(request, id_discipline, id_lesson)
-#             try:
-            return self.__question.jump_question(request, discipline, lesson, question)
-#             except Exception, e:
-#                 print e
-#                 messages.error(request, TextMessage.ERROR)
+            try:
+                return self.__question.jump_question(request, discipline, lesson, question)
+            except Exception, e:
+                print e
+                messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_question(request, id_discipline, id_lesson)

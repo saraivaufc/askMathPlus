@@ -67,7 +67,7 @@ class Question(IQuestion):
             {'request': request, 'discipline': discipline, 'lesson': lesson,
              'studentlessonstate': studentlessonstate,'lesson_complete': lesson_complete ,'experience_level': experience_level,'question': question})
     
-    def answer_question(self,request, discipline, lesson, question, items):
+    def answer_question(self,request, discipline, lesson, question, item):
         if request.method == 'POST':
             try:
                 student = StudentModel.objects.get(id = request.user.id)
@@ -82,9 +82,8 @@ class Question(IQuestion):
                 studentlessonstate = StudentLessonState(student = student,discipline = discipline,lesson = lesson, remaining_jump=lesson.get_maximum_hops())
                 studentlessonstate.save()
             try:
-                studentlessonstate.answer_question(request, question, items)
+                studentlessonstate.answer_question(request, question, item)
             except Exception, e:
-                print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.METHOD_NOT_POST)

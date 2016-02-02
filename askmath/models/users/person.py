@@ -20,6 +20,8 @@ except:
 class PersonManager(UserManager):
     def create_user(self, username, email=None, password=None ,group='student'):
         print 'create_user'
+        if not email:
+            email = username+'@email.com'
         user = self.model(
             username    = username,
             email       = email,
