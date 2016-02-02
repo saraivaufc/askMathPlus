@@ -1,9 +1,5 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
-<div  class="input-control textarea full-size">
-    <textarea id="{{ field.auto_id }}" 
-    	   type="text"
-    	   name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}" 
-    	   title="{{ field.help_text }}" 
-    	   {% if field.field.required %}required{% endif %}>{% if field.value %}{{ field.value}}{% else %}{{ field.initial|default_if_none:"" }}{% endif %}</textarea>
+<div  class="input-control textarea full-size" title="{{ field.help_text }}">
+	{{ field }}
 </div>

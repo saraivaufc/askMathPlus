@@ -35,23 +35,22 @@ function alter_font(size){
 }
 
 
+function accessibility(){
+	if(Cookies.get("contrast")){
+		active_constrast();
+	}
 
-if(Cookies.get("contrast")){
-	active_constrast();
+	if(Cookies.get("font")){
+		set_font(Cookies.get("font"));
+		var button_font = $("#button-font");
+		button_font.removeClass("font-minus");
+		button_font.addClass("font-plus");
+		button_font.text("Big Font-ON [4]");
+
+	}
 }
 
-var font_size  = Cookies.get("font");
-if(font_size === undefined){
-
-}else{
-	set_font(font_size);
-	var button_font = $("#button-font");
-	button_font.removeClass("font-minus");
-	button_font.addClass("font-plus");
-	button_font.text("Big Font-ON [4]");
-
-}
-
+accessibility();
 
 $("#button-contrast").click(function(){
 	if($(this).hasClass("disable-contrast")){

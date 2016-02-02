@@ -24,8 +24,12 @@ class PersonForm(ModelForm):
     user_type = forms.ChoiceField(label=_("User Type"), 
                              help_text=_('Please enter you type user.'), 
                              choices=person_types.TYPES, 
-                             initial='STUDENT',)
-    key = forms.CharField(label=_('Access Key'), help_text=_(u'Please enter you access key.'), required=False) 
+                             initial='STUDENT',
+                             widget=forms.Select(attrs={'size':'100'}))
+    key = forms.CharField(label=_('Access Key'), 
+                        help_text=_(u'Please enter you access key.'), 
+                        required=False,
+                         widget=forms.PasswordInput(attrs={})) 
     
     class Meta:
         model= Person
@@ -35,7 +39,6 @@ class PersonForm(ModelForm):
             'last_name': TextInput(),
             'email': EmailInput(),
             'username': TextInput(attrs={}),
-            'password': PasswordInput(attrs={}),
         }
     def clean_password(self):
         password = str(self.cleaned_data.get('password'))
@@ -73,9 +76,8 @@ class PersonProfile(ModelForm):
         fields = ("first_name","last_name", "username","email","profile_image")
         widgets = {
             'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-            'last_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
-            
-            'username': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
+            'last_name': TextInput(attrs={'required': 'required'}),
+            'username': TextInput(attrs={'required': 'required'}),
             'name': TextInput(attrs={'required': 'required'}),
             'email': EmailInput(attrs={'required': 'required'}),
             'profile_image': AdvancedFileInput(attrs={}),

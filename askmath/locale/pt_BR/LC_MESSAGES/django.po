@@ -2125,10 +2125,8 @@ msgid "NULL"
 msgstr "VAZIO"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:9
-#, fuzzy, python-format
-#| msgid "Questions of lesson"
 msgid "Questions of %(lesson)s"
-msgstr "Questões da lição"
+msgstr "Questões de %(lesson)s"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:45
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:45
@@ -2892,8 +2890,6 @@ msgid "Email address"
 msgstr "Endereço de email"
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
-#, fuzzy
-#| msgid "File"
 msgid "File path"
 msgstr "Arquivo"
 
@@ -2996,23 +2992,17 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:55
-#, fuzzy
-#| msgid "This field in required."
 msgid "This field is required."
 msgstr "Este campo é obrigatório."
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:225
-#, fuzzy
-#| msgid "Enter yout name."
 msgid "Enter a whole number."
-msgstr "Entre com seu nome."
+msgstr "Entre com um número"
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:268
 #: env/lib/python2.7/site-packages/django/forms/fields.py:305
-#, fuzzy
-#| msgid "Enter yout name."
 msgid "Enter a number."
-msgstr "Entre com seu nome."
+msgstr "Entre um número."
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:307
 #, python-format
@@ -3044,10 +3034,8 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:450
 #: env/lib/python2.7/site-packages/django/forms/fields.py:1133
-#, fuzzy
-#| msgid "Enter yout name."
 msgid "Enter a valid time."
-msgstr "Entre com seu nome."
+msgstr "Entre com uma hora válida."
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:472
 msgid "Enter a valid date/time."

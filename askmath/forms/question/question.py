@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from askmath.models import Question, Discipline
 
 
-class QuestionForm(ModelForm):  
+class QuestionForm(ModelForm):
     class Meta:
         model= Question
         fields = ("lesson", "position", "description", "items", "help", "scores", "visible")
