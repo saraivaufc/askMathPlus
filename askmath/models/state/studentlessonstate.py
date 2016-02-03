@@ -83,22 +83,20 @@ class StudentLessonState(models.Model):
         
         questions = None
         if questions_remaining:
-            print "Se tiver questoes restantes para serem respondidas..."
+            #"Se tiver questoes restantes para serem respondidas..."
             questions = list(questions_remaining)
         elif skipped_questions and not answered_incorrect_questions:
-            print "Se existir mais de duas questoes saltadas e nenhuma que foi respondida incorretamente..."
+            #"Se existir mais de duas questoes saltadas e nenhuma que foi respondida incorretamente..."
             questions = list(skipped_questions)
         elif answered_incorrect_questions and not skipped_questions:
-            print "Se existir mais de duas questoes que foram respondidas incorretamente e nao existir nenhuma que foi saltada"
+            #"Se existir mais de duas questoes que foram respondidas incorretamente e nao existir nenhuma que foi saltada"
             questions = list(answered_incorrect_questions)
         elif skipped_questions and answered_incorrect_questions:
-            print "cobra"
             questions = list(skipped_questions)
         elif not skipped_questions and not answered_incorrect_questions and last_question in answered_correct_questions:
-            print "Se não existir mais nenhuma questao saltada e nem que foi respondida errada e a questao en questao ja tiver sido resolvida"    
+            #"Se não existir mais nenhuma questao saltada e nem que foi respondida errada e a questao en questao ja tiver sido resolvida"    
             return None
         elif not skipped_questions and not answered_incorrect_questions and not last_question in answered_correct_questions:
-            print "javali"    
             questions = [last_question,]
             
         if questions:      
@@ -106,11 +104,8 @@ class StudentLessonState(models.Model):
             question = questions[0]
             if question in self.get_skipped_questions() and definitive:
                 self.remove_skipped_question(question)
-                print "Cavalo7"
-            print "Cavalo9"
             return question
         else:
-            print "Cavalo9"
             return None
     
     

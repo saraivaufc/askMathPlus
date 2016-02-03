@@ -25,7 +25,7 @@ class Question(IQuestion):
         self.__proxy_home = ProxyHome()
         self.__proxy_lesson = ProxyLesson()
 
-    def view_question(self, request, discipline, lesson, question=None):
+    def view_question(self, request, discipline, lesson, question=None, definitive=False):
         try:
             student = StudentModel.objects.get(id = request.user.id)
         except Exception, e:
@@ -55,9 +55,8 @@ class Question(IQuestion):
             studentlessonstate.save()
         
         studentlessonstate.update()
-        
-        print "Pegar questao:"
-        question = studentlessonstate.get_question(question, True)
+        if not definitive:
+            question = studentlessonstate.get_question(question, True)
         
         if not question and len(lesson.get_questions_visibles()) > 0:
             lesson_complete = True
@@ -121,17 +120,14 @@ class Question(IQuestion):
             print e
             messages.error(request, TextMessage.USER_NOT_FOUND)
             return self.view_question(request, discipline, lesson,question)
-        
         try:
             studentlessonstate = StudentLessonState.objects.get(student = student,discipline = discipline, lesson = lesson, exists=True)
         except Exception, e:
             print e
             studentlessonstate = StudentLessonState(student = student,discipline = discipline, lesson = lesson, remaining_jump=lesson.get_maximum_hops())
             studentlessonstate.save()
-        
         studentlessonstate.remove_skipped_question(question)
-        
-        return self.view_question(request, discipline, lesson,question)
+        return self.view_question(request, discipline, lesson,question, True)
     
     def reset_lesson(self,request, discipline, lesson):
         try:
