@@ -4,6 +4,11 @@
 	color: #000;
 }
 
+.button:hover{
+	opacity: 0.9;
+}
+
+
 .button-default, .button-primary, .button-success, .button-info, .button-danger, .button-warning{
 	color: #fff !important;
 }

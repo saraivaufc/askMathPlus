@@ -1,28 +1,24 @@
 defusedxml==0.4.1
 Django==1.7.11
+django-bootstrap3==6.2.2
+django-guardian==1.4.1
 django-nocaptcha-recaptcha==0.0.18
 django-rosetta==0.7.8
+django-social-auth==0.7.28
+django-userena==1.0.1
+easy-thumbnails==2.3
+httplib2==0.9.2
 microsofttranslator==0.7
 nltk==3.1
+oauth2==1.9.0.post1
 oauthlib==1.0.3
 Pillow==2.6.2
 polib==1.0.7
 psycopg2==2.6.1
 PyJWT==1.4.0
 python-openid==2.2.5
-python-social-auth==0.2.13
-python3-openid==3.0.9
+python-social-auth==0.2.14
 requests==2.9.1
-requests-oauthlib==0.6.0
+requests-oauthlib==0.6.1
 six==1.10.0
 wheel==0.24.0
-
-
-
-#sudo apt-get install postfix
-#sudo aptitude install libapache2-mod-wsgi
-#sudo easy_install django-rosetta
-#sudo apt-get install python-dev or sudo apt-get install python3-dev
-#sudo apt-get install libpq-dev
-#sudo apt-get install gettext
-

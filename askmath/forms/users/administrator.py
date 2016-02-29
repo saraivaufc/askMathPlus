@@ -1,9 +1,9 @@
 # -*- coding: UTF-8 -*-
-from askmath.forms.users.person import PersonForm
+from .person import RegisterForm
 from askmath.models import Administrator
 
 
-class AdministratorForm(PersonForm):
+class AdministratorForm(RegisterForm):
     
-    class Meta(PersonForm.Meta):
+    class Meta(RegisterForm.Meta):
         model= Administrator

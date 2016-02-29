@@ -263,8 +263,8 @@ function hideKey(){
 
 $(function(){
 	hideKey();
-	$("select[name='user_type']").change(function(){
-		if($(this).val() != "STUDENT"){
+	$("select[name='group']").change(function(){
+		if($(this).val() != "student"){
 			showKey();
 		}else{
 			hideKey();

@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from .iaccount import IAccount
 from .account import Account
 from askmath.models.users.student import Student
-from askmath.forms.users import PersonLoginForm, PersonRecoverPassword
+from askmath.forms.users import LoginForm, RecoverPassword
 from askmath.views.index import ProxyHome
 
 class ProxyAccount(IAccount):
@@ -21,12 +21,10 @@ class ProxyAccount(IAccount):
             except Exception, e:
                 print e
                 return self.__proxy_home.index(request)
-        print 1
         if request.method == "POST":
             try:
                 option = request.POST['option']
                 if option == 'sign_in':
-                    print 2
                     return self.signin(request)
                 elif option == 'sign_up':
                     return self.signup(request)
@@ -38,22 +36,17 @@ class ProxyAccount(IAccount):
         return self.__account.options(request) 
     
     def signin(self, request):
-        print 3
-        form = PersonLoginForm(request.POST, request.FILES)
+        form = LoginForm(request.POST, request.FILES)
         if form.is_valid():
-            print 4
             try:
-                print 5
                 return self.__account.signin(request, form)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_CREATED_ERROR)
-                print 6
                 return self.__account.options(request)
         else:
             print "signin - FORM INVALID"
             messages.error(request, TextMessage.ERROR_FORM)
-        print 7
         return self.__account.options(request)
     
     def signup(self, request):

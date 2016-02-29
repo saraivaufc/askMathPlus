@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from askMathPlus.settings import LOGIN_URL
 from askmath.entities import TextMessage
-from askmath.forms import StudentForm, AssistantForm, TeacherForm, AdministratorForm, PersonForm
-from askmath.forms.users import PersonLoginForm, PersonRecoverPassword, PersonAlterPassword
+from askmath.forms import StudentForm, AssistantForm, TeacherForm, AdministratorForm, RegisterForm
+from askmath.forms.users import LoginForm, RecoverPassword, AlterPassword
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from askmath.models.users import Student, Person as PersonModel
 
@@ -33,22 +33,22 @@ class Account(IAccount):
             try:
                 option = request.POST['option']
                 if option == 'sign_in':
-                    form_signin = PersonLoginForm(request.POST)
+                    form_signin = LoginForm(request.POST)
                     tab_actived = 'sign_in'
                 elif option == 'sign_up':
-                    form_signup = PersonForm(request.POST)
+                    form_signup = RegisterForm(request.POST)
                     tab_actived = 'sign_up'
                 elif option == 'recover_password':
-                    form_recover_password = PersonRecoverPassword(request.POST)
+                    form_recover_password = RecoverPassword(request.POST)
                     tab_actived = 'recover_password'
             except Exception, e:
                 print e
         if not form_signin:
-            form_signin = PersonLoginForm()
+            form_signin = LoginForm()
         if not form_signup:
-            form_signup = PersonForm()
+            form_signup = RegisterForm()
         if not form_recover_password:
-            form_recover_password = PersonRecoverPassword()
+            form_recover_password = RecoverPassword()
 
         return render(request, "askmath/authentication/options.html",
             {'request': request, 
@@ -64,74 +64,66 @@ class Account(IAccount):
             else: next = None
         except Exception, e:
             print e
-        if request.method == "POST":
-            try:
-                username =  form.cleaned_data['username']
-                password =  form.cleaned_data['password']
-            except Exception, e:
-                print e
-                messages.error(request, TextMessage.ERROR_FORM)
-                return self.options(request)
-            
-            person = authenticate(username=username, password=password)
-            if person:
-                login_user(request, person)
-                if request.user.is_authenticated():
+        
+
+        if request.method == 'POST':
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
+                try:
+                    login_user(request, user)
                     if next:
                         return HttpResponseRedirect(next)
                     else:
                         return HttpResponseRedirect("/home/")
-                else:
-                    messages.error(request, TextMessage.USER_NOT_AUTHENTICATED)
+                except Exception, e:
+                    messages.error(request, TextMessage.USERNAME_OR_PASSWORD_INCORRECT)
             else:
-                messages.error(request, TextMessage.USERNAME_OR_PASSWORD_INCORRECT)
+                messages.error(request, TextMessage.ERROR_FORM)
         return self.options(request)
     
     def signup(self, request):
         print request
         request.POST = request.POST.copy()
         
-        type = request.POST['user_type']
+        group_name = request.POST['group']
         form = None
         register_key = None
         
-        if type == "STUDENT":
+        if group_name == "student":
             form = StudentForm(request.POST, request.FILES)
-            group_name = "student"
         else:
             key = request.POST['key']
-            if type == "ASSISTANT":
+            if group_name == "assistant":
                 try:
                     register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
                     form = AssistantForm(request.POST, request.FILES)
-                    group_name = "assistant"
                 except Exception, e:
                     print e
                     messages.error(request, TextMessage.KEY_NOT_FOUND)
                     return self.options(request)
-            elif type == "TEACHER":
+            elif group_name == "teacher":
                 try:
                     register_key = TeacherKey.objects.get(key=key, exists=True, in_use=False)
                     form = TeacherForm(request.POST, request.FILES)
-                    group_name = "teacher"
                 except Exception, e:
                     print e
                     messages.error(request, TextMessage.KEY_NOT_FOUND)
                     return self.options(request)
-            elif type == "ADMINISTRATOR":
+            elif group_name == "administrator":
                 try:
                     register_key = AdministratorKey.objects.get(key=key, exists=True, in_use=False)
                     form = AdministratorForm(request.POST, request.FILES)
-                    group_name = "administrator"
                 except Exception, e:
                     print e
                     messages.error(request, TextMessage.KEY_NOT_FOUND)
                     return self.options(request)
             else:
-                messages.error(request, TextMessage.USER_TYPE_NOT_FOUND)
+                messages.error(request, TextMessage.GROUP_NOT_FOUND)
                 return self.options(request)
         if form and form.is_valid():
             user=form.save(commit=False)
+            user.set_password(user.password)
             user.save(group=group_name)
             if register_key:
                 register_key.add_user(user)

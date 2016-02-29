@@ -12,7 +12,6 @@ except:
 
 
 from askmath.entities import PersonTypes
-from askmath.forms import PersonForm
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
 from .iperson import IPerson

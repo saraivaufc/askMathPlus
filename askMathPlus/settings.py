@@ -57,7 +57,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'rosetta',
     'nocaptcha_recaptcha',
-    'social.apps.django_app.default',
+    'social.apps.django_app.default', #ERROR ImportError: No module named parse
 )
 LOCAL_APPS = (
     'askmath',
@@ -152,18 +152,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 #Social Auth
-SOCIAL_AUTH_USER_MODEL = 'askmath.Student'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_USER_MODEL = 'askmath.Person'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
 SOCIAL_AUTH_LOGIN_URL = '/'
 SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
 SOCIAL_AUTH_FORCE_EMAIL_VALIDATION = True
-SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['first_name', 'last_name', 'email']
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
-    'social.pipeline.user.get_username',
     'social.pipeline.mail.mail_validation',
     'social.pipeline.social_auth.associate_by_email',
     'social.pipeline.user.create_user',
@@ -171,7 +171,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
 )
-
 
 
 

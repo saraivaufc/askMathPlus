@@ -13,7 +13,7 @@ class TextMessage():
 	USER_CREATED_SUCCESS = _(u"User created successfully.")
 	USER_CREATED_ERROR = _(u"Failed to create user.")
 	USER_ADD_GROUP_ERROR = _(u"Failed to add group.")
-	USER_TYPE_NOT_FOUND = _(u"User type not found.")
+	USER_GROUP_NOT_FOUND = _(u"User group not found.")
 	
 	EMAIL_RECOVER_PASSWORD_SUCCESS = _(u"Email of recover password send success.")
 	EMAIL_RECOVER_PASSWORD_ERROR = _(u"Email of recover password send error.")

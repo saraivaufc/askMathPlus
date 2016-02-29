@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.forms import PersonProfile
-from askmath.forms.users import PersonAlterPassword
+from askmath.forms import ProfileForm
+from askmath.forms.users import AlterPassword
 from askmath.entities import TextMessage
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
@@ -22,20 +22,19 @@ class Account(IAccount):
     def edit_profile(self, request):
         person = request.user
         if request.method == "POST":
-            username = request.POST['username']
-            form = PersonProfile(request.POST, request.FILES, instance=person)
+            form = ProfileForm(request.POST, request.FILES, instance=person)
             if form.is_valid():
                 form.save()
                 messages.success(request, TextMessage.USER_SUCCESS_EDIT)
                 return self.view_profile(request)
         else:
-            form = PersonProfile(instance=person)
+            form = ProfileForm(instance=person)
         return render(request, "askmath/person/account/edit_profile.html",
             {'request': request, 'form': form, 'title_form': _("Edit Profile")})
         
     def alter_password(self, request):
         if request.method == "POST":
-            form = PersonAlterPassword(request.POST)
+            form = AlterPassword(request.POST)
             if form.is_valid():
                 old_Password = form.cleaned_data['old_password']
                 new_Password = form.cleaned_data['new_password']
@@ -48,7 +47,7 @@ class Account(IAccount):
                 messages.error(request, TextMessage.ERROR_FORM)
             return self.view_profile(request)
         else:
-            form = PersonAlterPassword()
+            form = AlterPassword()
         return render(request, 'askmath/person/account/alter_password.html',
             {'request': request,'form': form, 'title_form': _("Alter Password")})
     

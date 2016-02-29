@@ -4,7 +4,7 @@ from askmath.entities import TextMessage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from askmath.forms.users import PersonAlterPassword
+from askmath.forms.users import AlterPassword
 
 from askmath.views.person.iaccount import IAccount
 from askmath.views.person.account import Account

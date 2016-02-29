@@ -13,71 +13,50 @@ from django.contrib.auth.hashers import make_password
 
 
 
-class PersonForm(ModelForm):
+class LoginForm(forms.Form):
     #captcha = NoReCaptchaField()
-    password = forms.CharField(label=_('Password'), 
-                                help_text=_('Please enter you password.'),
-                                widget=forms.PasswordInput)
-    confirm_password = forms.CharField(label=_('Confirm Password'), 
-                                        help_text=_('Please confirm you password.'),
-                                        widget=forms.PasswordInput(attrs={'onkeyup':'validConfirmPassword();'}))
-    user_type = forms.ChoiceField(label=_("User Type"), 
-                             help_text=_('Please enter you type user.'), 
-                             choices=person_types.TYPES, 
-                             initial='STUDENT',
-                             widget=forms.Select(attrs={'size':'100'}))
-    key = forms.CharField(label=_('Access Key'), 
-                        help_text=_(u'Please enter you access key.'), 
-                        required=False,
-                         widget=forms.PasswordInput(attrs={})) 
-    
-    class Meta:
-        model= Person
-        fields = ("first_name","last_name", "email","username", "password","confirm_password","user_type", "key")
-        widgets = {
-            'first_name': TextInput(attrs={'autofocus': 'True'}),
-            'last_name': TextInput(),
-            'email': EmailInput(),
-            'username': TextInput(attrs={}),
-        }
-    def clean_password(self):
-        password = str(self.cleaned_data.get('password'))
-        print "Password=",password
-        return make_password(password=password,
-                                          salt='50000',
-                                          hasher='md5')
-
-    def clean_confirm_password(self):
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
-        print "Confirm passowrd=",confirm_password
-        confirm_password = make_password(password=confirm_password,
-                                          salt='50000',
-                                          hasher='md5')
-
-        print password, '==', confirm_password
-
-        if password and confirm_password:
-            if password != confirm_password:
-                raise forms.ValidationError(_("The two password fields didn't match."))
-        return confirm_password
-    
-class PersonLoginForm(forms.Form):
-    username = forms.CharField(label=_('Username'), help_text=_("Please enter you username."),
-        widget=forms.TextInput(attrs={'required': 'required','autofocus': 'True'}), 
-        error_messages={'required': _('Please enter you username.')} )
+    email = forms.CharField(label=_('Email'), help_text=_("Please enter you email."),
+        widget=forms.EmailInput(), 
+        error_messages={'required': _('Please enter you email.')} )
     password = forms.CharField(label=_('Password'), help_text=_('Please enter you password.'),
-        widget=forms.PasswordInput(attrs={'required': 'required'}),
+        widget=forms.PasswordInput(),
         error_messages={'required': _('Please enter you password.')})
 
-class PersonProfile(ModelForm):
+    class Meta:
+        fields = ("email", "password")
+
+class RegisterForm(ModelForm):
+    #captcha = NoReCaptchaField()
+    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_(u'Password confirmation'), widget=forms.PasswordInput)
+    GROUPS = [
+        ('student',_('Student')),
+        ('assistent',_('Assistent')),
+        ('teacher',_('Teacher')),
+        ('administrator',_('Administrator')),
+    ]
+    group = forms.ChoiceField(label=_("Group"), choices=GROUPS)
+    key = forms.CharField(label=_("Key"), max_length=6, required=False,
+        widget=forms.PasswordInput(), help_text=_("If you want to create a record in this group should have an access key for this, please contact the administrator."))
     class Meta:
         model= Person
-        fields = ("first_name","last_name", "username","email","profile_image")
+        fields = ("first_name", "last_name","email","password", "password2", "group","key")
+
+    def clean_password2(self):
+        password = self.cleaned_data.get("password")
+        password2 = self.cleaned_data.get("password2")
+        if password and password2 and password != password2:
+            raise forms.ValidationError(_("Passwords don't match"))
+        return password2
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model= Person
+        fields = ("first_name","last_name","email","profile_image")
         widgets = {
             'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
             'last_name': TextInput(attrs={'required': 'required'}),
-            'username': TextInput(attrs={'required': 'required'}),
             'name': TextInput(attrs={'required': 'required'}),
             'email': EmailInput(attrs={'required': 'required'}),
             'profile_image': AdvancedFileInput(attrs={}),
@@ -93,13 +72,13 @@ class PersonProfile(ModelForm):
             pass
         return profile_image
 
-class PersonRecoverPassword(forms.Form):
+class RecoverPassword(forms.Form):
     email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."),
         widget=forms.EmailInput(attrs={'required': 'required'}),
         error_messages={'required': _('Please enter your email.')})
     #captcha = NoReCaptchaField()
     
-class PersonAlterPassword(forms.Form):
+class AlterPassword(forms.Form):
     old_password = forms.CharField(label=_('Old Password'),help_text=_("Please enter you old password."),
         widget=forms.PasswordInput(attrs={'required': 'required','autofocus': 'True' , 'class':'input-control text full-size'}), 
         error_messages={'required': _('Please enter you old password.')} )
