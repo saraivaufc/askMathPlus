@@ -117,7 +117,9 @@ class Person(AbstractPerson):
 
     def save(self,group=None, *args, **kwargs):
         super(Person, self).save(*args, **kwargs)
-        if group:
+        if not group and not self.groups.all():
+            group = 'student'
+        if group and not self.groups.all():
             print 'Create user with group=', group
             group = Group.objects.get(name=group)
             self.groups.add(group)
