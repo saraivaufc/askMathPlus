@@ -1,6 +1,5 @@
 defusedxml==0.4.1
 Django==1.7.11
-django-bootstrap3==6.2.2
 django-guardian==1.4.1
 django-nocaptcha-recaptcha==0.0.18
 django-rosetta==0.7.8
@@ -18,6 +17,7 @@ psycopg2==2.6.1
 PyJWT==1.4.0
 python-openid==2.2.5
 python-social-auth==0.2.14
+pytz==2015.7
 requests==2.9.1
 requests-oauthlib==0.6.1
 six==1.10.0
