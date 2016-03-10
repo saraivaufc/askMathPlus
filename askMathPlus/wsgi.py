@@ -13,6 +13,9 @@ import traceback
 import signal
 from django.core.wsgi import get_wsgi_application
 
+os.environ["DJANGO_SETTINGS_MODULE"] = "askMathPlus.settings"
+
+
 try:
 	application = get_wsgi_application()
 	print 'WSGI without exception'
