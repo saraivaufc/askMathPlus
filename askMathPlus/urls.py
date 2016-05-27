@@ -2,12 +2,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.views.i18n import javascript_catalog
 
 from askmath import urls as askmath_urls
 from askmath.feeds import LessonsLatests
 import settings
 
-from django.views.i18n import javascript_catalog
 
 js_info_dict = {
     'packages': ('manager',),
