@@ -63,7 +63,7 @@
 			<td>{% trans "Sugestions" %}</td>
 			<td>{% trans "Maximum Hops" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
-			<td>{% trans "Questions / Videos" %}</td>
+			<td>{% trans "Options" %}</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -84,16 +84,16 @@
 			{{ discipline.is_visible }}
         </td>
         <td class="sortable-column">
-			<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
-				{% blocktrans with questions=lesson.get_questions|length  %}
-				See {{ questions }} questions
-				{% endblocktrans %}
-			</a>/
-			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
-				{% blocktrans with videos=lesson.get_videos|length  %}
-				See {{ videos }} videos
-				{% endblocktrans %}
-			</a>
+        	<div data-role="group" data-group-type="multi-state">
+				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button primary">
+					{% trans "Questions" %}
+					<span class="icon bg-darkCobalt">{{ lesson.get_questions|length }}</span>
+				</a>
+				<a  href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button primary">
+					{% trans "Videos" %}
+					<span class="icon bg-darkCobalt">{{ lesson.get_videos|length }}</span>
+				</a>
+			</div>
         </td>
 		
 	</tr>
