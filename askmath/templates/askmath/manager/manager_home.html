@@ -7,10 +7,19 @@
 {% block content_right %}
 	<div class="flex-grid bg-transparent">
 		<div class="tile-container">
+				{% if perms.askmath.access_manager_classes %}
+				<div class="tile-wide bg-teal " data-role="tile">
+					<a href="/home/manager/classes/view/" class="tile-content iconic">
+						<span class="icon mif-organization"></span>
+						<span class="tile-label">{% trans "CLASSES" %}</span>
+					</a>
+				</div>
+				{% endif %}
+
 				{% if perms.askmath.access_manager_discipline %}
 				<div class="tile-wide bg-blue " data-role="tile">
 					<a href="/home/manager/disciplines/view/" class="tile-content iconic">
-						<span class="icon mif-stack2"></span>
+						<span class="icon mif-books"></span>
 						<span class="tile-label">{% trans "DISCIPLINES" %}</span>
 					</a>
 				</div>

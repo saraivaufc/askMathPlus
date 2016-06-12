@@ -1,3 +1,4 @@
+from .classe import *
 from .discipline import *
 from .lesson import *
 from .question import *

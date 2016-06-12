@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Discipline as CategoryModel
+from askmath.models import Discipline as DisciplineModel
 from askmath.entities import TextMessage
 from django.contrib import messages
 from idiscipline import IDiscipline
@@ -9,12 +9,12 @@ from django.utils.translation import ugettext_lazy as _
 
 class Discipline(IDiscipline):
     def view_disciplines(self, request):
-        disciplines = CategoryModel.objects.filter(exists=True)
+        disciplines = DisciplineModel.objects.filter(exists=True)
         return render(request, "askmath/manager/discipline/manager_view_disciplines.html",
             {'request':request,'disciplines': disciplines})
     
     def view_disciplines_removed(self, request):
-        disciplines = CategoryModel.objects.filter(exists=False)
+        disciplines = DisciplineModel.objects.filter(exists=False)
         return render(request, "askmath/manager/discipline/manager_view_disciplines.html", 
             {'request':request,'disciplines': disciplines,'is_removed': True})
     

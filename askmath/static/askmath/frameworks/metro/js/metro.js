@@ -1,6 +1,6 @@
 /*!
- * Metro UI CSS v3.0.10 (http://metroui.org.ua)
- * Copyright 2012-2015 Sergey Pimenov
+ * Metro UI CSS v3.0.14 (http://metroui.org.ua)
+ * Copyright 2012-2016 Sergey Pimenov
  * Licensed under MIT (http://metroui.org.ua/license.html)
  */
 
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 }
 
 // Source: js/global.js
-window.METRO_VERSION = '3.0.10';
+window.METRO_VERSION = '3.0.13';
 
 if (window.METRO_AUTO_REINIT === undefined) window.METRO_AUTO_REINIT = true;
 if (window.METRO_LANGUAGE === undefined) window.METRO_LANGUAGE = 'en';
@@ -40,6 +40,16 @@ var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:
 
 String.prototype.isColor = function () {
 return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this);
+};
+
+window.secondsToFormattedString = function(time){
+    var hours, minutes, seconds;
+
+    hours = parseInt( time / 3600 ) % 24;
+    minutes = parseInt( time / 60 ) % 60;
+    seconds = time % 60;
+
+    return (hours ? (hours) + ":" : "") + (minutes < 10 ? "0"+minutes : minutes) + ":" + (seconds < 10 ? "0"+seconds : seconds);
 };
 
 Array.prototype.shuffle = function () {
@@ -176,8 +186,8 @@ window.METRO_LOCALES = {
             'Gen', ' Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'
         ],
         days: [
-            'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica',
-            'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'
+            'Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 
+            'Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'
         ],
         buttons: [
             "Oggi", "Cancella", "Cancel", "Help", "Prior", "Next", "Finish"
@@ -978,8 +988,9 @@ $.Metro.initWidgets = function(){
         roles.map(function(func){
             try {
                 //$(w)[func]();
-                if ($.fn[func] !== undefined) {
+                if ($.fn[func] !== undefined && $this.data(func+'-initiated') !== true) {
                     $.fn[func].call($this);
+                    $this.data(func+'-initiated', true);
                 }
             } catch(e) {
                 if (window.METRO_DEBUG) {
@@ -1075,9 +1086,9 @@ $.Metro.init = function(){
                                     var roles = _this.data('role').split(/\s*,\s*/);
                                     roles.map(function(func){
                                         try {
-                                            if ($.fn[func] !== undefined && _this.data('initiated') !== true) {
+                                            if ($.fn[func] !== undefined && _this.data(func+'-initiated') !== true) {
                                                 $.fn[func].call(_this);
-                                                _this.data('initiated', true);
+                                                _this.data(func+'-initiated', true);
                                             }
                                         } catch(e) {
                                             if (window.METRO_DEBUG) {
@@ -2187,6 +2198,543 @@ $.widget("metro.accordion", {
         }
     });
 
+// Source: js/widgets/audio-player.js
+$.widget( "metro.audio" , {
+
+    version: "3.0.14",
+
+    options: {
+        src: false,
+        volume: .5,
+        muted: false,
+        loop: false,
+        preload: false,
+        autoplay: false,
+        playList: false,
+        mode: "full",
+
+        loopButton: "<span class='mif-loop'></span>",
+        stopButton: "<span class='mif-stop'></span>",
+        playButton: "<span class='mif-play'></span>",
+        pauseButton: "<span class='mif-pause'></span>",
+        muteButton: "<span class='mif-volume-mute2'></span>",
+        shuffleButton: "<span class='mif-shuffle'></span>",
+        nextButton: "<span class='mif-forward'></span>",
+        prevButton: "<span class='mif-backward'></span>",
+        randomButton: "<span class='mif-dice'></span>",
+        playListButton: "<span class='mif-list2'></span>",
+
+        volumeLowButton: "<span class='mif-volume-low'></span>",
+        volumeMediumButton: "<span class='mif-volume-medium'></span>",
+        volumeHighButton: "<span class='mif-volume-high'></span>"
+
+    },
+
+    _create: function () {
+        var that = this, element = this.element, o = this.options;
+
+        this._setOptionsFromDOM();
+
+        this._createPlayer();
+        this._addControls();
+        this._addEvents();
+        this._addPlayList();
+        this._setControlsVisibility();
+
+        element.data('audio', this);
+    },
+
+    _setControlsVisibility: function(){
+        var that = this, element = this.element, o = this.options;
+        if (element.find(".play-list").length == 0) {
+            element.find(".controls .plist").hide();
+            element.find(".controls .next").hide();
+            element.find(".controls .prev").hide();
+            element.find(".controls .random").hide();
+        }
+    },
+
+    _addPlayList: function(){
+        var that = this, element = this.element, o = this.options;
+        var audio = element.find("audio");
+        var pl, pli, plw, poster, title;
+        var play_list;
+
+        if (o.playList) {
+            if (window[o.playList] != undefined && typeof window[o.playList] == 'function') {
+
+                pl =  window[o.playList]();
+                pli = pl.items;
+                plw = $("<div>").addClass("play-list-wrapper").insertBefore(element.find("audio"));
+
+                if (pl.title != undefined) {
+                    title = $("<h1>").addClass("album-title").html(pl.title).appendTo(plw);
+                }
+
+                if (pl.poster != undefined) {
+                    poster = $("<div>").addClass("poster").html($("<img>").attr("src", pl.poster)).appendTo(plw);
+                }
+
+                if (pl.desc != undefined) {
+                    $("<div>").addClass("album-desc").html(pl.desc).appendTo(poster);
+                }
+
+                play_list = $("<ul>").addClass("play-list").appendTo(plw);
+
+                if (pli != undefined) {
+                    $.each(pl.items, function(){
+                        var item = this, li;
+                        li = $("<li>").appendTo(play_list);
+                        li.data('src', item.file);
+                        if (item.type != undefined) {
+                            li.data('type', item.type);
+                        }
+                        if (item.title != undefined) {
+                            li.html(item.title);
+                        } else {
+                            li.html(item.file.replace(/^.*[\\\/]/, ''));
+                        }
+                    });
+                }
+            }
+        }
+
+        play_list = element.find("ul");
+
+        if (play_list.length == 0) {
+            return this;
+        }
+
+        play_list.addClass("play-list");
+        var items = play_list.find("li");
+        if (items.length == 0) {
+            return this;
+        }
+        $.each(items, function(){
+            var item = $(this);
+            var pb = $("<div>").addClass('progress-bar small no-margin-top').data('role', 'progress').appendTo(item).hide();
+            item.on("click", function(){
+                items.removeClass("current");
+                items.find('.progress-bar').hide();
+                var src = item.data('src'), type = item.data('type');
+                item.addClass("current");
+                item.find('.progress-bar').show();
+                element.data('current', item);
+                that.play(src, type);
+            });
+        });
+        $(items[0]).click();
+        this._stop();
+        element.data("current", $(items[0]));
+    },
+
+    _createPlayer: function(){
+        var that = this, element = this.element, o = this.options;
+        var audio = element.find("audio");
+
+        element.addClass("audio-player");
+        element.addClass(o.mode);
+
+        if (audio.length == 0) {
+            audio = $("<audio>").appendTo(element);
+        }
+
+        $.each(['autoplay', 'controls', 'muted', 'loop', 'preload'], function(){
+            audio.removeAttr(this);
+        });
+
+        if (o.src) {
+            audio.attr(src, o.src);
+        }
+
+        if (o.loop) {
+            audio.attr("loop", "loop");
+        }
+
+        if (o.preload) {
+            audio.attr("preload", "auto");
+        }
+
+        if (o.autoplay) {
+            audio.attr("autoplay", "autoplay");
+        }
+
+        audio[0].volume = o.volume;
+        audio[0].muted = o.muted;
+
+        element.data('muted', false);
+        element.data('duration', 0);
+        element.data('played', false);
+        element.data('volume', audio[0].volume);
+        element.data('current', false);
+    },
+
+    _addControls: function(){
+        var that = this, element = this.element, o = this.options;
+        var controls, play_button, loop_button, stop_button, volume_button,
+            volume_slider, stream_slider, info_box, stream_wrapper, volume_wrapper,
+            shufle_button, next_button, prev_button, random_button, play_list_button;
+        var audio = element.find('audio'), audio_obj = audio[0];
+
+        controls = $("<div>").addClass("controls").appendTo(element);
+
+        if (o.playListButton !== false) {
+            play_list_button = $("<button/>").addClass("square-button control-element plist").html(o.playListButton).appendTo(controls);
+            play_list_button.on("click", function () {
+                var play_list = element.find(".play-list-wrapper");
+                if (play_list.length == 0) {
+                    return that;
+                }
+                play_list.toggleClass("not-visible");
+            });
+        }
+
+        if (o.loopButton !== false) {
+            loop_button = $("<button/>").addClass("square-button control-element loop").html(o.loopButton).appendTo(controls);
+            loop_button.on("click", function () {
+                loop_button.toggleClass('active');
+                if (loop_button.hasClass('active')) {
+                    audio.attr("loop", "loop");
+                } else {
+                    audio.removeAttr("loop");
+                }
+            });
+        }
+
+        if (o.playButton !== false) {
+            play_button = $("<button/>").addClass("square-button control-element play").html(o.playButton).appendTo(controls);
+            play_button.on("click", function () {
+                that._play();
+            });
+        }
+
+        if (o.prevButton !== false) {
+            prev_button = $("<button/>").addClass("square-button control-element prev").html(o.prevButton).appendTo(controls);
+            prev_button.on("click", function () {
+                that._playPrev();
+            });
+        }
+
+        if (o.nextButton !== false) {
+            next_button = $("<button/>").addClass("square-button control-element next").html(o.nextButton).appendTo(controls);
+            next_button.on("click", function () {
+                that._playNext();
+            });
+        }
+
+        if (o.randomButton !== false) {
+            random_button = $("<button/>").addClass("square-button control-element random").html(o.randomButton).appendTo(controls);
+            random_button.on("click", function () {
+                that._playRandom();
+            });
+        }
+
+        if (o.stopButton !== false) {
+            stop_button = $("<button/>").addClass("square-button control-element stop").html(o.stopButton).appendTo(controls);
+            stop_button.attr("disabled", true);
+            stop_button.on("click", function () {
+                that._stop();
+            });
+        }
+
+        stream_wrapper = $("<div/>").addClass('control-element stream-wrapper').appendTo(controls);
+        stream_slider = $("<div/>").addClass('slider stream-slider').appendTo(stream_wrapper);
+        stream_slider.slider({
+            showHint: true,
+            animate: false,
+            markerColor: 'bg-red',
+            completeColor: 'bg-cyan',
+            onStartChange: function(){
+                audio_obj.pause();
+            },
+            onChanged: function(value, slider){
+                if (audio_obj.seekable.length > 0)
+                    audio_obj.currentTime = (element.data('duration') * value / 100).toFixed(0);
+
+                if (element.data('played') && audio_obj.currentTime >= 0) {
+                    audio_obj.play();
+                }
+            }
+        });
+        stream_slider.data('slider').value(0);
+
+        info_box = $("<div/>").addClass('control-element info-box').appendTo(controls);
+        info_box.html("00:00 / 00:00");
+
+        var volume_container = $("<div/>").addClass("place-right").appendTo(controls);
+
+        volume_button = $("<button/>").addClass("square-button control-element volume").html(o.volumeLowButton).appendTo(volume_container);
+        volume_button.on("click", function(){
+
+            var volume_slider = element.find(".volume-slider").data("slider");
+
+            element.data('muted', !element.data('muted'));
+
+            if (element.data('muted')) {
+                element.data("volume", audio_obj.volume);
+                volume_button.html(o.muteButton);
+                volume_slider.value(0);
+            } else {
+                audio_obj.volume = element.data("volume");
+                volume_slider.value(element.data("volume")*100);
+                that._setupVolumeButton();
+            }
+
+            audio_obj.muted = element.data('muted');
+        });
+
+        this._setupVolumeButton();
+
+        volume_wrapper = $("<div/>").addClass('control-element volume-wrapper').appendTo(volume_container);
+        volume_slider = $("<div/>").addClass('slider volume-slider').appendTo(volume_wrapper);
+        volume_slider.slider({
+            showHint: true,
+            animate: false,
+            markerColor: 'bg-red',
+            completeColor: 'bg-green',
+            onChange: function(value, slider){
+                audio_obj.volume = value/100;
+                that._setupVolumeButton();
+            }
+        });
+        volume_slider.data('slider').value(audio_obj.volume * 100);
+    },
+
+    _setupVolumeButton: function(){
+        var that = this, element = this.element, o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var controls = element.find('.controls'), volume_button = controls.find('.volume');
+
+        var current_volume = audio_obj.volume;
+        if (current_volume > 0 && current_volume < 0.3) {
+            volume_button.html(o.volumeLowButton);
+        } else if (current_volume >= 0.3 && current_volume < 0.6) {
+            volume_button.html(o.volumeMediumButton);
+        } else if (current_volume >= 0.6 && current_volume <= 1) {
+            volume_button.html(o.volumeHighButton);
+        } else {
+            volume_button.html(o.muteButton);
+        }
+    },
+
+    _addEvents: function(){
+        var that = this, element = this.element, o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var controls = element.find(".controls");
+        var info_box = element.find(".info-box");
+
+        audio.on('loadedmetadata', function(){
+            element.data('duration', audio_obj.duration.toFixed(0));
+            info_box.html("00:00" + " / " + secondsToFormattedString(element.data('duration')) );
+        });
+
+        audio.on("canplay", function(){
+            //preloader.hide();
+            var buffered = audio_obj.buffered.length ? Math.round(Math.floor(audio_obj.buffered.end(0)) / Math.floor(audio_obj.duration) * 100) : 0;
+            that._setBufferSize(buffered);
+        });
+
+        audio.on('progress', function(){
+            var buffered = audio_obj.buffered.length ? Math.round(Math.floor(audio_obj.buffered.end(0)) / Math.floor(audio_obj.duration) * 100) : 0;
+            that._setBufferSize(buffered);
+        });
+
+        audio.on("timeupdate", function(){
+            that._setInfoData();
+            that._setStreamSliderPosition();
+            if (element.data('current')) {
+                var pb = element.data('current').find('.progress-bar').data('progress');
+                var value = Math.round(audio_obj.currentTime * 100 / element.data('duration'));
+                pb.value(value);
+            }
+        });
+
+        audio.on("waiting", function(){
+            //preloader.show();
+        });
+
+        audio.on("loadeddata", function(){
+            //preloader.hide();
+        });
+
+        audio.on('ended', function(){
+            that._stop();
+            if (element.find(".play-list li").length > 0) {
+                that._playNext();
+            }
+        });
+    },
+
+    _setInfoData: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var info_box = element.find(".controls .info-box");
+        var currentTime = Math.round(audio_obj.currentTime);
+
+        info_box.html(secondsToFormattedString(currentTime) + " / " + secondsToFormattedString(element.data('duration')));
+    },
+
+    _setStreamSliderPosition: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var slider = element.find(".stream-slider").data("slider");
+        var value = Math.round(audio_obj.currentTime * 100 / element.data('duration'));
+        slider.value(value);
+    },
+
+
+    _setBufferSize: function(value){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var slider = element.find(".stream-slider").data("slider");
+        slider.buffer(Math.round(value));
+    },
+
+    _play: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var play_button = element.find(".controls .play");
+        var stop_button = element.find(".controls .stop");
+
+        if (audio_obj.paused) {
+            play_button.html(o.pauseButton);
+            audio_obj.play();
+            stop_button.removeAttr("disabled");
+            element.data('played', true);
+            element.trigger('play');
+        } else {
+            play_button.html(o.playButton);
+            audio_obj.pause();
+            element.data('played', false);
+            element.trigger('pause');
+        }
+    },
+
+    _playRandom: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var play_list = element.find(".play-list");
+        var items = element.find(".play-list li");
+        if (items.length == 0) {
+            return this;
+        }
+        var index = Math.floor(Math.random() * (items.length)) + 1;
+        var next = play_list.find("li:nth-child("+index+")");
+        next.click();
+    },
+
+    _playNext: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var play_list = element.find(".play-list");
+        var items = element.find(".play-list li");
+        if (items.length == 0) {
+            return this;
+        }
+        var next = play_list.find(".current").next();
+        if (next.length == 0) {
+            next = play_list.find("li:nth-child(1)");
+        }
+        next.click();
+    },
+
+    _playPrev: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var play_list = element.find(".play-list");
+        var items = element.find(".play-list li");
+        if (items.length == 0) {
+            return this;
+        }
+        var prev = play_list.find(".current").prev();
+        if (prev.length == 0) {
+            prev = play_list.find("li:last-child");
+        }
+        prev.click();
+    },
+
+    _stop: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0];
+        var stop_button = element.find(".controls .stop");
+        var play_button = element.find(".controls .play");
+
+        audio_obj.pause();
+        audio_obj.currentTime = 0;
+        play_button.html(o.playButton);
+        stop_button.attr("disabled", "disabled");
+        element.data('played', false);
+        element.find(".stream-slider").data('slider').value(0);
+        element.trigger('stop');
+    },
+
+
+    play: function(file, type){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0], source;
+
+        this._stop();
+
+        audio.find("source").remove();
+        audio.removeAttr("src");
+
+        source = $("<source>").attr("src", file);
+        if (type != undefined) {
+            source.attr("type", type);
+        }
+        audio_obj.load();
+        source.appendTo(audio);
+
+        this._play();
+    },
+
+    pause: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0], play_button = element.find(".play");
+
+        play_button.html(o.playButton);
+        audio_obj.pause();
+        element.data('played', false);
+        element.trigger('pause');
+    },
+
+    resume: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var audio = element.find("audio"), audio_obj = audio[0], play_button = element.find(".play"), stop_button = element.find(".stop");
+
+        play_button.html(o.pauseButton);
+        audio_obj.play();
+        stop_button.removeAttr("disabled");
+        element.data('played', true);
+        element.trigger('play');
+    },
+
+    stop: function(){
+        this._stop();
+    },
+
+    _setOptionsFromDOM: function(){
+        var that = this, element = this.element, o = this.options;
+
+        $.each(element.data(), function(key, value){
+            if (key in o) {
+                try {
+                    o[key] = $.parseJSON(value);
+                } catch (e) {
+                    o[key] = value;
+                }
+            }
+        });
+    },
+
+    _destroy: function () {
+    },
+
+    _setOption: function ( key, value ) {
+        this._super('_setOption', key, value);
+    }
+});
+
 // Source: js/widgets/button-groups.js
 $.widget( "metro.group" , {
 
@@ -2291,11 +2839,13 @@ $.widget("metro.calendar", {
         buttons: true,
         buttonToday: true,
         buttonClear: true,
-        locale: 'en',
+        syncCalenderToDateField: true,
+        locale: window.METRO_CURRENT_LOCALE,
         actions: true,
         condensedGrid: false,
-        getDates: function(d){},
-        dayClick: function(d, d0){}
+        scheme: 'default',
+        getDates: function (d) { },
+        dayClick: function (d, d0) { }
     },
 
     //_storage: [],
@@ -2312,10 +2862,10 @@ $.widget("metro.calendar", {
 
     _events: [],
 
-    _create: function(){
+    _create: function () {
         var that = this, element = this.element, o = this.options;
 
-        $.each(element.data(), function(key, value){
+        $.each(element.data(), function (key, value) {
             if (key in o) {
                 try {
                     o[key] = $.parseJSON(value);
@@ -2325,16 +2875,16 @@ $.widget("metro.calendar", {
             }
         });
 
-        if (typeof  o.date === 'string') {
+        if (typeof o.date === 'string') {
             o.date = new Date(o.date);
         }
 
-        if (o.minDate !== false && typeof  o.minDate === 'string') {
-            o.minDate = new Date(o.minDate+'T00:00:00Z') - 24*60*60*1000;
+        if (o.minDate !== false && typeof o.minDate === 'string') {
+            o.minDate = new Date(o.minDate + 'T00:00:00Z') - 24 * 60 * 60 * 1000;
         }
 
-        if (o.maxDate !== false && typeof  o.maxDate === 'string') {
-            o.maxDate = new Date(o.maxDate+'T00:00:00Z');
+        if (o.maxDate !== false && typeof o.maxDate === 'string') {
+            o.maxDate = new Date(o.maxDate + 'T00:00:00Z');
         }
 
         //console.log(window.METRO_LOCALES);
@@ -2342,7 +2892,7 @@ $.widget("metro.calendar", {
         this.locales = window.METRO_LOCALES;
 
         this._year = o.date.getFullYear();
-        this._distance = o.date.getFullYear()-4;
+        this._distance = o.date.getFullYear() - 4;
         this._month = o.date.getMonth();
         this._day = o.date.getDate();
         this._mode = o.startMode;
@@ -2350,32 +2900,36 @@ $.widget("metro.calendar", {
         element.data("_storage", []);
         element.data("_exclude", []);
         element.data("_stored", []);
-        if (!element.hasClass('calendar')) {element.addClass('calendar');}
+        if (!element.hasClass('calendar')) { element.addClass('calendar'); }
 
         var re, dates;
 
         if (o.preset) {
             re = /\s*,\s*/;
             dates = o.preset.split(re);
-            $.each(dates, function(){
-                if (new Date(this) !== undefined) {that.setDate(this);}
+            $.each(dates, function () {
+                if (new Date(this) !== undefined) { that.setDate(this); }
             });
         }
 
         if (o.exclude) {
             re = /\s*,\s*/;
             dates = o.exclude.split(re);
-            $.each(dates, function(){
-                if (new Date(this) !== undefined) {that.setDateExclude(this);}
+            $.each(dates, function () {
+                if (new Date(this) !== undefined) { that.setDateExclude(this); }
             });
         }
 
         if (o.stored) {
             re = /\s*,\s*/;
             dates = o.stored.split(re);
-            $.each(dates, function(){
-                if (new Date(this) !== undefined) {that.setDateStored(this);}
+            $.each(dates, function () {
+                if (new Date(this) !== undefined) { that.setDateStored(this); }
             });
+        }
+
+        if (o.scheme !== 'default') {
+            element.addClass(o.scheme);
         }
 
         this._renderCalendar();
@@ -2384,13 +2938,13 @@ $.widget("metro.calendar", {
 
     },
 
-    _renderButtons: function(table){
+    _renderButtons: function (table) {
         var tr, td, o = this.options;
 
         if (this.options.buttons) {
 
-            var buttonToday = o.buttonToday ? "<button class='button calendar-btn-today small-button success'>"+this.locales[o.locale].buttons[0]+"</button>" : "";
-            var buttonClear = o.buttonClear ? "<button class='button calendar-btn-clear small-button warning'>"+this.locales[o.locale].buttons[1]+"</button>" : "";
+            var buttonToday = o.buttonToday ? "<button class='button calendar-btn-today small-button success'>" + this.locales[o.locale].buttons[0] + "</button>" : "";
+            var buttonClear = o.buttonClear ? "<button class='button calendar-btn-clear small-button warning'>" + this.locales[o.locale].buttons[1] + "</button>" : "";
 
             tr = $("<div/>").addClass("calendar-row calendar-actions");
             td = $("<div/>").addClass("align-center").html(
@@ -2401,7 +2955,7 @@ $.widget("metro.calendar", {
         }
     },
 
-    _renderMonth: function(){
+    _renderMonth: function () {
         var that = this, o = this.options,
             year = this._year,
             month = this._month,
@@ -2410,14 +2964,15 @@ $.widget("metro.calendar", {
             feb = 28;
 
         if (month === 1) {
-            if ((year%100 !== 0) && (year%4 === 0) || (year%400 === 0)) {
+            if ((year % 100 !== 0) && (year % 4 === 0) || (year % 400 === 0)) {
                 feb = 29;
             }
         }
 
-        var totalDays = ["31", ""+feb+"","31","30","31","30","31","31","30","31","30","31"];
+        var totalDays = ["31", "" + feb + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"];
         var daysInMonth = totalDays[month];
-        var first_week_day = new Date(year, month, 1).getDay();
+        
+        var first_week_day = this._dateFromNumbers(year, month + 1, 1).getDay();
 
         var table, tr, td, i, div;
 
@@ -2436,7 +2991,7 @@ $.widget("metro.calendar", {
         $("<div/>").addClass("calendar-cell align-center").html("<a class='btn-previous-year' href='#'>-</a>").appendTo(tr);
         $("<div/>").addClass("calendar-cell align-center").html("<a class='btn-previous-month' href='#'>&#12296;</a>").appendTo(tr);
 
-        $("<div/>").addClass("calendar-cell sel-month align-center").html("<a class='btn-select-month' href='#'>"+ this.locales[o.locale].months[month]+' '+year+"</a>").appendTo(tr);
+        $("<div/>").addClass("calendar-cell sel-month align-center").html("<a class='btn-select-month' href='#'>" + this.locales[o.locale].months[month] + ' ' + year + "</a>").appendTo(tr);
 
         $("<div/>").addClass("calendar-cell align-center").html("<a class='btn-next-month' href='#'>&#12297;</a>").appendTo(tr);
         $("<div/>").addClass("calendar-cell align-center").html("<a class='btn-next-year' href='#'>+</a>").appendTo(tr);
@@ -2446,26 +3001,26 @@ $.widget("metro.calendar", {
         // Add day names
         var j;
         tr = $("<div/>").addClass('calendar-row week-days');
-        for(i = 0; i < 7; i++) {
+        for (i = 0; i < 7; i++) {
             if (!o.weekStart) {
                 td = $("<div/>").addClass("calendar-cell align-center day-of-week").appendTo(tr);
                 div = $("<div/>").html(this.locales[o.locale].days[i + 7]).appendTo(td);
             } else {
                 j = i + 1;
-                if (j === 7) {j = 0;}
+                if (j === 7) { j = 0; }
                 td = $("<div/>").addClass("calendar-cell align-center day-of-week").appendTo(tr);
-                div = $("<div/>").html(this.locales[o.locale].days[j+7]).appendTo(td);
+                div = $("<div/>").html(this.locales[o.locale].days[j + 7]).appendTo(td);
             }
         }
         tr.addClass("calendar-subheader").appendTo(table);
 
         // Add empty days for previos month
-        var prevMonth = this._month - 1; if (prevMonth < 0) {prevMonth = 11;} var daysInPrevMonth = totalDays[prevMonth];
-        var _first_week_day = ((o.weekStart) ? first_week_day + 6 : first_week_day)%7;
+        var prevMonth = this._month - 1; if (prevMonth < 0) { prevMonth = 11; } var daysInPrevMonth = totalDays[prevMonth];
+        var _first_week_day = ((o.weekStart) ? first_week_day + 6 : first_week_day) % 7;
         var htmlPrevDay = "";
         tr = $("<div/>").addClass('calendar-row');
-        for(i = 0; i < _first_week_day; i++) {
-            if (o.otherDays) {htmlPrevDay = daysInPrevMonth - (_first_week_day - i - 1);}
+        for (i = 0; i < _first_week_day; i++) {
+            if (o.otherDays) { htmlPrevDay = daysInPrevMonth - (_first_week_day - i - 1); }
             td = $("<div/>").addClass("calendar-cell empty").appendTo(tr);
             div = $("<div/>").addClass('other-day').html(htmlPrevDay).appendTo(td);
             if (!o.otherDays) {
@@ -2474,7 +3029,7 @@ $.widget("metro.calendar", {
         }
 
         // Days for current month
-        var week_day = ((o.weekStart) ? first_week_day + 6 : first_week_day)%7;
+        var week_day = ((o.weekStart) ? first_week_day + 6 : first_week_day) % 7;
 
         var d, a, d_html;
 
@@ -2489,12 +3044,12 @@ $.widget("metro.calendar", {
             td = $("<div/>").addClass("calendar-cell align-center day");
             div = $("<div/>").appendTo(td);
 
-            if (o.minDate !== false && (new Date(year, month, i) < o.minDate) || o.maxDate !== false && (new Date(year, month, i) > o.maxDate)) {
+            if (o.minDate !== false && (this._dateFromNumbers(year, month + 1, i) < o.minDate) || o.maxDate !== false && (this._dateFromNumbers(year, month + 1, i) > o.maxDate)) {
                 td.removeClass("day");
                 div.addClass("other-day");
                 d_html = i;
             } else {
-                d_html = "<a href='#'>"+i+"</a>";
+                d_html = "<a href='#'>" + i + "</a>";
             }
 
             div.html(d_html);
@@ -2506,19 +3061,19 @@ $.widget("metro.calendar", {
             }
 
             //console.log('xxx');
-            d = (new Date(this._year, this._month, i)).format('yyyy-mm-dd');
+            d = this._dateNumberStringyFy(this._year, this._month + 1, i);
 
-            if (this.element.data('_storage').indexOf(d)>=0) {
+            if (this.element.data('_storage').indexOf(d) >= 0) {
                 a = td.find("a");
                 a.parent().parent().addClass("selected");
             }
 
-            if (this.element.data('_exclude').indexOf(d)>=0) {
+            if (this.element.data('_exclude').indexOf(d) >= 0) {
                 a = td.find("a");
                 a.parent().parent().addClass("exclude");
             }
 
-            if (this.element.data('_stored').indexOf(d)>=0) {
+            if (this.element.data('_stored').indexOf(d) >= 0) {
                 a = td.find("a");
                 a.parent().parent().addClass("stored");
             }
@@ -2530,8 +3085,8 @@ $.widget("metro.calendar", {
 
         // next month other days
         var htmlOtherDays = "";
-        for (i = week_day+1; i<=7; i++){
-            if (o.otherDays) {htmlOtherDays = i - week_day;}
+        for (i = week_day + 1; i <= 7; i++) {
+            if (o.otherDays) { htmlOtherDays = i - week_day; }
             td = $("<div/>").addClass("calendar-cell empty").appendTo(tr);
             div = $("<div/>").addClass('other-day').html(htmlOtherDays).appendTo(td);
             if (!o.otherDays) {
@@ -2544,7 +3099,7 @@ $.widget("metro.calendar", {
         table.appendTo(this.element);
     },
 
-    _renderMonths: function(){
+    _renderMonths: function () {
         var table, tr, td, i, j;
 
         this.element.html("");
@@ -2558,28 +3113,28 @@ $.widget("metro.calendar", {
         tr = $("<div/>").addClass('calendar-row');
 
         $("<div/>").addClass("calendar-cell sel-minus align-center").html("<a class='btn-previous-year' href='#'>-</a>").appendTo(tr);
-        $("<div/>").addClass("calendar-cell sel-year align-center").html("<a class='btn-select-year' href='#'>"+this._year+"</a>").appendTo(tr);
+        $("<div/>").addClass("calendar-cell sel-year align-center").html("<a class='btn-select-year' href='#'>" + this._year + "</a>").appendTo(tr);
         $("<div/>").addClass("calendar-cell sel-plus align-center").html("<a class='btn-next-year' href='#'>+</a>").appendTo(tr);
 
         tr.addClass("calendar-header").appendTo(table);
 
         tr = $("<div/>").addClass('calendar-row');
         j = 0;
-        for (i=0;i<12;i++) {
+        for (i = 0; i < 12; i++) {
 
             //td = $("<td/>").addClass("text-center month").html("<a href='#' data-month='"+i+"'>"+this.options.monthsShort[i]+"</a>");
-            td = $("<div/>").addClass("calendar-cell month-cell align-center month").html("<a href='#' data-month='"+i+"'>"+this.locales[this.options.locale].months[i+12]+"</a>");
+            td = $("<div/>").addClass("calendar-cell month-cell align-center month").html("<a href='#' data-month='" + i + "'>" + this.locales[this.options.locale].months[i + 12] + "</a>");
 
             if (this._month === i && (new Date()).getFullYear() === this._year) {
                 td.addClass("today");
             }
 
             td.appendTo(tr);
-            if ((j+1) % 4 === 0) {
+            if ((j + 1) % 4 === 0) {
                 tr.appendTo(table);
                 tr = $("<div/>").addClass('calendar-row');
             }
-            j+=1;
+            j += 1;
         }
 
         this._renderButtons(table);
@@ -2587,7 +3142,7 @@ $.widget("metro.calendar", {
         table.appendTo(this.element);
     },
 
-    _renderYears: function(){
+    _renderYears: function () {
         var table, tr, td, i, j;
 
         this.element.html("");
@@ -2601,7 +3156,7 @@ $.widget("metro.calendar", {
         tr = $("<div/>").addClass('calendar-row cells4');
 
         $("<div/>").addClass("calendar-cell sel-minus align-center").html("<a class='btn-previous-year' href='#'>-</a>").appendTo(tr);
-        $("<div/>").addClass("calendar-cell sel-year align-center").html("<a class='btn-none-btn'>" + (this._distance)+"-"+(this._distance+11) + "</a>").appendTo(tr);
+        $("<div/>").addClass("calendar-cell sel-year align-center").html("<a class='btn-none-btn'>" + (this._distance) + "-" + (this._distance + 11) + "</a>").appendTo(tr);
         $("<div/>").addClass("calendar-cell sel-plus align-center").html("<a class='btn-next-year' href='#'>+</a>").appendTo(tr);
 
         tr.addClass("calendar-header").appendTo(table);
@@ -2609,17 +3164,17 @@ $.widget("metro.calendar", {
         tr = $("<div/>").addClass('calendar-row');
 
         j = 0;
-        for (i=this._distance;i<this._distance+12;i++) {
-            td = $("<div/>").addClass("calendar-cell year-cell align-center year").html("<a href='#' data-year='"+i+"'>"+i+"</a>");
+        for (i = this._distance; i < this._distance + 12; i++) {
+            td = $("<div/>").addClass("calendar-cell year-cell align-center year").html("<a href='#' data-year='" + i + "'>" + i + "</a>");
             if ((new Date()).getFullYear() === i) {
                 td.addClass("today");
             }
             td.appendTo(tr);
-            if ((j+1) % 4 === 0) {
+            if ((j + 1) % 4 === 0) {
                 tr.appendTo(table);
                 tr = $("<div/>").addClass('calendar-row');
             }
-            j+=1;
+            j += 1;
         }
 
         this._renderButtons(table);
@@ -2627,7 +3182,7 @@ $.widget("metro.calendar", {
         table.appendTo(this.element);
     },
 
-    _renderCalendar: function(){
+    _renderCalendar: function () {
         switch (this._mode) {
             case 'year': this._renderYears(); break;
             case 'month': this._renderMonths(); break;
@@ -2636,19 +3191,19 @@ $.widget("metro.calendar", {
         this._initButtons();
     },
 
-    _initButtons: function(){
+    _initButtons: function () {
         // Add actions
         var that = this, o = this.options,
             table = this.element.find('.calendar-grid');
 
         if (this._mode === 'day') {
-            table.find('.btn-select-month').on('click', function(e){
+            table.find('.btn-select-month').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 that._mode = 'month';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-month').on('click', function(e){
+            table.find('.btn-previous-month').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2659,7 +3214,7 @@ $.widget("metro.calendar", {
                 }
                 that._renderCalendar();
             });
-            table.find('.btn-next-month').on('click', function(e){
+            table.find('.btn-next-month').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2670,21 +3225,21 @@ $.widget("metro.calendar", {
                 }
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function(e){
+            table.find('.btn-previous-year').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year -= 1;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function(e){
+            table.find('.btn-next-year').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year += 1;
                 that._renderCalendar();
             });
-            table.find('.day a').on('click', function(e){
+            table.find('.day a').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -2692,22 +3247,22 @@ $.widget("metro.calendar", {
                     return false;
                 }
 
-                var d = (new Date(that._year, that._month, parseInt($(this).html()))).format(that.options.format,null);
-                var d0 = (new Date(that._year, that._month, parseInt($(this).html())));
+                var d = (new Date(that._paddy(that._year, 4), that._paddy(that._month, 2), that._paddy(parseInt($(this).html()), 2)).format(that.options.format, null));
+                var d0 = (new Date(that._paddy(that._year, 4), that._paddy(that._month, 2), that._paddy(parseInt($(this).html()), 2)));
 
                 if (that.options.multiSelect) {
                     $(this).parent().parent().toggleClass("selected");
 
                     if ($(this).parent().parent().hasClass("selected")) {
-                        that._addDate(d);
+                        that._addDate(that._dateStringyFy(d0));
                     } else {
-                        that._removeDate(d);
+                        that._removeDate(that._dateStringyFy(d0));
                     }
                 } else {
                     table.find('.day a').parent().parent().removeClass('selected');
                     $(this).parent().parent().addClass("selected");
                     that.element.data('_storage', []);
-                    that._addDate(d);
+                    that._addDate(that._dateStringyFy(d0));
                 }
 
 
@@ -2717,13 +3272,13 @@ $.widget("metro.calendar", {
                     if (typeof window[o.dayClick] === 'function') {
                         window[o.dayClick](d, d0);
                     } else {
-                        var result = eval("(function(){"+o.dayClick+"})");
+                        var result = eval("(function(){" + o.dayClick + "})");
                         result.call(d, d0);
                     }
                 }
             });
         } else if (this._mode === 'month') {
-            table.find('.month a').on('click', function(e){
+            table.find('.month a').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2731,21 +3286,21 @@ $.widget("metro.calendar", {
                 that._mode = 'day';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function(e){
+            table.find('.btn-previous-year').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year -= 1;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function(e){
+            table.find('.btn-next-year').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year += 1;
                 that._renderCalendar();
             });
-            table.find('.btn-select-year').on('click', function(e){
+            table.find('.btn-select-year').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2753,7 +3308,7 @@ $.widget("metro.calendar", {
                 that._renderCalendar();
             });
         } else {
-            table.find('.year a').on('click', function(e){
+            table.find('.year a').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2761,14 +3316,14 @@ $.widget("metro.calendar", {
                 that._mode = 'month';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function(e){
+            table.find('.btn-previous-year').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._distance -= 10;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function(e){
+            table.find('.btn-next-year').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -2777,7 +3332,7 @@ $.widget("metro.calendar", {
             });
         }
 
-        table.find('.calendar-btn-today').on('click', function(e){
+        table.find('.calendar-btn-today').on('click', function (e) {
             //that._event = 'eventNext';
             e.preventDefault();
             e.stopPropagation();
@@ -2788,7 +3343,7 @@ $.widget("metro.calendar", {
             that._day = that.options.date.getDate();
             that._renderCalendar();
         });
-        table.find('.calendar-btn-clear').on('click', function(e){
+        table.find('.calendar-btn-clear').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             that.options.date = new Date();
@@ -2801,97 +3356,121 @@ $.widget("metro.calendar", {
 
     },
 
-    _addDate: function(d){
+    _addDate: function (d) {
         var index = this.element.data('_storage').indexOf(d);
-        if (index < 0) {this.element.data('_storage').push(d);}
+        if (index < 0) { this.element.data('_storage').push(d); }
     },
 
-    _removeDate: function(d){
+    _removeDate: function (d) {
         var index = this.element.data('_storage').indexOf(d);
         this.element.data('_storage').splice(index, 1);
     },
 
-    _addDateExclude: function(d){
+    _addDateExclude: function (d) {
         var index = this.element.data('_exclude').indexOf(d);
-        if (index < 0) {this.element.data('_exclude').push(d);}
+        if (index < 0) { this.element.data('_exclude').push(d); }
     },
 
-    _addDateStored: function(d){
+    _addDateStored: function (d) {
         var index = this.element.data('_stored').indexOf(d);
-        if (index < 0) {this.element.data('_stored').push(d);}
+        if (index < 0) { this.element.data('_stored').push(d); }
     },
 
-    _removeDateExclude: function(d){
+    _removeDateExclude: function (d) {
         var index = this.element.data('_exclude').indexOf(d);
         this.element.data('_exclude').splice(index, 1);
     },
 
-    _removeDateStored: function(d){
+    _removeDateStored: function (d) {
         var index = this.element.data('_stored').indexOf(d);
         this.element.data('_stored').splice(index, 1);
     },
 
-    setDate: function(d){
+    _paddy: function paddy(n, p, c) {
+        var pad_char = typeof c !== 'undefined' ? c : '0';
+        var pad = new Array(1 + p).join(pad_char);
+        return (pad + n).slice(-pad.length);
+    },
+
+    _dateFromNumbers: function dateFromNumbers(year, month, day){
+        return new Date(this._paddy(year, 4) + "/" +  this._paddy(month, 2) + "/" + this._paddy(day, 2));
+    },
+
+    _dateNumberStringyFy: function dateNumberStringyFy(year, month, day) {
+        return (this._dateFromNumbers(year, month, day)).format('yyyy-mm-dd')
+    },
+
+    _dateStringyFy: function dateStringyFy(d) {
+        return this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
+    },
+
+    setDate: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"/"+ (d.getMonth()+1)+"/"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
+        
         this._addDate(r);
+        if (this.options.syncCalenderToDateField) {
+            this._year = d.getFullYear();
+            this._month = d.getMonth();
+            this._day = d.getDate();
+        }
         this._renderCalendar();
     },
 
-    setDateExclude: function(d){
+    setDateExclude: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"/"+ (d.getMonth()+1)+"/"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
         this._addDateExclude(r);
         this._renderCalendar();
     },
 
-    setDateStored: function(d){
+    setDateStored: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"/"+ (d.getMonth()+1)+"/"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
         this._addDateStored(r);
         this._renderCalendar();
     },
 
-    getDate: function(index){
+    getDate: function (index) {
         return new Date(index !== undefined ? this.element.data('_storage')[index] : this.element.data('_storage')[0]).format(this.options.format);
     },
 
-    getDates: function(){
+    getDates: function () {
         var res;
         res = $.merge($.merge([], this.element.data('_storage')), this.element.data('_stored'));
         return res.unique();
     },
 
-    unsetDate: function(d){
+    unsetDate: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"-"+ (d.getMonth()+1)+"-"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
         this._removeDate(r);
         this._renderCalendar();
     },
 
-    unsetDateExclude: function(d){
+    unsetDateExclude: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"-"+ (d.getMonth()+1)+"-"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
         this._removeDateExclude(r);
         this._renderCalendar();
     },
 
-    unsetDateStored: function(d){
+    unsetDateStored: function (d) {
         var r;
         d = new Date(d);
-        r = (new Date(d.getFullYear()+"-"+ (d.getMonth()+1)+"-"+ d.getDate())).format('yyyy-mm-dd');
+        r = this._dateNumberStringyFy(d.getFullYear(), d.getMonth() + 1, d.getDate());
         this._removeDateStored(r);
         this._renderCalendar();
     },
 
-    _destroy: function(){},
+    _destroy: function () { },
 
-    _setOption: function(key, value){
+    _setOption: function (key, value) {
         this._super('_setOption', key, value);
     }
 });
@@ -3313,7 +3892,7 @@ $.widget( "metro.charm" , {
             this._timeout_interval = setInterval(function(){
                 if (!element.is(":hover")) {
                     that.close();
-                    clearInterval(this._timeout_interval);
+                    clearInterval(that._timeout_interval);
                 }
             }, o.timeout);
         }
@@ -3382,6 +3961,114 @@ $.widget( "metro.charm" , {
     },
 
     _destroy: function () {
+    },
+
+    _setOption: function ( key, value ) {
+        this._super('_setOption', key, value);
+    }
+});
+
+// Source: js/widgets/clock.js
+$.widget( "metro.clock" , {
+
+    version: "1.0.0",
+
+    options: {
+        showTime: true,
+        showDate: true,
+        timeFormat: '24',
+        dateFormat: 'american',
+        divider: "&nbsp;&nbsp;"
+    },
+
+    _create: function () {
+        var that = this, element = this.element, o = this.options;
+
+        this._setOptionsFromDOM();
+
+        this._tick();
+        this._clockInterval = setInterval(function(){
+            that._tick();
+        }, 500);
+
+        element.data('clock', this);
+    },
+
+    _addLeadingZero: function(i){
+        if (i<10){i="0" + i;}
+        return i;
+    },
+
+    _tick: function(){
+        var that = this, element = this.element, o = this.options;
+        var timestamp = new Date();
+        var time = timestamp.getTime();
+        var result = "";
+        var h = timestamp.getHours(),
+            i = timestamp.getMinutes(),
+            s = timestamp.getSeconds(),
+            d = timestamp.getDate(),
+            m = timestamp.getMonth() + 1,
+            y = timestamp.getFullYear(),
+            a = '';
+
+        if (o.timeFormat == '12') {
+            a = " AM";
+            if (h > 11) { a = " PM"; }
+            if (h > 12) { h = h - 12; }
+            if (h == 0) { h = 12; }
+        }
+
+        h = this._addLeadingZero(h);
+        i = this._addLeadingZero(i);
+        s = this._addLeadingZero(s);
+        m = this._addLeadingZero(m);
+        d = this._addLeadingZero(d);
+
+        if (o.showDate) {
+            if (o.dateFormat == 'american') {
+                result += "<span class='date-month'>" + m + "</span>";
+                result += "<span class='date-divider'>-</span>";
+                result += "<span class='date-day'>" + d + "</span>";
+                result += "<span class='date-divider'>-</span>";
+                result += "<span class='date-year'>" + y + "</span>";
+            } else {
+                result += "<span class='date-day'>" + d + "</span>";
+                result += "<span class='date-divider'>-</span>";
+                result += "<span class='date-month'>" + m + "</span>";
+                result += "<span class='date-divider'>-</span>";
+                result += "<span class='date-year'>" + y + "</span>";
+            }
+            result += o.divider;
+        }
+
+        if (o.showTime) {
+            result += "<span class='clock-hour'>" + h + "</span>";
+            result += "<span class='clock-divider'>:</span>";
+            result += "<span class='clock-minute'>" + i + "</span>";
+            result += "<span class='clock-divider'>:</span>";
+            result += "<span class='clock-second'>" + s + "</span>";
+        }
+
+        element.html(result);
+    },
+
+    _setOptionsFromDOM: function(){
+        var that = this, element = this.element, o = this.options;
+
+        $.each(element.data(), function(key, value){
+            if (key in o) {
+                try {
+                    o[key] = $.parseJSON(value);
+                } catch (e) {
+                    o[key] = value;
+                }
+            }
+        });
+    },
+
+    _destroy: function () {
+        clearInterval(this._clockInterval);
     },
 
     _setOption: function ( key, value ) {
@@ -3689,7 +4376,7 @@ $.widget( "metro.datatable" , {
 // Source: js/widgets/datepicker.js
 $.widget("metro.datepicker", {
 
-    version: "3.0.0",
+    version: "3.0.14",
 
     options: {
         format: "yyyy.mm.dd",
@@ -3707,6 +4394,7 @@ $.widget("metro.datepicker", {
         buttonToday: true,
         buttonClear: true,
         condensedGrid: false,
+        scheme: 'default',
         onSelect: function(d, d0){}
     },
 
@@ -3794,10 +4482,12 @@ $.widget("metro.datepicker", {
             date: o.preset ? o.preset : new Date(),
             minDate: o.minDate,
             maxDate: o.maxDate,
+            scheme: o.scheme,
             dayClick: function(d, d0){
-                //console.log(d, d0);
+                // console.log(d, d0);
                 _calendar.calendar('setDate', d0);
                 that.element.children("input[type=text]").val(d);
+                // debugger;
                 that.element.children("input[type=text]").trigger('change', d0);
                 that.element.children("input[type=text]").blur();
                 that._hide();
@@ -3857,18 +4547,46 @@ $.widget("metro.datepicker", {
 
     _setOption: function(key, value){
         this._super('_setOption', key, value);
+    },
+
+    //sets the date on the datepicker
+    setDate : function(date) {
+
+      if($.isArray(date)) {
+          //TODO: handle multi-selected dates
+      }
+
+      //TODO: test for IE support
+
+      var input = this.element.find('input');
+
+      //retrieve calendar instance
+      //and get associated dom element
+      var calInst = this._calendar.data('metro-calendar');
+      var calEl = calInst.element;
+
+      //clear the date storage
+      calEl.data('_storage', []);
+
+      //set date on calendar
+      this._calendar.calendar('setDate', date);
+
+      date = this._calendar.calendar('getDate');
+      input.val(date);
+
     }
 });
 
 // Source: js/widgets/dialog.js
 $.widget( "metro.dialog" , {
 
-    version: "3.0.0",
+    version: "3.0.14",
 
     options: {
         modal: false,
         overlay: false,
         overlayColor: 'default',
+        overlayClickClose: false,
         type: 'default', // success, alert, warning, info
         place: 'center', // center, top-left, top-center, top-right, center-left, center-right, bottom-left, bottom-center, bottom-right
         position: 'default',
@@ -3880,6 +4598,9 @@ $.widget( "metro.dialog" , {
         color: 'default',
         closeButton: false,
         windowsStyle: false,
+        show: false,
+        href: false,
+        contentType: 'default', // video
 
         _interval: undefined,
         _overlay: undefined,
@@ -3907,6 +4628,10 @@ $.widget( "metro.dialog" , {
         this._createDialog();
 
         element.data('dialog', this);
+
+        if (o.show) {
+            this.open();
+        }
     },
 
     _createOverlay: function(){
@@ -3979,7 +4704,24 @@ $.widget( "metro.dialog" , {
             });
         }
 
-        element.hide();
+        this._hide();
+    },
+
+    _hide: function(){
+        var element = this.element;
+        element.css({
+           visibility: "hidden"
+        });
+    },
+
+    _show: function(){
+        var that = this, element = this.element, o = this.options;
+
+        this._setContent();
+
+        element.css({
+           visibility: "visible"
+        });
     },
 
     _setPosition: function(){
@@ -3987,10 +4729,112 @@ $.widget( "metro.dialog" , {
         var width = element.width(),
             height = element.height();
 
-        element.css({
-            left: o.windowsStyle === false ? ( $(window).width() - width ) / 2 : 0,
-            top: ( $(window).height() - height ) / 2
-        });
+        switch (o.place) {
+            case 'top-left': {
+                element.css({
+                    left: 0,
+                    top: 0
+                });
+                break;
+            }
+            case 'top-right': {
+                element.css({
+                    right: 0,
+                    top: 0
+                });
+                break;
+            }
+            case 'top-center': {
+                element.css({
+                    left: ( $(window).width() - width ) / 2,
+                    top: 0
+                });
+                break;
+            }
+            case 'bottom-left': {
+                element.css({
+                    left: 0,
+                    bottom: 0
+                });
+                break;
+            }
+            case 'bottom-right': {
+                element.css({
+                    right: 0,
+                    bottom: 0
+                });
+                break;
+            }
+            case 'center-left': {
+                element.css({
+                    left: 0,
+                    top: ( $(window).height() - height ) / 2
+                });
+                break;
+            }
+            case 'center-right': {
+                element.css({
+                    right: 0,
+                    top: ( $(window).height() - height ) / 2
+                });
+                break;
+            }
+            case 'bottom-center': {
+                element.css({
+                    left: ( $(window).width() - width ) / 2,
+                    bottom: 0
+                });
+                break;
+            }
+            default: {
+                element.css({
+                    left: o.windowsStyle === false ? ( $(window).width() - width ) / 2 : 0,
+                    top: ( $(window).height() - height ) / 2
+                });
+            }
+        }
+    },
+
+    _setContent: function(){
+        var that = this, element = this.element, o = this.options;
+        var content = $("<div>").addClass("set-dialog-content");
+
+        if (o.contentType === 'video') {
+            content.addClass('video-container');
+        }
+
+        if (o.content === false && o.href === false) {
+            return false;
+        }
+
+        element.find('.set-dialog-content').remove();
+
+        content.appendTo(element);
+
+        if (o.content) {
+            content.html(o.content);
+            this._setPosition();
+        }
+
+        if (o.href) {
+            $.get(
+                o.href,
+                function(response){
+                    content.html(response);
+                    that._setPosition();
+                }
+            );
+        }
+
+    },
+
+    toggle: function(){
+        var element = this.element;
+        if (element.data('opened')) {
+            this.close();
+        } else {
+            this.open();
+        }
     },
 
     open: function(){
@@ -4004,9 +4848,15 @@ $.widget( "metro.dialog" , {
         if (o.overlay) {
             overlay = o._overlay;
             overlay.appendTo('body').show();
+            if (o.overlayClickClose) {
+                overlay.on('click', function(){
+                    that.close();
+                });
+            }
         }
 
-        element.fadeIn();
+        //element.fadeIn();
+        this._show();
 
         if (typeof o.onDialogOpen === 'function') {
             o.onDialogOpen(element);
@@ -4037,7 +4887,8 @@ $.widget( "metro.dialog" , {
 
         element.data('opened', false);
 
-        element.fadeOut();
+        //element.fadeOut();
+        this._hide();
 
         if (typeof o.onDialogClose === 'function') {
             o.onDialogClose(element);
@@ -4049,6 +4900,241 @@ $.widget( "metro.dialog" , {
                 result.call(element);
             }
         }
+    },
+
+    reset: function(place){
+        if (place !== undefined) {
+            this.options.place = place;
+        }
+        this._setPosition();
+    },
+
+    _destroy: function () {
+    },
+
+    _setOption: function ( key, value ) {
+        this._super('_setOption', key, value);
+    }
+});
+
+
+window.showMetroDialog = function (el, place){
+    var dialog = $(el), dialog_obj;
+    if (dialog.length == 0) {
+        console.log('Dialog ' + el + ' not found!');
+        return false;
+    }
+
+    dialog_obj = dialog.data('dialog');
+
+    if (dialog_obj == undefined) {
+        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+        return false;
+    }
+
+    if (place !== undefined) {
+        dialog_obj.options.place = place;
+    }
+
+    dialog_obj.open();
+};
+
+window.hideMetroDialog = function(el){
+    var dialog = $(el), dialog_obj;
+    if (dialog.length == 0) {
+        console.log('Dialog ' + el + ' not found!');
+        return false;
+    }
+
+    dialog_obj = dialog.data('dialog');
+
+    if (dialog_obj == undefined) {
+        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+        return false;
+    }
+
+    dialog_obj.close();
+};
+
+window.toggleMetroDialog = function(el, place){
+    var dialog = $(el), dialog_obj;
+    if (dialog.length == 0) {
+        console.log('Dialog ' + el + ' not found!');
+        return false;
+    }
+
+    dialog_obj = dialog.data('dialog');
+
+    if (dialog_obj == undefined) {
+        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+        return false;
+    }
+
+    if (dialog_obj.element.data('opened') === true) {
+        dialog_obj.close();
+    } else {
+        if (place !== undefined) {
+            dialog_obj.options.place = place;
+        }
+        dialog_obj.open();
+    }
+};
+
+// Source: js/widgets/draggable.js
+$.widget( "metro.draggable" , {
+
+    version: "3.0.0",
+
+    options: {
+        dragElement: null,
+        dragArea: null,
+        zIndex: 2000,
+        onDragStart: function(el){},
+        onDragStop: function(el){},
+        onDragMove: function(el, offset){}
+    },
+
+    drag: false,
+    oldCursor: null,
+    oldZindex: null,
+    oldPosition: null,
+
+
+    _create: function () {
+        var that = this, element = this.element, o = this.options;
+
+        this._setOptionsFromDOM();
+        this._createDraggable();
+
+        element.data('draggable', this);
+    },
+
+    _createDraggable: function(){
+        var that = this, element = this.element, o = this.options;
+        var dragElement  = o.dragElement ? element.find(o.dragElement) : element;
+
+        addTouchEvents(element[0]);
+
+        dragElement.on('mousedown', function(e){
+            var result, el = $(this);
+
+            that.drag = true;
+
+            if (typeof o.onDragStart === 'function') {
+                o.onDragStart(element);
+            } else {
+                if (typeof window[o.onDragStart] === 'function') {
+                    window[o.onDragStart](element);
+                } else {
+                    result = eval("(function(){"+o.onDragStart+"})");
+                    result.call(element);
+                }
+            }
+
+            that.oldCursor = el.css('cursor') ? el.css('cursor') : 'default' ;
+            that.oldZindex= element.css('z-index');
+            dragElement.css({
+                cursor: 'move'
+            });
+
+            element.css({
+                'z-index': o.zIndex
+            });
+
+            var dragArea = o.dragArea ? $(o.dragArea) : $(window);
+            var os = {
+                left: o.dragArea ? dragArea.offset().left : 0,
+                top: o.dragArea ? dragArea.offset().top : 0
+            };
+
+            var drg_h = element.outerHeight(),
+                drg_w = element.outerWidth(),
+                pos_y = element.offset().top + drg_h - e.pageY,
+                pos_x = element.offset().left + drg_w - e.pageX;
+
+            //console.log(pos_x, pos_y);
+
+            dragArea.on('mousemove', function(e){
+                var offset, pageX, pageY;
+
+                if (!that.drag) return false;
+
+
+                pageX = e.pageX - os.left;
+                pageY = e.pageY - os.top;
+
+                var t = (pageY > 0) ? (pageY + pos_y - drg_h) : (0);
+                var l = (pageX > 0) ? (pageX + pos_x - drg_w) : (0);
+                var t_delta = dragArea.innerHeight() + dragArea.scrollTop() - element.outerHeight();
+                var l_delta = dragArea.innerWidth() + dragArea.scrollLeft() - element.outerWidth();
+
+                if(t >= 0 && t <= t_delta) {
+                    element.offset({top: t + os.top});
+                }
+                if(l >= 0 && l <= l_delta) {
+                    element.offset({left: l + os.left});
+                }
+
+                offset = {
+                    left: l,
+                    top: t
+                };
+
+                if (typeof o.onDragMove === 'function') {
+                    o.onDragMove(element, offset);
+                } else {
+                    if (typeof window[o.onDragMove] === 'function') {
+                        window[o.onDragMove](element, offset);
+                    } else {
+                        result = eval("(function(){"+o.onDragMove+"})");
+                        result.call(element, offset);
+                    }
+                }
+            });
+
+            //e.preventDefault();
+        });
+
+        dragElement.on('mouseup', function(e){
+            var result, el = $(this);
+
+            that.drag = false;
+            dragElement.css({
+                cursor: that.oldCursor
+            });
+            element.css({
+                'z-index': that.oldZindex,
+                'position': that.oldPosition
+            });
+
+            if (typeof o.onDragStop === 'function') {
+                o.onDragStop(element);
+            } else {
+                if (typeof window[o.onDragStop] === 'function') {
+                    window[o.onDragStop](element);
+                } else {
+                    result = eval("(function(){"+o.onDragStop+"})");
+                    result.call(element);
+                }
+            }
+
+            //e.preventDefault();
+        });
+
+    },
+
+    _setOptionsFromDOM: function(){
+        var that = this, element = this.element, o = this.options;
+
+        $.each(element.data(), function(key, value){
+            if (key in o) {
+                try {
+                    o[key] = $.parseJSON(value);
+                } catch (e) {
+                    o[key] = value;
+                }
+            }
+        });
     },
 
     _destroy: function () {
@@ -4688,7 +5774,9 @@ $.widget("metro.input", {
     version: "3.0.0",
 
     options: {
-        showLabelOnValue: false
+        showLabelOnValue: false,
+        textAutoResize: false,
+        textMaxHeight: 0
     },
 
     _create: function(){
@@ -4750,7 +5838,7 @@ $.widget("metro.input", {
         wrapper.insertAfter(input);
         input.attr('tabindex', '-1');
         button.attr('type', 'button');
-        wrapper.attr('placeholder', input.attr('placeholder'))
+        wrapper.attr('placeholder', input.attr('placeholder'));
 
         input.on('change', function(){
             var val = $(this).val();
@@ -4821,7 +5909,41 @@ $.widget("metro.input", {
     },
 
     _createInputTextarea: function(){
+        var element = this.element, that = this, o = this.options;
+        var textarea = element.find('textarea');
 
+        console.log(textarea);
+
+        var fitTextarea = function(){
+            textarea.css({
+                "resize": 'none',
+                "overflow-y": 'hidden'
+            });
+
+            textarea[0].style.height = 0;
+
+            var adjust = textarea[0].scrollHeight;
+
+            if (o.textMaxHeight > 0) {
+                if (o.textMaxHeight > adjust) {
+                    textarea[0].style.height = adjust + 'px';
+                } else {
+                    textarea[0].style.height = o.textMaxHeight + 'px';
+                }
+            } else {
+                textarea[0].style.height = adjust + 'px';
+            }
+        };
+
+        if (o.textAutoResize) {
+            textarea.on('keyup', fitTextarea);
+            textarea.on('keydown', fitTextarea);
+            textarea.on('change', fitTextarea);
+            textarea.on('focus', fitTextarea);
+            textarea.on('cut', fitTextarea);
+            textarea.on('paste', fitTextarea);
+            textarea.on('drop', fitTextarea);
+        }
     },
 
     _destroy: function(){
@@ -4843,7 +5965,9 @@ $.widget( "metro.keypad" , {
         shuffle: false,
         length: false,
         keys: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-        onKey: function(key){}
+        size: 32,
+        onKey: function(key){},
+        onChange: function(value){}
     },
 
     //_keys: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
@@ -4865,6 +5989,10 @@ $.widget( "metro.keypad" , {
             o.keys = o.keys.split(",");
         }
 
+        if (o.target !== false) {
+            o.target = $(o.target);
+        }
+
         this._createKeypad();
 
         element.data('keypad', this);
@@ -4882,7 +6010,7 @@ $.widget( "metro.keypad" , {
         }
 
         keypad.html('').css({
-            width: keys_length / 4 * 32 + (keys_length / 4 + 1) * 2 + 2
+            width: keys_length / 4 * o.size + (keys_length / 4 + 1) * 2 + 2
         });
 
         keys.map(function(i){
@@ -4948,6 +6076,7 @@ $.widget( "metro.keypad" , {
 
         keypad.on('click', '.key', function(e){
             var key = $(this);
+            var result;
 
             if (o.target) {
                 if (key.data('key') !== '&larr;' && key.data('key') !== '&times;') {
@@ -4964,6 +6093,8 @@ $.widget( "metro.keypad" , {
                         $(o.target).val(val.substring(0, val.length - 1))
                     }
                 }
+
+                o.target.trigger('change');
             }
 
             if (typeof o.onKey === 'function') {
@@ -4972,8 +6103,19 @@ $.widget( "metro.keypad" , {
                 if (typeof window[o.onKey] === 'function') {
                     window[o.onKey](key);
                 } else {
-                    var result = eval("(function(){"+o.onKey+"})");
+                    result = eval("(function(){"+o.onKey+"})");
                     result.call(key);
+                }
+            }
+
+            if (typeof o.onChange === 'function') {
+                o.onChange(o.target.val());
+            } else {
+                if (typeof window[o.onChange] === 'function') {
+                    window[o.onChange](o.target.val());
+                } else {
+                    result = eval("(function(){"+o.onChange+"})");
+                    result.call({value: o.target.val()});
                 }
             }
 
@@ -5335,13 +6477,22 @@ $.widget("metro.panel", {
 // Source: js/widgets/plugin.js
 $.widget( "metro.widget" , {
 
-    version: "3.0.0",
+    version: "1.0.0",
 
     options: {
         someValue: null
     },
 
     _create: function () {
+        var that = this, element = this.element, o = this.options;
+
+        this._setOptionsFromDOM();
+
+        element.data('widget', this);
+
+    },
+
+    _setOptionsFromDOM: function(){
         var that = this, element = this.element, o = this.options;
 
         $.each(element.data(), function(key, value){
@@ -5353,27 +6504,6 @@ $.widget( "metro.widget" , {
                 }
             }
         });
-
-        console.log('Hi');
-
-        element.data('widget', this);
-
-    },
-
-    _executeEvent: function(event){
-        var result, args = arguments.splice(0, 1);
-
-        if (typeof event === 'function') {
-            event.apply(args);
-        } else {
-            if (typeof window[event] === 'function') {
-                window[event].apply(args);
-            } else {
-                result = eval("(function(){"+event+"})");
-                result.apply(args);
-            }
-        }
-
     },
 
     _destroy: function () {
@@ -5830,7 +6960,7 @@ $.widget( "metro.presenter" , {
 });
 
 // Source: js/widgets/progressbar.js
-$.widget( "metro.progressBar" , {
+$.widget( "metro.progress" , {
 
     version: "3.0.0",
 
@@ -5838,6 +6968,7 @@ $.widget( "metro.progressBar" , {
         color: 'default',
         colors: false,
         value: 0,
+        animate: false,
         onProgress: function(value){}
     },
 
@@ -5846,6 +6977,10 @@ $.widget( "metro.progressBar" , {
     _create: function () {
         var that = this, element = this.element, o = this.options;
         var bar = element.children('.bar:last-child');
+
+        if (!element.hasClass('progress')) {
+            element.addClass('progress');
+        }
 
         $.each(element.data(), function(key, value){
             if (key in o) {
@@ -5869,10 +7004,10 @@ $.widget( "metro.progressBar" , {
             });
         }
 
-        this.progress(o.value);
+        this.set(o.value);
         this.color(o.color);
 
-        element.data('progressBar', this);
+        element.data('progress', this);
 
     },
 
@@ -5894,7 +7029,7 @@ $.widget( "metro.progressBar" , {
         o.color = value;
     },
 
-    progress: function(value){
+    set: function(value){
         if (value !== undefined) {
             var element = this.element, o = this.options, colors = this.colorsDim;
             var bar = element.children('.bar:last-child');
@@ -5917,9 +7052,26 @@ $.widget( "metro.progressBar" , {
 
             o.value = value;
 
-            bar.animate({
-                width: o.value + '%'
-            }, 100, function(){
+            if (o.animate !== false) {
+                var ani_speed = isNaN(o.animate) ? 500 : o.animate;
+                bar.animate({
+                    width: o.value + '%'
+                }, ani_speed, function(){
+                    if (typeof o.onProgress === 'function') {
+                        o.onProgress(value);
+                    } else {
+                        if (typeof window[o.onProgress] === 'function') {
+                            window[o.onProgress](value);
+                        } else {
+                            var result = eval("(function(){"+o.onProgress+"})");
+                            result.call(value);
+                        }
+                    }
+                });
+            } else {
+                bar.css({
+                    width: o.value + '%'
+                });
                 if (typeof o.onProgress === 'function') {
                     o.onProgress(value);
                 } else {
@@ -5930,10 +7082,15 @@ $.widget( "metro.progressBar" , {
                         result.call(value);
                     }
                 }
-            });
+            }
+
         } else {
             return this.options.value;
         }
+    },
+
+    value: function(value){
+        return this.set(value);
     },
 
     _destroy: function () {
@@ -6172,13 +7329,15 @@ $.widget( "metro.select" , {
 // Source: js/widgets/slider.js
 $.widget("metro.slider", {
 
-    version: "3.0.0",
+    version: "3.0.14",
 
     options: {
         position: 0,
+        buffer: 0,
         accuracy: 0,
         color: 'default',
         completeColor: 'default',
+        bufferColor: 'default',
         markerColor: 'default',
         colors: false,
         showHint: false,
@@ -6187,14 +7346,17 @@ $.widget("metro.slider", {
         vertical: false,
         min: 0,
         max: 100,
-        animate: true,
+        animate: false,
         minValue: 0,
         maxValue: 100,
         currValue: 0,
         returnType: 'value',
         target: false,
 
+        onStartChange: function(){},
         onChange: function(value, slider){},
+        onChanged: function(value, slider){},
+        onBufferChange: function(value, slider){},
 
         _slider : {
             vertical: false,
@@ -6225,12 +7387,16 @@ $.widget("metro.slider", {
             }
         });
 
+        element.data('internal_id', uniqueId());
+        //console.log(element.data('internal_id'));
+
         o.accuracy = o.accuracy < 0 ? 0 : o.accuracy;
         o.min = o.min < 0 ? 0 : o.min;
         o.min = o.min > o.max ? o.max : o.min;
         o.max = o.max > 100 ? 100 : o.max;
         o.max = o.max < o.min ? o.min : o.max;
         o.position = this._correctValue(element.data('position') > o.min ? (element.data('position') > o.max ? o.max : element.data('position')) : o.min);
+        o.buffer = this._correctValue(element.data('buffer') > o.min ? (element.data('buffer') > o.max ? o.max : element.data('buffer')) : o.min);
         o.colors = o.colors ? o.colors.split(",") : false;
 
         s.vertical = o.vertical;
@@ -6252,12 +7418,33 @@ $.widget("metro.slider", {
         this._createSlider();
         this._initPoints();
         this._placeMarker(o.position);
+        this._showBuffer(o.buffer);
 
         var event_down = isTouchDevice() ? 'touchstart' : 'mousedown';
 
+        if (o.target && $(o.target)[0].tagName == 'INPUT') {
+            $(o.target).on('keyup', function(){
+                var input_value = this.value !== undefined ? this.value : 0;
+                var new_value = Math.min(input_value, o.maxValue);
+                that._placeMarker(that._realValueToValue(new_value));
+                //console.log(that._realValueToValue(this.value));
+            });
+        }
+
         element.children('.marker').on(event_down, function (e) {
-            e.preventDefault();
             that._startMoveMarker(e);
+            if (typeof o.onStartChange === 'function') {
+                o.onStartChange();
+            } else {
+                if (typeof window[o.onStartChange] === 'function') {
+                    window[o.onStartChange]();
+                } else {
+                    var result = eval("(function(){"+o.onStartChange+"})");
+                    result.call();
+                }
+            }
+            e.preventDefault();
+            e.stopPropagation();
         });
 
         element.on(event_down, function (e) {
@@ -6266,7 +7453,6 @@ $.widget("metro.slider", {
         });
 
         element.data('slider', this);
-
     },
 
     _startMoveMarker: function(e){
@@ -6276,23 +7462,36 @@ $.widget("metro.slider", {
         var event_move = isTouchDevice() ? 'touchmove' : 'mousemove';
         var event_up = isTouchDevice() ? 'touchend' : 'mouseup mouseleave';
 
-        $(element).on(event_move, function (event) {
+        $(document).on(event_move, function (event) {
             that._movingMarker(event);
             if (!element.hasClass('permanent-hint')) {
                 hint.css('display', 'block');
             }
         });
-        $(element).on(event_up, function () {
-            $(element).off('mousemove');
-            $(element).off('mouseup');
+        $(document).on(event_up, function () {
+            $(document).off(event_move);
+            $(document).off(event_up);
             element.data('value', o.position);
             element.trigger('changed', o.position);
+            element.trigger('change', o.position);
 
             returnedValue = o.returnType === 'value' ? that._valueToRealValue(o.position) : o.position;
 
             if (!element.hasClass('permanent-hint')) {
                 hint.css('display', 'none');
             }
+
+            if (typeof o.onChanged === 'function') {
+                o.onChanged(returnedValue, element);
+            } else {
+                if (typeof window[o.onChanged] === 'function') {
+                    window[o.onChanged](returnedValue, element);
+                } else {
+                    var result = eval("(function(){"+o.onChanged+"})");
+                    result.call(returnedValue, element);
+                }
+            }
+
         });
 
         this._initPoints();
@@ -6345,7 +7544,12 @@ $.widget("metro.slider", {
         var returnedValue = o.returnType === 'value' ? this._valueToRealValue(o.position) : o.position;
 
         if (o.target) {
-            $(o.target).val(returnedValue);
+            if ($(o.target)[0].tagName == 'INPUT') {
+                $(o.target).val(returnedValue);
+            } else {
+                $(o.target).html(returnedValue);
+            }
+            $(o.target).trigger('change', returnedValue);
         }
 
         if (typeof o.onChange === 'function') {
@@ -6373,7 +7577,7 @@ $.widget("metro.slider", {
         if (o._slider.vertical) {
             var oldSize = this._percToPix(o.position) + o._slider.marker,
                 oldSize2 = o._slider.length - oldSize;
-            size = this._percToPix(value) + o._slider.marker;
+            size = this._percToPix(value) + o._slider.marker / 2;
             size2 = o._slider.length - size;
             this._animate(marker.css('top', oldSize2),{top: size2});
             this._animate(complete.css('height', oldSize),{height: size});
@@ -6384,7 +7588,7 @@ $.widget("metro.slider", {
             }
             if (o.showHint) {
                 hintValue = this._valueToRealValue(value);
-                hint.html(hintValue).css('top', size2 - hint.height()/2 + (element.hasClass('large') ? 8 : 0));
+                hint.html(hintValue).css('top', size2 - marker.height()/2 - hint.height()/4);
             }
         } else {
             size = this._percToPix(value);
@@ -6396,7 +7600,7 @@ $.widget("metro.slider", {
             }
             if (o.showHint) {
                 hintValue = this._valueToRealValue(value);
-                hint.html(hintValue).css({left: size - hint.width() / 2 + (element.hasClass('large') ? 6 : 0)});
+                hint.html(hintValue).css('left', size - marker.width()/2);
             }
         }
     },
@@ -6412,9 +7616,16 @@ $.widget("metro.slider", {
         return Math.round(real_value);
     },
 
+    _realValueToValue: function(value){
+        var o = this.options, val_val;
+        var percent_value = (o.maxValue - o.minValue) / 100;
+        val_val = value / percent_value + o.minValue;
+        return Math.round(val_val);
+    },
+
     _animate: function (obj, val) {
         var o = this.options;
-
+        //console.log(obj, val);
         if(o.animate) {
             obj.stop(true).animate(val);
         } else {
@@ -6424,11 +7635,12 @@ $.widget("metro.slider", {
 
     _pixToPerc: function (valuePix) {
         var valuePerc;
-        valuePerc = valuePix * this.options._slider.ppp;
+        valuePerc = (valuePix < 0 ? 0 : valuePix )* this.options._slider.ppp;
         return Math.round(this._correctValue(valuePerc));
     },
 
     _percToPix: function (value) {
+        ///console.log(this.options._slider.ppp, value);
         if (this.options._slider.ppp === 0) {
             return 0;
         }
@@ -6480,11 +7692,13 @@ $.widget("metro.slider", {
     _createSlider: function(){
         var element = this.element,
             o = this.options,
-            complete, marker, hint;
+            complete, marker, hint, buffer, back;
 
         element.html('');
 
+        back = $("<div/>").addClass("slider-backside").appendTo(element);
         complete = $("<div/>").addClass("complete").appendTo(element);
+        buffer = $("<div/>").addClass("buffer").appendTo(element);
         marker = $("<a/>").addClass("marker").appendTo(element);
 
         if (o.showHint) {
@@ -6493,9 +7707,9 @@ $.widget("metro.slider", {
 
         if (o.color !== 'default') {
             if (o.color.isColor()) {
-                element.css('background-color', o.color);
+                back.css('background-color', o.color);
             } else {
-                element.addClass(o.color);
+                back.addClass(o.color);
             }
         }
         if (o.completeColor !== 'default') {
@@ -6503,6 +7717,13 @@ $.widget("metro.slider", {
                 complete.css('background-color', o.completeColor);
             } else {
                 complete.addClass(o.completeColor);
+            }
+        }
+        if (o.bufferColor !== 'default') {
+            if (o.bufferColor.isColor()) {
+                buffer.css('background-color', o.bufferColor);
+            } else {
+                buffer.addClass(o.bufferColor);
             }
         }
         if (o.markerColor !== 'default') {
@@ -6528,7 +7749,12 @@ $.widget("metro.slider", {
             returnedValue = o.returnType === 'value' ? this._valueToRealValue(o.position) : o.position;
 
             if (o.target) {
-                $(o.target).val(returnedValue);
+                if ($(o.target)[0].tagName == 'INPUT') {
+                    $(o.target).val(returnedValue);
+                } else {
+                    $(o.target).html(returnedValue);
+                }
+                $(o.target).trigger('change', returnedValue);
             }
 
             if (typeof o.onChange === 'function') {
@@ -6542,9 +7768,66 @@ $.widget("metro.slider", {
                 }
             }
 
+            //if (typeof o.onChanged === 'function') {
+            //    o.onChanged(returnedValue, element);
+            //} else {
+            //    if (typeof window[o.onChanged] === 'function') {
+            //        window[o.onChanged](returnedValue, element);
+            //    } else {
+            //        var result = eval("(function(){"+o.onChanged+"})");
+            //        result.call(returnedValue, element);
+            //    }
+            //}
+
             return this;
         } else {
             returnedValue = o.returnType === 'value' ? this._valueToRealValue(o.position) : o.position;
+            return returnedValue;
+        }
+    },
+
+    _showBuffer: function(value){
+        var size, oldSize, o = this.options, element = this.element,
+            buffer = this.element.children('.buffer');
+
+        oldSize = o.buffer;
+        size = value == 100 ? 99.9 : value;
+
+        if (o._slider.vertical) {
+            this._animate(buffer.css('height', oldSize+'%'),{height: size+'%'});
+
+        } else {
+            this._animate(buffer.css('width', oldSize+'%'),{width: size+'%'});
+        }
+    },
+
+    buffer: function (value) {
+        var element = this.element, o = this.options, returnedValue;
+
+        if (typeof value !== 'undefined') {
+
+            value = value > 100 ? 100 : value;
+            value = value < 0 ? 0 : value;
+
+            this._showBuffer(parseInt(value));
+            o.buffer = parseInt(value);
+
+            returnedValue = o.buffer;
+
+            if (typeof o.onBufferChange === 'function') {
+                o.onBufferChange(returnedValue, element);
+            } else {
+                if (typeof window[o.onBufferChange] === 'function') {
+                    window[o.onBufferChange](returnedValue, element);
+                } else {
+                    var result = eval("(function(){"+o.onBufferChange+"})");
+                    result.call(returnedValue, element);
+                }
+            }
+
+            return this;
+        } else {
+            returnedValue = o.buffer;
             return returnedValue;
         }
     },
@@ -6645,6 +7928,7 @@ $.widget("metro.stepper", {
 
         $.each(steps, function(i, step){
             var left = i === 0 ? 0 : (element_width - step_width)/steps_length * i;
+            console.log(element_width);
             $(step).animate({
                 left: left
             });
@@ -6943,7 +8227,7 @@ $.widget("metro.streamer", {
 });
 
 // Source: js/widgets/tabcontrol.js
-$.widget( "metro.tabControl" , {
+$.widget( "metro.tabcontrol" , {
 
     version: "3.0.0",
 
@@ -7028,7 +8312,7 @@ $.widget( "metro.tabControl" , {
         //    that._hideTabs();
         //});
 
-        element.data('tabControl', this);
+        element.data('tabcontrol', this);
 
     },
 
@@ -7699,7 +8983,7 @@ $.widget( "metro.treeview" , {
             }
         }
 
-        return this;
+        return li;
     },
 
     _destroy: function () {
@@ -8121,6 +9405,518 @@ $.widget( "metro.validator" , {
 
     _setOption: function ( key, value ) {
         this._super('_setOption', key, value);
+    }
+});
+
+// Source: js/widgets/video-player.js
+$.widget( "metro.video" , {
+
+    version: "3.0.14",
+
+    options: {
+        width: '100%',
+        videoSize: 'hd', //sd
+        controls: true,
+        controlsPosition: 'bottom',
+        controlsModel: 'full',
+
+        loopButton: "<span class='mif-loop'></span>",
+        stopButton: "<span class='mif-stop'></span>",
+        playButton: "<span class='mif-play'></span>",
+        pauseButton: "<span class='mif-pause'></span>",
+        muteButton: "<span class='mif-volume-mute2'></span>",
+
+        volumeLowButton: "<span class='mif-volume-low'></span>",
+        volumeMediumButton: "<span class='mif-volume-medium'></span>",
+        volumeHighButton: "<span class='mif-volume-high'></span>",
+
+        screenMoreButton: "<span class='mif-enlarge'></span>",
+        screenLessButton: "<span class='mif-shrink'></span>",
+        fullScreenMode: "window",
+        poster: false,
+        src: false,
+        loop: false,
+        preload: false,
+        autoplay: false,
+        muted: false,
+        volume:.5,
+        logo: false,
+
+        controlsHide: 1000
+    },
+
+    _create: function () {
+        var that = this, element = this.element, o = this.options;
+
+        this._setOptionsFromDOM();
+
+        this._createPlayer();
+        this._addControls();
+        this._addEvents();
+
+        element.data('video', this);
+    },
+
+    _createPlayer: function(){
+        var that = this, element = this.element, o = this.options;
+        var player_width = element.width(), player_height;
+        var controls, video = element.find("video");
+
+        if (o.videoSize == 'HD' && o.videoSize == 'hd') {
+            player_height = 9 * player_width / 16;
+        } else if (o.videoSize == 'SD' && o.videoSize == 'sd') {
+            player_height = 3 * player_width / 4;
+        } else {
+
+        }
+
+        element.addClass('video-player');
+
+        element.css({
+            height: player_height
+        });
+
+        if (video.length == 0) {
+            video = $("<video/>").appendTo(element);
+        }
+
+        $.each(['muted', 'autoplay', 'controls', 'height', 'width', 'loop', 'poster', 'preload'], function(){
+            video.removeAttr(this);
+        });
+
+        if (o.poster) {
+            video.attr("poster", o.poster);
+        }
+
+        if (o.src) {
+            if (o.src.indexOf('youtube') >= 0) {
+                var youtube_reg = /v=[(\w)]+/ig;
+                var youtube_id = youtube_reg.exec(o.src)[0].substring(2);
+
+            } else {
+                video.attr("src", o.src);
+            }
+        }
+
+        if (o.loop) {
+            video.attr("loop", "loop");
+        }
+
+        if (o.preload) {
+            video.attr("preload", "auto");
+        }
+
+        if (o.autoplay) {
+            video.attr("autoplay", "autoplay");
+        }
+
+        video[0].volume = o.volume;
+
+
+        element.data('fullScreen', false);
+        element.data('muted', false);
+        element.data('duration', 0);
+        element.data('timeInterval', undefined);
+        element.data('played', false);
+        element.data('volume', video[0].volume);
+
+    },
+
+    _addEvents: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var controls = element.find('.controls'),
+            preloader = element.find('.video-preloader'),
+            play_button = controls.find('.play'),
+            stop_button = controls.find('.stop'),
+            volume_button = controls.find('.volume'),
+            screen_button = controls.find('.full'),
+            volume_slider = controls.find('.volume-slider'),
+            stream_slider = controls.find('.stream-slider'),
+            info_box = controls.find('.info-box');
+        var video = element.find("video"), video_obj = video[0];
+
+        video.on('loadedmetadata', function(){
+            element.data('duration', video_obj.duration.toFixed(0));
+            info_box.html("00:00" + " / " + secondsToFormattedString(element.data('duration')) );
+        });
+
+        video.on("canplay", function(){
+            controls.fadeIn();
+            preloader.hide();
+            var buffered = video_obj.buffered.length ? Math.round(Math.floor(video_obj.buffered.end(0)) / Math.floor(video_obj.duration) * 100) : 0;
+            that._setBufferSize(buffered);
+        });
+
+        video.on('progress', function(){
+            var buffered = video_obj.buffered.length ? Math.round(Math.floor(video_obj.buffered.end(0)) / Math.floor(video_obj.duration) * 100) : 0;
+            that._setBufferSize(buffered);
+        });
+
+        video.on("timeupdate", function(){
+            that._setInfoData();
+            that._setStreamSliderPosition();
+        });
+
+        video.on("waiting", function(){
+            preloader.show();
+        });
+
+        video.on("loadeddata", function(){
+            preloader.hide();
+        });
+
+        video.on('ended', function(){
+            that._stopVideo();
+        });
+
+        element.on("play", function(){
+            if (isTouchDevice()) {
+                setTimeout(function () {
+                    controls.fadeOut();
+                }, o.controlsHide);
+            }
+        });
+
+        element.on("pause", function(){
+        });
+
+        element.on("stop", function(){
+            controls.show();
+        });
+
+        element.on("mouseenter", function(){
+            setTimeout(function(){
+                controls.fadeIn();
+            }, o.controlsHide);
+        });
+
+        element.on("mouseleave", function(){
+            if (video_obj.currentTime > 0) {
+                setTimeout(function () {
+                    controls.fadeOut();
+                }, o.controlsHide);
+            }
+        });
+
+        if (isTouchDevice()) {
+            element.on("touchstart", function(){
+                if (video_obj.currentTime > 0) {
+                    setTimeout(function () {
+                        if (controls.css('display') == 'none') {
+                            controls.fadeIn();
+                        } else {
+                            controls.fadeOut();
+                        }
+                    }, o.controlsHide);
+                }
+            });
+        }
+    },
+
+    _setInfoData: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var info_box = element.find(".controls .info-box");
+        var currentTime = Math.round(video_obj.currentTime);
+
+        info_box.html(secondsToFormattedString(currentTime) + " / " + secondsToFormattedString(element.data('duration')));
+    },
+
+    _setStreamSliderPosition: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var slider = element.find(".stream-slider").data("slider");
+        slider.value(Math.round(video_obj.currentTime * 100 / element.data('duration')));
+    },
+
+    _setBufferSize: function(value){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var slider = element.find(".stream-slider").data("slider");
+        slider.buffer(Math.round(value));
+    },
+
+    _stop: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var stop_button = element.find(".controls .stop");
+        var play_button = element.find(".controls .play");
+
+        video_obj.pause();
+        video_obj.currentTime = 0;
+        play_button.html(o.playButton);
+        stop_button.attr("disabled", "disabled");
+        element.data('played', false);
+        element.find(".stream-slider").data('slider').value(0);
+        element.trigger('stop');
+    },
+
+    _play: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var play_button = element.find(".controls .play");
+        var stop_button = element.find(".controls .stop");
+
+        if (video_obj.paused) {
+            play_button.html(o.pauseButton);
+            video_obj.play();
+            stop_button.removeAttr("disabled");
+            element.data('played', true);
+            element.trigger('play');
+        } else {
+            play_button.html(o.playButton);
+            video_obj.pause();
+            element.data('played', false);
+            element.trigger('pause');
+        }
+    },
+
+    _addControls: function(){
+        var that = this, element = this.element, element_obj = element[0], o = this.options;
+        var preloader, logo, controls, loop_button, play_button, stop_button, volume_button, screen_button, volume_slider, stream_slider, info_box, volume_slider_wrapper, stream_slider_wrapper;
+        var video = element.find("video"), video_obj = video[0];
+
+
+        if (o.logo) {
+            logo = $("<img/>").addClass('video-logo').appendTo(element);
+            logo.attr("src", o.logo);
+        }
+
+        preloader = $("<div/>").addClass("video-preloader")
+            .attr("data-role", "preloader")
+            .attr("data-type", "cycle")
+            .attr("data-style", "color")
+            .appendTo(element);
+
+        controls = $("<div/>").addClass("controls").appendTo(element);
+        controls.addClass('position-'+o.controlsPosition);
+
+        stream_slider_wrapper = $("<div/>").addClass('stream-slider-wrapper').appendTo(controls);
+        stream_slider = $("<div/>").addClass('slider stream-slider').appendTo(stream_slider_wrapper);
+        stream_slider.slider({
+            showHint: true,
+            animate: false,
+            markerColor: 'bg-red',
+            completeColor: 'bg-cyan',
+            onStartChange: function(){
+                video_obj.pause();
+            },
+            onChanged: function(value, slider){
+                if (video_obj.seekable.length > 0)
+                    video_obj.currentTime = (element.data('duration') * value / 100).toFixed(0);
+
+                if (element.data('played') && video_obj.currentTime >= 0) {
+                    video_obj.play();
+                }
+            }
+        });
+        stream_slider.data('slider').value(0);
+
+        if (o.loopButton !== false) {
+            loop_button = $("<button/>").addClass("square-button small-button1 control-button loop no-phone").html(o.loopButton).appendTo(controls);
+            loop_button.on("click", function () {
+                loop_button.toggleClass('active');
+                if (loop_button.hasClass('active')) {
+                    video.attr("loop", "loop");
+                } else {
+                    video.removeAttr("loop");
+                }
+            });
+        }
+
+        if (o.playButton !== false) {
+            play_button = $("<button/>").addClass("square-button small-button1 control-button play").html(o.playButton).appendTo(controls);
+            play_button.on("click", function () {
+                that._play();
+            });
+        }
+
+
+        if (o.stopButton !== false) {
+            stop_button = $("<button/>").addClass("square-button small-button1 control-button stop no-phone").html(o.stopButton).appendTo(controls).attr("disabled", "disabled");
+            stop_button.on("click", function () {
+                that._stop();
+            });
+        }
+
+        info_box = $("<div/>").addClass('info-box no-small-phone').appendTo(controls); 
+        info_box.html("00:00 / 00:00");
+
+        if (o.screenMoreButton !== false) {
+            screen_button = $("<button/>").addClass("square-button small-button1 control-button full").html(o.screenMoreButton).appendTo(controls);
+            screen_button.on("click", function () {
+                element.data('fullScreen', !element.data('fullScreen'));
+
+                if (element.data('fullScreen')) {
+                    screen_button.html(o.screenLessButton);
+                } else {
+                    screen_button.html(o.screenMoreButton);
+                }
+
+                if (o.fullScreenMode === 'window') {
+                    element.toggleClass("full-screen");
+                } else {
+                    if (element.data('fullScreen')) {
+
+
+                        if (element_obj.requestFullscreen) {
+                            element_obj.requestFullscreen();
+                        } else if (element_obj.msRequestFullscreen) {
+                            element_obj.msRequestFullscreen();
+                        } else if (element_obj.mozRequestFullScreen) {
+                            element_obj.mozRequestFullScreen();
+                        } else if (element_obj.webkitRequestFullscreen) {
+                            element_obj.webkitRequestFullscreen();
+                        }
+                    } else {
+
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
+                    }
+                }
+
+                if (element.data('fullScreen')) {
+                    $(document).on("keyup.metro_video_player", function (e) {
+                        if (e.keyCode == 27) {
+                            screen_button.html(o.screenMoreButton);
+                            element.data('fullScreen', false);
+                            if (element.hasClass('full-screen')) {
+                                element.removeClass("full-screen");
+                            }
+                        }
+                    });
+                } else {
+                    $(document).off("keyup.metro_video_player");
+                }
+            });
+        }
+
+        volume_slider_wrapper = $("<div/>").addClass('control-slider volume-slider-wrapper place-right').appendTo(controls);
+        volume_slider = $("<div/>").addClass('slider volume-slider').appendTo(volume_slider_wrapper);
+        volume_slider.slider({
+            showHint: true,
+            animate: false,
+            markerColor: 'bg-red',
+            completeColor: 'bg-green',
+            onChange: function(value, slider){
+                video_obj.volume = value/100;
+                that._setupVolumeButton();
+            }
+        });
+        volume_slider.data('slider').value(video_obj.volume * 100);
+
+        volume_button = $("<button/>").addClass("square-button small-button1 control-button volume place-right").html(o.volumeLowButton).appendTo(controls);
+        volume_button.on("click", function(){
+            var volume_slider = element.find(".volume-slider").data("slider");
+
+            element.data('muted', !element.data('muted'));
+
+            if (element.data('muted')) {
+                element.data("volume", video_obj.volume);
+                volume_button.html(o.muteButton);
+                volume_slider.value(0);
+            } else {
+                video_obj.volume = element.data("volume");
+                volume_slider.value(element.data("volume")*100);
+                that._setupVolumeButton();
+            }
+
+            video_obj.muted = element.data('muted');
+        });
+        this._setupVolumeButton();
+
+        controls.hide();
+    },
+
+    _setupVolumeButton: function(){
+        var that = this, element = this.element, o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var controls = element.find('.controls'), volume_button = controls.find('.volume');
+
+        var current_volume = video_obj.volume;
+        if (current_volume > 0 && current_volume < 0.3) {
+            volume_button.html(o.volumeLowButton);
+        } else if (current_volume >= 0.3 && current_volume < 0.6) {
+            volume_button.html(o.volumeMediumButton);
+        } else if (current_volume >= 0.6 && current_volume <= 1) {
+            volume_button.html(o.volumeHighButton);
+        } else {
+            volume_button.html(o.muteButton);
+        }
+    },
+
+    _setOptionsFromDOM: function(){
+        var that = this, element = this.element, o = this.options;
+
+        $.each(element.data(), function(key, value){
+            if (key in o) {
+                try {
+                    o[key] = $.parseJSON(value);
+                } catch (e) {
+                    o[key] = value;
+                }
+            }
+        });
+    },
+
+    _destroy: function () {
+    },
+
+    _setOption: function ( key, value ) {
+        this._super('_setOption', key, value);
+    },
+
+    play: function(file, type) {
+        var that = this, element = this.element, o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var source;
+
+        this._stop();
+
+        video.find("source").remove();
+        video.removeAttr("src");
+
+        source = $("<source>").attr("src", file);
+        if (type != undefined) {
+            source.attr("type", type);
+        }
+        video_obj.load();
+        source.appendTo(video);
+
+        this._play();
+    },
+
+    stop: function(){
+        this._stop();
+    },
+
+    pause: function(){
+        var that = this, element = this.element, o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var play_button = element.find(".play");
+
+        play_button.html(o.playButton);
+        video_obj.pause();
+        element.data('played', false);
+        element.trigger('pause');
+    },
+
+    resume: function(){
+        var that = this, element = this.element, o = this.options;
+        var video = element.find("video"), video_obj = video[0];
+        var play_button = element.find(".play");
+        var stop_button = element.find(".stop");
+
+        play_button.html(o.pauseButton);
+        video_obj.play();
+        stop_button.removeAttr("disabled");
+        element.data('played', true);
+        element.trigger('play');
     }
 });
 

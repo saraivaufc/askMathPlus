@@ -1,0 +1,60 @@
+{% extends 'askmath/content/content_home.html' %}
+
+{% load i18n %}
+
+{% block header %}
+	{% include 'askmath/_header.html' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/content/classes/view/"><span class="icon mif-books"></span> <span class="hidden-xs">{% trans "Classes" %}</span></a></li>
+{% endblock %}
+
+{% block tiles %}
+<div class="tile-area no-padding bg-transparent">
+	<h3 class="text-center page-title" >{% trans "Classes" %}</h3>
+	
+	<div class="cell">
+		<h4>{% trans "My Classes" %}:
+		{% if current_classe != None %}
+			<a href="/home/content/classes/view/classe={{ current_classe.id }}/" class="tag success"> {{ current_classe.get_name }}</a>
+		{% endif %}
+		{% for classe in my_classes %}
+			{% if current_classe != classe %}
+				<a href="/home/content/classes/view/classe={{ classe.id }}/" class="tag info"> {{ classe.get_name }}</a>
+			{% endif %}
+		{% empty %}
+			{% trans "Empty" %}
+		{% endfor %}
+		</h4>
+	</div>
+	
+	<div class="tile-container">
+		<table  class="dataTable border bordered" data-role="datatable">
+			<thead>
+				<tr>
+					<td>{% trans "Name" %}</td>
+					<td>{% trans "Semester" %}</td>
+					<td>{% trans "Responsible" %}</td>
+					<td>{% trans "Options" %}</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for classe in classes %}
+			<tr>
+				<td class="sortable-column">{{ classe.get_name }}</td>
+				<td class="sortable-column">{{ classe.get_semester }}</td>
+				<td class="sortable-column">{{ classe.get_responsible }}</td>
+				<td>
+					<a href="/home/content/classes/view/classe={{ classe.id }}/" class="image-button button primary">
+						{% trans "Details" %}
+						<span class="icon mif-info bg-darkCobalt"></span>
+					</a>
+				</td>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

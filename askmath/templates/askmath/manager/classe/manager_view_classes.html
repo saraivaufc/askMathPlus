@@ -1,0 +1,89 @@
+{% extends 'askmath/manager/manager_home.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="/home/manager/classes/view/"><span class="icon mif-organization"></span> <spam>{% trans "Classes" %}</spam></a></li>
+{% endblock %}
+
+
+{%  block content_right %}
+<div class="cell">
+	{% if perms.askmath.write_classe %}
+		<a id="button-classe-create" href="/home/manager/classes/add/" class="image-button button-success">
+			{% trans "Create" %}
+			<span class="icon mif-plus"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_classe %}
+		<a id="button-classe-edit" href="#" class="image-button button-primary">
+			{% trans "Edit" %}
+			<span class="icon mif-pencil"></span>
+		</a>
+	{% endif %}
+	{% if perms.askmath.write_classe %}
+		{% if is_removed %}
+		<a id="button-classe-restore" href="#" class="image-button button-info">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-classe-delete" href="#" class="image-button button-danger">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+	{% endif %}
+	
+	{% if is_removed %}
+		<a href="/home/manager/classes/view/" class="image-button button-warning">
+			{% trans "Close Dump" %}
+			<span class="icon mif-undo"></span>
+		</a>
+	{% else %}
+		<a href="/home/manager/classes/view_removed/" class="image-button button-warning">
+			{% trans "Open Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
+	{% endif %}
+</div>
+
+
+
+<table  class="dataTable border bordered" data-role="datatable">
+	<thead>
+		<tr>
+			<td style="width: 10px"></td>
+			<td>{% trans "Name" %}</td>
+			<td>{% trans "Semester" %}</td>
+			<td>{% trans "Responsible" %}</td>
+			<td>{% trans "Disciplines" %}</td>
+			<td style="width: 20px">{% trans "Visible" %}</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for classe in classes %}
+	<tr>
+		<td>
+            <label class="input-control radio small-check no-margin">
+                <input type="radio" classe_id="{{ classe.id }}" name="radio_classe">
+                <span class="check"></span>
+            </label>
+        </td>
+		<td class="sortable-column">{{ classe.get_name }}</td>
+		<td class="sortable-column">{{ classe.get_semester }}</td>
+		<td class="sortable-column">{{ classe.get_responsible }}</td>
+		<td class="sortable-column">
+			{% for discipline in classe.get_disciplines %}
+				<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="tag info">{{ discipline.get_title }}</a>
+			{% empty %}
+				{% trans "Empty" %}
+			{% endfor %}
+		</td>
+		<td class="sortable-column">
+			{{ classe.is_visible }}
+        </td>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

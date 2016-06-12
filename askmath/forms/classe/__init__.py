@@ -1,0 +1,3 @@
+from .classe import ClasseForm
+
+

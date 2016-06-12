@@ -9,14 +9,21 @@
 	<ul class="app-bar-menu">
 		<li>
 			<a href="/home/">
-				{% trans "Home" %}
+				<span class="mif-home"></span> {% trans "Home" %}
 			</a>
 		</li>
 		<li>
 			<a href="/forum/">
-				{% trans "Forum" %}
+				<span class="mif-bubbles"></span> {% trans "Forum" %}
 			</a>
 		</li>
+		{% if perms.askmath.access_content %}
+		<li>
+			<a href="/home/content/classes/view/">
+				<span class="mif-books"></span> {% trans "Classes" %}
+			</a>
+		</li>
+		{% endif %}
 	</ul>
 
 	{% if not request.user.is_authenticated %}

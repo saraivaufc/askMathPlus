@@ -20,7 +20,6 @@ permissions = {
     "write_student": "Write Student",
     
     
-    
     "access_manager_student_historic": "Access Manager Student Historic",
     "read_student_historic": "Read StudentHistoric",
     "write_student_historic": "Write StudentHistoric",
@@ -37,6 +36,10 @@ permissions = {
     "read_statistics": "Read Statistics",
     "write_statistics": "Write Statistics",
     
+    "access_manager_classe": "Access Manager Classe",
+    "read_classe": "Read Classe",
+    "write_classe": "Write Classe",
+
     "access_manager_discipline": "Access Manager Discipline",
     "read_discipline": "Read Discipline",
     "write_discipline": "Write Discipline",
@@ -96,6 +99,10 @@ group_permissions = {
         "read_statistics",
         "write_statistics",
         
+        "access_manager_classe",
+        "read_classe",
+        "write_classe",
+
         "access_manager_discipline",
         "read_discipline",
         "write_discipline",
@@ -145,6 +152,10 @@ group_permissions = {
         
         "access_manager_statistics",
         "read_statistics",
+
+        "access_manager_classe",
+        "read_classe",
+        "write_classe",
         
         "access_manager_discipline",
         "read_discipline",
@@ -177,7 +188,7 @@ group_permissions = {
     ],
     "assistant": [
         "access_manager",
-        
+
         "access_manager_discipline",
         "read_discipline",
         
@@ -211,6 +222,8 @@ group_permissions = {
         
         "write_student_state",
         
+        "read_classe",
+
         "read_discipline",
         
         "read_lesson",

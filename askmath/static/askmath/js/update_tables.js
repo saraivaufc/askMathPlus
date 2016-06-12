@@ -1,4 +1,22 @@
 //DISCIPLINE
+$("input[name='radio_classe']").change(function(){
+	if($(this).prop( "checked", true ) ){
+		var url_edit = "/home/manager/classes/edit/classe=" + $(this).attr('classe_id') + "/";
+		var url_delete = "/home/manager/classes/remove/classe=" + $(this).attr('classe_id') + "/";
+		var url_restore = "/home/manager/classes/restore/classe=" + $(this).attr('classe_id') + "/";
+	}else{
+		var url_edit = "#";
+		var url_delete = "#";
+		var url_restore = "#";
+	};
+	$("#button-classe-edit").attr("href",url_edit);
+	$("#button-classe-delete").attr("href",url_delete);
+	$("#button-classe-restore").attr("href",url_restore);
+});
+
+
+
+//DISCIPLINE
 $("input[name='radio_discipline']").change(function(){
 	if($(this).prop( "checked", true ) ){
 		var url_edit = "/home/manager/disciplines/edit/discipline=" + $(this).attr('discipline_id') + "/";

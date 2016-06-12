@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.contrib.auth.models import Group, Permission
+
 from askMathPlus.settings import generate_color
 
 try:
@@ -112,17 +113,23 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 class Person(AbstractPerson):
     profile_image = models.ImageField(verbose_name=_(u"Profile Image"),help_text=_(u"Please enter you profile image."),upload_to = 'documents/image/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
     color = models.CharField(verbose_name=_(u'Color'), max_length=50, default=generate_color)
-    
     exists = models.BooleanField(default = True)
 
     def save(self,group=None, *args, **kwargs):
         super(Person, self).save(*args, **kwargs)
+
         if not group and not self.groups.all():
             group = 'student'
         if group and not self.groups.all():
             print 'Create user with group=', group
             group = Group.objects.get(name=group)
             self.groups.add(group)
+
+    def get_person_class(self, instance, SubClass):
+        try:
+            return SubClass.objects.get(pk=instance.pk)
+        except SubClass.DoesNotExist:
+            return instance
 
     def get_profile_image(self):
         return self.profile_image

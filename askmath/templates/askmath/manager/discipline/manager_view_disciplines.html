@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/disciplines/view/"><span class="icon mif-stack2"></span> <spam>{% trans "Disciplines" %}</spam></a></li>
+	<li><a href="/home/manager/disciplines/view/"><span class="icon mif-books"></span> <spam>{% trans "Disciplines" %}</spam></a></li>
 {% endblock %}
 
 
@@ -55,7 +55,6 @@
 		<tr>
 			<td style="width: 10px"></td>
 			<td>{% trans "Title" %}</td>
-			<td>{% trans "Responsible" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
 			<td>{% trans "Options" %}</td>
 		</tr>
@@ -70,7 +69,6 @@
             </label>
         </td>
 		<td class="sortable-column">{{ discipline.get_title }}</td>
-		<td class="sortable-column">{{ discipline.get_responsible }}</td>
 		<td class="sortable-column">
 			{{ discipline.is_visible }}
         </td>

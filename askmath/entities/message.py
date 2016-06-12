@@ -5,15 +5,15 @@ from django.utils.translation import ugettext as _
 class TextMessage():
 	
 	#User
-	USER_NOT_PERMISSION = _(u"User does not have permission.")
-	USER_NOT_FOUND = _(u"User not found.")
+	USER_NOT_PERMISSION = _(u"User does no have permission.")
+	USER_NOT_FOUND = _(u"User no found.")
 	USER_PASSWORD_ERRRO = _(u"Incorrect password.")
 	USER_IS_AUTHENTICATED = _(u"User is authenticated.")
-	USER_NOT_AUTHENTICATED = _(u"User is not authenticated.")
+	USER_NOT_AUTHENTICATED = _(u"User is no authenticated.")
 	USER_CREATED_SUCCESS = _(u"User created successfully.")
 	USER_CREATED_ERROR = _(u"Failed to create user.")
 	USER_ADD_GROUP_ERROR = _(u"Failed to add group.")
-	USER_GROUP_NOT_FOUND = _(u"User group not found.")
+	USER_GROUP_NOT_FOUND = _(u"User group no found.")
 	
 	EMAIL_RECOVER_PASSWORD_SUCCESS = _(u"Email of recover password send success.")
 	EMAIL_RECOVER_PASSWORD_ERROR = _(u"Email of recover password send error.")
@@ -38,6 +38,32 @@ class TextMessage():
 	#Forms
 	ERROR_FORM = _(u"There was an error on the form.")
 
+	#Classe
+	CLASSE_SUCCESS_ADD = _(u"Classe successfully added.")
+	CLASSE_ERROR_ADD = _(u"Error adding classe.")
+ 	
+	CLASSE_SUCCESS_EDIT = _(u"Classe successfully edit.")
+	CLASSE_ERROR_EDIT = _(u"Error edit classe.")
+ 	
+	CLASSE_SUCCESS_REM = _(u"Classe successfully removed.")
+	CLASSE_ERROR_REM = _(u"Error remove classe.")
+	
+	CLASSE_SUCCESS_RESTORE = _(u"Classe successfully restored.")
+	CLASSE_ERROR_RESTORE = _(u"Error restore classe.")
+ 
+	CLASSE_SUCCESS_JOIND = _(u"Enrollment in the class was successful.")
+	CLASSE_ERROR_JOIND = _(u"Error during their enrollment in the class.")
+
+	CLASSE_SUCCESS_OUT = _(u"Out of successfully class.")
+	CLASSE_ERROR_OUT = _(u"Error out of the class.")
+
+	CLASSE_SUCCESS_SET = _(u"Class assigned as the default.")
+	CLASSE_ERROR_SET = _(u"Error when assigning class as standard.")
+
+	CLASSE_NOT_FOUND = _(u"Classe no found.")
+
+
+
 
 	#Discipline
 	DISCIPLINE_SUCCESS_ADD = _(u"Discipline successfully added.")
@@ -52,7 +78,7 @@ class TextMessage():
 	DISCIPLINE_SUCCESS_RESTORE = _(u"Discipline successfully restored.")
 	DISCIPLINE_ERROR_RESTORE = _(u"Error restore discipline.")
  
-	DISCIPLINE_NOT_FOUND = _(u"Discipline not found.")
+	DISCIPLINE_NOT_FOUND = _(u"Discipline no found.")
 
 	#Lesson
  	LESSON_SUCCESS_ADD = _(u"Lesson successfully added.")
@@ -67,12 +93,12 @@ class TextMessage():
  	LESSON_SUCCESS_RESTORE = _(u"Lesson successfully restored.")
 	LESSON_ERROR_RESTORE = _(u"Error restore lesson.")
  
- 	LESSON_NOT_FOUND = _(u"Lesson not found.")
+ 	LESSON_NOT_FOUND = _(u"Lesson no found.")
  	LESSON_SUCCESS_COMPLETED = _(u"Lesson successfully completed.")
  	
  	LESSON_SUCCESS_RESET = _(u"Lesson successfully reset.")
  	
- 	LESSON_NOT_REMAINING_JUMPS = _(u"Lesson not remaining jumps.")
+ 	LESSON_NOT_REMAINING_JUMPS = _(u"Lesson no remaining jumps.")
  	
  	#Question
  	QUESTION_SUCCESS_ADD = _(u"Question successfully added.")
@@ -90,7 +116,7 @@ class TextMessage():
 	QUESTION_SUCCESS_SORT = _(u"Question successfully sorted.")
 	QUESTION_ERROR_SORT = _(u"Error sorted question.")
  
- 	QUESTION_NOT_FOUND = _(u"Question not found.")
+ 	QUESTION_NOT_FOUND = _(u"Question no found.")
  	
  	QUESTION_SUCCESS_REPLY = _(u"Your reply is correct.")
  	QUESTION_ERROR_REPLY = _(u"Your reply is incorrect.")
@@ -101,11 +127,11 @@ class TextMessage():
  	QUESTION_ERROR_JUMP = _(u"Question error in jump.")
  	QUESTION_IMPOSSIBLE_JUMP = _(u"Impossible to make the leap.")
  	
- 	QUESTION_NOT_FOUND_IN_LESSON = _(u"Question not found in lesson.")
+ 	QUESTION_NOT_FOUND_IN_LESSON = _(u"Question no found in lesson.")
  	
  	#Item
- 	ITEM_NOT_FOUND = _(u"Item not found.")
- 	ITEM_NOT_FOUND_IN_QUESTION = _(u"Item not found in question.")
+ 	ITEM_NOT_FOUND = _(u"Item no found.")
+ 	ITEM_NOT_FOUND_IN_QUESTION = _(u"Item no found in question.")
  	
 	#Video
  	VIDEO_SUCCESS_ADD = _(u"Video successfully added.")
@@ -123,8 +149,8 @@ class TextMessage():
 	VIDEO_SUCCESS_SORT = _(u"Video successfully sorted.")
 	VIDEO_ERROR_SORT = _(u"Error sorted video.")
  
- 	VIDEO_NOT_FOUND = _(u"Video not found.")
- 	VIDEO_NOT_FOUND_IN_LESSON = _(u"Video not found in lesson.")
+ 	VIDEO_NOT_FOUND = _(u"Video no found.")
+ 	VIDEO_NOT_FOUND_IN_LESSON = _(u"Video no found in lesson.")
  	
  	
  	#Category
@@ -140,7 +166,7 @@ class TextMessage():
  	CATEGORY_SUCCESS_RESTORE = _(u"Category successfully restored.")
 	CATEGORY_ERROR_RESTORE = _(u"Error restore category.")
  
- 	CATEGORY_NOT_FOUND = _(u"Category not found.")
+ 	CATEGORY_NOT_FOUND = _(u"Category no found.")
  	
  	#Topic
  	TOPIC_SUCCESS_ADD = _(u"Topic successfully added.")
@@ -160,7 +186,7 @@ class TextMessage():
 	TOPIC_SUCCESS_UNLIKE = _(u"Topic successfully unliked.")
 	TOPIC_ERROR_UNLIKE = _(u"Error unlike topic.")
  
- 	TOPIC_NOT_FOUND = _(u"Topic not found.")
+ 	TOPIC_NOT_FOUND = _(u"Topic no found.")
  	
  	#Comment
  	COMMENT_SUCCESS_ADD = _(u"Comment successfully added.")
@@ -179,7 +205,7 @@ class TextMessage():
 	COMMENT_ERROR_LIKE = _(u"Error like comment.")
  
  
- 	COMMENT_NOT_FOUND = _(u"Comment not found.")
+ 	COMMENT_NOT_FOUND = _(u"Comment no found.")
  	
  	#Contact
  	MESSAGE_SUCCESS_ADD = _(u"Message successfully added.")
@@ -195,7 +221,7 @@ class TextMessage():
 	MESSAGE_ERROR_RESTORE = _(u"Error restore message.")
 	
  
- 	MESSAGE_NOT_FOUND = _(u"Message not found.")
+ 	MESSAGE_NOT_FOUND = _(u"Message no found.")
  	
  	
  	
@@ -214,11 +240,11 @@ class TextMessage():
  	USER_SUCCESS_RESTORE = _(u"User successfully restored.")
 	USER_ERROR_RESTORE = _(u"Error restore user.")
  
- 	USER_NOT_FOUND = _(u"User not found.")
+ 	USER_NOT_FOUND = _(u"User no found.")
  	
  	#Statistics
  	
- 	STATISTIC_NOT_FOUND = _(u"Statistic not found.")
+ 	STATISTIC_NOT_FOUND = _(u"Statistic no found.")
 
 
 
@@ -229,14 +255,14 @@ class TextMessage():
 	NO_RESULTS_FOUND  = _(u"No results found.")
 	
 	#Request
-	METHOD_NOT_POST  = _(u"Method not is POST.")
-	METHOD_NOT_GET  = _(u"Method not is GET.")
+	METHOD_NOT_POST  = _(u"Method no is POST.")
+	METHOD_NOT_GET  = _(u"Method no is GET.")
 
 	#Messages
 	MESSAGE_SUCCESS_SEND = _(u"Message successfully send.")
 	
 	#KEYS
-	KEY_NOT_FOUND = _(u"Key not found.")
+	KEY_NOT_FOUND = _(u"Key no found.")
 	KEY_ERROR_REMOVE_USED = _(u"Error removing the key, user ever used.")
 	
 	#ACCOUNT
