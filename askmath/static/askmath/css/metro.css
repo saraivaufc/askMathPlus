@@ -55,6 +55,13 @@
 
 }
 
+.tile-area-scheme-dark {
+	background-color: #fff;
+}
+.tile-area-scheme-dark [class*=tile] {
+  outline-color: #fff;
+}
+
 .page-content {
 	min-height: 100%;
 	height: 100%;
