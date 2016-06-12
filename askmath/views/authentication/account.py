@@ -95,6 +95,7 @@ class Account(IAccount):
         else:
             key = request.POST['key']
             if group_name == "assistant":
+                print "casasaas"
                 try:
                     register_key = AssistantKey.objects.get(key=key, exists=True, in_use=False)
                     form = AssistantForm(request.POST, request.FILES)
@@ -119,7 +120,8 @@ class Account(IAccount):
                     messages.error(request, TextMessage.KEY_NOT_FOUND)
                     return self.options(request)
             else:
-                messages.error(request, TextMessage.GROUP_NOT_FOUND)
+                print "group name",group_name
+                messages.error(request, TextMessage.USER_GROUP_NOT_FOUND)
                 return self.options(request)
         if form and form.is_valid():
             user=form.save(commit=False)

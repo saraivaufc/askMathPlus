@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 
-from askmath.models import Discipline
+from askmath.models import Discipline as DisciplineModel
 from askmath.forms import MessageForm, MessageFormRecaptcha
 from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
 
@@ -71,6 +71,6 @@ class Home(IHome):
 			return render(request, 'askmath/index/contents_details.html',
 				{'request': request,'lesson': lesson})
 		else:
-			disciplines = Discipline.objects.filter(exists=True, visible=True)
+			disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
 			return render(request, 'askmath/index/contents.html', 
 				{'request': request,'disciplines': disciplines})

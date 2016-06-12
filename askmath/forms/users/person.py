@@ -31,7 +31,7 @@ class RegisterForm(ModelForm):
     password2 = forms.CharField(label=_(u'Password confirmation'), widget=forms.PasswordInput)
     GROUPS = [
         ('student',_('Student')),
-        ('assistent',_('Assistent')),
+        ('assistant',_('Assistant')),
         ('teacher',_('Teacher')),
         ('administrator',_('Administrator')),
     ]
