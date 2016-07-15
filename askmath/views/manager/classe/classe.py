@@ -20,7 +20,7 @@ class Classe(IClasse):
     
     def add_classe(self, request):
         if request.method == "POST":
-            form = ClasseForm(request.POST)
+            form = ClasseForm(request.POST, request.FILES)
             if form.is_valid():
                 classe = form.save()
                 messages.success(request, TextMessage.CLASSE_SUCCESS_ADD)
@@ -38,7 +38,7 @@ class Classe(IClasse):
         return self.view_classes(request)
     def edit_classe(self, request, classe):
         if request.method == 'POST':
-            form = ClasseForm(request.POST, instance = classe)
+            form = ClasseForm(request.POST , request.FILES , instance = classe)
             if form.is_valid():
                 classe=form.save()
                 messages.success(request, TextMessage.CLASSE_SUCCESS_EDIT)

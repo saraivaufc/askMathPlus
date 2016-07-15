@@ -68,8 +68,6 @@
 			<td style="width: 10px"></td>
 			<td>{% trans "Position" %}</td>
 			<td>{% trans "Description" %}</td>
-			<td>{% trans "Items" %}</td>
-			<td>{% trans "Help" %}</td>
 			<td>{% trans "Scores" %}</td>
 			<td>{% trans "Visible" %}</td>
 		</tr>
@@ -85,8 +83,6 @@
         </td>
 		<td class="sortable-column">{{ question.get_position }}</td>
 		<td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
-		<td><a href="">{% trans "View items" %}</a></td>
-		<td class="sortable-column">{{ question.get_help }}</td>
 		<td class="sortable-column">{{ question.get_scores }}</td>
 		<td>{{ question.is_visible }}</td>
 	</tr>
@@ -96,4 +92,8 @@
 
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
 
+{% endblock %}
+
+{% block stylesheet %}
+<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 {% endblock %}

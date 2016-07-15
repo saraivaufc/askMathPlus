@@ -15,7 +15,7 @@
 			        <span class="icon mif-clipboard text-left"></span>
 			        <span class="title">{{ lesson.get_title|title }}</span>
 			    </div>
-			    <div class="content">
+			    <div class="content padding10">
 			    	<p class="text-justify lead">
 						{{ lesson.get_description|safe|linebreaksbr }}
 					</p>
@@ -88,4 +88,9 @@
 		</div>
 		{% endblock %}
 	</div>
+{% endblock %}
+
+
+{% block stylesheet %}
+<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 {% endblock %}

@@ -10,32 +10,45 @@
 <div class="tile-area no-padding bg-transparent">
 	<h3 class="text-center page-title" >{{ classe.name }}</h3>
 
-	<div class="cell">
-		{% if not classe in my_classes %}
-			<a href="/home/content/classes/join_classe/classe={{ classe.id }}/" class="image-button button success">
-				{% trans "Subscribe" %}
-				<span class="icon mif-enter bg-emerald"></span>
-			</a>
-		{% else %}
-			<a href="/home/content/classes/out_classe/classe={{ classe.id }}/" class="image-button button danger">
-				{% trans "Unsubscribe" %}
-				<span class="icon mif-exit bg-red"></span>
-			</a>
-		{% endif %}
-		{% if current_classe != classe and classe in my_classes %}
-			<a href="/home/content/classes/set_current/classe={{ classe.id }}/" class="image-button button primary">
-				{% trans "Set Default" %}
-				<span class="icon mif-checkmark bg-darkCobalt"></span>
-			</a>
-		{% endif %}
-	</div>
-
 	<div class="grid condensed">
-		<div class="debug row cells12">
-			<div class="cell colspan8">
+		<div class="row cells12">
+			<div class="cell colspan8 padding10">
+				<dl>
+                    <dt>{% trans "Name" %}:</dt>
+                    <dd>{{  classe.get_name }}</dd>
+                    
+                    <dt>{% trans "Responsible" %}:</dt>
+                    <dd>
+                    	{% if classe.get_responsible %}
+							{{ classe.get_responsible }}
+						{% else %}
+							{% trans "No responsible" %}
+						{% endif %}
+                    </dd>
+                    
+                    <dt>{% trans "Semester" %}:</dt>
+                    <dd>{{ classe.get_semester }}</dd>
 
+                    <dt>{% trans "Plan" %}:</dt>
+                    <dd>
+                    	{% if classe.plan %}
+						<a href="{{ classe.plan.url }}" target="_blank">
+							{% trans "Download File" %}
+						</a>
+						{% else %}
+							{% trans "No file" %}
+						{% endif %}
+                    </dd>
+
+                    <dt>{% trans "Disciplines" %}</dt>
+                    <dd>
+                    {% for discipline in classe.get_disciplines %}
+                    <a href="/home/content/disciplines/view/discipline={{ discipline.id }}/" class="tag info">{{ discipline.title }}</a>
+                    {% endfor %}
+                    </dd>
+                </dl>
 			</div>
-			<div class="debug cell offset8 colspan4">
+			<div class="debug cell colspan4 padding10">
 				<div class="panel primary width">
 					<div class="heading">
 						 <span class="icon mif-users"></span>
@@ -53,7 +66,7 @@
 								<span class="list-title">{{ student.get_full_name }}</span>
 							</div>
 						{% empty %}
-							{% trans "Empty" %}
+							<p class="text-center">{% trans "No students" %}</p>
 						{% endfor %}
 						</div>
 					</div>

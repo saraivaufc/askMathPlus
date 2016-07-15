@@ -28,7 +28,7 @@ class Classe(IClasse):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_SET)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_SET)
-		return self.view_classe(request, student, classe)
+		return self.view_classes(request, student)
 
 
 	def join_classe(self, request, student, classe):
@@ -36,11 +36,11 @@ class Classe(IClasse):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_JOIND)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_JOIND)
-		return self.view_classe(request, student, classe)
+		return self.view_classes(request, student)
 
 	def out_classe(self, request, student, classe):
 		if student.out_classe(student, classe):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_OUT)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_OUT)
-		return self.view_classe(request, student, classe)
+		return self.view_classes(request, student)

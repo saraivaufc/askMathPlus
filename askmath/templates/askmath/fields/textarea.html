@@ -1,9 +1,11 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
 <div class="input-control textarea full-size">
-<textarea  title="{{ field.help_text }}"
-	{% if field.field.required %}required{% endif %}
-	name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
-	id="{{ field.auto_id }}"
-	{% if field.value %}value="{{ field.value }}"{% endif %}>{% if field.value %}{{ field.value }}{% endif %}</textarea>
+	<textarea  title="{{ field.help_text }}"
+		{% if field.field.required %}required{% endif %}
+		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
+		id="{{ field.auto_id }}"
+		{% if field.value %}value="{{ field.value }}"{% endif %}
+		{% include 'askmath/fields/attrs.html' %}
+		>{% if field.value %}{{ field.value }}{% endif %}</textarea>
 </div>

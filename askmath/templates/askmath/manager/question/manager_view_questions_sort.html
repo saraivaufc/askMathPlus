@@ -10,7 +10,7 @@
 	<div id="list_questions_sort" class="listview bg-white fg-dark " data-role="listview">
 	{% csrf_token %}
 	{% for question in questions %}
-	<li class="list cursor-move" value={{ question.id }}>
+	<li class="list cursor-move bg-grayLighter" value={{ question.id }}>
 		<span class="list-icon mif-list-numbered"></span>
 		<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
 	</li>
@@ -25,4 +25,8 @@
 	</div>
 </div>
 
+{% endblock %}
+
+{% block stylesheet %}
+<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 {% endblock %}

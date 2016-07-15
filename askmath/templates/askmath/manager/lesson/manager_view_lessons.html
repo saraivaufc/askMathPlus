@@ -77,8 +77,16 @@
         </td>
 		<td class="sortable-column">{{ lesson.get_title }}</td>
 		<td class="sortable-column">{{ lesson.get_description|truncatechars:"255" }}</td>
-		<td class="sortable-column">{{ lesson.get_requirements }}</td>
-		<td class="sortable-column">{{ lesson.get_sugestions }}</td>
+		<td class="sortable-column">
+			{% for lesson in  lesson.get_requirements %}
+				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ lesson.get_discipline.id }}" class="tag info">{{ lesson }}</a>
+			{% endfor %}
+		</td>
+		<td class="sortable-column">
+			{% for sugestion in  lesson.get_sugestions %}
+				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ lesson.get_discipline.id }}" class="tag info">{{ sugestion }}</a>
+			{% endfor %}
+		</td>
 		<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
 		<td class="sortable-column">
 			{{ discipline.is_visible }}
@@ -100,4 +108,8 @@
 	{% endfor %}
 	</tbody>
 </table>
+{% endblock %}
+
+{% block stylesheet %}
+<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 {% endblock %}

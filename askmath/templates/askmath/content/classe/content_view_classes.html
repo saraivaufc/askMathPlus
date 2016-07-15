@@ -13,23 +13,6 @@
 
 {% block tiles %}
 <div class="tile-area no-padding bg-transparent">
-	<h3 class="text-center page-title" >{% trans "Classes" %}</h3>
-	
-	<div class="cell">
-		<h4>{% trans "My Classes" %}:
-		{% if current_classe != None %}
-			<a href="/home/content/classes/view/classe={{ current_classe.id }}/" class="tag success"> {{ current_classe.get_name }}</a>
-		{% endif %}
-		{% for classe in my_classes %}
-			{% if current_classe != classe %}
-				<a href="/home/content/classes/view/classe={{ classe.id }}/" class="tag info"> {{ classe.get_name }}</a>
-			{% endif %}
-		{% empty %}
-			{% trans "Empty" %}
-		{% endfor %}
-		</h4>
-	</div>
-	
 	<div class="tile-container">
 		<table  class="dataTable border bordered" data-role="datatable">
 			<thead>
@@ -37,20 +20,47 @@
 					<td>{% trans "Name" %}</td>
 					<td>{% trans "Semester" %}</td>
 					<td>{% trans "Responsible" %}</td>
-					<td>{% trans "Options" %}</td>
+					<td>{% trans "Inscription" %}</td>
+					<td></td>
 				</tr>
 			</thead>
 			<tbody>
 			{% for classe in classes %}
-			<tr>
+			<tr {% if current_classe == classe and classe in my_classes %}class="info"{% endif %}>
 				<td class="sortable-column">{{ classe.get_name }}</td>
 				<td class="sortable-column">{{ classe.get_semester }}</td>
-				<td class="sortable-column">{{ classe.get_responsible }}</td>
+				<td class="sortable-column">
+					{% if classe.get_responsible %}
+						{{ classe.get_responsible }}
+					{% else %}
+						{% trans "No responsible" %}
+					{% endif %}
+				</td>
+				<td>
+					{% if not classe in my_classes %}
+						<a href="/home/content/classes/join_classe/classe={{ classe.id }}/" class="image-button button success">
+							{% trans "Subscribe" %}
+							<span class="icon mif-enter bg-emerald"></span>
+						</a>
+					{% else %}
+						<a href="/home/content/classes/out_classe/classe={{ classe.id }}/" class="image-button button danger">
+							{% trans "Unsubscribe" %}
+							<span class="icon mif-exit bg-red"></span>
+						</a>
+					{% endif %}
+					{% if current_classe != classe and classe in my_classes %}
+						<a href="/home/content/classes/set_current/classe={{ classe.id }}/" class="image-button button primary">
+							{% trans "Set Default" %}
+							<span class="icon mif-checkmark bg-darkCobalt"></span>
+						</a>
+					{% endif %}
+				</td>
 				<td>
 					<a href="/home/content/classes/view/classe={{ classe.id }}/" class="image-button button primary">
 						{% trans "Details" %}
 						<span class="icon mif-info bg-darkCobalt"></span>
 					</a>
+
 				</td>
 			{% endfor %}
 			</tbody>
