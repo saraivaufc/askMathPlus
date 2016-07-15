@@ -35,9 +35,9 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = 'hb@jze2=jvslsc%p8g&u88dhn0d3=fm!)f^o-=w=yj9)woag6x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['www.askmath.quixada.ufc.br']
 #ALLOWED_HOSTS = ['localhost']
@@ -181,10 +181,10 @@ SOCIAL_AUTH_PIPELINE = (
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }, 'postgres': {
+    }, 'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
             'NAME': 'askmath',
             'USER': 'postgres',
