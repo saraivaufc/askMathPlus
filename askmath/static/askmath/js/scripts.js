@@ -450,3 +450,12 @@ $(function(){
 		}
 	});
 });
+
+
+$(function(){
+	$('.dataTable').dataTable( {
+        "language": {
+            "url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
+        }
+    });
+});

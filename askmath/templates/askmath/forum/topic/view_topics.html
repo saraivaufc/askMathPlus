@@ -45,7 +45,7 @@
 <div class="container-fluid">
 <div class="row">
 <div class="padding10">
-	<table class="dataTable border bordered" data-role="datatable">
+	<table class="dataTable border bordered">
 		<thead>
 			<tr>
 				{% if perms.askmath.access_forum_admin %}
@@ -77,7 +77,7 @@
 					</div>
 				</td>
 				<td class="replies">{{ topic.get_comments|length }}</td>
-				<td class="sortable-colum date">
+				<td class="date">
 					{{ topic.creation|naturaltime }}	
 				</td>
 			</tr>
@@ -89,4 +89,9 @@
 {% include 'askmath/utils/latexeditor/_box_latex.html' %}
 </div>
 </div>
+{% endblock %}
+
+
+{% block stylesheet %}
+<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 {% endblock %}
