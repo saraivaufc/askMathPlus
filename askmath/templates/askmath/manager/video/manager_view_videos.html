@@ -14,20 +14,16 @@
 
 
 {%  block content_right %}
+{% if perms.askmath.write_video %}
 <div class="cell">
-	{% if perms.askmath.write_video %}
 		<a id="button-video-create" href="/home/manager/videos/add/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_video %}
 		<a id="button-video-edit" href="#" class="image-button button-primary">
 			{% trans "Edit" %}
 			<span class="icon mif-pencil"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_video %}
 		{% if is_removed %}
 		<a id="button-video-restore" href="#" class="image-button button-info">
 			{% trans "Restore" %}
@@ -39,33 +35,32 @@
 			<span class="icon mif-minus"></span>
 		</a>
 		{% endif %}
-	{% endif %}
-	{% if perms.askmath.write_video %}
-	<a id="button-video-sort" href="/home/manager/videos/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
-		{% trans "Sort" %}
-		<span class="icon mif-list-numbered"></span>
-	</a>
-	{% endif %}
-	
-	{% if is_removed %}
-		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
-			{% trans "Close Dump" %}
-			<span class="icon mif-undo"></span>
+		<a id="button-video-sort" href="/home/manager/videos/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
+			{% trans "Sort" %}
+			<span class="icon mif-list-numbered"></span>
 		</a>
-	{% else %}
-		<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
-			{% trans "Open Dump" %}
-			<span class="icon mif-bin"></span>
-		</a>
-	{% endif %}
+		{% if is_removed %}
+			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+				{% trans "Close Dump" %}
+				<span class="icon mif-undo"></span>
+			</a>
+		{% else %}
+			<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+				{% trans "Open Dump" %}
+				<span class="icon mif-bin"></span>
+			</a>
+		{% endif %}
 </div>
+{% endif %}
 
 
 
 <table  class="dataTable border bordered">
 	<thead>
 		<tr>
+			{% if perms.askmath.write_video %}
 			<td style="width: 10px"></td>
+			{% endif %}
 			<td>{% trans "Position" %}</td>
 			<td>{% trans "Title" %}</td>
 			<td>{% trans "Description" %}</td>
@@ -76,12 +71,14 @@
 	<tbody>
 	{% for video in videos %}
 	<tr>
+		{% if perms.askmath.write_video %}
 		<td>
             <label class="input-control radio small-check no-margin">
                 <input type="radio" video_id="{{ video.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_video">
                 <span class="check"></span>
             </label>
         </td>
+        {% endif %}
 		<td class="sortable-column">{{ video.get_position }}</td>
 		<td class="sortable-column">{{ video.get_title }}</td>
 		<td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>

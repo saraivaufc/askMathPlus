@@ -11,20 +11,16 @@
 {% endblock %}
 
 {%  block content_right %}
+{% if perms.askmath.write_lesson %}
 <div class="cell">
-	{% if perms.askmath.write_lesson %}
 		<a id="button-lesson-create" href="/home/manager/lessons/add/discipline={{ discipline.id }}/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_lesson %}
 		<a id="button-lesson-edit" href="#" class="image-button button-primary">
 			{% trans "Edit" %}
 			<span class="icon mif-pencil"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_lesson %}
 		{% if is_removed %}
 		<a id="button-lesson-restore" href="#" class="image-button button-info">
 			{% trans "Restore" %}
@@ -36,27 +32,27 @@
 			<span class="icon mif-minus"></span>
 		</a>
 		{% endif %}
-	{% endif %}
-	
-	{% if is_removed %}
+		{% if is_removed %}
 		<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="image-button button-warning">
 			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
-	{% else %}
+		{% else %}
 		<a href="/home/manager/lessons/view_removed/discipline={{ discipline.id }}/" class="image-button button-warning">
 			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
-	{% endif %}
+		{% endif %}
 </div>
-
+{% endif %}
 
 
 <table  class="dataTable border bordered">
 	<thead>
 		<tr>
+			{% if perms.askmath.write_lesson %}
 			<td style="width: 10px"></td>
+			{% endif %}
 			<td>{% trans "Title" %}</td>
 			<td>{% trans "Description" %}</td>
 			<td>{% trans "Requirements" %}</td>
@@ -69,12 +65,14 @@
 	<tbody>
 	{% for lesson in lessons %}
 	<tr>
+		{% if perms.askmath.write_lesson %}
 		<td>
             <label class="input-control radio small-check no-margin">
                 <input type="radio" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_lesson">
                 <span class="check"></span>
             </label>
         </td>
+        {% endif %}
 		<td class="sortable-column">{{ lesson.get_title }}</td>
 		<td class="sortable-column">{{ lesson.get_description|truncatechars:"255" }}</td>
 		<td class="sortable-column">

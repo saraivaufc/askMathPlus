@@ -8,52 +8,49 @@
 
 
 {%  block content_right %}
+{% if perms.askmath.write_discipline %}
 <div class="cell">
-	{% if perms.askmath.write_discipline %}
-		<a id="button-discipline-create" href="/home/manager/disciplines/add/" class="image-button button-success">
-			{% trans "Create" %}
-			<span class="icon mif-plus"></span>
-		</a>
-	{% endif %}
-	{% if perms.askmath.write_discipline %}
-		<a id="button-discipline-edit" href="#" class="image-button button-primary">
-			{% trans "Edit" %}
-			<span class="icon mif-pencil"></span>
-		</a>
-	{% endif %}
-	{% if perms.askmath.write_discipline %}
-		{% if is_removed %}
-		<a id="button-discipline-restore" href="#" class="image-button button-info">
-			{% trans "Restore" %}
-			<span class="icon mif-history"></span>
-		</a>
-		{% else %}
-		<a id="button-discipline-delete" href="#" class="image-button button-danger">
-			{% trans "Delete" %}
-			<span class="icon mif-minus"></span>
-		</a>
-		{% endif %}
-	{% endif %}
-	
+	<a id="button-discipline-create" href="/home/manager/disciplines/add/" class="image-button button-success">
+		{% trans "Create" %}
+		<span class="icon mif-plus"></span>
+	</a>
+	<a id="button-discipline-edit" href="#" class="image-button button-primary">
+		{% trans "Edit" %}
+		<span class="icon mif-pencil"></span>
+	</a>
 	{% if is_removed %}
-		<a href="/home/manager/disciplines/view/" class="image-button button-warning">
-			{% trans "Close Dump" %}
-			<span class="icon mif-undo"></span>
-		</a>
+	<a id="button-discipline-restore" href="#" class="image-button button-info">
+		{% trans "Restore" %}
+		<span class="icon mif-history"></span>
+	</a>
 	{% else %}
-		<a href="/home/manager/disciplines/view_removed/" class="image-button button-warning">
-			{% trans "Open Dump" %}
-			<span class="icon mif-bin"></span>
-		</a>
+	<a id="button-discipline-delete" href="#" class="image-button button-danger">
+		{% trans "Delete" %}
+		<span class="icon mif-minus"></span>
+	</a>
+	{% endif %}
+	{% if is_removed %}
+	<a href="/home/manager/disciplines/view/" class="image-button button-warning">
+		{% trans "Close Dump" %}
+		<span class="icon mif-undo"></span>
+	</a>
+	{% else %}
+	<a href="/home/manager/disciplines/view_removed/" class="image-button button-warning">
+		{% trans "Open Dump" %}
+		<span class="icon mif-bin"></span>
+	</a>
 	{% endif %}
 </div>
+{% endif %}
 
 
 
 <table  class="dataTable border bordered">
 	<thead>
 		<tr>
+			{% if perms.askmath.write_discipline %}
 			<td style="width: 10px"></td>
+			{% endif %}
 			<td>{% trans "Title" %}</td>
 			<td style="width: 20px">{% trans "Visible" %}</td>
 			<td>{% trans "Options" %}</td>
@@ -62,12 +59,14 @@
 	<tbody>
 	{% for discipline in disciplines %}
 	<tr>
+		{% if perms.askmath.write_discipline %}
 		<td>
             <label class="input-control radio small-check no-margin">
                 <input type="radio" discipline_id="{{ discipline.id }}" name="radio_discipline">
                 <span class="check"></span>
             </label>
         </td>
+        {% endif %}
 		<td class="sortable-column">{{ discipline.get_title }}</td>
 		<td class="sortable-column">
 			{{ discipline.is_visible }}

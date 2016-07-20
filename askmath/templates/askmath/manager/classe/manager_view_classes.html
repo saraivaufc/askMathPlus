@@ -8,20 +8,16 @@
 
 
 {%  block content_right %}
+{% if perms.askmath.write_classe %}
 <div class="cell">
-	{% if perms.askmath.write_classe %}
 		<a id="button-classe-create" href="/home/manager/classes/add/" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_classe %}
 		<a id="button-classe-edit" href="#" class="image-button button-primary">
 			{% trans "Edit" %}
 			<span class="icon mif-pencil"></span>
 		</a>
-	{% endif %}
-	{% if perms.askmath.write_classe %}
 		{% if is_removed %}
 		<a id="button-classe-restore" href="#" class="image-button button-info">
 			{% trans "Restore" %}
@@ -33,7 +29,6 @@
 			<span class="icon mif-minus"></span>
 		</a>
 		{% endif %}
-	{% endif %}
 	
 	{% if is_removed %}
 		<a href="/home/manager/classes/view/" class="image-button button-warning">
@@ -47,13 +42,16 @@
 		</a>
 	{% endif %}
 </div>
+{% endif %}
 
 
 
 <table  class="dataTable border bordered">
 	<thead>
 		<tr>
+			{% if perms.askmath.write_classe %}
 			<td style="width: 10px"></td>
+			{% endif %}
 			<td>{% trans "Name" %}</td>
 			<td>{% trans "Semester" %}</td>
 			<td>{% trans "Responsible" %}</td>
@@ -64,12 +62,14 @@
 	<tbody>
 	{% for classe in classes %}
 	<tr>
+		{% if perms.askmath.write_classe %}
 		<td>
             <label class="input-control radio small-check no-margin">
                 <input type="radio" classe_id="{{ classe.id }}" name="radio_classe">
                 <span class="check"></span>
             </label>
         </td>
+        {% endif %}
 		<td class="sortable-column">{{ classe.get_name }}</td>
 		<td class="sortable-column">{{ classe.get_semester }}</td>
 		<td class="sortable-column">{{ classe.get_responsible }}</td>
