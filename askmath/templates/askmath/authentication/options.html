@@ -8,7 +8,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/authentication/options/"><span class="icon mif-lock"></span> <spam>{% trans "Authentication" %}</spam></a></li>
+	<li><a href="{% url 'askmath:authentication_options' %}"><span class="icon mif-lock"></span> <spam>{% trans "Authentication" %}</spam></a></li>
 {% endblock %}
 
 {% block content %}
@@ -23,18 +23,10 @@
 
 	<div class="tabcontrol" data-role="tabcontrol" data-save-state="true" id="tabcontrol_options">
 		<ul id="menu-options" class="tabs">
-			{% if tab_actived == 'sign_in' %}
-			<li class="active">
-			{% else %}
 			<li>
-			{% endif %}
 				<a href="#frame_sign_in">{% trans "Sign In" %}</a>
 			</li>
-			{% if tab_actived == 'sign_up' %}
-			<li class="active">
-			{% else %}
 			<li>
-			{% endif %}
 				<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
 			</li>
 		</ul>
@@ -43,10 +35,11 @@
 			<div class="frame" id="frame_sign_in">
 				{% with form_signin as form %}
 				{% if next %}
-				<form id="index" action="/authentication/options/?next={{next}}" method="post" role="form">
-				{%else%}
-				<form id="index" action="/authentication/options/" method="post" role="form">
+				<form id="index" action="{% url 'askmath:authentication_options' %}?next={{next}}" method="post" role="form">
+				{% else %}
+				<form id="index" action="{% url 'askmath:authentication_options' %}" method="post" role="form">
 				{% endif %}
+
 				{% csrf_token %}
 					<input type="hidden" name="next" value="{{ request.GET.next }}" />
 					<input type="hidden" name="option" value="sign_in">
@@ -57,6 +50,7 @@
 							{% trans "Sign In" %}
 						</button>
 					</div>
+					{% comment %}
 					<p class="text-center">{% trans "Or" %}</p>
 					<div class="btn-group btn-group-justified" role="group" aria-label="...">
 						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-social btn-facebook">
@@ -69,14 +63,15 @@
 							<span class="fa fa-twitter"></span>Twitter
 						</a>
 					</div>
+					{% endcomment %}
 					<br>
-					<a href="{% url 'reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
+					<a href="{% url 'askmath:reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
 				</form> 
 				{% endwith %}
 			</div>
 			<div class="frame" id="frame_sign_up">
 				{% with form_signup as form %}
-				<form  id="signUpForm" action="/authentication/options/" method="POST" enctype="multipart/form-data"  role="form">
+				<form  id="signUpForm" action="{% url 'askmath:authentication_options' %}" method="POST" enctype="multipart/form-data"  role="form">
 				{% csrf_token %}
 					<hr class="thin"/>
 					<input type="hidden" name="option" value="sign_up">			

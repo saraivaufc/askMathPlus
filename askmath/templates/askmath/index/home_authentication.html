@@ -11,35 +11,18 @@
 		<div class="cell auto-size" style="height: 100%">
 			<div class="padding10">
 				<ul class="breadcrumbs2">
-				    {% block breadcrumbs %}
-				    <li><a href="/home/"><span class="icon mif-home"></span></a></li>
-					{% endblock %}
+				{% block breadcrumbs %}
+					<li>
+						<a href="{% url 'askmath:home' %}">
+							<span class="icon mif-home"></span>
+						</a>
+					</li>
+				{% endblock %}
 				</ul>
 				{% block content_right %}
 				{% endblock %}
 			</div>
 		</div>
-
-		{% comment %}
-		{% block content_left %}
-		<div class="cell  hidden-xs"  id="cell-sidebar" style="height:100%;">
-			<!-- <div id="sidebar-admin-card">
-				<div class="image-container">
-                    <div class="frame">
-                    	{% if request.user.get_profile_image %}
-						<img class="img" src="{{ request.user.get_profile_image.url }}">
-						{% else %}
-						<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png" width="100%" height="100%"></<img>   
-						{% endif %}
-                    </div>
-                    <div class="image-title fg-white">
-                    	<span>{{ request.user.get_short_name }}</span>
-                    </div>
-                </div>
-			</div> -->
-			</div>
-		{% endblock %}
-		{% endcomment %}
 	</div>
 	</div>
 </div>

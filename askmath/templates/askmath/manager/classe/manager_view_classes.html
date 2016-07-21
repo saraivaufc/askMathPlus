@@ -81,7 +81,15 @@
 			{% endfor %}
 		</td>
 		<td class="sortable-column">
-			{{ classe.is_visible }}
+			{% if classe.is_visible %}
+				<button class="cycle-button mini-button button-success">
+					<span class="mif mif-checkmark"></span>
+				</button>
+			{% else %}
+				<button class="cycle-button mini-button button-danger">
+					<span class="mif mif-cross"></span>
+				</button>
+			{% endif %}
         </td>
 	{% endfor %}
 	</tbody>

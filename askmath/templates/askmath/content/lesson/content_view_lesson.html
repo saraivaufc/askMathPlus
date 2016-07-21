@@ -1,9 +1,14 @@
 {% extends 'askmath/content/discipline/content_view_discipline.html' %}
+
 {% load i18n %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ lesson.get_title|title }}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}">
+			<span class="icon mif-clipboard"></span> <span>{{ lesson.get_title|title }}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {%  block tiles %}
@@ -12,14 +17,14 @@
 		{% block tiles-left %}
 			<div class="panel width">
 				<div class="heading text-center">
-			        <span class="icon mif-clipboard text-left"></span>
-			        <span class="title">{{ lesson.get_title|title }}</span>
-			    </div>
-			    <div class="content padding10">
-			    	<p class="text-justify lead">
+							<span class="icon mif-clipboard text-left"></span>
+							<span class="title">{{ lesson.get_title|title }}</span>
+					</div>
+					<div class="content padding10">
+						<p class="text-justify lead">
 						{{ lesson.get_description|safe|linebreaksbr }}
 					</p>
-			    </div>
+					</div>
 			</div>
 		{% endblock %}
 		</div>
@@ -29,68 +34,72 @@
 		{% block tiles-rigth %}
 		<div class="panel width">
 			<div class="heading text-center">
-		        <span class="icon mif-play text-left"></span>
-		        <span class="title">{% trans "Options" %}</span>
-		    </div>
-		    <div class="content">
-		    	<div class="container-fluid">
-		    	<div class="row">
-
-
-			    <button class="command-button success" onclick="window.location='/home/content/questions/view_question/discipline={{ discipline.id }}/lesson={{ lesson.id }}/'">
-			        <span class="icon mif-list-numbered"></span>
-			       {% trans "Questions" %}
-			        <small>
-			        {% blocktrans with qtd_questions=lesson.get_questions_visibles|length %}
-			        	 Are {{ qtd_questions }} questions issues created especially for you.
-			        {% endblocktrans %}
-			       </small>
-			    </button>
-			    <button class="command-button info" onclick="window.location='/home/content/videos/view/discipline={{ lesson.get_discipline.id }}/lesson={{ lesson.id }}/'">
-			        <span class="icon mif-video-camera"></span>
-			        {% trans "Videos" %}
-			        <small>
-			        {% blocktrans with qtd_videos=lesson.get_videos_visibles|length %}
-			        	 We have {{ qtd_videos }} Video lessons to expand their knowledge.
-			        {% endblocktrans %}
-					</small>
-			    </button>
-			    {% if studentlessonstate.get_percentage_completed == 100 %}
-					<h5>{% trans "Sugestions next lessons:" %}</h5>
-					<ul>
-					{% for sugestion in lesson.get_sugestions %}
-						<li>
-							<a class="lead fg-lightTeal" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ sugestion.id }}/">
-							{{ sugestion.get_title }}
-							</a>
-						</li>
-					{% empty %}
-						<h5>{% trans "It has no sugestions." %}</h5>
-					{% endfor %}
-					</ul>
-				{% else %}
-					<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
-					<ul>
-					{% for requirement in lesson.get_requirements %}
-						<li>
-							<a class=" fg-darkBlue" href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ requirement.id }}/">
-							{{ requirement }}
-							</a>
-						</li>
-					{% empty %}
-						<h5>{% trans "It has no requirements." %}</h5>
-					{% endfor %}
-					</ul>
-				{% endif %}
+						<span class="icon mif-play text-left"></span>
+						<span class="title">{% trans "Options" %}</span>
+			</div>
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<a  href="{% url 'askmath:content_question_view_question' id_discipline=discipline.id id_lesson=lesson.id %}" class="command-button success">
+							<span class="icon mif-list-numbered"></span>
+							 {% trans "Questions" %}
+							<small>
+							 {% blocktrans with qtd_questions=lesson.get_questions_visibles|length %}
+									 Are {{ qtd_questions }} questions issues created especially for you.
+							 {% endblocktrans %}
+							 </small>
+						 </a>
+						<a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="command-button info">
+							<span class="icon mif-video-camera"></span>
+								{% trans "Videos" %}
+							<small>
+							{% blocktrans with qtd_videos=lesson.get_videos_visibles|length %}
+								 We have {{ qtd_videos }} Video lessons to expand their knowledge.
+							{% endblocktrans %}
+							</small>
+						</a>
+					</div>
+					<div class="row">
+						<div class="padding10">
+							{% if studentlessonstate.get_percentage_completed == 100 %}
+							<h5>{% trans "Sugestions next lessons:" %}</h5>
+							
+							<ul>
+							{% for sugestion in lesson.get_sugestions %}
+								<li>
+									<a class="tag  {{sugestion.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=sugestion.id  %}">
+									{{ sugestion.get_title }}
+									</a>
+								</li>
+							{% empty %}
+								<h5>{% trans "It has no sugestions." %}</h5>
+							{% endfor %}
+							</ul>
+							{% else %}
+							<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
+		
+							<ul>
+							{% for requirement in lesson.get_requirements %}
+								<li>
+									<a  class="tag {{requirement.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=requirement.id  %}">
+									{{ requirement }}
+									</a>
+								</li>
+							{% empty %}
+								<h5>{% trans "It has no requirements." %}</h5>
+							{% endfor %}
+							</ul>
+						{% endif %}
+						</div>
+					</div>
 				</div>
-				</div>
-		    </div>
+			</div>
 		</div>
 		{% endblock %}
 	</div>
+
 {% endblock %}
 
-
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

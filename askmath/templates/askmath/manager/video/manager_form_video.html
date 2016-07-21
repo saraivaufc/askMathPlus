@@ -5,5 +5,9 @@
 <div class="container">
 	{% include "askmath/_form.html" %}
 </div>
-{% include 'askmath/utils/latexeditor/_box_latex.html' %}
+{% endblock %}
+
+{% block stylesheet %}
+	{% include 'askmath/latex/support.html' %}
+	{% include 'askmath/latex/editor.html' %}
 {% endblock %}

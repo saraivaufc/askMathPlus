@@ -4,7 +4,11 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/contents/"><span class="icon mif-books"></span> <spam>{% trans "Contents" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:contents' %}">
+			<span class="icon mif-books"></span> <span>{% trans "Contents" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +20,7 @@
 			<h4 class="page-title">{{ discipline|title }}</h4>
         	<div class="tile-container">
 				{% for lesson in discipline.get_lessons_visibles %}
-					<a href="/contents/lesson={{ lesson.id }}/" class="tile {{ lesson.color }} fg-white">
+					<a href="{% url 'askmath:contents' id_lesson=lesson.id %}" class="tile {{ lesson.color }} fg-white">
 					    <div class="tile-content iconic">
 					        <span class="icon mif-clipboard"></span>
 					        <span class="tile-label">{{ lesson.get_title }}</span>

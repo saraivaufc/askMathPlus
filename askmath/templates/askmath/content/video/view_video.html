@@ -43,7 +43,7 @@
 			    	{% for video2 in lesson.get_videos_visibles %}
 						{% if video != video2 %}
 					     <div class="tile-wide {{ video2.color }}">
-							    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video2.id }}/" class="tile-content slide-down iconic">
+							    <a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id id_video=video2.id %}" class="tile-content slide-down iconic">
 							        <span class="icon mif-film"></span>
 							        <div class="tile-label">
 							            {{ video2.get_title|title }}
@@ -68,5 +68,5 @@
 {% endblock %}
 
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

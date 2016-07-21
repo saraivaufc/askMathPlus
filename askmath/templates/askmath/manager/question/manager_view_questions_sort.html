@@ -27,6 +27,7 @@
 
 {% endblock %}
 
+
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

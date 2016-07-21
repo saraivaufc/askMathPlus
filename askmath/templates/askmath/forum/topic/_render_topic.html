@@ -4,21 +4,21 @@
 <div class="panel width">
 	<div class="heading bg-lightBlue">
 		<span class="icon mif-bubbles"></span>
-        <span class="title fg-white">{{ topic.get_title }}</span>
-        <div class="place-right">
-        	<span>
-				{% blocktrans with creation=topic.creation|naturaltime  %}
-					{{ creation }}
-				{% endblocktrans %}
+		<span class="title fg-white">{{ topic.get_title }}</span>
+		<div class="place-right">
+			<span>
+			{% blocktrans with creation=topic.creation|naturaltime  %}
+			{{ creation }}
+			{% endblocktrans %}
 			</span>
-        	{% if request.user == topic.get_person %}
-				<a href="/forum/topics/edit/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
+			{% if request.user == topic.get_person %}
+			<a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}"><span class="mif-pencil padding5 fg-white"></span></a>
 			{% endif %}
 			{% if topic.exists and request.user == topic.get_person or perms.askmath.access_manager_forum %}
-				<a href="/forum/topics/remove/category={{ category.id }}/topic={{ topic.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
+			<a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}"><span class="mif-cross padding5 fg-white"></span></a>
 			{% endif %}
-        </div>
-    </div>
+		</div>
+    	</div>
 	<div class="contant">
 		<div class="equal">
 			<div class="col-md-2 bg-grayLight">
@@ -39,9 +39,9 @@
 					<div class="post-controls">
 						<div class="col-sm-6 col-md-6">
 							{% if request.user in topic.get_likes_persons %}
-							<button href="/forum/topics/unlike/topic={{ topic.id }}/" class="button-like image-button bg-green fg-white">
+							<button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}" class="button-like image-button bg-green fg-white">
 							{% else %}
-							<button href="/forum/topics/like/topic={{ topic.id }}/" class="button-like image-button bg-gray fg-white">
+							<button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}" class="button-like image-button bg-gray fg-white">
 							{% endif %}	
 							<span class="like-count">{{ topic.get_likes|length }}</span>
 							{% if request.user in topic.get_likes_persons %}
@@ -82,7 +82,7 @@
 	<div class="container-fluid">
 	<div class="row">
 		{% if request.user.is_authenticated %}
-			<form id="comment-form" action="/forum/comments/add/category={{ category.id }}/topic={{ topic.id }}/" method="post" enctype="multipart/form-data" role="form">
+			<form id="comment-form" action="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}" method="post" enctype="multipart/form-data" role="form">
 			{% csrf_token %}
 			{% include "askmath/_render_form.html" %}
 			    <div class="place-right">
@@ -91,7 +91,7 @@
 			</form>
 		{% else %}
 			<center>
-				<a href="/forum/comments/add/category={{ category.id }}/topic={{ topic.id }}/" class="command-button success fg-white">
+				<a href="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}" class="command-button success fg-white">
 				    <span class="icon mif-enter"></span>
 				    {% trans "Want to add a comment?" %}
 				    <small>{% trans "Click here to get authorization." %}</small>

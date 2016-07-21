@@ -5,11 +5,16 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/credits/"><span class="icon mif-apps"></span> <spam>{% trans "Credits" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:credits' %}">
+			<span class="icon mif-apps"></span> <span>{% trans "Credits" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 
 {% block content %}
+
 <section>
 	<div class="container">
 		<div class="row">

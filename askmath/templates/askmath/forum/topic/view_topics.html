@@ -5,13 +5,13 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% if category %}
-		<li><a href="/forum/topics/view/category={{ category.id }}/"><span class="icon mif-bubbles"></span> <spam>{{ category }}</spam></a></li>
+		<li><a href="{% url 'askmath:forum_topic_view' id_category=category.id %}"><span class="icon mif-bubbles"></span> <spam>{{ category }}</spam></a></li>
 	{% endif %}
 {% endblock %}
 
 {%  block content %}
 <div class="cell padding10">
-		<a id="button-topic-create" href="/forum/topics/add/category={{ category.id }}/" class="image-button button-success">
+		<a id="button-topic-create" href="{% url 'askmath:forum_topic_add' id_category=category.id %}" class="image-button button-success">
 			{% trans "Post new topic" %}
 			<span class="icon mif-plus"></span>
 		</a>
@@ -29,12 +29,12 @@
 			{% endif %}
 
 		{% if is_removed %}
-			<a href="/forum/topics/view/category={{ category.id }}/" class="image-button button-warning">
+			<a href="{% url 'askmath:forum_topic_view' id_category=category.id %}" class="image-button button-warning">
 				{% trans "Close Dump" %}
 				<span class="icon mif-undo"></span>
 			</a>
 		{% else %}
-			<a href="/forum/topics/view_removed/category={{ category.id }}/" class="image-button button-warning">
+			<a href="{% url 'askmath:forum_topic_view_removed' id_category=category.id %}" class="image-button button-warning">
 				{% trans "Open Dump" %}
 				<span class="icon mif-bin"></span>
 			</a>
@@ -43,55 +43,52 @@
 </div>
 
 <div class="container-fluid">
-<div class="row">
-<div class="padding10">
-	<table class="dataTable border bordered">
-		<thead>
-			<tr>
-				{% if perms.askmath.access_forum_admin %}
-				<th style="width: 10px"></th>
-				{% endif %}
-				<th class="topics">{% trans "Topic" %}</th>
-				<th class="replies">{% trans "Replies" %}</th>
-				<th class="date">{% trans "Date" %}</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for topic in topics %}
-			<tr>
-				{% if perms.askmath.access_forum_admin %}
-				<td>
-		            <label class="input-control radio small-check no-margin">
-		                <input type="radio" category_id="{{ category.id }}" topic_id="{{ topic.id }}" name="radio_topic">
-		                <span class="check"></span>
-		            </label>
-		        </td>
-		        {% endif %}
-				<td class="topic">
-					<div class="icon"></div>
-						<div class="details">
-							<h5 class="title">
-								<a href="/forum/topics/view/category={{ category.id }}/topic={{ topic.id }}/">{{ topic.get_title }}</a> <span>{% trans "by" %} {{ topic.person }}</span>
-							</h5>
-						</div>
-					</div>
-				</td>
-				<td class="replies">{{ topic.get_comments|length }}</td>
-				<td class="date">
-					{{ topic.creation|naturaltime }}	
-				</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
-
-{% include 'askmath/utils/latexeditor/_box_latex.html' %}
-</div>
+	<div class="row">
+		<div class="padding10">
+			<table class="dataTable border bordered">
+				<thead>
+					<tr>
+						{% if perms.askmath.access_forum_admin %}
+						<th style="width: 10px"></th>
+						{% endif %}
+						<th class="topics">{% trans "Topic" %}</th>
+						<th class="replies">{% trans "Replies" %}</th>
+						<th class="date">{% trans "Date" %}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for topic in topics %}
+					<tr>
+						{% if perms.askmath.access_forum_admin %}
+						<td>
+				            <label class="input-control radio small-check no-margin">
+				                <input type="radio" category_id="{{ category.id }}" topic_id="{{ topic.id }}" name="radio_topic">
+				                <span class="check"></span>
+				            </label>
+				        </td>
+				        {% endif %}
+						<td class="topic">
+							<div class="icon"></div>
+								<div class="details">
+									<h5 class="title">
+										<a href="{% url 'askmath:forum_topic_view' id_category=category.id id_topic=topic.id %}">{{ topic.get_title }}</a> <span>{% trans "by" %} {{ topic.person }}</span>
+									</h5>
+								</div>
+							</div>
+						</td>
+						<td class="replies">{{ topic.get_comments|length }}</td>
+						<td class="date">
+							{{ topic.creation|naturaltime }}	
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 {% endblock %}
 
-
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

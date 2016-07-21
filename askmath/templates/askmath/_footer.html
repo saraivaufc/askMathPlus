@@ -8,19 +8,19 @@
             </a>
         </li>
         <li>
-            <a href="/about/">{% trans "About Us" %}</a>
+            <a href="{% url 'askmath:about' %}">{% trans "About Us" %}</a>
         </li>
         <li>
-            <a href="/message/">{% trans "Contact Us" %}</a>
+            <a href="{% url 'askmath:message' %}">{% trans "Contact Us" %}</a>
         </li>
         <li>
-            <a href="/terms/">{% trans "Terms of service" %}</a>
+            <a href="{% url 'askmath:terms' %}">{% trans "Terms of service" %}</a>
         </li>
         <li>
-            <a href="/policies/">{% trans "Privacy policy" %}</a>
+            <a href="{% url 'askmath:policies' %}">{% trans "Privacy policy" %}</a>
         </li>
         <li>
-            <a href="/feed/" alt="{% trans "RSS" %}">
+            <a href="{% url 'askmath:feed' %}" alt="{% trans "RSS" %}">
                 <img class="rss-icon" src="{{ STATIC_URL }}/askmath/img/icons/rss.jpg"></a>
         </li>
     </ul>

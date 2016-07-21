@@ -87,7 +87,15 @@
 		</td>
 		<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
 		<td class="sortable-column">
-			{{ discipline.is_visible }}
+			{% if lesson.is_visible %}
+				<button class="cycle-button mini-button button-success">
+					<span class="mif mif-checkmark"></span>
+				</button>
+			{% else %}
+				<button class="cycle-button mini-button button-danger">
+					<span class="mif mif-cross"></span>
+				</button>
+			{% endif %}
         </td>
         <td class="sortable-column">
         	<div data-role="group" data-group-type="multi-state">
@@ -109,5 +117,5 @@
 {% endblock %}
 
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

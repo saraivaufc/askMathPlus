@@ -83,7 +83,17 @@
 		<td class="sortable-column">{{ video.get_title }}</td>
 		<td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>
 		<td><a href="{{ video.get_file.url }}" target="_blank">{% trans "See file" %}</a></td>
-		<td>{{ video.is_visible }}</td>
+		<td>
+			{% if video.is_visible %}
+				<button class="cycle-button mini-button button-success">
+					<span class="mif mif-checkmark"></span>
+				</button>
+			{% else %}
+				<button class="cycle-button mini-button button-danger">
+					<span class="mif mif-cross"></span>
+				</button>
+			{% endif %}
+		</td>
 	</tr>
 	{% endfor %}
 	</tbody>
@@ -91,4 +101,8 @@
 
 {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
 
+{% endblock %}
+
+{% block stylesheet %}
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

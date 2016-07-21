@@ -8,31 +8,25 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/disciplines/view/discipline={{ discipline.id }}/"><span class="icon mif-stack2"></span> <span class="hidden-xs">{{ discipline.get_title|title }}</span></a></li>
+	<li>
+		<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}">
+			<span class="icon mif-stack2"></span> <span class="hidden-xs">{{ discipline.get_title|title }}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area no-padding bg-transparent">
-<h3 class="text-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
-    <div class="tile-container">
+<div class="tile-area no-padding">
+	
+	<h3 class="text-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
+    	
+    	<div class="tile-container">
 	{% for lesson in discipline.get_lessons_visibles %}
-         <div class="tile-wide {{ lesson.color }}">
-		    <a href="/home/content/lessons/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/" class="tile-content slide-down iconic">
-		        <span class="icon mif-clipboard"></span>
-		        <div class="tile-label">
-		            {{ lesson.get_title|title }}
-		        </div>
-		        <div class="slide-over bg-steel">
-		        <table class="text-center fill">
-		        	<tr>
-		        		<td>{% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
-		        	</tr>
-		        	<tr>
-		        		<td>{% trans "All Videos" %} : {{ lesson.get_videos_visibles|length }}</td>
-		        	</tr>
-		        </table>
-		        </div>
-		    </a>
+       	<div class="tile-wide {{ lesson.color }}">
+		    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
+				<span class="icon mif-clipboard"></span>
+				<div class="tile-label">{{ lesson.get_title|title }}</div>
+		    	</a>
 		</div>
 	{% empty %}
 	<h3 class="text-center">{%trans "Discipline does not have lessons."%}</h3>

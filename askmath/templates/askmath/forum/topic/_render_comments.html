@@ -13,11 +13,15 @@
 				{% endblocktrans %}
 			</span>
         	{% if request.user == comment.person %}
-				<a class="comment-edit" href="#comment-{{ comment.id }}" url="/forum/comments/edit/category={{ category.id }}/topic={{ topic.id }}/comment={{ comment.id }}/"><span class="mif-pencil padding5 fg-white"></span></a>
-			{% endif %}
-			{% if comment.exists and request.user == comment.person or perms.askmath.access_forum_admin %}
-				<a href="/forum/comments/remove/category={{ category.id }}/topic={{ topic.id }}/comment={{ comment.id }}/"><span class="mif-cross padding5 fg-white"></span></a>
-			{% endif %}
+			<a class="comment-edit" href="#comment-{{ comment.id }}" url="{% url 'askmath:forum_comment_edit' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}">
+				<span class="mif-pencil padding5 fg-white"></span>
+			</a>
+		{% endif %}
+		{% if comment.exists and request.user == comment.person or perms.askmath.access_forum_admin %}
+			<a href="{% url 'askmath:forum_comment_remove' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}">
+				<span class="mif-cross padding5 fg-white"></span>
+			</a>
+		{% endif %}
         </div>
     </div>
 	<div class="contant">
@@ -40,9 +44,9 @@
 					<div class="post-controls">
 						<div class="col-sm-6 col-md-6">
 				    		{% if request.user in comment.get_likes_persons %}
-							<button href="/forum/comments/unlike/comment={{ comment.id }}/" class="button-like image-button bg-green fg-white">
+							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="button-like image-button bg-green fg-white">
 							{% else %}
-							<button href="/forum/comments/like/comment={{ comment.id }}/" class="button-like image-button bg-gray fg-white">
+							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="button-like image-button bg-gray fg-white">
 							{% endif %}	
 								<span class="like-count">{{ comment.get_likes|length }}</span>
 								{% if request.user in comment.get_likes_persons %}

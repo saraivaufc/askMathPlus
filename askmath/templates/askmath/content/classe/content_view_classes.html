@@ -8,13 +8,16 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/classes/view/"><span class="icon mif-books"></span> <span class="hidden-xs">{% trans "Classes" %}</span></a></li>
+	<li><a href="{% url 'askmath:content_classe_view' %}"><span class="icon mif-books"></span> <span class="hidden-xs">{% trans "Classes" %}</span></a></li>
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area no-padding bg-transparent">
+<div class="tile-area no-padding">
+
+	<h3 class="text-center page-title">{% trans "Classes" %}</h3>
+
 	<div class="tile-container">
-		<table  class="dataTable border bordered" data-role="datatable">
+		<table  class="dataTable border bordered">
 			<thead>
 				<tr>
 					<td>{% trans "Name" %}</td>
@@ -36,27 +39,28 @@
 						{% trans "No responsible" %}
 					{% endif %}
 				</td>
+
 				<td>
 					{% if not classe in my_classes %}
-						<a href="/home/content/classes/join_classe/classe={{ classe.id }}/" class="image-button button success">
+						<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="image-button button success">
 							{% trans "Subscribe" %}
 							<span class="icon mif-enter bg-emerald"></span>
 						</a>
 					{% else %}
-						<a href="/home/content/classes/out_classe/classe={{ classe.id }}/" class="image-button button danger">
+						<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button button danger">
 							{% trans "Unsubscribe" %}
 							<span class="icon mif-exit bg-red"></span>
 						</a>
 					{% endif %}
 					{% if current_classe != classe and classe in my_classes %}
-						<a href="/home/content/classes/set_current/classe={{ classe.id }}/" class="image-button button primary">
+						<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}" class="image-button button primary">
 							{% trans "Set Default" %}
 							<span class="icon mif-checkmark bg-darkCobalt"></span>
 						</a>
 					{% endif %}
 				</td>
 				<td>
-					<a href="/home/content/classes/view/classe={{ classe.id }}/" class="image-button button primary">
+					<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="image-button button primary">
 						{% trans "Details" %}
 						<span class="icon mif-info bg-darkCobalt"></span>
 					</a>

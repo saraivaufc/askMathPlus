@@ -11,5 +11,9 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/forum/categories/view/"><span class="icon mif-bubbles"></span> <spam>{% trans "Forum" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:forum_category_view'  %}">
+			<span class="icon mif-bubbles"></span> <span>{% trans "Forum" %}</span>
+		</a>
+	</li>
 {% endblock %}

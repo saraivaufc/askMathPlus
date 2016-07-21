@@ -8,27 +8,24 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li>
-		<a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/">
+		<a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id %}">
 			<span class="icon mif-list-numbered"></span> <span>{% trans "Videos" %}</span>
 		</a>
 	</li>
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area no-padding bg-transparent">
+<div class="tile-area no-padding">
 	<div class="tile-container">
 		<h3 class="text-center page-title">{% trans "Videos" %}</h3>
 		{% for video in videos %}
-	     <div class="tile-wide {{ video.color }}">
-			    <a href="/home/content/videos/view/discipline={{ discipline.id }}/lesson={{ lesson.id }}/video={{ video.id }}/" class="tile-content slide-down iconic">
-			        <span class="icon mif-film"></span>
-			        <div class="tile-label">
-			            {{ video.get_title|title }}
-			        </div>
-			        <div class="slide-over bg-steel">
-			        	<p class="paragraph">{{ video.get_description|safe|linebreaksbr|truncatewords:25 }}</p>
-			        </div>
-			    </a>
+			 <div class="tile-wide {{ video.color }}">
+				<a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id id_video=video.id %}" class="tile-content slide-down iconic">
+					<span class="icon mif-film"></span>
+					<div class="tile-label">
+							{{ video.get_title|title }}
+					</div>
+				</a>
 			</div>
 		{% empty %}
 		<h3 class="text-center">{%trans "Lesson does not have videos."%}</h3>

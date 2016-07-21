@@ -8,18 +8,18 @@
 
 	<ul class="app-bar-menu">
 		<li>
-			<a href="/home/">
+			<a href="{% url 'askmath:home' %}">
 				<span class="mif-home"></span> {% trans "Home" %}
 			</a>
 		</li>
 		<li>
-			<a href="/forum/">
+			<a href="{% url 'askmath:forum_category_view' %}">
 				<span class="mif-bubbles"></span> {% trans "Forum" %}
 			</a>
 		</li>
 		{% if perms.askmath.access_content %}
 		<li>
-			<a href="/home/content/classes/view/">
+			<a href="{% url 'askmath:content_classe_view' %}">
 				<span class="mif-books"></span> {% trans "Classes" %}
 			</a>
 		</li>
@@ -28,7 +28,7 @@
 
 	{% if not request.user.is_authenticated %}
 	<div class="app-bar-element place-right">
-		<a href="/authentication/options/">
+		<a href="{% url 'askmath:authentication_options' %}">
 			<span class="mif-enter"></span> {% trans "Enter" %}
 		</a>
 	</div>
@@ -47,28 +47,28 @@
 						{% endif %}
 					</div>
 					<label class="image-title fg-white text-center">
-						<a href="/home/person/account/view/">
+						<a href="{% url 'askmath:person_account_view' %}">
 							{{ request.user.get_full_name }}
 						</a>
 					</label>
 				</div>
                 <ul class="v-menu width subdown navy">
 					<li>
-						<a href="/home/person/account/view/">
+						<a href="{% url 'askmath:person_account_view' %}">
 							<span class="icon mif-user"></span>
 							<span class="title">{% trans "Profile" %}</span>
 						</a>
 					</li>
 					{% comment %}
 					<li>
-						<a href="/home/person/account/view/">
+						<a href="{% url 'askmath:person_account_view' %}">
 							<span class="icon mif-help"></span>
 							<span class="title">{% trans "Help" %}</span>
 						</a>
 					</li>
 					{% endcomment %}
 					<li>
-						<a href="/authentication/logout/">
+						<a href="{% url 'askmath:authentication_logout' %}">
 							<span class="icon mif-switch"></span>
 							<span class="title">{% trans "Logout" %}</span>
 						</a>
@@ -81,7 +81,7 @@
 
 	{% if perms.askmath.access_content %}
 	<div class="app-bar-element place-right no-hover">
-		<form action="/utils/filter/search/" method="post" role="search">{% csrf_token %}
+		<form action="{% url 'askmath:utils_filter_search' %}" method="post" role="search">{% csrf_token %}
             <div class="input-control text" style="width: 250px; margin-right: 10px">
                 <input id="search" name="search" type="text" maxlength="100" type="text" placeholder="{% trans "Search" %}..." required>
                 <button class="button"><span class="mif-search fg-darkBlue"></span></button>
@@ -89,96 +89,4 @@
         </form>
 	</div>
 	{% endif %}
-</div>
-
-
-
-<div id="modal-shared" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-	<!-- Modal content-->
-	<div class="modal-content">
-	  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h3 class="modal-title text-center">
-			<span class="icon mif-share"></span> {% trans "Shared" %}
-			</h3>
-	  </div>
-		<div class="modal-body">
-			<div class="container-fluid">
-				<div class="row">
-				<div class="tile-area padding10 bg-transparent">
-				<div class="tile-container">
-					<!-- Email -->
-					<div class="tile-small bg-yellow" data-role="tile">
-						<a class="tile-content" href="mailto:?Subject=AskMath&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.askmath.quixada.ufc.br/">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/email.png">
-						</a>
-					</div>
-				 
-					<!-- Facebook -->
-					<div class="tile-small bg-blue" data-role="tile">
-						<a class="tile-content" href="http://www.facebook.com/sharer.php?u=http://www.askmath.quixada.ufc.br/" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/facebook.png">
-						</a>
-					</div>
-					
-					<!-- Google+ -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content"  href="https://plus.google.com/share?url=http://www.askmath.quixada.ufc.br/" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/google.png">
-						</a>
-					</div>
-					
-					<!-- LinkedIn -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content"  href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.askmath.quixada.ufc.br/" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/linkedin.png">
-						</a>
-					</div>
-					
-					<!-- Pinterest -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/pinterest.png">
-						</a>
-					</div>
-					
-					<!-- Print -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content" href="javascript:;" onclick="window.print()">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/print.png">
-						</a>
-					</div>
-					
-					<!-- Reddit -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content" href="http://reddit.com/submit?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/reddit.png">
-						</a>
-					</div>
-					
-					<!-- Tumblr-->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content" href="http://www.tumblr.com/share/link?url=http://www.askmath.quixada.ufc.br/&amp;title=AskMath" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/tumblr.png">
-						</a>
-					</div>
-
-					<!-- Twitter -->
-					<div class="tile-small bg-red" data-role="tile">
-						<a class="tile-content" href="https://twitter.com/share?url=http://www.askmath.quixada.ufc.br/&amp;text=AskMath&amp;hashtags=askmath" target="_blank">
-							<img src="{{ STATIC_URL }}askmath/img/icons/shared/twitter.png">
-						</a>
-					</div>
-				</div>
-				</div>
-				</div>
-		  </div>
-	  </div>
-	  <div class="modal-footer">
-			<button type="button" class="button button-default" data-dismiss="modal">{% trans "Close" %}</button>
-	  </div>
-	</div>
-
-  </div>
 </div>

@@ -4,7 +4,11 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/policies/"><span class="icon mif-file-text"></span> <spam>{% trans "Privacy Policy" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:policies' %}">
+			<span class="icon mif-file-text"></span> <span>{% trans "Privacy Policy" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {% block content %}

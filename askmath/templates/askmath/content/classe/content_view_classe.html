@@ -3,11 +3,12 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/content/classes/view/classe={{ classe.id }}/"><span class="icon mif-clipboard"></span> <spam>{{ classe.get_name|title }}</spam></a></li>
+	<li><a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}"><span class="icon mif-clipboard"></span> <spam>{{ classe.get_name|title }}</spam></a></li>
 {% endblock %}
 
 {%  block tiles %}
 <div class="tile-area no-padding bg-transparent">
+
 	<h3 class="text-center page-title" >{{ classe.name }}</h3>
 
 	<div class="grid condensed">
@@ -43,7 +44,7 @@
                     <dt>{% trans "Disciplines" %}</dt>
                     <dd>
                     {% for discipline in classe.get_disciplines %}
-                    <a href="/home/content/disciplines/view/discipline={{ discipline.id }}/" class="tag info">{{ discipline.title }}</a>
+                    <a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tag info">{{ discipline.title }}</a>
                     {% endfor %}
                     </dd>
                 </dl>

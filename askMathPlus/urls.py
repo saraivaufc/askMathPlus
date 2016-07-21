@@ -3,9 +3,7 @@ from django.contrib import admin
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.i18n import javascript_catalog
-
-from askmath import urls as askmath_urls
-from askmath.feeds import LessonsLatests
+    
 import settings
 
 
@@ -14,10 +12,9 @@ js_info_dict = {
 }
 
 urlpatterns = patterns('',
-    url(r'^', include(askmath_urls)),
+    url(r'^', include('askmath.urls', namespace="askmath", app_name="askmath")),
     url(r'^admin/', include(admin.site.urls), name='admin'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
-    url(r'^feed/$', LessonsLatests()),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 )
 

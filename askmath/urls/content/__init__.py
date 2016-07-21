@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
 
-
 urlpatterns = patterns('',
     url(r'^classes/', include('askmath.urls.content.classes')),
     url(r'^disciplines/', include('askmath.urls.content.disciplines')),

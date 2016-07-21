@@ -84,7 +84,17 @@
 		<td class="sortable-column">{{ question.get_position }}</td>
 		<td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
 		<td class="sortable-column">{{ question.get_scores }}</td>
-		<td>{{ question.is_visible }}</td>
+		<td>
+			{% if question.is_visible %}
+				<button class="cycle-button mini-button button-success">
+					<span class="mif mif-checkmark"></span>
+				</button>
+			{% else %}
+				<button class="cycle-button mini-button button-danger">
+					<span class="mif mif-cross"></span>
+				</button>
+			{% endif %}
+		</td>
 	</tr>
 	{% endfor %}
 	</tbody>
@@ -95,5 +105,5 @@
 {% endblock %}
 
 {% block stylesheet %}
-<script type="text/javascript" src="{{ STATIC_URL }}askmath/frameworks/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	{% include 'askmath/latex/support.html' %}
 {% endblock %}

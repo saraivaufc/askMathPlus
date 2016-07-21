@@ -6,5 +6,5 @@ from askmath.views.utils import ProxyFilter
 proxy_filter = ProxyFilter()  
 
 urlpatterns = patterns('',
-    url(r'^search/$', proxy_filter.search),
+    url(r'^search/$', proxy_filter.search, name="utils_filter_search"),
 )

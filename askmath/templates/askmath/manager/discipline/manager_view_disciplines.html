@@ -69,7 +69,15 @@
         {% endif %}
 		<td class="sortable-column">{{ discipline.get_title }}</td>
 		<td class="sortable-column">
-			{{ discipline.is_visible }}
+			{% if discipline.is_visible %}
+				<button class="cycle-button mini-button button-success">
+					<span class="mif mif-checkmark"></span>
+				</button>
+			{% else %}
+				<button class="cycle-button mini-button button-danger">
+					<span class="mif mif-cross"></span>
+				</button>
+			{% endif %}
         </td>
         <td class="sortable-column">
 			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="image-button button primary">
