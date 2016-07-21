@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li>
-		<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/">
+		<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}">
 			<span class="icon mif-clipboard"></span> <span>{% blocktrans with discipline=discipline.get_title %}Lessons of {{ discipline }}{% endblocktrans %}</span>
 		</a>
 	</li>
@@ -13,7 +13,7 @@
 {%  block content_right %}
 {% if perms.askmath.write_lesson %}
 <div class="cell">
-		<a id="button-lesson-create" href="/home/manager/lessons/add/discipline={{ discipline.id }}/" class="image-button button-success">
+		<a id="button-lesson-create" href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
@@ -33,12 +33,12 @@
 		</a>
 		{% endif %}
 		{% if is_removed %}
-		<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="image-button button-warning">
+		<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}" class="image-button button-warning">
 			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 		{% else %}
-		<a href="/home/manager/lessons/view_removed/discipline={{ discipline.id }}/" class="image-button button-warning">
+		<a href="{% url 'askmath:manager_lesson_view_removed' id_discipline=discipline.id %}" class="image-button button-warning">
 			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>
@@ -76,13 +76,17 @@
 		<td class="sortable-column">{{ lesson.get_title }}</td>
 		<td class="sortable-column">{{ lesson.get_description|truncatechars:"255" }}</td>
 		<td class="sortable-column">
-			{% for lesson in  lesson.get_requirements %}
-				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ lesson.get_discipline.id }}" class="tag info">{{ lesson }}</a>
+			{% for requirement in  lesson.get_requirements %}
+				<a href="{% url 'askmath:manager_question_view' id_discipline=requirement.get_discipline.id id_lesson=requirement.id %}" class="tag fg-white {{ requirement.color }}">
+					{{ requirement }}
+				</a>
 			{% endfor %}
 		</td>
 		<td class="sortable-column">
 			{% for sugestion in  lesson.get_sugestions %}
-				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ lesson.get_discipline.id }}" class="tag info">{{ sugestion }}</a>
+				<a href="{% url 'askmath:manager_question_view' id_discipline=sugestion.get_discipline.id id_lesson=sugestion.id %}" class="tag fg-white {{ sugestion.color }}">
+					{{ sugestion }}
+				</a>
 			{% endfor %}
 		</td>
 		<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
@@ -99,11 +103,11 @@
         </td>
         <td class="sortable-column">
         	<div data-role="group" data-group-type="multi-state">
-				<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button primary">
+				<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id id_discipline=discipline.id %}" class="image-button button primary">
 					{% trans "Questions" %}
 					<span class="icon bg-darkCobalt">{{ lesson.get_questions|length }}</span>
 				</a>
-				<a  href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button primary">
+				<a  href="{% url 'askmath:manager_video_view' id_lesson=lesson.id id_discipline=discipline.id %}" class="image-button button primary">
 					{% trans "Videos" %}
 					<span class="icon bg-darkCobalt">{{ lesson.get_videos|length }}</span>
 				</a>

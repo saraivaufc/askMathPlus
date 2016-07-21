@@ -1,21 +1,26 @@
 {% load i18n %}
 <div class="modal fade" id="quantity_items">
-  <div class="modal-dialog modal-sm">
-	<div class="modal-content">
-	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<h4 class="modal-title">{% trans "How many items this issue have?" %}</h4>
-	  </div>
-	  <div class="modal-body">
-		<form id="form_quantity_items" action="/home/manager/questions/add/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" method="POST" onsubmit="return updateURLQuantityItems();" >
-			{% csrf_token %}
-			<input type="number" name="quantity_items" step="1" value="5" min="2" max='10' required />
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" class="button primary" data-dismiss="modal">{% trans "Cancel" %}</button>
-		<button type="submit" class="button success">{% trans "Submit" %}</button>
-		</form>
-	  </div>
-	</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{% trans "How many items this issue have?" %}</h4>
+			</div>
+
+			<div class="modal-body">
+				<div class="pagination align-center">
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=2 %}" class="item">2</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=3 %}" class="item">3</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=4 %}" class="item">4</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=5 %}" class="item">5</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=6 %}" class="item">6</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=7 %}" class="item">7</a>
+					<a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=8 %}" class="item">8</a>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<a type="button" class="button primary" data-dismiss="modal">{% trans "Cancel" %}</a>
+			</div>
+		</div>
+	</div>
+</div>

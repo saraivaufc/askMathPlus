@@ -3,11 +3,15 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/persons/add/person_type={{ person_type }}/"><span class="icon mif-key"></span> <spam>{% trans "View Keys" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}">
+			<span class="icon mif-key"></span> <span>{% trans "View Keys" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {%  block content_right %}	
-<form action="." method="POST">
+<form action="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" method="POST">
 	{% csrf_token %}
 	<button type="submit" class="image-button button-info">
 		{% trans " Generate Key" %}

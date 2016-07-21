@@ -5,7 +5,7 @@
 	{{ block.super }}
 	{% if lesson %}
 	<li>
-		<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
+		<a href="{% url 'askmath:manager_video_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
 			<span class="icon mif-film"></span> <span>{% blocktrans with lesson=lesson.get_title %}Videos of {{ lesson }}{% endblocktrans %}</span>
 		</a>
 	</li>
@@ -16,7 +16,7 @@
 {%  block content_right %}
 {% if perms.askmath.write_video %}
 <div class="cell">
-		<a id="button-video-create" href="/home/manager/videos/add/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-success">
+		<a id="button-video-create" href="{% url 'askmath:manager_video_add' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-success">
 			{% trans "Create" %}
 			<span class="icon mif-plus"></span>
 		</a>
@@ -35,17 +35,17 @@
 			<span class="icon mif-minus"></span>
 		</a>
 		{% endif %}
-		<a id="button-video-sort" href="/home/manager/videos/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
+		<a id="button-video-sort" href="{% url 'askmath:manager_video_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-info">
 			{% trans "Sort" %}
 			<span class="icon mif-list-numbered"></span>
 		</a>
 		{% if is_removed %}
-			<a href="/home/manager/videos/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			<a href="{% url 'askmath:manager_video_view' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
 				{% trans "Close Dump" %}
 				<span class="icon mif-undo"></span>
 			</a>
 		{% else %}
-			<a href="/home/manager/videos/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+			<a href="{% url 'askmath:manager_video_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
 				{% trans "Open Dump" %}
 				<span class="icon mif-bin"></span>
 			</a>

@@ -5,7 +5,7 @@
 	{{ block.super }}
 	{% if lesson %}
 	<li>
-		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/">
+		<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
 			<span class="icon mif-list-numbered"></span> <span>{% blocktrans with lesson=lesson.get_title %}Questions of {{ lesson }}{% endblocktrans %}</span>
 		</a>
 	</li>
@@ -36,19 +36,19 @@
 		</a>
 		{% endif %}
 		{% if perms.askmath.write_question %}
-		<a id="button-question-sort" href="/home/manager/questions/sort/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-info">
+		<a id="button-question-sort" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-info">
 			{% trans "Sort" %}
 			<span class="icon mif-list-numbered"></span>
 		</a>
 		{% endif %}
 		
 		{% if is_removed %}
-		<a href="/home/manager/questions/view/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+		<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
 			{% trans "Close Dump" %}
 			<span class="icon mif-undo"></span>
 		</a>
 		{% else %}
-		<a href="/home/manager/questions/view_removed/lesson={{ lesson.id }}/discipline={{ discipline.id }}/" class="image-button button-warning">
+		<a href="{% url 'askmath:manager_question_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
 			{% trans "Open Dump" %}
 			<span class="icon mif-bin"></span>
 		</a>

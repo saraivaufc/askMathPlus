@@ -4,13 +4,17 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/persons/view/person_type={{ person_type }}/"><span class="icon mif-users"></span> <spam>{{ person_type|title }}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}">
+			<span class="icon mif-users"></span> <span>{{ person_type|title }}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {%  block content_right %}
 {% if perms.askmath.write_person %}
 <div class="cell">
-	<a href="/home/manager/persons/add/person_type={{ person_type }}/" class="image-button button-success">
+	<a href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" class="image-button button-success">
 		{% trans "View Keys" %}
 		<span class="icon mif-key"></span>
 	</a>
@@ -26,12 +30,12 @@
 	</a>
 	{% endif %}
 	{% if is_removed %}
-	<a href="/home/manager/persons/view/person_type={{ person_type }}/" class="image-button button-warning">
+	<a href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}" class="image-button button-warning">
 		{% trans "Close Dump" %}
 		<span class="icon mif-undo"></span>
 	</a>
 	{% else %}
-	<a href="/home/manager/persons/view_removed/person_type={{ person_type }}/" class="image-button button-warning">
+	<a href="{% url 'askmath:manager_person_view_removed' PERSONTYPE=person_type %}" class="image-button button-warning">
 		{% trans "Open Dump" %}
 		<span class="icon mif-bin"></span>
 	</a>
@@ -48,7 +52,6 @@
 			<td style="width: 10px"></td>
 			{% endif %}
 			<td>{% trans "Name" %}</td>
-			<td>{% trans "Username" %}</td>
 			<td>{% trans "Email" %}</td>
 			<td>{% trans "Profile Image" %}</td>
 		</tr>
@@ -64,8 +67,7 @@
 		            </label>
 		        </td>
 		        {% endif %}
-				<td>{{ person.get_name }}</td>
-				<td>{{ person.get_username }}</td>
+				<td>{{ person.get_full_name }}</td>
 				<td>
 					<a href="mailto:{{ person.get_email }}">
 						{{ person.get_email }}

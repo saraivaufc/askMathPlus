@@ -132,14 +132,6 @@ $("[type=file]").on("change", function(){
 	}
 });
 
-function updateURLQuantityItems(){
-	var form = $("#form_quantity_items");
-	var quant = form.find("input[name='quantity_items']").val();
-	var url =form.attr("action").concat("quantity_items=").concat(quant).concat("/");
-	window.location = url;
-	return false;
-};
-
 
 $(function(){
 	$("#list_questions_sort").sortable();

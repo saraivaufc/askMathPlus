@@ -4,7 +4,11 @@
 
 {% block breadcrumbs %}
     {{ block.super }}
-    <li><a href="/home/manager/statistics/choose_type/"><span class="icon mif-chart-line"></span> <spam>{% trans "Statistics" %}</spam></a></li>
+    <li>
+        <a href="/home/manager/statistics/choose_type/">
+            <span class="icon mif-chart-line"></span> <span>{% trans "Statistics" %}</span>
+        </a>
+    </li>
 {% endblock %}
 
 {%  block content_right %}

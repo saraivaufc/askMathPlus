@@ -3,7 +3,11 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/person/account/view/"><span class="icon mif-profile"></span> <spam>{% trans "View Profile" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:person_account_view' %}">
+			<span class="icon mif-profile"></span> <span>{% trans "View Profile" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 {% block header %}
@@ -29,11 +33,11 @@
 			<h4>{{ person.get_email }}</h4>
 			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 		 </center>
-			 <a href="/home/person/account/edit/"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+			 <a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
 			    <span class="icon mif-pencil"></span>
 			    <span class="title">{% trans "Profile Edit" %}</span>
 			</a>
-			<a href="/home/person/account/alter_password/"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
+			<a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
 			    <span class="icon mif-key"></span>
 			    <span class="title">{% trans "Password Alter" %}</span>
 			</a>

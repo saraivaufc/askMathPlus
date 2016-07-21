@@ -3,14 +3,18 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="/home/manager/disciplines/view/"><span class="icon mif-books"></span> <spam>{% trans "Disciplines" %}</spam></a></li>
+	<li>
+		<a href="{% url 'askmath:manager_discipline_view' %}">
+			<span class="icon mif-books"></span> <span>{% trans "Disciplines" %}</span>
+		</a>
+	</li>
 {% endblock %}
 
 
 {%  block content_right %}
 {% if perms.askmath.write_discipline %}
 <div class="cell">
-	<a id="button-discipline-create" href="/home/manager/disciplines/add/" class="image-button button-success">
+	<a id="button-discipline-create" href="{% url 'askmath:manager_discipline_add' %}" class="image-button button-success">
 		{% trans "Create" %}
 		<span class="icon mif-plus"></span>
 	</a>
@@ -30,12 +34,12 @@
 	</a>
 	{% endif %}
 	{% if is_removed %}
-	<a href="/home/manager/disciplines/view/" class="image-button button-warning">
+	<a href="{% url 'askmath:manager_discipline_view' %}" class="image-button button-warning">
 		{% trans "Close Dump" %}
 		<span class="icon mif-undo"></span>
 	</a>
 	{% else %}
-	<a href="/home/manager/disciplines/view_removed/" class="image-button button-warning">
+	<a href="{% url 'askmath:manager_discipline_view_removed' %}" class="image-button button-warning">
 		{% trans "Open Dump" %}
 		<span class="icon mif-bin"></span>
 	</a>
@@ -80,7 +84,7 @@
 			{% endif %}
         </td>
         <td class="sortable-column">
-			<a href="/home/manager/lessons/view/discipline={{ discipline.id }}/" class="image-button button primary">
+			<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}" class="image-button button primary">
 				{% trans "Lessons" %}
 				<span class="icon bg-darkCobalt">{{ discipline.get_lessons|length }}</span>
 			</a>

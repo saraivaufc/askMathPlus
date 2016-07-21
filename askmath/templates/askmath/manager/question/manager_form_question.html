@@ -9,10 +9,10 @@
 			{% with form=form_question %}
 				{% include "askmath/_render_form.html" %}
 			{% endwith %}
-			<div class="accordion">
+			<div class="accordion" data-close-any="true">
 			{% for form in forms_items  %}
 				<div class="frame active">
-					<div class="heading on">
+					<div class="heading">
 						{% trans "Item" %} {{ form.prefix }}
 					</div>
 					<div class="content">

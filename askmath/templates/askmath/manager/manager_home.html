@@ -9,7 +9,7 @@
 		<div class="tile-container">
 				{% if perms.askmath.access_manager_classe %}
 				<div class="tile-wide bg-teal " data-role="tile">
-					<a href="/home/manager/classes/view/" class="tile-content iconic">
+					<a href="{% url 'askmath:manager_classe_view' %}" class="tile-content iconic">
 						<span class="icon mif-organization"></span>
 						<span class="tile-label">{% trans "CLASSES" %}</span>
 					</a>
@@ -18,7 +18,7 @@
 
 				{% if perms.askmath.access_manager_discipline %}
 				<div class="tile-wide bg-blue " data-role="tile">
-					<a href="/home/manager/disciplines/view/" class="tile-content iconic">
+					<a href="{% url 'askmath:manager_discipline_view' %}" class="tile-content iconic">
 						<span class="icon mif-books"></span>
 						<span class="tile-label">{% trans "DISCIPLINES" %}</span>
 					</a>
@@ -35,7 +35,7 @@
 				{% endif %}
 				{% if perms.askmath.access_manager_person %}
 				<div class="tile-wide bg-darkBrown" data-role="tile">
-					<a href="/home/manager/persons/choose_person_types/" class="tile-content iconic">
+					<a href="{% url 'askmath:manager_person_choose_person_types' %}" class="tile-content iconic">
 						<span class="icon mif-users"></span>
 						<span class="tile-label">{% trans "PERSONS" %}</span>
 					</a>
@@ -44,7 +44,7 @@
 				
 				{% if perms.askmath.access_manager_message %}
 				<div class="tile-wide bg-pink" data-role="tile">
-					<a href="/home/manager/messages/view/" class="tile-content iconic">
+					<a href="{% url 'askmath:manager_message_view' %}" class="tile-content iconic">
 						<span class="icon mif-envelop"></span>
 						<span class="tile-label">{% trans "MESSAGES" %}</span>
 					</a>

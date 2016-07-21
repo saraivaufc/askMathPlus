@@ -7,20 +7,18 @@
 	<h3 class="text-center">{% trans "Sort Videos" %}<span class="mif-sort-asc place-right"></span></h3>
 </div>
 
-<div class="container">
-	<ul id="list_videos_sort" class="listview ">
-	{% csrf_token %}
-	{% for video in videos %}
-	<li class="list active" value={{ video.id }}>
-		<span class="list-title">{{ video }}</span>
-	</li>
-	{% empty %}
-	<h3 class="text-center">{% trans "Not Videos Found" %}</h3>
-	{% endfor %}
-	</ul>
-	<div class="text-right">
-		<button onclick="sortVideos();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
-	</div>
+<div id="list_videos_sort" class="listview ">
+{% csrf_token %}
+{% for video in videos %}
+<li class="list active" value={{ video.id }}>
+	<span class="list-title">{{ video }}</span>
+</li>
+{% empty %}
+<h3 class="text-center">{% trans "Not Videos Found" %}</h3>
+{% endfor %}
+</div>
+<div class="text-right">
+	<button onclick="sortVideos();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
 </div>
 
 {% endblock %}
