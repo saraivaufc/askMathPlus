@@ -1,11 +1,9 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from askmath.entities import TextMessage
 from askmath.forms import ProfileForm
 from askmath.forms.users import AlterPassword
-from askmath.entities import TextMessage
 from django.contrib import messages
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth import authenticate, login as login_user
 
 try:
     from hashlib import md5

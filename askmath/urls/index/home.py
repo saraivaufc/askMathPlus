@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include, url
-from askmath.views.index import ProxyHome
 from askmath.feeds import LessonsLatests
+from askmath.views.index import ProxyHome
+from django.conf.urls import patterns, url
 
 proxy_home = ProxyHome()
 

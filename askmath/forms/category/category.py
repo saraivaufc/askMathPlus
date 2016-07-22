@@ -1,9 +1,7 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, HiddenInput, Textarea, Select
-from django.utils.translation import ugettext_lazy as _
-
 from askmath.models.category import Category
+from django.forms import ModelForm, TextInput, HiddenInput, Textarea
 
 class CategoryForm(ModelForm):
     class Meta:

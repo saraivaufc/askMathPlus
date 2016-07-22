@@ -1,9 +1,9 @@
 #-*- encoding=UTF-8 -*-
 
-from django.db import models
-from django.utils.translation import ugettext as _
 from askMathPlus.settings import generate_color, COLORS_ALL
+from django.db import models
 from django.utils import timezone
+from django.utils.translation import ugettext as _
 
 SCORES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),)
 

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.utils.translation import ugettext as _
+
 from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea, NumberInput, DateInput, DateTimeInput, URLInput
 from nocaptcha_recaptcha.fields import NoReCaptchaField
-
 from .. import register
+
 
 @register.filter(name='is_checkbox')
 def is_checkbox(field):

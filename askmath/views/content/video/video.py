@@ -1,6 +1,4 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import render
 
 from .ivideo import IVideo
 

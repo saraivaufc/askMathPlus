@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Classe as ClasseModel
 from askmath.entities import TextMessage
-from django.contrib import messages
-from iclasse import IClasse
 from askmath.forms import ClasseForm
+from askmath.models import Classe as ClasseModel
+from django.contrib import messages
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from iclasse import IClasse
+
 
 class Classe(IClasse):
     def view_classes(self, request):

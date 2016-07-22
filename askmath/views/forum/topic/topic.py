@@ -1,12 +1,14 @@
-from .itopic import ITopic
-from django.utils.translation import ugettext_lazy as _
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import TextMessage
-from django.contrib import messages
-from askmath.forms import TopicForm, CommentForm
-from ..category import ProxyCategory
 import json
+
+from askmath.entities import TextMessage
+from askmath.forms import TopicForm, CommentForm
+from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
+from .itopic import ITopic
+from ..category import ProxyCategory
+
 
 class Topic(ITopic):
     def __init__(self):

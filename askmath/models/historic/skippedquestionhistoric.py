@@ -1,6 +1,7 @@
 from django.db import models
-from django.utils.translation import ugettext as _
 from django.utils import timezone
+from django.utils.translation import ugettext as _
+
 
 class SkippedQuestionsHistoric(models.Model):
     discipline = models.ForeignKey('Discipline', verbose_name=_(u"Discipline"))

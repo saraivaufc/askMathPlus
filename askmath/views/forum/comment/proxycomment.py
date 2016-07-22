@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import TextMessage
-from django.contrib import messages
-from askmath.models import Category as CategoryModel
-from askmath.models import Topic as TopicModel
-from askmath.models import Comment as CommentModel
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 import json
-from .icomment import IComment
+
+from askmath.entities import TextMessage
+from askmath.models import Category as CategoryModel
+from askmath.models import Comment as CommentModel
+from askmath.models import Topic as TopicModel
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.utils.decorators import method_decorator
 from .comment import Comment
+from .icomment import IComment
 from ..category import ProxyCategory
 from ..topic import ProxyTopic
+
 
 class ProxyComment(IComment):
 	def __init__(self):

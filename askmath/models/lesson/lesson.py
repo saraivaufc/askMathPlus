@@ -1,4 +1,5 @@
 #-*- encoding=UTF-8 -*-
+
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils import timezone

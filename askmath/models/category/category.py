@@ -1,7 +1,8 @@
-from django.db import models
-from django.utils.translation import ugettext as _
-from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import ugettext as _
+
 
 class Category(models.Model):
     person = models.ForeignKey('Person', verbose_name=_(u"Person"))

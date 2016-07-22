@@ -1,11 +1,9 @@
 #-*- encoding=utf-8 -*-
 
-from django import forms
-from django.forms import ModelForm, TextInput, EmailInput, FileInput, Textarea
-from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.users import Message
+from django.forms import ModelForm, TextInput, EmailInput, Textarea
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 

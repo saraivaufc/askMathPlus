@@ -1,6 +1,5 @@
-from django.conf.urls import patterns, include, url
-
 from askmath.views.utils import ProxyFilter
+from django.conf.urls import patterns, url
 
 
 proxy_filter = ProxyFilter()  

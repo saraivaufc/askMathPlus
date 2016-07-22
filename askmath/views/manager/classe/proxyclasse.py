@@ -1,14 +1,12 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models.classe import Classe as ClasseModel
 from askmath.entities import TextMessage
-from django.contrib import messages
+from askmath.models.classe import Classe as ClasseModel
 from askmath.views.index import ProxyHome
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
-from .iclasse import IClasse
 from .classe import Classe
+from .iclasse import IClasse
+
 
 class ProxyClasse(IClasse):
     

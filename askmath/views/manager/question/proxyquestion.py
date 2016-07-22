@@ -1,17 +1,14 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect
 import json
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
 from askmath.entities import TextMessage
-from django.contrib import messages
 from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.question import Question as QuestionModel
 from askmath.views.index import ProxyHome
 from askmath.views.manager.lesson import ProxyLesson
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .iquestion import IQuestion
 from .question import Question
 

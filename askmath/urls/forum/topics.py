@@ -1,6 +1,5 @@
-from django.conf.urls import patterns, include, url
-
 from askmath.views.forum import ProxyTopic
+from django.conf.urls import patterns, url
 
 
 proxy_topic = ProxyTopic()

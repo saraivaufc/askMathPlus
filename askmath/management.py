@@ -1,11 +1,10 @@
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import Group, Permission
-from django.db.models import signals
-from askmath.models.users import Person, Administrator, Teacher, Assistant, Student 
-from django.contrib.auth.models import User, Group
-from django.db.models.signals import post_save
-
 import models
+from askmath.models.users import Administrator, Teacher, Assistant, Student
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import User, Group
+from django.contrib.contenttypes.models import ContentType
+from django.db.models import signals
+from django.db.models.signals import post_save
 
 permissions = {
     "access_manager": "Access Manager",

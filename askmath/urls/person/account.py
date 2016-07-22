@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, include, url
 from askmath.views.person import ProxyAccount
+from django.conf.urls import patterns, url
 
 proxy_account = ProxyAccount()
 

@@ -1,6 +1,5 @@
-from django.conf.urls import patterns, include, url
-
 from askmath.views.content import ProxyClasse
+from django.conf.urls import patterns, url
 
 
 proxy_classe = ProxyClasse()  

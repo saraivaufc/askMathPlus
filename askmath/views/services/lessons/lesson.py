@@ -1,9 +1,7 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.core import serializers
 from askmath.models import Lesson as ContactModel
-
 from askmath.views.services.lessons.ilesson import ILesson
+from django.core import serializers
+from django.http import HttpResponse
 
 type_output = 'json'
 

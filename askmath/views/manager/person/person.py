@@ -1,9 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.models import Group
 from askmath.entities import TextMessage
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import render
 
 try:
     from hashlib import md5

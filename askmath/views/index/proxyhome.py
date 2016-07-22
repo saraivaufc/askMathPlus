@@ -1,19 +1,12 @@
 # -*- coding: UTF-8 -*-
 
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
-from django.shortcuts import render, redirect
-from askmath.models import Discipline
-from askmath.forms import MessageForm
-from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
-from django.core.mail import EmailMessage
 from askmath.models.lesson.lesson import Lesson
-from .ihome import IHome
-from askmath.utils.ratelimit.decorators import ratelimit
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.shortcuts import render
 from .home import Home
+from .ihome import IHome
+
 
 class ProxyHome(IHome):
     def __init__(self):

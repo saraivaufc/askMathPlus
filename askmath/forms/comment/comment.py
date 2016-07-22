@@ -1,10 +1,7 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, HiddenInput, Textarea
-from django.utils.translation import ugettext_lazy as _
-import hashlib
-
 from askmath.models.comment import Comment
+from django.forms import ModelForm, HiddenInput, Textarea
 class CommentForm(ModelForm):
 	class Meta:
 		model= Comment

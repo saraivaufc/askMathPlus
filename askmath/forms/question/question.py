@@ -1,9 +1,7 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, HiddenInput, Select
-from django.utils.translation import ugettext_lazy as _
-
-from askmath.models import Question, Discipline
+from askmath.models import Question
+from django.forms import ModelForm, CheckboxInput, Textarea, HiddenInput, Select
 
 
 class QuestionForm(ModelForm):

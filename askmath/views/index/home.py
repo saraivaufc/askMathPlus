@@ -1,16 +1,12 @@
 # -*- coding: UTF-8 -*-
 
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
-
-from askmath.models import Discipline as DisciplineModel
 from askmath.forms import MessageForm, MessageFormRecaptcha
-from askMathPlus.settings import  EMAIL_ADMINS, SITE_TITLE
-
+from askmath.models import Discipline as DisciplineModel
+from django.contrib import messages
+from django.shortcuts import render
 from .ihome import IHome
+
 
 class Home(IHome):
 

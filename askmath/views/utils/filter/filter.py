@@ -1,21 +1,20 @@
 #-*- encoding=UTF-8 -*-
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Discipline, Lesson, Video
+from multiprocessing.pool import ThreadPool
+import nltk
+import os
 from askMathPlus.settings import BASE_DIR
 from askMathPlus.settings import COLORS_ALL
-from multiprocessing.pool import ThreadPool
-
-from .ifilter import IFilter
-import nltk, os
-nltk.data.path.append(os.path.join(BASE_DIR, 'askmath/static/askmath/filter/nltk_data/'))
-from nltk.corpus import stopwords
-import operator
-
+from askmath.models import Discipline, Lesson, Video
 from askmath.views.content.discipline import ProxyDiscipline
 from askmath.views.content.lesson import ProxyLesson
 from askmath.views.content.video import ProxyVideo
+from django.http import HttpResponse
+from django.shortcuts import render
+from nltk.corpus import stopwords
+from .ifilter import IFilter
+
+nltk.data.path.append(os.path.join(BASE_DIR, 'askmath/static/askmath/filter/nltk_data/'))
 
 LANGUAGE = "portuguese"
 IGNORED_WORDS = stopwords.words(LANGUAGE)

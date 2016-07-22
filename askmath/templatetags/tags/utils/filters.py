@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.utils.translation import ugettext as _
-from django.conf import settings
-from django import template
-from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea
 
+from django.conf import settings
+from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, PasswordInput, EmailInput, Textarea
+from django.utils.translation import ugettext as _
 from .. import register
+
 
 @register.filter(name='range') 
 def range_filter(number):

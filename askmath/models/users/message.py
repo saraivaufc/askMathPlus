@@ -1,9 +1,11 @@
 #-*- encoding=UTF-8 -*-
 
+from datetime import datetime
+
+from askMathPlus.settings import generate_color
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import datetime
-from askMathPlus.settings import generate_color
+
 
 class Message(models.Model):
     name = models.CharField(verbose_name=_(u"Name"), max_length=100,

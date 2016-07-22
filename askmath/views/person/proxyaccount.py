@@ -1,14 +1,10 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
+from askmath.views.index import ProxyHome
+from askmath.views.person.account import Account
+from askmath.views.person.iaccount import IAccount
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from askmath.forms.users import AlterPassword
-
-from askmath.views.person.iaccount import IAccount
-from askmath.views.person.account import Account
-from askmath.views.index import ProxyHome
 
 
 class ProxyAccount(IAccount):

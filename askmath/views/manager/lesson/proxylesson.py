@@ -1,17 +1,16 @@
 #-*- encoding=UTF-8 -*- 
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models.lesson import Lesson as LessonModel
-from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.entities import TextMessage
-from django.contrib import messages
+from askmath.models.discipline import Discipline as DisciplineModel
+from askmath.models.lesson import Lesson as LessonModel
 from askmath.views.index import ProxyHome
+from askmath.views.manager.discipline import ProxyDiscipline
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from askmath.views.manager.discipline import ProxyDiscipline
 from .ilesson import ILesson
 from .lesson import Lesson
+
 
 class ProxyLesson(ILesson):
     

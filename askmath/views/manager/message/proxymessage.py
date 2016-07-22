@@ -1,16 +1,14 @@
 #-*- encoding=UTF-8 -*- 
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
-from django.contrib import messages
-from askmath.views.index import ProxyHome
 from askmath.models import Message as MessageModel
+from askmath.views.index import ProxyHome
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
 from .imessage import IMessage
 from .message import Message
+
 
 class ProxyMessage(IMessage):
     

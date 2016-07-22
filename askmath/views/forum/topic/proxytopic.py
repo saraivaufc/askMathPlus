@@ -1,13 +1,14 @@
 from askmath.entities import TextMessage
-from django.contrib import messages
 from askmath.models.category import Category as CategoryModel
 from askmath.models.topic import Topic as TopicModel
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse
+from django.utils.decorators import method_decorator
 from .itopic import ITopic
 from .topic import Topic
 from ..category import ProxyCategory
-from django.http.response import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+
 
 class ProxyTopic(ITopic):
     def __init__(self):

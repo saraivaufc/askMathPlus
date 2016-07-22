@@ -1,12 +1,13 @@
 #-*- encoding=UTF-8 -*-
 
 
-from django.db import models
-from django.utils.translation import ugettext as _
-from django.utils import timezone
 from askmath.entities import TextMessage
-from django.contrib import messages
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
+from django.contrib import messages
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import ugettext as _
+
 
 class StudentLessonState(models.Model):
     student = models.ForeignKey('Student', verbose_name=_(u"Student"))

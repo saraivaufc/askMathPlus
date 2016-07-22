@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Discipline as DisciplineModel
 from askmath.entities import TextMessage
-from django.contrib import messages
-from idiscipline import IDiscipline
 from askmath.forms import DisciplineForm
+from askmath.models import Discipline as DisciplineModel
+from django.contrib import messages
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from idiscipline import IDiscipline
+
 
 class Discipline(IDiscipline):
     def view_disciplines(self, request):

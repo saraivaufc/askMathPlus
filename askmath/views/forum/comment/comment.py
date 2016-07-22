@@ -1,13 +1,14 @@
-from .icomment import IComment
-from askmath.models import Comment as CommentModel
-from django.template import Context, Template
-from django.http.response import HttpResponse, HttpResponseRedirect
 import json
+
+from askmath.entities import TextMessage
 from askmath.forms import CommentForm
+from django.contrib import messages
+from django.http.response import HttpResponse, HttpResponseRedirect
+from .icomment import IComment
 from ..category import ProxyCategory
 from ..topic import ProxyTopic
-from askmath.entities import TextMessage
-from django.contrib import messages
+
+
 class Comment(IComment):
     def __init__(self):
         self.__proxy_category = ProxyCategory()

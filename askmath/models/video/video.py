@@ -1,10 +1,11 @@
 #-*- encoding=UTF-8 -*-
 
-from django.db import models
-from django.utils.translation import ugettext as _
-from django.utils import timezone
-from askMathPlus.settings import generate_color, COLORS_ALL
 import os
+from askMathPlus.settings import generate_color, COLORS_ALL
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import ugettext as _
+
 
 class Video(models.Model):
 	lesson = models.ForeignKey('Lesson', verbose_name=_(u"Lesson"),

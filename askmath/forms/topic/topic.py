@@ -1,10 +1,10 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, HiddenInput, Textarea, Select
-from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.topic import Topic
+from django.forms import ModelForm, TextInput, HiddenInput, Textarea
+
 
 class TopicForm(ModelForm):
     class Meta:

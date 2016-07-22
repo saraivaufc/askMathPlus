@@ -1,12 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Lesson as ContactModel
-from askmath.models import Discipline as DisciplineModel
-from askmath.entities import TextMessage
-from django.contrib import messages
+from django.shortcuts import render
 from .ilesson import ILesson
-from askmath.forms import LessonForm
-from django.utils.translation import ugettext_lazy as _
+
 
 class Lesson(ILesson):
     

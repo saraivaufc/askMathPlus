@@ -1,9 +1,11 @@
 # -*- coding: UTF-8 -*-
 
 from __future__ import unicode_literals
-from django.utils.translation import ugettext_lazy as _
+
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from .person import Person
+
 
 class Student(Person):
 

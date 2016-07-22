@@ -1,7 +1,7 @@
+from askmath.models.access.registerkey import RegisterKey
 from django.db import models
 from django.utils.translation import ugettext as _
-from askmath.models.access.registerkey import RegisterKey
-from django.conf import settings
+
 
 class AdministratorKey(RegisterKey):
     user = models.ForeignKey('Administrator', related_name="Administrator", null=True, blank=True)

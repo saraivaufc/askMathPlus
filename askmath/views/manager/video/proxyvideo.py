@@ -1,18 +1,16 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+import json
+from askmath.entities import TextMessage
+from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.video import Video as VideoModel
-from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.entities import TextMessage
-from django.contrib import messages
 from askmath.views.index import ProxyHome
 from askmath.views.manager.lesson import ProxyLesson
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .ivideo import IVideo
 from .video import Video
-import json
+
 
 class ProxyVideo(IVideo):
     

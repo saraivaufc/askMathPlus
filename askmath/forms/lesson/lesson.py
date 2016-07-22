@@ -1,9 +1,8 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, ModelMultipleChoiceField,Select, HiddenInput
-from django.utils.translation import ugettext_lazy as _
-
 from askmath.models import Lesson, Discipline
+from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, HiddenInput
+
 class LessonForm(ModelForm):
 	def __init__(self,*args,**kwargs):
 		super (LessonForm,self ).__init__(*args,**kwargs)

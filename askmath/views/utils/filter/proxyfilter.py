@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
-from django.contrib import messages
-from .ifilter import IFilter
-from .filter import Filter
 from askmath.views.index import ProxyHome
+from django.contrib import messages
+from .filter import Filter
+from .ifilter import IFilter
+
 
 class ProxyFilter(IFilter):
     def __init__(self):

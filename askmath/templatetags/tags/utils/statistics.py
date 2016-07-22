@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from askmath.views.manager.statistic.lesson.generatestatistics import GeneratorStatistics as GeneratorStatisticsLesson
 from .. import register
-from askmath.views.manager.statistic.lesson.generatestatistics import GeneratorStatistics as GeneratorStatisticsLesson  
 
 @register.filter(name='acerts_question')
 def acerts_question(question):

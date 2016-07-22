@@ -1,9 +1,9 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenInput, ClearableFileInput, Select
 import hashlib
 
 from askmath.models.video import Video
+from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenInput, ClearableFileInput
 
 
 class VideoForm(ModelForm):

@@ -1,16 +1,13 @@
 #-*- encoding=utf-8 -*-
 
-from django import forms
-from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput, Select
-from django.utils.translation import ugettext_lazy as _
 import hashlib
 
 from askmath.models.users import Person
 from askmath.widgets.fields import AdvancedFileInput
+from django import forms
+from django.forms import ModelForm, TextInput, EmailInput
+from django.utils.translation import ugettext_lazy as _
 from nocaptcha_recaptcha.fields import NoReCaptchaField
-from askmath.entities import person_types
-from django.contrib.auth.hashers import make_password
-
 
 
 class LoginForm(forms.Form):

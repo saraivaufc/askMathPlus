@@ -1,12 +1,11 @@
 #-*- encoding=UTF-8 -*- 
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Message as MessageModel
 from askmath.entities import TextMessage
-from django.contrib import messages
+from askmath.models import Message as MessageModel
 from askmath.views.manager.message.imessage import IMessage
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.shortcuts import render
+
 
 class Message(IMessage):
     

@@ -1,7 +1,6 @@
 from django.contrib.syndication.views import Feed
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
-
 from askmath.models.lesson import Lesson
 
 class LessonsLatests(Feed):

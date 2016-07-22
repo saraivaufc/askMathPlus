@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-
-from .idiscipline import IDiscipline
 from .discipline import Discipline
+from .idiscipline import IDiscipline
+
 
 class ProxyDiscipline(IDiscipline):
     def __init__(self):

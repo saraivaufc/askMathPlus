@@ -1,6 +1,5 @@
-from django.conf.urls import patterns, include, url
-
 from askmath.views.forum import ProxyComment
+from django.conf.urls import patterns, url
 
 
 proxy_comment = ProxyComment()  

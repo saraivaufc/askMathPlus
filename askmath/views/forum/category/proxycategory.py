@@ -1,13 +1,12 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
 from askmath.entities import TextMessage
-from django.contrib import messages
-from askmath.views.index import ProxyHome
 from askmath.models import Category as CategoryModel
-from .icategory import ICategory
-from .category import Category
+from askmath.views.index import ProxyHome
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .category import Category
+from .icategory import ICategory
+
 
 class ProxyCategory(ICategory):
     def __init__(self):

@@ -1,6 +1,7 @@
 from askmath.models.access.registerkey import RegisterKey
 from django.utils.translation import ugettext as _
 from django.db import models
+
 class TeacherKey(RegisterKey):
     user = models.ForeignKey("Teacher",related_name="Teacher", null=True, blank=True)
     

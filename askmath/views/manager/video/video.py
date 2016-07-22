@@ -1,13 +1,9 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect
-from django.utils.translation import ugettext_lazy as _
 from askmath.entities import TextMessage
-from django.contrib import messages
-from askmath.forms import VideoForm, ItemForm
-from askmath.models.discipline import Discipline as CategoryModel
-from askmath.models.lesson import Lesson as ContactModel
+from askmath.forms import VideoForm
 from askmath.models.video import Video as VideoModel
-
+from django.contrib import messages
+from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from .ivideo import IVideo
 
 

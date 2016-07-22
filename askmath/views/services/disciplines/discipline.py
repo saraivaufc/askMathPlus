@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.core import serializers
 from askmath.models import Discipline as CategoryModel
-
+from django.core import serializers
+from django.http import HttpResponse
 from .idiscipline import IDiscipline
 
 type_output = 'json'

@@ -1,5 +1,3 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect
 from askmath.entities import TextMessage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required

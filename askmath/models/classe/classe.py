@@ -1,8 +1,8 @@
-from django.db import models
-from django.utils.translation import ugettext as _
-from django.utils import timezone
 from askMathPlus.settings import generate_color, COLORS_ALL
-from askmath.models.users import Student as StudentModel
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import ugettext as _
+
 
 class Classe(models.Model):
 	name = models.CharField(verbose_name=_(u"Name"), max_length=100,

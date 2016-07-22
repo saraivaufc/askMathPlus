@@ -1,17 +1,13 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.entities import TextMessage
-from django.contrib import messages
 from askmath.entities import PersonTypes
+from askmath.entities import TextMessage
+from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from askmath.models.users import Person as PersonModel
 from askmath.views.index import ProxyHome
-from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
 from .iperson import IPerson
 from .person import Person
-
 
 
 class ProxyPerson(IPerson):

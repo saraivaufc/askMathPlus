@@ -1,11 +1,11 @@
-from .icategory import ICategory
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models import Category as CategoryModel
 from askmath.entities import TextMessage
+from askmath.forms import CategoryForm
+from askmath.models import Category as CategoryModel
 from django.contrib import messages
-from askmath.forms import CategoryForm, TopicForm
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from .icategory import ICategory
+
 
 class Category(ICategory):
     def view_categories(self, request):

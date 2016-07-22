@@ -1,19 +1,18 @@
-from django.contrib import admin
-
+from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
+from askmath.models.category import Category
+from askmath.models.comment import Comment
 from askmath.models.discipline import Discipline
+from askmath.models.experience import StudentExperience
+from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
 from askmath.models.lesson import Lesson
+from askmath.models.like import Like
+from askmath.models.progress import StudentQuestionProgress, StudentVideoProgress
 from askmath.models.question import Question, Item
+from askmath.models.state import StudentLessonState
+from askmath.models.topic import Topic
 from askmath.models.users import Person, Administrator, Teacher, Assistant, Student, Message
 from askmath.models.video import Video
-from askmath.models.progress import StudentQuestionProgress, StudentVideoProgress
-from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, SkippedQuestionsHistoric
-from askmath.models.state import StudentLessonState
-from askmath.models.experience import StudentExperience
-from askmath.models.access import RegisterKey, AdministratorKey, TeacherKey, AssistantKey
-from askmath.models.category import Category
-from askmath.models.topic import Topic
-from askmath.models.comment import Comment
-from askmath.models.like import Like
+from django.contrib import admin
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):

@@ -6,7 +6,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li>
-		<a href="{% url 'askmath:content_question_view_question' id_discipline=discipline.id id_lesson=lesson.id %}">
+		<a href="{% url 'askmath:content_question_view' id_discipline=discipline.id id_lesson=lesson.id %}">
 			<span class="icon mif-list-numbered"></span> <span>{% trans "Questions" %}</span>
 		</a>
 	</li>
@@ -47,7 +47,7 @@
 							<p class="lead text-justify">
 								{{ question.get_description|safe|linebreaksbr }} <span id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</span>
 							</p>
-							<form id="form-question" action="{% url 'askmath:content_question_answer_question' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" method="POST">
+							<form id="form-question" action="{% url 'askmath:content_question_answer' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" method="POST">
 								{% csrf_token %}
 								<input type="hidden" name="url_help" value="{% url 'askmath:content_question_help' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" />
 								{% for item in question.get_items %}
@@ -156,6 +156,8 @@
 	{% endif %}
 </aside>
 
+{% if question %}
+
 {% ifnotequal question.get_help|length 0 %}
 <!-- Modal Help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -189,7 +191,7 @@
 			<div class="list-group">
 				{% for question2 in studentlessonstate.get_skipped_questions %}
 					{% if question != question2 %}		
-						<a href="{% url 'askmath:content_question_choose_skipped_question' id_discipline=discipline.id id_lesson=lesson.id id_question=question2.id %}" class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
+						<a href="{% url 'askmath:content_question_choose_skipped' id_discipline=discipline.id id_lesson=lesson.id id_question=question2.id %}" class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
 					{% endif %}
 				{% endfor %}
 			</div>
@@ -214,13 +216,15 @@
 				<button type="button" class="button primary" data-dismiss="modal">
 					{% trans "Not, is error!" %}
 				</button>
-				<a href="{% url 'askmath:content_question_jump_question' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" class="button success">
+				<a href="{% url 'askmath:content_question_jump' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" class="button success">
 				{% trans "Yes, jump!" %}
 				</a>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+{% endif %}
+
 {% endif %}
 
 {% endblock %}

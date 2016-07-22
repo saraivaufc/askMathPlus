@@ -1,14 +1,12 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from askmath.models.lesson import Lesson as ContactModel
-from askmath.models.question import Question as QuestionModel
-from askmath.models.question import Item as ItemModel
-from askmath.models.discipline import Discipline as CategoryModel
 from askmath.entities import TextMessage
-from django.contrib import messages
-from .iquestion import IQuestion
 from askmath.forms import QuestionForm, ItemForm
+from askmath.models.question import Item as ItemModel
+from askmath.models.question import Question as QuestionModel
+from django.contrib import messages
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from .iquestion import IQuestion
+
 
 class Question(IQuestion):
 	

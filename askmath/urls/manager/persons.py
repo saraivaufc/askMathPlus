@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, include, url
 from askmath.views.manager import ProxyPerson
+from django.conf.urls import patterns, url
 
-proxy_account = ProxyPerson()  
+proxy_account = ProxyPerson()
 
 urlpatterns = patterns('',
     url(r'^choose_person_types/$', proxy_account.choose_person_types, name="manager_person_choose_person_types"),

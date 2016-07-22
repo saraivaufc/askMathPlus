@@ -1,12 +1,11 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib import messages
-
 from askmath.entities import TextMessage
 from askmath.models.classe import Classe as ClasseModel
-
-
+from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from .iclasse import IClasse
+
 
 class Classe(IClasse):
 
@@ -28,7 +27,7 @@ class Classe(IClasse):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_SET)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_SET)
-		return self.view_classes(request, student)
+		return HttpResponseRedirect( reverse('askmath:content_classe_view') )
 
 
 	def join_classe(self, request, student, classe):
@@ -36,11 +35,11 @@ class Classe(IClasse):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_JOIND)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_JOIND)
-		return self.view_classes(request, student)
+		return HttpResponseRedirect( reverse('askmath:content_classe_view') )
 
 	def out_classe(self, request, student, classe):
 		if student.out_classe(student, classe):
 			messages.success(request, TextMessage.CLASSE_SUCCESS_OUT)
 		else:
 			messages.error(request, TextMessage.CLASSE_ERROR_OUT)
-		return self.view_classes(request, student)
+		return HttpResponseRedirect( reverse('askmath:content_classe_view') )
