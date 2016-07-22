@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext as _
 
+
 class ExperienceLevel():
     BEGINNER = _("Beginner")
     INTERMEDIATE = _("Intermediate")
@@ -7,9 +8,9 @@ class ExperienceLevel():
     EXPERT = _("Expert")
     ASIAN = _("Asian")
     GOD = _("God")
-    
+
     __LEVEL = None
-        
+
     def __init__(self, LEVEL=1):
         if LEVEL == 1:
             self.__LEVEL = self.BEGINNER
@@ -25,6 +26,7 @@ class ExperienceLevel():
             self.__LEVEL = self.GOD
         else:
             self.__LEVEL = self.BEGINNER
+
     def get_level(self):
         return self.__LEVEL
 
@@ -36,8 +38,8 @@ class ExperienceLevel():
         levels.append(self.EXPERT)
         levels.append(self.ASIAN)
         levels.append(self.GOD)
-        return levels  
-    
+        return levels
+
     def get_image_url(self):
         if self.__LEVEL == self.BEGINNER:
             return '/static/askmath/img/experience/BEGINNER.png'
@@ -53,7 +55,7 @@ class ExperienceLevel():
             return '/static/askmath/img/experience/GOD.png'
         else:
             return None
-    
+
     def get_class_css(self):
         if self.__LEVEL == self.BEGINNER:
             return 'tag success'

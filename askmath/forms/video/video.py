@@ -1,4 +1,4 @@
-#-*- encoding=utf-8 -*-
+# -*- encoding=utf-8 -*-
 
 import hashlib
 
@@ -8,16 +8,17 @@ from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, HiddenIn
 
 class VideoForm(ModelForm):
     class Meta:
-        model= Video
-        fields = ("lesson", "position","title", "description","file", "visible")
+        model = Video
+        fields = ("lesson", "position", "title", "description", "file", "visible")
         widgets = {
-            'lesson': HiddenInput(attrs={'class':'hidden'}),
-            'position': HiddenInput(attrs={'class':'hidden'}),
+            'lesson': HiddenInput(attrs={'class': 'hidden'}),
+            'position': HiddenInput(attrs={'class': 'hidden'}),
             'title': TextInput(attrs={'required': 'required'}),
-            'description': Textarea(attrs={'cols': 50, 'rows': 6,'class':'latex'}),
+            'description': Textarea(attrs={'cols': 50, 'rows': 6, 'class': 'latex'}),
             'file': ClearableFileInput(attrs={'required': 'required'}),
             'visible': CheckboxInput(attrs={}),
         }
+
     def clean_file(self):
         file = self.cleaned_data["file"]
         try:
@@ -27,4 +28,3 @@ class VideoForm(ModelForm):
         except:
             pass
         return file
-        

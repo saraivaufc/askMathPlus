@@ -7,7 +7,6 @@ from .person import Person
 
 
 class Teacher(Person):
-
-	class Meta(Person.Meta):
-		verbose_name = _(u'Teacher')
-		verbose_name_plural = _(u'Teachers')
+    class Meta(Person.Meta):
+        verbose_name = _(u'Teacher')
+        verbose_name_plural = _(u'Teachers')

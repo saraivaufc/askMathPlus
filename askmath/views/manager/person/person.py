@@ -7,7 +7,6 @@ try:
 except:
     from md5 import new as md5
 
-
 from askmath.entities import PersonTypes
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 
@@ -15,14 +14,11 @@ from .iperson import IPerson
 
 
 class Person(IPerson):
-    
-    
     def choose_person_types(self, request):
         person_types = PersonTypes()
         return render(request, "askmath/manager/person/manager_choose_person_types.html",
-            {'request':request,'person_types': person_types})
-    
-    
+                      {'request': request, 'person_types': person_types})
+
     def view_persons(self, request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
@@ -40,11 +36,11 @@ class Person(IPerson):
         else:
             print "OTHER"
             write_person = False
-            
+
         persons = person_types.get_persons()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person})
-    
+                      {'request': request, 'persons': persons, 'person_type': PERSONTYPE, 'write_person': write_person})
+
     def view_persons_removed(self, request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         if PERSONTYPE == person_types.ADMIN:
@@ -59,35 +55,36 @@ class Person(IPerson):
             write_person = False
         persons = person_types.get_persons_removed()
         return render(request, "askmath/manager/person/manager_view_persons.html",
-            {'request':request,'persons': persons,'person_type': PERSONTYPE,'write_person': write_person ,'is_removed': True })
-    
-    def add_person(self,request, PERSONTYPE):
+                      {'request': request, 'persons': persons, 'person_type': PERSONTYPE, 'write_person': write_person,
+                       'is_removed': True})
+
+    def add_person(self, request, PERSONTYPE):
         person_types = PersonTypes(PERSONTYPE)
         new_register_key = None
         register_keys = None
         if PERSONTYPE == person_types.ADMIN:
             if request.method == "POST":
-                new_register_key =  AdministratorKey.objects.create(creator=request.user)
-            register_keys = AdministratorKey.objects.filter(exists = True)
+                new_register_key = AdministratorKey.objects.create(creator=request.user)
+            register_keys = AdministratorKey.objects.filter(exists=True)
         elif PERSONTYPE == person_types.TEACHER:
             if request.method == "POST":
-                new_register_key =  TeacherKey.objects.create(creator=request.user)
-            register_keys = TeacherKey.objects.filter(exists = True)
+                new_register_key = TeacherKey.objects.create(creator=request.user)
+            register_keys = TeacherKey.objects.filter(exists=True)
         elif PERSONTYPE == person_types.ASSISTANT:
             if request.method == "POST":
-                new_register_key =  AssistantKey.objects.create(creator=request.user)
-            register_keys = AssistantKey.objects.filter(exists = True)
+                new_register_key = AssistantKey.objects.create(creator=request.user)
+            register_keys = AssistantKey.objects.filter(exists=True)
         else:
             register_keys = None
-        return render(request, "askmath/manager/person/manager_view_keys.html", 
-            {'request':request, 'person_type': PERSONTYPE ,'new_register_key': new_register_key ,'register_keys': register_keys})
+        return render(request, "askmath/manager/person/manager_view_keys.html",
+                      {'request': request, 'person_type': PERSONTYPE, 'new_register_key': new_register_key,
+                       'register_keys': register_keys})
 
-    
     def remove_person(self, request, PERSONTYPE, person):
         person.delete()
-        messages.success(request,TextMessage.USER_SUCCESS_REM)
-        return self.view_persons(request,PERSONTYPE)
-    
+        messages.success(request, TextMessage.USER_SUCCESS_REM)
+        return self.view_persons(request, PERSONTYPE)
+
     def remove_registerkey(self, request, PERSONTYPE, registerkey):
         if not registerkey.get_user():
             registerkey.delete()
@@ -97,5 +94,5 @@ class Person(IPerson):
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()
-        messages.success(request,TextMessage.USER_SUCCESS_RESTORE)
-        return self.view_persons(request,PERSONTYPE)
+        messages.success(request, TextMessage.USER_SUCCESS_RESTORE)
+        return self.view_persons(request, PERSONTYPE)

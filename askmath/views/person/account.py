@@ -9,14 +9,15 @@ try:
     from hashlib import md5
 except:
     from md5 import new as md5
-    
+
 from askmath.views.person.iaccount import IAccount
+
 
 class Account(IAccount):
     def view_profile(self, request):
         return render(request, "askmath/person/account/view_profile.html",
-            {'request': request, 'person': request.user})
-    
+                      {'request': request, 'person': request.user})
+
     def edit_profile(self, request):
         person = request.user
         if request.method == "POST":
@@ -28,8 +29,8 @@ class Account(IAccount):
         else:
             form = ProfileForm(instance=person)
         return render(request, "askmath/person/account/edit_profile.html",
-            {'request': request, 'form': form, 'title_form': _("Edit Profile")})
-        
+                      {'request': request, 'form': form, 'title_form': _("Edit Profile")})
+
     def alter_password(self, request):
         if request.method == "POST":
             form = AlterPassword(request.POST)
@@ -47,8 +48,8 @@ class Account(IAccount):
         else:
             form = AlterPassword()
         return render(request, 'askmath/person/account/alter_password.html',
-            {'request': request,'form': form, 'title_form': _("Alter Password")})
-    
+                      {'request': request, 'form': form, 'title_form': _("Alter Password")})
+
     def remove_account(self, request, password):
         if request.user.check_password(password):
             request.user.delete()

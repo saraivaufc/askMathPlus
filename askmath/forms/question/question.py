@@ -1,4 +1,4 @@
-#-*- encoding=utf-8 -*-
+# -*- encoding=utf-8 -*-
 
 from askmath.models import Question
 from django.forms import ModelForm, CheckboxInput, Textarea, HiddenInput, Select
@@ -6,14 +6,14 @@ from django.forms import ModelForm, CheckboxInput, Textarea, HiddenInput, Select
 
 class QuestionForm(ModelForm):
     class Meta:
-        model= Question
+        model = Question
         fields = ("lesson", "position", "description", "items", "help", "scores", "visible")
         widgets = {
-            'lesson': HiddenInput(attrs={'class':'hidden'}),
-            'position': HiddenInput(attrs={'class':'hidden'}),
-            'description': Textarea(attrs={'required': 'required', 'class':'latex'}),
-            'help': Textarea(attrs={'class':'latex'}),
-            'items': HiddenInput(attrs={'class':'hidden'}),
-            'scores': Select(attrs={'required':'required'}),
+            'lesson': HiddenInput(attrs={'class': 'hidden'}),
+            'position': HiddenInput(attrs={'class': 'hidden'}),
+            'description': Textarea(attrs={'required': 'required', 'class': 'latex'}),
+            'help': Textarea(attrs={'class': 'latex'}),
+            'items': HiddenInput(attrs={'class': 'hidden'}),
+            'scores': Select(attrs={'required': 'required'}),
             'visible': CheckboxInput(attrs={'required': 'required'}),
         }

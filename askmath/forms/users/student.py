@@ -1,10 +1,8 @@
 # -*- coding: UTF-8 -*-
-from .person import RegisterForm
 from askmath.models import Student
+from .person import RegisterForm
 
 
 class StudentForm(RegisterForm):
     class Meta(RegisterForm.Meta):
-        model= Student
-
- 
+        model = Student

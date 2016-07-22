@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext as _
 
-
 TIMEZONE_CHOICES = [
     ('Etc/GMT+12', _("(GMT -12:00) Eniwetok, Kwajalein")),
     ('Etc/GMT+11', _("(GMT -11:00) Midway Island, Samoa")),

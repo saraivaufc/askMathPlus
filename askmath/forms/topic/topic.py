@@ -1,4 +1,4 @@
-#-*- encoding=utf-8 -*-
+# -*- encoding=utf-8 -*-
 
 import hashlib
 
@@ -8,15 +8,15 @@ from django.forms import ModelForm, TextInput, HiddenInput, Textarea
 
 class TopicForm(ModelForm):
     class Meta:
-        model= Topic
-        fields = ("person", "category", "title", "description","file")
+        model = Topic
+        fields = ("person", "category", "title", "description", "file")
         widgets = {
-            'person': HiddenInput(attrs={'class':'hidden'}),
-            'category': HiddenInput(attrs={'class':'hidden'}),
-            'title': TextInput(attrs={'required': 'required','autofocus':'true'}),
-            'description': Textarea(attrs={'required': 'required','rows':'3','cols':'100%' ,'class':'latex'}),
+            'person': HiddenInput(attrs={'class': 'hidden'}),
+            'category': HiddenInput(attrs={'class': 'hidden'}),
+            'title': TextInput(attrs={'required': 'required', 'autofocus': 'true'}),
+            'description': Textarea(attrs={'required': 'required', 'rows': '3', 'cols': '100%', 'class': 'latex'}),
         }
-        
+
     def clean_file(self):
         file = self.cleaned_data["file"]
         try:
@@ -26,4 +26,3 @@ class TopicForm(ModelForm):
         except:
             pass
         return file
-        

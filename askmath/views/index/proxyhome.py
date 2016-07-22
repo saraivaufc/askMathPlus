@@ -11,6 +11,7 @@ from .ihome import IHome
 class ProxyHome(IHome):
     def __init__(self):
         self.__home = Home()
+
     def index(self, request):
         if request.user.is_authenticated():
             try:
@@ -18,22 +19,22 @@ class ProxyHome(IHome):
             except Exception, e:
                 print e
         return render(request, 'askmath/index/home.html',
-                {'request': request})
-        
+                      {'request': request})
+
     def about(self, request):
         try:
             return self.__home.about(request)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)
-    
+
     def message(self, request):
         try:
             return self.__home.message(request)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)
 
     def terms(self, request):
@@ -41,7 +42,7 @@ class ProxyHome(IHome):
             return self.__home.terms(request)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)
 
     def policies(self, request):
@@ -49,18 +50,16 @@ class ProxyHome(IHome):
             return self.__home.policies(request)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)
 
-        
     def credits(self, request):
         try:
             return self.__home.credits(request)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)
-
 
     def contents(self, request, id_lesson=None):
         try:
@@ -72,5 +71,5 @@ class ProxyHome(IHome):
             return self.__home.contents(request, lesson)
         except Exception, e:
             print e
-            messages.error(request,TextMessage.ERROR)
+            messages.error(request, TextMessage.ERROR)
         return self.index(request)

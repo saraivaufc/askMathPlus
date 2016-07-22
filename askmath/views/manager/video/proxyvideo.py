@@ -13,78 +13,77 @@ from .video import Video
 
 
 class ProxyVideo(IVideo):
-    
     def __init__(self):
         self.__video = Video()
         self.__proxy_home = ProxyHome()
         self.__proxy_lesson = ProxyLesson()
-    
+
     @method_decorator(login_required)
     def view_videos(self, request, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.read_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.__proxy_lesson.view_lessons(request, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
                 return self.__proxy_lesson.view_lessons(request, id_discipline)
-            
+
             try:
-                return self.__video.view_videos(request,lesson, discipline)
+                return self.__video.view_videos(request, lesson, discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.__proxy_lesson.view_lessons(request, id_discipline)
-    
+
     @method_decorator(login_required)
     def view_videos_removed(self, request, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.read_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
-            
+
             try:
-                return self.__video.view_videos_removed(request,lesson, discipline)
+                return self.__video.view_videos_removed(request, lesson, discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_videos(request, id_lesson, id_discipline)
-    
+
     @method_decorator(login_required)
     def add_video(self, request, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.write_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
-            
+
             try:
                 return self.__video.add_video(request, lesson, discipline)
             except Exception, e:
@@ -93,60 +92,60 @@ class ProxyVideo(IVideo):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_videos(request, id_lesson, id_discipline)
-    
+
     @method_decorator(login_required)
     def remove_video(self, request, id_video, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.write_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                video = VideoModel.objects.get(id = id_video)
+                video = VideoModel.objects.get(id=id_video)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
-            
-            try:    
-                return self.__video.remove_video(request,video, lesson, discipline)
+
+            try:
+                return self.__video.remove_video(request, video, lesson, discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_videos(request, id_lesson, id_discipline)
-    
+
     @method_decorator(login_required)
-    def edit_video(self, request, id_video ,id_lesson, id_discipline):
-        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
+    def edit_video(self, request, id_video, id_lesson, id_discipline):
+        if request.user.has_perm("askmath.write_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                video = VideoModel.objects.get(id = id_video)
+                video = VideoModel.objects.get(id=id_video)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
-            
+
             try:
                 return self.__video.edit_video(request, video, lesson, discipline)
             except Exception, e:
@@ -157,22 +156,22 @@ class ProxyVideo(IVideo):
         return self.view_videos(request, id_lesson, id_discipline)
 
     @method_decorator(login_required)
-    def restore_video(self, request,id_video, id_lesson,id_discipline):
-        if request.user.has_perm("askmath.write_video")  and request.user.has_perm("askmath.access_manager"):
+    def restore_video(self, request, id_video, id_lesson, id_discipline):
+        if request.user.has_perm("askmath.write_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                video = VideoModel.objects.get(id = id_video)
+                video = VideoModel.objects.get(id=id_video)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
-                messages.error(request,TextMessage.LESSON_NOT_FOUND)
+                messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
@@ -185,18 +184,18 @@ class ProxyVideo(IVideo):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_videos(request, id_lesson, id_discipline)
-            
+
     @method_decorator(login_required)
     def sort_videos(self, request, id_lesson, id_discipline):
-        if request.user.has_perm("askmath.read_video")  and request.user.has_perm("askmath.access_manager"):
+        if request.user.has_perm("askmath.read_video") and request.user.has_perm("askmath.access_manager"):
             try:
-                lesson = LessonModel.objects.get(id = id_lesson)
+                lesson = LessonModel.objects.get(id=id_lesson)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.LESSON_NOT_FOUND)
                 return self.view_videos(request, id_lesson, id_discipline)
             try:
-                discipline = DisciplineModel.objects.get(id = id_discipline)
+                discipline = DisciplineModel.objects.get(id=id_discipline)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
@@ -204,9 +203,9 @@ class ProxyVideo(IVideo):
             try:
                 if request.method == "POST":
                     new_order = json.loads(request.POST['new_order'])
-                    return self.__video.sort_videos(request,lesson, discipline, new_order)
+                    return self.__video.sort_videos(request, lesson, discipline, new_order)
                 else:
-                    return self.__video.sort_videos(request,lesson, discipline, None)
+                    return self.__video.sort_videos(request, lesson, discipline, None)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_ERROR_SORT)

@@ -1,9 +1,8 @@
 from askmath.views.services import ProxyLesson
 from django.conf.urls import patterns, url
 
-
-proxy_category = ProxyLesson()  
+proxy_category = ProxyLesson()
 
 urlpatterns = patterns('',
-    url(r'^get/$', proxy_category.get),
-)
+                       url(r'^get/$', proxy_category.get),
+                       )

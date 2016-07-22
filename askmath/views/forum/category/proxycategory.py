@@ -12,7 +12,7 @@ class ProxyCategory(ICategory):
     def __init__(self):
         self.__category = Category()
         self.__proxy_home = ProxyHome()
-    
+
     def view_categories(self, request):
         try:
             return self.__category.view_categories(request)
@@ -20,10 +20,10 @@ class ProxyCategory(ICategory):
             print e
             messages.error(request, TextMessage.ERROR)
             return self.__proxy_home.index(request)
-    
+
     @method_decorator(login_required)
     def view_categories_removed(self, request):
-        if request.user.has_perm("askmath.read_category")  and request.user.has_perm("askmath.access_forum_admin"):
+        if request.user.has_perm("askmath.read_category") and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 return self.__category.view_categories_removed(request)
             except Exception, e:
@@ -32,10 +32,10 @@ class ProxyCategory(ICategory):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_categories(request)
-    
+
     @method_decorator(login_required)
     def add_category(self, request):
-        if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
+        if request.user.has_perm("askmath.write_category") and request.user.has_perm("askmath.access_forum_admin"):
             try:
                 return self.__category.add_category(request)
             except Exception, e:
@@ -44,12 +44,12 @@ class ProxyCategory(ICategory):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_categories(request)
-    
+
     @method_decorator(login_required)
     def remove_category(self, request, id_category):
-        if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
+        if request.user.has_perm("askmath.write_category") and request.user.has_perm("askmath.access_forum_admin"):
             try:
-                category = CategoryModel.objects.get(id = id_category)
+                category = CategoryModel.objects.get(id=id_category)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
@@ -62,12 +62,12 @@ class ProxyCategory(ICategory):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_categories(request)
-    
+
     @method_decorator(login_required)
     def edit_category(self, request, id_category):
-        if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
+        if request.user.has_perm("askmath.write_category") and request.user.has_perm("askmath.access_forum_admin"):
             try:
-                category = CategoryModel.objects.filter(id = id_category, exists=True)[0]
+                category = CategoryModel.objects.filter(id=id_category, exists=True)[0]
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.CATEGORY_NOT_FOUND)
@@ -80,12 +80,12 @@ class ProxyCategory(ICategory):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return self.view_categories(request)
-    
+
     @method_decorator(login_required)
     def restore_category(self, request, id_category):
-        if request.user.has_perm("askmath.write_category")  and request.user.has_perm("askmath.access_forum_admin"):
+        if request.user.has_perm("askmath.write_category") and request.user.has_perm("askmath.access_forum_admin"):
             try:
-                category = CategoryModel.objects.get(id = id_category)
+                category = CategoryModel.objects.get(id=id_category)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.CATEGORY_NOT_FOUND)

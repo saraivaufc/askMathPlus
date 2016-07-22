@@ -11,19 +11,19 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 import sys
 from imp import reload
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.utils.translation import ugettext_lazy as _
 import os
-from django.http import HttpRequest
 from django.conf import global_settings
 
 from .site_info import *
 from .social import *
 from .components_metro import *
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(__file__)
@@ -40,11 +40,11 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['www.askmath.quixada.ufc.br']
-#ALLOWED_HOSTS = ['localhost']
+# ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
-#Apps
+# Apps
 DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +58,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'rosetta',
     'nocaptcha_recaptcha',
-    'social.apps.django_app.default', #ERROR ImportError: No module named parse
+    'social.apps.django_app.default',  # ERROR ImportError: No module named parse
 )
 LOCAL_APPS = (
     'askmath',
@@ -66,13 +66,12 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-
-#Templates
+# Templates
 TEMPLATE_DIRS = (
     'askmath/templates',
     'nocaptcha_recaptcha/templates',
 )
-#TEMPLATE_CONTEXT
+# TEMPLATE_CONTEXT
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -97,7 +96,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 # )
 
 
-#Middleware
+# Middleware
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,9 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
@@ -118,7 +115,6 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
-
 
 ROOT_URLCONF = 'askMathPlus.urls'
 
@@ -129,20 +125,16 @@ AUTH_USER_MODEL = 'askmath.Person'
 LOGIN_URL = '/authentication/options/'
 LOGOUT_URL = '/authentication/logout/'
 
+# Recaptca
+NORECAPTCHA_SITE_KEY = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
+NORECAPTCHA_SECRET_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc"
 
-#Recaptca
-NORECAPTCHA_SITE_KEY  = "6LdVnQ0TAAAAAAwnuLsezpZwIRFhdqs-yrwdmG3n"
-NORECAPTCHA_SECRET_KEY = "6LdVnQ0TAAAAAGtLXaOALJ6KTM4XvUF_bUg8enIc" 
+# Admin
+ADMINS = ((u'Ciano Saraiva', u'saraiva.ufc@gmail.com'),)
 
-
-
-#Admin
-ADMINS = ( (u'Ciano Saraiva',u'saraiva.ufc@gmail.com'), )
-
-
-#EMAIL
-EMAIL_ADMINS = [u'saraiva.ufc@gmail.com',u'askmathplus@gmail.com']
-DEFAULT_FROM_EMAIL= u'askmathplus@gmail.com'
+# EMAIL
+EMAIL_ADMINS = [u'saraiva.ufc@gmail.com', u'askmathplus@gmail.com']
+DEFAULT_FROM_EMAIL = u'askmathplus@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = u'askmathplus@gmail.com'
 EMAIL_HOST_PASSWORD = u'macacoaranha'
@@ -150,9 +142,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-
-
-#Social Auth
+# Social Auth
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_USER_MODEL = 'askmath.Person'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
@@ -173,10 +163,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
 )
 
-
-
-
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -185,15 +171,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }, 'postgres': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-            'NAME': 'askmath',
-            'USER': 'postgres',
-            'PASSWORD': 'macacoaranha',
-            'HOST': '200.129.39.113',
-            'PORT': '6969',
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'askmath',
+        'USER': 'postgres',
+        'PASSWORD': 'macacoaranha',
+        'HOST': '200.129.39.113',
+        'PORT': '6969',
+    }
 }
- 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -204,9 +189,9 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = (
-     ('pt_BR', _('Brazilian Portuguese')),
-     ('en', _('English')),
-     ('es', _('Spanish')),
+    ('pt_BR', _('Brazilian Portuguese')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
 )
 
 LANGUAGE_CODE = 'pt_BR'
@@ -219,13 +204,11 @@ USE_L10N = True
 
 USE_TZ = False
 
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-MEDIA_ROOT= os.path.join(PROJECT_DIR, '../media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR, '../media')
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../askmath/static'),)
 
@@ -233,15 +216,14 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 
 STATIC_URL = '/static/'
 
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'filters': {
-         'require_debug_false': {
-             '()': 'django.utils.log.RequireDebugFalse'
-         }
-     },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
     'handlers': {
         # Include the default Django email handler for errors
         # This is what you'd get without configuring logging at all.
@@ -249,7 +231,7 @@ LOGGING = {
             'class': 'django.utils.log.AdminEmailHandler',
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-             # But the emails are plain text by default - HTML is nicer
+            # But the emails are plain text by default - HTML is nicer
             'include_html': True,
         },
         # Log to a text file that can be rotated by logrotate
@@ -274,7 +256,7 @@ LOGGING = {
         # Your own app - this assumes all your logger names start with "myapp."
         'myapp': {
             'handlers': ['logfile'],
-            'level': 'DEBUG', # Or maybe INFO or WARNING
+            'level': 'DEBUG',  # Or maybe INFO or WARNING
             'propagate': False
         },
     },

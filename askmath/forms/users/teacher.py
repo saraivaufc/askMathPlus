@@ -1,9 +1,8 @@
 # -*- coding: UTF-8 -*-
-from .person import RegisterForm
 from askmath.models import Teacher
+from .person import RegisterForm
 
 
 class TeacherForm(RegisterForm):
-    
     class Meta(RegisterForm.Meta):
-        model= Teacher
+        model = Teacher

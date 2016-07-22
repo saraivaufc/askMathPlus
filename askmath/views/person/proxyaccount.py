@@ -11,7 +11,7 @@ class ProxyAccount(IAccount):
     def __init__(self):
         self.__account = Account()
         self.__proxy_home = ProxyHome()
-    
+
     @method_decorator(login_required)
     def view_profile(self, request):
         try:
@@ -20,7 +20,7 @@ class ProxyAccount(IAccount):
             print e
             messages.error(request, TextMessage.ERROR)
         return self.__proxy_home.index(request)
-    
+
     @method_decorator(login_required)
     def edit_profile(self, request):
         try:
@@ -29,7 +29,7 @@ class ProxyAccount(IAccount):
             print e
             messages.error(request, TextMessage.ERROR)
         return self.__proxy_home.index(request)
-    
+
     @method_decorator(login_required)
     def alter_password(self, request):
         try:
@@ -37,8 +37,8 @@ class ProxyAccount(IAccount):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.__proxy_home.index(request)    
-    
+        return self.__proxy_home.index(request)
+
     @method_decorator(login_required)
     def remove_account(self, request):
         if request.method == "POST":

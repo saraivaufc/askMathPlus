@@ -42,7 +42,8 @@ class ProxyQuestion(IQuestion):
                     messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return HttpResponseRedirect( reverse('askmath:content_lesson_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+        return HttpResponseRedirect(
+            reverse('askmath:content_lesson_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 
     @method_decorator(login_required)
     def answer_question(self, request, id_discipline, id_lesson, id_question):
@@ -114,7 +115,7 @@ class ProxyQuestion(IQuestion):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return HttpResponseRedirect(reverse('askmath:content_question_view',
-                                                kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+                                            kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 
     @method_decorator(login_required)
     def choose_skipped_question(self, request, id_discipline, id_lesson, id_question):
@@ -146,7 +147,7 @@ class ProxyQuestion(IQuestion):
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
         return HttpResponseRedirect(reverse('askmath:content_question_view',
-                                                kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+                                            kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 
     @method_decorator(login_required)
     def reset_lesson(self, request, id_discipline, id_lesson):

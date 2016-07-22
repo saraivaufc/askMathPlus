@@ -5,7 +5,9 @@ from django.http import HttpResponse
 
 type_output = 'json'
 
+
 class Lesson(ILesson):
     def get(self, request):
-        lessons = serializers.serialize(type_output, ContactModel.objects.filter(exists=True, visible=True), fields=('id','title'))
+        lessons = serializers.serialize(type_output, ContactModel.objects.filter(exists=True, visible=True),
+                                        fields=('id', 'title'))
         return HttpResponse(lessons)

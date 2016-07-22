@@ -1,4 +1,4 @@
-#-*- encoding=utf-8 -*-
+# -*- encoding=utf-8 -*-
 
 from askmath.models.classe import Classe
 from askmath.models.discipline import Discipline
@@ -7,20 +7,21 @@ from django.forms import ModelForm, TextInput, CheckboxInput, Select, SelectMult
 
 
 class ClasseForm(ModelForm):
-    def __init__(self,*args,**kwargs):
-        super (ClasseForm,self ).__init__(*args,**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(ClasseForm, self).__init__(*args, **kwargs)
         self.fields['responsible'].queryset = TeacherModel.objects.filter(exists=True)
         self.fields['disciplines'].queryset = Discipline.objects.filter(exists=True)
+
     class Meta:
-        model= Classe
-        fields = ( "name", "responsible","semester", "plan","disciplines" , "visible")
+        model = Classe
+        fields = ("name", "responsible", "semester", "plan", "disciplines", "visible")
 
         widgets = {
             'name': TextInput(attrs={'autofocus': 'True'}),
             'responsible': Select(attrs={}),
-            'semester': NumberInput(attrs={'required':'required'}),
+            'semester': NumberInput(attrs={'required': 'required'}),
             'plan': ClearableFileInput(attrs={}),
-            'disciplines' : SelectMultiple(attrs={'class':'full-size'}),
+            'disciplines': SelectMultiple(attrs={'class': 'full-size'}),
             'visible': CheckboxInput(attrs={}),
         }
 
