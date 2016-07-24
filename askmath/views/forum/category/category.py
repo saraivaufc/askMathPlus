@@ -3,6 +3,8 @@ from askmath.forms import CategoryForm
 from askmath.models import Category as CategoryModel
 from django.contrib import messages
 from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from .icategory import ICategory
 
@@ -25,9 +27,9 @@ class Category(ICategory):
             print request.POST
             form = CategoryForm(request.POST)
             if form.is_valid():
-                category = form.save()
+                form.save()
                 messages.success(request, TextMessage.CATEGORY_SUCCESS_ADD)
-                return self.view_categories(request)
+                return HttpResponseRedirect(reverse('askmath:forum_category_view'))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -38,7 +40,7 @@ class Category(ICategory):
     def remove_category(self, request, category):
         category.delete()
         messages.success(request, TextMessage.CATEGORY_SUCCESS_REM)
-        return self.view_categories(request)
+        return HttpResponseRedirect(reverse('askmath:forum_category_view'))
 
     def edit_category(self, request, category):
         if request.method == 'POST':
@@ -46,9 +48,9 @@ class Category(ICategory):
             request.POST['person'] = request.user.id
             form = CategoryForm(request.POST, instance=category)
             if form.is_valid():
-                category = form.save()
+                form.save()
                 messages.success(request, TextMessage.CATEGORY_SUCCESS_EDIT)
-                return self.view_categories(request)
+                return HttpResponseRedirect(reverse('askmath:forum_category_view'))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
 
@@ -60,4 +62,4 @@ class Category(ICategory):
     def restore_category(self, request, category):
         category.restore()
         messages.success(request, TextMessage.CATEGORY_SUCCESS_RESTORE)
-        return self.view_categories(request)
+        return HttpResponseRedirect(reverse('askmath:forum_category_view'))

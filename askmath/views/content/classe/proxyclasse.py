@@ -25,6 +25,7 @@ class ProxyClasse(IClasse):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
+
         return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
@@ -40,6 +41,7 @@ class ProxyClasse(IClasse):
                 return HttpResponseRedirect(reverse('askmath:content_classe_view'))
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
+
         return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
@@ -55,6 +57,7 @@ class ProxyClasse(IClasse):
                 return HttpResponseRedirect(reverse('askmath:content_classe_view'))
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
+
         return HttpResponseRedirect(reverse('askmath:home'))
 
     def join_classe(self, request, id_classe):
@@ -73,6 +76,7 @@ class ProxyClasse(IClasse):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
+
         return HttpResponseRedirect(reverse('askmath:home'))
 
     def out_classe(self, request, id_classe):
@@ -90,4 +94,5 @@ class ProxyClasse(IClasse):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
+
         return HttpResponseRedirect(reverse('askmath:home'))

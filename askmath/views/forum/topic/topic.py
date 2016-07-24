@@ -3,17 +3,15 @@ import json
 from askmath.entities import TextMessage
 from askmath.forms import TopicForm, CommentForm
 from django.contrib import messages
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from .itopic import ITopic
-from ..category import ProxyCategory
 
 
 class Topic(ITopic):
-    def __init__(self):
-        self.__proxy_category = ProxyCategory()
-
     def view_topics(self, request, category):
         topics = category.get_topics()
         return render(request, "askmath/forum/topic/view_topics.html",
@@ -38,7 +36,8 @@ class Topic(ITopic):
             if form.is_valid():
                 topic = form.save()
                 messages.success(request, TextMessage.TOPIC_SUCCESS_ADD)
-                return self.view_topics(request, category)
+                return HttpResponseRedirect(reverse('askmath:forum_topic_view',
+                                                    kwargs={'id_category': category.id, 'id_topic': topic.id}))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -55,7 +54,8 @@ class Topic(ITopic):
             if form.is_valid():
                 topic = form.save()
                 messages.success(request, TextMessage.TOPIC_SUCCESS_EDIT)
-                return self.view_topic(request, category, topic)
+                return HttpResponseRedirect(reverse('askmath:forum_topic_view',
+                                                    kwargs={'id_category': category.id, 'id_topic': topic.id}))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -67,12 +67,12 @@ class Topic(ITopic):
     def remove_topic(self, request, category, topic):
         topic.delete()
         messages.success(request, TextMessage.TOPIC_SUCCESS_REM)
-        return self.view_topics(request, category)
+        return HttpResponseRedirect(reverse('askmath:forum_topic_view', kwargs={'id_category': category.id}))
 
     def restore_topic(self, request, category, topic):
         topic.restore()
         messages.success(request, TextMessage.TOPIC_SUCCESS_RESTORE)
-        return self.view_topics(request, category)
+        return HttpResponseRedirect(reverse('askmath:forum_topic_view', kwargs={'id_category': category.id}))
 
     def like_topic(self, request, topic):
         if request.user in topic.get_likes_persons():

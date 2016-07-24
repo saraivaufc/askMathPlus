@@ -6,6 +6,8 @@ proxy_category = ProxyQuestion()
 urlpatterns = patterns('',
                        url(r'^view_question/discipline=(?P<id_discipline>\d+)/lesson=(?P<id_lesson>\d+)/$',
                            proxy_category.view_question, name="content_question_view"),
+                       url(r'^view_question/discipline=(?P<id_discipline>\d+)/lesson=(?P<id_lesson>\d+)/question=(?P<id_question>\d+)/$',
+                           proxy_category.view_question, name="content_question_view"),
                        url(
                            r'^answer_question/discipline=(?P<id_discipline>\d+)/lesson=(?P<id_lesson>\d+)/question=(?P<id_question>\d+)/$',
                            proxy_category.answer_question, name="content_question_answer"),

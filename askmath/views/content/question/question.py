@@ -82,7 +82,9 @@ class Question(IQuestion):
         else:
             messages.error(request, TextMessage.METHOD_NOT_POST)
 
-        return self.view_question(request, discipline, lesson, question)
+        return HttpResponseRedirect(reverse('askmath:content_question_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id,
+                                                    'id_question': question.id}))
 
     def jump_question(self, request, discipline, lesson, question):
         try:
@@ -110,7 +112,9 @@ class Question(IQuestion):
         else:
             messages.warning(request, TextMessage.LESSON_NOT_REMAINING_JUMPS)
 
-        return self.view_question(request, discipline, lesson, question)
+        return HttpResponseRedirect(reverse('askmath:content_question_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id,
+                                                    'id_question': question.id}))
 
     def choose_skipped_question(self, request, discipline, lesson, question):
         try:

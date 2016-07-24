@@ -3,16 +3,13 @@ import json
 from askmath.entities import TextMessage
 from askmath.forms import CommentForm
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.http.response import HttpResponse, HttpResponseRedirect
 from .icomment import IComment
-from ..category import ProxyCategory
-from ..topic import ProxyTopic
 
 
 class Comment(IComment):
-    def __init__(self):
-        self.__proxy_category = ProxyCategory()
-        self.__proxy_topic = ProxyTopic()
 
     def add_comment(self, request, category, topic):
         if request.method == 'POST':
@@ -22,16 +19,14 @@ class Comment(IComment):
             form = CommentForm(request.POST)
             if form.is_valid():
                 comment = form.save()
-                url = "/forum/topics/view/category=%d/topic=%d/#comment-%d" % (category.id, topic.id, comment.id)
-                return HttpResponseRedirect(url)
+                return HttpResponseRedirect(reverse('askmath:forum_topic_view', kwargs={'id_category': category.id, 'id_topic': topic.id}) + "#comment-%d" % (comment.id, ))
             else:
                 messages.error(request, TextMessage.COMMENT_ERROR_ADD)
-        return self.__proxy_topic.view_topic(request, category.id, topic.id)
+        return HttpResponseRedirect( reverse('askmath:forum_topic_view', kwargs={'id_category': category.id, 'id_topic': topic.id}))
 
     def remove_comment(self, request, category, topic, comment):
         comment.delete()
-        url = "/forum/topics/view/category=%d/topic=%d/" % (category.id, topic.id)
-        return HttpResponseRedirect(url)
+        return HttpResponseRedirect(reverse('askmath:forum_topic_view', kwargs={'id_category': category.id,'id_topic': topic.id}))
 
     def edit_comment(self, request, category, topic, comment):
         if request.method == 'POST':
