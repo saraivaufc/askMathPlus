@@ -1,16 +1,18 @@
 from askmath.entities import TextMessage
 from askmath.forms import ProfileForm
 from askmath.forms.users import AlterPassword
+from askmath.views.person.iaccount import IAccount
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 
 try:
     from hashlib import md5
-except:
+except Exception, e:
+    print e
     from md5 import new as md5
-
-from askmath.views.person.iaccount import IAccount
 
 
 class Account(IAccount):
@@ -25,7 +27,7 @@ class Account(IAccount):
             if form.is_valid():
                 form.save()
                 messages.success(request, TextMessage.USER_SUCCESS_EDIT)
-                return self.view_profile(request)
+                return HttpResponseRedirect(reverse('askmath:person_account_view'))
         else:
             form = ProfileForm(instance=person)
         return render(request, "askmath/person/account/edit_profile.html",
@@ -44,7 +46,7 @@ class Account(IAccount):
                     messages.warning(request, TextMessage.PASSWORD_INCORRECT)
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
-            return self.view_profile(request)
+            return HttpResponseRedirect(reverse('askmath:person_account_view'))
         else:
             form = AlterPassword()
         return render(request, 'askmath/person/account/alter_password.html',
@@ -60,4 +62,4 @@ class Account(IAccount):
             return proxy_account.logout(request)
         else:
             messages.warning(request, TextMessage.PASSWORD_INCORRECT)
-        return self.view_profile(request)
+        return HttpResponseRedirect(reverse('askmath:person_account_view'))

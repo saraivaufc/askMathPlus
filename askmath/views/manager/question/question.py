@@ -3,6 +3,8 @@ from askmath.forms import QuestionForm, ItemForm
 from askmath.models.question import Item as ItemModel
 from askmath.models.question import Question as QuestionModel
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from .iquestion import IQuestion
@@ -46,7 +48,8 @@ class Question(IQuestion):
             if form_question.is_valid():
                 question = form_question.save()
                 messages.success(request, TextMessage.QUESTION_SUCCESS_ADD)
-                return self.view_questions(request, lesson, discipline)
+                return HttpResponseRedirect(reverse('askmath:manager_question_view',
+                                                    kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -59,7 +62,8 @@ class Question(IQuestion):
     def remove_question(self, request, question, lesson, discipline):
         question.delete()
         messages.success(request, TextMessage.QUESTION_SUCCESS_REM)
-        return self.view_questions(request, lesson, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_question_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
     def edit_question(self, request, question, lesson, discipline):
         if request.method == "POST":
@@ -79,7 +83,8 @@ class Question(IQuestion):
             if form_question.is_valid():
                 question = form_question.save()
                 messages.success(request, TextMessage.QUESTION_SUCCESS_EDIT)
-                return self.view_questions(request, lesson, discipline)
+                return HttpResponseRedirect(reverse('askmath:manager_question_view',
+                                                    kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
             else:
                 messages.error(request, TextMessage.QUESTION_ERROR_EDIT)
         else:
@@ -93,7 +98,8 @@ class Question(IQuestion):
     def restore_question(self, request, question, lesson, discipline):
         question.restore()
         messages.success(request, TextMessage.QUESTION_SUCCESS_RESTORE)
-        return self.view_questions(request, lesson, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_question_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
     def sort_questions(self, request, lesson, discipline, new_order=None):
         questions = QuestionModel.objects.filter(exists=True, visible=True, lesson=lesson.id)
@@ -102,8 +108,6 @@ class Question(IQuestion):
                 for index, i in enumerate(new_order):
                     QuestionModel.objects.filter(id=i).update(position=index + 1)
                 messages.success(request, TextMessage.QUESTION_SUCCESS_SORT)
-                request.method = "GET"
-                return self.sort_questions(request, lesson, None)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.QUESTION_ERROR_SORT)

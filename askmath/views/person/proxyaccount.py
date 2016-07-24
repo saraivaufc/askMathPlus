@@ -1,16 +1,16 @@
 from askmath.entities import TextMessage
-from askmath.views.index import ProxyHome
-from askmath.views.person.account import Account
 from askmath.views.person.iaccount import IAccount
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
+from .account import Account
 
 
 class ProxyAccount(IAccount):
     def __init__(self):
         self.__account = Account()
-        self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
     def view_profile(self, request):
@@ -19,7 +19,7 @@ class ProxyAccount(IAccount):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.__proxy_home.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
     def edit_profile(self, request):
@@ -28,7 +28,7 @@ class ProxyAccount(IAccount):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.__proxy_home.index(request)
+        return HttpResponseRedirect(reverse('askmath:person_account_view'))
 
     @method_decorator(login_required)
     def alter_password(self, request):
@@ -37,7 +37,7 @@ class ProxyAccount(IAccount):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.__proxy_home.index(request)
+        return HttpResponseRedirect(reverse('askmath:person_account_view'))
 
     @method_decorator(login_required)
     def remove_account(self, request):
@@ -48,4 +48,4 @@ class ProxyAccount(IAccount):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.ERROR_FORM)
-        return self.view_profile(request)
+        return HttpResponseRedirect(reverse('askmath:person_account_view'))

@@ -1,15 +1,15 @@
 # -*- encoding=UTF-8 -*-
 
 from multiprocessing.pool import ThreadPool
+
 import nltk
 import os
 from askMathPlus.settings import BASE_DIR
 from askMathPlus.settings import COLORS_ALL
 from askmath.models import Discipline, Lesson, Video
-from askmath.views.content.discipline import ProxyDiscipline
-from askmath.views.content.lesson import ProxyLesson
-from askmath.views.content.video import ProxyVideo
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from nltk.corpus import stopwords
 from .ifilter import IFilter
@@ -21,11 +21,6 @@ IGNORED_WORDS = stopwords.words(LANGUAGE)
 
 
 class Filter(IFilter):
-    def __init__(self):
-        self.__proxy_discipline = ProxyDiscipline()
-        self.__proxy_lesson = ProxyLesson()
-        self.__proxy_video = ProxyVideo()
-
     def search(self, request, expression):
         disciplines = Discipline.objects.filter(exists=True, visible=True)
         lessons = Lesson.objects.filter(exists=True, visible=True)
@@ -41,11 +36,11 @@ class Filter(IFilter):
         lessons_occurrences = p_lessons.get()
         videos_occurrences = p_videos.get()
 
-        if type(disciplines_occurrences) == HttpResponse:
+        if type(disciplines_occurrences) == HttpResponseRedirect:
             return disciplines_occurrences
-        if type(lessons_occurrences) == HttpResponse:
+        if type(lessons_occurrences) == HttpResponseRedirect:
             return lessons_occurrences
-        if type(videos_occurrences) == HttpResponse:
+        if type(videos_occurrences) == HttpResponseRedirect:
             return videos_occurrences
         return render(request, "askmath/utils/filter/search.html",
                       {'request': request, 'expression': expression,
@@ -61,7 +56,8 @@ class Filter(IFilter):
 
             if discipline_title == expression:
                 if request.user.is_authenticated():
-                    return self.__proxy_discipline.view_discipline(request, discipline.id)
+                    return HttpResponseRedirect(
+                        reverse('askmath:content_discipline_view', kwargs={'id_discipline': discipline.id}))
             else:
                 occurrences = self.occurrences(discipline_title, expression)
                 if occurrences > 0:
@@ -79,7 +75,9 @@ class Filter(IFilter):
             expression = expression.upper()
             if lesson_title == expression:
                 if request.user.is_authenticated():
-                    return self.__proxy_lesson.view_lesson(request, lesson.get_discipline().id, lesson.id)
+                    return HttpResponseRedirect(reverse('askmath:content_lesson_view',
+                                                        kwargs={'id_discipline': lesson.get_discipline().id,
+                                                                'id_lesson': lesson.id}))
             else:
                 occurrences = 0
                 for title in lesson_title.split(" "):
@@ -98,7 +96,9 @@ class Filter(IFilter):
             expression = expression.upper()
             if video_title == expression:
                 if request.user.is_authenticated():
-                    return self.__proxy_video.view_video(request, video.id, None, None)
+                    return HttpResponseRedirect(reverse('askmath:content_video_view',
+                                                        kwargs={'id_discipline': lesson.get_discipline().id,
+                                                                'id_lesson': lesson.id, 'id_video': video.id}))
             else:
                 occurrences = self.occurrences(video_title, expression)
                 if occurrences > 0:
@@ -114,8 +114,8 @@ class Filter(IFilter):
             try:
                 if len(i) > 2 and len(text) > 2:
                     occurrences_count += len(self.string_matching(unicode(text), unicode(i)))
-            except:
-                pass
+            except Exception, e:
+                print e
         return occurrences_count
 
     def expression_clean(self, expression=""):

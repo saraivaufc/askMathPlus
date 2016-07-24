@@ -2,6 +2,8 @@ from askmath.entities import TextMessage
 from askmath.forms import VideoForm
 from askmath.models.video import Video as VideoModel
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from .ivideo import IVideo
@@ -33,9 +35,10 @@ class Video(IVideo):
             request.POST['position'] = max(positions) + 1
             form = VideoForm(request.POST, request.FILES)
             if form.is_valid():
-                video = form.save()
+                form.save()
                 messages.success(request, TextMessage.VIDEO_SUCCESS_ADD)
-                return self.view_videos(request, lesson, discipline)
+                return HttpResponseRedirect(reverse('askmath:manager_video_view',
+                                                    kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -47,7 +50,8 @@ class Video(IVideo):
     def remove_video(self, request, video, lesson, discipline):
         video.delete()
         messages.success(request, TextMessage.VIDEO_SUCCESS_REM)
-        return self.view_videos(request, lesson, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_video_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
     def edit_video(self, request, video, lesson, discipline):
         if request.method == "POST":
@@ -56,9 +60,10 @@ class Video(IVideo):
 
             form = VideoForm(request.POST, request.FILES, instance=video)
             if form.is_valid():
-                video = form.save()
+                form.save()
                 messages.success(request, TextMessage.VIDEO_SUCCESS_EDIT)
-                return self.view_videos(request, lesson, discipline)
+                return HttpResponseRedirect(reverse('askmath:manager_video_view',
+                                                    kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
             else:
                 messages.error(request, TextMessage.ERROR_FORM)
         else:
@@ -70,7 +75,8 @@ class Video(IVideo):
     def restore_video(self, request, video, lesson, discipline):
         video.restore()
         messages.success(request, TextMessage.VIDEO_SUCCESS_RESTORE)
-        return self.view_videos(request, lesson, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_video_view',
+                                            kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
     def sort_videos(self, request, lesson, discipline, new_order=None):
         videos = VideoModel.objects.filter(exists=True, visible=True, lesson=lesson.id)
@@ -79,8 +85,6 @@ class Video(IVideo):
                 for index, i in enumerate(new_order):
                     VideoModel.objects.filter(id=i).update(position=index + 1)
                     messages.success(request, TextMessage.VIDEO_SUCCESS_SORT)
-                request.method = "GET"
-                return self.sort_videos(request, lesson, discipline, None)
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.VIDEO_ERROR_SORT)
