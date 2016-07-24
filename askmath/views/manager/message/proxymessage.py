@@ -2,9 +2,10 @@
 
 from askmath.entities import TextMessage
 from askmath.models import Message as MessageModel
-from askmath.views.index import ProxyHome
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from .imessage import IMessage
 from .message import Message
@@ -13,7 +14,6 @@ from .message import Message
 class ProxyMessage(IMessage):
     def __init__(self):
         self.__message = Message()
-        self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
     def view_messages(self, request):
@@ -25,7 +25,8 @@ class ProxyMessage(IMessage):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.__proxy_home.index(request)
+
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
     def view_messages_removed(self, request):
@@ -37,7 +38,8 @@ class ProxyMessage(IMessage):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_messages(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_message_view'))
 
     @method_decorator(login_required)
     def remove_message(self, request, id_message):
@@ -47,7 +49,7 @@ class ProxyMessage(IMessage):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
-                return self.view_messages(request)
+                return HttpResponseRedirect(reverse('askmath:manager_message_view'))
             try:
                 return self.__message.remove_message(request, message)
             except Exception, e:
@@ -55,7 +57,8 @@ class ProxyMessage(IMessage):
                 messages.error(request, TextMessage.MESSAGE_ERROR_REM)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_messages(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_message_view'))
 
     @method_decorator(login_required)
     def restore_message(self, request, id_message=None):
@@ -65,7 +68,7 @@ class ProxyMessage(IMessage):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.MESSAGE_NOT_FOUND)
-                return self.view_messages(request)
+                return HttpResponseRedirect(reverse('askmath:manager_message_view'))
             try:
                 return self.__message.restore_message(request, message)
             except Exception, e:
@@ -73,4 +76,5 @@ class ProxyMessage(IMessage):
                 messages.error(request, TextMessage.MESSAGE_ERROR_RESTORE)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_messages(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_message_view'))

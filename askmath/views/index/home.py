@@ -4,6 +4,8 @@ from askmath.entities import TextMessage
 from askmath.forms import MessageForm, MessageFormRecaptcha
 from askmath.models import Discipline as DisciplineModel
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .ihome import IHome
 
@@ -12,13 +14,9 @@ class Home(IHome):
     def index(self, request):
         if request.user.is_authenticated():
             if request.user.has_perm('askmath.access_manager'):
-                disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
-                return render(request, 'askmath/manager/manager_home.html',
-                              {'request': request, 'disciplines': disciplines})
+                return HttpResponseRedirect(reverse('askmath:manager_view'))
             elif request.user.has_perm('askmath.access_content'):
-                from askmath.views.content.discipline import ProxyDiscipline as ProxyDisciplineContent
-                proxy_discipline_content = ProxyDisciplineContent()
-                return proxy_discipline_content.view_disciplines(request)
+                return HttpResponseRedirect(reverse('askmath:content_view'))
 
         return render(request, 'askmath/index/home.html', {'request': request})
 

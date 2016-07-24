@@ -4,6 +4,8 @@ from askmath.entities import TextMessage
 from askmath.models import Message as MessageModel
 from askmath.views.manager.message.imessage import IMessage
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -21,9 +23,9 @@ class Message(IMessage):
     def remove_message(self, request, message_model):
         message_model.delete()
         messages.success(request, TextMessage.MESSAGE_SUCCESS_REM)
-        return self.view_messages(request)
+        return HttpResponseRedirect(reverse('askmath:manager_message_view'))
 
     def restore_message(self, request, message_model):
         message_model.restore()
         messages.success(request, TextMessage.MESSAGE_SUCCESS_RESTORE)
-        return self.view_messages(request)
+        return HttpResponseRedirect(reverse('askmath:manager_message_view'))

@@ -2,6 +2,8 @@ from askmath.entities import TextMessage
 from askmath.forms import ClasseForm
 from askmath.models import Classe as ClasseModel
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from iclasse import IClasse
@@ -22,9 +24,9 @@ class Classe(IClasse):
         if request.method == "POST":
             form = ClasseForm(request.POST, request.FILES)
             if form.is_valid():
-                classe = form.save()
+                form.save()
                 messages.success(request, TextMessage.CLASSE_SUCCESS_ADD)
-                return self.view_classes(request)
+                return HttpResponseRedirect(reverse('askmath:manager_classe_view'))
             else:
                 messages.error(request, TextMessage.CLASSE_ERROR_ADD)
         else:
@@ -35,15 +37,15 @@ class Classe(IClasse):
     def remove_classe(self, request, classe):
         classe.delete()
         messages.success(request, TextMessage.CLASSE_SUCCESS_REM)
-        return self.view_classes(request)
+        return HttpResponseRedirect(reverse('askmath:manager_classe_view'))
 
     def edit_classe(self, request, classe):
         if request.method == 'POST':
             form = ClasseForm(request.POST, request.FILES, instance=classe)
             if form.is_valid():
-                classe = form.save()
+                form.save()
                 messages.success(request, TextMessage.CLASSE_SUCCESS_EDIT)
-                return self.view_classes(request)
+                return HttpResponseRedirect(reverse('askmath:manager_classe_view'))
             else:
                 messages.error(request, TextMessage.CLASSE_ERROR_EDIT)
         else:
@@ -54,4 +56,4 @@ class Classe(IClasse):
     def restore_classe(self, request, classe):
         classe.restore()
         messages.success(request, TextMessage.CLASSE_SUCCESS_RESTORE)
-        return self.view_classes(request)
+        return HttpResponseRedirect(reverse('askmath:manager_classe_view'))

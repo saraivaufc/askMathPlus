@@ -130,7 +130,7 @@ $("input[name='radio_person']").change(function(){
 $("input[name='radio_message']").change(function(){
 	if($(this).prop( "checked", true ) ){
 		var url_delete = "/home/manager/messages/remove/message="+ $(this).attr('message_id') +"/";
-		var url_restore = "/home/manager/messages/remove/message="+ $(this).attr('message_id') +"/";
+		var url_restore = "/home/manager/messages/restore/message="+ $(this).attr('message_id') +"/";
 	}else{
 		var url_delete = "#";
 		var url_restore = "#";

@@ -2,9 +2,10 @@ from askmath.entities import PersonTypes
 from askmath.entities import TextMessage
 from askmath.models.access import AdministratorKey, TeacherKey, AssistantKey
 from askmath.models.users import Person as PersonModel
-from askmath.views.index import ProxyHome
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from .iperson import IPerson
 from .person import Person
@@ -13,7 +14,6 @@ from .person import Person
 class ProxyPerson(IPerson):
     def __init__(self):
         self.__account = Person()
-        self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
     def choose_person_types(self, request):
@@ -25,7 +25,8 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.__proxy_home.index(request)
+
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
     def view_persons(self, request, PERSONTYPE):
@@ -41,7 +42,8 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.ERROR_GET_PARAMETERS)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.choose_person_types(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_person_choose_person_types'))
 
     @method_decorator(login_required)
     def view_persons_removed(self, request, PERSONTYPE):
@@ -57,7 +59,8 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.choose_person_types(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     @method_decorator(login_required)
     def add_person(self, request, PERSONTYPE):
@@ -69,9 +72,11 @@ class ProxyPerson(IPerson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_ERROR_ADD)
+                return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_persons(request, PERSONTYPE)
+
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     @method_decorator(login_required)
     def remove_person(self, request, PERSONTYPE, id_person):
@@ -83,7 +88,7 @@ class ProxyPerson(IPerson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_NOT_FOUND)
-                return self.view_persons(request, PERSONTYPE)
+                return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
             try:
                 return self.__account.remove_person(request, PERSONTYPE, person)
             except Exception, e:
@@ -91,7 +96,8 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.USER_ERROR_REM)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_persons(request, PERSONTYPE)
+
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     @method_decorator(login_required)
     def remove_registerkey(self, request, PERSONTYPE, id_registerkey):
@@ -111,7 +117,7 @@ class ProxyPerson(IPerson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_NOT_FOUND)
-                return self.view_persons(request, PERSONTYPE)
+                return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
             try:
                 return self.__account.remove_registerkey(request, PERSONTYPE, registerkey)
             except Exception, e:
@@ -119,7 +125,8 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.USER_ERROR_REM)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_persons(request, PERSONTYPE)
+
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     @method_decorator(login_required)
     def restore_person(self, request, PERSONTYPE, id_person):
@@ -131,7 +138,7 @@ class ProxyPerson(IPerson):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.USER_NOT_FOUND)
-                return self.view_persons(request, PERSONTYPE)
+                return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
             try:
                 return self.__account.restore_person(request, PERSONTYPE, person)
             except Exception, e:
@@ -139,4 +146,4 @@ class ProxyPerson(IPerson):
                 messages.error(request, TextMessage.USER_ERROR_RESTORE)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_persons(request, PERSONTYPE)
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))

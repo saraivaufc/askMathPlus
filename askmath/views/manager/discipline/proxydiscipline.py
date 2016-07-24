@@ -1,8 +1,9 @@
 from askmath.entities import TextMessage
 from askmath.models.discipline import Discipline as DisciplineModel
-from askmath.views.index import ProxyHome
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from .discipline import Discipline
 from .idiscipline import IDiscipline
@@ -11,7 +12,6 @@ from .idiscipline import IDiscipline
 class ProxyDiscipline(IDiscipline):
     def __init__(self):
         self.__discipline = Discipline()
-        self.__proxy_home = ProxyHome()
 
     @method_decorator(login_required)
     def view_disciplines(self, request):
@@ -23,7 +23,8 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.__proxy_home.index(request)
+
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     @method_decorator(login_required)
     def view_disciplines_removed(self, request):
@@ -35,7 +36,8 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.ERROR)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
 
     @method_decorator(login_required)
     def add_discipline(self, request):
@@ -47,7 +49,8 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.DISCIPLINE_ERROR_ADD)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
 
     @method_decorator(login_required)
     def remove_discipline(self, request, id_discipline):
@@ -57,7 +60,8 @@ class ProxyDiscipline(IDiscipline):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-                return self.view_disciplines(request)
+                return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+
             try:
                 return self.__discipline.remove_discipline(request, discipline)
             except Exception, e:
@@ -83,7 +87,8 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.DISCIPLINE_ERROR_EDIT)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
 
     @method_decorator(login_required)
     def restore_discipline(self, request, id_discipline):
@@ -93,7 +98,7 @@ class ProxyDiscipline(IDiscipline):
             except Exception, e:
                 print e
                 messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-                return self.view_disciplines(request)
+                return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
             try:
                 return self.__discipline.restore_discipline(request, discipline)
             except Exception, e:
@@ -101,4 +106,5 @@ class ProxyDiscipline(IDiscipline):
                 messages.error(request, TextMessage.DISCIPLINE_ERROR_RESTORE)
         else:
             messages.error(request, TextMessage.USER_NOT_PERMISSION)
-        return self.view_disciplines(request)
+
+        return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))

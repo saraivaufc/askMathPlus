@@ -3,6 +3,8 @@
 from askmath.entities import TextMessage
 from askmath.forms import LessonForm
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from .ilesson import ILesson
@@ -26,7 +28,8 @@ class Lesson(ILesson):
             if form.is_valid():
                 lesson = form.save()
                 messages.success(request, TextMessage.LESSON_SUCCESS_ADD)
-                return self.view_lessons(request, discipline)
+                return HttpResponseRedirect(
+                    reverse('askmath:manager_lesson_view', kwargs={'id_discipline': discipline.id}))
             else:
                 messages.error(request, TextMessage.LESSON_ERROR_ADD)
         else:
@@ -37,7 +40,7 @@ class Lesson(ILesson):
     def remove_lesson(self, request, lesson, discipline):
         lesson.delete()
         messages.success(request, TextMessage.LESSON_SUCCESS_REM)
-        return self.view_lessons(request, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_lesson_view', kwargs={'id_discipline': discipline.id}))
 
     def edit_lesson(self, request, lesson, discipline):
         if request.method == 'POST':
@@ -46,7 +49,8 @@ class Lesson(ILesson):
             if form.is_valid():
                 lesson = form.save()
                 messages.success(request, TextMessage.LESSON_SUCCESS_EDIT)
-                return self.view_lessons(request, discipline)
+                return HttpResponseRedirect(
+                    reverse('askmath:manager_lesson_view', kwargs={'id_discipline': discipline.id}))
             else:
                 messages.error(request, TextMessage.LESSON_ERROR_EDIT)
         else:
@@ -58,4 +62,4 @@ class Lesson(ILesson):
     def restore_lesson(self, request, lesson, discipline):
         lesson.restore()
         messages.success(request, TextMessage.LESSON_SUCCESS_RESTORE)
-        return self.view_lessons(request, discipline)
+        return HttpResponseRedirect(reverse('askmath:manager_lesson_view', kwargs={'id_discipline': discipline.id}))

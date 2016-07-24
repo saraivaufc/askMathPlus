@@ -6,4 +6,5 @@ from .question import ProxyQuestion
 from .video import ProxyVideo
 from .message import ProxyMessage
 from .statistic import ProxyStatistic
+from .index import index_view
 

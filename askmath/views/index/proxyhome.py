@@ -3,6 +3,8 @@
 from askmath.entities import TextMessage
 from askmath.models.lesson.lesson import Lesson
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .home import Home
 from .ihome import IHome
@@ -13,13 +15,12 @@ class ProxyHome(IHome):
         self.__home = Home()
 
     def index(self, request):
-        if request.user.is_authenticated():
-            try:
-                return self.__home.index(request)
-            except Exception, e:
-                print e
-        return render(request, 'askmath/index/home.html',
-                      {'request': request})
+        try:
+            return self.__home.index(request)
+        except Exception, e:
+            print e
+            messages.error(request, TextMessage.ERROR)
+        return render(request, 'askmath/index/home.html', {'request': request})
 
     def about(self, request):
         try:
@@ -27,7 +28,7 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     def message(self, request):
         try:
@@ -35,7 +36,7 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     def terms(self, request):
         try:
@@ -43,7 +44,7 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     def policies(self, request):
         try:
@@ -51,7 +52,7 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     def credits(self, request):
         try:
@@ -59,7 +60,7 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))
 
     def contents(self, request, id_lesson=None):
         try:
@@ -72,4 +73,4 @@ class ProxyHome(IHome):
         except Exception, e:
             print e
             messages.error(request, TextMessage.ERROR)
-        return self.index(request)
+        return HttpResponseRedirect(reverse('askmath:home'))

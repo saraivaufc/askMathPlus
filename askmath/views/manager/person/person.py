@@ -1,10 +1,13 @@
 from askmath.entities import TextMessage
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 try:
     from hashlib import md5
-except:
+except Exception, e:
+    print e
     from md5 import new as md5
 
 from askmath.entities import PersonTypes
@@ -83,16 +86,16 @@ class Person(IPerson):
     def remove_person(self, request, PERSONTYPE, person):
         person.delete()
         messages.success(request, TextMessage.USER_SUCCESS_REM)
-        return self.view_persons(request, PERSONTYPE)
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     def remove_registerkey(self, request, PERSONTYPE, registerkey):
         if not registerkey.get_user():
             registerkey.delete()
         else:
             messages.warning(request, TextMessage.KEY_ERROR_REMOVE_USED)
-        return self.add_person(request, PERSONTYPE)
+        return HttpResponseRedirect(reverse('askmath:manager_person_add', kwargs={'PERSONTYPE': PERSONTYPE}))
 
     def restore_person(self, request, PERSONTYPE, person):
         person.restore()
         messages.success(request, TextMessage.USER_SUCCESS_RESTORE)
-        return self.view_persons(request, PERSONTYPE)
+        return HttpResponseRedirect(reverse('askmath:manager_person_view', kwargs={'PERSONTYPE': PERSONTYPE}))

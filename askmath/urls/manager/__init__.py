@@ -1,6 +1,8 @@
+from askmath.views.manager import index_view
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
+                       url(r'^$', index_view, name="manager_view"),
                        url(r'^classes/', include('askmath.urls.manager.classes')),
                        url(r'^disciplines/', include('askmath.urls.manager.disciplines')),
                        url(r'^lessons/', include('askmath.urls.manager.lessons')),
