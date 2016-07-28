@@ -25,6 +25,10 @@ class Lesson(models.Model):
     maximum_hops = models.IntegerField(verbose_name=_(u"Maximum Hops"),
                                        help_text=_(
                                            u"Choose the maximum number of hops that the student can perform this lesson."))
+    errors_followed_to_obstacle = models.IntegerField(verbose_name=_(u"Errors to Obstacle"),
+                                        help_text=_(u"Choose the quantity of errors to obstacle."))
+    errors_to_deficiency = models.IntegerField(verbose_name=_(u"Errors to Deficiency"),
+                                             help_text=_(u"Choose the quantity of errors to deficiency."))
 
     color = models.CharField(verbose_name=_('Color'), max_length=50, default=generate_color, choices=COLORS_ALL,
                              help_text=_(u"Choose a color for the lesson."))
@@ -50,6 +54,12 @@ class Lesson(models.Model):
 
     def get_maximum_hops(self):
         return self.maximum_hops
+
+    def get_errors_followed_to_obstacle(self):
+        return self.errors_followed_to_obstacle
+
+    def get_errors_to_deficiency(self):
+        return self.errors_to_deficiency
 
     def get_questions(self):
         questions = Question.objects.filter(exists=True, lesson=self.id)

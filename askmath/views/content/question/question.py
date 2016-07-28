@@ -53,10 +53,14 @@ class Question(IQuestion):
         else:
             lesson_complete = False
 
+        occur_obstacle = studentlessonstate.occur_obstacle()
+        deficiencies = studentlessonstate.get_deficiencies()
+
         return render(request, "askmath/content/question/view_question.html",
                       {'request': request, 'discipline': discipline, 'lesson': lesson,
                        'studentlessonstate': studentlessonstate, 'lesson_complete': lesson_complete,
-                       'experience_level': experience_level, 'question': question})
+                       'experience_level': experience_level, 'question': question,
+                       'occur_obstacle': occur_obstacle, 'deficiencies': deficiencies})
 
     def answer_question(self, request, discipline, lesson, question, item):
         if request.method == 'POST':

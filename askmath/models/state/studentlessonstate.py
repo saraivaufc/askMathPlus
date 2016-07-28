@@ -115,6 +115,29 @@ class StudentLessonState(models.Model):
         else:
             return None
 
+    def get_deficiencies(self):
+        lesson = self.get_lesson()
+        errors = self.get_answered_incorrect_questions()
+        deficiencies = {}
+        for error in errors:
+            for item in error.get_items().filter(correct=False):
+                for deficiency in item.get_deficiencies():
+                    try:
+                        deficiencies[deficiency] += 1
+                    except:
+                        deficiencies[deficiency] = 1
+        deficiencies_in_lesson = []
+        for key, value in deficiencies.items():
+            if value >= lesson.get_errors_to_deficiency():
+                deficiencies_in_lesson.append(key)
+
+        return deficiencies_in_lesson
+
+    def occur_obstacle(self):
+        print self.errors_followed , self.get_lesson().get_errors_followed_to_obstacle()
+        return self.errors_followed >= self.get_lesson().get_errors_followed_to_obstacle()
+
+
     def update_percentage_completed(self):
         try:
             self.percentage_completed = (len(self.get_answered_correct_questions()) * 100) / len(
@@ -159,6 +182,10 @@ class StudentLessonState(models.Model):
         if not self.get_question(question):
             return
 
+        self.hits_followed += 1
+        self.errors_followed = 0
+        self.save()
+
         # Se a questao ja tinha sido respondida corretamente antes
         if question in self.get_answered_correct_questions():
             return
@@ -185,6 +212,10 @@ class StudentLessonState(models.Model):
         if not self.get_question(question):
             return
 
+        self.errors_followed += 1
+        self.hits_followed = 0
+        self.save()
+
         # Se a quesao ja tinha sido respondida corretamente antes
         if question in self.get_answered_correct_questions():
             return
@@ -197,6 +228,7 @@ class StudentLessonState(models.Model):
         if question in self.get_skipped_questions():
             self.remove_skipped_question(question)
         scores = question.scores / 2
+
         self.answered_incorrect_questions.add(question)
         self.down_scores(scores)
         self.down_student_experience(scores)

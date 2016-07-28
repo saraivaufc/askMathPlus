@@ -18,19 +18,23 @@
 
     <label for="select_classe_default">
         {% trans "Current Classe" %}:
-        <div class="input-control select"  data-role="select">
-            <select id="select_classe_default">
-                {% if current_classe %}
-                    <option>{{ current_classe }}</option>
-                {% else %}
-                    <option>{% trans "Subscribe in one classe" %}</option>
-                {% endif %}
+
+        <div class="split-button">
+            {% if current_classe %}
+                <button class="button">{{ current_classe }}</button>
+                <button class="split dropdown-toggle"></button>
+            {% else %}
+                <button class="button">{% trans "Subscrive in  one class." %}</button>
+            {% endif %}
+            <ul class="split-content d-menu" data-role="dropdown">
                 {% for classe in my_classes %}
                     {% if classe != current_classe %}
-                    <option value="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</option>
+                        <li>
+                            <a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
+                        </li>
                     {% endif %}
                 {% endfor %}
-            </select>
+            </ul>
         </div>
     </label>
 

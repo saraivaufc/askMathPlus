@@ -12,8 +12,8 @@ class Item(models.Model):
                                    help_text=_(u"Choose a description for item is."))
     correct = models.BooleanField(verbose_name=_(u"Is Correct"), default=False,
                                   help_text=_(u"Say if this item is correct."))
-    deficiencys = models.ManyToManyField('Lesson', verbose_name=_(u"Deficiencys"), null=True, blank=True,
-                                         help_text=_(
+    deficiencies = models.ManyToManyField('Lesson', verbose_name=_(u"Deficiencys"), null=True, blank=True,
+                                          help_text=_(
                                              u"Choose possible deficiencies that the student may have if he opts for this item."))
 
     creation = models.DateTimeField(verbose_name=_('Creation'), default=timezone.now)
@@ -28,8 +28,8 @@ class Item(models.Model):
     def is_correct(self):
         return self.correct
 
-    def get_deficiencys(self):
-        return self.deficiencys.filter(exists=True)
+    def get_deficiencies(self):
+        return self.deficiencies.filter(exists=True)
 
     def __unicode__(self):
         return self.description[:30]
