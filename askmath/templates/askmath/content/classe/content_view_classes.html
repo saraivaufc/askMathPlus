@@ -16,6 +16,24 @@
 
 	<h3 class="text-center page-title">{% trans "Classes" %}</h3>
 
+    <label for="select_classe_default">
+        {% trans "Current Classe" %}:
+        <div class="input-control select"  data-role="select">
+            <select id="select_classe_default">
+                {% if current_classe %}
+                    <option>{{ current_classe }}</option>
+                {% else %}
+                    <option>{% trans "Subscribe in one classe" %}</option>
+                {% endif %}
+                {% for classe in my_classes %}
+                    {% if classe != current_classe %}
+                    <option value="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </label>
+
 	<div class="tile-container">
 		<table  class="dataTable border bordered">
 			<thead>
@@ -29,7 +47,7 @@
 			</thead>
 			<tbody>
 			{% for classe in classes %}
-			<tr {% if current_classe == classe and classe in my_classes %}class="info"{% endif %}>
+			<tr>
 				<td class="sortable-column">{{ classe.get_name }}</td>
 				<td class="sortable-column">{{ classe.get_semester }}</td>
 				<td class="sortable-column">
@@ -50,12 +68,6 @@
 						<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button button danger">
 							{% trans "Unsubscribe" %}
 							<span class="icon mif-exit bg-red"></span>
-						</a>
-					{% endif %}
-					{% if current_classe != classe and classe in my_classes %}
-						<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}" class="image-button button primary">
-							{% trans "Set Default" %}
-							<span class="icon mif-checkmark bg-darkCobalt"></span>
 						</a>
 					{% endif %}
 				</td>

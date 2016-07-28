@@ -3,17 +3,15 @@
 {% load i18n %}
 
 {% block header_two %}
-<div class="padding10">
-	<ul class="breadcrumbs2">
-			{% block breadcrumbs %}
-			<li>
-				<a href="{% url 'askmath:home' %}">
-					<span class="icon mif-home"></span>
-				</a>
-			</li>
-		{% endblock %}
-	</ul>
-</div>
+<ul class="breadcrumbs2">
+        {% block breadcrumbs %}
+        <li>
+            <a href="{% url 'askmath:home' %}">
+                <span class="icon mif-home"></span>
+            </a>
+        </li>
+    {% endblock %}
+</ul>
 {% endblock %}
 
 {% block content %}

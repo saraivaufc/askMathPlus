@@ -1,20 +1,29 @@
 {% load i18n %}
 
-<form  class="bg-white-opacity" action="." method="post" enctype="multipart/form-data" role="form">
-{% csrf_token %}
-	<h2 class="form-signin-heading text-center ">{{ title_form }}</h2>
-	<hr class="thin">
-	<div class="form-fields">
-		{% include "askmath/_render_form.html" %}
+<div class="row">
+    <div class="col-md-8">
+        <h3 class="text-center page-title">{{ title_form }}</h3>
+        <form  class="bg-white-opacity" action="." method="post" enctype="multipart/form-data" role="form">
+        {% csrf_token %}
+            <div class="form-fields">
+                {% include "askmath/_render_form.html" %}
+            </div>
+            <div class="text-right">
+                <a type="cancel" onclick="window.history.back();" class="image-button button-default">
+                    {% trans "Cancel" %}
+                    <span class="icon mif-cancel"></span>
+                </a>
+                <button type="submit" class="image-button button-primary">
+                    {% trans "Submit" %}
+                    <span class="icon mif-checkmark"></span>
+                </button>
+            </div>
+        </form>
     </div>
-	<div class="text-right">
-		<a type="cancel" onclick="window.history.back();" class="image-button button-default">
-			{% trans "Cancel" %}
-			<span class="icon mif-cancel"></span>
-		</a>
-		<button type="submit" class="image-button button-primary">
-			{% trans "Submit" %}
-			<span class="icon mif-checkmark"></span>
-		</button>
-	</div>
-</form>
+    <div class="col-md-4">
+        <h3 class="text-center page-title">{% trans "Informations" %}</h3>
+        <div class="bg-white-opacity">
+
+        </div>
+    </div>
+</div>

@@ -119,10 +119,16 @@
 					{% endblock %}
 				</section>
 				<section id="content">
-					{% block header_two %}
-					{% endblock %}
-					{% block content %}
-					{% endblock %}
+					<div class="container-fluid">
+                        <div class="row">
+                            <section style="padding: 0px 10px;">
+                                {% block header_two %}
+                                {% endblock %}
+                                {% block content %}
+                                {% endblock %}
+                            </section>
+                        </div>
+                    </div>
 				</section>
 				<section id="modals"> 
 					{% block modals %}

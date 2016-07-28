@@ -20,7 +20,7 @@ class ProxyDiscipline(IDiscipline):
             try:
                 student = request.user.get_person_class(request.user, StudentModel)
                 current_classe = student.get_current_classe()
-                if current_classe != None:
+                if current_classe:
                     return self.__discipline.view_disciplines(request, current_classe)
             except Exception, e:
                 print e

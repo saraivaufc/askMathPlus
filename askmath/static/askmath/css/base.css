@@ -516,7 +516,8 @@ label.caption{
 	color:#FFF;
 	background-color: #4390df;
 	margin-bottom:5px;
-	padding:5px;
+	margin-top: 0px;
+	padding: 5px ;
 }
 
 .command-button {

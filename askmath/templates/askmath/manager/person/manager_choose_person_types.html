@@ -11,29 +11,30 @@
 {% endblock %}
 
 
-{%  block content_right %}
+{%  block content %}
+     <h3 class="text-center page-title"><span>{% trans "Persons" %}</h3>
 
-<table class="dataTable border bordered">
-	<thead>
-		<tr>
-			<td>{% trans "Type" %}</td>
-			<td>{% trans "Quantity" %}</td>
-			<td>{% trans "Options" %}</td>
-		</tr>
-	</thead>
-	<tbody>
-		{% for type, values in person_types.types.items %}
-			<tr>
-				<td>{{ type|title }}</td>
-				<td>{{ values|length }}</td>
-				<td>
-					<a href="{% url 'askmath:manager_person_view' PERSONTYPE=type %}">
-						{% trans "See persons" %}
-					</a>
-				</td>
-			</tr>
-		{% endfor %}		
-	</tbody>
-</table>
+    <table class="dataTable border bordered">
+        <thead>
+            <tr>
+                <td>{% trans "Type" %}</td>
+                <td>{% trans "Quantity" %}</td>
+                <td>{% trans "Options" %}</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for type, values in person_types.types.items %}
+                <tr>
+                    <td>{{ type|title }}</td>
+                    <td>{{ values|length }}</td>
+                    <td>
+                        <a href="{% url 'askmath:manager_person_view' PERSONTYPE=type %}">
+                            {% trans "See persons" %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

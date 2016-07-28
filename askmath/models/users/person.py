@@ -152,6 +152,6 @@ class Person(AbstractPerson):
         db_table = 'auth_user'
         swappable = 'AUTH_USER_MODEL'
         app_label = 'askmath'
-        ordering = ['-date_joined', ]
+        ordering = ['first_name', ]
         verbose_name = _(u'Person')
         verbose_name_plural = _(u'Persons')

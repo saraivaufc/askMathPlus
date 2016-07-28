@@ -1,3 +1,13 @@
+$(function () {
+    $('.dataTable').dataTable({
+        "language": {
+            "url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
+        },
+		"ordering": false
+    });
+});
+
+
 //DISCIPLINE
 $("input[name='radio_classe']").change(function(){
 	if($(this).prop( "checked", true ) ){

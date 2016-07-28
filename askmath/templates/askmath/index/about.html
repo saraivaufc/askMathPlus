@@ -12,23 +12,10 @@
 
 
 {% block content %}
-<section>
-	<div class="container">
-		<div class="row">
-		<div class="panel width">
-			<div class="heading text-center">
-				<span class="icon mif-info text-left"></span>
-			    <span class="title">{% trans "About" %}</span>
-			</div>
-			<div class="contant">
-				<div class="container-fluid">
-					<div class="row">
-						{% include "askmath/index/_render_about.html" %}			
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
+    <h3 class="text-center page-title"><span>{% trans "About" %}</h3>
+    <div class="container-fluid">
+        <div class="row">
+            {% include "askmath/index/_render_about.html" %}
+        </div>
+    </div>
 {% endblock %}

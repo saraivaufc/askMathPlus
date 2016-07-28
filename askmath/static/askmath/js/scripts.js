@@ -448,9 +448,9 @@ $(function () {
 
 
 $(function () {
-    $('.dataTable').dataTable({
-        "language": {
-            "url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
+    $('#select_classe_default').on('change', function(){
+        if($(this).val()) {
+            window.location = $(this).val();
         }
-    });
-});
+    })
+})

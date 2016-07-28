@@ -1,5 +1,6 @@
+from django.shortcuts import render, HttpResponse
+
 from askmath.models.discipline import Discipline as DisciplineModel
-from django.shortcuts import render
 from .idiscipline import IDiscipline
 
 
@@ -10,7 +11,7 @@ class Discipline(IDiscipline):
         else:
             disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
         return render(request, "askmath/content/content_home.html",
-                      {'request': request, 'disciplines': disciplines})
+                      {'request': request, 'disciplines': disciplines, 'current_classe': classe})
 
     def view_discipline(self, request, discipline):
         return render(request, "askmath/content/discipline/content_view_discipline.html",

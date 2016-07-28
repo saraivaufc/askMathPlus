@@ -2,27 +2,25 @@
 
 {% load i18n %}
 
-{%  block content_right %}
-<div class="cell">
-	<h2 class="text-center">{% trans "Sort Questions" %}<span class="mif-sort-asc place-right"></span></h2>
-</div>
+{%  block content %}
+    <h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Sort Questions of {{ lesson }}{% endblocktrans %}</h3>
 
-<div id="list_questions_sort" class="listview bg-white fg-dark" data-role="listview">
-{% csrf_token %}
-{% for question in questions %}
-<li class="list cursor-move bg-grayLighter" value={{ question.id }}>
-	<span class="list-icon mif-list-numbered"></span>
-	<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
-</li>
-{% empty %}
-<h3 class="text-center">{% trans "Not Questions Found" %}</h3>
-{% endfor %}
-</div>
+    <div id="list_questions_sort" class="listview bg-white fg-dark" data-role="listview">
+    {% csrf_token %}
+    {% for question in questions %}
+    <li class="list cursor-move bg-grayLighter" value={{ question.id }}>
+        <span class="list-icon mif-list-numbered"></span>
+        <span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:25 }}</span>
+    </li>
+    {% empty %}
+    <h3 class="text-center">{% trans "Not Questions Found" %}</h3>
+    {% endfor %}
+    </div>
 
-<div class="text-right">
-	<button onclick="sortQuestions();" class="button success" >
-	<span class="mif-checkmark"></span> {% trans "Submit" %}</button>
-</div>
+    <div class="text-right">
+        <button onclick="sortQuestions();" class="button success" >
+        <span class="mif-checkmark"></span> {% trans "Submit" %}</button>
+    </div>
 
 {% endblock %}
 

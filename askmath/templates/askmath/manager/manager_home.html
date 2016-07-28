@@ -1,11 +1,8 @@
-{% extends 'askmath/index/home_authentication.html' %}
+{% extends 'askmath/index/home.html' %}
 {% load i18n %}
 
-{% block header_two %}
-{% endblock %}
-
-{% block content_right %}
-<div class="flex-grid bg-transparent">
+{% block content %}
+<div class="flex-grid">
     <div class="tile-container">
         {% if perms.askmath.access_manager_classe %}
         <div class="tile-wide bg-teal " data-role="tile">

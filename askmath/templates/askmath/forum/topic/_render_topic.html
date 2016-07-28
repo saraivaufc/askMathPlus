@@ -2,102 +2,110 @@
 {% load humanize %}
 
 <div class="panel width">
-	<div class="heading bg-lightBlue">
-		<span class="icon mif-bubbles"></span>
-		<span class="title fg-white">{{ topic.get_title }}</span>
-		<div class="place-right">
+    <div class="heading bg-lightBlue">
+        <span class="icon mif-bubbles"></span>
+        <span class="title fg-white">{{ topic.get_title }}</span>
+        <div class="place-right">
 			<span>
-			{% blocktrans with creation=topic.creation|naturaltime  %}
-			{{ creation }}
-			{% endblocktrans %}
+			{% blocktrans with creation=topic.creation|naturaltime %}
+                {{ creation }}
+            {% endblocktrans %}
 			</span>
-			{% if request.user == topic.get_person %}
-			<a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}"><span class="mif-pencil padding5 fg-white"></span></a>
-			{% endif %}
-			{% if topic.exists and request.user == topic.get_person or perms.askmath.access_manager_forum %}
-			<a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}"><span class="mif-cross padding5 fg-white"></span></a>
-			{% endif %}
-		</div>
-    	</div>
-	<div class="contant">
-		<div class="equal">
-			<div class="col-md-2 bg-grayLight">
-				<div class="person-card padding10">
-					<figure>
-						{% if topic.get_person.get_profile_image %}
-		                <img class="person-image" src="{{ topic.get_person.get_profile_image.url }}">
-		                {% else %}
-		                <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
-		                {% endif %}
-					</figure>
-					<h5 class="person-name">{{ topic.get_person.get_full_name }}</h5>	
-				</div>
-			</div>
-			<div class="col-md-10 bg-grayLighter">
-				<div class="post-card padding10">
-					<p class="post-description lead">{{ topic.get_description|linebreaksbr }}</p>
-					<div class="post-controls">
-						<div class="col-sm-6 col-md-6">
-							{% if request.user in topic.get_likes_persons %}
-							<button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}" class="button-like image-button bg-green fg-white">
-							{% else %}
-							<button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}" class="button-like image-button bg-gray fg-white">
-							{% endif %}	
-							<span class="like-count">{{ topic.get_likes|length }}</span>
-							{% if request.user in topic.get_likes_persons %}
-					    	<span class="icon mif-thumbs-up bg-emerald"></span>
-					    	{% else %}
-					    	<span class="icon mif-thumbs-up"></span>
-					  		{% endif %}
-							</button>
-							<a href="#comment-form" class="image-button {% if request.user in topic.get_comments_persons %}bg-green{% else %}bg-gray{% endif %} fg-white">
-							    {{ topic.get_comments|length }}
-							    {% if request.user in topic.get_comments_persons %}
-							    <span class="icon glyphicon glyphicon-comment bg-emerald"></span>
-							    {% else %}
-							    <span class="icon glyphicon glyphicon-comment"></span>
-							    {% endif %}
-							</a>
-						</div>
-						<div class="col-sm-6 col-md-6 text-right">
-							{% if topic.file %}
-							<a href="{{ topic.file.url }}" target="_blank" class="image-button bg-gray fg-white">
-								{% trans "Downlad File" %}
-							    <span class="icon mif-folder-download"></span>
-							</a>
-							{% endif %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            {% if request.user == topic.get_person %}
+                <a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}"><span
+                        class="mif-pencil padding5 fg-white"></span></a>
+            {% endif %}
+            {% if topic.exists and request.user == topic.get_person or perms.askmath.access_manager_forum %}
+                <a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}"><span
+                        class="mif-cross padding5 fg-white"></span></a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="contant">
+        <div class="equal">
+            <div class="col-md-2 bg-grayLight">
+                <div class="person-card padding10">
+                    <figure>
+                        {% if topic.get_person.get_profile_image %}
+                            <img class="person-image" src="{{ topic.get_person.get_profile_image.url }}">
+                        {% else %}
+                            <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+                        {% endif %}
+                    </figure>
+                    <h5 class="person-name">{{ topic.get_person.get_full_name }}</h5>
+                </div>
+            </div>
+            <div class="col-md-10 bg-grayLighter">
+                <div class="post-card padding10">
+                    <p class="post-description lead">{{ topic.get_description|linebreaksbr }}</p>
+                    <div class="post-controls">
+                        <div class="col-sm-6 col-md-6">
+                            {% if request.user in topic.get_likes_persons %}
+                                <button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}"
+                                        class="button-like image-button bg-green fg-white">
+                            {% else %}
+                                <button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}"
+                                        class="button-like image-button bg-gray fg-white">
+                            {% endif %}
+                            <span class="like-count">{{ topic.get_likes|length }}</span>
+                            {% if request.user in topic.get_likes_persons %}
+                                <span class="icon mif-thumbs-up bg-emerald"></span>
+                            {% else %}
+                                <span class="icon mif-thumbs-up"></span>
+                            {% endif %}
+                            </button>
+                            <a href="#comment-form"
+                               class="image-button {% if request.user in topic.get_comments_persons %}bg-green{% else %}bg-gray{% endif %} fg-white">
+                                {{ topic.get_comments|length }}
+                                {% if request.user in topic.get_comments_persons %}
+                                    <span class="icon glyphicon glyphicon-comment bg-emerald"></span>
+                                {% else %}
+                                    <span class="icon glyphicon glyphicon-comment"></span>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-md-6 text-right">
+                            {% if topic.file %}
+                                <a href="{{ topic.file.url }}" target="_blank" class="image-button bg-gray fg-white">
+                                    {% trans "Downlad File" %}
+                                    <span class="icon mif-folder-download"></span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 {% if topic.get_comments|length %}
-	{% include "askmath/forum/topic/_render_comments.html" %}
+    {% include "askmath/forum/topic/_render_comments.html" %}
 {% endif %}
 
 <div class="padding10 bg-grayLighter">
-	<div class="container-fluid">
-	<div class="row">
-		{% if request.user.is_authenticated %}
-			<form id="comment-form" action="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}" method="post" enctype="multipart/form-data" role="form">
-			{% csrf_token %}
-			{% include "askmath/_render_form.html" %}
-			    <div class="place-right">
-					<button type="submit" class="button button-primary">{% trans "Comment" %}</button>
-				</div>
-			</form>
-		{% else %}
-			<center>
-				<a href="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}" class="command-button success fg-white">
-				    <span class="icon mif-enter"></span>
-				    {% trans "Want to add a comment?" %}
-				    <small>{% trans "Click here to get authorization." %}</small>
-				</a>
-			</center>
-		{% endif %}
-	</div>
-	</div>
+    <div class="container-fluid">
+        <div class="row">
+            {% if request.user.is_authenticated %}
+                <form id="comment-form"
+                      action="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}"
+                      method="post" enctype="multipart/form-data" role="form">
+                    {% csrf_token %}
+                    {% include "askmath/_render_form.html" %}
+                    <div class="place-right">
+                        <button type="submit" class="button button-primary">{% trans "Comment" %}</button>
+                    </div>
+                </form>
+            {% else %}
+                <center>
+                    <a href="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}"
+                       class="command-button success fg-white">
+                        <span class="icon mif-enter"></span>
+                        {% trans "Want to add a comment?" %}
+                        <small>{% trans "Click here to get authorization." %}</small>
+                    </a>
+                </center>
+            {% endif %}
+        </div>
+    </div>
 </div>

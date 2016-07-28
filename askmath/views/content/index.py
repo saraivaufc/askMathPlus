@@ -1,7 +1,6 @@
-from askmath.models import Discipline as DisciplineModel
-from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 
 def index_view(request):
-    disciplines = DisciplineModel.objects.filter(exists=True, visible=True)
-    return render(request, 'askmath/content/content_home.html', {'request': request, 'disciplines': disciplines})
+    return HttpResponseRedirect(reverse('askmath:content_discipline_view'))

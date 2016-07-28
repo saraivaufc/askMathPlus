@@ -42,7 +42,7 @@
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row">
-					<a  href="{% url 'askmath:content_question_view_question' id_discipline=lesson.get_discipline.id id_lesson=lesson.id %}" class="command-button success">
+					<a  href="{% url 'askmath:content_question_view' id_discipline=lesson.get_discipline.id id_lesson=lesson.id %}" class="command-button success">
 						<span class="icon mif-list-numbered"></span>
 						 {% trans "Questions" %}
 						<small>

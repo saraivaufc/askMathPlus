@@ -11,12 +11,6 @@
 	{% include 'askmath/_header.html' %}
 {% endblock %}
 
-{% block content_right %}
-<div class="page-content container-fluid">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			{% include "askmath/_form.html" %}
-		</div>
-	</div>
-</div>
+{% block content %}
+    {% include "askmath/_form.html" %}
 {% endblock %}

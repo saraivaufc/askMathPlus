@@ -1,11 +1,11 @@
-{% extends 'askmath/index/home_authentication.html' %}
+{% extends 'askmath/index/home.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li>
 		<a href="{% url 'askmath:person_account_view' %}">
-			<span class="icon mif-profile"></span> <span>{% trans "View Profile" %}</span>
+			<span class="icon mif-profile"></span> <span>{% trans "Your Profile" %}</span>
 		</a>
 	</li>
 {% endblock %}
@@ -14,40 +14,41 @@
 	{% include 'askmath/_header.html' %}
 {% endblock %}
 
-{% block content_right %}
-<br>
-<div class="container-fluid">
-	<div class="col-md-6 col-md-offset-3">
-	<div class="bg-white-opacity">
-		<center >
-			<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
-				<div class="frame">
-				{% if person.get_profile_image %}
-					<img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />
-				{% else %}
-					<img data-type='bordered' class="img img-responsive" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />				
-			 	{% endif %}
-			 	</div>
-		 	</div>
-			<h2>{{ person.get_full_name }}</h2>
-			<h4>{{ person.get_email }}</h4>
-			<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
-		 </center>
-			 <a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
-			    <span class="icon mif-pencil"></span>
-			    <span class="title">{% trans "Profile Edit" %}</span>
-			</a>
-			<a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
-			    <span class="icon mif-key"></span>
-			    <span class="title">{% trans "Password Alter" %}</span>
-			</a>
-			<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
-			    <span class="icon mif-cross"></span>
-			    <span class="title">{% trans "Account Remove" %}</span>
-			</button>
-			{% include "askmath/person/account/_modal_remove_account.html" %}
-	</div>
-	</div>
-</div>
+{% block content %}
+    <h3 class="text-center page-title"><span>{% trans "Your Profile" %}</h3>
+
+    <div class="container-fluid">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="bg-white-opacity">
+                <center >
+                    <div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
+                        <div class="frame">
+                        {% if person.get_profile_image %}
+                            <img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />
+                        {% else %}
+                            <img data-type='bordered' class="img img-responsive" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+                        {% endif %}
+                        </div>
+                    </div>
+                    <h2>{{ person.get_full_name }}</h2>
+                    <h4>{{ person.get_email }}</h4>
+                    <h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
+                 </center>
+                     <a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+                        <span class="icon mif-pencil"></span>
+                        <span class="title">{% trans "Profile Edit" %}</span>
+                    </a>
+                    <a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
+                        <span class="icon mif-key"></span>
+                        <span class="title">{% trans "Password Alter" %}</span>
+                    </a>
+                    <button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
+                        <span class="icon mif-cross"></span>
+                        <span class="title">{% trans "Account Remove" %}</span>
+                    </button>
+                    {% include "askmath/person/account/_modal_remove_account.html" %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

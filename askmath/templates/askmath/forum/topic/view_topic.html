@@ -2,13 +2,6 @@
 {% load i18n %}
 {% load humanize %}
 
-{% block scripts %}
-	{{ block.super }}
-	<script>
-		setInterval(function() {
-		}, 3000);
-	</script>
-{% endblock %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
@@ -22,9 +15,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="padding10">
-{% include "askmath/forum/topic/_render_topic.html" %}	
-</div>
+    {% include "askmath/forum/topic/_render_topic.html" %}
 {% endblock %}
 
 
