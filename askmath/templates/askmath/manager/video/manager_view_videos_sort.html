@@ -3,21 +3,40 @@
 
 {%  block content %}
 
-    <h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Sort Videos of {{ lesson }}{% endblocktrans %}</h3>
+<div class="row">
+	<div class="col-md-8">
+		
+		<h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Sort Videos of {{ lesson }}{% endblocktrans %}</h3>
 
-    <div id="list_videos_sort" class="listview ">
-    {% csrf_token %}
-    {% for video in videos %}
-    <li class="list active" value={{ video.id }}>
-        <span class="list-title">{{ video }}</span>
-    </li>
-    {% empty %}
-    <h3 class="text-center">{% trans "Not Videos Found" %}</h3>
-    {% endfor %}
-    </div>
-    <div class="text-right">
-        <button onclick="sortVideos();" class="button success" ><span class="mif-checkmark"></span>{% trans " Submit" %}</button>
-    </div>
+		<div class="bg-grayLighter padding20">
+			<div id="list_videos_sort" class="listview ">
+				{% csrf_token %}
+				{% for video in videos %}
+				<div class="list cursor-move bg-lightBlue fg-white border" value={{ video.id }}>
+					<span class="list-icon">{{  video.get_position }}</span>
+					<span class="list-title">{{ video }}</span>
+				</div>
+				{% empty %}
+				<h3 class="text-center">{% trans "Not Videos Found" %}</h3>
+				{% endfor %}
+			</div>
+			<br>
+			<button onclick="sortVideos();" class="image-button primary" >
+				{% trans "Submit" %}
+				<span class="icon mif-checkmark"></span> 
+			</button>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h3 class="text-center page-title">{% trans "Informations" %}</h3>
+		<div class="bg-grayLighter padding10">
+			<ul>
+				<li>* Esses campos sãorqueridos</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 
 {% endblock %}
 

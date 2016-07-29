@@ -13,80 +13,80 @@
 
 {%  block content %}
 
-    <h3 class="text-center page-title"><span>{{ person_type|title }}</h3>
+	<h3 class="text-center page-title"><span>{{ person_type|title }}</h3>
 
-    {% if perms.askmath.write_person %}
-    <div class="cell">
-        <a href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" class="image-button button-success">
-            {% trans "View Keys" %}
-            <span class="icon mif-key"></span>
-        </a>
-        {% if is_removed %}
-        <a id="button-person-restore" href="#" class="image-button button-info">
-            {% trans "Restore" %}
-            <span class="icon mif-history"></span>
-        </a>
-        {% else %}
-        <a id="button-person-delete" href="#" class="image-button button-danger">
-            {% trans "Delete" %}
-            <span class="icon mif-minus"></span>
-        </a>
-        {% endif %}
-        {% if is_removed %}
-        <a href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}" class="image-button button-warning">
-            {% trans "Close Dump" %}
-            <span class="icon mif-undo"></span>
-        </a>
-        {% else %}
-        <a href="{% url 'askmath:manager_person_view_removed' PERSONTYPE=person_type %}" class="image-button button-warning">
-            {% trans "Open Dump" %}
-            <span class="icon mif-bin"></span>
-        </a>
-        {% endif %}
-    </div>
-    {% endif %}
+	{% if perms.askmath.write_person %}
+	<div class="cell">
+		<a class="image-button success" href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}">
+			{% trans "View Keys" %}
+			<span class="icon mif-key"></span>
+		</a>
+		{% if is_removed %}
+		<a id="button-person-restore" class="image-button info" href="#">
+			{% trans "Restore" %}
+			<span class="icon mif-history"></span>
+		</a>
+		{% else %}
+		<a id="button-person-delete"  class="image-button danger" href="#">
+			{% trans "Delete" %}
+			<span class="icon mif-minus"></span>
+		</a>
+		{% endif %}
+		{% if is_removed %}
+		<a  class="image-button warning" href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}">
+			{% trans "Close Dump" %}
+			<span class="icon mif-undo"></span>
+		</a>
+		{% else %}
+		<a class="image-button warning" href="{% url 'askmath:manager_person_view_removed' PERSONTYPE=person_type %}">
+			{% trans "Open Dump" %}
+			<span class="icon mif-bin"></span>
+		</a>
+		{% endif %}
+	</div>
+	{% endif %}
 
 
 
-    <table class="dataTable border bordered">
-        <thead>
-            <tr>
-                {% if perms.askmath.write_person %}
-                <td style="width: 10px"></td>
-                {% endif %}
-                <td>{% trans "Name" %}</td>
-                <td>{% trans "Email" %}</td>
-                <td>{% trans "Profile Image" %}</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for person in persons %}
-                <tr>
-                    {% if perms.askmath.write_person %}
-                    <td>
-                        <label class="input-control radio small-check no-margin">
-                            <input type="radio" person_id="{{ person.id }}" person_type="{{ person_type }}" name="radio_person">
-                            <span class="check"></span>
-                        </label>
-                    </td>
-                    {% endif %}
-                    <td>{{ person.get_full_name }}</td>
-                    <td>
-                        <a href="mailto:{{ person.get_email }}">
-                            {{ person.get_email }}
-                        </a>
-                    </td>
-                    <td class="align-center no-padding">
-                        <div class="image-container nopadding image-format-square" style="width:50px; height: 50px;">
-                            {% if person.get_profile_image %}
-                                <img alt="" src="{{ person.get_profile_image.url }}">
-                            {% else %}
-                                <img alt="" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
-                            {% endif %}
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+	<table class="dataTable border bordered">
+		<thead>
+			<tr>
+				{% if perms.askmath.write_person %}
+				<td style="width: 10px"></td>
+				{% endif %}
+				<td>{% trans "Name" %}</td>
+				<td>{% trans "Email" %}</td>
+				<td>{% trans "Profile Image" %}</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for person in persons %}
+				<tr>
+					{% if perms.askmath.write_person %}
+					<td>
+						<label class="input-control radio small-check no-margin">
+							<input type="radio" person_id="{{ person.id }}" person_type="{{ person_type }}" name="radio_person">
+							<span class="check"></span>
+						</label>
+					</td>
+					{% endif %}
+					<td>{{ person.get_full_name }}</td>
+					<td>
+						<a href="mailto:{{ person.get_email }}">
+							{{ person.get_email }}
+						</a>
+					</td>
+					<td class="align-center no-padding">
+						<div class="image-container nopadding image-format-square" style="width:50px; height: 50px;">
+							{% if person.get_profile_image %}
+								<img alt="" src="{{ person.get_profile_image.url }}">
+							{% else %}
+								<img alt="" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+							{% endif %}
+						</div>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

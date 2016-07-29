@@ -1,133 +1,23 @@
-/* MyButtons */
-
-.button{
-	color: #000;
+.image-button.primary .icon{
+	background-color:  rgb(22, 73, 154) !important;
 }
 
-.button:hover{
-	opacity: 0.9;
+.image-button.success .icon{
+	background-color:  rgb(0, 138, 0) !important;
 }
 
-
-.button-default, .button-primary, .button-success, .button-info, .button-danger, .button-warning{
-	color: #fff !important;
+.image-button.info .icon{
+	background-color:  rgb(27, 161, 226) !important;
 }
 
-.button-default{
-	background-color: #999 !important;
-}
-.button-default .icon{
-	background-color: #647687 !important;
+.image-button.danger .icon{
+	background-color:  rgb(154, 22, 22) !important;
 }
 
-.button-primary{
-	background-color: #3366CC !important;
-}
-.button-primary .icon{
-	background-color: #16499A !important;
+.image-button.warning .icon{
+	background-color:  rgb(191, 90, 21) !important;
 }
 
-.button-success{
-	background-color: #00CC00 !important;
-}
-.button-success .icon{
-	background-color: #60A917 !important;
-}
-
-.button-info{
-	background-color: #59CDE2 !important;
-}
-.button-info .icon{
-	background-color: #3366CC !important;
-}
-
-.button-danger{
-	background-color: #CE352C !important;
-}
-.button-danger .icon{
-	background-color: #9A161F !important;
-}
-
-.button-warning{
-	background-color: #FFCC00 !important;
-}
-.button-warning .icon{
-	background-color: #FF9900 !important;
-}
-
-
-/* BUTTON GROUPS */
-
-.button-group{
-	margin-top: 5px;
-    margin-bottom: 5px;
-    position: relative;
-	vertical-align: middle;
-}
-
-/* BUTTON GROUPS JUSTIFIED */
-
-.button-group-justified{
-	display: table;
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;	
-}
-
-.button-group-justified > .button, .button-group-justified > .button-group {
-    float: none;
-    display: table-cell;
-    width: 1%;
-}
-
-
-.btn{
-	border-radius: 0px;
-}
-
-
-
-
-
-
-.btn-rounded{
-	border-radius: 30px;
-	width: auto;
-	border: 0px none;
-}
-
-.btn-menu{
-	font-weight: 600;
-	color: #FFF !important;
-}
-
-#btn-starter-lesson{
-	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
-	-webkit-box-shadow: 0px 0px 0px 0px #3dc21b;
-	box-shadow: 0px 0px 0px 0px #3dc21b;
-	background-color:#44c767;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:23px;
-	padding:10px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;	
-}
-
-#btn-starter-lesson:hover {
-	background-color:#5cbf2a;
-}
-
-#btn-starter-lesson:active {
-	position:relative;
-	top:1px;
-}
-
-.modal-content .modal-footer button + button {
-    margin-bottom: 0px;
-}
 .button-latex{
 	cursor: pointer;
 	margin-bottom: 3px;

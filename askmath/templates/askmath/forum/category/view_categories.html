@@ -4,97 +4,99 @@
 
 {%  block content %}
 
-    <h3 class="text-center page-title"><span>{% trans "Categories" %}</h3>
+	<h3 class="text-center page-title"><span>{% trans "Categories" %}</h3>
+	
+	<div class="">
+		{% if perms.askmath.write_category %}
+		<div class="cell">
+				<a id="button-category-create"  class="image-button success" href="{% url 'askmath:forum_category_add' %}">
+					{% trans "Create" %}
+					<span class="icon mif-plus"></span>
+				</a>
+				<a id="button-category-edit" class="image-button primary" href="#">
+					{% trans "Edit" %}
+					<span class="icon mif-pencil"></span>
+				</a>
+				{% if is_removed %}
+				<a id="button-category-restore" class="image-button info" href="#">
+					{% trans "Restore" %}
+					<span class="icon mif-history"></span>
+				</a>
+				{% else %}
+				<a id="button-category-delete" class="image-button danger" href="#">
+					{% trans "Delete" %}
+					<span class="icon mif-minus"></span>
+				</a>
+				{% endif %}
 
-    {% if perms.askmath.write_category %}
-    <div class="cell">
-            <a id="button-category-create" href="{% url 'askmath:forum_category_add' %}" class="image-button button-success">
-                {% trans "Create" %}
-                <span class="icon mif-plus"></span>
-            </a>
-            <a id="button-category-edit" href="#" class="image-button button-primary">
-                {% trans "Edit" %}
-                <span class="icon mif-pencil"></span>
-            </a>
-            {% if is_removed %}
-            <a id="button-category-restore" href="#" class="image-button button-info">
-                {% trans "Restore" %}
-                <span class="icon mif-history"></span>
-            </a>
-            {% else %}
-            <a id="button-category-delete" href="#" class="image-button button-danger">
-                {% trans "Delete" %}
-                <span class="icon mif-minus"></span>
-            </a>
-            {% endif %}
+			{% if is_removed %}
+				<a class="image-button warning" href="{% url 'askmath:forum_category_view' %}">
+					{% trans "Close Dump" %}
+					<span class="icon mif-undo"></span>
+				</a>
+			{% else %}
+				<a class="image-button warning" href="{% url 'askmath:forum_category_view_removed' %}">
+					{% trans "Open Dump" %}
+					<span class="icon mif-bin"></span>
+				</a>
+			{% endif %}
+		</div>
+		{% endif %}
 
-        {% if is_removed %}
-            <a href="{% url 'askmath:forum_category_view' %}" class="image-button button-warning">
-                {% trans "Close Dump" %}
-                <span class="icon mif-undo"></span>
-            </a>
-        {% else %}
-            <a href="{% url 'askmath:forum_category_view_removed' %}" class="image-button button-warning">
-                {% trans "Open Dump" %}
-                <span class="icon mif-bin"></span>
-            </a>
-        {% endif %}
-    </div>
-    {% endif %}
-
-    <table class="dataTable border bordered">
-        <thead>
-            <tr>
-                {% if perms.askmath.write_category %}
-                <th style="width: 10px"></th>
-                {% endif %}
-                <th class="category" >{% trans "Category" %}</th>
-                <th class="post" >{% trans "Posts" %}</th>
-                <th class="last_post" >{% trans "Last Post" %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for category in categories %}
-            <tr>
-                {% if perms.askmath.write_category %}
-                <td>
-                    <label class="input-control radio small-check no-margin">
-                        <input type="radio" category_id="{{ category.id }}" name="radio_category">
-                        <span class="check"></span>
-                    </label>
-                </td>
-                {% endif %}
-                <td class="sortable-column category">
-                    <div class="icon"></div>
-                    <div class="details">
-                        <h4 class="title">
-                            {{ category.get_title }}
-                        </h4>
-                        <div class="description">{{ category.get_description }}</div>
-                    </div>
-                </td>
-                <td class="sortable-column post">
-                    <a href="{% url 'askmath:forum_topic_view' id_category=category.id %}">
-                        {% blocktrans with topics=category.get_topics|length  %}
-                        See {{ topics }} posts
-                        {% endblocktrans %}
-                    </a>
-                </td>
-                <td class="sortable-column last_post">
-                    {% if category.get_topics|length > 0 %}
-                        {% with category.get_topics|first as topic  %}
-                        <a href="{% url 'askmath:forum_topic_view' id_category=category.id id_topic=topic.id %}">
-                            <h5>{{ topic.title }}</h5>
-                        </a>
-                        {% blocktrans with creation=topic.creation|naturaltime person=topic.person %}
-                        <h6>{{ creation }} by {{ person }}.</h6>
-                        {% endblocktrans %}
-                        {% endwith %}
-                    {% else %}
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+		<table class="dataTable border bordered">
+			<thead>
+				<tr>
+					{% if perms.askmath.write_category %}
+					<th style="width: 10px"></th>
+					{% endif %}
+					<th class="category" >{% trans "Category" %}</th>
+					<th class="post" >{% trans "Posts" %}</th>
+					<th class="last_post" >{% trans "Last Post" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+				<tr>
+					{% if perms.askmath.write_category %}
+					<td>
+						<label class="input-control radio small-check no-margin">
+							<input type="radio" category_id="{{ category.id }}" name="radio_category">
+							<span class="check"></span>
+						</label>
+					</td>
+					{% endif %}
+					<td class="sortable-column category">
+						<div class="icon"></div>
+						<div class="details">
+							<h4 class="title">
+								{{ category.get_title }}
+							</h4>
+							<div class="description">{{ category.get_description }}</div>
+						</div>
+					</td>
+					<td class="sortable-column post">
+						<a href="{% url 'askmath:forum_topic_view' id_category=category.id %}">
+							{% blocktrans with topics=category.get_topics|length  %}
+							See {{ topics }} posts
+							{% endblocktrans %}
+						</a>
+					</td>
+					<td class="sortable-column last_post">
+						{% if category.get_topics|length > 0 %}
+							{% with category.get_topics|first as topic  %}
+							<a href="{% url 'askmath:forum_topic_view' id_category=category.id id_topic=topic.id %}">
+								<h5>{{ topic.title }}</h5>
+							</a>
+							{% blocktrans with creation=topic.creation|naturaltime person=topic.person %}
+							<h6>{{ creation }} by {{ person }}.</h6>
+							{% endblocktrans %}
+							{% endwith %}
+						{% else %}
+						{% endif %}
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

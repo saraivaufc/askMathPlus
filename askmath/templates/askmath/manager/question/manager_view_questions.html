@@ -14,94 +14,94 @@
 
 
 {%  block content %}
-    <h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Questions of {{ lesson }}{% endblocktrans %}</h3>
-    {% if perms.askmath.write_question %}
-    <div class="cell">
-            <a id="button-question-create" data-toggle="modal" data-target="#quantity_items" href="#" class="image-button button-success">
-                {% trans "Create" %}
-                <span class="icon mif-plus"></span>
-            </a>
-            <a id="button-question-edit" href="#" class="image-button button-primary">
-                {% trans "Edit" %}
-                <span class="icon mif-pencil"></span>
-            </a>
-            {% if is_removed %}
-            <a id="button-question-restore" href="#" class="image-button button-info">
-                {% trans "Restore" %}
-                <span class="icon mif-history"></span>
-            </a>
-            {% else %}
-            <a id="button-question-delete" href="#" class="image-button button-danger">
-                {% trans "Delete" %}
-                <span class="icon mif-minus"></span>
-            </a>
-            {% endif %}
-            {% if perms.askmath.write_question %}
-            <a id="button-question-sort" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-info">
-                {% trans "Sort" %}
-                <span class="icon mif-list-numbered"></span>
-            </a>
-            {% endif %}
+	<h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Questions of {{ lesson }}{% endblocktrans %}</h3>
+	{% if perms.askmath.write_question %}
+	<div class="cell">
+			<a id="button-question-create" data-toggle="modal" data-target="#quantity_items" href="#" class="image-button success">
+				{% trans "Create" %}
+				<span class="icon mif-plus"></span>
+			</a>
+			<a id="button-question-edit" href="#" class="image-button primary">
+				{% trans "Edit" %}
+				<span class="icon mif-pencil"></span>
+			</a>
+			{% if is_removed %}
+			<a id="button-question-restore" href="#" class="image-button info">
+				{% trans "Restore" %}
+				<span class="icon mif-history"></span>
+			</a>
+			{% else %}
+			<a id="button-question-delete" href="#" class="image-button danger">
+				{% trans "Delete" %}
+				<span class="icon mif-minus"></span>
+			</a>
+			{% endif %}
+			{% if perms.askmath.write_question %}
+			<a id="button-question-sort" class="image-button info" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
+				{% trans "Sort" %}
+				<span class="icon mif-list-numbered"></span>
+			</a>
+			{% endif %}
 
-            {% if is_removed %}
-            <a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
-                {% trans "Close Dump" %}
-                <span class="icon mif-undo"></span>
-            </a>
-            {% else %}
-            <a href="{% url 'askmath:manager_question_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
-                {% trans "Open Dump" %}
-                <span class="icon mif-bin"></span>
-            </a>
-            {% endif %}
-    </div>
-    {% endif %}
+			{% if is_removed %}
+			<a class="image-button warning" href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
+				{% trans "Close Dump" %}
+				<span class="icon mif-undo"></span>
+			</a>
+			{% else %}
+			<a class="image-button warning" href="{% url 'askmath:manager_question_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}">
+				{% trans "Open Dump" %}
+				<span class="icon mif-bin"></span>
+			</a>
+			{% endif %}
+	</div>
+	{% endif %}
 
 
 
-    <table  class="dataTable border bordered">
-        <thead>
-            <tr>
-                {% if perms.askmath.write_question %}
-                <td style="width: 10px"></td>
-                {% endif %}
-                <td>{% trans "Position" %}</td>
-                <td>{% trans "Description" %}</td>
-                <td>{% trans "Scores" %}</td>
-                <td>{% trans "Visible" %}</td>
-            </tr>
-        </thead>
-        <tbody>
-        {% for question in questions %}
-        <tr>
-            {% if perms.askmath.write_question %}
-            <td>
-                <label class="input-control radio small-check no-margin">
-                    <input type="radio" question_id="{{ question.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_question">
-                    <span class="check"></span>
-                </label>
-            </td>
-            {% endif %}
-            <td class="sortable-column">{{ question.get_position }}</td>
-            <td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
-            <td class="sortable-column">{{ question.get_scores }}</td>
-            <td>
-                {% if question.is_visible %}
-                    <button class="cycle-button mini-button button-success">
-                        <span class="mif mif-checkmark"></span>
-                    </button>
-                {% else %}
-                    <button class="cycle-button mini-button button-danger">
-                        <span class="mif mif-cross"></span>
-                    </button>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table  class="dataTable border bordered">
+		<thead>
+			<tr>
+				{% if perms.askmath.write_question %}
+				<td style="width: 10px"></td>
+				{% endif %}
+				<td>{% trans "Position" %}</td>
+				<td>{% trans "Description" %}</td>
+				<td>{% trans "Scores" %}</td>
+				<td>{% trans "Visible" %}</td>
+			</tr>
+		</thead>
+		<tbody>
+		{% for question in questions %}
+		<tr>
+			{% if perms.askmath.write_question %}
+			<td>
+				<label class="input-control radio small-check no-margin">
+					<input type="radio" question_id="{{ question.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_question">
+					<span class="check"></span>
+				</label>
+			</td>
+			{% endif %}
+			<td class="sortable-column">{{ question.get_position }}</td>
+			<td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
+			<td class="sortable-column">{{ question.get_scores }}</td>
+			<td>
+				{% if question.is_visible %}
+					<button class="cycle-button mini-button success">
+						<span class="mif mif-checkmark"></span>
+					</button>
+				{% else %}
+					<button class="cycle-button mini-button danger">
+						<span class="mif mif-cross"></span>
+					</button>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 
-    {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
+	{% include "askmath/manager/question/_modal_choose_quant_items.html" %}
 
 {% endblock %}
 

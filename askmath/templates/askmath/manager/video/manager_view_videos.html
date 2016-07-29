@@ -14,94 +14,94 @@
 
 
 {%  block content %}
-    <h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Videos of {{ lesson }}{% endblocktrans %}</h3>
+	<h3 class="text-center page-title">{% blocktrans with lesson=lesson.get_title %}Videos of {{ lesson }}{% endblocktrans %}</h3>
 
-    {% if perms.askmath.write_video %}
-    <div class="cell">
-            <a id="button-video-create" href="{% url 'askmath:manager_video_add' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-success">
-                {% trans "Create" %}
-                <span class="icon mif-plus"></span>
-            </a>
-            <a id="button-video-edit" href="#" class="image-button button-primary">
-                {% trans "Edit" %}
-                <span class="icon mif-pencil"></span>
-            </a>
-            {% if is_removed %}
-            <a id="button-video-restore" href="#" class="image-button button-info">
-                {% trans "Restore" %}
-                <span class="icon mif-history"></span>
-            </a>
-            {% else %}
-            <a id="button-video-delete" href="#" class="image-button button-danger">
-                {% trans "Delete" %}
-                <span class="icon mif-minus"></span>
-            </a>
-            {% endif %}
-            <a id="button-video-sort" href="{% url 'askmath:manager_video_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-info">
-                {% trans "Sort" %}
-                <span class="icon mif-list-numbered"></span>
-            </a>
-            {% if is_removed %}
-                <a href="{% url 'askmath:manager_video_view' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
-                    {% trans "Close Dump" %}
-                    <span class="icon mif-undo"></span>
-                </a>
-            {% else %}
-                <a href="{% url 'askmath:manager_video_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}" class="image-button button-warning">
-                    {% trans "Open Dump" %}
-                    <span class="icon mif-bin"></span>
-                </a>
-            {% endif %}
-    </div>
-    {% endif %}
+	{% if perms.askmath.write_video %}
+	<div class="cell">
+			<a  class="image-button success" id="button-video-create" href="{% url 'askmath:manager_video_add' id_lesson=lesson.id  id_discipline=discipline.id %}">
+				{% trans "Create" %}
+				<span class="icon mif-plus"></span>
+			</a>
+			<a class="image-button primary" id="button-video-edit" href="#" >
+				{% trans "Edit" %}
+				<span class="icon mif-pencil"></span>
+			</a>
+			{% if is_removed %}
+			<a id="button-video-restore" class="image-button info" href="#" >
+				{% trans "Restore" %}
+				<span class="icon mif-history"></span>
+			</a>
+			{% else %}
+			<a id="button-video-delete" class="image-button danger" href="#">
+				{% trans "Delete" %}
+				<span class="icon mif-minus"></span>
+			</a>
+			{% endif %}
+			<a id="button-video-sort" class="image-button info" href="{% url 'askmath:manager_video_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
+				{% trans "Sort" %}
+				<span class="icon mif-list-numbered"></span>
+			</a>
+			{% if is_removed %}
+				<a class="image-button warning" href="{% url 'askmath:manager_video_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
+					{% trans "Close Dump" %}
+					<span class="icon mif-undo"></span>
+				</a>
+			{% else %}
+				<a class="image-button warning" href="{% url 'askmath:manager_video_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}">
+					{% trans "Open Dump" %}
+					<span class="icon mif-bin"></span>
+				</a>
+			{% endif %}
+	</div>
+	{% endif %}
 
 
 
-    <table  class="dataTable border bordered">
-        <thead>
-            <tr>
-                {% if perms.askmath.write_video %}
-                <td style="width: 10px"></td>
-                {% endif %}
-                <td>{% trans "Position" %}</td>
-                <td>{% trans "Title" %}</td>
-                <td>{% trans "Description" %}</td>
-                <td>{% trans "File" %}</td>
-                <td>{% trans "Visible" %}</td>
-            </tr>
-        </thead>
-        <tbody>
-        {% for video in videos %}
-        <tr>
-            {% if perms.askmath.write_video %}
-            <td>
-                <label class="input-control radio small-check no-margin">
-                    <input type="radio" video_id="{{ video.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_video">
-                    <span class="check"></span>
-                </label>
-            </td>
-            {% endif %}
-            <td class="sortable-column">{{ video.get_position }}</td>
-            <td class="sortable-column">{{ video.get_title }}</td>
-            <td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>
-            <td><a href="{{ video.get_file.url }}" target="_blank">{% trans "See file" %}</a></td>
-            <td>
-                {% if video.is_visible %}
-                    <button class="cycle-button mini-button button-success">
-                        <span class="mif mif-checkmark"></span>
-                    </button>
-                {% else %}
-                    <button class="cycle-button mini-button button-danger">
-                        <span class="mif mif-cross"></span>
-                    </button>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table  class="dataTable border bordered">
+		<thead>
+			<tr>
+				{% if perms.askmath.write_video %}
+				<td style="width: 10px"></td>
+				{% endif %}
+				<td>{% trans "Position" %}</td>
+				<td>{% trans "Title" %}</td>
+				<td>{% trans "Description" %}</td>
+				<td>{% trans "File" %}</td>
+				<td>{% trans "Visible" %}</td>
+			</tr>
+		</thead>
+		<tbody>
+		{% for video in videos %}
+		<tr>
+			{% if perms.askmath.write_video %}
+			<td>
+				<label class="input-control radio small-check no-margin">
+					<input type="radio" video_id="{{ video.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_video">
+					<span class="check"></span>
+				</label>
+			</td>
+			{% endif %}
+			<td class="sortable-column">{{ video.get_position }}</td>
+			<td class="sortable-column">{{ video.get_title }}</td>
+			<td class="sortable-column">{{ video.get_description|truncatechars:"255" }}</td>
+			<td><a href="{{ video.get_file.url }}" target="_blank">{% trans "See file" %}</a></td>
+			<td>
+				{% if video.is_visible %}
+					<button class="cycle-button mini-button button-success">
+						<span class="mif mif-checkmark"></span>
+					</button>
+				{% else %}
+					<button class="cycle-button mini-button button-danger">
+						<span class="mif mif-cross"></span>
+					</button>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 
-    {% include "askmath/manager/question/_modal_choose_quant_items.html" %}
+	{% include "askmath/manager/question/_modal_choose_quant_items.html" %}
 
 {% endblock %}
 

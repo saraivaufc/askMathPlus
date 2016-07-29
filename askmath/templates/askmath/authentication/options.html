@@ -15,12 +15,7 @@
 
 {% include 'nocaptcha_recaptcha/script_include.html' with multiple_recaptcha=True %}
 
-<div class="container-fluid">
-<div class="row">
-
 <div class="col-sm-12 col-sm-6 col-sm-offset-3  col-md-4 col-md-offset-4">
-	
-
 	<div class="tabcontrol" data-role="tabcontrol" data-save-state="true" id="tabcontrol_options">
 		<ul id="menu-options" class="tabs">
 			<li>
@@ -43,13 +38,10 @@
 				{% csrf_token %}
 					<input type="hidden" name="next" value="{{ request.GET.next }}" />
 					<input type="hidden" name="option" value="sign_in">
-					<hr class="thin"/>
 					{% include "askmath/_render_form.html" %}
-					<div class="form-actions">
-						<button type="submit" class="button btn-block button-primary">
-							{% trans "Sign In" %}
-						</button>
-					</div>
+					<button type="submit" class="button  primary width">
+						{% trans "Sign In" %}
+					</button>
 					{% comment %}
 					<p class="text-center">{% trans "Or" %}</p>
 					<div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -73,7 +65,6 @@
 				{% with form_signup as form %}
 				<form  id="signUpForm" action="{% url 'askmath:authentication_options' %}" method="POST" enctype="multipart/form-data"  role="form">
 				{% csrf_token %}
-					<hr class="thin"/>
 					<input type="hidden" name="option" value="sign_up">			
 					 {% include "askmath/_render_form.html" %}
 					<label class="switch">
@@ -85,17 +76,13 @@
 					</label>
 					<div id="recaptcha2"></div>
 					<br />
-					<div class="form-actions">
-						<button type="submit" class="button btn-block button-primary">
-							{% trans "Sign Up" %}
-						</button>
-					</div>
+					<button type="submit" class="button primary width">
+						{% trans "Sign Up" %}
+					</button>
 				</form>
 				{% endwith %}            
 			</div>
 		</div>
 	</div>
-</div>
-</div>
 </div>
 {% endblock %}
