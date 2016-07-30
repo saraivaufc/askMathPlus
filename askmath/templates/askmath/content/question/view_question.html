@@ -75,21 +75,27 @@
 											<span class="mif-checkmark icon"></span>
 											<span>{% trans "Reply" %}</span>
 										</button>
-										<a  id="btn-help" class="image-button info" data-toggle="modal" data-target="#help"
-										   {% ifequal question.get_help|length 0 %}disabled{% endifequal %}>
+										{% if question.get_help|length > 0 %}
+										<a  id="btn-help" class="image-button info" data-toggle="modal" data-target="#help">
 											<span class="mif-help icon"></span>
 											<span>{% trans "Help" %}</span>
 										</a>
-										<a class="image-button warning" data-toggle="modal" data-target="#jump_question"
-										   {% ifequal studentlessonstate.get_remaining_jump  0 %}disabled{% endifequal %}>
+										{% endif %}
+
+										 {% if studentlessonstate.get_remaining_jump > 0 %}
+										<a class="image-button warning" data-toggle="modal" data-target="#jump_question">
 											<span class="mif-redo icon"></span>
 											<span>{% trans "Jump" %}</span>
 										</a>
-										<a data-toggle="modal" class="image-button primary" data-target="#skipped_questions"
-										   {% if studentlessonstate.get_skipped_questions|length == 0 %}disabled{% endif %}{% if studentlessonstate.get_skipped_questions|length == 1 and question in studentlessonstate.get_skipped_questions %}disabled{% endif %}>
-											<span class="mif-history icon"></span>
-											<span>{% trans "Review Jumps" %}</span>
-										</a>
+										{% endif %}
+
+										{% if studentlessonstate.get_skipped_questions|length > 0  and not question in studentlessonstate.get_skipped_questions %}
+											<a data-toggle="modal" class="image-button primary" data-target="#skipped_questions">
+											   	<span class="mif-history icon"></span>
+												<span>{% trans "Review Jumps" %}</span>
+											</a>
+										{% endif %}
+
 										{% if  occur_obstacle or deficiencies %}
 											<a style="float: right;" class="button  danger" data-toggle="modal" data-target="#obstacleModal">
 												<span class="mif-warning mif-ani-shuttle mif-ani-slow"><span>
