@@ -1,25 +1,30 @@
 {% load i18n %}
 
 <!-- Falta traduzir isso daqui -->
-<div id="nav-accessibillity">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-6 col-sm-3 col-md-3 text-right">
-				<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %} [1]
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-				<a href="#" class="disable-contrast" id="button-contrast" accesskey="2" title="{% trans "On/Off High Contrast - Shortcut #2" %}">{% trans "High Contrast-OFF" %} [2]
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-				<a href="#" class="font-minus" id="increase-font" accesskey="3" title="{% trans "Increase Font - Shortcut #3" %}">{% trans "Increase Font" %} [3]
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-3 col-md-3 text-center">
-				<a href="#" class="font-minus" id="decrease-font" accesskey="4" title="{% trans "Decrease Font - Shortcut #4" %}">{% trans "Decrease Font" %} [4]
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
+<ul id="skiplinks" class="place-right">
+	<li>
+		<a href="#content" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">
+			{% trans "To Content" %} [1]
+		</a>
+	</li>
+	<li>
+		<a href="#navigation" accesskey="2" title="{% trans "Skip to navigation of the page - Shortcut #2" %}">
+			{% trans "To Navigation" %} [2]
+		</a>
+	</li>
+	<li>
+		<a href="#" class="disable-contrast" id="button-contrast" accesskey="3" title="{% trans "On/Off High Contrast - Shortcut #3" %}">
+			{% trans "High Contrast-OFF" %} [3]
+		</a>
+	</li>
+	<li>
+		<a href="#" class="font-minus" id="increase-font" accesskey="4" title="{% trans "Increase Font - Shortcut #4" %}">
+			{% trans "Increase Font" %} [4]
+		</a>
+	</li>
+	<li>
+		<a href="#" class="font-minus" id="decrease-font" accesskey="5" title="{% trans "Decrease Font - Shortcut #5" %}">
+			{% trans "Decrease Font" %} [5]
+		</a>
+	</li>
+</ul>

@@ -18,8 +18,8 @@
 
 <div class="row ">
 	<div class="col-md-8">
-		<h3 class="text-center page-title"><span>{% trans "Your Profile" %}</h3>
 		<div class="bg-grayLighter">
+			<h3 class="text-center page-title"><span>{% trans "Your Profile" %}</h3>
 			<br>
 			<center >
 				<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
@@ -39,20 +39,22 @@
 		</div>
 	</div>
 	<div class="col-md-4">
-		<h3 class="text-center page-title">{% trans "Options" %}</h3>
-		<div class="bg-grayLighter padding10">
-			<a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
-				<span class="icon mif-pencil"></span>
-				<span class="title">{% trans "Profile Edit" %}</span>
-			</a>
-			<a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
-				<span class="icon mif-key"></span>
-				<span class="title">{% trans "Password Alter" %}</span>
-			</a>
-			<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
-				<span class="icon mif-cross"></span>
-				<span class="title">{% trans "Account Remove" %}</span>
-			</button>
+		<div class="bg-grayLighter">
+			<h3 class="text-center page-title">{% trans "Options" %}</h3>
+			<div class="padding10">
+				<a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
+					<span class="icon mif-pencil"></span>
+					<span class="title">{% trans "Profile Edit" %}</span>
+				</a>
+				<a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
+					<span class="icon mif-key"></span>
+					<span class="title">{% trans "Password Alter" %}</span>
+				</a>
+				<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
+					<span class="icon mif-cross"></span>
+					<span class="title">{% trans "Account Remove" %}</span>
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

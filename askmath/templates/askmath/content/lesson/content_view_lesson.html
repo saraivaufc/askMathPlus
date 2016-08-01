@@ -12,24 +12,25 @@
 {% endblock %}
 
 {%  block tiles %}
-	<div class="col-xs-12 col-sm-6 col-md-8">
-		<div class="row">
-		    <h3 class="text-center page-title">{{ lesson.get_title|title }}</h3>
-
-            {% block tiles-left %}
-			<div class="padding10 text-justify lead bg-grayLighter">
-                {{ lesson.get_description|safe|linebreaksbr }}
-            </div>
-		{% endblock %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<section class="row bg-grayLighter">
+				 <h3 class="text-center page-title">{{ lesson.get_title|title }}</h3>
+			 	{% block tiles-left %}
+					<div class="padding10 text-justify lead">
+						{{ lesson.get_description|safe|linebreaksbr }}
+					</div>
+				{% endblock %}
+			</section>
 		</div>
-	</div>
 
-	<div class="col-xs-12 col-sm-6 col-md-4">
-        {% block tiles-rigth %}
-		    <h3 class="text-center page-title">{% trans "Options" %}</h3>
-            <div class="container-fluid bg-grayLighter">
-                <div class="row">
-                    <div class="padding10">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<aside class="bg-grayLighter">
+			{% block tiles-rigth %}
+				<h3 class="text-center page-title">{% trans "Options" %}</h3>
+				
+					<div class="padding10">
 						<a  href="{% url 'askmath:content_question_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="command-button success">
 							<span class="icon mif-list-numbered"></span>
 							 {% trans "Questions" %}
@@ -39,7 +40,7 @@
 							 {% endblocktrans %}
 							 </small>
 						 </a>
-                        {% comment %}
+						{% comment %}
 						<a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="command-button info">
 							<span class="icon mif-video-camera"></span>
 								{% trans "Videos" %}
@@ -50,44 +51,43 @@
 							</small>
 						</a>
 						{% endcomment %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding10">
-                        {% if studentlessonstate.get_percentage_completed == 100 %}
-                            <h5>{% trans "Sugestions next lessons:" %}</h5>
+					</div>
+					<div class="padding10">
+						{% if studentlessonstate.get_percentage_completed == 100 %}
+							<h5>{% trans "Sugestions next lessons:" %}</h5>
 
-                            <ul>
-                            {% for sugestion in lesson.get_sugestions %}
-                                <li>
-                                    <a class="tag  {{sugestion.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=sugestion.id  %}">
-                                    {{ sugestion.get_title }}
-                                    </a>
-                                </li>
-                            {% empty %}
-                                <h5>{% trans "It has no sugestions." %}</h5>
-                            {% endfor %}
-                            </ul>
-                            {% else %}
-                            <h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
+							<ul>
+							{% for sugestion in lesson.get_sugestions %}
+								<li>
+									<a class="tag  {{sugestion.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=sugestion.id  %}">
+									{{ sugestion.get_title }}
+									</a>
+								</li>
+							{% empty %}
+								<h5>{% trans "It has no sugestions." %}</h5>
+							{% endfor %}
+							</ul>
+							{% else %}
+							<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
 
-                            <ul>
-                            {% for requirement in lesson.get_requirements %}
-                                <li>
-                                    <a  class="tag {{requirement.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=requirement.id  %}">
-                                    {{ requirement }}
-                                    </a>
-                                </li>
-                            {% empty %}
-                                <h5>{% trans "It has no requirements." %}</h5>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-                </div>
-		    </div>
-        {% endblock %}
-    </div>
+							<ul>
+							{% for requirement in lesson.get_requirements %}
+								<li>
+									<a  class="tag {{requirement.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=requirement.id  %}">
+									{{ requirement }}
+									</a>
+								</li>
+							{% empty %}
+								<h5>{% trans "It has no requirements." %}</h5>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+			{% endblock %}
+			</aside>
+		</div>
+	</div>
+</div>
 
 {% endblock %}
 

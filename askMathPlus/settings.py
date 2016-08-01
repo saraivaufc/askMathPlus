@@ -217,9 +217,9 @@ USE_TZ = False
 MEDIA_ROOT = os.path.join(PROJECT_DIR, '../media')
 MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../askmath/static'),)
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 
 STATIC_URL = '/static/'
 

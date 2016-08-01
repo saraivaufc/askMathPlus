@@ -30,8 +30,8 @@ class MessageForm(ModelForm):
 
 
 class MessageFormRecaptcha(MessageForm):
-    captcha = NoReCaptchaField()
+    #captcha = NoReCaptchaField()
 
     class Meta:
         model = MessageForm.Meta.model
-        fields = ("name", "email", "message", "file", "captcha")
+        fields = ("name", "email", "message", "file")

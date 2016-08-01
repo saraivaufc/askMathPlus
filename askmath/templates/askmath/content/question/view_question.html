@@ -13,9 +13,10 @@
 {% endblock %}
 
 {% block tiles %}
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
-			<section>
+			<section class="row bg-grayLighter">
 					<h3 class="text-center page-title">
 						{% blocktrans with lesson=lesson %}Questions of {{ lesson }}{% endblocktrans %}
 					</h3>
@@ -45,7 +46,7 @@
 
 					{% endif %}
 
-					<div class="bg-grayLighter padding10">
+					<div class="padding10">
 						{% if question and lesson_complete == False %}
 						<div class="container-fluid">
 							<div class="row">
@@ -157,11 +158,11 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
-			<aside>
+			<aside class="bg-grayLighter">
 				
 				<h3 class="text-center page-title">{% trans "Your Progress" %}</h3>
 				
-				<div class="bg-grayLighter padding10">
+				<div class="padding10">
 					<h5>
 						{% trans "Your level of experience is:" %} <span
 							class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
@@ -182,6 +183,7 @@
 			</aside>
 		</div>
 	</div>
+</div>
 
 
 

@@ -3,9 +3,12 @@
 	Original version: http://magdeleine.co/photo-billy-lam-n-1/;
 */
 
+html{
+	background-color: #ddd;
+}
+
 body{
 	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
-	background-color: #fff;
 	line-height: 1.1;
 	font-weight: 400;
 	font-style: normal;
@@ -15,6 +18,8 @@ body{
   	-o-background-size: cover;
   	background-size: cover;
 }
+
+
 
 html, body {
     height: 100%;
@@ -28,6 +33,9 @@ html, body {
 	min-height: 100%;
 }
 
+#main{
+	background-color: #fff;
+}
 
 /* DIVIDERS */
 .divider{
@@ -165,11 +173,6 @@ opacity */
 	margin: 0px;
 }
 
-.app-bar-element.branding{
-	font-size: 150% !important;
-	font-weight: bold;
-}
-
 .noborder{
 	border: 0px;
 }
@@ -177,8 +180,6 @@ opacity */
 .right {
   float: right;
 }
-
-
 
 .container-video{
 	margin-left: auto;
@@ -192,10 +193,6 @@ opacity */
 /* LINKS */
 a{
 	text-decoration: underline;
-}
-
-.app-bar a, .button a, .tabs a,  .image-button, .shortcut-button, .button{
-	text-decoration: none !important;
 }
 
 .btn-social{
@@ -511,9 +508,6 @@ label.caption{
 	display: none;
 }
 
-.app-bar-element > a{
-	color: #fff;
-}
 
 .page-title{
 	font-family:"Trebuchet MS", Helvetica, sans-serif;

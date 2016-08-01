@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load askmath_tags %}
+
+{% autoescape off %}
+
+	<h2>{% SETTINGS "SITE_NAME" %}</h2>
+	<p>
+	{% with SITE_NAME|settings as site_name %}
+		{% blocktrans with site_name=site_name %}
+			You received this email because someone messageed.
+		{% endblocktrans %}
+	{% endwith %}
+	<p>
+
+	<div>{% trans "Name" %}: {{ message.get_name }}</div>
+	<div>{% trans "Email" %}: <a href="mailto:{{ message.get_email }}">{{ message.get_email }}</a></div>
+	<div>{% trans "Message" %}: {{ message.get_message }}</div>
+	{% if message.get_file %}
+	<div>{% trans "File" %}: <a href="{{ SITE_URL }}{{ message.get_file.url }}">{% trans "Download File" %}</a>
+	{% endif %}
+
+{% endautoescape %}

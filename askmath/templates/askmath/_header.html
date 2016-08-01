@@ -1,12 +1,23 @@
 {% load i18n %}
 {% load askmath_tags %}
-<div class="app-bar navy" data-role="appbar">
-	<a class="app-bar-element branding" href="/home/">
-		{% SETTINGS "SITE_NAME" %}
-	</a>
+{% load staticfiles %}
+
+<div class="header">
+	{% include 'askmath/_header_accessibility.html' %}
+	<div class="wrap">
+		<div class="logo" style="padding: 5px 30px 5px 30px; ">
+			<a href="{% url 'askmath:home' %}">
+				<img src="{% static 'askmath/img/logos/barner_header.png' %}" title="logo" />
+			</a>
+		</div>
+		<div class="clear"> </div>
+	</div>
+</div>
+
+<div class="app-bar">
 	 <span class="app-bar-divider"></span>
 
-	<ul class="app-bar-menu">
+	<ul id="navigation" class="app-bar-menu">
 		<li>
 			<a href="{% url 'askmath:home' %}">
 				<span class="mif-home"></span> {% trans "Home" %}
@@ -34,59 +45,57 @@
 	</div>
 	{% else %}
 	<div class="app-bar-element place-right">
-        <a class="dropdown-toggle fg-white"><span class="mif-user"></span> {{ request.user.get_full_name }}</a>
-        <div class="app-bar-drop-container bg-white fg-dark place-right"
-                data-role="dropdown" data-no-close="true">
-            <div>
-            	<div id="profile" class="image-container">
-					<div class="frame">
-						{% if request.user.get_profile_image %}
-						<img class="img" src="{{ request.user.get_profile_image.url }}">
-						{% else %}
-						<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
-						{% endif %}
-					</div>
-					<label class="image-title fg-white text-center">
-						<a href="{% url 'askmath:person_account_view' %}">
-							{{ request.user.get_full_name }}
-						</a>
-					</label>
+		<a class="dropdown-toggle fg-white"><span class="mif-user"></span> {{ request.user.get_full_name }}</a>
+		<div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true">
+			<div id="profile" class="image-container">
+				<div class="frame">
+					{% if request.user.get_profile_image %}
+					<img class="img" src="{{ request.user.get_profile_image.url }}">
+					{% else %}
+					<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+					{% endif %}
 				</div>
-                <ul class="v-menu width subdown navy">
-					<li>
-						<a href="{% url 'askmath:person_account_view' %}">
-							<span class="icon mif-user"></span>
-							<span class="title">{% trans "Profile" %}</span>
-						</a>
-					</li>
-					{% comment %}
-					<li>
-						<a href="{% url 'askmath:person_account_view' %}">
-							<span class="icon mif-help"></span>
-							<span class="title">{% trans "Help" %}</span>
-						</a>
-					</li>
-					{% endcomment %}
-					<li>
-						<a href="{% url 'askmath:authentication_logout' %}">
-							<span class="icon mif-switch"></span>
-							<span class="title">{% trans "Logout" %}</span>
-						</a>
-					</li>
-				</ul>
-            </div>
-        </div>
-    </div>
+				<label class="image-title fg-white text-center">
+					<a href="{% url 'askmath:person_account_view' %}">
+						{{ request.user.get_full_name }}
+					</a>
+				</label>
+			</div>
+				
+			<ul class="v-menu width subdown navy">
+				<li>
+					<a href="{% url 'askmath:person_account_view' %}">
+						<span class="icon mif-user"></span>
+						<span class="title">{% trans "Profile" %}</span>
+					</a>
+				</li>
+				{% comment %}
+				<li>
+					<a href="{% url 'askmath:person_account_view' %}">
+						<span class="icon mif-help"></span>
+						<span class="title">{% trans "Help" %}</span>
+					</a>
+				</li>
+				{% endcomment %}
+				<li>
+					<a href="{% url 'askmath:authentication_logout' %}">
+						<span class="icon mif-switch"></span>
+						<span class="title">{% trans "Logout" %}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 	{% endif %}
 
 	{% if perms.askmath.access_content %}
 	<div class="app-bar-element place-right no-hover">
 		<form action="{% url 'askmath:utils_filter_search' %}" method="post" role="search">{% csrf_token %}
-            <div class="input-control text" style="width: 250px; margin-right: 10px">
-                <input id="search" name="search" type="text" maxlength="100" type="text" placeholder="{% trans "Search" %}..." required>
-                <button class="button"><span class="mif-search fg-darkBlue"></span></button>
-            </div>
-        </form>
+						<div class="input-control text" style="width: 250px; margin-right: 10px">
+								<input id="search" name="search" type="text" maxlength="100" type="text" placeholder="{% trans "Search" %}..." required>
+								<button class="button"><span class="mif-search fg-darkBlue"></span></button>
+						</div>
+				</form>
 	</div>
 	{% endif %}
 </div>

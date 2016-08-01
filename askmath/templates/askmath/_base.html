@@ -78,17 +78,14 @@
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/metro.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/images.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/shapes.css" >
-		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/base.css">
-		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/accessibility.css" >
-		
 		
 		<!-- RESPONSIVE -->
+		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/base.css">
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/tablet.css" media="(max-width: 980px)">
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/mobile.css" media="(max-width: 680px)">
 
-		{% if perms.askmath.access_manager %}
-		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/manager.css" >
-		{% endif %}	
+		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/accessibility.css" >
+		
 
 		{% block stylesheet %}
 		
@@ -107,7 +104,6 @@
 		<div id="site">
 			<header id="header">
 				{% include 'askmath/_no_script.html' %}
-				{% include 'askmath/_header_accessibility.html' %}
 				{% block header %}
 					{% include 'askmath/_header.html' %}
 				{% endblock %}
@@ -118,17 +114,17 @@
 					{% include 'askmath/_messages.html' %}
 					{% endblock %}
 				</section>
-				<section id="content">
+				<section>
 					<div class="container-fluid">
-                        <div class="row">
-                            <section style="padding: 0px 10px;">
-                                {% block header_two %}
-                                {% endblock %}
-                                {% block content %}
-                                {% endblock %}
-                            </section>
-                        </div>
-                    </div>
+						<div class="row">
+							<section style="padding: 0px 10px;">
+									{% block header_two %}
+									{% endblock %}
+									{% block content %}
+									{% endblock %}
+							</section>
+						</div>
+					</div>
 				</section>
 				<section id="modals"> 
 					{% block modals %}
@@ -188,8 +184,8 @@
 		
 		{% block scripts %}
 		{% endblock %}
-	  	{% comment %}
-	  		{% include "askmath/send_feedback.html"  %}
+			{% comment %}
+				{% include "askmath/send_feedback.html"  %}
 		{% endcomment %}
 	</body>
 </html>

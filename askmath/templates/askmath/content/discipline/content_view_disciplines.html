@@ -8,7 +8,7 @@
 {% block content %}
 	<div class="tile-container">
 	{% block tiles %}
-	<div class="tile-area  no-padding">
+	<div class="tile-area  no-padding bg-grayLighter">
         {% if current_classe %}
             <h3 class="text-center page-title">
                 {% blocktrans with current_classe=current_classe %}
@@ -19,7 +19,7 @@
             <h3 class="text-center page-title">{% trans "All Disciplines" %}</h3>
         {% endif %}
 
-		<div class="tile-container bg-grayLighter">
+		<div class="tile-container">
 		{% for discipline in disciplines %}
 			<div class="tile-wide {{ discipline.color }}">
 				<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tile-content slide-down iconic">

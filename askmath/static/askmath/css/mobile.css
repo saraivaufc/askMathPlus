@@ -1,17 +1,6 @@
-body{
-	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
-	line-height: 1.1;
-	background-color: #fff;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 1.65;
-  	background-size: cover;
-}
-
-
 .container, .container-fluid, .container:not(.no-responsive-future), .container-fluid:not(.no-responsive-future){
 	padding-right: 15px;
-    padding-left: 15px;
+ 	padding-left: 15px;
 }
 
 
@@ -26,8 +15,8 @@ body{
 }
 
 .tile, .tile-wide{
-	width: 150px;
-  	height: 150px;
+	width: 150px !important;
+  	height: 150px !important;
 }
 
 .flex-grid:not(.no-responsive-future) .row {
