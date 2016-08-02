@@ -1,5 +1,4 @@
 function Init() {
-    resize_window();
     Preview.Init();
 };
 
@@ -53,7 +52,10 @@ function resize_window() {
     $("#site").css("min-height", (site - footer) + "px");
 }
 
-$(window).resize(resize_window);
+$(function(){
+    resize_window();
+    $(window).resize(resize_window);
+})
 
 $(function () {
     $('.button-checkbox').each(function () {

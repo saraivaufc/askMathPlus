@@ -1,16 +1,10 @@
 /*---start-header*/
 .header{
-    border-bottom: 1px ridge #365ebf;
     background: #3498db; /* Old browsers */
     background-image: url('/static/askmath/img/logos/barner_background.png');
     background-repeat: no-repeat;
     background-size: cover;
     padding: 1px 0px 1px 0px;
-}
-
-.app-bar-element.branding{
-    font-size: 150% !important;
-    font-weight: bold;
 }
 
 .app-bar a, .button a, .tabs a,  .image-button, .shortcut-button, .button{
@@ -46,11 +40,10 @@
 
 ul#skiplinks li {
     display:inline;
-    color: #fff !important;
     font-size: 12px;
 }
 
 ul#skiplinks li a{
-    color: #fff !important;
+    color: #000 !important;
     text-decoration: none;
 }

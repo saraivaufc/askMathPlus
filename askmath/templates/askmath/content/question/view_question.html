@@ -167,7 +167,11 @@
 						{% trans "Your level of experience is:" %} <span
 							class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
 					</h5>
-					<img src="{{ experience_level.get_image_url }}" class="img img-responsive img-avatar">
+					<div class="padding30">
+						<center>
+						<img src="{{ experience_level.get_image_url }}"  class="img img-responsive img-avatar">
+						</center>
+					</div>
 					<div class="text-center">
 						<div class="rating large" data-size="large">
 							{% for i in 5|range %}
