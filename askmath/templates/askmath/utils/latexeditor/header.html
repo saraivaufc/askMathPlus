@@ -1,407 +1,393 @@
-<div id="wrap" class="wrap">
-			<div id="bar1" class="top">
-				<div class="toolbar_wrapper">
-					<div class="toolbar" style="z-index:22">
-						<div class="panel" id="panel14" style="height:23px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/style.gif" title="Style" alt="Style Panel" usemap="#style_map" height="184" width="106" border="0">
-							<map name="style_map" id="style_map">
-								<area shape="rect" alt="" title="Math Bold Greek" coords="0,0,50,20" onclick="EqEditor.insert('\\boldsymbol{}')">
-								<area shape="rect" alt="" title="Math Bold" coords="0,23,50,43" onclick="EqEditor.insert('\\mathbf{}')">
-								<area shape="rect" alt="" title="Math Italic" coords="0,46,50,66" onclick="EqEditor.insert('\\mathit{}')">
-								<area shape="rect" alt="" title="Math Roman" coords="0,69,50,89" onclick="EqEditor.insert('\\mathrm{}')">
-								<area shape="rect" alt="" title="Math Fraktur" coords="0,92,50,112" onclick="EqEditor.insert('\\mathfrak{}')">
-								<area shape="rect" alt="" title="Math Blackboard" coords="0,115,50,135" onclick="EqEditor.insert('\\mathbb{}')">
-								<area shape="rect" alt="" title="Text Upright" coords="53,0,103,20" onclick="EqEditor.insert('\\textup{}')">
-								<area shape="rect" alt="" title="Text Bold" coords="53,23,103,43" onclick="EqEditor.insert('\\textbf{}')">
-								<area shape="rect" alt="" title="Text Italic" coords="53,46,103,66" onclick="EqEditor.insert('\\textit{}')">
-								<area shape="rect" alt="" title="Text Roman" coords="53,69,103,89" onclick="EqEditor.insert('\\textrm{}')">
-								<area shape="rect" alt="" title="Text Slanted" coords="53,92,103,112" onclick="EqEditor.insert('\\textsl{}')">
-								<area shape="rect" alt="" title="Text Typewriter" coords="53,115,103,135" onclick="EqEditor.insert('\\texttt{}')">
-								<area shape="rect" alt="" title="Text Small Caps" coords="53,138,103,158" onclick="EqEditor.insert('\\textsc{}')">
-								<area shape="rect" alt="" title="Text Emphasis" coords="53,161,103,181" onclick="EqEditor.insert('\\emph{}')">
-							</map>
-						</div>
-						<div class="panel" id="panel13" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/spaces.gif" title="Spaces" alt="Spaces Panel" usemap="#spaces_map" height="68" width="31" border="0">
-							<map name="spaces_map" id="spaces_map">
-								<area shape="rect" alt="" title="thin space" coords="0,0,28,14" onclick="EqEditor.insert('\\,')">
-								<area shape="rect" alt="" title="medium space" coords="0,17,28,31" onclick="EqEditor.insert('\\:')">
-								<area shape="rect" alt="" title="thick space" coords="0,34,28,48" onclick="EqEditor.insert('\\;')">
-								<area shape="rect" alt="" title="negative space" coords="0,51,28,65" onclick="EqEditor.insert('\\!')">
-							</map>
-						</div>
-						<div class="panel" id="panel4" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/binary.gif" title="Binary" alt="Binary Panel" usemap="#binary_map" height="238" width="68" border="0">
-							<map name="binary_map" id="binary_map">
-								<area title="\pm$" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\mp" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\times" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\ast" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\div" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\setminus" shape="rect" alt="" coords="0,85,14,99">
-								<area title="\dotplus" shape="rect" alt="" coords="0,102,14,116">
-								<area title="\amalg" shape="rect" alt="" coords="0,119,14,133">
-								<area title="\dagger" shape="rect" alt="" coords="0,136,14,150">
-								<area title="\ddagger" shape="rect" alt="" coords="0,153,14,167">
-								<area title="\wr" shape="rect" alt="" coords="0,170,14,184">
-								<area title="\diamond" shape="rect" alt="" coords="0,187,14,201">
-								<area title="\circledcirc" shape="rect" alt="" coords="0,204,14,218">
-								<area title="\circledast" shape="rect" alt="" coords="0,221,14,235">
-								<area title="\cap" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\Cap" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\sqcap" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\wedge" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\barwedge" shape="rect" alt="" coords="17,68,31,82">
-								<area title="\triangleleft" shape="rect" alt="" coords="17,85,31,99">
-								<area title="\lozenge" shape="rect" alt="" coords="17,102,31,116">
-								<area title="\circ" shape="rect" alt="" coords="17,119,31,133">
-								<area title="\square" shape="rect" alt="" coords="17,136,31,150">
-								<area title="\triangle" shape="rect" alt="" coords="17,153,31,167">
-								<area title="\triangledown" shape="rect" alt="" coords="17,170,31,184">
-								<area title="\ominus" shape="rect" alt="" coords="17,187,31,201">
-								<area title="\oslash" shape="rect" alt="" coords="17,204,31,218">
-								<area title="\circleddash" shape="rect" alt="" coords="17,221,31,235">
-								<area title="\cup" shape="rect" alt="" coords="34,0,48,14">
-								<area title="\Cup" shape="rect" alt="" coords="34,17,48,31">
-								<area title="\sqcup" shape="rect" alt="" coords="34,34,48,48">
-								<area title="\vee" shape="rect" alt="" coords="34,51,48,65">
-								<area title="\veebar" shape="rect" alt="" coords="34,68,48,82">
-								<area title="\triangleright" shape="rect" alt="" coords="34,85,48,99">
-								<area title="\blacklozenge" shape="rect" alt="" coords="34,102,48,116">
-								<area title="\bullet" shape="rect" alt="" coords="34,119,48,133">
-								<area title="\blacksquare" shape="rect" alt="" coords="34,136,48,150">
-								<area title="\blacktriangle" shape="rect" alt="" coords="34,153,48,167">
-								<area title="\blacktriangledown" shape="rect" alt="" coords="34,170,48,184">
-								<area title="\oplus" shape="rect" alt="" coords="34,187,48,201">
-								<area title="\otimes" shape="rect" alt="" coords="34,204,48,218">
-								<area title="\odot" shape="rect" alt="" coords="34,221,48,235">
-								<area title="\cdot" shape="rect" alt="" coords="51,0,65,14">
-								<area title="\uplus" shape="rect" alt="" coords="51,17,65,31">
-								<area title="\bigsqcup" shape="rect" alt="" coords="51,34,65,48">
-								<area title="\bigtriangleup" shape="rect" alt="" coords="51,51,65,65">
-								<area title="\bigtriangledown" shape="rect" alt="" coords="51,68,65,82">
-								<area title="\star" shape="rect" alt="" coords="51,85,65,99">
-								<area title="\bigstar" shape="rect" alt="" coords="51,102,65,116">
-								<area title="\bigcirc" shape="rect" alt="" coords="51,119,65,133">
-								<area title="\bigoplus" shape="rect" alt="" coords="51,136,65,150">
-								<area title="\bigotimes" shape="rect" alt="" coords="51,153,65,167">
-								<area title="\bigodot" shape="rect" alt="" coords="51,170,65,184">
-							</map>
-						</div>
-						<div class="panel" id="panel16" style="height: 34px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/symbols.gif" title="Symbols" alt="Symbols Panel" usemap="#symbols_map" height="136" width="68" border="0">
-							<map name="symbols_map" id="symbols_map">
-								<area shape="rect" alt="" title="therefore" coords="0,0,14,14">
-								<area shape="rect" alt="" title="because" coords="0,17,14,31">
-								<area shape="rect" alt="" title="horizontal dots" coords="0,34,14,48">
-								<area shape="rect" alt="" title="diagonal dots" coords="0,51,14,65">
-								<area shape="rect" alt="" title="vertical dots" coords="0,68,14,82">
-								<area shape="rect" alt="" title="section" coords="0,85,14,99">
-								<area shape="rect" alt="" title="paragraph" coords="0,102,14,116">
-								<area shape="rect" alt="" title="copyright" coords="0,119,14,133">
-								<area shape="rect" alt="" title="partial" coords="17,0,31,14">
-								<area title="\imath" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\jmath" shape="rect" alt="" coords="17,34,31,48">
-								<area shape="rect" alt="" title="real" coords="17,51,31,65">
-								<area shape="rect" alt="" title="imaginary" coords="17,68,31,82">
-								<area title="\forall" shape="rect" alt="" coords="17,85,31,99">
-								<area title="\exists" shape="rect" alt="" coords="17,102,31,116">
-								<area title="\top" shape="rect" alt="" coords="17,119,31,133">
-								<area shape="rect" alt="" title="prime" coords="34,0,48,14">
-								<area shape="rect" alt="" title="natural" coords="34,17,48,31">
-								<area shape="rect" alt="" title="integers" coords="34,34,48,48">
-								<area shape="rect" alt="" title="irrational" coords="34,51,48,65">
-								<area shape="rect" alt="" title="rational" coords="34,68,48,82">
-								<area shape="rect" alt="" title="real" coords="34,85,48,99">
-								<area shape="rect" alt="" title="complex" coords="34,102,48,116">
-								<area title="\angle" shape="rect" alt="" coords="51,0,65,14">
-								<area title="\measuredangle" shape="rect" alt="" coords="51,17,65,31">
-								<area title="\sphericalangle" shape="rect" alt="" coords="51,34,65,48">
-								<area title="\varnothing" shape="rect" alt="" coords="51,51,65,65">
-								<area title="\infty" shape="rect" alt="" coords="51,68,65,82">
-								<area title="\mho" shape="rect" alt="" coords="51,85,65,99">
-								<area title="\wp" shape="rect" alt="" coords="51,102,65,116">
-							</map>
-						</div>
-						<div class="panel" id="panel6" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/foreign.gif" title="Foreign" alt="Foreign Panel" usemap="#foreign_map" height="136" width="34" border="0">
-							<map name="foreign_map" id="foreign_map">
-								<area title="\aa" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\ae" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\l" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\o" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\oe" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\ss" shape="rect" alt="" coords="0,85,14,99">
-								<area shape="rect" alt="" title="Dollar" coords="0,102,14,116">
-								<area shape="rect" alt="" title="Cent" coords="0,119,14,133">
-								<area title="\AA" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\AE" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\L" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\O" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\OE" shape="rect" alt="" coords="17,68,31,82">
-								<area title="\SS" shape="rect" alt="" coords="17,85,31,99">
-								<area shape="rect" alt="" title="Pound" coords="17,102,31,116">
-								<area shape="rect" alt="" title="Euro" coords="17,119,31,133">
-							</map>
-						</div>
-						<div class="panel" id="panel15" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/subsupset.gif" title="Subsupset" alt="Subsupset Panel" usemap="#subsupset_map" height="153" width="34" border="0">
-							<map name="subsupset_map" id="subsupset_map">
-								<area title="\sqsubset" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\sqsubseteq" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\subset" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\subseteq" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\nsubseteq" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\subseteqq" shape="rect" alt="" coords="0,85,14,99">
-								<area title="\nsubseteq" shape="rect" alt="" coords="0,102,14,116">
-								<area title="\in" shape="rect" alt="" coords="0,119,14,133">
-								<area title="\notin" shape="rect" alt="" coords="0,136,14,150">
-								<area title="\sqsupset" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\sqsupseteq" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\supset" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\supseteq" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\nsupseteq" shape="rect" alt="" coords="17,68,31,82">
-								<area title="\supseteqq" shape="rect" alt="" coords="17,85,31,99">
-								<area title="\nsupseteqq" shape="rect" alt="" coords="17,102,31,116">
-								<area title="\ni" shape="rect" alt="" coords="17,119,31,133">
-							</map>
-						</div>
-						<div class="panel" id="panel1" style="height: 34px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/accents.gif" title="Accents" alt="Accents Panel" usemap="#accents_map" height="119" width="34" border="0">
-							<map name="accents_map" id="accents_map">
-								<area title="a'" shape="rect" alt="" coords="0,0,14,14" onclick="EqEditor.insert('{}\'')">
-								<area title="\dot{a}" shape="rect" alt="" coords="0,17,14,31" onclick="EqEditor.insert('\\dot{}')">
-								<area title="\hat{a}" shape="rect" alt="" coords="0,34,14,48" onclick="EqEditor.insert('\\hat{}')">
-								<area title="\grave{a}" shape="rect" alt="" coords="0,51,14,65" onclick="EqEditor.insert('\\grave{}')">
-								<area title="\tilde{a}" shape="rect" alt="" coords="0,68,14,82" onclick="EqEditor.insert('\\tilde{}')">
-								<area title="\bar{a}" shape="rect" alt="" coords="0,85,14,99" onclick="EqEditor.insert('\\bar{}')">
-								<area title="\not{a}" shape="rect" alt="" coords="0,102,14,116">
-								<area title="a''" shape="rect" alt="" coords="17,0,31,14" onclick="EqEditor.insert('{}\'\'')">
-								<area title="\ddot{a}" shape="rect" alt="" coords="17,17,31,31" onclick="EqEditor.insert('\\ddot{}')">
-								<area title="\check{a}" shape="rect" alt="" coords="17,34,31,48" onclick="EqEditor.insert('\\check{}')">
-								<area title="\acute{a}" shape="rect" alt="" coords="17,51,31,65" onclick="EqEditor.insert('\\acute{}')">
-								<area title="\breve{a}" shape="rect" alt="" coords="17,68,31,82" onclick="EqEditor.insert('\\breve{}')">
-								<area title="\vec{a}" shape="rect" alt="" coords="17,85,31,99" onclick="EqEditor.insert('\\vec{}')">
-								<area shape="rect" alt="" title="degrees" coords="17,102,31,116" onclick="EqEditor.insert('^{\\circ}',0)">
-							</map>
-						</div>
-						<div class="panel" id="panel2" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/accents_ext.gif" title="Accents_ext" alt="Accents_ext Panel" usemap="#accents_ext_map" height="170" width="25" border="0">
-							<map name="accents_ext_map" id="accents_ext_map">
-								<area title="\widetilde{abc}" shape="rect" alt="" coords="0,0,22,14" onclick="EqEditor.insert('\\widetilde{}',11)">
-								<area title="\widehat{abc}" shape="rect" alt="" coords="0,17,22,31" onclick="EqEditor.insert('\\widehat{}',9)">
-								<area title="\overleftarrow{abc}" shape="rect" alt="" coords="0,34,22,48" onclick="EqEditor.insert('\\overleftarrow{}',15)">
-								<area title="\overrightarrow{abc}" shape="rect" alt="" coords="0,51,22,65" onclick="EqEditor.insert('\\overrightarrow{}',16)">
-								<area title="\overline{abc}" shape="rect" alt="" coords="0,68,22,82" onclick="EqEditor.insert('\\overline{}',10)">
-								<area title="\underline{abc}" shape="rect" alt="" coords="0,85,22,99" onclick="EqEditor.insert('\\underline{}',11)">
-								<area title="\overbrace{abc}" shape="rect" alt="" coords="0,102,22,116" onclick="EqEditor.insert('\\overbrace{}',11)">
-								<area title="\underbrace{abc}" shape="rect" alt="" coords="0,119,22,133" onclick="EqEditor.insert('\\underbrace{}',12)">
-								<area title="\overset{a}{abc}" shape="rect" alt="" coords="0,136,22,150" onclick="EqEditor.insert('\\overset{}{}',9,11)">
-								<area title="\underset{a}{abc}" shape="rect" alt="" coords="0,153,22,167" onclick="EqEditor.insert('\\underset{}{}',10,12)">
-							</map>
-						</div>
-						<div class="panel" id="panel3" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/arrows.gif" title="Arrows" alt="Arrows Panel" usemap="#arrows_map" height="170" width="56" border="0">
-							<map name="arrows_map" id="arrows_map">
-								<area shape="rect" alt="" title="\mapsto" coords="0,0,25,14">
-								<area title="\leftarrow" shape="rect" alt="" coords="0,17,25,31">
-								<area title="\Leftarrow" shape="rect" alt="" coords="0,34,25,48">
-								<area title="\leftrightarrow" shape="rect" alt="" coords="0,51,25,65">
-								<area title="\leftharpoonup" shape="rect" alt="" coords="0,68,25,82">
-								<area title="\leftharpoondown" shape="rect" alt="" coords="0,85,25,99">
-								<area title="\leftrightharpoons" shape="rect" alt="" coords="0,102,25,116">
-								<area title="\xleftarrow[text]{long}" shape="rect" alt="" coords="0,119,25,133" onclick="EqEditor.insert('\\xleftarrow[]{}',12)">
-								<area title="\overset{a}{\leftarrow}" shape="rect" alt="" coords="0,136,25,150" onclick="EqEditor.insert('\\overset{}{\\leftarrow}',9)">
-								<area title="\underset{a}{\leftarrow}" shape="rect" alt="" coords="0,153,25,167" onclick="EqEditor.insert('\\underset{}{\\leftarrow}',10)">
-								<area title="n \to" shape="rect" alt="" coords="28,0,53,14">
-								<area title="\rightarrow" shape="rect" alt="" coords="28,17,53,31">
-								<area title="\Rightarrow" shape="rect" alt="" coords="28,34,53,48">
-								<area title="\Leftrightarrow" shape="rect" alt="" coords="28,51,53,65">
-								<area title="\rightharpoonup" shape="rect" alt="" coords="28,68,53,82">
-								<area title="\rightharpoondown" shape="rect" alt="" coords="28,85,53,99">
-								<area title="\rightleftharpoons" shape="rect" alt="" coords="28,102,53,116">
-								<area title="\xrightarrow[text]{long}" shape="rect" alt="" coords="28,119,53,133" onclick="EqEditor.insert('\\xrightarrow[]{}',13)">
-								<area title="\overset{a}{\rightarrow}" shape="rect" alt="" coords="28,136,53,150" onclick="EqEditor.insert('\\overset{}{\\rightarrow}',9)">
-								<area title="\underset{a}{\rightarrow}" shape="rect" alt="" coords="28,153,53,167" onclick="EqEditor.insert('\\underset{}{\\rightarrow}',10)">
-							</map>
-						</div>
-					</div>
-				</div>
-				<div class="toolbar_wrapper">
-					<div class="toolbar" style="z-index:21">
-						<div class="panel" id="panel11" style="height: 28px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/operators.gif" title="Operators" alt="Operators Panel" usemap="#operators_map" height="140" width="168" border="0">
-							<map name="operators_map" id="operators_map">
-								<area shape="rect" alt="" title="superscript" coords="0,0,25,25" onclick="EqEditor.insert('^{}',2,0)">
-								<area shape="rect" alt="" title="subscript" coords="0,28,25,53" onclick="EqEditor.insert('_{}',2,0)">
-								<area title="x_a^b" shape="rect" alt="" coords="0,56,25,81" onclick="EqEditor.insert('_{}^{}',2,0)">
-								<area title="{x_a}^b" shape="rect" alt="" coords="0,84,25,109" onclick="EqEditor.insert('{_{}}^{}',1)">
-								<area shape="rect" alt="" title="_{a}^{b}\textrm{C}" coords="0,112,25,137" onclick="EqEditor.insert('_{}^{}\\textrm{}',2,14)">
-								<area shape="rect" alt="" title="fraction" coords="28,0,53,25" onclick="EqEditor.insert('\\frac{}{}',6)">
-								<area shape="rect" alt="" title="tiny fraction" coords="28,28,53,53" onclick="EqEditor.insert('\\tfrac{}{}',7)">
-								<area title="\frac{\partial }{\partial x}" shape="rect" alt="" coords="28,56,53,81" onclick="EqEditor.insert('\\frac{\\partial }{\\partial x}',15)">
-								<area title="\frac{\partial^2 }{\partial x^2}" shape="rect" alt="" coords="28,84,53,109" onclick="EqEditor.insert('\\frac{\\partial^2 }{\\partial x^2}',17)">
-								<area title="\frac{\mathrm{d} }{\mathrm{d} x}" shape="rect" alt="" coords="28,112,53,137" onclick="EqEditor.insert('\\frac{\\mathrm{d} }{\\mathrm{d} x}',17)">
-								<area title="\int" shape="rect" alt="" coords="56,0,81,25">
-								<area shape="rect" alt="" title="\int_{}^{}" coords="56,28,81,53" onclick="EqEditor.insert('\\int_{}^{}',6,1000)">
-								<area title="\oint" shape="rect" alt="" coords="56,56,81,81" onclick="EqEditor.insert('\\oint')">
-								<area shape="rect" alt="" title="\oint_{}^{}" coords="56,84,81,109" onclick="EqEditor.insert('\\oint_{}^{}',7,1000)">
-								<area shape="rect" alt="" title="\iint_{}^{}" coords="56,112,81,137" onclick="EqEditor.insert('\\iint_{}^{}',7,1000)">
-								<area title="\bigcap" shape="rect" alt="" coords="84,0,109,25">
-								<area shape="rect" alt="" title="\bigcap_{}^{}" coords="84,28,109,53" onclick="EqEditor.insert('\\bigcap_{}^{}',9,1000)">
-								<area title="\bigcup" shape="rect" alt="" coords="84,56,109,81" onclick="EqEditor.insert('\\bigcup')">
-								<area shape="rect" alt="" title="\bigcup_{}^{}" coords="84,84,109,109" onclick="EqEditor.insert('\\bigcup_{}^{}',9,1000)">
-								<area shape="rect" alt="" title="\lim_{x \to 0}" coords="84,112,109,137" onclick="EqEditor.insert('\\lim_{}')">
-								<area title="\sum" shape="rect" alt="" coords="112,0,137,25">
-								<area shape="rect" alt="" title="\sum_{}^{}" coords="112,28,137,53" onclick="EqEditor.insert('\\sum_{}^{}',6)">
-								<area shape="rect" alt="" title="\sqrt{}" coords="112,56,137,81" onclick="EqEditor.insert('\\sqrt{}',6,6)">
-								<area shape="rect" alt="" title="\sqrt[]{}" coords="112,84,137,109" onclick="EqEditor.insert('\\sqrt[]{}',6,8)">
-								<area title="\prod" shape="rect" alt="" coords="140,0,165,25">
-								<area shape="rect" alt="" title="\prod_{}^{}" coords="140,28,165,53" onclick="EqEditor.insert('\\prod_{}^{}',7,1000)">
-								<area title="\coprod" shape="rect" alt="" coords="140,56,165,81">
-								<area shape="rect" alt="" title="\coprod_{}^{}" coords="140,84,165,109" onclick="EqEditor.insert('\\coprod_{}^{}',9,1000)">
-							</map>
-						</div>
-						<div class="panel" id="panel5" style="height:28px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/brackets.gif" title="Brackets" alt="Brackets Panel" usemap="#brackets_map" height="140" width="56" border="0">
-							<map name="brackets_map" id="brackets_map">
-								<area shape="rect" alt="" title="\left ( \right )" coords="0,0,25,25" onclick="EqEditor.insert('\\left (  \\right )',8)">
-								<area shape="rect" alt="" title="\left ( \right )" coords="0,28,25,53" onclick="EqEditor.insert('\\left [  \\right ]',8)">
-								<area shape="rect" alt="" title="\left\{ \right\}" coords="0,56,25,81" onclick="EqEditor.insert('\\left \\{  \\right \\}',9)">
-								<area shape="rect" alt="" title="\left | \right |" coords="0,84,25,109" onclick="EqEditor.insert('\\left |  \\right |',8)">
-								<area shape="rect" alt="" title="\left \{ \right." coords="0,112,25,137" onclick="EqEditor.insert('\\left \\{  \\right.',9)">
-								<area shape="rect" alt="" title="\left \| \right \|" coords="28,0,53,25" onclick="EqEditor.insert('\\left \\|  \\right \\|',9)">
-								<area shape="rect" alt="" title="\left \langle \right \rangle" coords="28,28,53,53" onclick="EqEditor.insert('\\left \\langle  \\right \\rangle',14)">
-								<area shape="rect" alt="" title="\left \lfloor \right \rfloor" coords="28,56,53,81" onclick="EqEditor.insert('\\left \\lfloor  \\right \\rfloor',14)">
-								<area shape="rect" alt="" title="\left \lceil \right \rceil" coords="28,84,53,109" onclick="EqEditor.insert('\\left \\lceil  \\right \\rceil',13)">
-								<area shape="rect" alt="" title="\left. \right \}" coords="28,112,53,137" onclick="EqEditor.insert('\\left.  \\right \\}',7)">
-							</map>
-						</div>
-						<div class="panel" id="panel8" style="height: 34px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/greeklower.gif" title="Greeklower" alt="Greeklower Panel" usemap="#greeklower_map" height="136" width="68" border="0">
-							<map name="greeklower_map" id="greeklower_map">
-								<area title="\alpha" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\epsilon" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\theta" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\lambda" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\pi" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\sigma" shape="rect" alt="" coords="0,85,14,99">
-								<area title="\phi" shape="rect" alt="" coords="0,102,14,116">
-								<area title="\omega" shape="rect" alt="" coords="0,119,14,133">
-								<area title="\beta" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\varepsilon" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\vartheta" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\mu" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\varpi" shape="rect" alt="" coords="17,68,31,82">
-								<area title="\varsigma" shape="rect" alt="" coords="17,85,31,99">
-								<area title="\varphi" shape="rect" alt="" coords="17,102,31,116">
-								<area title="\gamma" shape="rect" alt="" coords="34,0,48,14">
-								<area title="\zeta" shape="rect" alt="" coords="34,17,48,31">
-								<area title="\iota" shape="rect" alt="" coords="34,34,48,48">
-								<area title="\nu" shape="rect" alt="" coords="34,51,48,65">
-								<area title="\rho" shape="rect" alt="" coords="34,68,48,82">
-								<area title="\tau" shape="rect" alt="" coords="34,85,48,99">
-								<area title="\chi" shape="rect" alt="" coords="34,102,48,116">
-								<area title="\delta" shape="rect" alt="" coords="51,0,65,14">
-								<area title="\eta" shape="rect" alt="" coords="51,17,65,31">
-								<area title="\kappa" shape="rect" alt="" coords="51,34,65,48">
-								<area title="\xi" shape="rect" alt="" coords="51,51,65,65">
-								<area title="\varrho" shape="rect" alt="" coords="51,68,65,82">
-								<area title="\upsilon" shape="rect" alt="" coords="51,85,65,99">
-								<area title="\psi" shape="rect" alt="" coords="51,102,65,116">
-							</map>
-						</div>
-						<div class="panel" id="panel9" style="height: 34px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/greekupper.gif" title="Greekupper" alt="Greekupper Panel" usemap="#greekupper_map" height="102" width="34" border="0">
-							<map name="greekupper_map" id="greekupper_map">
-								<area title="\Gamma" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\Theta" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\Xi" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\Sigma" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\Phi" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\Omega" shape="rect" alt="" coords="0,85,14,99">
-								<area title="\Delta" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\Lambda" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\Pi" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\Upsilon" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\Psi" shape="rect" alt="" coords="17,68,31,82">
-							</map>
-						</div>
-						<div class="panel" id="panel12" style="height: 34px; overflow: hidden; position: relative;">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/relations.gif" title="Relations" alt="Relations Panel" usemap="#relations_map" height="221" width="51" border="0">
-							<map name="relations_map" id="relations_map">
-								<area title="<" shape="rect" alt="" coords="0,0,14,14">
-								<area title="\leq" shape="rect" alt="" coords="0,17,14,31">
-								<area title="\leqslant" shape="rect" alt="" coords="0,34,14,48">
-								<area title="\nless" shape="rect" alt="" coords="0,51,14,65">
-								<area title="\nleqslant" shape="rect" alt="" coords="0,68,14,82">
-								<area title="\prec" shape="rect" alt="" coords="0,85,14,99">
-								<area title="\preceq" shape="rect" alt="" coords="0,102,14,116">
-								<area title="\ll" shape="rect" alt="" coords="0,119,14,133">
-								<area title="\vdash" shape="rect" alt="" coords="0,136,14,150">
-								<area shape="rect" alt="" title="smile" coords="0,153,14,167">
-								<area title="\models" shape="rect" alt="" coords="0,170,14,184">
-								<area title="\mid" shape="rect" alt="" coords="0,187,14,201">
-								<area title="\bowtie" shape="rect" alt="" coords="0,204,14,218">
-								<area title=">" shape="rect" alt="" coords="17,0,31,14">
-								<area title="\geq" shape="rect" alt="" coords="17,17,31,31">
-								<area title="\geqslant" shape="rect" alt="" coords="17,34,31,48">
-								<area title="\ngtr" shape="rect" alt="" coords="17,51,31,65">
-								<area title="\ngeqslant" shape="rect" alt="" coords="17,68,31,82">
-								<area title="\succ" shape="rect" alt="" coords="17,85,31,99">
-								<area title="\succeq" shape="rect" alt="" coords="17,102,31,116">
-								<area title="\gg" shape="rect" alt="" coords="17,119,31,133">
-								<area title="\dashv" shape="rect" alt="" coords="17,136,31,150">
-								<area shape="rect" alt="" title="frown" coords="17,153,31,167">
-								<area title="\perp" shape="rect" alt="" coords="17,170,31,184">
-								<area shape="rect" alt="" title="parallel" coords="17,187,31,201">
-								<area title="\Join" shape="rect" alt="" coords="17,204,31,218">
-								<area title="=" shape="rect" alt="" coords="34,0,48,14">
-								<area title="\doteq" shape="rect" alt="" coords="34,17,48,31">
-								<area shape="rect" alt="" title="equivalent" coords="34,34,48,48">
-								<area title="\neq" shape="rect" alt="" coords="34,51,48,65">
-								<area shape="rect" alt="" title="not equivalent" coords="34,68,48,82">
-								<area shape="rect" alt="" title="define" coords="34,85,48,99">
-								<area title="\sim" shape="rect" alt="" coords="34,102,48,116">
-								<area title="\approx" shape="rect" alt="" coords="34,119,48,133">
-								<area title="\simeq" shape="rect" alt="" coords="34,136,48,150">
-								<area title="\cong" shape="rect" alt="" coords="34,153,48,167">
-								<area title="\asymp" shape="rect" alt="" coords="34,170,48,184">
-								<area shape="rect" alt="" title="proportional to" coords="34,187,48,201">
-							</map>
-						</div>
-						<div class="panel" id="panel10" style="height:34px">
-							<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/matrix.gif" title="Matrix" alt="Matrix Panel" usemap="#matrix_map" height="170" width="102" border="0">
-							<map name="matrix_map" id="matrix_map">
-								<area shape="rect" alt="" title="\begin{matrix} ... \end{matrix}" coords="0,0,31,31" onclick="EqEditor.makeArrayMatrix('','','')">
-								<area shape="rect" alt="" title="\begin{pmatrix} ... \end{pmatrix}" coords="0,34,31,65" onclick="EqEditor.makeArrayMatrix('p','','')">
-								<area shape="rect" alt="" title="\begin{vmatrix} ... \end{vmatrix}" coords="0,68,31,99" onclick="EqEditor.makeArrayMatrix('v','','')">
-								<area shape="rect" alt="" title="\begin{Vmatrix} ... \end{Vmatrix}" coords="0,102,31,133" onclick="EqEditor.makeArrayMatrix('V','','')">
-								<area shape="rect" alt="" title="\left.\begin{matrix}... \end{matrix}\right|" coords="0,136,31,167" onclick="EqEditor.makeArrayMatrix('','\\left.','\\right|')">
-								<area shape="rect" alt="" title="\being{bmatrix} ... \end{bmatrix}" coords="34,0,65,31" onclick="EqEditor.makeArrayMatrix('b','','')">
-								<area shape="rect" alt="" title="\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)" coords="34,34,65,65" onclick="EqEditor.makeArrayMatrix('small','\\bigl(','\\bigr)')">
-								<area shape="rect" alt="" title="\begin{Bmatrix} ... \end{Bmatrix}" coords="34,68,65,99" onclick="EqEditor.makeArrayMatrix('B','','')">
-								<area shape="rect" alt="" title="\begin{Bmatrix} ... \end{matrix}" coords="34,102,65,133" onclick="EqEditor.makeArrayMatrix('','\\left\\{','\\right.')">
-								<area shape="rect" alt="" title="\begin{matrix} ... \end{Bmatrix}" coords="34,136,65,167" onclick="EqEditor.makeArrayMatrix('','\\left.','\\right\\}')">
-								<area title=" \binom{n}{r}" shape="rect" alt="" coords="68,0,99,31" onclick="EqEditor.insert('\\binom{}{}')">
-								<area shape="rect" alt="" title="\begin{cases} ... \end{cases}" coords="68,34,99,65" onclick="EqEditor.makeEquationsMatrix('cases', true, true)">
-								<area shape="rect" alt="" title="\begin{align} ... \end{align}" coords="68,68,99,99" onclick="EqEditor.makeEquationsMatrix('align', false)">
-							</map>
-						</div>
-					</div>
-				</div>
+
+<div id="bar1" class="top">
+	<div class="toolbar_wrapper">
+		<div class="toolbar" style="z-index:22">
+			<div class="panel" id="panel14" style="height:23px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/style.gif" title="Style" alt="Style Panel" usemap="#style_map" height="184" width="106" border="0">
+				<map name="style_map" id="style_map">
+					<area shape="rect" alt="" title="Math Bold Greek" coords="0,0,50,20" onclick="EqEditor.insert('\\boldsymbol{}')">
+					<area shape="rect" alt="" title="Math Bold" coords="0,23,50,43" onclick="EqEditor.insert('\\mathbf{}')">
+					<area shape="rect" alt="" title="Math Italic" coords="0,46,50,66" onclick="EqEditor.insert('\\mathit{}')">
+					<area shape="rect" alt="" title="Math Roman" coords="0,69,50,89" onclick="EqEditor.insert('\\mathrm{}')">
+					<area shape="rect" alt="" title="Math Fraktur" coords="0,92,50,112" onclick="EqEditor.insert('\\mathfrak{}')">
+					<area shape="rect" alt="" title="Math Blackboard" coords="0,115,50,135" onclick="EqEditor.insert('\\mathbb{}')">
+					<area shape="rect" alt="" title="Text Upright" coords="53,0,103,20" onclick="EqEditor.insert('\\textup{}')">
+					<area shape="rect" alt="" title="Text Bold" coords="53,23,103,43" onclick="EqEditor.insert('\\textbf{}')">
+					<area shape="rect" alt="" title="Text Italic" coords="53,46,103,66" onclick="EqEditor.insert('\\textit{}')">
+					<area shape="rect" alt="" title="Text Roman" coords="53,69,103,89" onclick="EqEditor.insert('\\textrm{}')">
+					<area shape="rect" alt="" title="Text Slanted" coords="53,92,103,112" onclick="EqEditor.insert('\\textsl{}')">
+					<area shape="rect" alt="" title="Text Typewriter" coords="53,115,103,135" onclick="EqEditor.insert('\\texttt{}')">
+					<area shape="rect" alt="" title="Text Small Caps" coords="53,138,103,158" onclick="EqEditor.insert('\\textsc{}')">
+					<area shape="rect" alt="" title="Text Emphasis" coords="53,161,103,181" onclick="EqEditor.insert('\\emph{}')">
+				</map>
 			</div>
-			<form>
-				<div id="input">
-				    <div class="input-control textarea">
-				        <textarea style="height: 40px;" name="latex_formula" id="latex_formula" cols="80" rows="8" spellcheck="false"  onkeyup="Preview.Update()"  ></textarea>
-				    </div>	
-					<br/><br/>
-					Preview is shown here:
-					<div class="input-control textarea">
-				        <textarea id="MathPreview" style="height: 40px;" name="latex_formula" id="latex_formula" cols="80" rows="8" spellcheck="false"  onkeyup="Preview.Update()"  ></textarea>
-				    </div>
-					<div id="MathBuffer" style="border:1px solid; width:100%; margin-top:5px; visibility:hidden;top:0; left: 0"></div>
-				</div>
-			</form>
+			<div class="panel" id="panel13" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/spaces.gif" title="Spaces" alt="Spaces Panel" usemap="#spaces_map" height="68" width="31" border="0">
+				<map name="spaces_map" id="spaces_map">
+					<area shape="rect" alt="" title="thin space" coords="0,0,28,14" onclick="EqEditor.insert('\\,')">
+					<area shape="rect" alt="" title="medium space" coords="0,17,28,31" onclick="EqEditor.insert('\\:')">
+					<area shape="rect" alt="" title="thick space" coords="0,34,28,48" onclick="EqEditor.insert('\\;')">
+					<area shape="rect" alt="" title="negative space" coords="0,51,28,65" onclick="EqEditor.insert('\\!')">
+				</map>
+			</div>
+			<div class="panel" id="panel4" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/binary.gif" title="Binary" alt="Binary Panel" usemap="#binary_map" height="238" width="68" border="0">
+				<map name="binary_map" id="binary_map">
+					<area title="\pm$" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\mp" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\times" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\ast" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\div" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\setminus" shape="rect" alt="" coords="0,85,14,99">
+					<area title="\dotplus" shape="rect" alt="" coords="0,102,14,116">
+					<area title="\amalg" shape="rect" alt="" coords="0,119,14,133">
+					<area title="\dagger" shape="rect" alt="" coords="0,136,14,150">
+					<area title="\ddagger" shape="rect" alt="" coords="0,153,14,167">
+					<area title="\wr" shape="rect" alt="" coords="0,170,14,184">
+					<area title="\diamond" shape="rect" alt="" coords="0,187,14,201">
+					<area title="\circledcirc" shape="rect" alt="" coords="0,204,14,218">
+					<area title="\circledast" shape="rect" alt="" coords="0,221,14,235">
+					<area title="\cap" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\Cap" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\sqcap" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\wedge" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\barwedge" shape="rect" alt="" coords="17,68,31,82">
+					<area title="\triangleleft" shape="rect" alt="" coords="17,85,31,99">
+					<area title="\lozenge" shape="rect" alt="" coords="17,102,31,116">
+					<area title="\circ" shape="rect" alt="" coords="17,119,31,133">
+					<area title="\square" shape="rect" alt="" coords="17,136,31,150">
+					<area title="\triangle" shape="rect" alt="" coords="17,153,31,167">
+					<area title="\triangledown" shape="rect" alt="" coords="17,170,31,184">
+					<area title="\ominus" shape="rect" alt="" coords="17,187,31,201">
+					<area title="\oslash" shape="rect" alt="" coords="17,204,31,218">
+					<area title="\circleddash" shape="rect" alt="" coords="17,221,31,235">
+					<area title="\cup" shape="rect" alt="" coords="34,0,48,14">
+					<area title="\Cup" shape="rect" alt="" coords="34,17,48,31">
+					<area title="\sqcup" shape="rect" alt="" coords="34,34,48,48">
+					<area title="\vee" shape="rect" alt="" coords="34,51,48,65">
+					<area title="\veebar" shape="rect" alt="" coords="34,68,48,82">
+					<area title="\triangleright" shape="rect" alt="" coords="34,85,48,99">
+					<area title="\blacklozenge" shape="rect" alt="" coords="34,102,48,116">
+					<area title="\bullet" shape="rect" alt="" coords="34,119,48,133">
+					<area title="\blacksquare" shape="rect" alt="" coords="34,136,48,150">
+					<area title="\blacktriangle" shape="rect" alt="" coords="34,153,48,167">
+					<area title="\blacktriangledown" shape="rect" alt="" coords="34,170,48,184">
+					<area title="\oplus" shape="rect" alt="" coords="34,187,48,201">
+					<area title="\otimes" shape="rect" alt="" coords="34,204,48,218">
+					<area title="\odot" shape="rect" alt="" coords="34,221,48,235">
+					<area title="\cdot" shape="rect" alt="" coords="51,0,65,14">
+					<area title="\uplus" shape="rect" alt="" coords="51,17,65,31">
+					<area title="\bigsqcup" shape="rect" alt="" coords="51,34,65,48">
+					<area title="\bigtriangleup" shape="rect" alt="" coords="51,51,65,65">
+					<area title="\bigtriangledown" shape="rect" alt="" coords="51,68,65,82">
+					<area title="\star" shape="rect" alt="" coords="51,85,65,99">
+					<area title="\bigstar" shape="rect" alt="" coords="51,102,65,116">
+					<area title="\bigcirc" shape="rect" alt="" coords="51,119,65,133">
+					<area title="\bigoplus" shape="rect" alt="" coords="51,136,65,150">
+					<area title="\bigotimes" shape="rect" alt="" coords="51,153,65,167">
+					<area title="\bigodot" shape="rect" alt="" coords="51,170,65,184">
+				</map>
+			</div>
+			<div class="panel" id="panel16" style="height: 34px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/symbols.gif" title="Symbols" alt="Symbols Panel" usemap="#symbols_map" height="136" width="68" border="0">
+				<map name="symbols_map" id="symbols_map">
+					<area shape="rect" alt="" title="therefore" coords="0,0,14,14">
+					<area shape="rect" alt="" title="because" coords="0,17,14,31">
+					<area shape="rect" alt="" title="horizontal dots" coords="0,34,14,48">
+					<area shape="rect" alt="" title="diagonal dots" coords="0,51,14,65">
+					<area shape="rect" alt="" title="vertical dots" coords="0,68,14,82">
+					<area shape="rect" alt="" title="section" coords="0,85,14,99">
+					<area shape="rect" alt="" title="paragraph" coords="0,102,14,116">
+					<area shape="rect" alt="" title="copyright" coords="0,119,14,133">
+					<area shape="rect" alt="" title="partial" coords="17,0,31,14">
+					<area title="\imath" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\jmath" shape="rect" alt="" coords="17,34,31,48">
+					<area shape="rect" alt="" title="real" coords="17,51,31,65">
+					<area shape="rect" alt="" title="imaginary" coords="17,68,31,82">
+					<area title="\forall" shape="rect" alt="" coords="17,85,31,99">
+					<area title="\exists" shape="rect" alt="" coords="17,102,31,116">
+					<area title="\top" shape="rect" alt="" coords="17,119,31,133">
+					<area shape="rect" alt="" title="prime" coords="34,0,48,14">
+					<area shape="rect" alt="" title="natural" coords="34,17,48,31">
+					<area shape="rect" alt="" title="integers" coords="34,34,48,48">
+					<area shape="rect" alt="" title="irrational" coords="34,51,48,65">
+					<area shape="rect" alt="" title="rational" coords="34,68,48,82">
+					<area shape="rect" alt="" title="real" coords="34,85,48,99">
+					<area shape="rect" alt="" title="complex" coords="34,102,48,116">
+					<area title="\angle" shape="rect" alt="" coords="51,0,65,14">
+					<area title="\measuredangle" shape="rect" alt="" coords="51,17,65,31">
+					<area title="\sphericalangle" shape="rect" alt="" coords="51,34,65,48">
+					<area title="\varnothing" shape="rect" alt="" coords="51,51,65,65">
+					<area title="\infty" shape="rect" alt="" coords="51,68,65,82">
+					<area title="\mho" shape="rect" alt="" coords="51,85,65,99">
+					<area title="\wp" shape="rect" alt="" coords="51,102,65,116">
+				</map>
+			</div>
+			<div class="panel" id="panel6" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/foreign.gif" title="Foreign" alt="Foreign Panel" usemap="#foreign_map" height="136" width="34" border="0">
+				<map name="foreign_map" id="foreign_map">
+					<area title="\aa" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\ae" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\l" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\o" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\oe" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\ss" shape="rect" alt="" coords="0,85,14,99">
+					<area shape="rect" alt="" title="Dollar" coords="0,102,14,116">
+					<area shape="rect" alt="" title="Cent" coords="0,119,14,133">
+					<area title="\AA" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\AE" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\L" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\O" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\OE" shape="rect" alt="" coords="17,68,31,82">
+					<area title="\SS" shape="rect" alt="" coords="17,85,31,99">
+					<area shape="rect" alt="" title="Pound" coords="17,102,31,116">
+					<area shape="rect" alt="" title="Euro" coords="17,119,31,133">
+				</map>
+			</div>
+			<div class="panel" id="panel15" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/subsupset.gif" title="Subsupset" alt="Subsupset Panel" usemap="#subsupset_map" height="153" width="34" border="0">
+				<map name="subsupset_map" id="subsupset_map">
+					<area title="\sqsubset" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\sqsubseteq" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\subset" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\subseteq" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\nsubseteq" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\subseteqq" shape="rect" alt="" coords="0,85,14,99">
+					<area title="\nsubseteq" shape="rect" alt="" coords="0,102,14,116">
+					<area title="\in" shape="rect" alt="" coords="0,119,14,133">
+					<area title="\notin" shape="rect" alt="" coords="0,136,14,150">
+					<area title="\sqsupset" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\sqsupseteq" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\supset" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\supseteq" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\nsupseteq" shape="rect" alt="" coords="17,68,31,82">
+					<area title="\supseteqq" shape="rect" alt="" coords="17,85,31,99">
+					<area title="\nsupseteqq" shape="rect" alt="" coords="17,102,31,116">
+					<area title="\ni" shape="rect" alt="" coords="17,119,31,133">
+				</map>
+			</div>
+			<div class="panel" id="panel1" style="height: 34px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/accents.gif" title="Accents" alt="Accents Panel" usemap="#accents_map" height="119" width="34" border="0">
+				<map name="accents_map" id="accents_map">
+					<area title="a'" shape="rect" alt="" coords="0,0,14,14" onclick="EqEditor.insert('{}\'')">
+					<area title="\dot{a}" shape="rect" alt="" coords="0,17,14,31" onclick="EqEditor.insert('\\dot{}')">
+					<area title="\hat{a}" shape="rect" alt="" coords="0,34,14,48" onclick="EqEditor.insert('\\hat{}')">
+					<area title="\grave{a}" shape="rect" alt="" coords="0,51,14,65" onclick="EqEditor.insert('\\grave{}')">
+					<area title="\tilde{a}" shape="rect" alt="" coords="0,68,14,82" onclick="EqEditor.insert('\\tilde{}')">
+					<area title="\bar{a}" shape="rect" alt="" coords="0,85,14,99" onclick="EqEditor.insert('\\bar{}')">
+					<area title="\not{a}" shape="rect" alt="" coords="0,102,14,116">
+					<area title="a''" shape="rect" alt="" coords="17,0,31,14" onclick="EqEditor.insert('{}\'\'')">
+					<area title="\ddot{a}" shape="rect" alt="" coords="17,17,31,31" onclick="EqEditor.insert('\\ddot{}')">
+					<area title="\check{a}" shape="rect" alt="" coords="17,34,31,48" onclick="EqEditor.insert('\\check{}')">
+					<area title="\acute{a}" shape="rect" alt="" coords="17,51,31,65" onclick="EqEditor.insert('\\acute{}')">
+					<area title="\breve{a}" shape="rect" alt="" coords="17,68,31,82" onclick="EqEditor.insert('\\breve{}')">
+					<area title="\vec{a}" shape="rect" alt="" coords="17,85,31,99" onclick="EqEditor.insert('\\vec{}')">
+					<area shape="rect" alt="" title="degrees" coords="17,102,31,116" onclick="EqEditor.insert('^{\\circ}',0)">
+				</map>
+			</div>
+			<div class="panel" id="panel2" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/accents_ext.gif" title="Accents_ext" alt="Accents_ext Panel" usemap="#accents_ext_map" height="170" width="25" border="0">
+				<map name="accents_ext_map" id="accents_ext_map">
+					<area title="\widetilde{abc}" shape="rect" alt="" coords="0,0,22,14" onclick="EqEditor.insert('\\widetilde{}',11)">
+					<area title="\widehat{abc}" shape="rect" alt="" coords="0,17,22,31" onclick="EqEditor.insert('\\widehat{}',9)">
+					<area title="\overleftarrow{abc}" shape="rect" alt="" coords="0,34,22,48" onclick="EqEditor.insert('\\overleftarrow{}',15)">
+					<area title="\overrightarrow{abc}" shape="rect" alt="" coords="0,51,22,65" onclick="EqEditor.insert('\\overrightarrow{}',16)">
+					<area title="\overline{abc}" shape="rect" alt="" coords="0,68,22,82" onclick="EqEditor.insert('\\overline{}',10)">
+					<area title="\underline{abc}" shape="rect" alt="" coords="0,85,22,99" onclick="EqEditor.insert('\\underline{}',11)">
+					<area title="\overbrace{abc}" shape="rect" alt="" coords="0,102,22,116" onclick="EqEditor.insert('\\overbrace{}',11)">
+					<area title="\underbrace{abc}" shape="rect" alt="" coords="0,119,22,133" onclick="EqEditor.insert('\\underbrace{}',12)">
+					<area title="\overset{a}{abc}" shape="rect" alt="" coords="0,136,22,150" onclick="EqEditor.insert('\\overset{}{}',9,11)">
+					<area title="\underset{a}{abc}" shape="rect" alt="" coords="0,153,22,167" onclick="EqEditor.insert('\\underset{}{}',10,12)">
+				</map>
+			</div>
+			<div class="panel" id="panel3" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/arrows.gif" title="Arrows" alt="Arrows Panel" usemap="#arrows_map" height="170" width="56" border="0">
+				<map name="arrows_map" id="arrows_map">
+					<area shape="rect" alt="" title="\mapsto" coords="0,0,25,14">
+					<area title="\leftarrow" shape="rect" alt="" coords="0,17,25,31">
+					<area title="\Leftarrow" shape="rect" alt="" coords="0,34,25,48">
+					<area title="\leftrightarrow" shape="rect" alt="" coords="0,51,25,65">
+					<area title="\leftharpoonup" shape="rect" alt="" coords="0,68,25,82">
+					<area title="\leftharpoondown" shape="rect" alt="" coords="0,85,25,99">
+					<area title="\leftrightharpoons" shape="rect" alt="" coords="0,102,25,116">
+					<area title="\xleftarrow[text]{long}" shape="rect" alt="" coords="0,119,25,133" onclick="EqEditor.insert('\\xleftarrow[]{}',12)">
+					<area title="\overset{a}{\leftarrow}" shape="rect" alt="" coords="0,136,25,150" onclick="EqEditor.insert('\\overset{}{\\leftarrow}',9)">
+					<area title="\underset{a}{\leftarrow}" shape="rect" alt="" coords="0,153,25,167" onclick="EqEditor.insert('\\underset{}{\\leftarrow}',10)">
+					<area title="n \to" shape="rect" alt="" coords="28,0,53,14">
+					<area title="\rightarrow" shape="rect" alt="" coords="28,17,53,31">
+					<area title="\Rightarrow" shape="rect" alt="" coords="28,34,53,48">
+					<area title="\Leftrightarrow" shape="rect" alt="" coords="28,51,53,65">
+					<area title="\rightharpoonup" shape="rect" alt="" coords="28,68,53,82">
+					<area title="\rightharpoondown" shape="rect" alt="" coords="28,85,53,99">
+					<area title="\rightleftharpoons" shape="rect" alt="" coords="28,102,53,116">
+					<area title="\xrightarrow[text]{long}" shape="rect" alt="" coords="28,119,53,133" onclick="EqEditor.insert('\\xrightarrow[]{}',13)">
+					<area title="\overset{a}{\rightarrow}" shape="rect" alt="" coords="28,136,53,150" onclick="EqEditor.insert('\\overset{}{\\rightarrow}',9)">
+					<area title="\underset{a}{\rightarrow}" shape="rect" alt="" coords="28,153,53,167" onclick="EqEditor.insert('\\underset{}{\\rightarrow}',10)">
+				</map>
+			</div>
 		</div>
+	</div>
+	<div class="toolbar_wrapper">
+		<div class="toolbar" style="z-index:21">
+			<div class="panel" id="panel11" style="height: 28px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/operators.gif" title="Operators" alt="Operators Panel" usemap="#operators_map" height="140" width="168" border="0">
+				<map name="operators_map" id="operators_map">
+					<area shape="rect" alt="" title="superscript" coords="0,0,25,25" onclick="EqEditor.insert('^{}',2,0)">
+					<area shape="rect" alt="" title="subscript" coords="0,28,25,53" onclick="EqEditor.insert('_{}',2,0)">
+					<area title="x_a^b" shape="rect" alt="" coords="0,56,25,81" onclick="EqEditor.insert('_{}^{}',2,0)">
+					<area title="{x_a}^b" shape="rect" alt="" coords="0,84,25,109" onclick="EqEditor.insert('{_{}}^{}',1)">
+					<area shape="rect" alt="" title="_{a}^{b}\textrm{C}" coords="0,112,25,137" onclick="EqEditor.insert('_{}^{}\\textrm{}',2,14)">
+					<area shape="rect" alt="" title="fraction" coords="28,0,53,25" onclick="EqEditor.insert('\\frac{}{}',6)">
+					<area shape="rect" alt="" title="tiny fraction" coords="28,28,53,53" onclick="EqEditor.insert('\\tfrac{}{}',7)">
+					<area title="\frac{\partial }{\partial x}" shape="rect" alt="" coords="28,56,53,81" onclick="EqEditor.insert('\\frac{\\partial }{\\partial x}',15)">
+					<area title="\frac{\partial^2 }{\partial x^2}" shape="rect" alt="" coords="28,84,53,109" onclick="EqEditor.insert('\\frac{\\partial^2 }{\\partial x^2}',17)">
+					<area title="\frac{\mathrm{d} }{\mathrm{d} x}" shape="rect" alt="" coords="28,112,53,137" onclick="EqEditor.insert('\\frac{\\mathrm{d} }{\\mathrm{d} x}',17)">
+					<area title="\int" shape="rect" alt="" coords="56,0,81,25">
+					<area shape="rect" alt="" title="\int_{}^{}" coords="56,28,81,53" onclick="EqEditor.insert('\\int_{}^{}',6,1000)">
+					<area title="\oint" shape="rect" alt="" coords="56,56,81,81" onclick="EqEditor.insert('\\oint')">
+					<area shape="rect" alt="" title="\oint_{}^{}" coords="56,84,81,109" onclick="EqEditor.insert('\\oint_{}^{}',7,1000)">
+					<area shape="rect" alt="" title="\iint_{}^{}" coords="56,112,81,137" onclick="EqEditor.insert('\\iint_{}^{}',7,1000)">
+					<area title="\bigcap" shape="rect" alt="" coords="84,0,109,25">
+					<area shape="rect" alt="" title="\bigcap_{}^{}" coords="84,28,109,53" onclick="EqEditor.insert('\\bigcap_{}^{}',9,1000)">
+					<area title="\bigcup" shape="rect" alt="" coords="84,56,109,81" onclick="EqEditor.insert('\\bigcup')">
+					<area shape="rect" alt="" title="\bigcup_{}^{}" coords="84,84,109,109" onclick="EqEditor.insert('\\bigcup_{}^{}',9,1000)">
+					<area shape="rect" alt="" title="\lim_{x \to 0}" coords="84,112,109,137" onclick="EqEditor.insert('\\lim_{}')">
+					<area title="\sum" shape="rect" alt="" coords="112,0,137,25">
+					<area shape="rect" alt="" title="\sum_{}^{}" coords="112,28,137,53" onclick="EqEditor.insert('\\sum_{}^{}',6)">
+					<area shape="rect" alt="" title="\sqrt{}" coords="112,56,137,81" onclick="EqEditor.insert('\\sqrt{}',6,6)">
+					<area shape="rect" alt="" title="\sqrt[]{}" coords="112,84,137,109" onclick="EqEditor.insert('\\sqrt[]{}',6,8)">
+					<area title="\prod" shape="rect" alt="" coords="140,0,165,25">
+					<area shape="rect" alt="" title="\prod_{}^{}" coords="140,28,165,53" onclick="EqEditor.insert('\\prod_{}^{}',7,1000)">
+					<area title="\coprod" shape="rect" alt="" coords="140,56,165,81">
+					<area shape="rect" alt="" title="\coprod_{}^{}" coords="140,84,165,109" onclick="EqEditor.insert('\\coprod_{}^{}',9,1000)">
+				</map>
+			</div>
+			<div class="panel" id="panel5" style="height:28px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/brackets.gif" title="Brackets" alt="Brackets Panel" usemap="#brackets_map" height="140" width="56" border="0">
+				<map name="brackets_map" id="brackets_map">
+					<area shape="rect" alt="" title="\left ( \right )" coords="0,0,25,25" onclick="EqEditor.insert('\\left (  \\right )',8)">
+					<area shape="rect" alt="" title="\left ( \right )" coords="0,28,25,53" onclick="EqEditor.insert('\\left [  \\right ]',8)">
+					<area shape="rect" alt="" title="\left\{ \right\}" coords="0,56,25,81" onclick="EqEditor.insert('\\left \\{  \\right \\}',9)">
+					<area shape="rect" alt="" title="\left | \right |" coords="0,84,25,109" onclick="EqEditor.insert('\\left |  \\right |',8)">
+					<area shape="rect" alt="" title="\left \{ \right." coords="0,112,25,137" onclick="EqEditor.insert('\\left \\{  \\right.',9)">
+					<area shape="rect" alt="" title="\left \| \right \|" coords="28,0,53,25" onclick="EqEditor.insert('\\left \\|  \\right \\|',9)">
+					<area shape="rect" alt="" title="\left \langle \right \rangle" coords="28,28,53,53" onclick="EqEditor.insert('\\left \\langle  \\right \\rangle',14)">
+					<area shape="rect" alt="" title="\left \lfloor \right \rfloor" coords="28,56,53,81" onclick="EqEditor.insert('\\left \\lfloor  \\right \\rfloor',14)">
+					<area shape="rect" alt="" title="\left \lceil \right \rceil" coords="28,84,53,109" onclick="EqEditor.insert('\\left \\lceil  \\right \\rceil',13)">
+					<area shape="rect" alt="" title="\left. \right \}" coords="28,112,53,137" onclick="EqEditor.insert('\\left.  \\right \\}',7)">
+				</map>
+			</div>
+			<div class="panel" id="panel8" style="height: 34px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/greeklower.gif" title="Greeklower" alt="Greeklower Panel" usemap="#greeklower_map" height="136" width="68" border="0">
+				<map name="greeklower_map" id="greeklower_map">
+					<area title="\alpha" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\epsilon" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\theta" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\lambda" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\pi" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\sigma" shape="rect" alt="" coords="0,85,14,99">
+					<area title="\phi" shape="rect" alt="" coords="0,102,14,116">
+					<area title="\omega" shape="rect" alt="" coords="0,119,14,133">
+					<area title="\beta" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\varepsilon" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\vartheta" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\mu" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\varpi" shape="rect" alt="" coords="17,68,31,82">
+					<area title="\varsigma" shape="rect" alt="" coords="17,85,31,99">
+					<area title="\varphi" shape="rect" alt="" coords="17,102,31,116">
+					<area title="\gamma" shape="rect" alt="" coords="34,0,48,14">
+					<area title="\zeta" shape="rect" alt="" coords="34,17,48,31">
+					<area title="\iota" shape="rect" alt="" coords="34,34,48,48">
+					<area title="\nu" shape="rect" alt="" coords="34,51,48,65">
+					<area title="\rho" shape="rect" alt="" coords="34,68,48,82">
+					<area title="\tau" shape="rect" alt="" coords="34,85,48,99">
+					<area title="\chi" shape="rect" alt="" coords="34,102,48,116">
+					<area title="\delta" shape="rect" alt="" coords="51,0,65,14">
+					<area title="\eta" shape="rect" alt="" coords="51,17,65,31">
+					<area title="\kappa" shape="rect" alt="" coords="51,34,65,48">
+					<area title="\xi" shape="rect" alt="" coords="51,51,65,65">
+					<area title="\varrho" shape="rect" alt="" coords="51,68,65,82">
+					<area title="\upsilon" shape="rect" alt="" coords="51,85,65,99">
+					<area title="\psi" shape="rect" alt="" coords="51,102,65,116">
+				</map>
+			</div>
+			<div class="panel" id="panel9" style="height: 34px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/greekupper.gif" title="Greekupper" alt="Greekupper Panel" usemap="#greekupper_map" height="102" width="34" border="0">
+				<map name="greekupper_map" id="greekupper_map">
+					<area title="\Gamma" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\Theta" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\Xi" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\Sigma" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\Phi" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\Omega" shape="rect" alt="" coords="0,85,14,99">
+					<area title="\Delta" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\Lambda" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\Pi" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\Upsilon" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\Psi" shape="rect" alt="" coords="17,68,31,82">
+				</map>
+			</div>
+			<div class="panel" id="panel12" style="height: 34px; overflow: hidden; position: relative;">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/relations.gif" title="Relations" alt="Relations Panel" usemap="#relations_map" height="221" width="51" border="0">
+				<map name="relations_map" id="relations_map">
+					<area title="<" shape="rect" alt="" coords="0,0,14,14">
+					<area title="\leq" shape="rect" alt="" coords="0,17,14,31">
+					<area title="\leqslant" shape="rect" alt="" coords="0,34,14,48">
+					<area title="\nless" shape="rect" alt="" coords="0,51,14,65">
+					<area title="\nleqslant" shape="rect" alt="" coords="0,68,14,82">
+					<area title="\prec" shape="rect" alt="" coords="0,85,14,99">
+					<area title="\preceq" shape="rect" alt="" coords="0,102,14,116">
+					<area title="\ll" shape="rect" alt="" coords="0,119,14,133">
+					<area title="\vdash" shape="rect" alt="" coords="0,136,14,150">
+					<area shape="rect" alt="" title="smile" coords="0,153,14,167">
+					<area title="\models" shape="rect" alt="" coords="0,170,14,184">
+					<area title="\mid" shape="rect" alt="" coords="0,187,14,201">
+					<area title="\bowtie" shape="rect" alt="" coords="0,204,14,218">
+					<area title=">" shape="rect" alt="" coords="17,0,31,14">
+					<area title="\geq" shape="rect" alt="" coords="17,17,31,31">
+					<area title="\geqslant" shape="rect" alt="" coords="17,34,31,48">
+					<area title="\ngtr" shape="rect" alt="" coords="17,51,31,65">
+					<area title="\ngeqslant" shape="rect" alt="" coords="17,68,31,82">
+					<area title="\succ" shape="rect" alt="" coords="17,85,31,99">
+					<area title="\succeq" shape="rect" alt="" coords="17,102,31,116">
+					<area title="\gg" shape="rect" alt="" coords="17,119,31,133">
+					<area title="\dashv" shape="rect" alt="" coords="17,136,31,150">
+					<area shape="rect" alt="" title="frown" coords="17,153,31,167">
+					<area title="\perp" shape="rect" alt="" coords="17,170,31,184">
+					<area shape="rect" alt="" title="parallel" coords="17,187,31,201">
+					<area title="\Join" shape="rect" alt="" coords="17,204,31,218">
+					<area title="=" shape="rect" alt="" coords="34,0,48,14">
+					<area title="\doteq" shape="rect" alt="" coords="34,17,48,31">
+					<area shape="rect" alt="" title="equivalent" coords="34,34,48,48">
+					<area title="\neq" shape="rect" alt="" coords="34,51,48,65">
+					<area shape="rect" alt="" title="not equivalent" coords="34,68,48,82">
+					<area shape="rect" alt="" title="define" coords="34,85,48,99">
+					<area title="\sim" shape="rect" alt="" coords="34,102,48,116">
+					<area title="\approx" shape="rect" alt="" coords="34,119,48,133">
+					<area title="\simeq" shape="rect" alt="" coords="34,136,48,150">
+					<area title="\cong" shape="rect" alt="" coords="34,153,48,167">
+					<area title="\asymp" shape="rect" alt="" coords="34,170,48,184">
+					<area shape="rect" alt="" title="proportional to" coords="34,187,48,201">
+				</map>
+			</div>
+			<div class="panel" id="panel10" style="height:34px">
+				<img src="{{ STATIC_URL }}askmath/components/editor/latex/panels/matrix.gif" title="Matrix" alt="Matrix Panel" usemap="#matrix_map" height="170" width="102" border="0">
+				<map name="matrix_map" id="matrix_map">
+					<area shape="rect" alt="" title="\begin{matrix} ... \end{matrix}" coords="0,0,31,31" onclick="EqEditor.makeArrayMatrix('','','')">
+					<area shape="rect" alt="" title="\begin{pmatrix} ... \end{pmatrix}" coords="0,34,31,65" onclick="EqEditor.makeArrayMatrix('p','','')">
+					<area shape="rect" alt="" title="\begin{vmatrix} ... \end{vmatrix}" coords="0,68,31,99" onclick="EqEditor.makeArrayMatrix('v','','')">
+					<area shape="rect" alt="" title="\begin{Vmatrix} ... \end{Vmatrix}" coords="0,102,31,133" onclick="EqEditor.makeArrayMatrix('V','','')">
+					<area shape="rect" alt="" title="\left.\begin{matrix}... \end{matrix}\right|" coords="0,136,31,167" onclick="EqEditor.makeArrayMatrix('','\\left.','\\right|')">
+					<area shape="rect" alt="" title="\being{bmatrix} ... \end{bmatrix}" coords="34,0,65,31" onclick="EqEditor.makeArrayMatrix('b','','')">
+					<area shape="rect" alt="" title="\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)" coords="34,34,65,65" onclick="EqEditor.makeArrayMatrix('small','\\bigl(','\\bigr)')">
+					<area shape="rect" alt="" title="\begin{Bmatrix} ... \end{Bmatrix}" coords="34,68,65,99" onclick="EqEditor.makeArrayMatrix('B','','')">
+					<area shape="rect" alt="" title="\begin{Bmatrix} ... \end{matrix}" coords="34,102,65,133" onclick="EqEditor.makeArrayMatrix('','\\left\\{','\\right.')">
+					<area shape="rect" alt="" title="\begin{matrix} ... \end{Bmatrix}" coords="34,136,65,167" onclick="EqEditor.makeArrayMatrix('','\\left.','\\right\\}')">
+					<area title=" \binom{n}{r}" shape="rect" alt="" coords="68,0,99,31" onclick="EqEditor.insert('\\binom{}{}')">
+					<area shape="rect" alt="" title="\begin{cases} ... \end{cases}" coords="68,34,99,65" onclick="EqEditor.makeEquationsMatrix('cases', true, true)">
+					<area shape="rect" alt="" title="\begin{align} ... \end{align}" coords="68,68,99,99" onclick="EqEditor.makeEquationsMatrix('align', false)">
+				</map>
+			</div>
+		</div>
+	</div>
+</div>

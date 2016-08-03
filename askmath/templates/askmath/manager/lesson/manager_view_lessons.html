@@ -76,7 +76,7 @@
 			</td>
 			{% endif %}
 			<td class="sortable-column">{{ lesson.get_title }}</td>
-			<td class="sortable-column">{{ lesson.get_description|truncatechars:"255" }}</td>
+			<td class="sortable-column">{{ lesson.get_description|safe|linebreaksbr|truncatechars:"255" }}</td>
 			<td class="sortable-column">
 				{% for requirement in  lesson.get_requirements %}
 					<a href="{% url 'askmath:manager_question_view' id_discipline=requirement.get_discipline.id id_lesson=requirement.id %}" class="tag fg-white {{ requirement.color }}">

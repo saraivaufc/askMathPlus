@@ -3,11 +3,8 @@
 	Original version: http://magdeleine.co/photo-billy-lam-n-1/;
 */
 
-html{
-	background-color: #ddd;
-}
-
 body{
+	font:  none;
 	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
 	line-height: 1.1;
 	font-weight: 400;
@@ -520,4 +517,12 @@ label.caption{
 
 .command-button {
     padding: 8px 2rem 1px 4rem;
+}
+
+
+/* Latex Editor */
+#MathBuffer{
+	width: 100%;
+	left: 0px;
+	right: 0px;
 }

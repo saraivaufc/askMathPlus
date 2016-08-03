@@ -1,20 +1,28 @@
 {% load i18n %}
 
 <div class="modal fade" id="box-latex">
-  <div class="modal-dialog  modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">{% trans "Text Editor:" %}</h4>
-        <h6 class="modal-title">{% trans "To add Latex code, add your code between && tags, eg $ \sqrt{3} \$ or \begin and \end." %}</h6>
-      </div>
-      <div class="modal-body">
-			{% include "askmath/utils/latexeditor/header.html"  %}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="button button-default" data-dismiss="modal">{% trans "Close" %}</button>
-        <button id="box-latex-submit" type="button" class="button button-primary">{% trans "Save changes" %}</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+	<div class="modal-dialog  modal-lg" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{% trans "Text Editor:" %}</h4>
+				<h6 class="modal-title">{% trans "To add Latex code, add your code between && tags, eg $ \sqrt{3} \$." %}</h6>
+			</div>
+			<div class="modal-body">
+			
+				{% include "askmath/utils/latexeditor/header.html"  %}
+				<div class="input-control textarea" data-role="input" data-text-auto-resize="true" data-text-max-height="200">
+					<textarea  id="latex_formula" cols="100%"  onkeyup="Preview.Update()"  ></textarea>
+				</div>
+				<label>{% trans "Preview is shown here" %}:</label>
+				<textarea style="display:none;" id="MathPreview" ></textarea>
+				<div id="MathBuffer"></div>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button default" data-dismiss="modal">{% trans "Cancel" %}</button>
+				<button id="box-latex-submit" type="button" class="button primary">{% trans "Save changes" %}</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 

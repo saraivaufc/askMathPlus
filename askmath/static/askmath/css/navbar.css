@@ -28,22 +28,3 @@
 	width: 20px;
 	height: 20px;
 }
-
-
-
-/* Accessibility */
-
-#skiplinks{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-ul#skiplinks li {
-    display:inline;
-    font-size: 12px;
-}
-
-ul#skiplinks li a{
-    color: #000 !important;
-    text-decoration: none;
-}
