@@ -66,6 +66,32 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }, 'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'askmath',
+        'USER': 'postgres',
+        'PASSWORD': 'macacoaranha',
+        'HOST': '200.129.39.113',
+        'PORT': '6969',
+    }, 'local': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'askmath',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+
 # Templates
 TEMPLATE_DIRS = (
     'askmath/templates',
@@ -73,7 +99,7 @@ TEMPLATE_DIRS = (
 )
 # TEMPLATE_CONTEXT
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
+   #'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
@@ -162,30 +188,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
 )
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }, 'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'askmath',
-        'USER': 'postgres',
-        'PASSWORD': 'macacoaranha',
-        'HOST': '200.129.39.113',
-        'PORT': '6969',
-    }, 'postgres_local': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'askmath',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
