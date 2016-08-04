@@ -1,6 +1,6 @@
 /*---start-header*/
 .header{
-    background: #3498db; /* Old browsers */
+    background: #FFF; /* Old browsers */
     background-image: url('/static/askmath/img/logos/barner_background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,6 +25,6 @@
 
 
 .rss-icon{
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
 }
