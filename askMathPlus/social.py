@@ -16,5 +16,5 @@ SOCIAL_AUTH_TWITTER_SECRET = u'gxtQLYAvfSEZBmOkTnVPs9i3eueqfOCEOypU3k7SNOwhd2QBK
 Gmail: askmathplus@gmail.com
 """
 #https://console.developers.google.com/
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = u'806153707723-mkjnvefj9egvuilipcj55ud69javujfl.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = u'804kXCSb5uS10rKDEaGVXlrH'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = u' 806153707723-gqf6o41ejed805emhekn3fefvip4juoo.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = u'e2weQnnjZtY8CA0oTawNgSxS '
