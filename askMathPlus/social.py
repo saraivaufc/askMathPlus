@@ -9,6 +9,8 @@ Twiter: askmathplus@gmail.com  password: macacoaranha
 SOCIAL_AUTH_TWITTER_KEY = u'CNm8mXbL2xASaxuNCiCWBhLYv'
 SOCIAL_AUTH_TWITTER_SECRET = u'gxtQLYAvfSEZBmOkTnVPs9i3eueqfOCEOypU3k7SNOwhd2QBKS'
 
+
+
 """
 Gmail: askmathplus@gmail.com  password: macacoaranha
 """

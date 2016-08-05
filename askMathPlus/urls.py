@@ -17,14 +17,14 @@ urlpatterns = patterns('',
 	 )
 
 if 'rosetta' in settings.INSTALLED_APPS:
-		urlpatterns += patterns('',
-														url(r'^rosetta/', include('rosetta.urls')),
-														)
+	urlpatterns += patterns('', 
+		url(r'^rosetta/', include('rosetta.urls')),
+	)
 
 if 'social.apps.django_app.default':
-		urlpatterns += patterns('',
-														url('', include('social.apps.django_app.urls', namespace='social')),
-														)
+	urlpatterns += patterns('',
+		url('', include('social.apps.django_app.urls', namespace='social')),
+	)
 
 
 # ERRORS
