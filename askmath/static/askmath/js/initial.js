@@ -8,6 +8,7 @@ $(function(){
 	
 		ga('create', 'UA-66026376-1', 'auto');
 		ga('send', 'pageview');
+
 	};
 })
 
