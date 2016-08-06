@@ -21,7 +21,6 @@ import os
 from django.conf import global_settings
 
 from .site_info import *
-from .social import *
 from .components_metro import *
 
 #import hide
