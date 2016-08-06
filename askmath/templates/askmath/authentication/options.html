@@ -25,7 +25,6 @@
 				<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
 			</li>
 		</ul>
-	
 		<div class="frames">
 			<div class="frame" id="frame_sign_in">
 				{% with form_signin as form %}
@@ -43,18 +42,17 @@
 						{% trans "Sign In" %}
 					</button>
 					<p class="text-center">{% trans "Or" %}</p>
-					<div class="btn-group btn-group-justified" role="group" aria-label="...">
-						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-social btn-facebook">
-							<span class="fa fa-facebook"></span>Facebook
+					<div data-role="group" data-group-type="one-state">
+						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="button primary">
+							<span class="mif-facebook"></span> Facebook
 						</a>
-						<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-social btn-google">
-							<span class="fa fa-google-plus"></span>Google
+						<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="button danger">
+							<span class="mif-google"></span> Google
 						</a>
-						<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn btn-social btn-twitter">
-							<span class="fa fa-twitter"></span>Twitter
+						<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="button info">
+							<span class="mif-twitter"></span> Twitter
 						</a>
 					</div>
-					<br>
 					<a href="{% url 'askmath:reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
 				</form> 
 				{% endwith %}
@@ -73,7 +71,6 @@
 						</span>
 					</label>
 					<div id="recaptcha2"></div>
-					<br />
 					<button type="submit" class="button primary width">
 						{% trans "Sign Up" %}
 					</button>

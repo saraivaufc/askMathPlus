@@ -1,57 +1,56 @@
-# from django.utils.translation import ugettext as _
-def _(casa):
-    return casa
+# -*- coding: UTF-8 -*-
 
+from django.utils.translation import ugettext_lazy as _
 
 import random
 
 COLORS = (
-    ("bg-lime", _("Lime")),
-    ("bg-green", _("Green")),
-    ("bg-emerald", _("Emerald")),
-    ("bg-teal", _("Teal")),
-    ("bg-blue", _("Blue")),
-    ("bg-cyan", _("Cyan")),
-    ("bg-cobalt", _("Cobalt")),
-    ("bg-indigo", _("Indigo")),
-    ("bg-violet", _("Violet")),
-    ("bg-magenta", _("Magenta")),
-    ("bg-orange", _("Orange")),
-    ("bg-amber", _("Amber")),
-    ("bg-yellow", _("Yellow")),
-    ("bg-brown", _("Brown")),
-    ("bg-olive", _("Emerald")),
-    ("bg-steel", _("Steel")),
-    ("bg-mauve", _("Mauve")),
-    ("bg-taupe", _("Taupe")),
-    ("bg-gray", _("Gray")),
+	("bg-lime", _(u"Lime")),
+	("bg-green", _(u"Green")),
+	("bg-emerald", _(u"Emerald")),
+	("bg-teal", _(u"Teal")),
+	("bg-blue", _(u"Blue")),
+	("bg-cyan", _(u"Cyan")),
+	("bg-cobalt", _(u"Cobalt")),
+	("bg-indigo", _(u"Indigo")),
+	("bg-violet", _(u"Violet")),
+	("bg-magenta", _(u"Magenta")),
+	("bg-orange", _(u"Orange")),
+	("bg-amber", _(u"Amber")),
+	("bg-yellow", _(u"Yellow")),
+	("bg-brown", _(u"Brown")),
+	("bg-olive", _(u"Emerald")),
+	("bg-steel", _(u"Steel")),
+	("bg-mauve", _(u"Mauve")),
+	("bg-taupe", _(u"Taupe")),
+	("bg-gray", _(u"Gray")),
 )
 
 COLORS_DARK = (
-    ("bg-darkBrown", _("Dark Brown")),
-    ("bg-darkIndigo", _("Dark Indigo")),
-    ("bg-darkCyan", _("Dark Cyan")),
-    ("bg-darkCobalt", _("Dark Cobalt")),
-    ("bg-darkTeal", _("Dark Teal")),
-    ("bg-darkEmerald", _("Dark Emerald")),
-    ("bg-darkGreen", _("Dark Green")),
-    ("bg-darkOrange", _("Dark Orange")),
-    ("bg-darkViolet", _("Dark Violet")),
-    ("bg-darkBlue", _("Dark Blue")),
+	("bg-darkBrown", _(u"Dark Brown")),
+	("bg-darkIndigo", _(u"Dark Indigo")),
+	("bg-darkCyan", _(u"Dark Cyan")),
+	("bg-darkCobalt", _(u"Dark Cobalt")),
+	("bg-darkTeal", _(u"Dark Teal")),
+	("bg-darkEmerald", _(u"Dark Emerald")),
+	("bg-darkGreen", _(u"Dark Green")),
+	("bg-darkOrange", _(u"Dark Orange")),
+	("bg-darkViolet", _(u"Dark Violet")),
+	("bg-darkBlue", _(u"Dark Blue")),
 )
 
 COLORS_LIGHT = (
-    ("bg-lightBlue", _("Light Blue")),
-    ("bg-lightRed", _("Light Red")),
-    ("bg-lightGreen", _("Light Green")),
-    ("bg-lighterBlue", _("Lighter Blue")),
-    ("bg-lightOlive", _("Light Olive")),
-    ("bg-lightOrange", _("Light Orange")),
+	("bg-lightBlue", _(u"Light Blue")),
+	("bg-lightRed", _(u"Light Red")),
+	("bg-lightGreen", _(u"Light Green")),
+	("bg-lighterBlue", _(u"Lighter Blue")),
+	("bg-lightOlive", _(u"Light Olive")),
+	("bg-lightOrange", _(u"Light Orange")),
 )
 
 COLORS_ALL = COLORS + COLORS_LIGHT + COLORS_DARK
 
 
 def generate_color():
-    choose = random.choice(COLORS_ALL)
-    return choose[0]
+	choose = random.choice(COLORS_ALL)
+	return choose[0]

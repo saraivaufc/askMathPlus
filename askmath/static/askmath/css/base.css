@@ -70,6 +70,10 @@ body{
     transform: translateY(-50%);
 }
 
+a.tile-content{
+	color: #FFF !important;
+}
+
 .transparent{
 	background: transparent;
 	background-color: transparent;
