@@ -3,8 +3,6 @@
 {% load i18n %}
 {% load askmath_tags %}
 
-
-
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li>
@@ -68,7 +66,7 @@
 					</li>
 					<li>
 							<h4>Declaração legal</h4>
-							<p>Para obter informações sobre as condições de uso deste site, acesse a nossos <a href="/terms/">Termos e Condições de Uso</a>.</p>
+							<p>Para obter informações sobre as condições de uso deste site, acesse a nossos <a href="{% url 'askmath:terms' %}">Termos e Condições de Uso</a>.</p>
 					</li>
 					<li>
 							<h4>Atualizações</h4>

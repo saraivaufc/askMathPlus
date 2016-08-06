@@ -12,31 +12,30 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area no-padding">
-
+<div class="no-padding">
 	<h3 class="text-center page-title">{% trans "Classes" %}</h3>
 
-    <label for="select_classe_default">
-        {% trans "Current Classe" %}:
+	<label for="select_classe_default">
+			{% trans "Current Classe" %}:
 
-        <div class="split-button">
-            {% if current_classe %}
-                <button class="button">{{ current_classe }}</button>
-                <button class="split dropdown-toggle"></button>
-            {% else %}
-                <button class="button">{% trans "Subscrive in  one class." %}</button>
-            {% endif %}
-            <ul class="split-content d-menu" data-role="dropdown">
-                {% for classe in my_classes %}
-                    {% if classe != current_classe %}
-                        <li>
-                            <a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-    </label>
+			<div class="split-button">
+					{% if current_classe %}
+							<button class="button">{{ current_classe }}</button>
+							<button class="split dropdown-toggle"></button>
+					{% else %}
+							<button class="button">{% trans "Subscrive in  one class." %}</button>
+					{% endif %}
+					<ul class="split-content d-menu" data-role="dropdown">
+							{% for classe in my_classes %}
+									{% if classe != current_classe %}
+											<li>
+													<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
+											</li>
+									{% endif %}
+							{% endfor %}
+					</ul>
+			</div>
+	</label>
 
 	<div class="tile-container">
 		<table  class="dataTable border bordered">

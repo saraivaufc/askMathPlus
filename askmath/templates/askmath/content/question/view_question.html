@@ -169,13 +169,13 @@
 					</h5>
 					<div class="padding30">
 						<center>
-						<img src="{{ experience_level.get_image_url }}"  class="img img-responsive img-avatar">
+						<img src="{{ experience_level.get_image_url }}" >
 						</center>
 					</div>
 					<div class="text-center">
 						<div class="rating large" data-size="large">
 							{% for i in 5|range %}
-								{% if forloop.counter <= studentexperience.stars %}
+								{% if forloop.counter <= student_experience.get_stars %}
 									<span class="star on"></span>
 								{% else %}
 									<span class="star off"></span>

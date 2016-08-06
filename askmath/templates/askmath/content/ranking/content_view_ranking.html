@@ -1,0 +1,113 @@
+{% extends 'askmath/content/content_home.html' %}
+
+{% load i18n %}
+{% load askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="{% url 'askmath:content_classe_view' %}"><span class="icon mif-trophy"></span> <span class="hidden-xs">{% trans "Ranking" %}</span></a></li>
+{% endblock %}
+
+{% block tiles %}
+<div class="container-fluid">
+<div class="row">
+
+	<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
+		<section class="row bg-grayLighter">
+			<h3 class="text-center page-title">{% trans "Ranking" %}</h3>
+			<div class="listview-outlook padding10" data-role="listview">
+			{% for i in students %}
+				<div class="list block-shadow {% if i.student == me %}bg-lightBlue fg-white{% endif %}" style="margin-bottom: 10px;">
+					<div class="list-content">
+						<div class="flex-grid">
+							<div class="row flex-just-sb">
+								<div class="cell">
+									<button class="square-button small-button bg-yellow fg-white">1</button>
+								</div>
+								
+								<div class="cell auto-size">
+									<div class="row flex-content-start">
+										<div class="cell">
+											{% if i.student.get_profile_image %}
+											<img width="50px" src="{{ i.student.get_profile_image.url }}">
+											{% else %}
+											<img width="50px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+											{% endif %}
+										</div>
+										
+										<div class="cell">
+											<span>{{ i.student.get_full_name }}</span>
+											<a href="{{ i.student.get_email }}">{{ i.student.get_email }}</a>
+											<i class="tag success">{{ i.experience_level.get_level }}</i>
+										</div>
+									</div>
+								</div>
+								<div class="cell">
+									<div class="container-fluid">
+										<div class="row">
+											<label class="tag info align-right">{{ i.student_experience.get_full_scores|default_if_none:"0" }}</label>
+										</div>
+										<div class="row">
+											<label class="tag success align-right">+121212</label>
+										</div>
+									</div>
+								</div>
+								<div class="cell ">
+									<div class="container-fluid">
+										<div class="row">
+											<img width="50px" class="img" src="{{ i.experience_level.get_image_url }}">
+										</div>
+										<div class="row">
+											<div class="rating small" data-size="small">
+												{% for k in 5|range %}
+													{% if forloop.counter <= i.student_experience.get_stars %}
+														<span class="star on"></span>
+													{% else %}
+														<span class="star off"></span>
+													{% endif %}
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</section>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+		<aside class="bg-grayLighter">
+			
+			<h3 class="text-center page-title">{% trans "Your Progress" %}</h3>
+			
+			<div class="padding10">
+				<h5>
+					{% trans "Your level of experience is:" %} <span
+						class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
+				</h5>
+				<div class="padding30">
+					<center>
+					<img src="{{ experience_level.get_image_url }}" >
+					</center>
+				</div>
+				<div class="text-center">
+					<div class="rating large" data-size="large">
+						{% for i in 5|range %}
+							{% if forloop.counter <= student_experience.get_stars %}
+								<span class="star on"></span>
+							{% else %}
+								<span class="star off"></span>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+
+</div>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 proxy_classe = ProxyClasse()
 
 urlpatterns = patterns('',
-                       url(r'^$', proxy_classe.view_classes),
+                       url(r'^$', proxy_classe.view_classes, name="content_classe_view"),
 
                        url(r'^view/$', proxy_classe.view_classes, name="content_classe_view"),
                        url(r'^view/classe=(?P<id_classe>\d+)/$', proxy_classe.view_classe, name="content_classe_view"),
