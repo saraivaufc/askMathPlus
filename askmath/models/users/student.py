@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from askmath.models.experience import StudentExperience
 from .person import Person
 
 
@@ -25,16 +26,7 @@ class Student(Person):
 			return None
 	
 	def get_student_experience(self):
-		try:
-			student_experience = StudentExperience.objects.get(student=self.id, exists=True)
-		except Exception, e:
-			print e
-			try:
-				student_experience = StudentExperience(student=student)
-				student_experience.save()
-			except Exception, e:
-				print e
-				student_experience = None
+		student_experience = StudentExperience.objects.get_or_create(student=self, exists=True)[0]
 		return student_experience
 
 	def set_current_classe(self, classe):

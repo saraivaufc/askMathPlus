@@ -13,3 +13,5 @@ from .category import *
 from .topic import *
 from .comment import *
 from .like import *
+
+import tasks

@@ -1,2 +1,2 @@
 celery -A askMathPlus worker -l info
-$ celery -A askMathPlus beat -l info
+celery -A askMathPlus beat -l info

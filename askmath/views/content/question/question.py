@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .iquestion import IQuestion
 
+PERCENT_DOWN_SCORES_IN_RESET_LESSON  = 0.75
 
 class Question(IQuestion):
 	def view_question(self, request, discipline, lesson, question=None, definitive=False):
@@ -20,18 +21,7 @@ class Question(IQuestion):
 			return HttpResponseRedirect(
 				reverse('askmath:content_lesson_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
-		try:
-			student_experience = StudentExperience.objects.get(student=student, exists=True)
-		except Exception, e:
-			print e
-			try:
-				student_experience = StudentExperience(student=student)
-				student_experience.save()
-			except Exception, e:
-				print e
-				messages.error(request, TextMessage.ERROR)
-				return HttpResponseRedirect(reverse('askmath:content_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+		student_experience = student.get_student_experience()
 
 		experience_level = ExperienceLevel(student_experience.level)
 
@@ -153,26 +143,15 @@ class Question(IQuestion):
 			studentlessonstate = StudentLessonState.objects.get(student=student, discipline=discipline, lesson=lesson, exists=True)
 		except Exception, e:
 			print e
-			studentlessonstate = StudentLessonState(student=student, discipline=discipline, lesson=lesson,
-													remaining_jump=lesson.get_maximum_hops())
+			studentlessonstate = StudentLessonState(student=student, discipline=discipline, lesson=lesson, remaining_jump=lesson.get_maximum_hops())
 			studentlessonstate.save()
 
-		try:
-			student_experience = StudentExperience.objects.get(student=student, exists=True)
-		except Exception, e:
-			print e
-			try:
-				student_experience = StudentExperience(student=student)
-				student_experience.save()
-			except Exception, e:
-				print e
-				messages.error(request, TextMessage.ERROR)
-				return HttpResponseRedirect(reverse('askmath:content_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+		student_experience = student.get_student_experience()
 
+		student_experience.down_scores(int( studentlessonstate.get_scores()  * PERCENT_DOWN_SCORES_IN_RESET_LESSON )  )
 		studentlessonstate.delete()
+		
 		messages.success(request, TextMessage.LESSON_SUCCESS_RESET)
-		student_experience.down_scores(student_experience.get_scores() / 2)
 		return HttpResponseRedirect(
 			reverse('askmath:content_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 

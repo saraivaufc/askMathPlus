@@ -434,6 +434,10 @@ function showCharm(id) {
 		charm.open();
 	}
 }
+function showDialog(id){
+     	var dialog = $(id).data('dialog');
+     	dialog.open();
+    }
 
 
 $(function () {

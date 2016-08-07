@@ -14,28 +14,24 @@ class Ranking(IRanking):
 	def view_ranking(self, request, student, classe):
 
 		student_experience = student.get_student_experience()
-		if(student_experience.is_new_round()){
+		if student_experience.is_new_round():
+			new_round = True
 			student_experience.new_round = False
 			student_experience.save()
-		}
+		else:
+			new_round = False
 
 		experience_level = ExperienceLevel(student_experience.level)
 
-		students = StudentModel.objects.filter(exists=True)
+		student_experiences = StudentExperience.objects.filter(exists=True).order_by('-new_scores')
 		students_list = []
-		for i in students:
-			try:
-				try:
-					temp_student_experience = StudentExperience.objects.get(student=i, exists=True)
-				except Exception, e:
-					print e
-					temp_student_experience = StudentExperience(student=i)
-					temp_student_experience.save()
-				temp_experience_level = ExperienceLevel(temp_student_experience.get_level())
-			except Exception, e:
-				print e
-				continue
-			students_list.append({"student":i, "student_experience": temp_student_experience, "experience_level": temp_experience_level})
+		for index, i in enumerate(student_experiences): 
+			students_list.append({
+									"position": index+1, 
+									"student":i.get_student(), 
+									"student_experience": i, 
+									"experience_level": ExperienceLevel(i.get_level())
+								 })
 
 		return render(request, "askmath/content/ranking/content_view_ranking.html",
 						{'request': request, 
@@ -43,4 +39,6 @@ class Ranking(IRanking):
 						'me': student, 
 						'student_experience': student_experience,
 						'experience_level': experience_level, 
-						'students': students_list})
+						'students': students_list,
+						"new_round": new_round,
+						})
