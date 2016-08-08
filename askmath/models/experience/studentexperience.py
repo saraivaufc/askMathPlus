@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 from django.conf import settings
 
 #10% == 0.1 and 100% = 1
-PERCENT_UP_MAX_SCORES = 2
+PERCENT_UP_MAX_SCORES = 1
 
 class StudentExperience(models.Model):
 	student = models.ForeignKey('Student', verbose_name=_(u"Student"), unique=True)
@@ -49,6 +49,10 @@ class StudentExperience(models.Model):
 
 	def get_level(self):
 		return self.level
+
+	def get_experience_level(self):
+		from askmath.entities import ExperienceLevel
+		return ExperienceLevel(self.get_level())
 
 	def get_stars(self):
 		return self.stars

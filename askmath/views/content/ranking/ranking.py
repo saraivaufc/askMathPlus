@@ -21,11 +21,14 @@ class Ranking(IRanking):
 		else:
 			new_round = False
 
-		experience_level = ExperienceLevel(student_experience.level)
+		experience_level = ExperienceLevel(student_experience.get_level())
 
 		student_experiences = StudentExperience.objects.filter(exists=True).order_by('-new_scores')
 		students_list = []
+		last_winner = None
 		for index, i in enumerate(student_experiences): 
+			if i.is_last_winner():
+				last_winner = i
 			students_list.append({
 									"position": index+1, 
 									"student":i.get_student(), 
@@ -41,4 +44,5 @@ class Ranking(IRanking):
 						'experience_level': experience_level, 
 						'students': students_list,
 						"new_round": new_round,
+						"last_winner": last_winner,
 						})
