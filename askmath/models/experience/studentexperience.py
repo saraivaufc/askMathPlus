@@ -21,6 +21,8 @@ class StudentExperience(models.Model):
 	stars = models.IntegerField(default=0, verbose_name=_(u"Stars"))
 	
 	new_round = models.BooleanField(default=True, blank=True)
+	date_start_new_round = models.DateTimeField(_('Date Start New Round'), default=timezone.now)
+	date_end_new_round = models.DateTimeField(_('Date End New Round'), default=timezone.now)
 	last_winner = models.BooleanField(default=False, blank=True)
 	
 	creation = models.DateTimeField(_('Creation'), default=timezone.now)
@@ -53,6 +55,12 @@ class StudentExperience(models.Model):
 	def get_experience_level(self):
 		from askmath.entities import ExperienceLevel
 		return ExperienceLevel(self.get_level())
+
+	def get_date_start_new_round(self):
+		return self.date_start_new_round
+
+	def get_date_end_new_round(self):
+		return self.date_end_new_round
 
 	def get_stars(self):
 		return self.stars

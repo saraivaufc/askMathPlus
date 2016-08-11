@@ -1,6 +1,7 @@
 {% extends 'askmath/content/content_home.html' %}
 
 {% load i18n %}
+{% load humanize %}
 {% load askmath_tags %}
 
 {% block breadcrumbs %}
@@ -15,44 +16,47 @@
 {% block tiles %}
 <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
 	<section class="row bg-grayLighter">
-		<h3 class="text-center page-title">{% trans "Ranking of Round" %}</h3>
+		<h3 class="text-center page-title">{% trans "Ranking Round" %}</h3>
 		<div class="listview-outlook padding10" data-role="listview">
+		<label>{% trans "This round ends in" %}: {{  student_experience.get_date_end_new_round|naturaltime}}</label>
 		{% for i in students %}
 			<div class="list block-shadow {% if i.student == me %}bg-lightBlue fg-white{% endif %}" style="margin-bottom: 10px;">
 				<div class="list-content">
-					<div class="grid">
-						<div class="row cells12 ">
-							<div class="cell ">
-								<button class="square-button small-button bg-yellow fg-white">{{ i.position }}</button>
-							</div>
-							<div class="cell colspan7">
-								{% if i.student.get_profile_image %}
-								<img style="float: left; margin-right:10px;" width="60px" src="{{ i.student.get_profile_image.url }}">
-								{% else %}
-								<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
-								{% endif %}
-								<span>{{ i.student.get_full_name }}</span></br>
-								<span class="tag success">{{ i.experience_level.get_level }}</span>
-							</div>
-							
-							<div class="cell colspan2">
-								<center>
-									<img width="50px" class="img" src="{{ i.experience_level.get_image_url }}"><br>
-									<div class="rating small" data-size="small">
-										{% for k in 5|range %}
-											{% if forloop.counter <= i.student_experience.get_stars %}
-												<span class="star on"></span>
-											{% else %}
-												<span class="star off"></span>
-											{% endif %}
-										{% endfor %}
-									</div>
-								</center>
-							</div>
-							<div class="cell colspan2">
-								<label class="tag success align-right">{{ i.student_experience.get_new_scores|default_if_none:"0" }}</label>
-								<br>
-								<label class="tag info align-right">{{ i.student_experience.get_full_scores|default_if_none:"0" }}</label>
+					<div class="flex-grid">
+						<div class="container-fluid">
+							<div class="row cells12 ">
+								<div class="cell ">
+									<button class="square-button small-button bg-yellow fg-white">{{ i.position }}</button>
+								</div>
+								<div class="cell colspan7">
+									{% if i.student.get_profile_image %}
+									<img style="float: left; margin-right:10px;" width="60px" src="{{ i.student.get_profile_image.url }}">
+									{% else %}
+									<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+									{% endif %}
+									<span>{{ i.student.get_full_name }}</span></br>
+									<span class="tag success">{{ i.experience_level.get_level }}</span>
+								</div>
+								
+								<div class="cell colspan2">
+									<center>
+										<img width="50px" class="img" src="{{ i.experience_level.get_image_url }}"><br>
+										<div class="rating small" data-size="small">
+											{% for k in 5|range %}
+												{% if forloop.counter <= i.student_experience.get_stars %}
+													<span class="star on"></span>
+												{% else %}
+													<span class="star off"></span>
+												{% endif %}
+											{% endfor %}
+										</div>
+									</center>
+								</div>
+								<div class="cell colspan2">
+									<label class="tag success align-right">{{ i.student_experience.get_new_scores|show_signal_number|default_if_none:"0" }}</label>
+									<br>
+									<label class="tag info align-right">{{ i.student_experience.get_full_scores|default_if_none:"0" }}</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -68,32 +72,31 @@
 		<h3 class="text-center page-title">{% trans "Last Winner" %}</h3>
 		{% if last_winner %}
 			<div class="container-fluid">
-				<div class="row padding10">
-					{% if last_winner.student.get_profile_image %}
-					<img class="img"  src="{{ last_winner.student.get_profile_image.url }}">
-					{% else %}
-					<img class="img"  src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
-					{% endif %}
-				</div>
-			</div>
-			<div class="container-fluid">
-				<div class="row">
-					<p class="lead text-center">
-						{{ last_winner.student.get_full_name }}
-					</p>
-					<div class="flex-grid">
-						<div class="row cell-auto-size">
-							<div class="cell">
-								<span class="tag success">{{ last_winner.student.get_student_experience.get_experience_level.get_level }}</span>	
-							</div>
-							<div class="cell">
-								<img width="50px" src="{{ last_winner.student.get_student_experience.get_experience_level.get_image_url }}">
-							</div>
+				<div style="
+					background: url('{{ STATIC_URL }}askmath/img/backgrounds/winner.png');
+					background-repeat: no-repeat;
+					 background-size: 100% 100%;
+					">
+					<div class="row" >
+						<div class="padding50">
+							{% if last_winner.student.get_profile_image %}
+							<img  style="border-radius: 50%;"  src="{{ last_winner.student.get_profile_image.url }}">
+							{% else %}
+							<img style="border-radius: 50%;"  src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+							{% endif %}
+							<label class="text-center">
+								{{ last_winner.student.get_full_name }}
+							</label>
 						</div>
 					</div>
 				</div>
 			</div>
 		{% else %}
+			<div class="padding10">
+				<h3 class="text-center">
+					{% trans "Earn points, level up and become our new champion." %}
+				</h3>
+			</div>
 		{% endif %}
 		</div>
 	</aside>

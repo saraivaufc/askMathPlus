@@ -18,13 +18,6 @@ class ProxyDiscipline(IDiscipline):
     def view_disciplines(self, request):
         if request.user.has_perm("askmath.read_discipline") and request.user.has_perm("askmath.access_content"):
             try:
-                student = request.user.get_person_class(request.user, StudentModel)
-                current_classe = student.get_current_classe()
-                if current_classe:
-                    return self.__discipline.view_disciplines(request, current_classe)
-            except Exception, e:
-                print e
-            try:
                 return self.__discipline.view_disciplines(request)
             except Exception, e:
                 print e

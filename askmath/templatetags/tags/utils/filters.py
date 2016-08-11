@@ -27,6 +27,15 @@ def replace_to_space(text, arg):
 def class_exists(field, cl):
     pass
 
+@register.filter(name='show_signal_number')
+def show_signal_number(number):
+    if number > 0:
+        return "+"+ str(number)
+    elif number < 0:
+        return "-"+ str(number)
+    else:
+        return number
+
 
 @register.filter(name='translate')
 def translate(text):

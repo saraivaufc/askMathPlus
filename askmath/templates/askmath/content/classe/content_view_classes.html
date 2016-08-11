@@ -14,7 +14,7 @@
 {% block tiles %}
 <div class="no-padding">
 	<h3 class="text-center page-title">{% trans "Classes" %}</h3>
-
+	{% comment %}
 	<label for="select_classe_default">
 			{% trans "Current Classe" %}:
 
@@ -36,6 +36,7 @@
 					</ul>
 			</div>
 	</label>
+	{% endcomment %}
 
 	<div class="tile-container">
 		<table  class="dataTable border bordered">

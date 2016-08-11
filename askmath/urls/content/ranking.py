@@ -7,5 +7,5 @@ urlpatterns = patterns('',
 	url(r'^$', proxy_ranking.view_ranking, name="content_ranking_view"),
 	
 	url(r'^view/$', proxy_ranking.view_ranking, name="content_ranking_view"),
-	url(r'^view/classe=(?P<id_classe>\d+)/$', proxy_ranking.view_ranking, name="content_classe_view"),
+	url(r'^view/classe=(?P<id_classe>\d+)/$', proxy_ranking.view_ranking, name="content_ranking_view"),
 )
