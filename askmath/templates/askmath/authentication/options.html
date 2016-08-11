@@ -42,16 +42,22 @@
 						{% trans "Sign In" %}
 					</button>
 					<p class="text-center">{% trans "Or" %}</p>
-					<div data-role="group" data-group-type="one-state">
-						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="button primary">
+					<div class="btn-group btn-group-justified" data-role="group" data-group-type="one-state">
+						 <div class="btn-group" role="group">
+						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn button primary">
 							<span class="mif-facebook"></span> Facebook
 						</a>
-						<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="button danger">
+						</div>
+						 <div class="btn-group" role="group">
+						<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn button danger">
 							<span class="mif-google"></span> Google
 						</a>
-						<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="button info">
+						</div>
+						 <div class="btn-group" role="group">
+						<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn button info">
 							<span class="mif-twitter"></span> Twitter
 						</a>
+						</div>
 					</div>
 					<a href="{% url 'askmath:reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
 				</form> 
