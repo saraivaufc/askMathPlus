@@ -200,8 +200,7 @@ function sortVideos() {
 function help() {
 	var url_help = $("input[name='url_help']").val();
 	try {
-		$.get(url_help, function (data) {
-		});
+		$.get(url_help, function (data) {});
 	} catch (e) {
 		console.log(e);
 	}
@@ -215,7 +214,8 @@ $(function () {
 	});
 });
 
-$("#btn-help").click(help);
+
+$("#btn-help").on('click', help);
 
 
 function openEditor(box) {
@@ -400,9 +400,22 @@ $(function () {
 	});
 })
 
+function showCharm(id) {
+	var charm = $(id).data("charm");
+	if (charm.element.data("opened") === true) {
+		charm.close();
+	} else {
+		charm.open();
+	}
+}
+
 function showDialog(id) {
-	var dialog = $(id).data('dialog');
-	dialog.open();
+	 var dialog = $(id).data('dialog');
+	if (!dialog.element.data('opened')) {
+		dialog.open();
+	} else {
+		dialog.close();
+	}
 }
 
 var isMobile = {
@@ -425,20 +438,6 @@ var isMobile = {
 		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
 	}
 };
-
-function showCharm(id) {
-	var charm = $(id).data("charm");
-	if (charm.element.data("opened") === true) {
-		charm.close();
-	} else {
-		charm.open();
-	}
-}
-function showDialog(id){
-     	var dialog = $(id).data('dialog');
-     	dialog.open();
-    }
-
 
 $(function () {
 	$("#signUpForm  input[name=confirm_password]").change(function () {

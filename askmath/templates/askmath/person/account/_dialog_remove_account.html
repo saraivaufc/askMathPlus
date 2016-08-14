@@ -1,0 +1,29 @@
+{% load i18n %}
+<div id="dialog_remove_account" class="padding20" data-role="dialog" data-type="info"  data-close-button="true" data-overlay="true" data-overlay-color="op-dark" >
+	<div class="container">
+		<h2 class="align-center">{% trans "You want to delete your account permanently?" %}</h2>	
+		
+		<p class="text-accent">{% blocktrans  with name=request.user.get_username context "greeting"  %}Deleting your member account ({{ name }} ) will be permanent. Please, enter your password to continue... {% endblocktrans %}</p>
+		
+		<form action="{% url 'askmath:person_account_remove_account' %}" method="POST">
+	  	{% csrf_token %}
+	  		<div class="align-center">
+	  			
+	  			<div class="input-control password" data-role="input">
+					<input  type="password" autofocus name="password">
+					<button class="button helper-button reveal"><span class="mif-looks"></span></button>
+				</div>
+	  		</div>
+			
+			<div class="align-right">
+				<button type="button" class="button primary" onclick="showDialog('#dialog_remove_account')">
+					{% trans "No" %}
+				</button>
+				<button  type="submit" class="button success">
+					{% trans "Yes" %}
+				</button>
+			</div>
+
+		</form>
+	</div>
+</div>

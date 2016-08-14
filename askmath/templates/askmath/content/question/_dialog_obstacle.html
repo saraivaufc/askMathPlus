@@ -1,0 +1,28 @@
+{% load i18n %}
+
+<div id="dialog_obstacle" class="padding20"  data-role="dialog" data-type="alert" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" >
+	<div class="container">
+		<h2 class="align-center">{% trans "Você está enfrentando problemas?" %}</h2>
+			{% if deficiencies %}
+			<p class="text-accent align-justify">Identificamos que você pode possuir deficiência nas lições a seguir, sugerimos fortemente que você as refaça antes de continuar.</p>
+
+			<div class="listview list-type-icons">
+				{% for deficiency in deficiencies %}
+					<a class="list {{ deficiency.color }} fg-white"
+					   href="{% url 'askmath:content_lesson_view' id_discipline=deficiency.get_discipline.id id_lesson=deficiency.id %}">
+						<span class="list-icon mif-clipboard"></span>
+						<span class="list-title">{{ deficiency.get_title }}</span>
+					</a>
+				{% endfor %}
+			</div>
+			{% else %}
+			<p class="text-accent align-justify">Identificamos que você está enfrentando dificuldades, sugerimos que você volte uma outra hora para continuar.</p>
+			{% endif %}
+		</div>
+
+		<div class="align-right">
+			<button class="button primary" onclick="showDialog('#dialog_obstacle')">
+				{% trans "Close" %}
+			</button>
+		</div>
+</div>

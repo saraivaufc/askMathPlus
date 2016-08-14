@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<div id="dialog_help" class="padding20" data-role="dialog" data-type="info"  data-close-button="true" data-overlay="true" data-overlay-color="op-dark" >
+	<div class="container">
+		<h2 class="align-center">{% trans "Help Question" %}</h2>	
+		
+		<p class="text-accent">{{ question.get_help|safe|linebreaksbr }}</p>
+		
+		<div class="align-right">
+			<button class="button primary" onclick="showDialog('#dialog_help')">
+				{% trans "Close" %}
+			</button>
+		</div>
+	</div>
+</div>

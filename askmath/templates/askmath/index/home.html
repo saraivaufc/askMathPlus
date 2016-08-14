@@ -17,51 +17,48 @@
 {% block content %}
 <section>
 	<div class="container">
-		<hgroup id="welcome" class="text-center fg-darkBlue">
+		<hgroup class="align-center fg-darkBlue">
 		<h1>{% trans "Welcome to AskMath" %}</h1>
-		<h4>{% trans "Learn mathematics anytime, from anywhere" %}...</h4>
+		<h3>{% trans "Learn mathematics anytime, from anywhere" %}...</h3>
 		</hgroup>
 	</div>
 </section>
 
 <section>
 	<div class="flex-grid ">
-	<div class="container-fluid">
-	<div class="row flex-just-center ">
-		<div class="cell size4">
-			<div class="row tile-container cell-auto-size">	
-				<div class="cell tile-wide bg-green fg-white" data-role="tile">
-					<a id="index" href="{% url 'askmath:authentication_options' %}" class="tile-content iconic">
-						<span class="icon mif-play"></span>
-					</a>
-					<span class="tile-label">{% trans "Start here" %}</span>
+		<div class="row flex-just-center ">
+			<div class="cell size4">
+				<div class="row tile-container cell-auto-size">	
+					<div class="cell tile-wide bg-green fg-white" data-role="tile">
+						<a id="index" href="{% url 'askmath:authentication_options' %}" class="tile-content iconic">
+							<span class="icon mif-play"></span>
+						</a>
+						<span class="tile-label">{% trans "Start here" %}</span>
+					</div>
 				</div>
-			</div>
-			<div class="row tile-container cell-auto-size" >
-				<div class="cell tile bg-red fg-white" data-role="tile">
-					<a href="{% url 'askmath:contents' %}" class="tile-content iconic">
-						<span class="icon mif-books"></span>
-					</a>
-					<span class="tile-label">{% trans "Contents" %}</span>
-				</div>
-				<div class="cell tile bg-yellow fg-white" data-role="tile">
-					<a href="{% url 'askmath:forum_category_view' %}" class="tile-content iconic">
-						<span class="icon mif-bubbles"></span>
-					</a>
-					<span class="tile-label">{% trans "Forum" %}</span>
-				</div>
-				<div class="cell tile bg-darkBlue fg-white" data-role="tile">
-					<a href="{% url 'askmath:about' %}" class="tile-content iconic">
-						<span class="icon mif-info"></span>
-					</a>
-					<span class="tile-label">{% trans "About the project" %}</span>
+				<div class="row tile-container cell-auto-size" >
+					<div class="cell tile bg-red fg-white" data-role="tile">
+						<a href="{% url 'askmath:contents' %}" class="tile-content iconic">
+							<span class="icon mif-books"></span>
+						</a>
+						<span class="tile-label">{% trans "Contents" %}</span>
+					</div>
+					<div class="cell tile bg-yellow fg-white" data-role="tile">
+						<a href="{% url 'askmath:forum_category_view' %}" class="tile-content iconic">
+							<span class="icon mif-bubbles"></span>
+						</a>
+						<span class="tile-label">{% trans "Forum" %}</span>
+					</div>
+					<div class="cell tile bg-darkBlue fg-white" data-role="tile">
+						<a href="{% url 'askmath:about' %}" class="tile-content iconic">
+							<span class="icon mif-info"></span>
+						</a>
+						<span class="tile-label">{% trans "About the project" %}</span>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-	</br>
 </section>
 
 {% endblock %}

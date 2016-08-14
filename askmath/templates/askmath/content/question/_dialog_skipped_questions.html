@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div id="dialog_skipped_questions" class="padding20" data-role="dialog" data-type="info"  data-close-button="true" data-overlay="true" data-overlay-color="op-dark" >
+	<div class="container">
+		<h2 class="align-center">{% trans "Skipped Questions" %}</h2>	
+
+		<div id="list_questions_sort" class="listview bg-white fg-dark" data-role="listview">
+		{% for question2 in studentlessonstate.get_skipped_questions %}
+			{% if question != question2 %}
+				<a href="{% url 'askmath:content_question_choose_skipped' id_discipline=discipline.id id_lesson=lesson.id id_question=question2.id %}" class="list bg-white fg-lightBlue border">
+					<span class="list-icon mif-list-numbered"></span>
+					<span class="list-title">{{ question.get_description|safe|linebreaksbr|truncatewords:20 }}</span>
+				</a>
+			{% endif %}
+		{% endfor %}
+		</div>
+
+		<div class="align-right">
+			<button class="button primary" onclick="showDialog('#dialog_skipped_questions')">
+				{% trans "Close" %}
+			</button>
+		</div>
+	</div>
+</div>

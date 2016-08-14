@@ -1,27 +1,31 @@
 {% load i18n %}
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8">
-			<div class="row">
-				<div class="bg-grayLighter">
-					<h3 class="text-center page-title">{{ title_form }}</h3>
-					<form  class="padding10" action="." method="post" enctype="multipart/form-data" role="form">
-					{% csrf_token %}
-						{% include "askmath/_render_form.html" %}
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan8">
+			<div class="card">
+
+				<h3 class="align-center page-title">{{ title_form }}</h3>
+				
+				<form  class="padding10" action="." method="post" enctype="multipart/form-data" role="form">
+				{% csrf_token %}
+					{% include "askmath/_render_form.html" %}
+					<div class="row">
 						<button type="submit" class="image-button primary">
 							{% trans "Submit" %}
 							<span class="icon mif-checkmark"></span>
 						</button>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="bg-grayLighter">
-				<h3 class="text-center page-title">{% trans "Informations" %}</h3>
-				<div class="bg-grayLighter padding10">
+		<div class="cell colspan4">
+			<div class="card">
+				
+				<h3 class="align-center page-title">{% trans "Informations" %}</h3>
+				
+				<div class="padding10">
 					<ul>
-						<li>* Esses campos sãorqueridos</li>
+						<li>* Esses campos são requeridos</li>
 					</ul>
 				</div>
 			</div>

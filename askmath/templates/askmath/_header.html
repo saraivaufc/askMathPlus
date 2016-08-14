@@ -15,8 +15,6 @@
 </div>
 
 <div class="app-bar">
-	 <span class="app-bar-divider"></span>
-
 	<ul id="navigation" class="app-bar-menu">
 		<li>
 			<a href="{% url 'askmath:home' %}">
@@ -61,7 +59,7 @@
 					<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
 					{% endif %}
 				</div>
-				<label class="image-title fg-white text-center">
+				<label class="image-title fg-white align-center">
 					<a href="{% url 'askmath:person_account_view' %}">
 						{{ request.user.get_full_name }}
 					</a>

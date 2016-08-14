@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<div id="dialog_jump" class="padding20" data-role="dialog" data-type="warning"  data-close-button="true" data-overlay="true" data-overlay-color="op-dark" >
+	<div class="container">
+		<h2 class="align-center">{% trans "Your Jump is Question?" %}</h2>	
+		
+		<div class="align-right">
+			<button class="button primary" onclick="showDialog('#dialog_jump')">
+				{% trans "No" %}
+			</button>
+			<a href="{% url 'askmath:content_question_jump' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"
+			   class="button success">
+				{% trans "Yes" %}
+			</a>
+		</div>
+	</div>
+</div>

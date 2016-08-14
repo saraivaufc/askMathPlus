@@ -16,44 +16,47 @@
 
 {% block content %}
 
-<div class="row ">
-	<div class="col-md-8">
-		<div class="bg-grayLighter">
-			<h3 class="text-center page-title"><span>{% trans "Your Profile" %}</h3>
-			<br>
-			<center >
-				<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
-					<div class="frame">
-					{% if person.get_profile_image %}
-						<img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />
-					{% else %}
-						<img data-type='bordered' class="img img-responsive" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
-					{% endif %}
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan9">
+			<div class="card">
+				<h3 class="align-center page-title"><span>{% trans "Your Profile" %}</h3>
+				
+				<div class="align-center padding20">
+					<div class="image-container bordered" style="min-width:150px; max-width:200px; min-height:100px" >
+						<div class="frame">
+						{% if person.get_profile_image %}
+							<img data-type='bordered' class="img img-responsive" src="{{ person.get_profile_image.url }}" />
+						{% else %}
+							<img data-type='bordered' class="img img-responsive" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+						{% endif %}
+						</div>
 					</div>
+					<h2>{{ person.get_full_name }}</h2>
+					<h4>{{ person.get_email }}</h4>
+					<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 				</div>
-				<h2>{{ person.get_full_name }}</h2>
-				<h4>{{ person.get_email }}</h4>
-				<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
-			</center>
-			<br>
+
+			</div>
 		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="bg-grayLighter">
-			<h3 class="text-center page-title">{% trans "Options" %}</h3>
-			<div class="padding10">
-				<a href="{% url 'askmath:person_account_edit' %}"  class="shortcut-button bg-cyan bg-active-darkBlue fg-white">
-					<span class="icon mif-pencil"></span>
-					<span class="title">{% trans "Profile Edit" %}</span>
-				</a>
-				<a href="{% url 'askmath:person_account_alter_password' %}"  class="shortcut-button bg-darkBrown bg-active-darkBlue fg-white">
-					<span class="icon mif-key"></span>
-					<span class="title">{% trans "Password Alter" %}</span>
-				</a>
-				<button data-toggle="modal" data-target="#remove_account"   class="shortcut-button bg-red bg-active-darkBlue fg-white">
-					<span class="icon mif-cross"></span>
-					<span class="title">{% trans "Account Remove" %}</span>
-				</button>
+
+		<div class="cell colspan3">
+			<div class="card">
+				<h3 class="align-center page-title">{% trans "Options" %}</h3>
+				<div class="padding10">
+					<a href="{% url 'askmath:person_account_edit' %}"  class="image-button primary width">
+						<span class="icon mif-pencil"></span>
+						<span class="title">{% trans "Profile Edit" %}</span>
+					</a>
+					<a href="{% url 'askmath:person_account_alter_password' %}"  class="image-button warning width">
+						<span class="icon mif-key"></span>
+						<span class="title">{% trans "Password Alter" %}</span>
+					</a>
+					<button  class="image-button danger width" onclick="showDialog('#dialog_remove_account')">
+						<span class="icon mif-cross"></span>
+						<span class="title">{% trans "Account Remove" %}</span>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -63,5 +66,5 @@
 {% endblock %}
 
 {% block modals %}
-	{% include "askmath/person/account/_modal_remove_account.html" %}
+	{% include "askmath/person/account/_dialog_remove_account.html" %}
 {% endblock %}

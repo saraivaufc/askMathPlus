@@ -16,21 +16,24 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area no-padding bg-grayLighter">
-	
-	<h3 class="text-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
-    	
-    	<div class="tile-container bg-grayLighter">
-	{% for lesson in discipline.get_lessons_visibles %}
-       	<div class="tile-wide {{ lesson.color }}">
-		    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
-				<span class="icon mif-clipboard"></span>
-				<div class="tile-label">{{ lesson.get_title|title }}</div>
-		    	</a>
+<div class="tile-area no-padding">
+	<div class="card">
+
+		<h3 class="align-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
+	    	
+	    	<div class="tile-container">
+		{% for lesson in discipline.get_lessons_visibles %}
+	       	<div class="tile-wide {{ lesson.color }}">
+			    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
+					<span class="icon mif-clipboard"></span>
+					<div class="tile-label">{{ lesson.get_title|title }}</div>
+			    	</a>
+			</div>
+		{% empty %}
+			<h3 class="align-center">{%trans "Discipline does not have lessons."%}</h3>
+		{% endfor %}
 		</div>
-	{% empty %}
-	<h3 class="text-center">{%trans "Discipline does not have lessons."%}</h3>
-	{% endfor %}
+
 	</div>
 </div>
 {% endblock %}

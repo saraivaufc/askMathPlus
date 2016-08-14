@@ -13,164 +13,149 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
-			<section class="row bg-grayLighter">
-					<h3 class="text-center page-title">
-						{% blocktrans with lesson=lesson %}Questions of {{ lesson }}{% endblocktrans %}
-					</h3>
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan10">
+			<div class="card">
+				<h3 class="align-center page-title no-margin">
+					{% blocktrans with lesson=lesson %}Questions of {{ lesson }}{% endblocktrans %}
+				</h3>
+				
+
+				{% if lesson.get_questions_visibles|length > 0 %}			
+
+				<table id="question_status" class="table striped border bordered cell-hovered  no-margin  align-center">
+					<tr>
+						<td>{% trans "Lesson Points" %} : {{ studentlessonstate.get_scores }}</td>
+						<td>{% trans "Correct Questions" %} : {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
+						<td>{% trans "Skipped Remaining" %} : {{ studentlessonstate.get_remaining_jump }}</td>
+					</tr>
+				</table>
+				
+				<div class="meter  bg-grayLight">
+					<span class="align-center fg-white" style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
+				</div>
+
+				{% endif %}
+
+				<div class="padding10">
+
+					{% if question and lesson_complete == False %}
+					<p id="content" class="text-accent align-justify"> 
+						{{ question.get_description|safe|linebreaksbr }} 
+						<span id="points" class="tag warning">{{ question.get_scores }} {% trans "Points" %}</span>
+					</p>
+					<form action="{% url 'askmath:content_question_answer' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" method="POST">
+						{% csrf_token %}
+						<input type="hidden" name="url_help" value="{% url 'askmath:content_question_help' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"/>
+						{% for item in question.get_items %}
+						<div class="row">
+							<label class="input-control radio small-check">
+								<input type="radio" name="item" value={{ item.id }} required>
+								<span class="check"></span>
+								<span class="caption align-justify">{{ item.get_description|safe|linebreaksbr }}</span>
+							</label>
+						</div>
+						{% empty %}
+						<p>{% trans "Not Item Found!!!" %}</p>
+						{% endfor %}
+
+
+						<div data-role="group" data-group-type="one-state" data-button-style="class">
+
+							<button type="submit" class="image-button success">
+								<span class="icon mif-checkmark"></span>
+								<span>{% trans "Reply" %}</span>
+							</button>
+							{% if question.get_help|length > 0 %}
+							<button  type="button" id="btn-help" class="button info" onclick="showDialog('#dialog_help')">
+								<span class="icon mif-question"></span>
+								<span>{% trans "Help" %}</span>
+							</button>
+							{% endif %}
+
+							{% if studentlessonstate.get_remaining_jump > 0 %}
+							<button type="button" class="image-button warning" onclick="showDialog('#dialog_jump')">
+								<span class="icon mif-redo"></span>
+								<span>{% trans "Jump" %}</span>
+							</button>
+							{% endif %}
+
+							{% if studentlessonstate.get_skipped_questions|length > 0  and not question in studentlessonstate.get_skipped_questions %}
+								<button type="button" class="image-button primary" onclick="showDialog('#dialog_skipped_questions')">
+								   	<span class="icon mif-history"></span>
+									<span>{% trans "Review Jumps" %}</span>
+								</button>
+							{% endif %}
+							
+							{% if  occur_obstacle or deficiencies %}
+								<button type="button" class="image-button danger"   onclick="showDialog('#dialog_obstacle')">
+								   	<span class="icon mif-warning mif-ani-flash mif-ani-slow"></span>
+									<span>{% trans "Deficiencies" %}</span>
+								</button>
+							{% endif %}
+						</div>
+
+					</form>
+					{% elif not question and lesson_complete %}
+					<div class="jumbotron">
+						
+						<h2 class="align-center">{% trans "Congratulations, complete lesson !!!" %}</h2>
+						
+						<div class="align-center margin30">
+							<a  class="button success" href="{% url 'askmath:content_question_reset_lesson' id_discipline=discipline.id id_lesson=lesson.id %}">
+								{% trans "Reser Lesson" %}
+							</a>
+						</div>
 					
-					{% if lesson.get_questions_visibles|length > 0 %}
+					</div>
+					<hr class="divider bg-grayLight">
+					<h4>{% trans "Sugestions next lessons:" %}</h4>
+
+					<ul>
+						{% for sugestion in lesson.get_sugestions %}
+							<li>
+								<a class="tag  {{ sugestion.color }} fg-white"
+								   href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=sugestion.id %}">
+									{{ sugestion.get_title }}
+								</a>
+							</li>
+						{% empty %}
+							<h5>{% trans "It has no sugestions." %}</h5>
+						{% endfor %}
+					</ul>
+					{% elif not question and lesson_complete == False %}
+					<div class="jumbotron">
+						<h2 class="align-center">{% trans "There are no questions for this lesson" %}.</h2>
+						<br/>
+						<br/>
+					</div>
+					{% else %}
 					<div class="container-fluid">
 						<div class="row">
-							<div class="meter bg-grayLight">
-								<span class="text-center fg-white"
-									  style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
-							</div>
+							<h1>{% trans "There was an error loading the questions" %}.</h1>
 						</div>
 					</div>
-
-					<div class="container-fluid">
-						<div class="row">
-							<table id="question_status" class="table table-bordered table-condensed text-center no-margin bg-white">
-								<tr>
-									<td>{% trans "Accumulated Points" %} : {{ studentlessonstate.get_scores }}</td>
-									<td>{% trans "Correct Questions" %}
-										: {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
-									<td>{% trans "Skipped Remaining" %} : {{ studentlessonstate.get_remaining_jump }}</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-
 					{% endif %}
-
-					<div class="padding10">
-						{% if question and lesson_complete == False %}
-						<div class="container-fluid">
-							<div class="row">
-								<p id="index" class="lead text-justify">
-									{{ question.get_description|safe|linebreaksbr }} 
-									<span id="points" class="tag success">{{ question.get_scores }} {% trans "Points" %}</span>
-								</p>
-								<form id="form-question"
-									  action="{% url 'askmath:content_question_answer' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"
-									  method="POST">
-									{% csrf_token %}
-									<input type="hidden" name="url_help"
-										   value="{% url 'askmath:content_question_help' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"/>
-									{% for item in question.get_items %}
-										<div class="row">
-											<label class="input-control radio small-check">
-												<input type="radio" name="item" value={{ item.id }} required>
-												<span class="check"></span>
-												<span class="caption">{{ item.get_description|safe|linebreaksbr }}</span>
-											</label>
-										</div>
-									{% empty %}
-										<p>{% trans "Not Item Found!!!" %}</p>
-									{% endfor %}
-									<div data-role="group" data-group-type="multi-state" data-button-style="class">
-										<button type="submit" class="image-button success"/>
-											<span class="mif-checkmark icon"></span>
-											<span>{% trans "Reply" %}</span>
-										</button>
-										{% if question.get_help|length > 0 %}
-										<a  id="btn-help" class="image-button info" data-toggle="modal" data-target="#help">
-											<span class="mif-help icon"></span>
-											<span>{% trans "Help" %}</span>
-										</a>
-										{% endif %}
-
-										 {% if studentlessonstate.get_remaining_jump > 0 %}
-										<a class="image-button warning" data-toggle="modal" data-target="#jump_question">
-											<span class="mif-redo icon"></span>
-											<span>{% trans "Jump" %}</span>
-										</a>
-										{% endif %}
-
-										{% if studentlessonstate.get_skipped_questions|length > 0  and not question in studentlessonstate.get_skipped_questions %}
-											<a data-toggle="modal" class="image-button primary" data-target="#skipped_questions">
-											   	<span class="mif-history icon"></span>
-												<span>{% trans "Review Jumps" %}</span>
-											</a>
-										{% endif %}
-
-										{% if  occur_obstacle or deficiencies %}
-											<a style="float: right;" class="button  danger" data-toggle="modal" data-target="#obstacleModal">
-												<span class="mif-warning mif-ani-shuttle mif-ani-slow"><span>
-											</a>
-										{% endif %}
-									</div>
-								</form>
-							</div>
-						</div>
-						{% elif not question and lesson_complete %}
-						<div class="container-fluid">
-							<div class="row">
-								<div class="jumbotron">
-									<h2 class="align-center">{% trans "Congratulations, complete lesson !!!" %}</h2>
-									<br/>
-									<br/>
-									<center>
-										<a  class="button success" href="{% url 'askmath:content_question_reset_lesson' id_discipline=discipline.id id_lesson=lesson.id %}">
-											{% trans "Reser Lesson" %}
-										</a>
-									</center>
-								</div>
-								<hr class="divider bg-grayLight">
-								<h4>{% trans "Sugestions next lessons:" %}</h4>
-
-								<ul>
-									{% for sugestion in lesson.get_sugestions %}
-										<li>
-											<a class="tag  {{ sugestion.color }} fg-white"
-											   href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=sugestion.id %}">
-												{{ sugestion.get_title }}
-											</a>
-										</li>
-									{% empty %}
-										<h5>{% trans "It has no sugestions." %}</h5>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
-						{% elif not question and lesson_complete == False %}
-						<div class="container-fluid">
-							<div class="row">
-								<div class="jumbotron">
-									<h2 class="align-center">{% trans "There are no questions for this lesson" %}.</h2>
-									<br/>
-									<br/>
-								</div>
-							</div>
-						</div>
-						{% else %}
-						<div class="container-fluid">
-							<div class="row">
-								<h1>{% trans "There was an error loading the questions" %}.</h1>
-							</div>
-						</div>
-						{% endif %}
-					</div>
-			</section>
+				</div>
+			</div>
 		</div>
+		
+		<div class="cell colspan2">
+			<div class="card">
 
-		<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
-			<aside class="bg-grayLighter">
-				<h3 class="text-center page-title">{% trans "Your Progress" %}</h3>
+				<h3 class="align-center page-title">{% trans "Your Progress" %}</h3>
+				
 				<div class="padding10">
 					<p>
-						{% trans "Your level of experience is:" %} <span class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
+						{% trans "Experience Level:" %} <span class="{{ experience_level.get_class_css }}">{{ experience_level.get_level }}</span>
 					</p>
 				</div>
-				<div class="padding30">
-					<center>
-					<img src="{{ experience_level.get_image_url }}" >
-					</center>
-				</div>
-				<div class="text-center">
+				<div class="align-center">
+					<div class="padding30">
+						<img src="{{ experience_level.get_image_url }}" >
+					</div>
+					
 					<div class="rating large" data-size="large">
 						{% for i in 5|range %}
 							{% if forloop.counter <= student_experience.get_stars %}
@@ -181,136 +166,32 @@
 						{% endfor %}
 					</div>
 				</div>
-			</aside>
+
+			</div>
 		</div>
 	</div>
 </div>
 
+{% endblock %}
 
+{% block modals %}
+	{% if question %}
+		{% ifnotequal question.get_help|length 0 %}
+			{% include "askmath/content/question/_dialog_help.html" %}
+		{% endifnotequal %}
 
+		{% if studentlessonstate.get_skipped_questions %}
+			{% include "askmath/content/question/_dialog_skipped_questions.html" %}
+		{% endif %}
 
-{% if question %}
-	{% ifnotequal question.get_help|length 0 %}
-		<!-- Modal Help -->
-		<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-			 aria-hidden="true">
-			<div class="modal-dialog modal-xs fg-black">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 class="modal-title text-center" id="myModalLabel">{% trans "Help Question" %}</h3>
-					</div>
-					<div class="modal-body">
-						<p class="lead">{{ question.get_help|safe|linebreaksbr }}</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="button default"
-								data-dismiss="modal">{% trans "Close" %}</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-	{% endifnotequal %}
+		{% if studentlessonstate.get_remaining_jump > 0 %}
+			{% include "askmath/content/question/_dialog_jump.html" %}
+		{% endif %}
 
-	{% if studentlessonstate.get_skipped_questions %}
-		<!-- Modal kipped Questions -->
-		<div class="modal fade" id="skipped_questions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-			 aria-hidden="true">
-			<div class="modal-dialog modal-lg fg-black">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 class="modal-title text-center" id="myModalLabel">{% trans "Skipped Questions" %}</h3>
-					</div>
-					<div class="modal-body">
-						<div class="list-group">
-							{% for question2 in studentlessonstate.get_skipped_questions %}
-								{% if question != question2 %}
-									<a href="{% url 'askmath:content_question_choose_skipped' id_discipline=discipline.id id_lesson=lesson.id id_question=question2.id %}"
-									   class="list-group-item">{{ question2.get_description|safe|linebreaksbr|truncatewords:"30" }}</a>
-								{% endif %}
-							{% endfor %}
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="button default"
-								data-dismiss="modal">{% trans "Close" %}</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+		{% if occur_obstacle or deficiencies %}
+			{% include "askmath/content/question/_dialog_obstacle.html" %}
+		{% endif %}
 	{% endif %}
-
-	{% if studentlessonstate.get_remaining_jump > 0 %}
-		<!-- Modal Jump Question Questions -->
-		<div class="modal fade" id="jump_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-			 aria-hidden="true">
-			<div class="modal-dialog modal-xs fg-black">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title text-center"
-							id="myModalLabel">{% trans "Your Jump is Question?" %}</h3>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="button primary" data-dismiss="modal">
-							{% trans "Not, is error!" %}
-						</button>
-						<a href="{% url 'askmath:content_question_jump' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"
-						   class="button success">
-							{% trans "Yes, jump!" %}
-						</a>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-	{% endif %}
-
-	{% if occur_obstacle or deficiencies %}
-		<!-- Modal Obstacles in  Lesson -->
-		<div class="modal fade" id="obstacleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-			 aria-hidden="true">
-			<div class="modal-dialog modal-xs fg-black">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title text-center"
-							id="myModalLabel">{% trans "Você está enfrentando problemas?" %}</h3>
-					</div>
-					<div class="modal-body">
-						<p class="lead">Identificamos que você pode possuir deficiência nas lições a seguir,
-							sugerimos fortemente que você as refaça antes de continuar.</p>
-
-						<div class="flex-grid">
-							<div class="row flex-just-center">
-								<div class="cell">
-									{% if deficiencies %}
-										<div class="listview list-type-icons">
-											{% for deficiency in deficiencies %}
-												<a class="list {{ deficiency.color }} fg-white"
-												   href="{% url 'askmath:content_lesson_view' id_discipline=deficiency.get_discipline.id id_lesson=deficiency.id %}">
-													<span class="list-icon mif-clipboard"></span>
-													<span class="list-title">{{ deficiency.get_title }}</span>
-												</a>
-											{% endfor %}
-										</div>
-									{% else %}
-										<p class="lead">Identificamos que você está enfrentando dificuldades,
-											sugerimos que você volte uma outra hora para continuar.</p>
-									{% endif %}
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="button default" data-dismiss="modal">
-							{% trans "Cancel" %}
-						</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-	{% endif %}
-{% endif %}
-
 {% endblock %}
 
 {% block stylesheet %}
@@ -320,7 +201,7 @@
 {% block scripts %}
 	{% if occur_obstacle %}
 		<script>
-			$('#obstacleModal').modal();
+			showDialog('#dialog_obstacle');
 		</script>
 	{% endif %}
 {% endblock %}

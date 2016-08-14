@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-11 06:30-0300\n"
-"PO-Revision-Date: 2016-08-11 06:46-0234\n"
+"POT-Creation-Date: 2016-08-14 13:56-0300\n"
+"PO-Revision-Date: 2016-08-14 14:02-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -696,7 +696,7 @@ msgstr "AskMath"
 msgid "The AskMath is reported here!"
 msgstr "O AskMath é reportado aqui!"
 
-#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:76
+#: askmath/forms/users/person.py:14 askmath/forms/users/person.py:69
 #: askmath/models/users/message.py:13 askmath/models/users/person.py:64
 #: askmath/templates/askmath/index/contact_email.html:16
 #: askmath/templates/askmath/manager/message/manager_view_messages.html:49
@@ -705,21 +705,17 @@ msgid "Email"
 msgstr "Email"
 
 #: askmath/forms/users/person.py:14 askmath/forms/users/person.py:16
-#: askmath/forms/users/person.py:76 askmath/models/users/person.py:65
+#: askmath/forms/users/person.py:69 askmath/models/users/person.py:65
 msgid "Please enter you email."
 msgstr "Por favor, entre com seu email."
 
-#: askmath/forms/users/person.py:17 askmath/forms/users/person.py:27
+#: askmath/forms/users/person.py:17 askmath/forms/users/person.py:28
 msgid "Password"
 msgstr "Senha"
 
 #: askmath/forms/users/person.py:17 askmath/forms/users/person.py:19
 msgid "Please enter you password."
 msgstr "Por favor, entre com sua senha."
-
-#: askmath/forms/users/person.py:28
-msgid "Password confirmation"
-msgstr "Confirme a senha"
 
 #: askmath/forms/users/person.py:35
 msgid "Group"
@@ -738,36 +734,32 @@ msgstr ""
 "Se você deseja criar um registro nesse grupo deve ter uma chave de acesso "
 "para isso, entre em contato com o administrador."
 
-#: askmath/forms/users/person.py:48
-msgid "Passwords don't match"
-msgstr "Os dois campos de senha não coincidem."
-
-#: askmath/forms/users/person.py:78
+#: askmath/forms/users/person.py:71
 msgid "Please enter your email."
 msgstr "Por favor, entre com seu email."
 
-#: askmath/forms/users/person.py:83
+#: askmath/forms/users/person.py:76
 msgid "Old Password"
 msgstr "Antiga Senha"
 
-#: askmath/forms/users/person.py:83 askmath/forms/users/person.py:86
+#: askmath/forms/users/person.py:76 askmath/forms/users/person.py:79
 msgid "Please enter you old password."
 msgstr "Por favor, entre com sua antiga senha."
 
-#: askmath/forms/users/person.py:87
+#: askmath/forms/users/person.py:80
 msgid "New Password"
 msgstr "Nova Senha"
 
-#: askmath/forms/users/person.py:87 askmath/forms/users/person.py:90
-#: askmath/forms/users/person.py:91
+#: askmath/forms/users/person.py:80 askmath/forms/users/person.py:83
+#: askmath/forms/users/person.py:84
 msgid "Please enter you new password."
 msgstr "Por favor, entre com sua nova senha."
 
-#: askmath/forms/users/person.py:91
+#: askmath/forms/users/person.py:84
 msgid "Confirm Password"
 msgstr "Confirme a Senha"
 
-#: askmath/forms/users/person.py:94
+#: askmath/forms/users/person.py:87
 msgid "Please repeat your new password."
 msgstr "Por favor, repita sua nova senha."
 
@@ -906,7 +898,7 @@ msgstr "Categorias"
 
 #: askmath/models/classe/classe.py:8 askmath/models/users/message.py:11
 #: askmath/templates/askmath/content/classe/content_view_classe.html:18
-#: askmath/templates/askmath/content/classe/content_view_classes.html:44
+#: askmath/templates/askmath/content/classe/content_view_classes.html:46
 #: askmath/templates/askmath/index/contact_email.html:15
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:62
 #: askmath/templates/askmath/manager/message/manager_view_messages.html:48
@@ -920,7 +912,7 @@ msgstr "Escolha um nome para a turma."
 
 #: askmath/models/classe/classe.py:11
 #: askmath/templates/askmath/content/classe/content_view_classe.html:21
-#: askmath/templates/askmath/content/classe/content_view_classes.html:46
+#: askmath/templates/askmath/content/classe/content_view_classes.html:48
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:64
 msgid "Responsible"
 msgstr "Responsável"
@@ -931,7 +923,7 @@ msgstr "Escolha uma responsável para a turma."
 
 #: askmath/models/classe/classe.py:15
 #: askmath/templates/askmath/content/classe/content_view_classe.html:37
-#: askmath/templates/askmath/content/classe/content_view_classes.html:45
+#: askmath/templates/askmath/content/classe/content_view_classes.html:47
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:63
 msgid "Semester"
 msgstr "Semestre"
@@ -953,6 +945,7 @@ msgstr "Realize upload de um arquivo."
 #: askmath/models/classe/classe.py:21
 #: askmath/models/discipline/discipline.py:52
 #: askmath/templates/askmath/content/classe/content_view_classe.html:51
+#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:13
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:65
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:8
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:15
@@ -997,7 +990,7 @@ msgid "Classe"
 msgstr "Turma"
 
 #: askmath/models/classe/classe.py:82 askmath/models/users/student.py:12
-#: askmath/templates/askmath/_header.html:39
+#: askmath/templates/askmath/_header.html:38
 #: askmath/templates/askmath/content/classe/content_view_classes.html:11
 #: askmath/templates/askmath/content/classe/content_view_classes.html:16
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:8
@@ -1054,22 +1047,18 @@ msgid "Scores"
 msgstr "Pontos"
 
 #: askmath/models/experience/studentexperience.py:13
-#| msgid "Scores"
 msgid "Full Scores"
 msgstr "Todos os Pontos"
 
 #: askmath/models/experience/studentexperience.py:14
-#| msgid "Max Scores"
 msgid "Last Scores"
 msgstr "Últimos Pontos"
 
 #: askmath/models/experience/studentexperience.py:16
-#| msgid "Scores"
 msgid "New Scores"
 msgstr "Novos Pontos"
 
 #: askmath/models/experience/studentexperience.py:17
-#| msgid "Max Scores"
 msgid "Last New Scores"
 msgstr "Últimos pontos ganhos"
 
@@ -1316,9 +1305,9 @@ msgid "Choose items that this issue has."
 msgstr "Escolha os itens que esta pergunta tem."
 
 #: askmath/models/question/question.py:20
-#: askmath/templates/askmath/content/question/view_question.html:82
+#: askmath/templates/askmath/content/question/view_question.html:73
 msgid "Help"
-msgstr "Pedir Ajuda"
+msgstr "Ajuda"
 
 #: askmath/models/question/question.py:21
 msgid "Choose a help to this question."
@@ -1333,7 +1322,7 @@ msgid "Select this option to leave visible question at all."
 msgstr "Selecione esta opção para tornar esta questão visível à todos."
 
 #: askmath/models/question/question.py:89
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:36
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:35
 #: askmath/templates/askmath/content/question/view_question.html:10
 #: askmath/templates/askmath/index/contents_details.html:47
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:109
@@ -1362,7 +1351,7 @@ msgid "Answered Questions"
 msgstr "Questões Respondidas"
 
 #: askmath/models/state/studentlessonstate.py:28
-#: askmath/templates/askmath/content/question/view_question.html:223
+#: askmath/templates/askmath/content/question/view_question.html:194
 msgid "Skipped Questions"
 msgstr "Questões Saltadas"
 
@@ -1515,7 +1504,6 @@ msgid "Choose classe that this student."
 msgstr "Escolha a turma desse estudante."
 
 #: askmath/models/users/student.py:15
-#: askmath/templates/askmath/content/classe/content_view_classes.html:19
 msgid "Current Classe"
 msgstr "Turma Atual"
 
@@ -1591,7 +1579,7 @@ msgstr "RSS"
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:24
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:25
 #: askmath/templates/registration/password_reset_confirm.html:12
-#: askmath/templates/registration/password_reset_form.html:23
+#: askmath/templates/registration/password_reset_form.html:25
 msgid "Submit"
 msgstr "Submeter"
 
@@ -1602,7 +1590,7 @@ msgstr "Submeter"
 msgid "Informations"
 msgstr "Informações"
 
-#: askmath/templates/askmath/_header.html:23
+#: askmath/templates/askmath/_header.html:21
 #: askmath/templates/askmath/index/404.html:17
 #: askmath/templates/askmath/index/500.html:17
 #: env/djcelery/templates/admin/djcelery/change_list.html:7
@@ -1610,30 +1598,30 @@ msgstr "Informações"
 msgid "Home"
 msgstr "Início"
 
-#: askmath/templates/askmath/_header.html:28
+#: askmath/templates/askmath/_header.html:26
 #: askmath/templates/askmath/forum/forum_home.html:16
-#: askmath/templates/askmath/index/home.html:51
+#: askmath/templates/askmath/index/home.html:50
 msgid "Forum"
 msgstr "Fórum"
 
-#: askmath/templates/askmath/_header.html:33
+#: askmath/templates/askmath/_header.html:32
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:11
 msgid "Ranking"
 msgstr "Ranking"
 
-#: askmath/templates/askmath/_header.html:48
+#: askmath/templates/askmath/_header.html:47
 msgid "Enter"
 msgstr "Entrar"
 
-#: askmath/templates/askmath/_header.html:74
+#: askmath/templates/askmath/_header.html:73
 msgid "Profile"
 msgstr "Perfil"
 
-#: askmath/templates/askmath/_header.html:89
+#: askmath/templates/askmath/_header.html:88
 msgid "Logout"
 msgstr "Sair"
 
-#: askmath/templates/askmath/_header.html:101
+#: askmath/templates/askmath/_header.html:100
 msgid "Search"
 msgstr "Buscar"
 
@@ -1693,25 +1681,25 @@ msgstr ""
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: askmath/templates/askmath/authentication/options.html:22
-#: askmath/templates/askmath/authentication/options.html:42
+#: askmath/templates/askmath/authentication/options.html:24
+#: askmath/templates/askmath/authentication/options.html:44
 msgid "Sign In"
 msgstr "Entrar"
 
-#: askmath/templates/askmath/authentication/options.html:25
-#: askmath/templates/askmath/authentication/options.html:75
+#: askmath/templates/askmath/authentication/options.html:27
+#: askmath/templates/askmath/authentication/options.html:77
 msgid "Sign Up"
 msgstr "Registrar-se"
 
-#: askmath/templates/askmath/authentication/options.html:44
+#: askmath/templates/askmath/authentication/options.html:46
 msgid "Or"
 msgstr "Ou"
 
-#: askmath/templates/askmath/authentication/options.html:56
+#: askmath/templates/askmath/authentication/options.html:58
 msgid "Forgot your password ?"
 msgstr "Esqueceu a senha?"
 
-#: askmath/templates/askmath/authentication/options.html:70
+#: askmath/templates/askmath/authentication/options.html:72
 msgid ""
 "By clicking here, you agree to the <a href=\"/terms/\" >Terms and "
 "Conditions</a> set out by this site, including our Cookie Use."
@@ -1720,7 +1708,7 @@ msgstr ""
 "</a> estabelecido por este site, incluindo o nosso uso de cookies."
 
 #: askmath/templates/askmath/content/classe/content_view_classe.html:33
-#: askmath/templates/askmath/content/classe/content_view_classes.html:60
+#: askmath/templates/askmath/content/classe/content_view_classes.html:62
 msgid "No responsible"
 msgstr "Nenhum responsável"
 
@@ -1739,49 +1727,31 @@ msgstr "Nenhum arquivo"
 msgid "No students"
 msgstr "Nenhum estudante"
 
-#: askmath/templates/askmath/content/classe/content_view_classes.html:26
-msgid "Subscrive in  one class."
-msgstr "Inscreva-se em uma turma."
-
-#: askmath/templates/askmath/content/classe/content_view_classes.html:47
+#: askmath/templates/askmath/content/classe/content_view_classes.html:49
 msgid "Inscription"
 msgstr "Inscrição"
 
-#: askmath/templates/askmath/content/classe/content_view_classes.html:67
+#: askmath/templates/askmath/content/classe/content_view_classes.html:69
 msgid "Subscribe"
 msgstr "Inscrever-se"
 
-#: askmath/templates/askmath/content/classe/content_view_classes.html:72
+#: askmath/templates/askmath/content/classe/content_view_classes.html:74
 msgid "Unsubscribe"
 msgstr "Cancelar Inscrição"
 
-#: askmath/templates/askmath/content/classe/content_view_classes.html:79
+#: askmath/templates/askmath/content/classe/content_view_classes.html:81
 msgid "Details"
 msgstr "Detalhes"
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:21
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:22
 msgid "Lessons of"
 msgstr "Lições de"
 
-#: askmath/templates/askmath/content/discipline/content_view_discipline.html:32
+#: askmath/templates/askmath/content/discipline/content_view_discipline.html:33
 msgid "Discipline does not have lessons."
 msgstr "Disciplina não possui lições."
 
-#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:14
-#, python-format
-msgid ""
-"\n"
-"                    Disciplines of %(current_classe)s\n"
-"                "
-msgstr ""
-"\n"
-"Disciplinas da %(current_classe)s"
-
-#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:19
-msgid "All Disciplines"
-msgstr "Todas as Disciplinas"
-
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:31
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:30
 #: askmath/templates/askmath/index/contents_details.html:40
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:62
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:64
@@ -1790,38 +1760,22 @@ msgstr "Todas as Disciplinas"
 msgid "Options"
 msgstr "Opções"
 
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:38
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:37
+#: askmath/templates/askmath/index/contents_details.html:49
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
-"\t\t\t\t\t\t\t "
+"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
+"\t\t\t\t\t\t "
 msgstr ""
 "\n"
 "São %(qtd_questions)s questões criadas especialmente para você.\n"
 "\t\t\t        "
 
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:58
-#: askmath/templates/askmath/content/question/view_question.html:123
-#: askmath/templates/askmath/index/contents_details.html:67
-msgid "Sugestions next lessons:"
-msgstr "Sugestão para próximas lições:"
-
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:68
-#: askmath/templates/askmath/content/question/view_question.html:134
-#: askmath/templates/askmath/index/contents_details.html:77
-msgid "It has no sugestions."
-msgstr "Não existe sugestões."
-
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:72
+#: askmath/templates/askmath/content/lesson/content_view_lesson.html:57
 #: askmath/templates/askmath/index/contents_details.html:81
 msgid "We recommend completing the lessons below before proceeding:"
 msgstr "Recomendamos concluir as lições abaixo antes de prosseguir:"
-
-#: askmath/templates/askmath/content/lesson/content_view_lesson.html:82
-#: askmath/templates/askmath/index/contents_details.html:91
-msgid "It has no requirements."
-msgstr "Não existe requisitos."
 
 #: askmath/templates/askmath/content/question/view_question.html:21
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:9
@@ -1830,98 +1784,108 @@ msgstr "Não existe requisitos."
 msgid "Questions of %(lesson)s"
 msgstr "Questões de %(lesson)s"
 
-#: askmath/templates/askmath/content/question/view_question.html:38
-msgid "Accumulated Points"
-msgstr "Pontos Acumulados"
+#: askmath/templates/askmath/content/question/view_question.html:29
+#| msgid "Lessons"
+msgid "Lesson Points"
+msgstr "Pontos da Lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:39
+#: askmath/templates/askmath/content/question/view_question.html:30
 msgid "Correct Questions"
 msgstr "Questões Corretas"
 
-#: askmath/templates/askmath/content/question/view_question.html:41
+#: askmath/templates/askmath/content/question/view_question.html:31
 msgid "Skipped Remaining"
 msgstr "Saltos Restantes"
 
-#: askmath/templates/askmath/content/question/view_question.html:55
+#: askmath/templates/askmath/content/question/view_question.html:46
 msgid "Points"
 msgstr "Pontos"
 
-#: askmath/templates/askmath/content/question/view_question.html:72
+#: askmath/templates/askmath/content/question/view_question.html:60
 msgid "Not Item Found!!!"
 msgstr "Nenhum item encontrado."
 
-#: askmath/templates/askmath/content/question/view_question.html:77
+#: askmath/templates/askmath/content/question/view_question.html:68
 #: askmath/templates/askmath/forum/topic/_render_comments.html:8
 msgid "Reply"
 msgstr "Responder"
 
-#: askmath/templates/askmath/content/question/view_question.html:89
+#: askmath/templates/askmath/content/question/view_question.html:80
 msgid "Jump"
 msgstr "Saltar"
 
-#: askmath/templates/askmath/content/question/view_question.html:96
+#: askmath/templates/askmath/content/question/view_question.html:87
 msgid "Review Jumps"
 msgstr "Rever Saltos"
 
-#: askmath/templates/askmath/content/question/view_question.html:113
-#| msgid "Congratulations, you have completed this lesson !!!"
+#: askmath/templates/askmath/content/question/view_question.html:94
+#| msgid "Deficiencys"
+msgid "Deficiencies"
+msgstr "Deficiências"
+
+#: askmath/templates/askmath/content/question/view_question.html:102
 msgid "Congratulations, complete lesson !!!"
 msgstr "Parabéns, você completou esta lição !!!"
 
-#: askmath/templates/askmath/content/question/view_question.html:118
+#: askmath/templates/askmath/content/question/view_question.html:107
 msgid "Reser Lesson"
 msgstr "Reiniciar Lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:143
-#| msgid "Requirements for this lesson:"
+#: askmath/templates/askmath/content/question/view_question.html:112
+#: askmath/templates/askmath/index/contents_details.html:67
+msgid "Sugestions next lessons:"
+msgstr "Sugestão para próximas lições:"
+
+#: askmath/templates/askmath/content/question/view_question.html:123
+#: askmath/templates/askmath/index/contents_details.html:77
+msgid "It has no sugestions."
+msgstr "Não existe sugestões."
+
+#: askmath/templates/askmath/content/question/view_question.html:128
 msgid "There are no questions for this lesson"
 msgstr "Não há perguntas para esta lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:152
-#| msgid "There was an error on the form."
+#: askmath/templates/askmath/content/question/view_question.html:135
 msgid "There was an error loading the questions"
 msgstr "Houve um erro ao carregar as perguntas"
 
-#: askmath/templates/askmath/content/question/view_question.html:162
-#| msgid "Progress"
+#: askmath/templates/askmath/content/question/view_question.html:145
 msgid "Your Progress"
 msgstr "Seu Progresso"
 
-#: askmath/templates/askmath/content/question/view_question.html:165
+#: askmath/templates/askmath/content/question/view_question.html:148
 msgid "Your level of experience is:"
 msgstr "Seu nível de experiencia é:"
 
-#: askmath/templates/askmath/content/question/view_question.html:201
+#: askmath/templates/askmath/content/question/view_question.html:179
 msgid "Help Question"
 msgstr "Ajuda da Questão"
 
-#: askmath/templates/askmath/content/question/view_question.html:208
-#: askmath/templates/askmath/content/question/view_question.html:237
+#: askmath/templates/askmath/content/question/view_question.html:184
+#: askmath/templates/askmath/content/question/view_question.html:209
+#: askmath/templates/askmath/content/question/view_question.html:257
 msgid "Close"
 msgstr "Fechar"
 
-#: askmath/templates/askmath/content/question/view_question.html:252
+#: askmath/templates/askmath/content/question/view_question.html:219
 msgid "Your Jump is Question?"
-msgstr "Você quer saltar uma pergunta?"
+msgstr "Você quer saltar esta pergunta?"
 
-#: askmath/templates/askmath/content/question/view_question.html:256
-msgid "Not, is error!"
-msgstr "Não, isso foi um erro!"
+#: askmath/templates/askmath/content/question/view_question.html:223
+#: askmath/templates/askmath/person/account/_modal_remove_account.html:18
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:548
+msgid "No"
+msgstr "Não"
 
-#: askmath/templates/askmath/content/question/view_question.html:260
-msgid "Yes, jump!"
-msgstr "Sim, saltar!"
+#: askmath/templates/askmath/content/question/view_question.html:227
+#: askmath/templates/askmath/person/account/_modal_remove_account.html:19
+#: env/lib/python2.7/site-packages/django/forms/widgets.py:547
+msgid "Yes"
+msgstr "Sim"
 
-#: askmath/templates/askmath/content/question/view_question.html:276
+#: askmath/templates/askmath/content/question/view_question.html:237
 msgid "Você está enfrentando problemas?"
 msgstr "Você está enfrentando problemas?"
-
-#: askmath/templates/askmath/content/question/view_question.html:305
-#: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:22
-#: askmath/templates/askmath/send_feedback.html:22
-#: askmath/templates/askmath/utils/latexeditor/_box_latex.html:22
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:19
 msgid "Ranking Round"
@@ -1944,7 +1908,6 @@ msgid "New Round"
 msgstr "Nova rodada"
 
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:113
-#| msgid "Congratulations, you have completed this lesson !!!"
 msgid "Congratulations!!! You winner!!!"
 msgstr "Parabéns, você é o nosso novo campeão !!!"
 
@@ -2046,10 +2009,6 @@ msgstr "Última postagem"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:79
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\tSee %(topics)s posts\n"
-#| "\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tSee %(topics)s posts\n"
@@ -2059,7 +2018,7 @@ msgstr ""
 "Ver %(topics)s postagens"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:90
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\t<h6>%(creation)s by %(person)s.</h6>\n"
@@ -2083,7 +2042,7 @@ msgstr ""
 "%(creation)s"
 
 #: askmath/templates/askmath/forum/topic/_render_topic.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t%(creation)s\n"
@@ -2101,10 +2060,9 @@ msgid "Downlad File"
 msgstr "Baixar Arquivo"
 
 #: askmath/templates/askmath/forum/topic/_render_topic.html:96
-#, fuzzy
 #| msgid "Comment"
 msgid "Add Comment"
-msgstr "Comentário"
+msgstr "Adicionar Comentário"
 
 #: askmath/templates/askmath/forum/topic/_render_topic.html:104
 msgid "Want to add a comment?"
@@ -2135,7 +2093,7 @@ msgstr "por"
 #: askmath/templates/askmath/index/500.html:78
 #: askmath/templates/askmath/index/contents.html:9
 #: askmath/templates/askmath/index/contents.html:15
-#: askmath/templates/askmath/index/home.html:45
+#: askmath/templates/askmath/index/home.html:44
 msgid "Contents"
 msgstr "Conteúdos"
 
@@ -2145,13 +2103,11 @@ msgid "About"
 msgstr "Sobre"
 
 #: askmath/templates/askmath/index/about.html:20
-#, fuzzy
 #| msgid "PET Group Information Technology."
 msgid "PET - Information Technology"
-msgstr "Grupo PET Tecnologia da Informação."
+msgstr "PET Tecnologia da Informação."
 
 #: askmath/templates/askmath/index/about.html:23
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "\t\t\tThis project is an initiative of the <abbr title=\"Tutorial Education Program\">PET</abbr> group Information Technology of the Federal University of Ceará.\n"
@@ -2243,17 +2199,6 @@ msgstr ""
 msgid "Not Lessons Found"
 msgstr "Nenhuma lição encontrada."
 
-#: askmath/templates/askmath/index/contents_details.html:49
-#, python-format
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
-"\t\t\t\t\t\t "
-msgstr ""
-"\n"
-"São %(qtd_questions)s questões criadas especialmente para você.\n"
-"\t\t\t        "
-
 #: askmath/templates/askmath/index/contents_details.html:58
 #, python-format
 msgid ""
@@ -2265,6 +2210,10 @@ msgstr ""
 "Temos %(qtd_videos)s videos-aulas para ampliar seus conhecimentos.\n"
 "\t\t\t        "
 
+#: askmath/templates/askmath/index/contents_details.html:91
+msgid "It has no requirements."
+msgstr "Não existe requisitos."
+
 #: askmath/templates/askmath/index/home.html:21
 msgid "Welcome to AskMath"
 msgstr "Seja Bem Vindo ao AskMath"
@@ -2273,11 +2222,11 @@ msgstr "Seja Bem Vindo ao AskMath"
 msgid "Learn mathematics anytime, from anywhere"
 msgstr "Aprenda matemática a qualquer hora, de qualquer lugar"
 
-#: askmath/templates/askmath/index/home.html:37
+#: askmath/templates/askmath/index/home.html:36
 msgid "Start here"
 msgstr "Comece aqui"
 
-#: askmath/templates/askmath/index/home.html:57
+#: askmath/templates/askmath/index/home.html:56
 msgid "About the project"
 msgstr "Sobre este projeto"
 
@@ -2394,6 +2343,12 @@ msgstr "Usuário"
 msgid "How many items this issue have?"
 msgstr "Quantos itens esta questão terá? "
 
+#: askmath/templates/askmath/manager/question/_modal_choose_quant_items.html:22
+#: askmath/templates/askmath/send_feedback.html:22
+#: askmath/templates/askmath/utils/latexeditor/_box_latex.html:22
+msgid "Cancel"
+msgstr "Cancelar"
+
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:41
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:41
 msgid "Sort"
@@ -2478,16 +2433,6 @@ msgid ""
 msgstr ""
 "A exclusão da sua conta de membro ( %(name)s ) será permanente. Por favor, "
 "insira sua senha para continuar..."
-
-#: askmath/templates/askmath/person/account/_modal_remove_account.html:18
-#: env/lib/python2.7/site-packages/django/forms/widgets.py:548
-msgid "No"
-msgstr "Não"
-
-#: askmath/templates/askmath/person/account/_modal_remove_account.html:19
-#: env/lib/python2.7/site-packages/django/forms/widgets.py:547
-msgid "Yes"
-msgstr "Sim"
 
 #: askmath/templates/askmath/person/account/alter_password.html:7
 #: askmath/views/person/account.py:53
@@ -2646,14 +2591,14 @@ msgid "Text Editor:"
 msgstr "Editor de Texto:"
 
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:8
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid ""
 #| "To add Latex code, add your code between && tags, eg $ \\sqrt{3} \\$ or "
 #| "\\begin and \\end."
 msgid "To add Latex code, add your code between && tags, eg $ \\sqrt{3} \\$."
 msgstr ""
 "Para adicionar o código de látex, adicione seu código entre as tags $$, por "
-"exemplo $ \\sqrt{3} $ ou \\ begin e \\ end."
+"exemplo $ \\sqrt{3} $."
 
 #: askmath/templates/askmath/utils/latexeditor/_box_latex.html:16
 msgid "Preview is shown here"
@@ -2676,17 +2621,15 @@ msgid "Password Change Form"
 msgstr "Senha alterada no Formulário"
 
 #: askmath/templates/registration/password_change_form.html:14
-#, fuzzy
 #| msgid "Forgotten your password? Enter your email addess below,"
 msgid "Forgotten your password? Enter your email addess below"
-msgstr "Esqueceu sua senha? Digite seu email abaixo,"
+msgstr "Esqueceu sua senha? Digite seu email abaixo."
 
 #: askmath/templates/registration/password_change_form.html:20
 msgid "Change my password"
 msgstr "Alterar minha senha"
 
 #: askmath/templates/registration/password_reset_complete.html:8
-#, fuzzy
 #| msgid "Your password has been set.  You may go ahead and log in now"
 msgid ""
 "Password reset complete : Your password has been set.  You may go ahead and "
@@ -2728,11 +2671,11 @@ msgstr "Seu nome de usuário, caso você tenha esquecido:"
 msgid "Password Reset"
 msgstr "Senha alterada"
 
-#: askmath/templates/registration/password_reset_form.html:14
+#: askmath/templates/registration/password_reset_form.html:16
 msgid "Recover Password"
 msgstr "Recuperar Senha"
 
-#: askmath/templates/registration/password_reset_form.html:17
+#: askmath/templates/registration/password_reset_form.html:19
 msgid ""
 "Provide your email address below and we will send you instructions to set a "
 "new one."
@@ -4449,13 +4392,11 @@ msgid "payload"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/kombu/transport/django/models.py:37
-#, fuzzy
 #| msgid "Message"
 msgid "message"
 msgstr "Mensagem"
 
 #: env/lib/python2.7/site-packages/kombu/transport/django/models.py:38
-#, fuzzy
 #| msgid "Messages"
 msgid "messages"
 msgstr "Mensagens"
@@ -4477,10 +4418,47 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/nocaptcha_recaptcha/fields.py:21
 #: nocaptcha_recaptcha/fields.py:21
-#, fuzzy
 #| msgid "Incorrect password."
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid "Password confirmation"
+#~ msgstr "Confirme a senha"
+
+#~ msgid "Passwords don't match"
+#~ msgstr "Os dois campos de senha não coincidem."
+
+#~ msgid "Subscrive in  one class."
+#~ msgstr "Inscreva-se em uma turma."
+
+#~ msgid ""
+#~ "\n"
+#~ "                    Disciplines of %(current_classe)s\n"
+#~ "                "
+#~ msgstr ""
+#~ "\n"
+#~ "Disciplinas da %(current_classe)s"
+
+#~ msgid "All Disciplines"
+#~ msgstr "Todas as Disciplinas"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
+#~ "\t\t\t\t\t\t\t "
+#~ msgstr ""
+#~ "\n"
+#~ "São %(qtd_questions)s questões criadas especialmente para você.\n"
+#~ "\t\t\t        "
+
+#~ msgid "Accumulated Points"
+#~ msgstr "Pontos Acumulados"
+
+#~ msgid "Not, is error!"
+#~ msgstr "Não, isso foi um erro!"
+
+#~ msgid "Yes, jump!"
+#~ msgstr "Sim, saltar!"
 
 #~ msgid "Password reset complete"
 #~ msgstr "Alteração de senha completa"

@@ -12,8 +12,8 @@
 		{% include 'askmath/fields/select_multiple.html' %}
 	{% elif field|is_file %}
 		{% include 'askmath/fields/file.html' %}
-			{% elif field|is_text  %}
-				{% include 'askmath/fields/text.html' %}
+	{% elif field|is_text  %}
+		{% include 'askmath/fields/text.html' %}
 	{% elif field|is_textarea %}
 		{% include 'askmath/fields/textarea.html' %}
 	{% elif field|is_email %}
@@ -24,9 +24,9 @@
 		{% include 'askmath/fields/date.html' %}
 	{% elif field|is_password %}
 		{% include 'askmath/fields/password.html' %}
-			{% elif field|is_captcha %}
-				{% include 'askmath/fields/captcha.html' %}
-			{% else %}
-				{% include 'askmath/fields/field.html' %}
+	{% elif field|is_captcha %}
+		{% include 'askmath/fields/captcha.html' %}
+	{% else %}
+		{% include 'askmath/fields/field.html' %}
 	{% endif %}
 {% endfor %}

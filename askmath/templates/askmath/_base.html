@@ -39,9 +39,11 @@
 		<!-- Fonts -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}askmath/css/fonts.css" >
 			
+		{% comment %}
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/bootstrap/css/bootstrap-theme.min.css" >
+		{% endcomment %}
 	
 		<!-- Jquery Ui -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}askmath/frameworks/jquery-ui/jquery-ui.min.css">
@@ -119,6 +121,7 @@
 				</section>
 			</main>
 		</div>
+		<br>
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 			{% block footer %}
 				{% include 'askmath/_footer.html' %}
@@ -142,8 +145,10 @@
 		<!-- Select2 -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/select2/select2.min.js"></script>
 
+		{% comment %}
 		<!-- Bootstrap -->
 		<script src="{{ STATIC_URL }}askmath/frameworks/bootstrap/js/bootstrap.min.js"></script>
+		{% endcomment %}
 		
 		
 		<!-- Metro -->

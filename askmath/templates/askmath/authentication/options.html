@@ -15,73 +15,71 @@
 
 {% include 'nocaptcha_recaptcha/script_include.html' with multiple_recaptcha=True %}
 
-<div class="col-sm-12 col-sm-6 col-sm-offset-3  col-md-4 col-md-offset-4">
-	<div class="tabcontrol" data-role="tabcontrol" data-save-state="true" id="tabcontrol_options">
-		<ul id="menu-options" class="tabs">
-			<li>
-				<a href="#frame_sign_in">{% trans "Sign In" %}</a>
-			</li>
-			<li>
-				<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
-			</li>
-		</ul>
-		<div class="frames">
-			<div class="frame" id="frame_sign_in">
-				{% with form_signin as form %}
-				{% if next %}
-				<form id="index" action="{% url 'askmath:authentication_options' %}?next={{next}}" method="post" role="form">
-				{% else %}
-				<form id="index" action="{% url 'askmath:authentication_options' %}" method="post" role="form">
-				{% endif %}
+<div class="flex-grid">
+	<div class="row flex-just-center">
+		<div class="cell colspan4">
+			<div class="tabcontrol2" data-role="tabcontrol" data-save-state="true" id="tabcontrol_options">
+				<ul id="menu-options" class="tabs">
+					<li>
+						<a href="#frame_sign_in">{% trans "Sign In" %}</a>
+					</li>
+					<li>
+						<a href="#frame_sign_up">{% trans "Sign Up" %}</a>
+					</li>
+				</ul>
+				<div class="frames">
+					<div class="frame" id="frame_sign_in">
+						{% with form_signin as form %}
+						{% if next %}
+						<form id="index" action="{% url 'askmath:authentication_options' %}?next={{next}}" method="post" role="form">
+						{% else %}
+						<form id="index" action="{% url 'askmath:authentication_options' %}" method="post" role="form">
+						{% endif %}
 
-				{% csrf_token %}
-					<input type="hidden" name="next" value="{{ request.GET.next }}" />
-					<input type="hidden" name="option" value="sign_in">
-					{% include "askmath/_render_form.html" %}
-					<button type="submit" class="button  primary width">
-						{% trans "Sign In" %}
-					</button>
-					<p class="text-center">{% trans "Or" %}</p>
-					<div class="btn-group btn-group-justified" data-role="group" data-group-type="one-state">
-						 <div class="btn-group" role="group">
-						<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn button primary">
-							<span class="mif-facebook"></span> Facebook
-						</a>
-						</div>
-						 <div class="btn-group" role="group">
-						<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn button danger">
-							<span class="mif-google"></span> Google
-						</a>
-						</div>
-						 <div class="btn-group" role="group">
-						<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn button info">
-							<span class="mif-twitter"></span> Twitter
-						</a>
-						</div>
+						{% csrf_token %}
+							<input type="hidden" name="next" value="{{ request.GET.next }}" />
+							<input type="hidden" name="option" value="sign_in">
+							{% include "askmath/_render_form.html" %}
+							<button type="submit" class="button  primary width">
+								{% trans "Sign In" %}
+							</button>
+							<p class="align-center">{% trans "Or" %}</p>
+							<div class="toolbar-section condensed"  data-role="group" data-group-type="one-state">
+								<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="toolbar-button button primary">
+									<span class="mif-facebook"></span> Facebook
+								</a>
+								<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="toolbar-button button danger">
+									<span class="mif-google"></span> Google
+								</a>
+								<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="toolbar-button button info">
+									<span class="mif-twitter"></span> Twitter
+								</a>
+							</div>
+							<a href="{% url 'askmath:reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
+						</form> 
+						{% endwith %}
 					</div>
-					<a href="{% url 'askmath:reset_password_reset1' %}">{% trans "Forgot your password ?" %}</a>
-				</form> 
-				{% endwith %}
-			</div>
-			<div class="frame" id="frame_sign_up">
-				{% with form_signup as form %}
-				<form  id="signUpForm" action="{% url 'askmath:authentication_options' %}" method="POST" enctype="multipart/form-data"  role="form">
-				{% csrf_token %}
-					<input type="hidden" name="option" value="sign_up">			
-					 {% include "askmath/_render_form.html" %}
-					<label class="switch">
-						<input type="checkbox" required>
-						<span class="check"></span>
-						<span class="text-right">
-							{% blocktrans %}By clicking here, you agree to the <a href="/terms/" >Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
-						</span>
-					</label>
-					<div id="recaptcha2"></div>
-					<button type="submit" class="button primary width">
-						{% trans "Sign Up" %}
-					</button>
-				</form>
-				{% endwith %}            
+					<div class="frame" id="frame_sign_up">
+						{% with form_signup as form %}
+						<form  id="signUpForm" action="{% url 'askmath:authentication_options' %}" method="POST" enctype="multipart/form-data"  role="form">
+						{% csrf_token %}
+							<input type="hidden" name="option" value="sign_up">			
+							 {% include "askmath/_render_form.html" %}
+							<label class="switch">
+								<input type="checkbox" required>
+								<span class="check"></span>
+								<span class="text-right">
+									{% blocktrans %}By clicking here, you agree to the <a href="/terms/" >Terms and Conditions</a> set out by this site, including our Cookie Use.{% endblocktrans %}
+								</span>
+							</label>
+							<div id="recaptcha2"></div>
+							<button type="submit" class="button primary width">
+								{% trans "Sign Up" %}
+							</button>
+						</form>
+						{% endwith %}            
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

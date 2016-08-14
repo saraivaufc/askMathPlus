@@ -1,6 +1,6 @@
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
-<div class="input-control text full-size">
+<div class="input-control text full-size" data-role="input">
 	<input title="{{ field.help_text }}"
 		{% if field.field.required %}required{% endif %}
 		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
@@ -8,4 +8,5 @@
 		{% if field.value %}value="{{ field.value }}"{% endif %} 
 		{% include 'askmath/fields/attrs.html' %}
 		/>
+	<button class="button helper-button clear"><span class="mif-cross"></span></button>
 </div>
