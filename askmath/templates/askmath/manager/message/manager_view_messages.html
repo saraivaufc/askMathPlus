@@ -13,71 +13,77 @@
 
 {%  block content %}
 {% if perms.askmath.write_message %}
-<div class="cell">
-	{% if is_removed %}
-	<a id="button-message-restore" class="image-button info" href="#">
-		{% trans "Restore" %}
-		<span class="icon mif-history"></span>
-	</a>
-	{% else %}
-	<a id="button-message-delete" class="image-button danger" href="#">
-		{% trans "Delete" %}
-		<span class="icon mif-minus"></span>
-	</a>
-	{% endif %}
-	{% if is_removed %}
-	<a class="image-button warning" href="{% url 'askmath:manager_message_view' %}">
-		{% trans "Close Dump" %}
-		<span class="icon mif-undo"></span>
-	</a>
-	{% else %}
-	<a class="image-button warning" href="{% url 'askmath:manager_message_view_removed' %}">
-		{% trans "Open Dump" %}
-		<span class="icon mif-bin"></span>
-	</a>
-	{% endif %}
-</div>
-{% endif %}
+<div class="card">
+	<h3 class="align-center page-title">{% trans "Messages" %}</h3>
 
-<table  class="dataTable border bordered">
-	<thead>
-		<tr>
-			{% if perms.askmath.write_message %}
-			<td style="width: 10px"></td>
-			{% endif %}
-			<td>{% trans "Name" %}</td>
-			<td>{% trans "Email" %}</td>
-			<td>{% trans "Message" %}</td>
-			<td>{% trans "File" %}</td>
-			<td>{% trans "Date" %}</td>
-		</tr>
-	</thead>
-	<tbody>
-	{% for message in messages_model %}
-	<tr>
-		{% if perms.askmath.write_message %}
-		<td>
-            <label class="input-control radio small-check no-margin">
-                <input type="radio" message_id="{{ message.id }}" name="radio_message">
-                <span class="check"></span>
-            </label>
-        </td>
-        {% endif %}
-		<td class="sortable-column">{{ message.get_name }}</td>
-		<td class="sortable-column">{{ message.get_email }}</td>
-		<td class="sortable-column">{{ message.get_message|safe|linebreaksbr }}</td>
-		<td class="sortable-column">
-			{% if message.get_file %}
-			<a href="{{ message.get_file.url }}" target="_blank">
-				{% trans "Download File" %}
+	<div class="padding10">
+		<div class="cell">
+			{% if is_removed %}
+			<a id="button-message-restore" class="button info" href="#">
+				<span class="icon mif-history"></span>
+				{% trans "Restore" %}
 			</a>
 			{% else %}
-				{% trans "No file" %}
+			<a id="button-message-delete" class="button danger" href="#">
+				<span class="icon mif-minus"></span>
+				{% trans "Delete" %}
+			</a>
 			{% endif %}
-		</td>
-		<td class="sortable-column">{{ message.creation|naturaltime }}</td>
-	</tr>
-	{% endfor %}
-	</tbody>
-</table>
+			{% if is_removed %}
+			<a class="button warning" href="{% url 'askmath:manager_message_view' %}">
+				<span class="icon mif-undo"></span>
+				{% trans "Close Dump" %}
+			</a>
+			{% else %}
+			<a class="button warning" href="{% url 'askmath:manager_message_view_removed' %}">
+				<span class="icon mif-bin"></span>
+				{% trans "Open Dump" %}
+			</a>
+			{% endif %}
+		</div>
+		{% endif %}
+
+		<table  class="dataTable border bordered">
+			<thead>
+				<tr>
+					{% if perms.askmath.write_message %}
+					<td style="width: 10px"></td>
+					{% endif %}
+					<td>{% trans "Name" %}</td>
+					<td>{% trans "Email" %}</td>
+					<td>{% trans "Message" %}</td>
+					<td>{% trans "File" %}</td>
+					<td>{% trans "Date" %}</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for message in messages_model %}
+			<tr>
+				{% if perms.askmath.write_message %}
+				<td>
+		            <label class="input-control radio small-check no-margin">
+		                <input type="radio" message_id="{{ message.id }}" name="radio_message">
+		                <span class="check"></span>
+		            </label>
+		        </td>
+		        {% endif %}
+				<td class="sortable-column">{{ message.get_name }}</td>
+				<td class="sortable-column">{{ message.get_email }}</td>
+				<td class="sortable-column">{{ message.get_message|safe|linebreaksbr }}</td>
+				<td class="sortable-column">
+					{% if message.get_file %}
+					<a href="{{ message.get_file.url }}" target="_blank">
+						{% trans "Download File" %}
+					</a>
+					{% else %}
+						{% trans "No file" %}
+					{% endif %}
+				</td>
+				<td class="sortable-column">{{ message.creation|naturaltime }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
 {% endblock %}

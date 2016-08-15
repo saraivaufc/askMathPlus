@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="text-center page-title"><span>{% trans "Contents" %}</h3>
+    <h3 class="align-center page-title"><span>{% trans "Contents" %}</h3>
     {% for discipline in disciplines %}
     {% if discipline.get_lessons_visibles %}
         <h4 class="page-title">{{ discipline|title }}</h4>
@@ -29,6 +29,6 @@
         <br />
     {% endif %}
     {% empty %}
-        <h3 class="text-center">{% trans "Not Lessons Found" %}</h3>
+        <h3 class="align-center">{% trans "Not Lessons Found" %}</h3>
     {% endfor %}
 {% endblock %}

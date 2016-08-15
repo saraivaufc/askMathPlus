@@ -1,24 +1,12 @@
-.container, .container-fluid, .container:not(.no-responsive-future), .container-fluid:not(.no-responsive-future){
-	padding-right: 15px;
- 	padding-left: 15px;
-}
-
-
-#tile-squared .row{
-	heignt: 20px;
-	width: 20px;
-}
-
-#lower-menu .btn-group .btn{
-	font-weight: bold;
-	font-size: 100%;
-}
-
 .tile, .tile-wide{
 	width: 150px !important;
   	height: 150px !important;
 }
 
-.flex-grid:not(.no-responsive-future) .row {
-    flex-direction: row;
+
+.flex-grid:not(.no-responsive-future) .row .cell, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"] {
+    flex: auto;
+}
+.flex-grid:not(.no-responsive-future) .row .cell:nth-child(1):last-child, .flex-grid:not(.no-responsive-future) .row .cell:nth-child(11):last-child, .flex-grid:not(.no-responsive-future) .row .cell:nth-child(3):last-child, .flex-grid:not(.no-responsive-future) .row .cell:nth-child(5):last-child, .flex-grid:not(.no-responsive-future) .row .cell:nth-child(7):last-child, .flex-grid:not(.no-responsive-future) .row .cell:nth-child(9):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(1):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(11):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(3):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(5):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(7):last-child, .flex-grid:not(.no-responsive-future) .row .cell[class*="size"]:nth-child(9):last-child{
+   	flex-basis: auto;
 }

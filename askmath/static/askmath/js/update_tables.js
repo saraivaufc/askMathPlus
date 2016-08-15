@@ -1,10 +1,13 @@
 $(function () {
-    $('.dataTable').dataTable({
-        "language": {
-            "url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
-        },
-		"ordering": false
-    });
+	$('.dataTable').each(function(){
+		$(this). dataTable({
+			"language": {
+				"url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
+			},
+			"ordering": false,
+			"root": $(this).parent() ,
+		});
+	});
 });
 
 

@@ -63,7 +63,7 @@
 
 						<div data-role="group" data-group-type="one-state" data-button-style="class">
 
-							<button type="submit" class="image-button success">
+							<button type="submit" class="button success">
 								<span class="icon mif-checkmark"></span>
 								<span>{% trans "Reply" %}</span>
 							</button>
@@ -75,21 +75,21 @@
 							{% endif %}
 
 							{% if studentlessonstate.get_remaining_jump > 0 %}
-							<button type="button" class="image-button warning" onclick="showDialog('#dialog_jump')">
+							<button type="button" class="button warning" onclick="showDialog('#dialog_jump')">
 								<span class="icon mif-redo"></span>
 								<span>{% trans "Jump" %}</span>
 							</button>
 							{% endif %}
 
 							{% if studentlessonstate.get_skipped_questions|length > 0  and not question in studentlessonstate.get_skipped_questions %}
-								<button type="button" class="image-button primary" onclick="showDialog('#dialog_skipped_questions')">
+								<button type="button" class="button primary" onclick="showDialog('#dialog_skipped_questions')">
 								   	<span class="icon mif-history"></span>
 									<span>{% trans "Review Jumps" %}</span>
 								</button>
 							{% endif %}
 							
 							{% if  occur_obstacle or deficiencies %}
-								<button type="button" class="image-button danger"   onclick="showDialog('#dialog_obstacle')">
+								<button type="button" class="button danger"   onclick="showDialog('#dialog_obstacle')">
 								   	<span class="icon mif-warning mif-ani-flash mif-ani-slow"></span>
 									<span>{% trans "Deficiencies" %}</span>
 								</button>

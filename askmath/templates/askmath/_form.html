@@ -10,9 +10,9 @@
 				{% csrf_token %}
 					{% include "askmath/_render_form.html" %}
 					<div class="row">
-						<button type="submit" class="image-button primary">
-							{% trans "Submit" %}
+						<button type="submit" class="button primary">
 							<span class="icon mif-checkmark"></span>
+							{% trans "Submit" %}
 						</button>
 					</div>
 				</form>

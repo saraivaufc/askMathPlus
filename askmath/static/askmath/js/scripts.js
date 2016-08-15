@@ -206,43 +206,7 @@ function help() {
 	}
 };
 
-$(function () {
-	$(".latex").each(function () {
-		$(this).keyup(function () {
-			Preview.Update();
-		});
-	});
-});
-
-
 $("#btn-help").on('click', help);
-
-
-function openEditor(box) {
-	var id = box.attr("id");
-	$('#box-latex').attr('value', id);
-	$("#latex_formula").val(box.val());
-	Preview.Update();
-	$('#box-latex').modal();
-}
-
-$(function () {
-
-	$("#latex_formula").on('keyup', function () {
-		var latex = $(this).val();
-		var result = document.getElementById("MathPreview");
-		typejax.updater.init(latex, latex.length, result);
-	});
-
-	$("#box-latex-submit").click(function () {
-		var text = $("#latex_formula").val();
-		$("#latex_formula").val("");
-		var input_form = $("#" + $('#box-latex').attr('value'));
-		input_form.val(text);
-		$('#box-latex').modal('hide');
-	});
-	
-});
 
 function showKey() {
 	$("input[name='key']").removeAttr("disabled");
@@ -277,10 +241,10 @@ $(function () {
 });
 
 $(function () {
-	$(".button-like").click(function () {
+	$(".button-like").on('click', function () {
 		var $button = $(this);
 		var href = $(this).attr("href");
-		if ($(this).hasClass("bg-green")) {
+		if ($(this).hasClass("success")) {
 			$.get(href).done(function (data) {
 				try {
 					var data = JSON.parse(data);
@@ -315,9 +279,8 @@ function like(buttom, likes) {
 	} catch (e) {
 		likes = parsetInt(like_count.html()) + 1;
 	}
-	buttom.removeClass("bg-gray");
-	buttom.addClass("bg-green");
-	buttom.find(".icon").addClass("bg-emerald");
+	buttom.removeClass("info");
+	buttom.addClass("success");
 	like_count.text(likes);
 	var href = buttom.attr("href");
 	buttom.attr("href", href.replace("/like", "/unlike"));
@@ -330,27 +293,12 @@ function unlike(buttom, likes) {
 	} catch (e) {
 		likes = parsetInt(like_count.html()) - 1;
 	}
-	buttom.addClass("bg-gray");
-	buttom.removeClass("bg-green");
-	buttom.find(".icon").removeClass("bg-emerald");
+	buttom.addClass("info");
+	buttom.removeClass("success");
 	like_count.text(likes);
 	var href = buttom.attr("href");
 	buttom.attr("href", href.replace("/unlike", "/like"));
 }
-
-
-$(function () {
-	$(".latex").each(function () {
-		var id = $(this).attr("id");
-		$(this).parent().prepend("<span value='" + id + "'  class='button-latex right mif-file-code'></span>");
-	});
-	$(".button-latex").click(function () {
-		var id = $(this).attr('value');
-		var box = $('#' + id);
-		openEditor(box);
-	});
-
-});
 
 $(function () {
 	$(".comment-edit").on('click', function () {
@@ -410,12 +358,13 @@ function showCharm(id) {
 }
 
 function showDialog(id) {
-	 var dialog = $(id).data('dialog');
-	if (!dialog.element.data('opened')) {
-		dialog.open();
-	} else {
+	var dialog = $(id).data('dialog');
+	if (dialog.element.data("opened") === true) {
 		dialog.close();
+	} else {
+		dialog.open();
 	}
+	 
 }
 
 var isMobile = {
@@ -440,23 +389,54 @@ var isMobile = {
 };
 
 $(function () {
-	$("#signUpForm  input[name=confirm_password]").change(function () {
-
-		if ($("#signUpForm input[name='password']").text() != $("#signUpForm input[name='confirm_password']").text()) {
-			$("#signUpForm input[name='password']").css("border", "#FF0000 solid 1px")
-			$("#signUpForm input[name='confirm_password']").css("border", "#FF0000 solid 1px")
-		} else {
-			$("#signUpForm input[name='password']").css("border", "#FFF solid 0px");
-			$("#signUpForm input[name='confirm_password']").css("border", "#FFF solid 0px");
-		}
-	});
-});
-
-
-$(function () {
 	$('#select_classe_default').on('change', function(){
 		if($(this).val()) {
 			window.location = $(this).val();
 		}
 	})
 })
+
+
+/* Latex */
+
+function openEditor(box) {
+	var id = box.attr("id");
+	$('#dialog-latex').attr('value', id);
+	$("#latex_formula").val(box.val());
+	Preview.Update();
+	showDialog("#dialog-latex");
+}
+
+
+$(function () {
+
+	$(".latex").each(function () {
+		var id = $(this).attr("id");
+		$(this).parent().prepend("<span value='" + id + "'  class='button-latex right mif-file-code'></span>");
+		$(this).keyup(function () {
+			Preview.Update();
+		});
+	});
+	
+	$(".button-latex").on('click',function () {
+		var id = $(this).attr('value');
+		var box = $('#' + id);
+		openEditor(box);
+	});
+
+
+	$("#latex_formula").on('keyup', function () {
+		var latex = $(this).val();
+		var result = document.getElementById("MathPreview");
+		typejax.updater.init(latex, latex.length, result);
+	});
+
+	$("#dialog-latex-submit").click(function () {
+		var text = $("#latex_formula").val();
+		$("#latex_formula").val("");
+		var input_form = $("#" + $('#dialog-latex').attr('value'));
+		input_form.val(text);
+		showDialog("#dialog-latex");
+	});
+	
+});

@@ -23,7 +23,7 @@
 			    	{% include "askmath/utils/video/_render_video.html" %}
 				</div>
 				<div>
-					<p class="lead text-justify">{{ video.get_description|safe|linebreaksbr }}</p>
+					<p class="text-accent align-justify">{{ video.get_description|safe|linebreaksbr }}</p>
 			    </div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 						</div>
 						{% endif %}
 					{% empty %}
-					<h1 class="text-center">{%trans "Lesson does not have videos."%}</h1>
+					<h1 class="align-center">{%trans "Lesson does not have videos."%}</h1>
 					{% endfor %}
 				</div>
 			</div>

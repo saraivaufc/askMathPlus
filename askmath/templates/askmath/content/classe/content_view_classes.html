@@ -12,79 +12,43 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="card">
-	<h3 class="align-center page-title">{% trans "Classes" %}</h3>
-	{% comment %}
-	<label for="select_classe_default">
-			{% trans "Current Classe" %}:
+<div class="tile-area  no-padding">
+	<div class="card">
+		<h3 class="align-center page-title">{% trans "Classes" %}</h3>
+		{% comment %}
+		<label for="select_classe_default">
+				{% trans "Current Classe" %}:
 
-			<div class="split-button">
-					{% if current_classe %}
-							<button class="button">{{ current_classe }}</button>
-							<button class="split dropdown-toggle"></button>
-					{% else %}
-							<button class="button">{% trans "Subscrive in  one class." %}</button>
-					{% endif %}
-					<ul class="split-content d-menu" data-role="dropdown">
-							{% for classe in my_classes %}
-									{% if classe != current_classe %}
-											<li>
-													<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
-											</li>
-									{% endif %}
-							{% endfor %}
-					</ul>
-			</div>
-	</label>
-	{% endcomment %}
+				<div class="split-button">
+						{% if current_classe %}
+								<button class="button">{{ current_classe }}</button>
+								<button class="split dropdown-toggle"></button>
+						{% else %}
+								<button class="button">{% trans "Subscrive in  one class." %}</button>
+						{% endif %}
+						<ul class="split-content d-menu" data-role="dropdown">
+								{% for classe in my_classes %}
+										{% if classe != current_classe %}
+												<li>
+														<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
+												</li>
+										{% endif %}
+								{% endfor %}
+						</ul>
+				</div>
+		</label>
+		{% endcomment %}
 
-	<div class="tile-container">
-		<table  class="dataTable border bordered">
-			<thead>
-				<tr>
-					<td>{% trans "Name" %}</td>
-					<td>{% trans "Semester" %}</td>
-					<td>{% trans "Responsible" %}</td>
-					<td>{% trans "Inscription" %}</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="tile-container">
 			{% for classe in classes %}
-			<tr>
-				<td class="sortable-column">{{ classe.get_name }}</td>
-				<td class="sortable-column">{{ classe.get_semester }}</td>
-				<td class="sortable-column">
-					{% if classe.get_responsible %}
-						{{ classe.get_responsible }}
-					{% else %}
-						{% trans "No responsible" %}
-					{% endif %}
-				</td>
-
-				<td>
-					{% if not classe in my_classes %}
-						<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="image-button button success">
-							{% trans "Subscribe" %}
-							<span class="icon mif-enter bg-emerald"></span>
-						</a>
-					{% else %}
-						<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button button danger">
-							{% trans "Unsubscribe" %}
-							<span class="icon mif-exit bg-red"></span>
-						</a>
-					{% endif %}
-				</td>
-				<td>
-					<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="image-button button primary">
-						{% trans "Details" %}
-						<span class="icon mif-info bg-darkCobalt"></span>
+				<div class="tile-wide {{ classe.color }}">
+					<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="tile-content slide-down iconic">
+						<span class="icon mif-stack2"></span>
+						<div class="tile-label">{{ classe.get_name }}</div>
 					</a>
-
-				</td>
+				</div>
 			{% endfor %}
-			</tbody>
-		</table>
+		</div>
 	</div>
 </div>
 {% endblock %}

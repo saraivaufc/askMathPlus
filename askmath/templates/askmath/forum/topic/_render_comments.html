@@ -5,62 +5,52 @@
 <div class="panel width">
 	<div class="heading bg-lightBlue">
 		<span class="icon mif-bubble"></span>
-        <span class="title fg-white">{% trans "Reply" %}</span>
-        <div class="place-right">
-        	<span>
-				{% blocktrans with creation=comment.creation|naturaltime  %}
-					{{ creation }}
-				{% endblocktrans %}
-			</span>
-        	{% if request.user == comment.person %}
-			<a class="comment-edit" href="#comment-{{ comment.id }}" url="{% url 'askmath:forum_comment_edit' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}">
-				<span class="mif-pencil padding5 fg-white"></span>
-			</a>
-		{% endif %}
-		{% if comment.exists and request.user == comment.person or perms.askmath.access_forum_admin %}
-			<a href="{% url 'askmath:forum_comment_remove' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}">
-				<span class="mif-cross padding5 fg-white"></span>
-			</a>
-		{% endif %}
-        </div>
-    </div>
-	<div class="contant">
-		<div class="equal">
-			<div class="col-md-2 bg-grayLight">
-				<div class="person-card padding10">
-					<figure>
-						{% if comment.person.get_profile_image %}
-		                <img class="person-image" src="{{ comment.person.get_profile_image.url }}">
-		                {% else %}
-		                <img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
-		                {% endif %}
-					</figure>
-					<h5 class="person-name">{{ comment.person.get_full_name }}</h5>	
-				</div>
-			</div>
-			<div class="col-md-10 bg-grayLighter">
-				<div class="post-card padding10">
-					<p id="comment-{{ comment.id }}" class="post-description lead">{{ comment.get_description|linebreaksbr }}</p>
-					<div class="post-controls">
-						<div class="col-sm-6 col-md-6">
-				    		{% if request.user in comment.get_likes_persons %}
-							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="button-like image-button bg-green fg-white">
+		<div class="place-right">
+			<span>{{ comment.creation|naturaltime  }}</span>
+
+			{% if request.user == comment.person %}
+				<a class="comment-edit" href="#comment-{{ comment.id }}" url="{% url 'askmath:forum_comment_edit' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}"><span class="mif-pencil padding5 fg-white"></span></a>
+			{% endif %}
+			
+			{% if comment.exists and request.user == comment.person or perms.askmath.access_forum_admin %}
+				<a href="{% url 'askmath:forum_comment_remove' id_category=category.id  id_topic=topic.id id_comment=comment.id  %}"><span class="mif-cross padding5 fg-white"></span></a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="content">
+		<div class="flex-grid">
+				<div class="row">
+					<div class="cell colspan1">
+						<div class="profile image-container">
+							<div class="frame">
+								{% if comment.get_person.get_profile_image %}
+								<img class="person-image"  src="{{ comment.get_person.get_profile_image.url }}">
+								{% else %}
+								<img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+								{% endif %}
+							</div>
+							<label class="image-title fg-white align-center">
+								{{ comment.get_person.get_full_name }}
+							</label>
+						</div>
+					</div>
+					<div class="cell colspan11">
+						<div class="padding10">
+							<p id="comment-{{ comment.id }}" class="post-description text-accent">{{ comment.get_description|linebreaksbr }}</p>
+							{% if request.user in comment.get_likes_persons %}
+							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="button-like button success">
 							{% else %}
-							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="button-like image-button bg-gray fg-white">
-							{% endif %}	
+							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="button-like button info">
+							{% endif %}
+								<span class="icon mif-thumbs-up"></span>
 								<span class="like-count">{{ comment.get_likes|length }}</span>
-								{% if request.user in comment.get_likes_persons %}
-							    <span class="icon mif-thumbs-up bg-emerald"></span>
-							    {% else %}
-							    <span class="icon mif-thumbs-up"></span>
-							    {% endif %}
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>
 {% empty %}
 {% endfor %}

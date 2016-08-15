@@ -28,14 +28,14 @@
 		</li>
 		{% if perms.askmath.access_content %}
 		<li>
-			<a href="{% url 'askmath:content_ranking_view' %}">
-				<span class="mif-trophy"></span> {% trans "Ranking" %}
-			</a>
-		</li>
-		
-		<li>
 			<a href="{% url 'askmath:content_classe_view' %}">
 				<span class="mif-books"></span> {% trans "Classes" %}
+			</a>
+		</li>
+
+		<li>
+			<a href="{% url 'askmath:content_ranking_view' %}">
+				<span class="mif-trophy"></span> {% trans "Ranking" %}
 			</a>
 		</li>
 		{% endif %}
@@ -51,7 +51,7 @@
 	<div class="app-bar-element place-right">
 		<a class="dropdown-toggle fg-white"><span class="mif-user"></span> {{ request.user.get_full_name }}</a>
 		<div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true">
-			<div id="profile" class="image-container">
+			<div class="profile image-container">
 				<div class="frame">
 					{% if request.user.get_profile_image %}
 					<img class="img" src="{{ request.user.get_profile_image.url }}">

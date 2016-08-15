@@ -6,12 +6,11 @@
 {% endblock %}
 
 {% block content %}
-	<div class="tile-container">
 	{% block tiles %}
 	<div class="tile-area  no-padding">
 		<div class="card">
 	            <h3 class="align-center page-title">{% trans "Disciplines" %}</h3>
-
+			
 			<div class="tile-container">
 			{% for discipline in disciplines %}
 				<div class="tile-wide {{ discipline.color }}">
@@ -24,8 +23,8 @@
 				</div>
 			{% endfor %}
 			</div>
+		
 		</div>
 	</div>
 	{% endblock %}
-	</div>
 {% endblock %}

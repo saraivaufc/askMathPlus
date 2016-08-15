@@ -18,12 +18,12 @@
 	<div class="row">
 	{% block tiles-left %}
 		<div class="panel width">
-			<div class="heading text-center">
+			<div class="heading align-center">
 						<span class="icon mif-clipboard text-left"></span>
 						<span class="title">{{ lesson.get_title|title }}</span>
 				</div>
 				<div class="content padding10">
-					<p class="text-justify lead">
+					<p class="align-justify text-accent">
 					{{ lesson.get_description|safe|linebreaksbr }}
 				</p>
 				</div>
@@ -35,7 +35,7 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
 	{% block tiles-rigth %}
 	<div class="panel width">
-		<div class="heading text-center">
+		<div class="heading align-center">
 			<span class="icon mif-play text-left"></span>
 			<span class="title">{% trans "Options" %}</span>
 		</div>

@@ -194,11 +194,6 @@ a{
 	text-decoration: underline;
 }
 
-.btn-social{
-	text-decoration: none !important;
-	color: #fff !important;
-}
-
 
 /* INPUTS */
 
@@ -311,38 +306,6 @@ caption{
 
 /* FORUM */
 
-
-.person-card{
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
-}
-
-.person-card > figure > .person-image{
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
-    max-height: 100px;
-}
-
-.person-card  > .person-name{
-	display: block;
-	text-align: center;
-}
-
-.post-card, .comment-card{
-	min-height: 100%;
-	min-width: 100%;
-}
-
-.post-card > .post-description{
-	display: block;
-}
-
-.post-card > .post-controls{
-	display: block;
-}
-
 .equal, .equal > div[class*='col-'] {  
     display: -webkit-box;
     display: -webkit-flex;
@@ -451,23 +414,23 @@ label.caption{
 	cursor:move !important;
 }
 
-
-#profile, #controls{
+/* Profile Image */
+.profile, #controls{
 	border: 1px solid #fff;
 }
 
-#profile  > .image-title{
+.profile  > .image-title{
 	position: absolute;
-	margin-top: -50px;
+	margin-top: -25%;
 }
 
-#profile  > .image-title > a{
+.profile  > .image-title > a{
 	color: #fff !important;
 	text-shadow: 2px 2px #000;
 	text-decoration: none !important;
 }
 
-#profile  > .image-title > a:hover{
+.profile  > .image-title > a:hover{
 	color: blue !important;
 }
 
@@ -492,9 +455,10 @@ label.caption{
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	color:#FFF;
 	background-color: #4390df;
-	margin-bottom:5px;
+	margin: auto;
 	margin-top: 0px;
 	padding: 5px ;
+
 }
 
 .command-button {
@@ -509,7 +473,7 @@ label.caption{
 	right: 0px;
 }
 
-.card{
+.card, .panel{
 	background-color: #fff;
 	border: 1px solid #000;
 	margin: 1px;

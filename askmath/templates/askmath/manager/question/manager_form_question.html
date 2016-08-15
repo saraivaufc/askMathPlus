@@ -2,38 +2,41 @@
 {% load i18n %}
 
 {%  block content %}
-<div class="row">
-	<div class="col-md-8 border">
-		<h3 class="text-center page-title">{{ title_form }}</h3>
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan8">
+			<div class="card">	
+				<h3 class="align-center page-title">{{ title_form }}</h3>
 
-		<form  class="bg-grayLighter padding10" action="." method="post" enctype="multipart/form-data" role="form">
-			{% csrf_token %}
-			{% with form=form_question %}
-				{% include "askmath/_render_form.html" %}
-			{% endwith %}
-			<div class="accordion" data-close-any="true">
-			{% for form in forms_items  %}
-				<div class="frame active">
-					<div class="heading">
-						{% trans "Item" %} {{ form.prefix }}
-					</div>
-					<div class="content">
+				<form  class="padding10" action="." method="post" enctype="multipart/form-data" role="form">
+					{% csrf_token %}
+					{% with form=form_question %}
 						{% include "askmath/_render_form.html" %}
+					{% endwith %}
+					<div class="accordion" data-close-any="true">
+					{% for form in forms_items  %}
+						<div class="frame active">
+							<div class="heading">
+								{% trans "Item" %} {{ form.prefix }}
+							</div>
+							<div class="content">
+								{% include "askmath/_render_form.html" %}
+							</div>
+						</div>
+					{% endfor %}
 					</div>
-				</div>
-			{% endfor %}
+					</br>
+					<button type="submit" class="button primary">
+						<span class="icon mif-checkmark"></span>
+						{% trans "Submit" %}
+					</button>
+				</form>
 			</div>
-			</br>
-			<button type="submit" class="image-button primary">
-				{% trans "Submit" %}
-				<span class="icon mif-checkmark"></span>
-			</button>
-		</form>
-	</div>
-	<div class="col-md-4 border">
-		<h3 class="text-center page-title">{% trans "Informations" %}</h3>
-		<div class="bg-grayLighter">
-
+		</div>
+		<div class="cell colspan4">
+			<div class="card">
+				<h3 class="align-center page-title">{% trans "Informations" %}</h3>
+			</div>
 		</div>
 	</div>
 </div>

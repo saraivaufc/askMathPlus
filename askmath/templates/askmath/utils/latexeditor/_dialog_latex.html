@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<div id="dialog-latex" class="padding20" data-role="dialog" data-type="info"  data-close-button="true" data-overlay="true" data-overlay-color="op-dark" data-place="top-center">
+	<div class="container">
+		<h2 class="align-center">{% trans "Text Editor" %}</h2>	
+		
+		{% include "askmath/utils/latexeditor/header.html"  %}
+
+		<label>{% trans "To add Latex code, add your code between && tags, eg $ \sqrt{3} \$." %}</label>
+		<div class="input-control textarea" data-role="input" data-text-auto-resize="true" data-text-max-height="200">
+			<textarea  id="latex_formula" cols="100%"  onkeyup="Preview.Update()"  ></textarea>
+		</div>
+		
+		<label>{% trans "Preview is shown here" %}:</label>
+		<div class="bg-white fg-dark padding10">
+			<textarea style="display:none;" id="MathPreview" ></textarea>
+			<div id="MathBuffer"></div>
+		</div>
+		
+		<div class="align-right">
+			<button class="button primary" onclick="showDialog('#dialog-latex')">
+				{% trans "Close" %}
+			</button>
+			<button  id="dialog-latex-submit" class="button success">
+				{% trans "Save changes" %}
+			</button>
+		</div>
+	</div>
+</div>

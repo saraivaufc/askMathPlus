@@ -11,115 +11,119 @@
 {% endblock %}
 
 {%  block content %}
-	<h3 class="text-center page-title">{% blocktrans %}Lessons of {{ discipline }}{% endblocktrans %}</h3>
+<div class="card">
 
-	{% if perms.askmath.write_lesson %}
-	<div class="cell">
-			<a id="button-lesson-create" href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="image-button success">
-				{% trans "Create" %}
+	<h3 class="align-center page-title">{% blocktrans %}Lessons of {{ discipline }}{% endblocktrans %}</h3>
+
+	<div class="padding10">
+		{% if perms.askmath.write_lesson %}
+		<div class="cell">
+			<a id="button-lesson-create" href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="button success">
 				<span class="icon mif-plus"></span>
+				{% trans "Create" %}
 			</a>
-			<a id="button-lesson-edit" href="#" class="image-button primary">
-				{% trans "Edit" %}
+			<a id="button-lesson-edit" href="#" class="button primary">
 				<span class="icon mif-pencil"></span>
+				{% trans "Edit" %}
 			</a>
 			{% if is_removed %}
-			<a id="button-lesson-restore" href="#" class="image-button info">
-				{% trans "Restore" %}
+			<a id="button-lesson-restore" href="#" class="button info">
 				<span class="icon mif-history"></span>
+				{% trans "Restore" %}
 			</a>
 			{% else %}
-			<a id="button-lesson-delete" href="#" class="image-button danger">
-				{% trans "Delete" %}
+			<a id="button-lesson-delete" href="#" class="button danger">
 				<span class="icon mif-minus"></span>
+				{% trans "Delete" %}
 			</a>
 			{% endif %}
 			{% if is_removed %}
-			<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}" class="image-button warning">
-				{% trans "Close Dump" %}
+			<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}" class="button warning">
 				<span class="icon mif-undo"></span>
+				{% trans "Close Dump" %}
 			</a>
 			{% else %}
-			<a href="{% url 'askmath:manager_lesson_view_removed' id_discipline=discipline.id %}" class="image-button warning">
-				{% trans "Open Dump" %}
+			<a href="{% url 'askmath:manager_lesson_view_removed' id_discipline=discipline.id %}" class="button warning">
 				<span class="icon mif-bin"></span>
+				{% trans "Open Dump" %}
 			</a>
 			{% endif %}
-	</div>
-	{% endif %}
+		</div>
+		{% endif %}
 
 
-	<table  class="dataTable border bordered">
-		<thead>
+		<table  class="dataTable border bordered">
+			<thead>
+				<tr>
+					{% if perms.askmath.write_lesson %}
+					<td style="width: 10px"></td>
+					{% endif %}
+					<td>{% trans "Title" %}</td>
+					<td>{% trans "Description" %}</td>
+					<td>{% trans "Requirements" %}</td>
+					<td>{% trans "Sugestions" %}</td>
+					<td>{% trans "Maximum Hops" %}</td>
+					<td style="width: 20px">{% trans "Visible" %}</td>
+					<td>{% trans "Options" %}</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for lesson in lessons %}
 			<tr>
 				{% if perms.askmath.write_lesson %}
-				<td style="width: 10px"></td>
+				<td>
+					<label class="input-control radio small-check no-margin">
+						<input type="radio" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_lesson">
+						<span class="check"></span>
+					</label>
+				</td>
 				{% endif %}
-				<td>{% trans "Title" %}</td>
-				<td>{% trans "Description" %}</td>
-				<td>{% trans "Requirements" %}</td>
-				<td>{% trans "Sugestions" %}</td>
-				<td>{% trans "Maximum Hops" %}</td>
-				<td style="width: 20px">{% trans "Visible" %}</td>
-				<td>{% trans "Options" %}</td>
-			</tr>
-		</thead>
-		<tbody>
-		{% for lesson in lessons %}
-		<tr>
-			{% if perms.askmath.write_lesson %}
-			<td>
-				<label class="input-control radio small-check no-margin">
-					<input type="radio" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_lesson">
-					<span class="check"></span>
-				</label>
-			</td>
-			{% endif %}
-			<td class="sortable-column">{{ lesson.get_title }}</td>
-			<td class="sortable-column">{{ lesson.get_description|safe|linebreaksbr|truncatechars:"255" }}</td>
-			<td class="sortable-column">
-				{% for requirement in  lesson.get_requirements %}
-					<a href="{% url 'askmath:manager_question_view' id_discipline=requirement.get_discipline.id id_lesson=requirement.id %}" class="tag fg-white {{ requirement.color }}">
-						{{ requirement }}
-					</a>
-				{% endfor %}
-			</td>
-			<td class="sortable-column">
-				{% for sugestion in  lesson.get_sugestions %}
-					<a href="{% url 'askmath:manager_question_view' id_discipline=sugestion.get_discipline.id id_lesson=sugestion.id %}" class="tag fg-white {{ sugestion.color }}">
-						{{ sugestion }}
-					</a>
-				{% endfor %}
-			</td>
-			<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
-			<td class="sortable-column">
-				{% if lesson.is_visible %}
-					<button class="cycle-button mini-button success">
-						<span class="mif mif-checkmark"></span>
-					</button>
-				{% else %}
-					<button class="cycle-button mini-button danger">
-						<span class="mif mif-cross"></span>
-					</button>
-				{% endif %}
-			</td>
-			<td class="sortable-column">
-				<div data-role="group" data-group-type="multi-state">
-					<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id id_discipline=discipline.id %}" class="image-button button primary">
-						{% trans "Questions" %}
-						<span class="icon bg-darkCobalt">{{ lesson.get_questions|length }}</span>
-					</a>
-					<a  href="{% url 'askmath:manager_video_view' id_lesson=lesson.id id_discipline=discipline.id %}" class="image-button button primary">
-						{% trans "Videos" %}
-						<span class="icon bg-darkCobalt">{{ lesson.get_videos|length }}</span>
-					</a>
-				</div>
-			</td>
+				<td class="sortable-column">{{ lesson.get_title }}</td>
+				<td class="sortable-column">{{ lesson.get_description|safe|linebreaksbr|truncatechars:"255" }}</td>
+				<td class="sortable-column">
+					{% for requirement in  lesson.get_requirements %}
+						<a href="{% url 'askmath:manager_question_view' id_discipline=requirement.get_discipline.id id_lesson=requirement.id %}" class="tag fg-white {{ requirement.color }}">
+							{{ requirement }}
+						</a>
+					{% endfor %}
+				</td>
+				<td class="sortable-column">
+					{% for sugestion in  lesson.get_sugestions %}
+						<a href="{% url 'askmath:manager_question_view' id_discipline=sugestion.get_discipline.id id_lesson=sugestion.id %}" class="tag fg-white {{ sugestion.color }}">
+							{{ sugestion }}
+						</a>
+					{% endfor %}
+				</td>
+				<td class="sortable-column">{{ lesson.get_maximum_hops }}</td>
+				<td class="sortable-column">
+					{% if lesson.is_visible %}
+						<button class="cycle-button mini-button success">
+							<span class="mif mif-checkmark"></span>
+						</button>
+					{% else %}
+						<button class="cycle-button mini-button danger">
+							<span class="mif mif-cross"></span>
+						</button>
+					{% endif %}
+				</td>
+				<td class="sortable-column">
+					<div data-role="group" data-group-type="one-state">
+						<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id id_discipline=discipline.id %}">
+							{% trans "Questions" %}
+						</a>
+						<a  href="{% url 'askmath:manager_video_view' id_lesson=lesson.id id_discipline=discipline.id %}">
+							{% trans "Videos" %}
+						</a>
+					</div>
+				</td>
 
-		</tr>
-		{% endfor %}
-		</tbody>
-	</table>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+</div>
 {% endblock %}
 
 {% block stylesheet %}

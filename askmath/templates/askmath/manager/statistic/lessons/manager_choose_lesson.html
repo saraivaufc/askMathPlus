@@ -11,7 +11,7 @@
 {%  block content_right %}
 
 <div class="cell padding5">
-	<h2 class="text-dark  text-center">
+	<h2 class="text-dark  align-center">
 		{% trans "Choose Lesson" %}
 	</h2>
 </div>
@@ -36,7 +36,7 @@
 							        <span class="tile-badge mif-bin"></span>
 							        {% endif %}
 							        <div class="slide-over bg-steel">
-								        <table class="text-center fill">
+								        <table class="align-center fill">
 								        	<tr>
 								        		<td>{% trans "All Questions" %} : {{ lesson.get_questions_visibles|length }}</td>
 								        	</tr>
@@ -48,7 +48,7 @@
 							    </a>
 							</div>
 						{% empty %}
-						<h3 class="text-center">{%trans "Statistics does not have lessons."%}</h3>
+						<h3 class="align-center">{%trans "Statistics does not have lessons."%}</h3>
 						{% endfor %}
 					</div>
 		        </div>

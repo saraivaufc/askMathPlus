@@ -44,15 +44,15 @@
 			<div class="card">
 				<h3 class="align-center page-title">{% trans "Options" %}</h3>
 				<div class="padding10">
-					<a href="{% url 'askmath:person_account_edit' %}"  class="image-button primary width">
+					<a href="{% url 'askmath:person_account_edit' %}"  class="button primary width">
 						<span class="icon mif-pencil"></span>
 						<span class="title">{% trans "Profile Edit" %}</span>
 					</a>
-					<a href="{% url 'askmath:person_account_alter_password' %}"  class="image-button warning width">
+					<a href="{% url 'askmath:person_account_alter_password' %}"  class="button warning width">
 						<span class="icon mif-key"></span>
 						<span class="title">{% trans "Password Alter" %}</span>
 					</a>
-					<button  class="image-button danger width" onclick="showDialog('#dialog_remove_account')">
+					<button  class="button danger width" onclick="showDialog('#dialog_remove_account')">
 						<span class="icon mif-cross"></span>
 						<span class="title">{% trans "Account Remove" %}</span>
 					</button>

@@ -11,49 +11,52 @@
 {% endblock %}
 
 {%  block content %}
+<div class="card">
+	<h3 class="align-center page-title"><span>{% trans "View Keys" %}</h3>
 
-	<h3 class="text-center page-title"><span>{% trans "View Keys" %}</h3>
+	<div class="padding10">
+		<form action="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" method="POST">
+			{% csrf_token %}
+			<button type="submit" class="button info">
+				<span class="icon mif-cog"></span>
+				{% trans " Generate Key" %}
+			</button>
+			<a id="button-register_key-delete" href="#" class="button danger">
+				<span class="icon mif-minus"></span>
+				{% trans "Delete" %}
+			</a>
+		</form>
 
-	<form action="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" method="POST">
-		{% csrf_token %}
-		<button type="submit" class="image-button info">
-			{% trans " Generate Key" %}
-			<span class="icon mif-cog"></span>
-		</button>
-		<a id="button-register_key-delete" href="#" class="image-button danger">
-			{% trans "Delete" %}
-			<span class="icon mif-minus"></span>
-		</a>
-	</form>
+		{% if new_register_key %}
+			<h3>{%  trans "Created Key" %} : <span class="tag success">{{ new_register_key }}</span></h3>
+		{% endif %}
 
-	{% if new_register_key %}
-		<h3>{%  trans "Created Key" %} : <span class="tag success">{{ new_register_key }}</span></h3>
-	{% endif %}
-
-	<table class="table border bordered dataTable">
-		<thead>
-			<tr>
-				<td style="width: 10px"></td>
-				<td>{% trans "Key" %}</td>
-				<td>{% trans "Creator" %}</td>
-				<td>{% trans "User" %}</td>
-			</tr>
-		<thead>
-		<tbody>
-			{% for register_key in register_keys %}
+		<table class="table border bordered dataTable">
+			<thead>
 				<tr>
-					<td>
-						<label class="input-control radio small-check no-margin">
-							<input type="radio" register_key_id="{{ register_key.id }}" person_type="{{ person_type }}"  name="radio_register_key">
-							<span class="check"></span>
-						</label>
-					</td>
-					<td>{{ register_key.key }}</td>
-					<td>{{ register_key.get_creator }}</td>
-					<td>{{ register_key.user }}</td>
+					<td style="width: 10px"></td>
+					<td>{% trans "Key" %}</td>
+					<td>{% trans "Creator" %}</td>
+					<td>{% trans "User" %}</td>
 				</tr>
-			{% empty %}
-			{% endfor %}
-		<tbody>
-	</table>
+			<thead>
+			<tbody>
+				{% for register_key in register_keys %}
+					<tr>
+						<td>
+							<label class="input-control radio small-check no-margin">
+								<input type="radio" register_key_id="{{ register_key.id }}" person_type="{{ person_type }}"  name="radio_register_key">
+								<span class="check"></span>
+							</label>
+						</td>
+						<td>{{ register_key.key }}</td>
+						<td>{{ register_key.get_creator }}</td>
+						<td>{{ register_key.user }}</td>
+					</tr>
+				{% empty %}
+				{% endfor %}
+			<tbody>
+		</table>
+	</div>
+</div>
 {% endblock %}

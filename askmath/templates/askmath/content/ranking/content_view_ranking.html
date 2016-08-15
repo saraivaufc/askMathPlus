@@ -74,7 +74,7 @@
 
 		<div class="cell colspan2">
 			<div class="card">
-				<h3 class="text-center page-title">{% trans "Last Winner" %}</h3>
+				<h3 class="align-center page-title">{% trans "Last Winner" %}</h3>
 				{% if last_winner %}
 				<div class="container-fluid">
 					<div style="
@@ -89,7 +89,7 @@
 								{% else %}
 								<img style="border-radius: 50%;"  src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
 								{% endif %}
-								<label class="text-center">
+								<label class="align-center">
 									{{ last_winner.student.get_full_name }}
 								</label>
 							</div>
@@ -98,7 +98,7 @@
 				</div>
 				{% else %}
 				<div class="padding10">
-					<h3 class="text-center">
+					<h3 class="align-center">
 						{% trans "Earn points, level up and become our new champion." %}
 					</h3>
 				</div>

@@ -15,7 +15,104 @@
 {% endblock %}
 
 {% block content %}
-    {% include "askmath/forum/topic/_render_topic.html" %}
+	<div class="panel width">
+		<div class="heading">
+			<span class="icon mif-bubbles"></span>
+			<span class="title fg-white">{{ topic.get_title }}</span>
+			<div class="place-right">
+				<span>
+				{% blocktrans with creation=topic.creation|naturaltime %}
+					{{ creation }}
+				{% endblocktrans %}
+				</span>
+				{% if request.user == topic.get_person %}
+					<a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}"><span
+							class="mif-pencil padding5 fg-white"></span></a>
+				{% endif %}
+				{% if topic.exists and request.user == topic.get_person or perms.askmath.access_manager_forum %}
+					<a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}"><span
+							class="mif-cross padding5 fg-white"></span></a>
+				{% endif %}
+			</div>
+		</div>
+		<div class="content">
+			<div class="flex-grid">
+				<div class="row">
+					<div class="cell colspan1">
+						<div class="profile image-container">
+							<div class="frame">
+								{% if topic.get_person.get_profile_image %}
+								<img class="person-image"  src="{{ topic.get_person.get_profile_image.url }}">
+								{% else %}
+								<img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+								{% endif %}
+							</div>
+							<label class="image-title fg-white align-center">
+								{{ topic.get_person.get_full_name }}
+							</label>
+						</div>
+					</div>
+					<div class="cell colspan11">
+						<div class="padding10">
+							<p>{{ topic.get_description|safe|linebreaksbr }}</p>
+							
+							{% if request.user in topic.get_likes_persons %}
+							<button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}" class="button-like button success">
+							{% else %}
+							<button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}" class="button-like button info">
+							{% endif %}
+								<span class="icon mif-thumbs-up"></span>
+								<span class="like-count">{{ topic.get_likes|length }}</span>
+							</button>
+
+							<a href="#comment-form" class="button {% if request.user in topic.get_comments_persons %}success{% else %}info{% endif %} fg-white">
+								<span class="icon mif-bubble"></span>
+								{{ topic.get_comments|length }}
+							</a>
+
+							{% if topic.file %}
+							<a href="{{ topic.file.url }}" target="_blank" class="button primary">
+								<span class="icon mif-folder-download"></span>
+								{% trans "Downlad File" %}
+							</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if topic.get_comments|length %}
+		{% include "askmath/forum/topic/_render_comments.html" %}
+	{% endif %}
+
+	<div class="padding10 bg-grayLighter">
+		<div class="container-fluid">
+			<div class="row">
+				{% if request.user.is_authenticated %}
+					<form id="comment-form"
+						  action="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}"
+						  method="post" enctype="multipart/form-data" role="form">
+						{% csrf_token %}
+						{% include "askmath/_render_form.html" %}
+						<button type="submit" class="button primary">
+							{% trans "Add Comment" %}
+						</button>
+					</form>
+				{% else %}
+					<center>
+						<a href="{% url 'askmath:forum_comment_add' id_category=category.id  id_topic=topic.id %}"
+						   class="command-button success fg-white">
+							<span class="icon mif-enter"></span>
+							{% trans "Want to add a comment?" %}
+							<small>{% trans "Click here to get authorization." %}</small>
+						</a>
+					</center>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 
