@@ -15,7 +15,7 @@
 <div class="flex-grid">
 	<div class="row flex-just-sb">
 		<div class="cell colspan8">
-			<div class="card ">
+			<div class="card block-shadow ">
 				{% block tiles-left %}
 				 <h3 class="align-center page-title">{{ lesson.get_title|title }}</h3>
 				<div class="padding10 align-justify text-accent">
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="cell colspan4 no-margin-right">
-			<div class="card">
+			<div class="card block-shadow">
 				{% block tiles-rigth %}
 				<h3 class="align-center page-title">{% trans "Options" %}</h3>
 				
@@ -39,7 +39,6 @@
 						 {% endblocktrans %}
 						 </small>
 					 </a>
-					{% comment %}
 					<a href="{% url 'askmath:content_video_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="command-button info">
 						<span class="icon mif-video-camera"></span>
 							{% trans "Videos" %}
@@ -49,7 +48,6 @@
 						{% endblocktrans %}
 						</small>
 					</a>
-					{% endcomment %}
 				</div>
 				<div class="padding10">
 					{% if studentlessonstate.get_percentage_completed < 100 %}

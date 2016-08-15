@@ -16,7 +16,7 @@
 <div class="flex-grid">
 	<div class="row flex-just-sb">
 		<div class="cell colspan10">
-			<div class="card">
+			<div class="card block-shadow">
 				<h3 class="align-center page-title no-margin">
 					{% blocktrans with lesson=lesson %}Questions of {{ lesson }}{% endblocktrans %}
 				</h3>
@@ -44,7 +44,16 @@
 					<p id="content" class="text-accent align-justify"> 
 						{{ question.get_description|safe|linebreaksbr }} 
 						<span id="points" class="tag warning">{{ question.get_scores }} {% trans "Points" %}</span>
+						{% if question.get_image %}
+						<div class="row flex-just-center">
+							<div class="cell colspan3">
+								<img class="padding10" src="{{ question.get_image.url }}">
+							</div>
+						</div>
+					{% endif %}
 					</p>
+					
+
 					<form action="{% url 'askmath:content_question_answer' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" method="POST">
 						{% csrf_token %}
 						<input type="hidden" name="url_help" value="{% url 'askmath:content_question_help' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}"/>
@@ -142,7 +151,7 @@
 		</div>
 		
 		<div class="cell colspan2">
-			<div class="card">
+			<div class="card block-shadow">
 
 				<h3 class="align-center page-title">{% trans "Your Progress" %}</h3>
 				

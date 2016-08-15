@@ -17,7 +17,7 @@
 <div class="flex-grid">
 	<div class="row flex-just-sb">
 		<div class="cell colspan10">
-			<div class="card">
+			<div class="card block-shadow">
 				<h3 class="align-center page-title">{% trans "Ranking Round" %}</h3>
 
 				<p class="text-accent padding10">{% trans "This round ends in" %} {{  student_experience.get_date_end_new_round|naturaltime}}.</p>	
@@ -73,7 +73,7 @@
 		</div>
 
 		<div class="cell colspan2">
-			<div class="card">
+			<div class="card block-shadow">
 				<h3 class="align-center page-title">{% trans "Last Winner" %}</h3>
 				{% if last_winner %}
 				<div class="container-fluid">

@@ -14,34 +14,24 @@
 
 {% block content %}
 
-<div class="col-xs-12 col-sm-6 col-md-8">
-	<div class="row">
-	{% block tiles-left %}
-		<div class="panel width">
-			<div class="heading align-center">
-						<span class="icon mif-clipboard text-left"></span>
-						<span class="title">{{ lesson.get_title|title }}</span>
-				</div>
-				<div class="content padding10">
-					<p class="align-justify text-accent">
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan8">
+			<div class="card block-shadow ">
+				{% block tiles-left %}
+				 <h3 class="align-center page-title">{{ lesson.get_title|title }}</h3>
+				<div class="padding10 align-justify text-accent">
 					{{ lesson.get_description|safe|linebreaksbr }}
-				</p>
 				</div>
+				{% endblock %}
+			</div>
 		</div>
-	{% endblock %}
-	</div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4">
-	{% block tiles-rigth %}
-	<div class="panel width">
-		<div class="heading align-center">
-			<span class="icon mif-play text-left"></span>
-			<span class="title">{% trans "Options" %}</span>
-		</div>
-		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
+		<div class="cell colspan4 no-margin-right">
+			<div class="card block-shadow">
+				{% block tiles-rigth %}
+				<h3 class="align-center page-title">{% trans "Options" %}</h3>
+				
+				<div class="padding10">
 					<a  href="{% url 'askmath:content_question_view' id_discipline=lesson.get_discipline.id id_lesson=lesson.id %}" class="command-button success">
 						<span class="icon mif-list-numbered"></span>
 						 {% trans "Questions" %}
@@ -61,25 +51,10 @@
 						</small>
 					</a>
 				</div>
-				<div class="row">
-					<div class="padding10">
-						{% if studentlessonstate.get_percentage_completed == 100 %}
-						<h5>{% trans "Sugestions next lessons:" %}</h5>
-						
-						<ul>
-						{% for sugestion in lesson.get_sugestions %}
-							<li>
-								<a class="tag  {{sugestion.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=lesson.get_discipline.id id_lesson=sugestion.id  %}">
-								{{ sugestion.get_title }}
-								</a>
-							</li>
-						{% empty %}
-							<h5>{% trans "It has no sugestions." %}</h5>
-						{% endfor %}
-						</ul>
-						{% else %}
+				<div class="padding10">
+					{% if studentlessonstate.get_percentage_completed < 100 %}
 						<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
-	
+
 						<ul>
 						{% for requirement in lesson.get_requirements %}
 							<li>
@@ -88,17 +63,17 @@
 								</a>
 							</li>
 						{% empty %}
-							<h5>{% trans "It has no requirements." %}</h5>
 						{% endfor %}
 						</ul>
 					{% endif %}
-					</div>
 				</div>
+				{% endblock %}
 			</div>
 		</div>
 	</div>
-	{% endblock %}
 </div>
+
+
 {% endblock %}
 
 {% block stylesheet %}

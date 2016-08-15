@@ -12,43 +12,41 @@
 {% endblock %}
 
 {% block tiles %}
-<div class="tile-area  no-padding">
-	<div class="card">
-		<h3 class="align-center page-title">{% trans "Classes" %}</h3>
-		{% comment %}
-		<label for="select_classe_default">
-				{% trans "Current Classe" %}:
+<div class="card block-shadow">
+	<h3 class="align-center page-title">{% trans "Classes" %}</h3>
+	{% comment %}
+	<label for="select_classe_default">
+			{% trans "Current Classe" %}:
 
-				<div class="split-button">
-					{% if current_classe %}
-							<button class="button">{{ current_classe }}</button>
-							<button class="split dropdown-toggle"></button>
-					{% else %}
-							<button class="button">{% trans "Subscrive in  one class." %}</button>
-					{% endif %}
-					<ul class="split-content d-menu" data-role="dropdown">
-						{% for classe in my_classes %}
-							{% if classe != current_classe %}
-								<li>
-										<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
-								</li>
-							{% endif %}
-						{% endfor %}
-					</ul>
-				</div>
-		</label>
-		{% endcomment %}
+			<div class="split-button">
+				{% if current_classe %}
+						<button class="button">{{ current_classe }}</button>
+						<button class="split dropdown-toggle"></button>
+				{% else %}
+						<button class="button">{% trans "Subscrive in  one class." %}</button>
+				{% endif %}
+				<ul class="split-content d-menu" data-role="dropdown">
+					{% for classe in my_classes %}
+						{% if classe != current_classe %}
+							<li>
+									<a href="{% url 'askmath:content_classe_set_current' id_classe=classe.id %}">{{ classe }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+	</label>
+	{% endcomment %}
 
-		<div class="tile-container">
-			{% for classe in classes %}
-				<div class="tile-wide {{ classe.color }}">
-					<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="tile-content slide-down iconic">
-						<span class="icon mif-organization"></span>
-						<div class="tile-label">{{ classe.get_name }}</div>
-					</a>
-				</div>
-			{% endfor %}
-		</div>
+	<div class="tile-container">
+		{% for classe in classes %}
+			<div class="tile-wide {{ classe.color }}">
+				<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="tile-content slide-down iconic">
+					<span class="icon mif-organization"></span>
+					<div class="tile-label">{{ classe.get_name }}</div>
+				</a>
+			</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

@@ -9,6 +9,12 @@ from django.forms import ModelForm, TextInput, EmailInput
 from django.utils.translation import ugettext_lazy as _
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
+GROUPS = [
+	('student', _('Student')),
+	('assistant', _('Assistant')),
+	('teacher', _('Teacher')),
+	('administrator', _('Administrator')),
+]
 
 class LoginForm(forms.Form):
 	email = forms.CharField(label=_('Email'), help_text=_("Please enter you email."),
@@ -27,16 +33,8 @@ class RegisterForm(ModelForm):
 	#captcha = NoReCaptchaField()
 	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."), widget=forms.EmailInput(attrs={'required': 'required'}), error_messages={'required': _('Please enter your email.')})
 	password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
-	GROUPS = [
-		('student', _('Student')),
-		('assistant', _('Assistant')),
-		('teacher', _('Teacher')),
-		('administrator', _('Administrator')),
-	]
 	group = forms.ChoiceField(label=_("Group"), choices=GROUPS)
-	key = forms.CharField(label=_("Key"), max_length=6, required=False,
-						  widget=forms.PasswordInput(), help_text=_(
-			"If you want to create a record in this group should have an access key for this, please contact the administrator."))
+	key = forms.CharField(label=_("Key"), max_length=6, required=False, widget=forms.PasswordInput(), help_text=_( "If you want to create a record in this group should have an access key for this, please contact the administrator."))
 
 	class Meta:
 		model = Person
@@ -52,7 +50,6 @@ class ProfileForm(ModelForm):
 			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'last_name': TextInput(attrs={'required': 'required'}),
 			'name': TextInput(attrs={'required': 'required'}),
-			'profile_image': AdvancedFileInput(attrs={}),
 		}
 
 	def clean_profile_image(self):

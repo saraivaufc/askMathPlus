@@ -1,15 +1,23 @@
 {% if video.file %}
-	<div class="container-video">
-	<video width="100%" height="400px" controls>
-		<source src="{{ video.file.url }}" type="video/mp4">
-		<source src="{{ video.file.url }}" type="video/ogg">
-		<source src="{{ video.file.url }}" type="video/webm">
-		<source src="{{ video.file.url }}" type="video/x-flv">
-		{% if video.get_extension == '.swf' %}
-			<object data="{{ video.file.url }}" type="application/x-shockwave-flash">
-				<param value="{{ video.file.url }}" name="movie"/>
-			</object>
-		{% endif %}
-	</video>
-	</div>
+	{% if video.get_extension == '.mp4' or video.get_extension == '.ogg' or video.get_extension == '.webm' or video.get_extension == '.flv' or  video.get_extension == '.swf' %}
+		<video width="100%" height="400px" controls>
+			{% if  video.get_extension == '.mp4' %}
+				<source src="{{ video.file.url }}" type="video/mp4">
+			{% elif video.get_extension == '.ogg' %}
+				<source src="{{ video.file.url }}" type="video/ogg">
+			{% elif video.get_extension == '.webm' %}
+				<source src="{{ video.file.url }}" type="video/webm">
+			{% elif video.get_extension == '.flv' %}
+				<source src="{{ video.file.url }}" type="video/x-flv">
+			{% else %}
+				<object data="{{ video.file.url }}" type="application/x-shockwave-flash">
+					<param value="{{ video.file.url }}" name="movie"/>
+				</object>
+			{% endif %}		
+		</video>
+	{% else %}
+		<div class="align-center">
+			<img src="{{ video.file.url }}">
+		</div>
+	{% endif %}
 {% endif %}

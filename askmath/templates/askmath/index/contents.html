@@ -12,23 +12,28 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="align-center page-title"><span>{% trans "Contents" %}</h3>
-    {% for discipline in disciplines %}
-    {% if discipline.get_lessons_visibles %}
-        <h4 class="page-title">{{ discipline|title }}</h4>
-        <div class="tile-container bg-grayLighter">
-            {% for lesson in discipline.get_lessons_visibles %}
-                <a href="{% url 'askmath:contents' id_lesson=lesson.id %}" class="tile {{ lesson.color }} fg-white">
-                    <div class="tile-content iconic">
-                        <span class="icon mif-clipboard"></span>
-                        <span class="tile-label">{{ lesson.get_title }}</span>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
-        <br />
-    {% endif %}
-    {% empty %}
-        <h3 class="align-center">{% trans "Not Lessons Found" %}</h3>
-    {% endfor %}
+<div class="flex-grid">
+	{% for discipline in disciplines %}
+	
+	{% if discipline.get_lessons_visibles %}
+		<div class="card block-shadow">
+			<h4 class="page-title">{{ discipline|title }}</h4>
+			
+			<div class="tile-container">
+				{% for lesson in discipline.get_lessons_visibles %}
+					<a href="{% url 'askmath:contents' id_lesson=lesson.id %}" class="tile {{ lesson.color }} fg-white">
+						<div class="tile-content iconic">
+							<span class="icon mif-clipboard"></span>
+							<span class="tile-label">{{ lesson.get_title }}</span>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+	
+	{% empty %}
+		<h3 class="align-center">{% trans "Not Lessons Found" %}</h3>
+	{% endfor %}
+</div>
 {% endblock %}

@@ -7,24 +7,20 @@
 
 {% block content %}
 	{% block tiles %}
-	<div class="tile-area  no-padding">
-		<div class="card">
-	            <h3 class="align-center page-title">{% trans "Disciplines" %}</h3>
-			
-			<div class="tile-container">
-			{% for discipline in disciplines %}
-				<div class="tile-wide {{ discipline.color }}">
-					<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tile-content slide-down iconic">
-						<span class="icon mif-stack2"></span>
-						<div class="tile-label">
-						{{ discipline.get_title|title }}
-						</div>
-					</a>
-				</div>
-			{% endfor %}
+	<div class="card block-shadow">
+            <h3 class="align-center page-title">{% trans "Disciplines" %}</h3>
+
+		<div class="tile-container">
+		{% for discipline in disciplines %}
+			<div class="tile-wide {{ discipline.color }}">
+				<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tile-content slide-down iconic">
+					<span class="icon mif-stack2"></span>
+					<div class="tile-label">
+					{{ discipline.get_title|title }}
+					</div>
+				</a>
 			</div>
-		
-		</div>
+		{% endfor %}
 	</div>
 	{% endblock %}
 {% endblock %}

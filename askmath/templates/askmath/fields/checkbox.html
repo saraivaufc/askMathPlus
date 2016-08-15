@@ -9,6 +9,6 @@
     	   title="{{ field.help_text }}" 
     	   {% if field.field.required %}required{% endif %}
     	   {% if field.value == True or field.initial == True %}checked{% endif %}
-    />
+    	   {% include 'askmath/fields/attrs.html' %} />
     <span class="check"></span>
 </label>
