@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = "image-button"
-NEW_TEXT = "button"
+TEXT = "card"
+NEW_TEXT = "card block-shadow"
 FILE_TYPES = ['(.)\.html', ]
 
 rexs = []

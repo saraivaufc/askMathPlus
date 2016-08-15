@@ -25,6 +25,7 @@ class LoginForm(forms.Form):
 
 class RegisterForm(ModelForm):
 	#captcha = NoReCaptchaField()
+	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."), widget=forms.EmailInput(attrs={'required': 'required'}), error_messages={'required': _('Please enter your email.')})
 	password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
 	GROUPS = [
 		('student', _('Student')),
@@ -43,6 +44,7 @@ class RegisterForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+	email = forms.EmailField(label=_('Email'), help_text=_("Please enter you email."), widget=forms.EmailInput(attrs={'required': 'required'}), error_messages={'required': _('Please enter your email.')})
 	class Meta:
 		model = Person
 		fields = ("first_name", "last_name", "email", "profile_image")
@@ -50,7 +52,6 @@ class ProfileForm(ModelForm):
 			'first_name': TextInput(attrs={'required': 'required', 'autofocus': 'True'}),
 			'last_name': TextInput(attrs={'required': 'required'}),
 			'name': TextInput(attrs={'required': 'required'}),
-			'email': EmailInput(attrs={'required': 'required'}),
 			'profile_image': AdvancedFileInput(attrs={}),
 		}
 

@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<li><a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}"><span class="icon mif-clipboard"></span> <spam>{{ classe.get_name|title }}</spam></a></li>
+	<li><a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}"><span class="icon mif-organization"></span> <spam>{{ classe.get_name|title }}</spam></a></li>
 {% endblock %}
 
 {%  block tiles %}

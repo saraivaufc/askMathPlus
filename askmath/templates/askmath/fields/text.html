@@ -1,8 +1,13 @@
+{% load i18n %}
+
 {% include 'askmath/fields/caption.html' %}
 {% include 'askmath/fields/errors.html' %}
 <div class="input-control text full-size" data-role="input">
 	<input title="{{ field.help_text }}"
-		{% if field.field.required %}required{% endif %}
+		{% if field.field.required %}
+			data-validate-func="required"
+			data-validate-hint="{% trans "This field can not be empty" %}"
+		{% endif %}
 		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
 		type="text" id="{{ field.auto_id }}"
 		{% if field.value %}value="{{ field.value }}"{% endif %} 

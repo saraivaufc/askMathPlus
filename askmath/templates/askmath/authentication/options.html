@@ -44,7 +44,7 @@
 								{% trans "Sign In" %}
 							</button>
 							<p class="align-center">{% trans "Or" %}</p>
-							<div class="toolbar-section condensed"  data-role="group" data-group-type="one-state">
+							<div class="toolbar-section"  data-role="group" data-group-type="one-state">
 								<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="toolbar-button button primary">
 									<span class="mif-facebook"></span> Facebook
 								</a>
@@ -84,4 +84,20 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript">
+		$(function(){
+	            var form = $(".tabcontrol2");
+
+	            form.css({
+	                opacity: 1,
+	                "-webkit-transform": "scale(1)",
+	                "transform": "scale(1)",
+	                "-webkit-transition": ".5s",
+	                "transition": ".5s"
+	            });
+	        });
+	</script>
 {% endblock %}

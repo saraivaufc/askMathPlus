@@ -6,7 +6,7 @@
 
 				<h3 class="align-center page-title">{{ title_form }}</h3>
 				
-				<form  class="padding10" action="." method="post" enctype="multipart/form-data" role="form">
+				<form  class="padding10"   action="." method="post" enctype="multipart/form-data" role="form" data-role="validator" data-show-required-state="false" data-hint-mode="line" data-hint-background="bg-red" data-hint-color="fg-white" data-hide-error="5000">
 				{% csrf_token %}
 					{% include "askmath/_render_form.html" %}
 					<div class="row">

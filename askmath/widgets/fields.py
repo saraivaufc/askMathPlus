@@ -30,10 +30,17 @@ class AdvancedFileInput(ClearableFileInput):
 
             template = self.template_with_initial
             if self.preview:
-                substitutions['initial'] = (u'<a href="{0}">{1}</a><br>\
-                <a href="{0}" target="_blank"><img src="{0}" width="{2}"></a><br>'.format
-                    (escape(value.url),'...'+escape(force_unicode(value))[-self.url_length:],
-                     self.image_width))
+                substitutions['initial'] = (u"""<figure>
+                                                                <a href="{0}" target="_blank">
+                                                                    <img src="{0}" width="200px">
+                                                                </a>
+                                                                <figcaption><a href="{0}">{1}</a></figcaption>
+                                                            </figure>""".format(
+                                                                    escape(value.url),
+                                                                    '...'+escape(force_unicode(value))[-self.url_length:],
+                                                                    #self.image_width
+                                                                )
+                                                        )
             else:
                 substitutions['initial'] = (u'<a href="{0}">{1}</a>'.format
                     (escape(value.url),'...'+escape(force_unicode(value))[-self.url_length:]))
@@ -43,6 +50,6 @@ class AdvancedFileInput(ClearableFileInput):
                 substitutions['clear_checkbox_name'] = conditional_escape(checkbox_name)
                 substitutions['clear_checkbox_id'] = conditional_escape(checkbox_id)
                 substitutions['clear'] = CheckboxInput().render(checkbox_name, False, attrs={'id': checkbox_id})
-                substitutions['clear_template'] = self.template_with_clear % substitutions
+                substitutions['clear_template'] = "<div class='row'>" + self.template_with_clear % substitutions + "</div>"
 
         return mark_safe(template % substitutions)

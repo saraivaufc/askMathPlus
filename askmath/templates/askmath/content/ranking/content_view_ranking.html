@@ -112,20 +112,7 @@
 
 {% block modals %}
 	{% if new_round %}
-		<div id="dialog_new_round" class="padding20" data-role="dialog" data-type="{% if student_experience.is_last_winner %}success{% else %}info{% endif %}" data-close-button="true"  data-overlay="true" data-overlay-color="op-dark">
-			<div class="container">
-				<h1>{% trans "New Round" %}</h1>
-				{% if student_experience.is_last_winner %}
-				<h3>
-					{% trans "Congratulations!!! You winner!!!" %}
-				</h3>
-				{% endif %}
-				<p>
-				Last New Scores: {{ student_experience.get_last_new_scores }}
-				Last Scores: {{ student_experience.get_last_scores }}
-				</p>
-			</div>
-		</div>
+		{% include "askmath/content/ranking/_dialog_new_round.html" %}
 	{% endif %}
 {% endblock %}
 
