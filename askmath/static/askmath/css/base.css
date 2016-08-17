@@ -477,3 +477,12 @@ label.caption{
 	background-color: #ffc;
 	margin: 1px;
 }
+
+
+/* dataTable */
+.dataTables_wrapper{
+	background-color: transparent;
+}
+.dataTable {
+	background-color: #fff;
+}

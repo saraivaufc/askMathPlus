@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-14 13:56-0300\n"
-"PO-Revision-Date: 2016-08-14 14:02-0234\n"
+"PO-Revision-Date: 2016-08-16 20:16-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2216,7 +2216,7 @@ msgstr "Não existe requisitos."
 
 #: askmath/templates/askmath/index/home.html:21
 msgid "Welcome to AskMath"
-msgstr "Seja Bem Vindo ao AskMath"
+msgstr "Bem-vindo ao AskMath"
 
 #: askmath/templates/askmath/index/home.html:22
 msgid "Learn mathematics anytime, from anywhere"

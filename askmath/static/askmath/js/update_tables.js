@@ -1,12 +1,15 @@
 $(function () {
 	$('.dataTable').each(function(){
-		$(this). dataTable({
+		var table = $(this). dataTable({
 			"language": {
 				"url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
 			},
-			"ordering": false,
-			"root": $(this).parent() ,
+			"paging":   true,
+		       "ordering": false,
+		       "info":     false,
+		       pageResize: true,
 		});
+		table.columns.adjust().draw();
 	});
 });
 

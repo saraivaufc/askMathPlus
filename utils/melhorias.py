@@ -6,3 +6,4 @@ abaixo (http://localhost:8000/home/person/account/edit/).
 	Solução: Adicionar uma <div class="row"> para conter o input modificar.
 3- A DataTable está quebrando o Layout
 	Solução: procurar como sertar o parent da DataTable no momento de sua criação
+4 - Utilizar o DJango REST ao invés dos "services"

@@ -4,7 +4,7 @@ import os
 import glob
 import re
 
-TEXT = "card"
+TEXT = "dataTable"
 NEW_TEXT = "card block-shadow"
 FILE_TYPES = ['(.)\.html', ]
 
