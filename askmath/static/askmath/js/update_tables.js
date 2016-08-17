@@ -4,12 +4,10 @@ $(function () {
 			"language": {
 				"url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
 			},
-			"paging":   true,
+			"paging":   false,
 		       "ordering": false,
 		       "info":     false,
-		       pageResize: true,
 		});
-		table.columns.adjust().draw();
 	});
 });
 
