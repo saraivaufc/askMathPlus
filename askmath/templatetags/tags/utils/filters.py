@@ -31,10 +31,8 @@ def class_exists(field, cl):
 def show_signal_number(number):
     if number > 0:
         return "+"+ str(number)
-    elif number < 0:
-        return "-"+ str(number)
     else:
-        return number
+       return number
 
 
 @register.filter(name='translate')
@@ -53,43 +51,3 @@ def settings_value(name):
 @register.filter(name='parameters')
 def parameters(function, *args):
     print args
-
-
-@register.filter(name='is_checkbox')
-def is_checkbox(field):
-    return field.field.widget.__class__.__name__ == CheckboxInput().__class__.__name__
-
-
-@register.filter(name='is_radio')
-def is_radio(field):
-    return field.field.widget.__class__.__name__ == RadioSelect().__class__.__name__
-
-
-@register.filter(name='is_file')
-def is_file(field):
-    return field.field.widget.__class__.__name__ == ClearableFileInput().__class__.__name__
-
-
-@register.filter(name='is_password')
-def is_password(field):
-    return field.field.widget.__class__.__name__ == PasswordInput().__class__.__name__
-
-
-@register.filter(name='is_select')
-def is_select(field):
-    return field.field.widget.__class__.__name__ == Select().__class__.__name__ or field.field.widget.__class__.__name__ == SelectMultiple().__class__.__name__
-
-
-@register.filter(name='is_text')
-def is_text(field):
-    return field.field.widget.__class__.__name__ == TextInput().__class__.__name__
-
-
-@register.filter(name='is_email')
-def is_email(field):
-    return field.field.widget.__class__.__name__ == EmailInput().__class__.__name__
-
-
-@register.filter(name='is_textarea')
-def is_textarea(field):
-    return field.field.widget.__class__.__name__ == Textarea().__class__.__name__

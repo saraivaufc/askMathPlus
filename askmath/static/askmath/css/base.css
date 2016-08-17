@@ -17,8 +17,6 @@ body{
   	background-size: cover;
 }
 
-
-
 html, body {
     height: 100%;
 }
@@ -466,7 +464,9 @@ label.caption{
 .card, .panel, .panel .content{
 	background-color: #ffc;
 	margin: 1px;
+	height: 100%;
 }
+
 
 
 /* dataTable */

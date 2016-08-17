@@ -8,7 +8,7 @@ from askmath.models.experience import StudentExperience
 
 #crontab(hour=0, minute=0, day_of_week=1)
 
-c = crontab(hour=0, minute=0, day_of_week=1)
+c = crontab(hour=0, minute=0, day_of_week=0)
 
 @periodic_task(run_every=(c), name="reset_round", ignore_result=True)
 def reset_round():
@@ -30,7 +30,6 @@ def reset_round():
 			winner = student_experience
 			winner_new_scores = student_experience.get_new_scores()
 
-		print student_experience.get_new_scores(), "==", winner.get_new_scores() 
 		if student_experience.get_new_scores() > winner_new_scores:
 			swap = True
 			winner = student_experience
@@ -48,7 +47,6 @@ def reset_round():
 	else:
 		update = False
 
-	print update
 	if update:
 		winner.last_winner = True
 		winner.save()

@@ -18,28 +18,28 @@
 	<div class="padding10">
 		{% if perms.askmath.write_person %}
 		<div class="cell">
-			<a class="button success" href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}">
+			<a class="image-button success" href="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}">
 				<span class="icon mif-key"></span>
 				{% trans "View Keys" %}
 			</a>
 			{% if is_removed %}
-			<a id="button-person-restore" class="button info" href="#">
+			<a id="button-person-restore" class="image-button info" href="#">
 				<span class="icon mif-history"></span>
 				{% trans "Restore" %}
 			</a>
 			{% else %}
-			<a id="button-person-delete"  class="button danger" href="#">
+			<a id="button-person-delete"  class="image-button danger" href="#">
 				<span class="icon mif-minus"></span>
 				{% trans "Delete" %}
 			</a>
 			{% endif %}
 			{% if is_removed %}
-			<a  class="button warning" href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}">
+			<a  class="image-button warning" href="{% url 'askmath:manager_person_view' PERSONTYPE=person_type %}">
 				<span class="icon mif-undo"></span>
 				{% trans "Close Dump" %}
 			</a>
 			{% else %}
-			<a class="button warning" href="{% url 'askmath:manager_person_view_removed' PERSONTYPE=person_type %}">
+			<a class="image-button warning" href="{% url 'askmath:manager_person_view_removed' PERSONTYPE=person_type %}">
 				<span class="icon mif-bin"></span>
 				{% trans "Open Dump" %}
 			</a>
@@ -53,11 +53,11 @@
 			<thead>
 				<tr>
 					{% if perms.askmath.write_person %}
-					<td style="width: 10px"></td>
+					<th style="width: 10px"></th>
 					{% endif %}
-					<td>{% trans "Name" %}</td>
-					<td>{% trans "Email" %}</td>
-					<td>{% trans "Profile Image" %}</td>
+					<th>{% trans "Name" %}</th>
+					<th>{% trans "Email" %}</th>
+					<th>{% trans "Profile Image" %}</th>
 				</tr>
 			</thead>
 			<tbody>

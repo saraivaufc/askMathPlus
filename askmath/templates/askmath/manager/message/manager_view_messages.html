@@ -19,23 +19,23 @@
 	<div class="padding10">
 		<div class="cell">
 			{% if is_removed %}
-			<a id="button-message-restore" class="button info" href="#">
+			<a id="button-message-restore" class="image-button info" href="#">
 				<span class="icon mif-history"></span>
 				{% trans "Restore" %}
 			</a>
 			{% else %}
-			<a id="button-message-delete" class="button danger" href="#">
+			<a id="button-message-delete" class="image-button danger" href="#">
 				<span class="icon mif-minus"></span>
 				{% trans "Delete" %}
 			</a>
 			{% endif %}
 			{% if is_removed %}
-			<a class="button warning" href="{% url 'askmath:manager_message_view' %}">
+			<a class="image-button warning" href="{% url 'askmath:manager_message_view' %}">
 				<span class="icon mif-undo"></span>
 				{% trans "Close Dump" %}
 			</a>
 			{% else %}
-			<a class="button warning" href="{% url 'askmath:manager_message_view_removed' %}">
+			<a class="image-button warning" href="{% url 'askmath:manager_message_view_removed' %}">
 				<span class="icon mif-bin"></span>
 				{% trans "Open Dump" %}
 			</a>

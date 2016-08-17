@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 10:35-0300\n"
-"PO-Revision-Date: 2016-08-17 10:37-0234\n"
+"POT-Creation-Date: 2016-08-17 11:31-0300\n"
+"PO-Revision-Date: 2016-08-17 11:27-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
@@ -889,7 +889,7 @@ msgid "Choose a color for the category."
 msgstr "Escolha uma cor para a categoria."
 
 #: askmath/models/category/category.py:50 askmath/models/topic/topic.py:9
-#: askmath/templates/askmath/forum/category/view_categories.html:46
+#: askmath/templates/askmath/forum/category/view_categories.html:52
 msgid "Category"
 msgstr "Categoria"
 
@@ -998,7 +998,7 @@ msgid "Classes"
 msgstr "Turmas"
 
 #: askmath/models/comment/comment.py:8 askmath/models/topic/topic.py:83
-#: askmath/templates/askmath/forum/topic/view_topics.html:56
+#: askmath/templates/askmath/forum/topic/view_topics.html:61
 msgid "Topic"
 msgstr "Tópico"
 
@@ -1620,15 +1620,15 @@ msgstr "Ranking"
 msgid "Enter"
 msgstr "Entrar"
 
-#: askmath/templates/askmath/_header.html:73
+#: askmath/templates/askmath/_header.html:68
 msgid "Profile"
 msgstr "Perfil"
 
-#: askmath/templates/askmath/_header.html:88
+#: askmath/templates/askmath/_header.html:83
 msgid "Logout"
 msgstr "Sair"
 
-#: askmath/templates/askmath/_header.html:100
+#: askmath/templates/askmath/_header.html:95
 msgid "Search"
 msgstr "Buscar"
 
@@ -1674,15 +1674,14 @@ msgstr "Diminuir Fonte"
 
 #: askmath/templates/askmath/_no_script.html:4
 msgid ""
-"For full functionality of this site it is necessary to enable "
-"JavaScript.<br> Here are the <a href=\"http://www.enable-"
-"javascript.com/pt/\" target=\"_blank\">instructions on how to enable "
-"JavaScript in your browser </a>."
+"For full functionality of this site it is necessary to enable JavaScript."
+"<br> Here are the <a href=\"http://www.enable-javascript.com/pt/\" target="
+"\"_blank\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 "Para obter a funcionalidade completa deste site é necessário habilitar o "
-"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a "
-"href=\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript"
-" no seu navegador </a>."
+"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a href="
+"\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript no "
+"seu navegador </a>."
 
 #: askmath/templates/askmath/authentication/options.html:11
 msgid "Authentication"
@@ -1763,7 +1762,8 @@ msgstr "Opções"
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
+"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially "
+"for you.\n"
 "\t\t\t\t\t\t "
 msgstr ""
 "\n"
@@ -1775,7 +1775,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their knowledge.\n"
+"\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their "
+"knowledge.\n"
 "\t\t\t\t\t\t"
 msgstr ""
 "\n"
@@ -1947,7 +1948,7 @@ msgstr "Este campo é obrigatório."
 msgid "This field can not be empty"
 msgstr "Este campo é obrigatório."
 
-#: askmath/templates/askmath/forum/category/view_categories.html:12
+#: askmath/templates/askmath/forum/category/view_categories.html:13
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:22
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:23
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:23
@@ -1956,7 +1957,7 @@ msgstr "Este campo é obrigatório."
 msgid "Create"
 msgstr "Criar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:15
+#: askmath/templates/askmath/forum/category/view_categories.html:17
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:26
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:27
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:27
@@ -1965,8 +1966,8 @@ msgstr "Criar"
 msgid "Edit"
 msgstr "Editar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:19
-#: askmath/templates/askmath/forum/topic/view_topics.html:29
+#: askmath/templates/askmath/forum/category/view_categories.html:22
+#: askmath/templates/askmath/forum/topic/view_topics.html:31
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:31
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:32
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:32
@@ -1977,8 +1978,8 @@ msgstr "Editar"
 msgid "Restore"
 msgstr "Restaurar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:23
-#: askmath/templates/askmath/forum/topic/view_topics.html:33
+#: askmath/templates/askmath/forum/category/view_categories.html:27
+#: askmath/templates/askmath/forum/topic/view_topics.html:36
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:36
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:37
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:37
@@ -1991,8 +1992,8 @@ msgstr "Restaurar"
 msgid "Delete"
 msgstr "Apagar"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:29
-#: askmath/templates/askmath/forum/topic/view_topics.html:39
+#: askmath/templates/askmath/forum/category/view_categories.html:34
+#: askmath/templates/askmath/forum/topic/view_topics.html:43
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:43
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:43
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:43
@@ -2003,8 +2004,8 @@ msgstr "Apagar"
 msgid "Close Dump"
 msgstr "Fechar Lixeira"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:33
-#: askmath/templates/askmath/forum/topic/view_topics.html:43
+#: askmath/templates/askmath/forum/category/view_categories.html:39
+#: askmath/templates/askmath/forum/topic/view_topics.html:48
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:48
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:48
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:48
@@ -2015,15 +2016,15 @@ msgstr "Fechar Lixeira"
 msgid "Open Dump"
 msgstr "Abrir Lixeira"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:47
+#: askmath/templates/askmath/forum/category/view_categories.html:53
 msgid "Posts"
 msgstr "Postagens"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:48
+#: askmath/templates/askmath/forum/category/view_categories.html:54
 msgid "Last Post"
 msgstr "Última postagem"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:73
+#: askmath/templates/askmath/forum/category/view_categories.html:79
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -2037,7 +2038,7 @@ msgstr ""
 "\n"
 "Ver %(topics)s postagens"
 
-#: askmath/templates/askmath/forum/category/view_categories.html:84
+#: askmath/templates/askmath/forum/category/view_categories.html:90
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -2061,38 +2062,38 @@ msgstr ""
 "\n"
 "%(creation)s"
 
-#: askmath/templates/askmath/forum/topic/view_topic.html:76
+#: askmath/templates/askmath/forum/topic/view_topic.html:78
 msgid "Downlad File"
 msgstr "Baixar Arquivo"
 
-#: askmath/templates/askmath/forum/topic/view_topic.html:100
+#: askmath/templates/askmath/forum/topic/view_topic.html:102
 msgid "Add Comment"
 msgstr "Adicionar Comentário"
 
-#: askmath/templates/askmath/forum/topic/view_topic.html:108
+#: askmath/templates/askmath/forum/topic/view_topic.html:110
 msgid "Want to add a comment?"
 msgstr "Deseja adicionar um comentário?"
 
-#: askmath/templates/askmath/forum/topic/view_topic.html:109
+#: askmath/templates/askmath/forum/topic/view_topic.html:111
 msgid "Click here to get authorization."
 msgstr "Clique aqui para obter autorização."
 
-#: askmath/templates/askmath/forum/topic/view_topics.html:23
+#: askmath/templates/askmath/forum/topic/view_topics.html:24
 #, fuzzy
 #| msgid "Add Topic"
 msgid "Add topic"
 msgstr "Adicionar Tópico"
 
-#: askmath/templates/askmath/forum/topic/view_topics.html:57
+#: askmath/templates/askmath/forum/topic/view_topics.html:62
 msgid "Replies"
 msgstr "Respostas"
 
-#: askmath/templates/askmath/forum/topic/view_topics.html:58
+#: askmath/templates/askmath/forum/topic/view_topics.html:63
 #: askmath/templates/askmath/manager/message/manager_view_messages.html:56
 msgid "Date"
 msgstr "Data"
 
-#: askmath/templates/askmath/forum/topic/view_topics.html:76
+#: askmath/templates/askmath/forum/topic/view_topics.html:81
 msgid "by"
 msgstr "por"
 
@@ -2115,11 +2116,15 @@ msgstr "PET Tecnologia da Informação."
 #: askmath/templates/askmath/index/about.html:24
 msgid ""
 "\n"
-"\t\t\t\t\t\tThis project is an initiative of the <abbr title=\"Tutorial Education Program\">PET</abbr> group Information Technology of the Federal University of Ceará.\n"
+"\t\t\t\t\t\tThis project is an initiative of the <abbr title=\"Tutorial "
+"Education Program\">PET</abbr> group Information Technology of the Federal "
+"University of Ceará.\n"
 "\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do Ceará."
+"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação "
+"Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do "
+"Ceará."
 
 #: askmath/templates/askmath/index/about.html:30
 #: askmath/templates/askmath/index/about.html:31
@@ -2134,15 +2139,20 @@ msgstr "Objetivo"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
+#| "\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant "
+#| "platform for students who want to learn more about the different branches "
+#| "of mathematics.\n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
+"\t\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant "
+"platform for students who want to learn more about the different branches of "
+"mathematics.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para estudantes que querem aprender mais sobre os diferentes ramos da matemática."
+"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para "
+"estudantes que querem aprender mais sobre os diferentes ramos da matemática."
 
 #: askmath/templates/askmath/index/about.html:53
 msgid "License and Source-Code."
@@ -2152,29 +2162,44 @@ msgstr "Licença e Código-fonte."
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
+#| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open "
+#| "source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/"
+#| "legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to "
+#| "copy, distribute and modify its source code.\n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
+"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open "
+"source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/"
+"legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, "
+"distribute and modify its source code.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, distribuir e modificar seu código-fonte."
+"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e "
+"esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" "
+"target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, "
+"distribuir e modificar seu código-fonte."
 
 #: askmath/templates/askmath/index/about.html:61
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
+#| "\t\t\t\t\t\t\tYour source code is available at the following repository: "
+#| "<a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank"
+#| "\">https://github.com/saraivaufc/askMathPlus</a>. \n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
+"\t\t\t\t\t\t\t\tYour source code is available at the following repository: "
+"<a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://"
+"github.com/saraivaufc/askMathPlus</a>. \n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Seu código fonte está disponível no seguinte repositório: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/saraivaufc/askMath </a>."
+"Seu código fonte está disponível no seguinte repositório: <a href=\"https://"
+"github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/"
+"saraivaufc/askMath </a>."
 
 #: askmath/templates/askmath/index/about.html:68
 msgid "Developers"
@@ -2198,14 +2223,17 @@ msgstr "Créditos"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>. "
+#| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/"
+#| "credits/\">open source software</a>. "
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>.\n"
+"\t\t\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/"
+"credits/\">open source software</a>.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software open source </a>."
+"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software "
+"open source </a>."
 
 #: askmath/templates/askmath/index/contact_email.html:9
 msgid ""
@@ -2332,7 +2360,6 @@ msgid "See Videos"
 msgstr "Ordenar Vídeos"
 
 #: askmath/templates/askmath/manager/manager_home.html:5
-#| msgid "Site Maps"
 msgid "Site admin"
 msgstr "Site de Administração"
 
@@ -2375,12 +2402,14 @@ msgid "View Keys"
 msgstr "Ver Chaves"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:22
-msgid " Generate Key"
+#, fuzzy
+#| msgid " Generate Key"
+msgid "Generate Key"
 msgstr "Gerar Chave"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:31
 msgid "Created Key"
-msgstr "Criar Chave"
+msgstr "Chave criada"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:40
 msgid "User"
@@ -3129,15 +3158,15 @@ msgstr ""
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1192
 #, python-format
 msgid ""
-"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ] format."
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1196
 #, python-format
 msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1200
@@ -3319,8 +3348,7 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:557
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -3366,8 +3394,7 @@ msgid "(Hidden field %(name)s) %(error)s"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the
-#. label
+#. characters will prevent the default label_suffix to be appended to the label
 #: env/lib/python2.7/site-packages/django/forms/forms.py:620
 msgid ":?.!"
 msgstr ""
@@ -3421,8 +3448,7 @@ msgid "The inline foreign key did not match the parent instance primary key."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1096
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1207
@@ -3431,7 +3457,8 @@ msgid "\"%(pk)s\" is not a valid value for a primary key."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1218
-msgid "Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgid ""
+"Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/utils.py:157
@@ -3931,8 +3958,8 @@ msgstr ""
 #: env/lib/python2.7/site-packages/django/views/generic/dates.py:650
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because "
-"%(class_name)s.allow_future is False."
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/views/generic/dates.py:682
@@ -4505,7 +4532,8 @@ msgstr "Erro, tente novamente."
 
 #~ msgid ""
 #~ "\n"
-#~ "\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
+#~ "\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created "
+#~ "especially for you.\n"
 #~ "\t\t\t\t\t\t\t "
 #~ msgstr ""
 #~ "\n"
@@ -4777,18 +4805,18 @@ msgstr "Erro, tente novamente."
 #~ msgstr "Esta lição não possui questões."
 
 #~ msgid ""
-#~ "You can redo this lesson by clicking the button below or next to some of the"
-#~ " lessons recommended in the table below."
+#~ "You can redo this lesson by clicking the button below or next to some of "
+#~ "the lessons recommended in the table below."
 #~ msgstr ""
-#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de algumas"
-#~ " das lições recomendadas na tabela abaixo."
+#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de "
+#~ "algumas das lições recomendadas na tabela abaixo."
 
 #~ msgid "Complete this lesson and gain experience to level up !!!"
 #~ msgstr "Conclua esta lição e ganhar experiência para subir de nível !!!"
 
 #~ msgid ""
-#~ "It is recommended that you have completed some other lessons like to proceed"
-#~ " to this, these lessons you can find in the table below."
+#~ "It is recommended that you have completed some other lessons like to "
+#~ "proceed to this, these lessons you can find in the table below."
 #~ msgstr ""
 #~ "Recomenda-se que você tenha concluído algumas outras lições antes de "
 #~ "prosseguir nesta lição, essas lições você pode encontrar na tabela abaixo."

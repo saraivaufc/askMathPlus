@@ -17,11 +17,11 @@
 	<div class="padding10">
 		<form action="{% url 'askmath:manager_person_add' PERSONTYPE=person_type %}" method="POST">
 			{% csrf_token %}
-			<button type="submit" class="button info">
+			<button type="submit" class="image-button info">
 				<span class="icon mif-cog"></span>
-				{% trans " Generate Key" %}
+				{% trans "Generate Key" %}
 			</button>
-			<a id="button-register_key-delete" href="#" class="button danger">
+			<a id="button-register_key-delete" href="#" class="image-button danger">
 				<span class="icon mif-minus"></span>
 				{% trans "Delete" %}
 			</a>
@@ -31,13 +31,13 @@
 			<h3>{%  trans "Created Key" %} : <span class="tag success">{{ new_register_key }}</span></h3>
 		{% endif %}
 
-		<table class="table border bordered dataTable">
+		<table class="dataTable border bordered">
 			<thead>
 				<tr>
-					<td style="width: 10px"></td>
-					<td>{% trans "Key" %}</td>
-					<td>{% trans "Creator" %}</td>
-					<td>{% trans "User" %}</td>
+					<th style="width: 10px"></th>
+					<th>{% trans "Key" %}</th>
+					<th>{% trans "Creator" %}</th>
+					<th>{% trans "User" %}</th>
 				</tr>
 			<thead>
 			<tbody>

@@ -27,39 +27,39 @@
 						<div class="list block-shadow {% if i.student == me %}bg-lightBlue fg-white{% endif %}" style="margin-bottom: 10px;">
 							<div class="list-content">
 								<div class="flex-grid">
-									<div class="container-fluid">
-										<div class="row cells12 ">
-											<div class="cell ">
-												<button class="square-button small-button bg-yellow fg-white">{{ i.position }}</button>
-											</div>
-											<div class="cell colspan7">
-												{% if i.student.get_profile_image %}
-												<img style="float: left; margin-right:10px;" width="60px" src="{{ i.student.get_profile_image.url }}">
-												{% else %}
-												<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
-												{% endif %}
-												<span>{{ i.student.get_full_name }}</span></br>
-												<span class="tag success">{{ i.experience_level.get_level }}</span>
-											</div>
-											
-											<div class="cell colspan2">
-												<center>
-													<img width="50px" class="img" src="{{ i.experience_level.get_image_url }}"><br>
-													<div class="rating small" data-size="small">
-														{% for k in 5|range %}
-															{% if forloop.counter <= i.student_experience.get_stars %}
-																<span class="star on"></span>
-															{% else %}
-																<span class="star off"></span>
-															{% endif %}
-														{% endfor %}
+									<div class="row">
+										<div class="cell colspan1">
+											<button class="square-button small-button bg-yellow fg-white">{{ i.position }}</button>
+										</div>
+										<div class="cell colspan5">
+											{% if i.student.get_profile_image %}
+											<img style="float: left; margin-right:10px;" width="60px" src="{{ i.student.get_profile_image.url }}">
+											{% else %}
+											<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+											{% endif %}
+											<span>{{ i.student.get_full_name }}</span>
+										</div>
+										<div class="cell colspan6">
+											<div class="row flex-just-end">
+												<div class="cell colspan3">
+													<div class="align-center">
+														<img width="50px" src="{{ i.experience_level.get_image_url }}"><br>
+														<div class="rating small" data-size="small">
+															{% for k in 5|range %}
+																{% if forloop.counter <= i.student_experience.get_stars %}
+																	<span class="star on"></span>
+																{% else %}
+																	<span class="star off"></span>
+																{% endif %}
+															{% endfor %}
+														</div>
 													</div>
-												</center>
-											</div>
-											<div class="cell colspan2">
-												<label class="tag success align-right">{{ i.student_experience.get_new_scores|show_signal_number|default_if_none:"0" }}</label>
-												<br>
-												<label class="tag info align-right">{{ i.student_experience.get_full_scores|default_if_none:"0" }}</label>
+												</div>
+												<div class="cell colspan3">
+													<label class="tag {% if i.student_experience.get_new_scores >= 0 %}success{% else %}alert{% endif %} align-right">{{ i.student_experience.get_new_scores|show_signal_number|default_if_none:"0" }}</label>
+													<br>
+													<label class="tag info align-right">{{ i.student_experience.get_full_scores|default_if_none:"0" }}</label>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -74,27 +74,53 @@
 
 		<div class="cell colspan2">
 			<div class="card block-shadow">
-				<h3 class="align-center page-title">{% trans "Last Winner" %}</h3>
+				<h3 class="align-center page-title">{% trans "Winner" %}</h3>
 				{% if last_winner %}
-				<div class="container-fluid">
-					<div style="
-						background: url('{{ STATIC_URL }}askmath/img/backgrounds/winner.png');
-						background-repeat: no-repeat;
-						 background-size: 100% 100%;
-						">
-						<div class="row" >
-							<div class="padding50">
-								{% if last_winner.student.get_profile_image %}
-								<img  style="border-radius: 50%;"  src="{{ last_winner.student.get_profile_image.url }}">
-								{% else %}
-								<img style="border-radius: 50%;"  src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
-								{% endif %}
-								<label class="align-center">
-									{{ last_winner.student.get_full_name }}
-								</label>
+				<div class="padding10">
+					<div class="profile image-container">
+						<div class="frame">
+							{% if last_winner.student.get_profile_image %}
+							<img class="profile-image" src="{{ last_winner.student.get_profile_image.url }}">
+							{% else %}
+							<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+							{% endif %}
+						</div>
+						<label class="profile-name align-center">
+							{{ last_winner.student.get_full_name }}
+						</label>
+					</div>
+
+					<div>
+						<label>{% trans "Level:" %}</label>
+						<div class="align-center">
+							<img width="50px" src="{{ last_winner.student.get_student_experience.get_experience_level.get_image_url }}"><br>
+						
+							<div class="rating small" data-size="small">
+								{% for k in 5|range %}
+									{% if forloop.counter <= last_winner.student.get_student_experience.get_stars %}
+										<span class="star on"></span>
+									{% else %}
+										<span class="star off"></span>
+									{% endif %}
+								{% endfor %}
 							</div>
 						</div>
 					</div>
+
+					<table class="width">
+						<tr>
+							<td class="align-left">{% trans "New Points:" %}</td>
+							<td>
+								<label class="tag no-margin {% if last_winner.student.get_student_experience.get_new_scores >= 0 %}success{% else %}alert{% endif %}">{{ last_winner.student.get_student_experience.get_new_scores|show_signal_number|default_if_none:"0" }}</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="align-left">{% trans "All Points:" %}</td>
+							<td>
+								<label class="tag info">{{ last_winner.student.get_student_experience.get_full_scores|default_if_none:"0" }}</label>
+							</td>
+						</tr>
+					</table>
 				</div>
 				{% else %}
 				<div class="padding10">
