@@ -415,30 +415,20 @@ label.caption{
 }
 
 /* Profile Image */
-.profile, #controls{
+.profile{
 	border: 1px solid #fff;
 }
 
-.profile  > .image-title{
+.profile  > .profile-name{
 	position: absolute;
+	 background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
 	margin-top: -25%;
 }
 
-.profile  > .image-title > a{
-	color: #fff !important;
-	text-shadow: 2px 2px #000;
-	text-decoration: none !important;
-}
-
-.profile  > .image-title > a:hover{
+.profile  > .profile-name > a:hover{
 	color: blue !important;
 }
-
-
-#charmControls, #charmSearch{
-	display: none;
-}
-
 
 .dataTables_wrapper{
 	background-color: #fff;
@@ -473,7 +463,7 @@ label.caption{
 	right: 0px;
 }
 
-.card, .panel{
+.card, .panel, .panel .content{
 	background-color: #ffc;
 	margin: 1px;
 }

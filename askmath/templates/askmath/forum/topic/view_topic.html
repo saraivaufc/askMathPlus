@@ -26,12 +26,14 @@
 				{% endblocktrans %}
 				</span>
 				{% if request.user == topic.get_person %}
-					<a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}"><span
-							class="mif-pencil padding5 fg-white"></span></a>
+					<a href="{% url 'askmath:forum_topic_edit' id_category=category.id id_topic=topic.id %}">
+						<span class="mif-pencil padding5 fg-white"></span>
+					</a>
 				{% endif %}
 				{% if topic.exists and request.user == topic.get_person or perms.askmath.access_manager_forum %}
-					<a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}"><span
-							class="mif-cross padding5 fg-white"></span></a>
+					<a href="{% url 'askmath:forum_topic_remove' id_category=category.id id_topic=topic.id %}">
+						<span class="mif-cross padding5 fg-white"></span>
+					</a>
 				{% endif %}
 			</div>
 		</div>
@@ -42,12 +44,12 @@
 						<div class="profile image-container">
 							<div class="frame">
 								{% if topic.get_person.get_profile_image %}
-								<img class="person-image"  src="{{ topic.get_person.get_profile_image.url }}">
+								<img class="profile-image"  src="{{ topic.get_person.get_profile_image.url }}">
 								{% else %}
-								<img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+								<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 								{% endif %}
 							</div>
-							<label class="image-title fg-white align-center">
+							<label class="profile-name align-center">
 								{{ topic.get_person.get_full_name }}
 							</label>
 						</div>
@@ -57,21 +59,21 @@
 							<p>{{ topic.get_description|safe|linebreaksbr }}</p>
 							
 							{% if request.user in topic.get_likes_persons %}
-							<button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}" class="button-like button success">
+							<button href="{% url 'askmath:forum_topic_unlike' id_topic=topic.id %}" class="image-button success button-like">
 							{% else %}
-							<button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}" class="button-like button info">
+							<button href="{% url 'askmath:forum_topic_like' id_topic=topic.id %}" class="image-button info button-like">
 							{% endif %}
 								<span class="icon mif-thumbs-up"></span>
 								<span class="like-count">{{ topic.get_likes|length }}</span>
 							</button>
 
-							<a href="#comment-form" class="button {% if request.user in topic.get_comments_persons %}success{% else %}info{% endif %} fg-white">
+							<a href="#comment-form" class="image-button {% if request.user in topic.get_comments_persons %}success{% else %}info{% endif %} fg-white">
 								<span class="icon mif-bubble"></span>
 								{{ topic.get_comments|length }}
 							</a>
 
 							{% if topic.file %}
-							<a href="{{ topic.file.url }}" target="_blank" class="button primary">
+							<a href="{{ topic.file.url }}" target="_blank" class="image-button primary">
 								<span class="icon mif-folder-download"></span>
 								{% trans "Downlad File" %}
 							</a>

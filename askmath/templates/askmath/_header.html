@@ -54,16 +54,11 @@
 			<div class="profile image-container">
 				<div class="frame">
 					{% if request.user.get_profile_image %}
-					<img class="img" src="{{ request.user.get_profile_image.url }}">
+					<img class="profile-image img" src="{{ request.user.get_profile_image.url }}">
 					{% else %}
-					<img class="img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+					<img class="profile-image img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
 					{% endif %}
 				</div>
-				<label class="image-title fg-white align-center">
-					<a href="{% url 'askmath:person_account_view' %}">
-						{{ request.user.get_full_name }}
-					</a>
-				</label>
 			</div>
 				
 			<ul class="v-menu width subdown navy">

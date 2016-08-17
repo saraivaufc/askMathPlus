@@ -24,12 +24,12 @@
 						<div class="profile image-container">
 							<div class="frame">
 								{% if comment.get_person.get_profile_image %}
-								<img class="person-image"  src="{{ comment.get_person.get_profile_image.url }}">
+								<img class="profile-image"  src="{{ comment.get_person.get_profile_image.url }}">
 								{% else %}
-								<img class="person-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
+								<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 								{% endif %}
 							</div>
-							<label class="image-title fg-white align-center">
+							<label class="profile-name align-center">
 								{{ comment.get_person.get_full_name }}
 							</label>
 						</div>
@@ -38,9 +38,9 @@
 						<div class="padding10">
 							<p id="comment-{{ comment.id }}" class="post-description text-accent">{{ comment.get_description|linebreaksbr }}</p>
 							{% if request.user in comment.get_likes_persons %}
-							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="button-like button success">
+							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="image-button success button-like">
 							{% else %}
-							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="button-like button info">
+							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="image-button info button-like">
 							{% endif %}
 								<span class="icon mif-thumbs-up"></span>
 								<span class="like-count">{{ comment.get_likes|length }}</span>

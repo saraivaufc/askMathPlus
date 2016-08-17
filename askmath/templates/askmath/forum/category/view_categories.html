@@ -8,29 +8,35 @@
 	<div class="padding10">
 		{% if perms.askmath.write_category %}
 		<div data-role="group" data-group-type="one-state" data-button-style="class">
-			<a id="button-category-create"  class="button success" href="{% url 'askmath:forum_category_add' %}">
-				<span class="mif-plus"></span> {% trans "Create" %}
+			<a id="button-category-create"  class="image-button success" href="{% url 'askmath:forum_category_add' %}">
+				<span class="icon mif-plus"></span>
+				{% trans "Create" %}
 			</a>
-			<a id="button-category-edit" class="button primary" href="#">
-				<span class="mif-pencil"></span> {% trans "Edit" %}
+			<a id="button-category-edit" class="image-button primary" href="#">
+				<span class="icon mif-pencil"></span>
+				{% trans "Edit" %}
 			</a>
 			{% if is_removed %}
-			<a id="button-category-restore" class="button info" href="#">
-				<span class="mif-history"></span> {% trans "Restore" %}
+			<a id="button-category-restore" class="image-button info" href="#">
+				<span class="icon mif-history"></span>
+				{% trans "Restore" %}
 			</a>
 			{% else %}
-			<a id="button-category-delete" class="button danger" href="#">
-				<span class="mif-minus"></span> {% trans "Delete" %}
+			<a id="button-category-delete" class="image-button danger" href="#">
+				<span class="icon mif-minus"></span>
+				{% trans "Delete" %}
 			</a>
 			{% endif %}
 
 			{% if is_removed %}
-			<a class="button warning" href="{% url 'askmath:forum_category_view' %}">
-				<span class="mif-undo"></span> {% trans "Close Dump" %}
+			<a class="image-button warning" href="{% url 'askmath:forum_category_view' %}">
+				<span class="icon mif-undo"></span>
+				{% trans "Close Dump" %}
 			</a>
 			{% else %}
-			<a class="button warning" href="{% url 'askmath:forum_category_view_removed' %}">
-				<span class="mif-bin"></span> {% trans "Open Dump" %}
+			<a class="image-button warning" href="{% url 'askmath:forum_category_view_removed' %}">
+				<span class="icon mif-bin"></span>
+				{% trans "Open Dump" %}
 			</a>
 			{% endif %}
 		</div>

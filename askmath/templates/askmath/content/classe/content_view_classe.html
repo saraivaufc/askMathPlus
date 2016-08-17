@@ -16,12 +16,12 @@
 				<div class="padding10">
 					<div class="align-right">
 						{% if not classe in my_classes %}
-							<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="button success">
+							<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="image-button success">
 								<span class="icon mif-enter"></span>
 								{% trans "Subscribe" %}
 							</a>
 						{% else %}
-							<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="button danger">
+							<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button danger">
 								<span class="icon mif-exit"></span>
 								{% trans "Unsubscribe" %}
 							</a>

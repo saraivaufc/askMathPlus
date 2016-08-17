@@ -34,35 +34,35 @@
 				 	<li><a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=7 %}">7</a></li>
 				</ul>
 
-				<a id="button-question-edit" href="#" class="button primary">
+				<a id="button-question-edit" href="#" class="image-button primary">
 					<span class="icon mif-pencil"></span>
 					{% trans "Edit" %}
 				</a>
 				{% if is_removed %}
-				<a id="button-question-restore" href="#" class="button info">
+				<a id="button-question-restore" href="#" class="image-button info">
 					<span class="icon mif-history"></span>
 					{% trans "Restore" %}
 				</a>
 				{% else %}
-				<a id="button-question-delete" href="#" class="button danger">
+				<a id="button-question-delete" href="#" class="image-button danger">
 					<span class="icon mif-minus"></span>
 					{% trans "Delete" %}
 				</a>
 				{% endif %}
 				{% if perms.askmath.write_question %}
-				<a id="button-question-sort" class="button info" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
+				<a id="button-question-sort" class="image-button info" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
 					<span class="icon mif-list-numbered"></span>
 					{% trans "Sort" %}
 				</a>
 				{% endif %}
 
 				{% if is_removed %}
-				<a class="button warning" href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
+				<a class="image-button warning" href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
 					<span class="icon mif-undo"></span>
 					{% trans "Close Dump" %}
 				</a>
 				{% else %}
-				<a class="button warning" href="{% url 'askmath:manager_question_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}">
+				<a class="image-button warning" href="{% url 'askmath:manager_question_view_removed' id_lesson=lesson.id  id_discipline=discipline.id %}">
 					<span class="icon mif-bin"></span>
 					{% trans "Open Dump" %}
 				</a>

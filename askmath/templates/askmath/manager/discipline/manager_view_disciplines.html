@@ -18,32 +18,32 @@
 	<div class="padding10">
 		{% if perms.askmath.write_discipline %}
 		<div class="cell">
-			<a id="button-discipline-create" href="{% url 'askmath:manager_discipline_add' %}" class="button success">
+			<a id="button-discipline-create" href="{% url 'askmath:manager_discipline_add' %}" class="image-button success">
 				<span class="icon mif-plus"></span>
 				{% trans "Create" %}
 			</a>
-			<a id="button-discipline-edit" href="#" class="button primary">
+			<a id="button-discipline-edit" href="#" class="image-button primary">
 				<span class="icon mif-pencil"></span>
 				{% trans "Edit" %}
 			</a>
 			{% if is_removed %}
-			<a id="button-discipline-restore" href="#" class="button info">
+			<a id="button-discipline-restore" href="#" class="image-button info">
 				<span class="icon mif-history"></span>
 				{% trans "Restore" %}
 			</a>
 			{% else %}
-			<a id="button-discipline-delete" href="#" class="button danger">
+			<a id="button-discipline-delete" href="#" class="image-button danger">
 				<span class="icon mif-minus"></span>
 				{% trans "Delete" %}
 			</a>
 			{% endif %}
 			{% if is_removed %}
-			<a href="{% url 'askmath:manager_discipline_view' %}" class="button warning">
+			<a href="{% url 'askmath:manager_discipline_view' %}" class="image-button warning">
 				<span class="icon mif-undo"></span>
 				{% trans "Close Dump" %}
 			</a>
 			{% else %}
-			<a href="{% url 'askmath:manager_discipline_view_removed' %}" class="button warning">
+			<a href="{% url 'askmath:manager_discipline_view_removed' %}" class="image-button warning">
 				<span class="icon mif-bin"></span>
 				{% trans "Open Dump" %}
 			</a>
@@ -59,7 +59,7 @@
 					{% endif %}
 					<td>{% trans "Title" %}</td>
 					<td style="width: 20px">{% trans "Visible" %}</td>
-					<td>{% trans "Lessons" %}</td>
+					<td>{% trans "Options" %}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -87,9 +87,7 @@
 				</td>
 				<td class="sortable-column">
 					<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}">
-						{% blocktrans  with lessons_size=discipline.get_lessons|length %}
-						See {{ lessons_size}} lessons
-						{% endblocktrans %}
+						{% trans "See Lessons" %}
 					</a>
 				</td>
 			{% endfor %}
