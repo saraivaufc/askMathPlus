@@ -1,0 +1,6 @@
+DATABASE_ENGINE = u'django.db.backends.postgresql_psycopg2'
+DATABASE_NAME = u'askmath'
+DATABASE_USER = u'postgres'
+DATABASE_PASSWORD = u'macacoaranha'
+DATABASE_HOST = u'200.129.39.113'
+DATABASE_PORT = u'200.129.39.113'
