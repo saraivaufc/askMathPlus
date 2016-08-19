@@ -40,9 +40,9 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = SITE_CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['www.askmath.quixada.ufc.br']
 # ALLOWED_HOSTS = ['localhost']
@@ -88,6 +88,20 @@ DATABASES = {
 		'PORT': '5432',
 	}
 }
+
+"""
+Configurations of database to server
+"""
+
+DATABASES['default'] = {
+	'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
+	'NAME': DATABASE_CONFIG.DATABASE_NAME,
+	'USER': DATABASE_CONFIG.DATABASE_USER,
+	'PASSWORD': DATABASE_CONFIG.DATABASE_PASSWORD,
+	'HOST': DATABASE_CONFIG.DATABASE_HOST,
+	'PORT': DATABASE_CONFIG.DATABASE_PORT,
+}
+
 
 # Templates
 TEMPLATE_DIRS = (
@@ -252,19 +266,6 @@ LOGGING = {
 	},
 }
 
-
-"""
-Configurations of database to server
-
-DATABASES['default'] = {
-	'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
-	'NAME': DATABASE_CONFIG.DATABASE_NAME,
-	'USER': DATABASE_CONFIG.DATABASE_USER,
-	'PASSWORD': DATABASE_CONFIG.DATABASE_PASSWORD,
-	'HOST': DATABASE_CONFIG.DATABASE_HOST,
-	'PORT': DATABASE_CONFIG.DATABASE_PORT,
-}
-"""
 
 """
 Configurations of email

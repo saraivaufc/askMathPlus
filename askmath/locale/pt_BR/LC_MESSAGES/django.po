@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 11:31-0300\n"
-"PO-Revision-Date: 2016-08-17 11:27-0234\n"
+"POT-Creation-Date: 2016-08-18 23:52-0300\n"
+"PO-Revision-Date: 2016-08-19 00:28-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
@@ -1299,13 +1299,12 @@ msgstr "Escolha uma descrição para esta pergunta."
 #: askmath/models/question/question.py:18
 #: env/lib/python2.7/site-packages/django/db/models/fields/files.py:375
 msgid "Image"
-msgstr ""
+msgstr "Imagem"
 
 #: askmath/models/question/question.py:18
-#, fuzzy
 #| msgid "Please enter you email."
 msgid "Please enter  image."
-msgstr "Por favor, entre com seu email."
+msgstr "Por favor, entre com uma image."
 
 #: askmath/models/question/question.py:21
 msgid "Choose items that this issue has."
@@ -1674,14 +1673,15 @@ msgstr "Diminuir Fonte"
 
 #: askmath/templates/askmath/_no_script.html:4
 msgid ""
-"For full functionality of this site it is necessary to enable JavaScript."
-"<br> Here are the <a href=\"http://www.enable-javascript.com/pt/\" target="
-"\"_blank\">instructions on how to enable JavaScript in your browser </a>."
+"For full functionality of this site it is necessary to enable "
+"JavaScript.<br> Here are the <a href=\"http://www.enable-"
+"javascript.com/pt/\" target=\"_blank\">instructions on how to enable "
+"JavaScript in your browser </a>."
 msgstr ""
 "Para obter a funcionalidade completa deste site é necessário habilitar o "
-"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a href="
-"\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript no "
-"seu navegador </a>."
+"JavaScript. <br> Aqui estão as instruções target=\"_blank\"> <a "
+"href=\"http://www.enable-javascript.com/pt/\" sobre como ativar o JavaScript"
+" no seu navegador </a>."
 
 #: askmath/templates/askmath/authentication/options.html:11
 msgid "Authentication"
@@ -1762,8 +1762,7 @@ msgstr "Opções"
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially "
-"for you.\n"
+"\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
 "\t\t\t\t\t\t "
 msgstr ""
 "\n"
@@ -1775,8 +1774,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their "
-"knowledge.\n"
+"\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their knowledge.\n"
 "\t\t\t\t\t\t"
 msgstr ""
 "\n"
@@ -1890,9 +1888,21 @@ msgstr "Houve um erro ao carregar as perguntas"
 msgid "Your Progress"
 msgstr "Seu Progresso"
 
-#: askmath/templates/askmath/content/question/view_question.html:160
-msgid "Experience Level:"
-msgstr ""
+#: askmath/templates/askmath/content/question/view_question.html:159
+msgid "You level:"
+msgstr "Seu nível:"
+
+#: askmath/templates/askmath/content/question/view_question.html:176
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:112
+#| msgid "Points"
+msgid "New Points:"
+msgstr "Novos pontos:"
+
+#: askmath/templates/askmath/content/question/view_question.html:182
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:118
+#| msgid "Points"
+msgid "All Points:"
+msgstr "Todos os Pontos:"
 
 #: askmath/templates/askmath/content/ranking/_dialog_new_round.html:5
 msgid "New Round"
@@ -1911,10 +1921,16 @@ msgid "This round ends in"
 msgstr "Esta rodada termina em"
 
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:77
-msgid "Last Winner"
-msgstr "Último Campeão"
+#| msgid "Beginner"
+msgid "Winner"
+msgstr "Campeão"
 
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:102
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:94
+#| msgid "Level"
+msgid "Level:"
+msgstr "Nível:"
+
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:128
 msgid "Earn points, level up and become our new champion."
 msgstr "Ganhe pontos, suba de nível e torner-se nosso novo campeão."
 
@@ -1943,10 +1959,9 @@ msgstr "Este campo é obrigatório."
 #: askmath/templates/askmath/fields/password.html:9
 #: askmath/templates/askmath/fields/text.html:9
 #: askmath/templates/askmath/fields/textarea.html:9
-#, fuzzy
 #| msgid "This field cannot be null."
 msgid "This field can not be empty"
-msgstr "Este campo é obrigatório."
+msgstr "Este campo não pode estar vazio"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:13
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:22
@@ -2025,7 +2040,7 @@ msgid "Last Post"
 msgstr "Última postagem"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:79
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\t\tSee %(topics)s posts\n"
@@ -2039,7 +2054,7 @@ msgstr ""
 "Ver %(topics)s postagens"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:90
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\t\t<h6>%(creation)s by %(person)s.</h6>\n"
@@ -2079,7 +2094,6 @@ msgid "Click here to get authorization."
 msgstr "Clique aqui para obter autorização."
 
 #: askmath/templates/askmath/forum/topic/view_topics.html:24
-#, fuzzy
 #| msgid "Add Topic"
 msgid "Add topic"
 msgstr "Adicionar Tópico"
@@ -2116,15 +2130,11 @@ msgstr "PET Tecnologia da Informação."
 #: askmath/templates/askmath/index/about.html:24
 msgid ""
 "\n"
-"\t\t\t\t\t\tThis project is an initiative of the <abbr title=\"Tutorial "
-"Education Program\">PET</abbr> group Information Technology of the Federal "
-"University of Ceará.\n"
+"\t\t\t\t\t\tThis project is an initiative of the <abbr title=\"Tutorial Education Program\">PET</abbr> group Information Technology of the Federal University of Ceará.\n"
 "\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação "
-"Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do "
-"Ceará."
+"Este projecto é uma iniciativa do grupo <abbr title = \"Programa de Educação Tutorial\"> PET </ abbr> Tecnologia da Informação da Universidade Federal do Ceará."
 
 #: askmath/templates/askmath/index/about.html:30
 #: askmath/templates/askmath/index/about.html:31
@@ -2136,23 +2146,17 @@ msgid "Objective"
 msgstr "Objetivo"
 
 #: askmath/templates/askmath/index/about.html:46
-#, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant "
-#| "platform for students who want to learn more about the different branches "
-#| "of mathematics.\n"
+#| "\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant "
-"platform for students who want to learn more about the different branches of "
-"mathematics.\n"
+"\t\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para "
-"estudantes que querem aprender mais sobre os diferentes ramos da matemática."
+"Nosso objetivo é fornecer uma plataforma simples, intuitiva e elegante para estudantes que querem aprender mais sobre os diferentes ramos da matemática."
 
 #: askmath/templates/askmath/index/about.html:53
 msgid "License and Source-Code."
@@ -2162,44 +2166,29 @@ msgstr "Licença e Código-fonte."
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open "
-#| "source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/"
-#| "legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to "
-#| "copy, distribute and modify its source code.\n"
+#| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open "
-"source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/"
-"legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, "
-"distribute and modify its source code.\n"
+"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e "
-"esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" "
-"target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, "
-"distribuir e modificar seu código-fonte."
+"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, distribuir e modificar seu código-fonte."
 
 #: askmath/templates/askmath/index/about.html:61
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\t\tYour source code is available at the following repository: "
-#| "<a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank"
-#| "\">https://github.com/saraivaufc/askMathPlus</a>. \n"
+#| "\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tYour source code is available at the following repository: "
-"<a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://"
-"github.com/saraivaufc/askMathPlus</a>. \n"
+"\t\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Seu código fonte está disponível no seguinte repositório: <a href=\"https://"
-"github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/"
-"saraivaufc/askMath </a>."
+"Seu código fonte está disponível no seguinte repositório: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/saraivaufc/askMath </a>."
 
 #: askmath/templates/askmath/index/about.html:68
 msgid "Developers"
@@ -2223,17 +2212,14 @@ msgstr "Créditos"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/"
-#| "credits/\">open source software</a>. "
+#| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>. "
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/"
-"credits/\">open source software</a>.\n"
+"\t\t\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software "
-"open source </a>."
+"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software open source </a>."
 
 #: askmath/templates/askmath/index/contact_email.html:9
 msgid ""
@@ -2417,7 +2403,7 @@ msgstr "Usuário"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:28
 msgid "Amount of items"
-msgstr ""
+msgstr "Quantidade de itens"
 
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:55
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:44
@@ -2661,7 +2647,6 @@ msgid "No result found!!!"
 msgstr "Nenhuma resultado encontrado!!!"
 
 #: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:5
-#, fuzzy
 #| msgid "Text Editor:"
 msgid "Text Editor"
 msgstr "Editor de Texto:"
@@ -2729,7 +2714,6 @@ msgstr ""
 "foi utilizado. Por favor, solicite uma nova redefinição de senha."
 
 #: askmath/templates/registration/password_reset_done.html:8
-#, fuzzy
 #| msgid "Enter yout email."
 msgid "Check your email."
 msgstr "Entre com seu email."
@@ -2751,6 +2735,8 @@ msgid ""
 "Provide your email address below and we will send you instructions to set a "
 "new one."
 msgstr ""
+"Fornecer seu endereço de e-mail abaixo e nós lhe enviaremos instruções para "
+"definir um novo."
 
 #: askmath/utils/markdown/utils/quote.py:19
 #, python-format
@@ -2923,10 +2909,9 @@ msgid "Create Classe"
 msgstr "Criar Turma"
 
 #: askmath/views/manager/classe/classe.py:54
-#, fuzzy
 #| msgid "Edit Category"
 msgid "Edit Classe"
-msgstr "Editar Categoria"
+msgstr "Editar Turma"
 
 #: askmath/views/manager/discipline/discipline.py:35
 msgid "Create Discipline"
@@ -3158,15 +3143,15 @@ msgstr ""
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1192
 #, python-format
 msgid ""
-"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1196
 #, python-format
 msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"'%(value)s' value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1200
@@ -3348,7 +3333,8 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:557
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -3378,10 +3364,9 @@ msgid "Enter a list of values."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:977
-#, fuzzy
 #| msgid "Enter yout name."
 msgid "Enter a complete value."
-msgstr "Entre com seu nome."
+msgstr ""
 
 #. Translators: This is the default suffix added to form field labels
 #: env/lib/python2.7/site-packages/django/forms/forms.py:122
@@ -3394,7 +3379,8 @@ msgid "(Hidden field %(name)s) %(error)s"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: env/lib/python2.7/site-packages/django/forms/forms.py:620
 msgid ":?.!"
 msgstr ""
@@ -3448,7 +3434,8 @@ msgid "The inline foreign key did not match the parent instance primary key."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1096
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1207
@@ -3457,8 +3444,7 @@ msgid "\"%(pk)s\" is not a valid value for a primary key."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/models.py:1218
-msgid ""
-"Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgid "Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/utils.py:157
@@ -3598,10 +3584,9 @@ msgid "Sat"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:11
-#, fuzzy
 #| msgid "Student"
 msgid "Sun"
-msgstr "Estudante"
+msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "January"
@@ -3612,10 +3597,9 @@ msgid "February"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:18
-#, fuzzy
 #| msgid "Search"
 msgid "March"
-msgstr "Buscar"
+msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "April"
@@ -3712,11 +3696,10 @@ msgid "Feb."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:33
-#, fuzzy
 #| msgid "Search"
 msgctxt "abbrev. month"
 msgid "March"
-msgstr "Buscar"
+msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:34
 msgctxt "abbrev. month"
@@ -3774,11 +3757,10 @@ msgid "February"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:47
-#, fuzzy
 #| msgid "Search"
 msgctxt "alt. month"
 msgid "March"
-msgstr "Buscar"
+msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:48
 msgctxt "alt. month"
@@ -3813,17 +3795,17 @@ msgstr ""
 #: env/lib/python2.7/site-packages/django/utils/dates.py:54
 msgctxt "alt. month"
 msgid "October"
-msgstr ""
+msgstr "Outubro"
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:55
 msgctxt "alt. month"
 msgid "November"
-msgstr ""
+msgstr "Novembro"
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:56
 msgctxt "alt. month"
 msgid "December"
-msgstr ""
+msgstr "Dezembro"
 
 #: env/lib/python2.7/site-packages/django/utils/ipv6.py:10
 msgid "This is not a valid IPv6 address."
@@ -3836,10 +3818,9 @@ msgid "%(truncated_text)s..."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/text.py:245
-#, fuzzy
 #| msgid "Sort"
 msgid "or"
-msgstr "Ordenar"
+msgstr "ou"
 
 #. Translators: This string is used as a separator between list elements
 #: env/lib/python2.7/site-packages/django/utils/text.py:264
@@ -3851,15 +3832,15 @@ msgstr ""
 #, python-format
 msgid "%d year"
 msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ano"
+msgstr[1] "%d anos"
 
 #: env/lib/python2.7/site-packages/django/utils/timesince.py:26
 #, python-format
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d mês"
+msgstr[1] "%d meses"
 
 #: env/lib/python2.7/site-packages/django/utils/timesince.py:27
 #, python-format
@@ -3958,8 +3939,8 @@ msgstr ""
 #: env/lib/python2.7/site-packages/django/views/generic/dates.py:650
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/views/generic/dates.py:682
@@ -4020,10 +4001,9 @@ msgstr ""
 #: env/lib/python2.7/site-packages/djcelery/models.py:211
 #: env/lib/python2.7/site-packages/djcelery/models.py:339
 #: env/lib/python2.7/site-packages/kombu/transport/django/models.py:12
-#, fuzzy
 #| msgid "Username"
 msgid "name"
-msgstr "Nome de Usuário"
+msgstr "nome"
 
 #: env/lib/python2.7/site-packages/djcelery/admin.py:115
 msgid "Task detail"
@@ -4406,10 +4386,9 @@ msgid "in seconds if task succeeded"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:352
-#, fuzzy
 #| msgid "Terms of service"
 msgid "number of retries"
-msgstr "Termos do Serviço"
+msgstr "número de entradas"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:362
 msgid "task"
@@ -4484,6 +4463,9 @@ msgstr ""
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
 
+#~ msgid "Last Winner"
+#~ msgstr "Último Campeão"
+
 #~ msgid "Inscription"
 #~ msgstr "Inscrição"
 
@@ -4532,8 +4514,7 @@ msgstr "Erro, tente novamente."
 
 #~ msgid ""
 #~ "\n"
-#~ "\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created "
-#~ "especially for you.\n"
+#~ "\t\t\t\t\t\t\t\t\t Are %(qtd_questions)s questions issues created especially for you.\n"
 #~ "\t\t\t\t\t\t\t "
 #~ msgstr ""
 #~ "\n"
@@ -4805,18 +4786,18 @@ msgstr "Erro, tente novamente."
 #~ msgstr "Esta lição não possui questões."
 
 #~ msgid ""
-#~ "You can redo this lesson by clicking the button below or next to some of "
-#~ "the lessons recommended in the table below."
+#~ "You can redo this lesson by clicking the button below or next to some of the"
+#~ " lessons recommended in the table below."
 #~ msgstr ""
-#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de "
-#~ "algumas das lições recomendadas na tabela abaixo."
+#~ "Você pode refazer essa lição, clicando no botão abaixo ou ao lado de algumas"
+#~ " das lições recomendadas na tabela abaixo."
 
 #~ msgid "Complete this lesson and gain experience to level up !!!"
 #~ msgstr "Conclua esta lição e ganhar experiência para subir de nível !!!"
 
 #~ msgid ""
-#~ "It is recommended that you have completed some other lessons like to "
-#~ "proceed to this, these lessons you can find in the table below."
+#~ "It is recommended that you have completed some other lessons like to proceed"
+#~ " to this, these lessons you can find in the table below."
 #~ msgstr ""
 #~ "Recomenda-se que você tenha concluído algumas outras lições antes de "
 #~ "prosseguir nesta lição, essas lições você pode encontrar na tabela abaixo."
