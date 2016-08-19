@@ -42,10 +42,9 @@ SECRET_KEY = SITE_CONFIG.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['www.askmath.quixada.ufc.br']
-# ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -92,20 +91,20 @@ DATABASES = {
 """
 Configurations of database to server
 """
-
-DATABASES['default'] = {
-	'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
-	'NAME': DATABASE_CONFIG.DATABASE_NAME,
-	'USER': DATABASE_CONFIG.DATABASE_USER,
-	'PASSWORD': DATABASE_CONFIG.DATABASE_PASSWORD,
-	'HOST': DATABASE_CONFIG.DATABASE_HOST,
-	'PORT': DATABASE_CONFIG.DATABASE_PORT,
-}
-
+if not DEBUG:
+	DATABASES['default'] = {
+		'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
+		'NAME': DATABASE_CONFIG.DATABASE_NAME,
+		'USER': DATABASE_CONFIG.DATABASE_USER,
+		'PASSWORD': DATABASE_CONFIG.DATABASE_PASSWORD,
+		'HOST': DATABASE_CONFIG.DATABASE_HOST,
+		'PORT': DATABASE_CONFIG.DATABASE_PORT,
+	}
 
 # Templates
 TEMPLATE_DIRS = (
 	'askmath/templates',
+	'askmath/templates/authentication',
 	'nocaptcha_recaptcha/templates',
 )
 
@@ -266,11 +265,19 @@ LOGGING = {
 	},
 }
 
+ADMINS = (
+	(u'Ciano Saraiva', u'saraiva.ufc@gmail.com'), 
+	(u'AskMath', u'askmathplus@gmail.com'),
+)
+
+MANAGERS = (
+    ('George Harrison', 'gharrison@example.com'),
+)
+
 
 """
 Configurations of email
 """
-ADMINS = EMAIL_CONFIG.ADMINS
 EMAIL_ADMINS = EMAIL_CONFIG.EMAIL_ADMINS
 DEFAULT_FROM_EMAIL = EMAIL_CONFIG.DEFAULT_FROM_EMAIL
 
