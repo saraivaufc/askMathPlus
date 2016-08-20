@@ -175,7 +175,7 @@
 						<tr>
 							<td class="align-left">{% trans "New Points:" %}</td>
 							<td>
-								<label class="tag no-margin {% if student_experience.get_new_scores >= 0 %}success{% else %}alert{% endif %}">{{ student_experience.get_new_scores }}</label>
+								<label class="tag no-margin {% if student_experience.get_new_scores >= 0 %}success{% else %}alert{% endif %}">{{ student_experience.get_new_scores|show_signal_number }}</label>
 							</td>
 						</tr>
 						<tr>

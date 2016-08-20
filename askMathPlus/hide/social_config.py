@@ -13,9 +13,9 @@ SOCIAL_AUTH_TWITTER_KEY = u'CNm8mXbL2xASaxuNCiCWBhLYv'
 SOCIAL_AUTH_TWITTER_SECRET = u'gxtQLYAvfSEZBmOkTnVPs9i3eueqfOCEOypU3k7SNOwhd2QBKS'
 
 """
-Gmail: askmathplus@gmail.com
+Gmail: saraiva.ufc@gmail.com
 http://www.askmath.quixada.ufc.br/complete/google-oauth2/
 """
 #https://console.developers.google.com/
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = u'806153707723-gqf6o41ejed805emhekn3fefvip4juoo.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = u'e2weQnnjZtY8CA0oTawNgSxS '
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = u'768154434321-6k17j6uitghp0p9csg1k4ltq66od7n2v.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = u'bOyJuOIhM929agzKYgZY_9OB'

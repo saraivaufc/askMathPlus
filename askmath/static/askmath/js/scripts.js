@@ -49,7 +49,7 @@ function Init() {
 function resize_window() {
 	var site = parseInt($("#site").css("height"));
 	var footer = parseInt($("#footer").css("height"));
-	$("#site").css("min-height", (site - footer) + "px");
+	$("#site").css({"min-height":(site - footer) + "px"});
 }
 
 $(function(){

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-18 23:52-0300\n"
-"PO-Revision-Date: 2016-08-19 00:28-0234\n"
+"POT-Creation-Date: 2016-08-19 14:32-0300\n"
+"PO-Revision-Date: 2016-08-19 17:55-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1302,7 +1302,6 @@ msgid "Image"
 msgstr "Imagem"
 
 #: askmath/models/question/question.py:18
-#| msgid "Please enter you email."
 msgid "Please enter  image."
 msgstr "Por favor, entre com uma image."
 
@@ -1581,11 +1580,11 @@ msgid "RSS"
 msgstr "RSS"
 
 #: askmath/templates/askmath/_form.html:15
+#: askmath/templates/askmath/authentication/registration/password_reset_confirm.html:12
+#: askmath/templates/askmath/authentication/registration/password_reset_form.html:25
 #: askmath/templates/askmath/manager/question/manager_form_question.html:31
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:26
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:27
-#: askmath/templates/registration/password_reset_confirm.html:12
-#: askmath/templates/registration/password_reset_form.html:25
 msgid "Submit"
 msgstr "Submeter"
 
@@ -1595,6 +1594,24 @@ msgstr "Submeter"
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:34
 msgid "Informations"
 msgstr "Informações"
+
+#: askmath/templates/askmath/_form_informations.html:6
+#: askmath/templates/askmath/fields/caption.html:5
+msgid "This field in required."
+msgstr "Este campo é obrigatório."
+
+#: askmath/templates/askmath/_form_informations.html:7
+#| msgid "This field is required."
+msgid "It indicates that the field is required."
+msgstr "Indica que o campo é obrigatório."
+
+#: askmath/templates/askmath/_form_informations.html:13
+msgid ""
+"Indicates that the field accepts latex notation, click it to open the latex "
+"editor."
+msgstr ""
+"Indica que o campo aceita notação latex, clique nele para abrir o editor "
+"latex."
 
 #: askmath/templates/askmath/_header.html:21
 #: askmath/templates/askmath/index/404.html:17
@@ -1712,6 +1729,141 @@ msgid ""
 msgstr ""
 "Clicando aqui, você concorda com os <a href=\"/terms/\"> Termos e Condições "
 "</a> estabelecido por este site, incluindo o nosso uso de cookies."
+
+#: askmath/templates/askmath/authentication/registration/password_change_done.html:7
+msgid "Password Reset Change"
+msgstr "Senha alterada"
+
+#: askmath/templates/askmath/authentication/registration/password_change_done.html:12
+#: askmath/templates/askmath/user/password_reset_complete.html:7
+#: askmath/templates/askmath/user/password_reset_complete.html:11
+msgid "Password change successful"
+msgstr "Senha alterada com sucesso"
+
+#: askmath/templates/askmath/authentication/registration/password_change_done.html:14
+msgid "Your password was changed."
+msgstr "Sua senha foi alterada."
+
+#: askmath/templates/askmath/authentication/registration/password_change_form.html:7
+msgid "Password Change Form"
+msgstr "Senha alterada no Formulário"
+
+#: askmath/templates/askmath/authentication/registration/password_change_form.html:12
+#: askmath/templates/askmath/user/password_reset_form.html:5
+#: askmath/templates/askmath/user/password_reset_form.html:9
+msgid "Password reset"
+msgstr "Senha alterada"
+
+#: askmath/templates/askmath/authentication/registration/password_change_form.html:14
+msgid "Forgotten your password? Enter your email addess below"
+msgstr "Esqueceu sua senha? Digite seu email abaixo."
+
+#: askmath/templates/askmath/authentication/registration/password_change_form.html:20
+msgid "Change my password"
+msgstr "Alterar minha senha"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_complete.html:8
+#| msgid ""
+#| "Password reset complete : Your password has been set.  You may go ahead and "
+#| "log in now... :)"
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Sua senha foi definida. Você pode ir em frente e entrar agora."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_complete.html:10
+msgid "Log in"
+msgstr ""
+
+#: askmath/templates/askmath/authentication/registration/password_reset_confirm.html:8
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"Por favor digite sua nova senha duas vezes para que possamos verificar a "
+"introduziu em corretamente."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_confirm.html:16
+#: askmath/templates/askmath/user/password_reset_confirm.html:21
+msgid "Password reset unsuccessful"
+msgstr "Redefinição de senha malsucedida"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_confirm.html:17
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"O link de redefinição de senha esta inválido, possivelmente porque ele já "
+"foi utilizado. Por favor, solicite uma nova redefinição de senha."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_done.html:8
+#, fuzzy
+#| msgid ""
+#| "We've emailed you instructions for setting your password. You should be "
+#| "receiving them shortly."
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Nós lhe enviamos instruções para configurar a sua senha. Você deve recebê-"
+"las em breve."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_done.html:10
+#: askmath/templates/askmath/user/password_reset_done.html:12
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Se você não receber um e-mail, por favor, certifique-se de que você digitou "
+"o endereço que você registrou, e verifique a sua pasta de spam."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_email.html:2
+#: askmath/templates/askmath/user/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Você está recebendo este e-mail porque solicitou uma redefinição de senha "
+"para sua conta de usuário em  %(site_name)s."
+
+#: askmath/templates/askmath/authentication/registration/password_reset_email.html:4
+#: askmath/templates/askmath/user/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "Por favor, vá para a seguinte página e escolhar uma nova senha:"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr "Seu nome de usuário, caso você tenha esquecido:"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_email.html:10
+#: askmath/templates/askmath/user/password_reset_email.html:9
+msgid "Thanks for using our site!"
+msgstr "Obrigado por usar o nosso site!"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_email.html:12
+#: askmath/templates/askmath/user/password_reset_email.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "Equipe do %(site_name)s"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_form.html:7
+msgid "Password Reset"
+msgstr "Senha alterada"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_form.html:16
+msgid "Recover Password"
+msgstr "Recuperar Senha"
+
+#: askmath/templates/askmath/authentication/registration/password_reset_form.html:19
+#, fuzzy
+#| msgid ""
+#| "Provide your email address below and we will send you instructions to set a "
+#| "new one."
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"Fornecer seu endereço de e-mail abaixo e nós lhe enviaremos instruções para "
+"definir um novo."
 
 #: askmath/templates/askmath/content/classe/content_view_classe.html:21
 msgid "Subscribe"
@@ -1894,13 +2046,11 @@ msgstr "Seu nível:"
 
 #: askmath/templates/askmath/content/question/view_question.html:176
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:112
-#| msgid "Points"
 msgid "New Points:"
 msgstr "Novos pontos:"
 
 #: askmath/templates/askmath/content/question/view_question.html:182
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:118
-#| msgid "Points"
 msgid "All Points:"
 msgstr "Todos os Pontos:"
 
@@ -1921,12 +2071,10 @@ msgid "This round ends in"
 msgstr "Esta rodada termina em"
 
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:77
-#| msgid "Beginner"
 msgid "Winner"
 msgstr "Campeão"
 
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:94
-#| msgid "Level"
 msgid "Level:"
 msgstr "Nível:"
 
@@ -1950,16 +2098,11 @@ msgstr "Lição não possui vídeos."
 msgid "Videos of %(lesson)s"
 msgstr "Vídeos de %(lesson)s"
 
-#: askmath/templates/askmath/fields/caption.html:5
-msgid "This field in required."
-msgstr "Este campo é obrigatório."
-
 #: askmath/templates/askmath/fields/email.html:9
 #: askmath/templates/askmath/fields/number.html:9
 #: askmath/templates/askmath/fields/password.html:9
 #: askmath/templates/askmath/fields/text.html:9
 #: askmath/templates/askmath/fields/textarea.html:9
-#| msgid "This field cannot be null."
 msgid "This field can not be empty"
 msgstr "Este campo não pode estar vazio"
 
@@ -2041,10 +2184,6 @@ msgstr "Última postagem"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:79
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\tSee %(topics)s posts\n"
-#| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\tSee %(topics)s posts\n"
@@ -2055,10 +2194,6 @@ msgstr ""
 
 #: askmath/templates/askmath/forum/category/view_categories.html:90
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\t<h6>%(creation)s by %(person)s.</h6>\n"
-#| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\t<h6>%(creation)s by %(person)s.</h6>\n"
@@ -2094,7 +2229,6 @@ msgid "Click here to get authorization."
 msgstr "Clique aqui para obter autorização."
 
 #: askmath/templates/askmath/forum/topic/view_topics.html:24
-#| msgid "Add Topic"
 msgid "Add topic"
 msgstr "Adicionar Tópico"
 
@@ -2146,10 +2280,6 @@ msgid "Objective"
 msgstr "Objetivo"
 
 #: askmath/templates/askmath/index/about.html:46
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
-#| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\tOur goal is to provide a simple, intuitive and elegant platform for students who want to learn more about the different branches of mathematics.\n"
@@ -2310,10 +2440,9 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:90
-#, fuzzy
 #| msgid "See persons"
 msgid "See Lessons"
-msgstr "Ver pessoas"
+msgstr "Ver liçoes"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:8
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:16
@@ -2334,16 +2463,14 @@ msgid "Errors for deficiency"
 msgstr "Erros para a Deficiência"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:98
-#, fuzzy
 #| msgid "Questions"
 msgid "See Questions"
-msgstr "Questões"
+msgstr "Ver questões"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:102
-#, fuzzy
 #| msgid "Sort Videos"
 msgid "See Videos"
-msgstr "Ordenar Vídeos"
+msgstr "Ver vídeos"
 
 #: askmath/templates/askmath/manager/manager_home.html:5
 msgid "Site admin"
@@ -2529,12 +2656,6 @@ msgstr "Enviar Feedback..."
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: askmath/templates/askmath/user/password_reset_complete.html:7
-#: askmath/templates/askmath/user/password_reset_complete.html:11
-#: askmath/templates/registration/password_change_done.html:12
-msgid "Password change successful"
-msgstr "Senha alterada com sucesso"
-
 #: askmath/templates/askmath/user/password_reset_complete.html:13
 msgid "Continue to login"
 msgstr "Continua para entrar"
@@ -2550,11 +2671,6 @@ msgstr "Entre com sua senha"
 #: askmath/templates/askmath/user/password_reset_confirm.html:16
 msgid "Save"
 msgstr "Salvar"
-
-#: askmath/templates/askmath/user/password_reset_confirm.html:21
-#: askmath/templates/registration/password_reset_confirm.html:16
-msgid "Password reset unsuccessful"
-msgstr "Redefinição de senha malsucedida"
 
 #: askmath/templates/askmath/user/password_reset_confirm.html:23
 msgid ""
@@ -2576,46 +2692,6 @@ msgid ""
 msgstr ""
 "Nós lhe enviamos instruções para configurar a sua senha. Você deve recebê-"
 "las em breve."
-
-#: askmath/templates/askmath/user/password_reset_done.html:12
-msgid ""
-"If you don't receive an email, please make sure you've entered the address "
-"you registered with, and check your spam folder."
-msgstr ""
-"Se você não receber um e-mail, por favor, certifique-se de que você digitou "
-"o endereço que você registrou, e verifique a sua pasta de spam."
-
-#: askmath/templates/askmath/user/password_reset_email.html:2
-#: askmath/templates/registration/password_reset_email.html:2
-#, python-format
-msgid ""
-"You're receiving this email because you requested a password reset for your "
-"user account at %(site_name)s."
-msgstr ""
-"Você está recebendo este e-mail porque solicitou uma redefinição de senha "
-"para sua conta de usuário em  %(site_name)s."
-
-#: askmath/templates/askmath/user/password_reset_email.html:4
-#: askmath/templates/registration/password_reset_email.html:4
-msgid "Please go to the following page and choose a new password:"
-msgstr "Por favor, vá para a seguinte página e escolhar uma nova senha:"
-
-#: askmath/templates/askmath/user/password_reset_email.html:9
-#: askmath/templates/registration/password_reset_email.html:10
-msgid "Thanks for using our site!"
-msgstr "Obrigado por usar o nosso site!"
-
-#: askmath/templates/askmath/user/password_reset_email.html:11
-#: askmath/templates/registration/password_reset_email.html:12
-#, python-format
-msgid "The %(site_name)s team"
-msgstr "Equipe do %(site_name)s"
-
-#: askmath/templates/askmath/user/password_reset_form.html:5
-#: askmath/templates/askmath/user/password_reset_form.html:9
-#: askmath/templates/registration/password_change_form.html:12
-msgid "Password reset"
-msgstr "Senha alterada"
 
 #: askmath/templates/askmath/user/password_reset_form.html:15
 msgid "Reset my password"
@@ -2647,7 +2723,6 @@ msgid "No result found!!!"
 msgstr "Nenhuma resultado encontrado!!!"
 
 #: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:5
-#| msgid "Text Editor:"
 msgid "Text Editor"
 msgstr "Editor de Texto:"
 
@@ -2665,78 +2740,6 @@ msgstr "A pré-visualização é mostrada aqui"
 #: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:25
 msgid "Save changes"
 msgstr "Salvar alterações"
-
-#: askmath/templates/registration/password_change_done.html:7
-msgid "Password Reset Change"
-msgstr "Senha alterada"
-
-#: askmath/templates/registration/password_change_done.html:14
-msgid "Your password was changed."
-msgstr "Sua senha foi alterada."
-
-#: askmath/templates/registration/password_change_form.html:7
-msgid "Password Change Form"
-msgstr "Senha alterada no Formulário"
-
-#: askmath/templates/registration/password_change_form.html:14
-msgid "Forgotten your password? Enter your email addess below"
-msgstr "Esqueceu sua senha? Digite seu email abaixo."
-
-#: askmath/templates/registration/password_change_form.html:20
-msgid "Change my password"
-msgstr "Alterar minha senha"
-
-#: askmath/templates/registration/password_reset_complete.html:8
-msgid ""
-"Password reset complete : Your password has been set.  You may go ahead and "
-"log in now... :)"
-msgstr "Sua senha foi definida. Você pode ir em frente e entrar agora"
-
-#: askmath/templates/registration/password_reset_complete.html:9
-#, python-format
-msgid "Go to <a href='%(login_url)s'>Log in</a>..."
-msgstr "Vá para <a href='%(login_url)s'>Log in</a>..."
-
-#: askmath/templates/registration/password_reset_confirm.html:8
-msgid ""
-"Please enter your new password twice so we can verify you typed it in "
-"correctly."
-msgstr ""
-"Por favor digite sua nova senha duas vezes para que possamos verificar a "
-"introduziu em corretamente."
-
-#: askmath/templates/registration/password_reset_confirm.html:17
-msgid ""
-"The password reset link was invalid, possibly because it has already been "
-"used.  Please request a new password reset."
-msgstr ""
-"O link de redefinição de senha esta inválido, possivelmente porque ele já "
-"foi utilizado. Por favor, solicite uma nova redefinição de senha."
-
-#: askmath/templates/registration/password_reset_done.html:8
-#| msgid "Enter yout email."
-msgid "Check your email."
-msgstr "Entre com seu email."
-
-#: askmath/templates/registration/password_reset_email.html:8
-msgid "Your username, in case you've forgotten:"
-msgstr "Seu nome de usuário, caso você tenha esquecido:"
-
-#: askmath/templates/registration/password_reset_form.html:7
-msgid "Password Reset"
-msgstr "Senha alterada"
-
-#: askmath/templates/registration/password_reset_form.html:16
-msgid "Recover Password"
-msgstr "Recuperar Senha"
-
-#: askmath/templates/registration/password_reset_form.html:19
-msgid ""
-"Provide your email address below and we will send you instructions to set a "
-"new one."
-msgstr ""
-"Fornecer seu endereço de e-mail abaixo e nós lhe enviaremos instruções para "
-"definir um novo."
 
 #: askmath/utils/markdown/utils/quote.py:19
 #, python-format
@@ -2909,7 +2912,6 @@ msgid "Create Classe"
 msgstr "Criar Turma"
 
 #: askmath/views/manager/classe/classe.py:54
-#| msgid "Edit Category"
 msgid "Edit Classe"
 msgstr "Editar Turma"
 
@@ -3364,7 +3366,6 @@ msgid "Enter a list of values."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/forms/fields.py:977
-#| msgid "Enter yout name."
 msgid "Enter a complete value."
 msgstr ""
 
@@ -3584,7 +3585,6 @@ msgid "Sat"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:11
-#| msgid "Student"
 msgid "Sun"
 msgstr ""
 
@@ -3597,7 +3597,6 @@ msgid "February"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:18
-#| msgid "Search"
 msgid "March"
 msgstr ""
 
@@ -3696,7 +3695,6 @@ msgid "Feb."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:33
-#| msgid "Search"
 msgctxt "abbrev. month"
 msgid "March"
 msgstr ""
@@ -3757,7 +3755,6 @@ msgid "February"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/dates.py:47
-#| msgid "Search"
 msgctxt "alt. month"
 msgid "March"
 msgstr ""
@@ -3818,7 +3815,6 @@ msgid "%(truncated_text)s..."
 msgstr ""
 
 #: env/lib/python2.7/site-packages/django/utils/text.py:245
-#| msgid "Sort"
 msgid "or"
 msgstr "ou"
 
@@ -4001,7 +3997,6 @@ msgstr ""
 #: env/lib/python2.7/site-packages/djcelery/models.py:211
 #: env/lib/python2.7/site-packages/djcelery/models.py:339
 #: env/lib/python2.7/site-packages/kombu/transport/django/models.py:12
-#| msgid "Username"
 msgid "name"
 msgstr "nome"
 
@@ -4386,7 +4381,6 @@ msgid "in seconds if task succeeded"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:352
-#| msgid "Terms of service"
 msgid "number of retries"
 msgstr "número de entradas"
 
@@ -4462,6 +4456,12 @@ msgstr ""
 #: nocaptcha_recaptcha/fields.py:21
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid "Go to <a href='%(login_url)s'>Log in</a>..."
+#~ msgstr "Vá para <a href='%(login_url)s'>Log in</a>..."
+
+#~ msgid "Check your email."
+#~ msgstr "Entre com seu email."
 
 #~ msgid "Last Winner"
 #~ msgstr "Último Campeão"

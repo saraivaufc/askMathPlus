@@ -29,14 +29,14 @@
 								<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 								{% endif %}
 							</div>
-							<label class="profile-name align-center">
+							<label class="profile-name align-center text-small">
 								{{ comment.get_person.get_full_name }}
 							</label>
 						</div>
 					</div>
 					<div class="cell colspan11">
 						<div class="padding10">
-							<p id="comment-{{ comment.id }}" class="post-description text-accent">{{ comment.get_description|linebreaksbr }}</p>
+							<p id="comment-{{ comment.id }}" class="post-description">{{ comment.get_description|linebreaksbr }}</p>
 							{% if request.user in comment.get_likes_persons %}
 							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="image-button success button-like">
 							{% else %}

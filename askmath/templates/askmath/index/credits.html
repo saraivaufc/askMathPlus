@@ -15,31 +15,18 @@
 
 {% block content %}
 
-<section>
-	<div class="container">
-		<div class="row">
-		<div class="panel width">
-			<div class="heading align-center">
-				<span class="icon mif-apps text-left"></span>
-				<span class="title">{% trans "Credits" %}</span>
-			</div>
-			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<ul class="list-group">
-							{% for title, homepage in "SITE_EXTERNAL_COMPONENTES"|settings  %}
-								<div class="product bg-grayLight">
-									<span class="title">{{ title }}</span>
-									<span class="homepage fg-darkBlue"><a href="{{ homepage }}">homepage</a></span>
-								</div>
-							{% endfor %}
-						</ul>			
-					</div>
+<div class="card block-shadow">
+	<h3 class="align-center page-title"><span>{% trans "Credits" %}</h3>
+	<div class="padding20">
+		<div class="listview">
+			{% for title, homepage in "SITE_EXTERNAL_COMPONENTES"|settings  %}
+				<div class="list  bg-grayLighter margin10 ">
+					<span class="list-title">{{ title }}</span>
+					<a href="{{ homepage }}">{% trans "homepage" %}</a>
 				</div>
-			</div>
+			{% endfor %}
 		</div>
-		</div>
-	</div>
-</section>
+	</div>	
+</div>
 
 {% endblock %}

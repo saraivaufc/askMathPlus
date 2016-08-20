@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<ul>
+	<li>
+		<p class="align-justify">
+			<span data-role="popover" data-popover-mode="click"  data-popover-position="top" data-popover-text="{% trans "This field in required." %}" data-popover-background="bg-lightRed" data-popover-color="fg-white" class="fg-red"> * </span>
+			{% trans "It indicates that the field is required." %}
+		</p>
+	</li>
+	<li>
+		<p class="align-justify">
+			<span class='mif-file-code'></span>
+			{% trans "Indicates that the field accepts latex notation, click it to open the latex editor." %}
+		</p>
+	</li>
+</ul>

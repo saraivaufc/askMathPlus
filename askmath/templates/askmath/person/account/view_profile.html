@@ -36,7 +36,6 @@
 					<h4>{{ person.get_email }}</h4>
 					<h5>{% trans "Registered in:" %} {{ person.date_joined }}</h5>
 				</div>
-
 			</div>
 		</div>
 
@@ -52,10 +51,10 @@
 						<span class="icon mif-key"></span>
 						<span class="title">{% trans "Password Alter" %}</span>
 					</a>
-					<button  class="image-button danger width" onclick="showDialog('#dialog_remove_account')">
+					<a  class="image-button danger width" onclick="showDialog('#dialog_remove_account')">
 						<span class="icon mif-cross"></span>
 						<span class="title">{% trans "Account Remove" %}</span>
-					</button>
+					</a>
 				</div>
 			</div>
 		</div>

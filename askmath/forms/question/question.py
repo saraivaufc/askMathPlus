@@ -15,5 +15,5 @@ class QuestionForm(ModelForm):
             'help': Textarea(attrs={'class': 'latex'}),
             'items': HiddenInput(attrs={'class': 'hidden'}),
             'scores': Select(attrs={'required': 'required'}),
-            'visible': CheckboxInput(attrs={'required': 'required'}),
+            'visible': CheckboxInput(),
         }

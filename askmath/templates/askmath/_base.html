@@ -115,7 +115,6 @@
 				</section>
 			</main>
 		</div>
-		<br>
 		<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 			{% block footer %}
 				{% include 'askmath/_footer.html' %}
@@ -156,8 +155,7 @@
 		
 		{% block scripts %}
 		{% endblock %}
-			{% comment %}
-				{% include "askmath/send_feedback.html"  %}
-		{% endcomment %}
+		
+		{% include "askmath/send_feedback.html"  %}
 	</body>
 </html>

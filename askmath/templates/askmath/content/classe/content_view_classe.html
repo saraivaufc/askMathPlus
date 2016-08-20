@@ -62,7 +62,7 @@
 							{% endif %}
 						</dd>
 
-						<dt>{% trans "Disciplines" %}</dt>
+						<dt>{% trans "Disciplines" %}:</dt>
 						<dd>
 							{% for discipline in classe.get_disciplines %}
 								<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tag info">{{ discipline.title }}</a>

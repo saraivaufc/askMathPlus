@@ -19,12 +19,15 @@
 		<div class="cell colspan10">
 			<div class="card block-shadow">
 				<h3 class="align-center page-title">{% trans "Ranking Round" %}</h3>
-
-				<p class="text-accent padding10">{% trans "This round ends in" %} {{  student_experience.get_date_end_new_round|naturaltime}}.</p>	
-				
+				<div class="padding10">
+					<p class="text-accent">
+						{% trans "This round ends in" %} {{  student_experience.get_date_end_new_round|naturaltime}}.
+						<a href="#me"><span class="text-secondary">{% trans "My current position" %}</span></a>
+					</p>	
+				</div>
 				<div class="listview-outlook padding10" data-role="listview">
 					{% for i in students %}
-						<div class="list block-shadow {% if i.student == me %}bg-lightBlue fg-white{% endif %}" style="margin-bottom: 10px;">
+						<div {% if i.student == me %}id="me"{% endif %} class="list block-shadow {% if i.student == me %}bg-lightBlue{% else %}bg-grayLight{% endif %} fg-white" style="margin-bottom: 10px;">
 							<div class="list-content">
 								<div class="flex-grid">
 									<div class="row">
@@ -108,12 +111,6 @@
 					</div>
 
 					<table class="width">
-						<tr>
-							<td class="align-left">{% trans "New Points:" %}</td>
-							<td>
-								<label class="tag no-margin {% if last_winner.student.get_student_experience.get_new_scores >= 0 %}success{% else %}alert{% endif %}">{{ last_winner.student.get_student_experience.get_new_scores|show_signal_number|default_if_none:"0" }}</label>
-							</td>
-						</tr>
 						<tr>
 							<td class="align-left">{% trans "All Points:" %}</td>
 							<td>
