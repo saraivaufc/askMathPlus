@@ -1,28 +1,20 @@
 1 - O model Classe está com o nome em português, o nome em inglês(Class) não pode ser usado por se tratar de uma 
 palavra reservada do Python.
 	Solução: Buscar uma alternativa que expresse o sentido de turma.
-
 2- O AdvancedFileInput substitue um botão pela URL do arquivo que você selecionou, caso este botão esteja logo 
 abaixo (http://localhost:8000/home/person/account/edit/).
 	Solução: Adicionar uma <div class="row"> para conter o input modificar.
-
 3-   [Solucionado Parcialmente]
 	A DataTable está quebrando o Layout
 	Solução: procurar como sertar o parent da DataTable no momento de sua criação
 	Solução Parcial: Retirei a paginação da DataTable.
-
 4 -  Utilizar o DJango REST ao invés dos "services"
-
 5 -  [Solucionado] 
 	O Recuperar senha não pega as páginas adapatadas em modo servidor
 	Solução: utilizar os seguintes parâmetros nas urls: {'template_name': ?, 'post_reset_redirect':? e 'email_template_name':?}
-
 6 - [Cancelei por enquanto]Enfrentando problema com o login atravéz do Gmail
-
 7- Alterar a licença para CC0
-
 8 - Realizar a tradução no sobre
-
 9 - Atualizar os packages que utilizei nos creditos
-
-10- 
+10- Bug no botão de show/hide password
+11- Traduzir: Social networks

@@ -14,19 +14,19 @@ SITE_DEVELOPERS = [{
 					'name': u'Ciano Saraiva',
 					'email': u'<saraiva.ufc@gmail.com>',
 					'profile_image': u'/static/askmath/img/images_profiles/ciano.jpg',
-					'skills': [u'Python', u'Django', u'HTML', u'JavaScript', u'CSS', u'Jquery'],
+					'skills': [u'Python', u'Django', u'HTML5', u'JavaScript', u'CSS3', u'Jquery'],
 					'message': _(u'Hi! My name is Ciano Saraiva and im author of AskMath.')
 					},]
 
 SITE_EXTERNAL_COMPONENTES = [
-	(u"Django", u"https://www.djangoproject.com/"),
-	(u"Rosetta Package", u"https://pypi.python.org/pypi/django-rosetta"),
 	(u"Python", u"https://www.python.org/"),
+	(u"Django", u"https://www.djangoproject.com/"),
 	(u"Metro Ui CSS", u"https://metroui.org.ua/"),
-	(u"Bootstrap", u"http://getbootstrap.com/"),
+	(u"Rosetta Package", u"https://pypi.python.org/pypi/django-rosetta"),
+	(u"Django REST framework", u"http://www.django-rest-framework.org"),
+	(u"Python Social Auth", u"http://psa.matiasaguirre.net/docs/index.html"),
 	(u"Jquery", u"https://jquery.com/"),
 	(u"Jquery UI", u"https://jqueryui.com/"),
-	(u"Jquery Noty", u"http://ned.im/noty/"),
 	(u"Highcharts", u"http://www.highcharts.com/"),
 	(u"MathJax", u"https://www.mathjax.org/"),
 	(u"WebKit", u"http://www.webkit.org/"),
@@ -34,4 +34,5 @@ SITE_EXTERNAL_COMPONENTES = [
 	(u"Select2", u"https://select2.github.io/"),
 	(u"ReCaptcha Google", u"https://www.google.com/recaptcha"),
 	(u"Captcha Package", u"https://github.com/praekelt/django-recaptcha"),
+	(u"Celery", u"http://www.celeryproject.org"),
 ]

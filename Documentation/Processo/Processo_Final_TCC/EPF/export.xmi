@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI epf:version="1.5.0" xmi:version="2.0" xmlns:epf="http://www.eclipse.org/epf" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.5/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:xmi="http://www.omg.org/XMI">
+<org.eclipse.epf.uma.resourcemanager:ResourceManager guid="_8q780Ui6EeaBG81lm8OWTg" xmi:id="_8q780Ui6EeaBG81lm8OWTg">
+<subManagers href="uma://_YhDj8JH0EeWPzKZ2aWoJjQ#_NQWP6Ui7EeaBG81lm8OWTg" xmi:id="_NQWP6Ui7EeaBG81lm8OWTg">
+</subManagers>
+<resourceDescriptors id="_8q780Ei6EeaBG81lm8OWTg" uri="" xmi:id="_8q780ki6EeaBG81lm8OWTg">
+</resourceDescriptors>
+<resourceDescriptors id="_YhDj8JH0EeWPzKZ2aWoJjQ" uri="AskMath/plugin.xmi" xmi:id="_NQWP6ki7EeaBG81lm8OWTg">
+</resourceDescriptors>
+</org.eclipse.epf.uma.resourcemanager:ResourceManager>
+<org.eclipse.epf.uma:MethodLibrary guid="_8q780Ei6EeaBG81lm8OWTg" name="Library3" xmi:id="_8q780Ei6EeaBG81lm8OWTg">
+<methodPlugins href="uma://_YhDj8JH0EeWPzKZ2aWoJjQ#_YhDj8JH0EeWPzKZ2aWoJjQ" xmi:id="_YhDj8JH0EeWPzKZ2aWoJjQ">
+</methodPlugins>
+<methodElementProperty value="0">
+</methodElementProperty>
+<methodElementProperty value="_YhDj8JH0EeWPzKZ2aWoJjQ">
+</methodElementProperty>
+<methodElementProperty value="AskMath">
+</methodElementProperty>
+</org.eclipse.epf.uma:MethodLibrary>
+</xmi:XMI>

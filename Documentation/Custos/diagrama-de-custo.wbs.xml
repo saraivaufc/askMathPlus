@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<proj ListSeperator=";" DefaultDurationUnits="days" DefaultWorkUnits="hours" HoursPerDay="8" HoursPerWeek="40" DaysPerMonth="21.75" DefaultStartTime="08:00" DefaultFinishTime="17:00" NADate="NA">
+		<calendar>
+			<normalhours s1="08:00" f1="12:00" s2="13:00" f2="17:00"/>
+			<dow day="sun" working="no"/>
+			<dow day="mon" working="yes"/>
+			<dow day="tue" working="yes"/>
+			<dow day="wed" working="yes"/>
+			<dow day="thu" working="yes"/>
+			<dow day="fri" working="yes"/>
+			<dow day="sat" working="no"/>
+		</calendar>
+		<currency symbol="R$" digits="2" positiveOrder="2" negativeOrder="9"/>
+		<summary ScheduleFromStart="yes" CalculateCostProgress="no" MultipleCriticalPaths="no" CriticalSlack="0d" Name="diagrama de custo" Title="diagrama de custo" Work="805.6h" Duration="1d" Cost="14007.5300" Start="2015-12-17T08:00" Finish="2015-12-17T17:00"/>
+		<tasks>
+			<task ID="0" UniqueID="0" OutlineLevel="0" Name="diagrama de custo" Work="805.6h" RemainingWork="805.6h" Duration="1d" RemainingDuration="1d" Cost="14007.5300" RemainingCost="14007.5300" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes"/>
+			<task ID="1" UniqueID="1" OutlineLevel="1" Name="Plano Geanny" Work="805.6h" RemainingWork="805.6h" Duration="1d" RemainingDuration="1d" Cost="14007.5300" RemainingCost="14007.5300" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="2" UniqueID="8" OutlineLevel="2" Name="Planejamento do Projeto" Work="133.6h" RemainingWork="133.6h" Duration="1d" RemainingDuration="1d" Cost="2126.4000" RemainingCost="2126.4000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="3" UniqueID="116" OutlineLevel="3" Name="Planejar Reuni&#227;o Inicial do Projeto" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="4" UniqueID="115" OutlineLevel="3" Name="Realizar Reuni&#227;o Inicial do Projeto" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="5" UniqueID="10" OutlineLevel="3" Name="Termo de Abertura" Work="13.6h" RemainingWork="13.6h" Duration="1d" RemainingDuration="1d" Cost="150.4000" RemainingCost="150.4000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="6" UniqueID="117" OutlineLevel="4" Name="Definir Template para o Termo de Abertura" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="7" UniqueID="43" OutlineLevel="4" Name="Desenvolver o Termo de Abertura" Work="8h" RemainingWork="8h" Duration="1d" Cost="80.0000" FixedCost="80.0000" RemainingCost="80.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="8" UniqueID="44" OutlineLevel="4" Name="Planejar Reuni&#227;o para valida&#231;&#227;o do Termo de Abertura" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="9" UniqueID="42" OutlineLevel="4" Name="Realizar Reuni&#227;o para Valida&#231;&#227;o do Termo de Abertura" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="38.4000" FixedCost="38.4000" RemainingCost="38.4000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="10" UniqueID="119" OutlineLevel="3" Name="Escopo" Work="19.2h" RemainingWork="19.2h" Duration="1d" RemainingDuration="1d" Cost="248.0000" RemainingCost="248.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="11" UniqueID="120" OutlineLevel="4" Name="Definir Template para a Declara&#231;&#227;o do Escopo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="12" UniqueID="121" OutlineLevel="4" Name="Definir Escopo do Projeto" Work="9.6h" RemainingWork="9.6h" Duration="1d" Cost="80.0000" FixedCost="80.0000" RemainingCost="80.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="13" UniqueID="122" OutlineLevel="4" Name="Planejar Reuni&#227;o para Valida&#231;&#227;o de Escopo" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="14" UniqueID="123" OutlineLevel="4" Name="Realizar Reuni&#227;o para Valida&#231;&#227;o de Escopo" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="112.0000" FixedCost="112.0000" RemainingCost="112.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="15" UniqueID="128" OutlineLevel="3" Name="Estrutura Analitica do Projeto" Work="3.2h" RemainingWork="3.2h" Duration="1d" RemainingDuration="1d" Cost="32.0000" RemainingCost="32.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="16" UniqueID="129" OutlineLevel="4" Name="Definir as Fases" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="17" UniqueID="130" OutlineLevel="4" Name="Definiros Pacotes de Trabalho" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="18" UniqueID="135" OutlineLevel="3" Name="Cronograma" Work="6.4h" RemainingWork="6.4h" Duration="1d" RemainingDuration="1d" Cost="64.0000" RemainingCost="64.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="19" UniqueID="136" OutlineLevel="4" Name="Definir as Tarefas para cada Produto de Trabalho" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="20" UniqueID="137" OutlineLevel="4" Name="Definir o Tempo para cada Tarefa" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="21" UniqueID="138" OutlineLevel="4" Name="Alocar Recursos para cada Tarefa" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="22" UniqueID="139" OutlineLevel="4" Name="Definir as Precedencias para cada Tarefa" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="23" UniqueID="9" OutlineLevel="3" Name="Plano de Gerenciamento do Projeto" Work="88h" RemainingWork="88h" Duration="1d" RemainingDuration="1d" Cost="1600.0000" RemainingCost="1600.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="24" UniqueID="54" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento do Escopo" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="25" UniqueID="45" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento de Requisitos" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="26" UniqueID="46" OutlineLevel="4" Name="Desenvolver o Plano de Gerencimento do Cronograma" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="27" UniqueID="47" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento dos Custos" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="28" UniqueID="48" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento de Qualidade" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="29" UniqueID="49" OutlineLevel="4" Name="Desenvolver o Plano de Melhorias do Processo" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="30" UniqueID="50" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento de Recursos Humanos" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="31" UniqueID="51" OutlineLevel="4" Name="Definir o Plano de Gerenciamento das Comunica&#231;&#245;es" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="32" UniqueID="52" OutlineLevel="4" Name="Desenvolver o Plano de Gerenciamento dos Riscos" Work="8h" RemainingWork="8h" Duration="1d" Cost="152.0000" FixedCost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="33" UniqueID="53" OutlineLevel="4" Name="Desenvolver o Termo de Aceita&#231;&#227;o do Projeto" Work="8h" RemainingWork="8h" Duration="1d" Cost="80.0000" FixedCost="80.0000" RemainingCost="80.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="34" UniqueID="194" OutlineLevel="4" Name="Planejar Reuni&#227;o para Valida&#231;&#227;o do Plano de Gerenciamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="35" UniqueID="195" OutlineLevel="4" Name="Realizar Reuni&#227;o para Valida&#231;&#227;o do Plano de Gerenciamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" Cost="112.0000" FixedCost="112.0000" RemainingCost="112.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="36" UniqueID="7" OutlineLevel="2" Name="Requisitos" Work="74.4h" RemainingWork="74.4h" Duration="1d" RemainingDuration="1d" Cost="984.0000" RemainingCost="984.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="37" UniqueID="142" OutlineLevel="3" Name="Reuni&#227;o de Planejamento" Work="5.6h" RemainingWork="5.6h" Duration="1d" RemainingDuration="1d" Cost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="38" UniqueID="140" OutlineLevel="4" Name="Planejar Reuni&#227;o de Planejamento para a fase de requisitos" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="39" UniqueID="144" OutlineLevel="4" Name="Realizar Reuni&#227;o Planejamento da fase de requisitos" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="40" UniqueID="11" OutlineLevel="3" Name="Levantamento" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="184.0000" RemainingCost="184.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="41" UniqueID="55" OutlineLevel="4" Name="Realizar Brainstorm" Work="8h" RemainingWork="8h" Duration="1d" Cost="184.0000" FixedCost="184.0000" RemainingCost="184.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="42" UniqueID="12" OutlineLevel="3" Name="An&#225;lise" Work="12h" RemainingWork="12h" Duration="1d" RemainingDuration="1d" Cost="72.0000" RemainingCost="72.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="43" UniqueID="56" OutlineLevel="4" Name="Organizar os Requisitos" Work="8h" RemainingWork="8h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="44" UniqueID="57" OutlineLevel="4" Name="Analisar Viabilidade dos Requisitos" Work="4h" RemainingWork="4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="45" UniqueID="13" OutlineLevel="3" Name="Especifica&#231;&#227;o" Work="16h" RemainingWork="16h" Duration="1d" RemainingDuration="1d" Cost="96.0000" RemainingCost="96.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="46" UniqueID="58" OutlineLevel="4" Name="Detalhar os Requisitos" Work="8h" RemainingWork="8h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="47" UniqueID="59" OutlineLevel="4" Name="Documentar os Requisitos" Work="8h" RemainingWork="8h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="48" UniqueID="14" OutlineLevel="3" Name="Verifica&#231;&#227;o e Valida&#231;&#227;o" Work="20h" RemainingWork="20h" Duration="1d" RemainingDuration="1d" Cost="448.0000" RemainingCost="448.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="49" UniqueID="60" OutlineLevel="4" Name="Criar Prot&#243;tipo" Work="16h" RemainingWork="16h" Duration="1d" Cost="368.0000" FixedCost="368.0000" RemainingCost="368.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="50" UniqueID="61" OutlineLevel="4" Name="Realizar Reuni&#227;o de Valida&#231;&#227;o" Work="4h" RemainingWork="4h" Duration="1d" Cost="80.0000" FixedCost="80.0000" RemainingCost="80.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="51" UniqueID="145" OutlineLevel="3" Name="Acompanhamento Periodico do Projeto" Work="12.8h" RemainingWork="12.8h" Duration="1d" RemainingDuration="1d" Cost="128.0000" RemainingCost="128.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="52" UniqueID="146" OutlineLevel="4" Name="Realizar Acompanhamento dos Custos" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="53" UniqueID="147" OutlineLevel="4" Name="Realizar Acompanhamento do Cronograma" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="54" UniqueID="148" OutlineLevel="4" Name="Realizar Acompanhamento do Processo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="55" UniqueID="149" OutlineLevel="4" Name="Realizar Acompanhamento das Atividades de Comunica&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="56" UniqueID="150" OutlineLevel="4" Name="Gerar Relat&#243;rio do Acompanhamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="57" UniqueID="151" OutlineLevel="4" Name="Realizar Reuni&#227;o de Acompanhamento do Projeto" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="58" UniqueID="6" OutlineLevel="2" Name="Projeto" Work="50.4h" RemainingWork="50.4h" Duration="1d" RemainingDuration="1d" Cost="660.5700" RemainingCost="660.5700" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="59" UniqueID="218" OutlineLevel="3" Name="Reuni&#227;o de Planejamento" Work="5.6h" RemainingWork="5.6h" Duration="1d" RemainingDuration="1d" Cost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="60" UniqueID="219" OutlineLevel="4" Name="Planejar Reuni&#227;o de Planejamento para a fase de projeto" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="61" UniqueID="220" OutlineLevel="4" Name="Realizar Reuni&#227;o Planejamento da fase de projeto" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="62" UniqueID="15" OutlineLevel="3" Name="Projeto de Arquitetura" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="63" UniqueID="62" OutlineLevel="4" Name="Desenvolver o Projeto Geral da Arquitetura" Work="4h" RemainingWork="4h" Duration="1d" Cost="72.0000" FixedCost="72.0000" RemainingCost="72.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="64" UniqueID="63" OutlineLevel="4" Name="Desenvolver o Projeto Detalhado da Arquitetura" Work="4h" RemainingWork="4h" Duration="1d" Cost="72.0000" FixedCost="72.0000" RemainingCost="72.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="65" UniqueID="16" OutlineLevel="3" Name="Casos de Uso" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="96.0000" RemainingCost="96.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="66" UniqueID="64" OutlineLevel="4" Name="Definir Diagrama de Casos de Uso" Work="4h" RemainingWork="4h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="67" UniqueID="65" OutlineLevel="4" Name="Especificar Casos de Uso" Work="4h" RemainingWork="4h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="68" UniqueID="17" OutlineLevel="3" Name="Projeto de M&#243;dulos" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="96.0000" RemainingCost="96.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="69" UniqueID="66" OutlineLevel="4" Name="Definir os M&#243;dulos do Sistema" Work="4h" RemainingWork="4h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="70" UniqueID="67" OutlineLevel="4" Name="Detalhar os M&#243;dulos do Sistema" Work="4h" RemainingWork="4h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="71" UniqueID="18" OutlineLevel="3" Name="Projeto de Classes" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="140.5700" RemainingCost="140.5700" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="72" UniqueID="68" OutlineLevel="4" Name="Definir Interfaces" Work="4h" RemainingWork="4h" Duration="1d" Cost="28.5700" FixedCost="28.5700" RemainingCost="28.5700" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="73" UniqueID="69" OutlineLevel="4" Name="Desenvolver Diagrama de Classes" Work="4h" RemainingWork="4h" Duration="1d" Cost="112.0000" FixedCost="112.0000" RemainingCost="112.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="74" UniqueID="197" OutlineLevel="3" Name="Acompanhamento Periodico do Projeto" Work="12.8h" RemainingWork="12.8h" Duration="1d" RemainingDuration="1d" Cost="128.0000" RemainingCost="128.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="75" UniqueID="198" OutlineLevel="4" Name="Realizar Acompanhamento dos Custos" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="76" UniqueID="199" OutlineLevel="4" Name="Realizar Acompanhamento do Cronograma" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="77" UniqueID="200" OutlineLevel="4" Name="Realizar Acompanhamento do Processo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="78" UniqueID="201" OutlineLevel="4" Name="Realizar Acompanhamento das Atividades de Comunica&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="79" UniqueID="202" OutlineLevel="4" Name="Gerar Relat&#243;rio do Acompanhamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="80" UniqueID="203" OutlineLevel="4" Name="Realizar Reuni&#227;o de Acompanhamento do Projeto" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="81" UniqueID="5" OutlineLevel="2" Name="Implementa&#231;&#227;o" Work="250.4h" RemainingWork="250.4h" Duration="1d" RemainingDuration="1d" Cost="5623.5600" RemainingCost="5623.5600" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="82" UniqueID="221" OutlineLevel="3" Name="Reuni&#227;o de Planejamento" Work="5.6h" RemainingWork="5.6h" Duration="1d" RemainingDuration="1d" Cost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="83" UniqueID="222" OutlineLevel="4" Name="Planejar Reuni&#227;o de Planejamento para a fase de implementa&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="84" UniqueID="223" OutlineLevel="4" Name="Realizar Reuni&#227;o Planejamento da fase de implementa&#231;&#227;o" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="85" UniqueID="19" OutlineLevel="3" Name="Desenvolvimento de M&#243;dulos" Work="208h" RemainingWork="208h" Duration="1d" RemainingDuration="1d" Cost="5007.5600" RemainingCost="5007.5600" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="86" UniqueID="94" OutlineLevel="4" Name="Desenvolver M&#243;dulo de Inscri&#231;&#227;o" Work="40h" RemainingWork="40h" Duration="1d" Cost="1120.0000" FixedCost="1120.0000" RemainingCost="1120.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="87" UniqueID="95" OutlineLevel="4" Name="Desenvolver M&#243;dulo de Atividades" Work="40h" RemainingWork="40h" Duration="1d" Cost="435.5600" FixedCost="435.5600" RemainingCost="435.5600" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="88" UniqueID="96" OutlineLevel="4" Name="Desenvolver M&#243;dulo de Materiais" Work="40h" RemainingWork="40h" Duration="1d" Cost="1120.0000" FixedCost="1120.0000" RemainingCost="1120.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="89" UniqueID="97" OutlineLevel="4" Name="Desenvolver o M&#243;dulo de Apresenta&#231;&#227;o" Work="40h" RemainingWork="40h" Duration="1d" Cost="1120.0000" FixedCost="1120.0000" RemainingCost="1120.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="90" UniqueID="98" OutlineLevel="4" Name="Desenvolver o M&#243;dulo de Credenciamento" Work="40h" RemainingWork="40h" Duration="1d" Cost="1120.0000" FixedCost="1120.0000" RemainingCost="1120.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="91" UniqueID="99" OutlineLevel="4" Name="Criar Relat&#243;rio do Desenvolvimento" Work="8h" RemainingWork="8h" Duration="1d" Cost="92.0000" FixedCost="92.0000" RemainingCost="92.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="92" UniqueID="20" OutlineLevel="3" Name="Plano de Testes" Work="24h" RemainingWork="24h" Duration="1d" RemainingDuration="1d" Cost="432.0000" RemainingCost="432.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="93" UniqueID="100" OutlineLevel="4" Name="Desenvolver Plano de Testes Unit&#225;rios" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="94" UniqueID="101" OutlineLevel="4" Name="Desenvolver Plano de Testes de Integra&#231;&#227;o" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="95" UniqueID="102" OutlineLevel="4" Name="Desenvolver Plano de Testes de Sistema" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="96" UniqueID="204" OutlineLevel="3" Name="Acompanhamento Periodico do Projeto" Work="12.8h" RemainingWork="12.8h" Duration="1d" RemainingDuration="1d" Cost="128.0000" RemainingCost="128.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="97" UniqueID="205" OutlineLevel="4" Name="Realizar Acompanhamento dos Custos" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="98" UniqueID="206" OutlineLevel="4" Name="Realizar Acompanhamento do Cronograma" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="99" UniqueID="207" OutlineLevel="4" Name="Realizar Acompanhamento do Processo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="100" UniqueID="208" OutlineLevel="4" Name="Realizar Acompanhamento das Atividades de Comunica&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="101" UniqueID="209" OutlineLevel="4" Name="Gerar Relat&#243;rio do Acompanhamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="102" UniqueID="210" OutlineLevel="4" Name="Realizar Reuni&#227;o de Acompanhamento do Projeto" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="103" UniqueID="4" OutlineLevel="2" Name="Testes" Work="138.4h" RemainingWork="138.4h" Duration="1d" RemainingDuration="1d" Cost="2908.0000" RemainingCost="2908.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="104" UniqueID="224" OutlineLevel="3" Name="Reuni&#227;o de Planejamento" Work="5.6h" RemainingWork="5.6h" Duration="1d" RemainingDuration="1d" Cost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="105" UniqueID="225" OutlineLevel="4" Name="Planejar Reuni&#227;o de Planejamento para a fase de testes" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="106" UniqueID="226" OutlineLevel="4" Name="Realizar Reuni&#227;o Planejamento da fase de testes" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="107" UniqueID="21" OutlineLevel="3" Name="Testes I" Work="28h" RemainingWork="28h" Duration="1d" RemainingDuration="1d" Cost="524.0000" RemainingCost="524.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="108" UniqueID="70" OutlineLevel="4" Name="Realizar Teste de Unidade I" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="109" UniqueID="71" OutlineLevel="4" Name="Realizar Teste de Integra&#231;&#227;o I" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="110" UniqueID="72" OutlineLevel="4" Name="Realizar Teste de Sistema I" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="111" UniqueID="73" OutlineLevel="4" Name="Gerar Relat&#243;rio de Testes I" Work="4h" RemainingWork="4h" Duration="1d" Cost="92.0000" FixedCost="92.0000" RemainingCost="92.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="112" UniqueID="22" OutlineLevel="3" Name="Ajustes e Corre&#231;&#245;es" Work="32h" RemainingWork="32h" Duration="1d" RemainingDuration="1d" Cost="856.0000" RemainingCost="856.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="113" UniqueID="74" OutlineLevel="4" Name="Realizar Ajustes e Corre&#231;&#245;es" Work="24h" RemainingWork="24h" Duration="1d" Cost="672.0000" FixedCost="672.0000" RemainingCost="672.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="114" UniqueID="75" OutlineLevel="4" Name="Gerar Relat&#243;rio de Ajustes e Corre&#231;&#245;es Realizadas" Work="8h" RemainingWork="8h" Duration="1d" Cost="184.0000" FixedCost="184.0000" RemainingCost="184.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="115" UniqueID="23" OutlineLevel="3" Name="Testes II" Work="28h" RemainingWork="28h" Duration="1d" RemainingDuration="1d" Cost="488.0000" RemainingCost="488.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="116" UniqueID="76" OutlineLevel="4" Name="Realizar Teste de Unidade II" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="117" UniqueID="77" OutlineLevel="4" Name="Realizar Teste de Integra&#231;&#227;o II" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="118" UniqueID="78" OutlineLevel="4" Name="Realizar Teste de Sistema II" Work="8h" RemainingWork="8h" Duration="1d" Cost="144.0000" FixedCost="144.0000" RemainingCost="144.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="119" UniqueID="79" OutlineLevel="4" Name="Relat&#243;rio de Testes II" Work="4h" RemainingWork="4h" Duration="1d" Cost="56.0000" FixedCost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="120" UniqueID="103" OutlineLevel="3" Name="Ajustes e corre&#231;&#245;es II" Work="32h" RemainingWork="32h" Duration="1d" RemainingDuration="1d" Cost="856.0000" RemainingCost="856.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="121" UniqueID="107" OutlineLevel="4" Name="realizar ajustes e corre&#231;&#245;es II" Work="24h" RemainingWork="24h" Duration="1d" RemainingDuration="1d" Cost="672.0000" FixedCost="672.0000" RemainingCost="672.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="122" UniqueID="110" OutlineLevel="4" Name="realizar relatorio de ajustes e corre&#231;&#245;es II" Work="8h" RemainingWork="8h" Duration="1d" Cost="184.0000" FixedCost="184.0000" RemainingCost="184.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="123" UniqueID="211" OutlineLevel="3" Name="Acompanhamento Periodico do Projeto" Work="12.8h" RemainingWork="12.8h" Duration="1d" RemainingDuration="1d" Cost="128.0000" RemainingCost="128.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="124" UniqueID="212" OutlineLevel="4" Name="Realizar Acompanhamento dos Custos" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="125" UniqueID="213" OutlineLevel="4" Name="Realizar Acompanhamento do Cronograma" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="126" UniqueID="214" OutlineLevel="4" Name="Realizar Acompanhamento do Processo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="127" UniqueID="215" OutlineLevel="4" Name="Realizar Acompanhamento das Atividades de Comunica&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="128" UniqueID="216" OutlineLevel="4" Name="Gerar Relat&#243;rio do Acompanhamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="129" UniqueID="217" OutlineLevel="4" Name="Realizar Reuni&#227;o de Acompanhamento do Projeto" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="130" UniqueID="3" OutlineLevel="2" Name="Implanta&#231;&#227;o" Work="130.4h" RemainingWork="130.4h" Duration="1d" RemainingDuration="1d" Cost="1281.0000" RemainingCost="1281.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="131" UniqueID="227" OutlineLevel="3" Name="Reuni&#227;o de Planejamento" Work="5.6h" RemainingWork="5.6h" Duration="1d" RemainingDuration="1d" Cost="56.0000" RemainingCost="56.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="132" UniqueID="228" OutlineLevel="4" Name="Planejar Reuni&#227;o de Planejamento para a fase de implanta&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="133" UniqueID="229" OutlineLevel="4" Name="Realizar Reuni&#227;o Planejamento da fase de implanta&#231;&#227;o" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="134" UniqueID="27" OutlineLevel="3" Name="Manual do Sistema" Work="40h" RemainingWork="40h" Duration="1d" RemainingDuration="1d" Cost="240.0000" RemainingCost="240.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="135" UniqueID="80" OutlineLevel="4" Name="Criar Manual do Sistema" Work="40h" RemainingWork="40h" Duration="1d" Cost="240.0000" FixedCost="240.0000" RemainingCost="240.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="136" UniqueID="26" OutlineLevel="3" Name="Prepara&#231;&#227;o do Ambiente" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="177.0000" RemainingCost="177.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="137" UniqueID="81" OutlineLevel="4" Name="Analisar Infra-Estrutura" Work="4h" RemainingWork="4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="138" UniqueID="82" OutlineLevel="4" Name="Definir Materiais e Ferramentas Utilizadas" Work="4h" RemainingWork="4h" Duration="1d" Cost="153.0000" FixedCost="153.0000" RemainingCost="153.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="139" UniqueID="25" OutlineLevel="3" Name="Instala&#231;&#227;o do Sistema" Work="32h" RemainingWork="32h" Duration="1d" RemainingDuration="1d" Cost="232.0000" RemainingCost="232.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="140" UniqueID="83" OutlineLevel="4" Name="Realizar Instala&#231;&#227;o do Sistema" Work="8h" RemainingWork="8h" Duration="1d" Cost="48.0000" FixedCost="48.0000" RemainingCost="48.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="141" UniqueID="84" OutlineLevel="4" Name="Realizar Testes de Instala&#231;&#227;o" Work="16h" RemainingWork="16h" Duration="1d" Cost="96.0000" FixedCost="96.0000" RemainingCost="96.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="142" UniqueID="85" OutlineLevel="4" Name="Gerar Relat&#243;rio de Instala&#231;&#227;o" Work="8h" RemainingWork="8h" Duration="1d" Cost="88.0000" FixedCost="88.0000" RemainingCost="88.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="143" UniqueID="24" OutlineLevel="3" Name="Teste de Cliente" Work="32h" RemainingWork="32h" Duration="1d" RemainingDuration="1d" Cost="448.0000" RemainingCost="448.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="144" UniqueID="86" OutlineLevel="4" Name="Realizar Testes com o Cliente" Work="16h" RemainingWork="16h" Duration="1d" Cost="160.0000" FixedCost="160.0000" RemainingCost="160.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="145" UniqueID="87" OutlineLevel="4" Name="Realizar Ajustes e Corre&#231;&#245;es I" Work="16h" RemainingWork="16h" Duration="1d" Cost="288.0000" FixedCost="288.0000" RemainingCost="288.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="146" UniqueID="230" OutlineLevel="3" Name="Acompanhamento Periodico do Projeto" Work="12.8h" RemainingWork="12.8h" Duration="1d" RemainingDuration="1d" Cost="128.0000" RemainingCost="128.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="147" UniqueID="231" OutlineLevel="4" Name="Realizar Acompanhamento dos Custos" Work="1.6h" RemainingWork="1.6h" Duration="1d" RemainingDuration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="148" UniqueID="232" OutlineLevel="4" Name="Realizar Acompanhamento do Cronograma" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="149" UniqueID="233" OutlineLevel="4" Name="Realizar Acompanhamento do Processo" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="150" UniqueID="234" OutlineLevel="4" Name="Realizar Acompanhamento das Atividades de Comunica&#231;&#227;o" Work="1.6h" RemainingWork="1.6h" Duration="1d" Cost="16.0000" FixedCost="16.0000" RemainingCost="16.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="151" UniqueID="235" OutlineLevel="4" Name="Gerar Relat&#243;rio do Acompanhamento do Projeto" Work="4h" RemainingWork="4h" Duration="1d" RemainingDuration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="152" UniqueID="236" OutlineLevel="4" Name="Realizar Reuni&#227;o de Acompanhamento do Projeto" Work="2.4h" RemainingWork="2.4h" Duration="1d" Cost="24.0000" FixedCost="24.0000" RemainingCost="24.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="153" UniqueID="2" OutlineLevel="2" Name="Encerramento" Work="28h" RemainingWork="28h" Duration="1d" RemainingDuration="1d" Cost="424.0000" RemainingCost="424.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="154" UniqueID="28" OutlineLevel="3" Name="Aceite Formal do Cliente" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="80.0000" RemainingCost="80.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="155" UniqueID="88" OutlineLevel="4" Name="Desenvolver Template do Aceite Formal do Cliente" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="156" UniqueID="89" OutlineLevel="4" Name="Desenvolver o Documento do Aceite Formal do Cliente" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="157" UniqueID="29" OutlineLevel="3" Name="Relat&#243;rio de Li&#231;&#245;es Aprendidas" Work="8h" RemainingWork="8h" Duration="1d" RemainingDuration="1d" Cost="152.0000" RemainingCost="152.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="158" UniqueID="90" OutlineLevel="4" Name="Realizar Reuni&#227;o para Discutir Li&#231;&#245;es Aprendidas" Work="4h" RemainingWork="4h" Duration="1d" Cost="112.0000" FixedCost="112.0000" RemainingCost="112.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="159" UniqueID="91" OutlineLevel="4" Name="Gerar Relat&#243;rio Sobre Li&#231;&#245;es Aprendidas" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="160" UniqueID="30" OutlineLevel="3" Name="Reuni&#227;o de Encerramento" Work="12h" RemainingWork="12h" Duration="1d" RemainingDuration="1d" Cost="192.0000" RemainingCost="192.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="161" UniqueID="92" OutlineLevel="4" Name="Desenvolver ATA da Reuni&#227;o de Encerramento" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="162" UniqueID="193" OutlineLevel="4" Name="Planejar Reuni&#227;o de Encerramento" Work="4h" RemainingWork="4h" Duration="1d" Cost="40.0000" FixedCost="40.0000" RemainingCost="40.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+			<task ID="163" UniqueID="93" OutlineLevel="4" Name="Realizar Reuni&#227;o de Encerramento" Work="4h" RemainingWork="4h" Duration="1d" Cost="112.0000" FixedCost="112.0000" RemainingCost="112.0000" Start="2015-12-17T08:00" Finish="2015-12-17T17:00" EarlyStart="2015-12-17T08:00" EarlyFinish="2015-12-17T17:00" LateStart="2015-12-17T08:00" LateFinish="2015-12-17T17:00" Critical="yes" EffortDriven="yes" FixedCostAccrual="Prorated"/>
+		</tasks>
+		<outline current="215"/>
+	</proj>
+	<printInfo mode="scale" orient="landscape" pagesWide="1" pagesHigh="1" scale="100%" bw="no" enlarge="no" byColumn="no" adjustPageBreaks="no" marginTop="36pt" marginLeft="36pt" marginBottom="36pt" marginRight="36pt"/>
+	<pageLayouts>
+		<pageLayout id="Page Layout 1" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart with border around Title field. &#13;&#10;Border around outside pages.&#13;&#10;Page numbers upper right." SheetNumbers="yes">
+			<grid id="frame" rows="2" cols="1">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" right_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 2" description="WBS Chart Top/Left aligned.&#13;&#10;Title field displayed above chart no border. &#13;&#10;Page numbers upper right." SheetNumbers="yes">
+			<grid id="frame" rows="2" cols="1" top="1">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="1.45pt" bottom_p="1.45pt" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 3" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart. &#13;&#10;&quot;Printed on&quot; Date in lower left corner.&#13;&#10;Border around every page.&#13;&#10;Page numbers in lower right. " BorderEveryPage="yes">
+			<grid id="frame" rows="3" cols="2">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid" colspan="2"/>
+				</row>
+				<row>
+					<cell field="pCurrent Date" format="2" halign="left" label="Printed on: " left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" top_s="solid"/>
+					<cell field="p (Page Number)" format="13" halign="right" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" top_s="solid" stretch="yes"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 4" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart. &#13;&#10;&quot;Printed on&quot; date in lower left corner.&#13;&#10;Border around every page.&#13;&#10;Page numbers in lower right. &#13;&#10;No border around outside fields." BorderEveryPage="yes">
+			<grid id="frame" rows="3" cols="2" top="1" bottom="1">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" colspan="2" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" colspan="2"/>
+				</row>
+				<row>
+					<cell field="pCurrent Date" format="2" halign="left" label="Printed on: " left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt"/>
+					<cell field="p (Page Number)" format="13" halign="right" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" stretch="yes"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 5" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart. &#13;&#10;&quot;Printed on&quot; date in lower left corner.&#13;&#10;Company below and center.&#13;&#10;&quot;Project Completion&quot; date lower right.&#13;&#10;Page number lower left.&#13;&#10;Manager below center.&#13;&#10;CONFIDENTIAL lower right.&#13;&#10;Border around outside pages. &#13;&#10;Page numbers in upper right. " SheetNumbers="yes">
+			<grid id="frame" rows="4" cols="3">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="3" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid" colspan="3"/>
+				</row>
+				<row>
+					<cell field="pCurrent Date" format="2" label="Printed On: " left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="pCompany" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+					<cell field="pFinish" label="Project Completion: " left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row>
+					<cell field="p (Page Number)" format="13" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" right_s="solid" top_s="solid"/>
+					<cell field="pManager" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" left_s="solid" right_s="solid" top_s="solid"/>
+					<cell bold="yes" label="CONFIDENTIAL" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 6" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart. &#13;&#10;&quot;Printed on&quot; date in lower left corner.&#13;&#10;Manager below center.&#13;&#10;CONFIDENTIAL lower right.&#13;&#10;Border around outside pages. &#13;&#10;Page numbers in upper right. " SheetNumbers="yes">
+			<grid id="frame" rows="3" cols="3" top="1" bottom="1">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" colspan="3" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" colspan="3"/>
+				</row>
+				<row>
+					<cell field="pCurrent Date" format="2" halign="left" label="Printed on: " left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt"/>
+					<cell field="pManager" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" stretch="yes"/>
+					<cell halign="right" bold="yes" label="CONFIDENTIAL" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" stretch="yes"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 7" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart with border around Title field. &#13;&#10;Border around outside pages.&#13;&#10;Legend of Fields at bottom." SheetNumbers="yes">
+			<grid id="frame" rows="3" cols="1">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" top_s="solid" bottom_s="solid"/>
+				</row>
+				<row>
+					<cell field="p (Legend: Fields)" halign="left" label="Fields" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" top_s="solid"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 8" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart with border around Title field. &#13;&#10;Border around outside pages.&#13;&#10;Legend of Fields and Legend of Box Border styles at bottom. " SheetNumbers="yes">
+			<grid id="frame" rows="3" cols="2">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid" colspan="2"/>
+				</row>
+				<row>
+					<cell field="p (Legend: Fields)" label="Fields" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" top_s="solid"/>
+					<cell field="p (Legend: Borders)" format="1" halign="left" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" left_s="solid" top_s="solid" stretch="yes"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+		<pageLayout id="Page Layout 9" description="WBS Chart Top/Left aligned.&#13;&#10;Title field above chart with border around Title field. &#13;&#10;Border around outside pages.&#13;&#10;Legend of Summary Tasks Fields, Task Fields and Legend of Box Border styles at bottom. " SheetNumbers="yes">
+			<grid id="frame" rows="3" cols="3">
+				<row>
+					<cell field="pTitle" font-size="10pt" bold="yes" left_p="0.7pt" right_p="0.7pt" top_p="3.6pt" bottom_p="3.6pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="3"/>
+				</row>
+				<row stretch="yes">
+					<cell field="p (Chart)" halign="left" valign="top" left_p="7.2pt" right_p="7.2pt" top_p="7.2pt" bottom_p="7.2pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid" colspan="3"/>
+				</row>
+				<row>
+					<cell field="p (Legend: Fields)" label="Summary Task Fields" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" top_s="solid"/>
+					<cell field="p (Legend: Fields)" format="1" label="Task Fields" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" right_s="solid" top_s="solid"/>
+					<cell field="p (Legend: Borders)" format="1" left_p="3.6pt" right_p="3.6pt" top_p="2.15pt" bottom_p="2.15pt" left_s="solid" top_s="solid" stretch="yes"/>
+				</row>
+			</grid>
+			<border id="frame" bkcolor="none"/>
+		</pageLayout>
+	</pageLayouts>
+	<views current="Hours and Cost View" current_wbs="Hours and Cost View" mode="normal">
+		<wbs_view id="Critical Path View 2" pagelayout="Page Layout 8" outlinesymbolpos="bottomcenter">
+			<item id="summary" before="14.4pt"/>
+			<item id="task" before="7.2pt" listmode="stemleft"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="External Task" shdir="bottom_right" shdepth="3pt" shcolor="gray" color="gray">
+				<border_edge id="top" color="gray"/>
+				<border_edge id="left" color="gray"/>
+				<border_edge id="bottom" color="gray"/>
+				<border_edge id="right" color="gray"/>
+			</border>
+			<grid id="summary" rows="4" cols="3" top="1">
+				<row>
+					<cell field="WBS" halign="left" bold="yes" color="red" left_p="0.7pt" right_p="0.7pt" top_p="0pt" bottom_p="0pt" colspan="3"/>
+				</row>
+				<row stretch="yes">
+					<cell field="ID" bold="yes" orient="bottomtop" bkcolor="yellow" left_p="0.7pt" right_p="0.7pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid" bottom_s="solid" rowspan="3"/>
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" stretch="yes" charlen="20"/>
+				</row>
+				<row>
+					<cell field="Duration" format="5" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="% Complete" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+			<grid id="task" rows="4" cols="3" top="1">
+				<row>
+					<cell field="WBS" halign="left" bold="yes" color="red" left_p="0.7pt" right_p="0.7pt" top_p="0pt" bottom_p="0pt" colspan="3"/>
+				</row>
+				<row stretch="yes">
+					<cell field="ID" bold="yes" orient="bottomtop" bkcolor="yellow" left_p="0.7pt" right_p="0.7pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid" bottom_s="solid" rowspan="3"/>
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" stretch="yes" charlen="20"/>
+				</row>
+				<row>
+					<cell field="Duration" format="5" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="% Complete" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+<wbs_diff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Critical Path View" pagelayout="Page Layout 1" outlinesymbolpos="bottomcenter">
+			<item id="summary" before="14.4pt"/>
+			<item id="task" before="2.15pt" listmode="stemleft"/>
+			<border id="Critical Task" style="null" color="red" bkcolor="none">
+				<border_edge id="top" color="red"/>
+				<border_edge id="left" color="red"/>
+				<border_edge id="bottom" color="red"/>
+				<border_edge id="right" color="red"/>
+			</border>
+			<border id="Critical Milestone" style="null" color="red" bkcolor="none">
+				<border_edge id="top" color="red"/>
+				<border_edge id="left" color="red"/>
+				<border_edge id="bottom" color="red"/>
+				<border_edge id="right" color="red"/>
+			</border>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Noncritical Task" style="null" color="blue" bkcolor="none">
+				<border_edge id="top" color="blue"/>
+				<border_edge id="left" color="blue"/>
+				<border_edge id="bottom" color="blue"/>
+				<border_edge id="right" color="blue"/>
+			</border>
+			<border id="Noncritical Milestone" style="null" color="blue" bkcolor="none">
+				<border_edge id="top" color="blue"/>
+				<border_edge id="left" color="blue"/>
+				<border_edge id="bottom" color="blue"/>
+				<border_edge id="right" color="blue"/>
+			</border>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="External Task" style="null"/>
+			<grid id="summary" rows="1" cols="1">
+				<row>
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" charlen="20"/>
+				</row>
+			</grid>
+			<grid id="task" rows="1" cols="1">
+				<row>
+					<cell field="Name" type="wraptext" halign="left" bold="yes" left_p="0.7pt" right_p="0pt" top_p="0pt" bottom_p="0pt" charlen="20"/>
+				</row>
+			</grid>
+<wbs_diff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Flags View" pagelayout="Page Layout 8" borderpolicy="flags" outlinesymbolpos="bottomcenter">
+			<item id="summary" before="14.4pt"/>
+			<item id="task" before="10.8pt" listmode="stemleft"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="No Flag Task" bkcolor="none">
+				<border_edge id="top" bkcolor="black"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="black"/>
+				<border_edge id="bottom" bkcolor="black"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="black"/>
+			</border>
+			<border id="No Flag Summary" bkcolor="none">
+				<border_edge id="top" bkcolor="black"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="black"/>
+				<border_edge id="bottom" bkcolor="black"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="black"/>
+			</border>
+			<border id="Flag1" bkcolor="none">
+				<border_edge id="top" bkcolor="lime"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="lime"/>
+				<border_edge id="bottom" bkcolor="lime"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="lime"/>
+			</border>
+			<border id="Flag2" bkcolor="none">
+				<border_edge id="top" bkcolor="fuchsia"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="fuchsia"/>
+				<border_edge id="bottom" bkcolor="fuchsia"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="fuchsia"/>
+			</border>
+			<border id="Flag3" bkcolor="none">
+				<border_edge id="top" bkcolor="red"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="red"/>
+				<border_edge id="bottom" bkcolor="red"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="red"/>
+			</border>
+			<border id="Flag4" bkcolor="none">
+				<border_edge id="top" bkcolor="blue"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="bottom" bkcolor="blue"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="blue"/>
+			</border>
+			<border id="Flag5" bkcolor="none">
+				<border_edge id="top" bkcolor="yellow"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+				<border_edge id="bottom" bkcolor="yellow"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+			</border>
+			<border id="Flag6" bkcolor="none">
+				<border_edge id="top" bkcolor="aqua"/>
+				<border_edge id="left" shape="rect" depth="5.1pt" bkcolor="aqua"/>
+				<border_edge id="bottom" bkcolor="aqua"/>
+				<border_edge id="right" shape="rect" depth="5.1pt" bkcolor="aqua"/>
+			</border>
+			<border id="Flag7" bkcolor="none"/>
+			<border id="Flag8" bkcolor="none"/>
+			<border id="Flag9" bkcolor="none"/>
+			<border id="Flag10" bkcolor="none"/>
+			<border id="Flag11" bkcolor="none"/>
+			<border id="Flag12" bkcolor="none"/>
+			<border id="Flag13" bkcolor="none"/>
+			<border id="Flag14" bkcolor="none"/>
+			<border id="Flag15" bkcolor="none"/>
+			<border id="Flag16" bkcolor="none"/>
+			<border id="Flag17" bkcolor="none"/>
+			<border id="Flag18" bkcolor="none"/>
+			<border id="Flag19" bkcolor="none"/>
+			<border id="Flag20" bkcolor="none"/>
+			<grid id="summary" rows="3" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" stretch="yes" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Duration" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+			<grid id="task" rows="3" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" barcolor="red" colspan="2" stretch="yes" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Duration" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+<wbs_diff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Hours and Cost View" pagelayout="Page Layout 6" outlinesymbolpos="bottomcenter" field="Work">
+			<item id="summary" before="18pt"/>
+			<item id="task" before="14.4pt" listmode="stemleft"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="External Task" shdir="bottom_right" shdepth="3pt" shcolor="gray" color="gray">
+				<border_edge id="top" color="gray"/>
+				<border_edge id="left" color="gray"/>
+				<border_edge id="bottom" color="gray"/>
+				<border_edge id="right" color="gray"/>
+			</border>
+			<grid id="summary" rows="2" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" charlen="25"/>
+				</row>
+				<row>
+					<cell field="Work" format="5" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Cost" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid"/>
+				</row>
+			</grid>
+			<grid id="task" rows="2" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" charlen="25"/>
+				</row>
+				<row>
+					<cell field="Work" format="5" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Cost" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid"/>
+				</row>
+			</grid>
+<wbs_diff>
+	<treediff id="1">
+		<item before="3441.75pt"/>
+	</treediff>
+	<treediff id="10">
+		<item calign="branch_nearest"/>
+	</treediff>
+	<treediff id="123">
+		<item before="13.65pt"/>
+	</treediff>
+	<treediff id="135">
+		<item before="18.15pt"/>
+	</treediff>
+	<treediff id="51">
+		<item before="12.9pt"/>
+	</treediff>
+	<treediff id="144">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="56">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="57">
+		<item before="13.65pt"/>
+	</treediff>
+	<treediff id="220">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="68">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="223">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="102">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="226">
+		<item before="15.15pt"/>
+	</treediff>
+	<treediff id="71">
+		<item before="13.65pt"/>
+	</treediff>
+	<treediff id="103">
+		<item before="13.65pt"/>
+	</treediff>
+	<treediff id="229">
+		<item before="15.15pt"/>
+	</treediff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Planning View 2" pagelayout="Page Layout 7" outlinesymbolpos="bottomcenter">
+			<item id="summary" drop="28.8pt" before="10.8pt"/>
+			<item id="task" before="10.8pt"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt"/>
+			<border id="External Task" shdir="bottom_right" shdepth="3pt"/>
+			<grid id="summary" rows="3" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" right_s="solid" bottom_s="solid" colspan="2" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Duration" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+			<grid id="task" rows="3" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" right_s="solid" bottom_s="solid" colspan="2" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="Duration" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid"/>
+				</row>
+				<row>
+					<cell field="Start" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" right_s="solid" top_s="solid"/>
+					<cell field="Finish" format="1" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid"/>
+				</row>
+			</grid>
+<wbs_diff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Planning View" pagelayout="Page Layout 1" outlinesymbolpos="bottomcenter">
+			<item id="summary" drop="28.8pt" before="10.8pt"/>
+			<item id="task" before="10.8pt"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt"/>
+			<border id="External Task" shdir="bottom_right" shdepth="3pt"/>
+			<grid id="summary" rows="1" cols="1">
+				<row>
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" charlen="20"/>
+				</row>
+			</grid>
+			<grid id="task" rows="1" cols="1">
+				<row>
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="3.6pt" bottom_p="3.6pt" barcolor="red" charlen="20"/>
+				</row>
+			</grid>
+<wbs_diff>
+	<treediff id="1">
+		<item before="11.55pt"/>
+	</treediff>
+</wbs_diff>
+
+		</wbs_view>
+		<wbs_view id="Progress View" pagelayout="Page Layout 8" borderpolicy="progress" outlinesymbolpos="bottomcenter">
+			<item id="summary" before="14.4pt"/>
+			<item id="task" before="7.2pt" listmode="stemleft"/>
+			<border id="Critical Task" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Critical Summary" shdir="bottom_right" shdepth="3pt" shcolor="red" bkcolor="lightyellow"/>
+			<border id="Noncritical Task" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Milestone" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Noncritical Summary" shdir="bottom_right" shdepth="3pt" shcolor="blue" bkcolor="lightyellow"/>
+			<border id="Not Started Task">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="left" bkcolor="green"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="right" bkcolor="green"/>
+			</border>
+			<border id="Not Started Milestone">
+				<border_edge id="top" shape="triangle" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="left" bkcolor="green"/>
+				<border_edge id="bottom" shape="triangle" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="right" bkcolor="green"/>
+			</border>
+			<border id="Not Started Summary">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="left" bkcolor="green"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="green"/>
+				<border_edge id="right" bkcolor="green"/>
+			</border>
+			<border id="In Progress Task">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+				<border_edge id="left" bkcolor="yellow"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+				<border_edge id="right" bkcolor="yellow"/>
+			</border>
+			<border id="In Progress Summary">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+				<border_edge id="left" bkcolor="yellow"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="yellow"/>
+				<border_edge id="right" bkcolor="yellow"/>
+			</border>
+			<border id="Completed Task">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="left" bkcolor="blue"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="right" bkcolor="blue"/>
+			</border>
+			<border id="Completed Milestone">
+				<border_edge id="top" shape="triangle" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="left" bkcolor="blue"/>
+				<border_edge id="bottom" shape="triangle" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="right" bkcolor="blue"/>
+			</border>
+			<border id="Completed Summary">
+				<border_edge id="top" shape="rect" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="left" bkcolor="blue"/>
+				<border_edge id="bottom" shape="rect" depth="5.1pt" bkcolor="blue"/>
+				<border_edge id="right" bkcolor="blue"/>
+			</border>
+			<grid id="summary" rows="2" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" label="Id: " left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="% Complete" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+			</grid>
+			<grid id="task" rows="2" cols="2">
+				<row stretch="yes">
+					<cell field="Name" type="wraptext" bold="yes" left_p="3.6pt" right_p="3.6pt" top_p="1.45pt" bottom_p="1.45pt" left_s="solid" right_s="solid" bottom_s="solid" colspan="2" charlen="20"/>
+				</row>
+				<row>
+					<cell field="ID" label="Id: " left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" right_s="solid" top_s="solid" bottom_s="solid"/>
+					<cell field="% Complete" left_p="3.6pt" right_p="3.6pt" top_p="0.7pt" bottom_p="0.7pt" left_s="solid" top_s="solid" bottom_s="solid" stretch="yes"/>
+				</row>
+			</grid>
+<wbs_diff>
+</wbs_diff>
+
+		</wbs_view>
+	</views>
+</project>

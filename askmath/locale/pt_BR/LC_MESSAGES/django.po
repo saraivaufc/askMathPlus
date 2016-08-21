@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-19 14:32-0300\n"
-"PO-Revision-Date: 2016-08-19 17:55-0234\n"
+"POT-Creation-Date: 2016-08-21 01:08-0300\n"
+"PO-Revision-Date: 2016-08-21 01:28-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1601,7 +1601,6 @@ msgid "This field in required."
 msgstr "Este campo é obrigatório."
 
 #: askmath/templates/askmath/_form_informations.html:7
-#| msgid "This field is required."
 msgid "It indicates that the field is required."
 msgstr "Indica que o campo é obrigatório."
 
@@ -1705,24 +1704,24 @@ msgid "Authentication"
 msgstr "Autenticação"
 
 #: askmath/templates/askmath/authentication/options.html:24
-#: askmath/templates/askmath/authentication/options.html:44
+#: askmath/templates/askmath/authentication/options.html:38
 msgid "Sign In"
 msgstr "Entrar"
 
 #: askmath/templates/askmath/authentication/options.html:27
-#: askmath/templates/askmath/authentication/options.html:77
+#: askmath/templates/askmath/authentication/options.html:73
 msgid "Sign Up"
 msgstr "Registrar-se"
 
-#: askmath/templates/askmath/authentication/options.html:46
+#: askmath/templates/askmath/authentication/options.html:40
 msgid "Or"
 msgstr "Ou"
 
-#: askmath/templates/askmath/authentication/options.html:58
+#: askmath/templates/askmath/authentication/options.html:55
 msgid "Forgot your password ?"
 msgstr "Esqueceu a senha?"
 
-#: askmath/templates/askmath/authentication/options.html:72
+#: askmath/templates/askmath/authentication/options.html:68
 msgid ""
 "By clicking here, you agree to the <a href=\"/terms/\" >Terms and "
 "Conditions</a> set out by this site, including our Cookie Use."
@@ -1763,15 +1762,12 @@ msgid "Change my password"
 msgstr "Alterar minha senha"
 
 #: askmath/templates/askmath/authentication/registration/password_reset_complete.html:8
-#| msgid ""
-#| "Password reset complete : Your password has been set.  You may go ahead and "
-#| "log in now... :)"
 msgid "Your password has been set.  You may go ahead and log in now."
 msgstr "Sua senha foi definida. Você pode ir em frente e entrar agora."
 
 #: askmath/templates/askmath/authentication/registration/password_reset_complete.html:10
 msgid "Log in"
-msgstr ""
+msgstr "Entrar"
 
 #: askmath/templates/askmath/authentication/registration/password_reset_confirm.html:8
 msgid ""
@@ -1795,7 +1791,6 @@ msgstr ""
 "foi utilizado. Por favor, solicite uma nova redefinição de senha."
 
 #: askmath/templates/askmath/authentication/registration/password_reset_done.html:8
-#, fuzzy
 #| msgid ""
 #| "We've emailed you instructions for setting your password. You should be "
 #| "receiving them shortly."
@@ -1854,7 +1849,6 @@ msgid "Recover Password"
 msgstr "Recuperar Senha"
 
 #: askmath/templates/askmath/authentication/registration/password_reset_form.html:19
-#, fuzzy
 #| msgid ""
 #| "Provide your email address below and we will send you instructions to set a "
 #| "new one."
@@ -1862,8 +1856,8 @@ msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
 msgstr ""
-"Fornecer seu endereço de e-mail abaixo e nós lhe enviaremos instruções para "
-"definir um novo."
+"Esqueceu sua senha? Digite seu endereço de e-mail abaixo, e vamos enviar "
+"instruções para configurar uma nova."
 
 #: askmath/templates/askmath/content/classe/content_view_classe.html:21
 msgid "Subscribe"
@@ -1905,7 +1899,7 @@ msgstr "Disciplina não possui lições."
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:62
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:66
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:23
-#: askmath/templates/askmath/person/account/view_profile.html:45
+#: askmath/templates/askmath/person/account/view_profile.html:44
 msgid "Options"
 msgstr "Opções"
 
@@ -2045,12 +2039,11 @@ msgid "You level:"
 msgstr "Seu nível:"
 
 #: askmath/templates/askmath/content/question/view_question.html:176
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:112
 msgid "New Points:"
 msgstr "Novos pontos:"
 
 #: askmath/templates/askmath/content/question/view_question.html:182
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:118
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:115
 msgid "All Points:"
 msgstr "Todos os Pontos:"
 
@@ -2066,19 +2059,23 @@ msgstr "Parabéns, você é o nosso novo campeão !!!"
 msgid "Ranking Round"
 msgstr "Ranking da Rodada"
 
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:23
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:24
 msgid "This round ends in"
 msgstr "Esta rodada termina em"
 
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:77
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:25
+msgid "My current position"
+msgstr "Minha posição atual"
+
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:80
 msgid "Winner"
 msgstr "Campeão"
 
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:94
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:97
 msgid "Level:"
 msgstr "Nível:"
 
-#: askmath/templates/askmath/content/ranking/content_view_ranking.html:128
+#: askmath/templates/askmath/content/ranking/content_view_ranking.html:125
 msgid "Earn points, level up and become our new champion."
 msgstr "Ganhe pontos, suba de nível e torner-se nosso novo campeão."
 
@@ -2293,32 +2290,30 @@ msgid "License and Source-Code."
 msgstr "Licença e Código-fonte."
 
 #: askmath/templates/askmath/index/about.html:56
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
+"\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/publicdomain/zero/1.0/legalcode\" target=\"_blank\">license CC0</a>, allowing you to copy, distribute and modify its source code.\n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\" target=\"_blank\">licença GNU 2.0</a>, permitindo que você copiar, distribuir e modificar seu código-fonte."
+"Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"https://creativecommons.org/publicdomain/zero/1.0/legalcode\" target=\"_blank\">licença CC0</a>, permitindo que você possa copiar, distribuir e modificar seu código-fonte."
 
 #: askmath/templates/askmath/index/about.html:61
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
 #| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
-"\t\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
+"\t\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMath</a>. \n"
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"Seu código fonte está disponível no seguinte repositório: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\"> https://github.com/saraivaufc/askMath </a>."
+"Seu código fonte está disponível no seguinte repositório: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMath </a>."
 
 #: askmath/templates/askmath/index/about.html:68
 msgid "Developers"
@@ -2334,12 +2329,11 @@ msgstr "HABILIDADES:"
 
 #: askmath/templates/askmath/index/about.html:99
 #: askmath/templates/askmath/index/credits.html:10
-#: askmath/templates/askmath/index/credits.html:24
+#: askmath/templates/askmath/index/credits.html:19
 msgid "Credits"
 msgstr "Créditos"
 
 #: askmath/templates/askmath/index/about.html:102
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>. "
@@ -2349,7 +2343,7 @@ msgid ""
 "\t\t\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"O AskMath só foi possível graças a outros <a href=\"/credits/\"> software open source </a>."
+"O AskMath só foi possível graças a outros <a href=\"/credits/\"> softwares de código aberto</a>."
 
 #: askmath/templates/askmath/index/contact_email.html:9
 msgid ""
@@ -2363,6 +2357,10 @@ msgstr ""
 #: askmath/templates/askmath/index/contents.html:36
 msgid "Not Lessons Found"
 msgstr "Nenhuma lição encontrada."
+
+#: askmath/templates/askmath/index/credits.html:25
+msgid "homepage"
+msgstr "Página Inicial"
 
 #: askmath/templates/askmath/index/home.html:21
 msgid "Welcome to AskMath"
@@ -2385,10 +2383,9 @@ msgid "Send"
 msgstr "Enviar"
 
 #: askmath/templates/askmath/index/message.html:43
-#, fuzzy
 #| msgid "Social networks:"
-msgid "Social networks"
-msgstr "Redes Sociais:"
+msgid "Social Networks"
+msgstr "Redes Sociais"
 
 #: askmath/templates/askmath/index/message.html:47
 msgid "Logo PET information technology group."
@@ -2396,7 +2393,7 @@ msgstr "Logo do grupo PET Tecnologia da Informação."
 
 #: askmath/templates/askmath/index/message.html:52
 msgid "Social networks:"
-msgstr "Redes Sociais:"
+msgstr "Redes Sociais"
 
 #: askmath/templates/askmath/index/message.html:59
 msgid "Blog PET Information Technology."
@@ -2440,9 +2437,18 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:90
-#| msgid "See persons"
-msgid "See Lessons"
-msgstr "Ver liçoes"
+#, python-format
+#| msgid ""
+#| "\n"
+#| "\t\t\t\tSee %(lessons)s lessons\n"
+#| "\t\t\t\t"
+msgid ""
+"\n"
+"\t\t\t\t\t\tSee %(lessons)s Lessons\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"Ver %(lessons)s Lições"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:8
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:16
@@ -2451,26 +2457,42 @@ msgid "Lessons of %(discipline)s"
 msgstr "Lições de %(discipline)s"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:62
-#, fuzzy
 #| msgid "Errors to Obstacle"
 msgid "Errors for obstacle"
-msgstr "Erros para Obstáculo."
+msgstr "Erros para obstáculo"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:63
-#, fuzzy
 #| msgid "Errors to Deficiency"
 msgid "Errors for deficiency"
-msgstr "Erros para a Deficiência"
+msgstr "Erros para a deficiência"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:98
-#| msgid "Questions"
-msgid "See Questions"
-msgstr "Ver questões"
+#, python-format
+#| msgid ""
+#| "\n"
+#| "\t\t\t\tSee %(questions)s questions\n"
+#| "\t\t\t\t"
+msgid ""
+"\n"
+"\t\t\t\t\t\t\tSee %(questions)s Questions\n"
+"\t\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"Ver %(questions)s Questões"
 
-#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:102
-#| msgid "Sort Videos"
-msgid "See Videos"
-msgstr "Ver vídeos"
+#: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:103
+#, python-format
+#| msgid ""
+#| "\n"
+#| "\t\t\t\t\t\t\t\tSee %(topics)s posts\n"
+#| "\t\t\t\t\t\t\t\t"
+msgid ""
+"\n"
+"\t\t\t\t\t\t\tSee %(videos)s Videos\n"
+"\t\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"Ver %(videos)s Vídeos"
 
 #: askmath/templates/askmath/manager/manager_home.html:5
 msgid "Site admin"
@@ -2515,7 +2537,6 @@ msgid "View Keys"
 msgstr "Ver Chaves"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:22
-#, fuzzy
 #| msgid " Generate Key"
 msgid "Generate Key"
 msgstr "Gerar Chave"
@@ -2545,6 +2566,10 @@ msgstr "Ordenar Questões de %(lesson)s"
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:20
 msgid "Not Questions Found"
 msgstr "Nenhuma Questão Encontrada."
+
+#: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:37
+msgid "Drag the issues to put them in the order you want."
+msgstr "Arraste as questões para colocá-los na ordem que você quiser."
 
 #: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:7
 msgid "Choose Lessons"
@@ -2636,25 +2661,17 @@ msgstr "Seu Perfil"
 msgid "Registered in:"
 msgstr "Registrado em:"
 
-#: askmath/templates/askmath/person/account/view_profile.html:49
+#: askmath/templates/askmath/person/account/view_profile.html:48
 msgid "Profile Edit"
 msgstr "Editar Perfil"
 
-#: askmath/templates/askmath/person/account/view_profile.html:53
+#: askmath/templates/askmath/person/account/view_profile.html:52
 msgid "Password Alter"
 msgstr "Alterar Senha"
 
-#: askmath/templates/askmath/person/account/view_profile.html:57
+#: askmath/templates/askmath/person/account/view_profile.html:56
 msgid "Account Remove"
 msgstr "Remover Conta"
-
-#: askmath/templates/askmath/send_feedback.html:9
-msgid "Send Feedback..."
-msgstr "Enviar Feedback..."
-
-#: askmath/templates/askmath/send_feedback.html:22
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: askmath/templates/askmath/user/password_reset_complete.html:13
 msgid "Continue to login"
@@ -4160,28 +4177,24 @@ msgid "traceback"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:50
-#, fuzzy
 #| msgid "staff status"
 msgid "task state"
-msgstr "estado de auxiliar"
+msgstr "estado da tarefa"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:51
-#, fuzzy
 #| msgid "staff status"
 msgid "task states"
-msgstr "estado de auxiliar"
+msgstr "estados da tarefa"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:69
-#, fuzzy
 #| msgid "Group"
 msgid "group id"
-msgstr "Grupo"
+msgstr "ID do Grupo"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:71
-#, fuzzy
 #| msgid "Created Key"
 msgid "created at"
-msgstr "Criar Chave"
+msgstr "criado em"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:78
 msgid "saved group result"
@@ -4221,10 +4234,9 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:106
 #: env/lib/python2.7/site-packages/djcelery/models.py:217
-#, fuzzy
 #| msgid "Enter"
 msgid "interval"
-msgstr "Entrar"
+msgstr "intervalo"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:107
 msgid "intervals"
@@ -4270,10 +4282,9 @@ msgid "crontabs"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:212
-#, fuzzy
 #| msgid "Description"
 msgid "Useful description"
-msgstr "Descrição"
+msgstr "Descrição útil"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:214
 msgid "task name"
@@ -4311,7 +4322,6 @@ msgid "Queue defined in CELERY_QUEUES"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:236
-#, fuzzy
 #| msgid "Save changes"
 msgid "exchange"
 msgstr "Salvar alterações"
@@ -4330,7 +4340,6 @@ msgid "enabled"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:255
-#, fuzzy
 #| msgid "Description"
 msgid "description"
 msgstr "Descrição"
@@ -4456,6 +4465,21 @@ msgstr ""
 #: nocaptcha_recaptcha/fields.py:21
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid "See Lessons"
+#~ msgstr "Ver liçoes"
+
+#~ msgid "See Questions"
+#~ msgstr "Ver questões"
+
+#~ msgid "See Videos"
+#~ msgstr "Ver vídeos"
+
+#~ msgid "Send Feedback..."
+#~ msgstr "Enviar Feedback..."
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
 
 #~ msgid "Go to <a href='%(login_url)s'>Log in</a>..."
 #~ msgstr "Vá para <a href='%(login_url)s'>Log in</a>..."
@@ -4620,24 +4644,8 @@ msgstr "Erro, tente novamente."
 #~ msgid "persons"
 #~ msgstr "pessoas"
 
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tSee %(lessons)s lessons\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "%(creation)s"
-
 #~ msgid "Questions / Videos"
 #~ msgstr "Questões/ Vídeos"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tSee %(questions)s questions\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "%(creation)s"
 
 #~ msgid "Account"
 #~ msgstr "Conta"

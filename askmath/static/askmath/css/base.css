@@ -93,6 +93,10 @@ label {
 	border: 0px;
 }
 
+.no-hover:hover{
+	background-color: transparent !important;
+}
+
 .right {
   float: right;
 }
@@ -218,33 +222,9 @@ ul.messages, ul.messages > li.message{
 }
 
 
-
-input['text'],input['email'],input['password'], textarea{
-    font-size: 14px;
-    background: #FFF none repeat scroll 0% 0%;
-    padding: 5px;
-    border: 1px solid #C7C8CA;
-    box-shadow: 3px 3px 5px #E7E7E7 inset;
-    outline: medium none;
-}
-
-span.required{
-	font-weight: bold;
-}
-
 label.caption{
 	margin-bottom: 0px;
 }
-
-
-.list-group > .list-group-item{
-	color:  #000;
-}
-
-.no-hover:hover{
-	background-color: transparent !important;
-}
-
 
 .meter { 
 	width: 100%;
@@ -272,15 +252,6 @@ label.caption{
   overflow: hidden;
 }
 
-.modal{
-	color: #000;
-}
-
-.table{
-	color: #000;
-}
-
-
 .coin{
 	border-radius: 50%;
 	min-width: 30px;
@@ -293,11 +264,6 @@ label.caption{
 #question_status{
 	font-weight: bold;
 }
-
-.jumbotron{
-	border-radius: 0px !important; 
-}
-
 
 /* CURSORES */
 .cursor-move{
@@ -340,11 +306,6 @@ label.caption{
 	padding: 5px ;
 
 }
-
-.command-button {
-    padding: 8px 2rem 1px 4rem;
-}
-
 
 /* Latex Editor */
 #MathBuffer{

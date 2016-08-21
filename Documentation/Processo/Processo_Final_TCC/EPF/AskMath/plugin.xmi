@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.5/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore"
+    xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.0">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_NQWP6Ui7EeaBG81lm8OWTg"
+      guid="_NQWP6Ui7EeaBG81lm8OWTg">
+    <subManagers xmi:id="_NQy70Ei7EeaBG81lm8OWTg" href="uma://_MGfEMJH1EeWPzKZ2aWoJjQ#_NQy70Ei7EeaBG81lm8OWTg"/>
+    <resourceDescriptors xmi:id="_NQfZ0Ei7EeaBG81lm8OWTg" id="_MGfEMJH1EeWPzKZ2aWoJjQ"
+        uri="deliveryprocesses/AskMath-Processo/model.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_YhDj8JH0EeWPzKZ2aWoJjQ" name="AskMath"
+      guid="_YhDj8JH0EeWPzKZ2aWoJjQ" presentationName="Sistema de Gerenciamento de Eventos Acadêmicos"
+      authors="Marciano Machado Saraiva e Samy Soares Passos de Sá" changeDate="2016-07-13T02:52:41.208-0300"
+      version="1.0">
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj8ZH0EeWPzKZ2aWoJjQ"
+        name="Content" guid="_YhDj8ZH0EeWPzKZ2aWoJjQ">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj8pH0EeWPzKZ2aWoJjQ"
+          name="Categories" guid="_YhDj8pH0EeWPzKZ2aWoJjQ">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj85H0EeWPzKZ2aWoJjQ"
+            name="Domains" guid="_YhDj85H0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj9JH0EeWPzKZ2aWoJjQ"
+            name="Disciplines" guid="_YhDj9JH0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj9ZH0EeWPzKZ2aWoJjQ"
+            name="RoleSets" guid="_YhDj9ZH0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj9pH0EeWPzKZ2aWoJjQ"
+            name="WP Types" guid="_YhDj9pH0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj95H0EeWPzKZ2aWoJjQ"
+            name="Tools" guid="_YhDj95H0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj-JH0EeWPzKZ2aWoJjQ"
+            name="StandardCategories" guid="_YhDj-JH0EeWPzKZ2aWoJjQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj-ZH0EeWPzKZ2aWoJjQ"
+            name="CustomCategories" guid="_YhDj-ZH0EeWPzKZ2aWoJjQ">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj-pH0EeWPzKZ2aWoJjQ"
+              name="Hidden" guid="_YhDj-pH0EeWPzKZ2aWoJjQ">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_YhDj-5H0EeWPzKZ2aWoJjQ"
+                name="Custom Categories" guid="_YhDj-5H0EeWPzKZ2aWoJjQ"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_YhDj_JH0EeWPzKZ2aWoJjQ"
+          name="CoreContent" guid="_YhDj_JH0EeWPzKZ2aWoJjQ"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_YhDj_ZH0EeWPzKZ2aWoJjQ"
+          name="CapabilityPatterns" guid="_YhDj_ZH0EeWPzKZ2aWoJjQ"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_YhDj_pH0EeWPzKZ2aWoJjQ"
+        name="DeliveryProcesses" guid="_YhDj_pH0EeWPzKZ2aWoJjQ">
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessComponent" xmi:id="_MGfEMJH1EeWPzKZ2aWoJjQ"
+          href="uma://_MGfEMJH1EeWPzKZ2aWoJjQ#_MGfEMJH1EeWPzKZ2aWoJjQ"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_YhDj_5H0EeWPzKZ2aWoJjQ"
+        name="ProcessContributions" guid="_YhDj_5H0EeWPzKZ2aWoJjQ"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

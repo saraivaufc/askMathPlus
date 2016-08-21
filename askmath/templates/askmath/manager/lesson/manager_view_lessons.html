@@ -95,10 +95,14 @@
 				<td class="sortable-column">
 					<div data-role="group" data-group-type="one-state">
 						<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id id_discipline=discipline.id %}">
-							{% trans "See Questions" %}
+							{% blocktrans with questions=lesson.get_questions|length|default_if_none:0 %}
+							See {{ questions }} Questions
+							{% endblocktrans %}
 						</a>/
 						<a  href="{% url 'askmath:manager_video_view' id_lesson=lesson.id id_discipline=discipline.id %}">
-							{% trans "See Videos" %}
+							{% blocktrans with videos=lesson.get_videos|length|default_if_none:0 %}
+							See {{ videos }} Videos
+							{% endblocktrans %}
 						</a>
 					</div>
 				</td>
@@ -108,7 +112,6 @@
 			</tbody>
 		</table>
 	</div>
-
 </div>
 {% endblock %}
 

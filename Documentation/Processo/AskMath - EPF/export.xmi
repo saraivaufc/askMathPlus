@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI epf:version="1.5.1" xmi:version="2.0" xmlns:epf="http://www.eclipse.org/epf" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:xmi="http://www.omg.org/XMI">
+<org.eclipse.epf.uma.resourcemanager:ResourceManager guid="_THOwoQkdEeW6ZeBHRX2orw" xmi:id="_THOwoQkdEeW6ZeBHRX2orw">
+<subManagers href="uma://_995sYOAdEeS3xbuydb_7sQ#_995sceAdEeS3xbuydb_7sQ" xmi:id="_995sceAdEeS3xbuydb_7sQ">
+</subManagers>
+<resourceDescriptors id="_THOwoAkdEeW6ZeBHRX2orw" uri="" xmi:id="_THYhoAkdEeW6ZeBHRX2orw">
+</resourceDescriptors>
+<resourceDescriptors id="_995sYOAdEeS3xbuydb_7sQ" uri="Processo AskMath/plugin.xmi" xmi:id="_YRqOIAkdEeW6ZeBHRX2orw">
+</resourceDescriptors>
+</org.eclipse.epf.uma.resourcemanager:ResourceManager>
+<org.eclipse.epf.uma:MethodLibrary guid="_THOwoAkdEeW6ZeBHRX2orw" name="Library1" xmi:id="_THOwoAkdEeW6ZeBHRX2orw">
+<methodElementProperty name="library_synFree" value="true" xmi:id="_TQT0IAkdEeW6ZeBHRX2orw">
+</methodElementProperty>
+<methodPlugins href="uma://_995sYOAdEeS3xbuydb_7sQ#_995sYOAdEeS3xbuydb_7sQ" xmi:id="_995sYOAdEeS3xbuydb_7sQ">
+</methodPlugins>
+<methodElementProperty value="0">
+</methodElementProperty>
+<methodElementProperty value="_995sYOAdEeS3xbuydb_7sQ">
+</methodElementProperty>
+<methodElementProperty value="Processo AskMath">
+</methodElementProperty>
+</org.eclipse.epf.uma:MethodLibrary>
+</xmi:XMI>

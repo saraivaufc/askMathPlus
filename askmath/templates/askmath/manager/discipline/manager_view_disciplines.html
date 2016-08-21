@@ -87,7 +87,9 @@
 				</td>
 				<td class="sortable-column">
 					<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}">
-						{% trans "See Lessons" %}
+						{% blocktrans with lessons=discipline.get_lessons|length|default_if_none:0 %}
+						See {{ lessons }} Lessons
+						{% endblocktrans %}
 					</a>
 				</td>
 			{% endfor %}

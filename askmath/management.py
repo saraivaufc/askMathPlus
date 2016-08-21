@@ -202,6 +202,10 @@ group_permissions = {
 		"access_manager_lesson",
 		"read_lesson",
 
+		"access_manager_lesson",
+		"read_lesson",
+		"write_lesson",
+
 		"access_manager_question",
 		"read_question",
 		"write_question",

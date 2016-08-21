@@ -22,7 +22,7 @@
 			{% for title, homepage in "SITE_EXTERNAL_COMPONENTES"|settings  %}
 				<div class="list  bg-grayLighter margin10 ">
 					<span class="list-title">{{ title }}</span>
-					<a href="{{ homepage }}">{% trans "homepage" %}</a>
+					<a style="float: right;" href="{{ homepage }}">{% trans "homepage" %}</a>
 				</div>
 			{% endfor %}
 		</div>

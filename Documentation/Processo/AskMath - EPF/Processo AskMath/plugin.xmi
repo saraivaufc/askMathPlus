@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_995sceAdEeS3xbuydb_7sQ" guid="_995sceAdEeS3xbuydb_7sQ">
+    <subManagers xmi:id="_GbWSceAhEeS3xbuydb_7sQ" href="uma://_Ga5mgOAhEeS3xbuydb_7sQ#_GbWSceAhEeS3xbuydb_7sQ"/>
+    <resourceDescriptors xmi:id="_Ga5mhOAhEeS3xbuydb_7sQ" id="_Ga5mgOAhEeS3xbuydb_7sQ" uri="deliveryprocesses/AskMath%20-%20Processo/model.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_995sYOAdEeS3xbuydb_7sQ" name="Processo AskMath" guid="_995sYOAdEeS3xbuydb_7sQ">
+    <methodElementProperty xmi:id="_995sc-AdEeS3xbuydb_7sQ" name="plugin_synFree" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sYeAdEeS3xbuydb_7sQ" name="Content" guid="_995sYeAdEeS3xbuydb_7sQ">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sYuAdEeS3xbuydb_7sQ" name="Categories" guid="_995sYuAdEeS3xbuydb_7sQ">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sY-AdEeS3xbuydb_7sQ" name="Domains" guid="_995sY-AdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sZOAdEeS3xbuydb_7sQ" name="Disciplines" guid="_995sZOAdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sZeAdEeS3xbuydb_7sQ" name="RoleSets" guid="_995sZeAdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sZuAdEeS3xbuydb_7sQ" name="WP Types" guid="_995sZuAdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sZ-AdEeS3xbuydb_7sQ" name="Tools" guid="_995sZ-AdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995saOAdEeS3xbuydb_7sQ" name="StandardCategories" guid="_995saOAdEeS3xbuydb_7sQ"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995saeAdEeS3xbuydb_7sQ" name="CustomCategories" guid="_995saeAdEeS3xbuydb_7sQ">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sauAdEeS3xbuydb_7sQ" name="Hidden" guid="_995sauAdEeS3xbuydb_7sQ">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_995sa-AdEeS3xbuydb_7sQ" name="Custom Categories" guid="_995sa-AdEeS3xbuydb_7sQ" categorizedElements="_EclLwOA5EeS3xbuydb_7sQ"/>
+          </childPackages>
+          <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_EclLwOA5EeS3xbuydb_7sQ" name="web" guid="_EclLwOA5EeS3xbuydb_7sQ" presentationName="web">
+            <methodElementProperty xmi:id="_TQwKsOA5EeS3xbuydb_7sQ" name="CategoryElementsSortType" value="Manual"/>
+            <methodElementProperty xmi:id="_TzVTUOA5EeS3xbuydb_7sQ" name="me_edited" value="true"/>
+            <methodElementProperty xmi:id="_oi-yMOA5EeS3xbuydb_7sQ" name="PUBLISH_CATEGORY" value="true"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_995sbOAdEeS3xbuydb_7sQ" name="CoreContent" guid="_995sbOAdEeS3xbuydb_7sQ">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_iW5MwOAgEeS3xbuydb_7sQ" name="processo_AskMath" guid="_iW5MwOAgEeS3xbuydb_7sQ">
+          <methodElementProperty xmi:id="_iW5MweAgEeS3xbuydb_7sQ" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_jsHTQOAgEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_xxRZoOAsEeS3xbuydb_7sQ" name="Gerente de Projeto" guid="_xxRZoOAsEeS3xbuydb_7sQ" presentationName="Gerente de Projeto">
+            <methodElementProperty xmi:id="_0ouH4OAsEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_1e5h8OAsEeS3xbuydb_7sQ" name="Cliente" guid="_1e5h8OAsEeS3xbuydb_7sQ" presentationName="Cliente">
+            <methodElementProperty xmi:id="_5ONsUOAsEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_9Ry2gOAsEeS3xbuydb_7sQ" name="Designer" guid="_9Ry2gOAsEeS3xbuydb_7sQ" presentationName="Designer">
+            <methodElementProperty xmi:id="_-kBTYOAsEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_DYGGYOAtEeS3xbuydb_7sQ" name="Programador" guid="_DYGGYOAtEeS3xbuydb_7sQ" presentationName="Programador">
+            <methodElementProperty xmi:id="_GWNdUOAtEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_QyfO8OAtEeS3xbuydb_7sQ" name="Gerente de Testes" guid="_QyfO8OAtEeS3xbuydb_7sQ" presentationName="Gerente de Testes">
+            <methodElementProperty xmi:id="_SQZ-cOAtEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_mJ_YAOAtEeS3xbuydb_7sQ" name="Gerente de Riscos" guid="_mJ_YAOAtEeS3xbuydb_7sQ" presentationName="Gerente de Riscos">
+            <methodElementProperty xmi:id="_oQcHIOAtEeS3xbuydb_7sQ" name="me_edited" value="true"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_995sbeAdEeS3xbuydb_7sQ" name="CapabilityPatterns" guid="_995sbeAdEeS3xbuydb_7sQ"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_995sbuAdEeS3xbuydb_7sQ" name="DeliveryProcesses" guid="_995sbuAdEeS3xbuydb_7sQ">
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessComponent" xmi:id="_Ga5mgOAhEeS3xbuydb_7sQ" href="uma://_Ga5mgOAhEeS3xbuydb_7sQ#_Ga5mgOAhEeS3xbuydb_7sQ"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_995sb-AdEeS3xbuydb_7sQ" name="ProcessContributions" guid="_995sb-AdEeS3xbuydb_7sQ"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>
