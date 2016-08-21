@@ -4,7 +4,7 @@ sudo apt-get install supervisor
 >>vim /etc/supervisor/conf.d/celery.conf
 
 [program:celery]
-directory=/home/user/Documentos/Projetos/askMathPlus
+directory=/var/www/askMathPlus
 command=bash celery_start.sh
 autostart=true
 autorestart=true
