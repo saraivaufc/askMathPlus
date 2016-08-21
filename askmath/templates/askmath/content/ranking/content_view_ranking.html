@@ -27,7 +27,7 @@
 				</div>
 				<div class="listview-outlook padding10" data-role="listview">
 					{% for i in students %}
-						<div {% if i.student == me %}id="me"{% endif %} class="list block-shadow {% if i.student == me %}bg-lightBlue{% else %}bg-grayLight{% endif %} fg-white" style="margin-bottom: 10px;">
+						<div {% if i.student == me %}id="me"{% endif %} class="list block-shadow {% if i.student == me %}bg-lightBlue  fg-white{% else %}bg-grayLighter{% endif %}" style="margin-bottom: 10px;">
 							<div class="list-content">
 								<div class="flex-grid">
 									<div class="row">
