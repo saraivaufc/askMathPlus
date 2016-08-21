@@ -11,6 +11,7 @@ js_info_dict = {
 
 urlpatterns = patterns('',
 	 url(r'^', include('askmath.urls', namespace="askmath", app_name="askmath")),
+	 url(r'^api/', include('askmath.api.urls', namespace="api", app_name="api")),
 	 url(r'^admin/', include(admin.site.urls), name='admin'), url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	 url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 	 url('^', include('django.contrib.auth.urls')),

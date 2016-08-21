@@ -1,24 +1,27 @@
-var searchValues = [];
+var search_values = [];
 $(function(){
-	$.get("/services/disciplines/get/", function(data){
-		var disciplines = JSON.parse(data);
-		for(var i=0 ; i< disciplines.length; i++){
-			searchValues.push(disciplines[i].fields.title);
-		}
+
+	$(function(){
+		$.get("/api/disciplines/?format=json", function(data){
+			var topics = data;
+			for(var i=0 ; i< topics.length; i++){
+				search_values.push(topics[i].title);
+			}
+		});
+		$.get("/api/lessons/?format=json", function(data){
+			var items = data;
+			for(var i=0 ; i< items.length; i++){
+				search_values.push(items[i].title);
+			}
+		});
 	});
-	
-	$.get("/services/lessons/get/", function(data){
-		var lessons = JSON.parse(data);
-		for(var i=0 ; i< lessons.length; i++){
-			searchValues.push(lessons[i].fields.title);
-		}
-	});
+
 	$("#search").autocomplete({
-		source: searchValues,
+		source: search_values,
 		open: function(){
-        setTimeout(function () {
-	            $('.ui-autocomplete').css('z-index', 99999999999999);
-	        }, 0);
+	       	setTimeout(function () {
+		           $('.ui-autocomplete').css('z-index', 99999999999999);
+		      }, 0);
 	    }
 	});
 });

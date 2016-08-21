@@ -40,7 +40,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = SITE_CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -61,6 +61,7 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
 	'rosetta',
+	'rest_framework',
 	'nocaptcha_recaptcha',
 	'djcelery',
 	'social.apps.django_app.default',  # ERROR ImportError: No module named parse
