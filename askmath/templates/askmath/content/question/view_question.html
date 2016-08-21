@@ -213,14 +213,14 @@
 	{% endif %}
 {% endblock %}
 
-{% block stylesheet %}
-	{% include 'askmath/latex/support.html' %}
-{% endblock %}
 
 {% block scripts %}
+	{% include 'askmath/latex/support.html' %}
+	
 	{% if occur_obstacle %}
 		<script>
 			showDialog('#dialog_obstacle');
 		</script>
 	{% endif %}
+
 {% endblock %}
