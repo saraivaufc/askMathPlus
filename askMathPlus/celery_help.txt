@@ -1,2 +1,11 @@
 celery -A askMathPlus worker -l info
 celery -A askMathPlus beat -l info
+
+or 
+
+python manage.py celery worker -B
+
+
+Install: easy_install Celery
+
+Run in Production: http://docs.celeryproject.org/en/latest/tutorials/daemonizing.html

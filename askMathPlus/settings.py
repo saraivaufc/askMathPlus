@@ -187,6 +187,9 @@ SOCIAL_AUTH_PIPELINE = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
+FORMAT_MODULE_PATH = 'askMathPlus.formats'
+from askMathPlus.formats.pt_BR.formats import * #GAMBI
+
 LOCALE_PATHS = (
 	os.path.join(PROJECT_DIR, '../askmath/locale'),
 	'/var/local/translations/locale',
@@ -275,7 +278,6 @@ MANAGERS = (
     ('George Harrison', 'gharrison@example.com'),
 )
 
-
 """
 Configurations of email
 """
@@ -309,6 +311,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = SOCIAL_CONFIG.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRE
 
 
 # CELERY STUFF
+
 BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']

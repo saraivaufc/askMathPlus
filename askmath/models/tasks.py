@@ -3,12 +3,10 @@ from celery.decorators import periodic_task
 from datetime import datetime
 from django.utils import timezone
 
-
 from askmath.models.experience import StudentExperience
 
-#crontab(hour=0, minute=0, day_of_week=1)
-
-c = crontab(hour=0, minute=0, day_of_week=0)
+c = crontab(hour=0, minute=0, day_of_week=1)
+#c = crontab(minute='*/1')
 
 @periodic_task(run_every=(c), name="reset_round", ignore_result=True)
 def reset_round():
@@ -19,10 +17,11 @@ def reset_round():
 	students_experiences = StudentExperience.objects.filter(exists=True)
 	for student_experience in  students_experiences:
 		temp_student_experience = student_experience
+		
 		student_experience.new_round = True
 		student_experience.date_start_new_round = timezone.now()
 		student_experience.date_end_new_round =timezone.now() +  c.remaining_estimate(timezone.now())
-		
+
 		student_experience.last_scores = student_experience.get_full_scores()
 		student_experience.last_new_scores = student_experience.get_new_scores()
 

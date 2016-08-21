@@ -46,6 +46,8 @@
 					<div class="tile-label">{{ classe.get_name }}</div>
 				</a>
 			</div>
+		{% empty %}
+		<h3 class="align-center padding30">{% trans "No class found" %}</3>
 		{% endfor %}
 	</div>
 </div>

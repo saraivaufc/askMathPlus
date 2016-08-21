@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 01:08-0300\n"
-"PO-Revision-Date: 2016-08-21 01:28-0234\n"
+"POT-Creation-Date: 2016-08-21 05:10-0300\n"
+"PO-Revision-Date: 2016-08-21 05:13-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1791,9 +1791,6 @@ msgstr ""
 "foi utilizado. Por favor, solicite uma nova redefinição de senha."
 
 #: askmath/templates/askmath/authentication/registration/password_reset_done.html:8
-#| msgid ""
-#| "We've emailed you instructions for setting your password. You should be "
-#| "receiving them shortly."
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
@@ -1849,9 +1846,6 @@ msgid "Recover Password"
 msgstr "Recuperar Senha"
 
 #: askmath/templates/askmath/authentication/registration/password_reset_form.html:19
-#| msgid ""
-#| "Provide your email address below and we will send you instructions to set a "
-#| "new one."
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
@@ -1886,6 +1880,11 @@ msgstr "Nenhum arquivo"
 msgid "No students"
 msgstr "Nenhum estudante"
 
+#: askmath/templates/askmath/content/classe/content_view_classes.html:51
+#| msgid "No lesson found."
+msgid "No class found"
+msgstr "Nenhuma turma encontrada."
+
 #: askmath/templates/askmath/content/discipline/content_view_discipline.html:20
 msgid "Lessons of"
 msgstr "Lições de"
@@ -1893,6 +1892,11 @@ msgstr "Lições de"
 #: askmath/templates/askmath/content/discipline/content_view_discipline.html:31
 msgid "Discipline does not have lessons."
 msgstr "Disciplina não possui lições."
+
+#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:24
+#| msgid "Not Disciplines Found"
+msgid "No discipline found"
+msgstr "Nenhuma disciplina encontrada."
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:30
 #: askmath/templates/askmath/index/contents_details.html:32
@@ -1939,7 +1943,7 @@ msgstr "Ajuda da Questão"
 #: askmath/templates/askmath/content/question/_dialog_help.html:11
 #: askmath/templates/askmath/content/question/_dialog_obstacle.html:25
 #: askmath/templates/askmath/content/question/_dialog_skipped_questions.html:20
-#: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:22
+#: askmath/templates/askmath/latex/editor/_dialog_latex.html:22
 msgid "Close"
 msgstr "Fechar"
 
@@ -2290,10 +2294,6 @@ msgid "License and Source-Code."
 msgstr "Licença e Código-fonte."
 
 #: askmath/templates/askmath/index/about.html:56
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\" target=\"_blank\">license CC BY-NC-ND</a>, allowing you to copy, distribute and modify its source code.\n"
-#| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\tAs well as all that we have developed, this system is open source and <a href=\"https://creativecommons.org/publicdomain/zero/1.0/legalcode\" target=\"_blank\">license CC0</a>, allowing you to copy, distribute and modify its source code.\n"
@@ -2303,10 +2303,6 @@ msgstr ""
 "Bem como tudo o que temos desenvolvido, este sistema é de código aberto e esta sob a <a href=\"https://creativecommons.org/publicdomain/zero/1.0/legalcode\" target=\"_blank\">licença CC0</a>, permitindo que você possa copiar, distribuir e modificar seu código-fonte."
 
 #: askmath/templates/askmath/index/about.html:61
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMathPlus</a>. \n"
-#| "\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\tYour source code is available at the following repository: <a href=\"https://github.com/saraivaufc/askMath\" target=\"_blank\">https://github.com/saraivaufc/askMath</a>. \n"
@@ -2334,9 +2330,6 @@ msgid "Credits"
 msgstr "Créditos"
 
 #: askmath/templates/askmath/index/about.html:102
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>. "
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\tThe AskMath was made possible thanks to other <a href=\"/credits/\">open source software</a>.\n"
@@ -2383,7 +2376,6 @@ msgid "Send"
 msgstr "Enviar"
 
 #: askmath/templates/askmath/index/message.html:43
-#| msgid "Social networks:"
 msgid "Social Networks"
 msgstr "Redes Sociais"
 
@@ -2432,16 +2424,31 @@ msgstr "Twitter"
 msgid "Privacy Policy"
 msgstr "Politicas de Privacidade"
 
+#: askmath/templates/askmath/latex/editor/_dialog_latex.html:5
+msgid "Text Editor"
+msgstr "Editor de Texto:"
+
+#: askmath/templates/askmath/latex/editor/_dialog_latex.html:9
+#, python-brace-format
+msgid "To add Latex code, add your code between && tags, eg $ \\sqrt{3} \\$."
+msgstr ""
+"Para adicionar o código de látex, adicione seu código entre as tags $$, por "
+"exemplo $ \\sqrt{3} $."
+
+#: askmath/templates/askmath/latex/editor/_dialog_latex.html:14
+msgid "Preview is shown here"
+msgstr "A pré-visualização é mostrada aqui"
+
+#: askmath/templates/askmath/latex/editor/_dialog_latex.html:25
+msgid "Save changes"
+msgstr "Salvar alterações"
+
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:85
 msgid "Empty"
 msgstr "Vazio"
 
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:90
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\tSee %(lessons)s lessons\n"
-#| "\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\tSee %(lessons)s Lessons\n"
@@ -2457,21 +2464,15 @@ msgid "Lessons of %(discipline)s"
 msgstr "Lições de %(discipline)s"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:62
-#| msgid "Errors to Obstacle"
 msgid "Errors for obstacle"
 msgstr "Erros para obstáculo"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:63
-#| msgid "Errors to Deficiency"
 msgid "Errors for deficiency"
 msgstr "Erros para a deficiência"
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:98
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\tSee %(questions)s questions\n"
-#| "\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tSee %(questions)s Questions\n"
@@ -2482,10 +2483,6 @@ msgstr ""
 
 #: askmath/templates/askmath/manager/lesson/manager_view_lessons.html:103
 #, python-format
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\t\tSee %(topics)s posts\n"
-#| "\t\t\t\t\t\t\t\t"
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tSee %(videos)s Videos\n"
@@ -2537,7 +2534,6 @@ msgid "View Keys"
 msgstr "Ver Chaves"
 
 #: askmath/templates/askmath/manager/person/manager_view_keys.html:22
-#| msgid " Generate Key"
 msgid "Generate Key"
 msgstr "Gerar Chave"
 
@@ -2738,25 +2734,6 @@ msgstr "Vídeos:"
 #: askmath/templates/askmath/utils/filter/search.html:62
 msgid "No result found!!!"
 msgstr "Nenhuma resultado encontrado!!!"
-
-#: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:5
-msgid "Text Editor"
-msgstr "Editor de Texto:"
-
-#: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:9
-#, python-brace-format
-msgid "To add Latex code, add your code between && tags, eg $ \\sqrt{3} \\$."
-msgstr ""
-"Para adicionar o código de látex, adicione seu código entre as tags $$, por "
-"exemplo $ \\sqrt{3} $."
-
-#: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:14
-msgid "Preview is shown here"
-msgstr "A pré-visualização é mostrada aqui"
-
-#: askmath/templates/askmath/utils/latexeditor/_dialog_latex.html:25
-msgid "Save changes"
-msgstr "Salvar alterações"
 
 #: askmath/utils/markdown/utils/quote.py:19
 #, python-format
@@ -4177,22 +4154,18 @@ msgid "traceback"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:50
-#| msgid "staff status"
 msgid "task state"
 msgstr "estado da tarefa"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:51
-#| msgid "staff status"
 msgid "task states"
 msgstr "estados da tarefa"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:69
-#| msgid "Group"
 msgid "group id"
 msgstr "ID do Grupo"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:71
-#| msgid "Created Key"
 msgid "created at"
 msgstr "criado em"
 
@@ -4234,7 +4207,6 @@ msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:106
 #: env/lib/python2.7/site-packages/djcelery/models.py:217
-#| msgid "Enter"
 msgid "interval"
 msgstr "intervalo"
 
@@ -4282,7 +4254,6 @@ msgid "crontabs"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:212
-#| msgid "Description"
 msgid "Useful description"
 msgstr "Descrição útil"
 
@@ -4322,7 +4293,6 @@ msgid "Queue defined in CELERY_QUEUES"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:236
-#| msgid "Save changes"
 msgid "exchange"
 msgstr "Salvar alterações"
 
@@ -4340,7 +4310,6 @@ msgid "enabled"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:255
-#| msgid "Description"
 msgid "description"
 msgstr "Descrição"
 
@@ -4693,12 +4662,6 @@ msgstr "Erro, tente novamente."
 
 #~ msgid "Is Visible:"
 #~ msgstr "Estar Visível: "
-
-#~ msgid "No lesson found."
-#~ msgstr "Nenhuma lição encontrada."
-
-#~ msgid "Not Disciplines Found"
-#~ msgstr "Nenhuma disciplina encontrada."
 
 #~ msgid "Discipline:"
 #~ msgstr "Disciplina:"
