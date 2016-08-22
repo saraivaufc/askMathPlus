@@ -21,15 +21,15 @@ class Discipline(models.Model):
         return self.title
 
     def get_lessons(self, visible=None):
-        lessons = Lesson.objects.filter(exists=True, discipline=self.id)
+        lessons = Lesson.objects.filter(exists=True, discipline=self.id).order_by('title')
         return lessons
 
     def get_lessons_visibles(self):
-        lessons = Lesson.objects.filter(exists=True, visible=True, discipline=self.id)
+        lessons = Lesson.objects.filter(exists=True, visible=True, discipline=self.id).order_by('title')
         return lessons
 
     def get_lessons_removed(self):
-        lessons = Lesson.objects.filter(exists=False, discipline=self.id)
+        lessons = Lesson.objects.filter(exists=False, discipline=self.id).order_by('title')
         return lessons
 
     def delete(self):

@@ -14,7 +14,7 @@ class ItemForm(ModelForm):
         fields = ("position", "description", "correct", "deficiencies")
         widgets = {
             'position': HiddenInput(attrs={'class': 'hidden'}),
-            'description': Textarea(attrs={'required': 'required', 'class': 'latex'}),
+            'description': Textarea(attrs={'required': 'required', 'class': 'latex', 'rows': '1'}),
             'correct': CheckboxInput(attrs={}),
             "deficiencies": SelectMultiple(attrs={'class': 'full-size'}),
         }
