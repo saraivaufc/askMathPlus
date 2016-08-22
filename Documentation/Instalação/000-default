@@ -1,0 +1,111 @@
+<VirtualHost *:80>
+ServerAdmin saraiva.ufc@gmail.com
+
+WSGIDaemonProcess www.askmath.quixada.ufc.br python-path=/var/www/askMathPlus:/var/www/askMathPlus/env/lib/python2.7/site-packages
+
+WSGIProcessGroup www.askmath.quixada.ufc.br
+
+ServerName askmath.quixada.ufc.br
+ServerAlias askmath.quixada.ufc.br
+ServerAlias www.askmath.quixada.ufc.br
+
+
+WSGIScriptAlias / /var/www/askMathPlus/askMathPlus/wsgi.py
+
+Alias /static/ /var/www/askMathPlus/askmath/static/
+Alias /media/ /var/www/askMathPlus/media/
+
+<Directory /var/www/askMathPlus/askmath/static>
+Order allow,deny
+Allow from all
+Require all granted
+Satisfy Any
+</Directory>
+
+<Directory /var/www/askMathPlus/media>
+Order allow,deny
+Allow from all
+Require all granted
+Satisfy Any
+</Directory>
+
+<Directory /var/www/askMathPlus/askMathPlus>
+<Files wsgi.py>
+Order allow,deny
+Allow from all
+Require all granted
+Satisfy Any
+</Files>
+</Directory>
+
+#3MB
+<Location />
+    LimitRequestBody 3145728
+</Location>
+
+#200MB
+<Location /var/www/askMathPlus/media/documents/video>
+    LimitRequestBody 209715200
+</Location>
+
+
+</VirtualHost>
+
+
+
+<VirtualHost *:80>
+ServerAdmin saraiva.ufc@gmail.com
+
+WSGIDaemonProcess www.manualdobixo.quixada.ufc.br python-path=/var/www/manualDoBixo:/var/www/manualDoBixo/env/lib/python2.7/site-packages
+
+WSGIProcessGroup www.manualdobixo.quixada.ufc.br
+
+ServerName manualdobixo.quixada.ufc.br
+ServerAlias www.manualdobixo.quixada.ufc.br
+ServerAlias manualdobixo.quixada.ufc.br
+
+WSGIScriptAlias / /var/www/manualDoBixo/manualDoBixo/wsgi.py
+
+Alias /static/ /var/www/manualDoBixo/handbook/static/
+Alias /media/ /var/www/manualDoBixo/media/
+
+<Directory /var/www/manualDoBixo/handbook/static>
+Order allow,deny
+Allow from all
+Require all granted 
+Satisfy Any
+</Directory>
+      
+<Directory /var/www/manualDoBixo/media>
+Order allow,deny
+Allow from all 
+Require all granted
+Satisfy Any 
+</Directory>
+    
+<Directory /var/www/manualDoBixo/manualDoBixo>
+<Files wsgi.py>
+Order allow,deny
+Allow from all
+Require all granted
+Satisfy Any
+</Files>
+</Directory>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerAdmin saraiva.ufc@gmail.com
+    ServerName hackathon.quixada.ufc.br
+    ServerAlias www.hackathon.quixada.ufc.br
+    ServerAlias hackathon.quixada.ufc.br
+
+    DocumentRoot "/var/www/hackatonUFC"
+
+    <Directory /var/www/hackatonUFC>
+       Order allow,deny
+       Allow from all
+       Require all granted
+       Satisfy Any
+    </Directory>
+</VirtualHost>
