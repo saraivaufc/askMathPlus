@@ -1,6 +1,6 @@
 from celery.task.schedules import crontab
 from celery.decorators import periodic_task
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.utils import timezone
 
 from askmath.models.experience import StudentExperience
@@ -15,12 +15,14 @@ def reset_round():
 	swap = False
 	temp_student_experience = None
 	students_experiences = StudentExperience.objects.filter(exists=True)
+
+	is_due, next_time_to_run = c.is_due(timezone.now())
+
 	for student_experience in  students_experiences:
 		temp_student_experience = student_experience
-		
 		student_experience.new_round = True
 		student_experience.date_start_new_round = timezone.now()
-		student_experience.date_end_new_round =timezone.now() +  c.remaining_estimate(timezone.now())
+		student_experience.date_end_new_round =timezone.now() +  timedelta(seconds=next_time_to_run)
 
 		student_experience.last_scores = student_experience.get_full_scores()
 		student_experience.last_new_scores = student_experience.get_new_scores()
