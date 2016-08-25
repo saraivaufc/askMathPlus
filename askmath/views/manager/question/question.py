@@ -54,7 +54,7 @@ class Question(IQuestion):
 				question = form_question.save()
 				messages.success(request, TextMessage.QUESTION_SUCCESS_ADD)
 				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
 			else:
 				messages.error(request, TextMessage.ERROR_FORM)
 		else:
@@ -88,7 +88,7 @@ class Question(IQuestion):
 				question = form_question.save()
 				messages.success(request, TextMessage.QUESTION_SUCCESS_EDIT)
 				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
 			else:
 				messages.error(request, TextMessage.QUESTION_ERROR_EDIT)
 		else:
