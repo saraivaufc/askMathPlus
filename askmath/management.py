@@ -49,6 +49,7 @@ permissions = {
 	"access_manager_question": "Access Manager Question",
 	"read_question": "Read Question",
 	"write_question": "Write Question",
+	"answer_question": "Answer Question",
 
 	"access_manager_video": "Access Manager Video",
 	"read_video": "Read Video",
@@ -240,6 +241,7 @@ group_permissions = {
 		"read_lesson",
 
 		"read_question",
+		"answer_question",
 
 		"read_video",
 

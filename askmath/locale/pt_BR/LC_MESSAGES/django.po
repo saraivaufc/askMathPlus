@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 05:10-0300\n"
-"PO-Revision-Date: 2016-08-21 05:13-0234\n"
+"POT-Creation-Date: 2016-08-25 19:21-0300\n"
+"PO-Revision-Date: 2016-08-25 19:27-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1310,7 +1310,7 @@ msgid "Choose items that this issue has."
 msgstr "Escolha os itens que esta pergunta tem."
 
 #: askmath/models/question/question.py:22
-#: askmath/templates/askmath/content/question/view_question.html:82
+#: askmath/templates/askmath/content/question/_render_question.html:42
 msgid "Help"
 msgstr "Ajuda"
 
@@ -1590,6 +1590,7 @@ msgstr "Submeter"
 
 #: askmath/templates/askmath/_form.html:24
 #: askmath/templates/askmath/manager/question/manager_form_question.html:38
+#: askmath/templates/askmath/manager/question/manager_view_question.html:31
 #: askmath/templates/askmath/manager/question/manager_view_questions_sort.html:34
 #: askmath/templates/askmath/manager/video/manager_view_videos_sort.html:34
 msgid "Informations"
@@ -1597,6 +1598,7 @@ msgstr "Informações"
 
 #: askmath/templates/askmath/_form_informations.html:6
 #: askmath/templates/askmath/fields/caption.html:5
+#: askmath/templates/askmath/fields/file.html:6
 msgid "This field in required."
 msgstr "Este campo é obrigatório."
 
@@ -1881,7 +1883,6 @@ msgid "No students"
 msgstr "Nenhum estudante"
 
 #: askmath/templates/askmath/content/classe/content_view_classes.html:51
-#| msgid "No lesson found."
 msgid "No class found"
 msgstr "Nenhuma turma encontrada."
 
@@ -1894,7 +1895,6 @@ msgid "Discipline does not have lessons."
 msgstr "Disciplina não possui lições."
 
 #: askmath/templates/askmath/content/discipline/content_view_disciplines.html:24
-#| msgid "Not Disciplines Found"
 msgid "No discipline found"
 msgstr "Nenhuma disciplina encontrada."
 
@@ -1967,6 +1967,30 @@ msgstr "Sim"
 msgid "Você está enfrentando problemas?"
 msgstr "Você está enfrentando problemas?"
 
+#: askmath/templates/askmath/content/question/_render_question.html:6
+msgid "Points"
+msgstr "Pontos"
+
+#: askmath/templates/askmath/content/question/_render_question.html:30
+msgid "Not Item Found!!!"
+msgstr "Nenhum item encontrado."
+
+#: askmath/templates/askmath/content/question/_render_question.html:37
+msgid "Reply"
+msgstr "Responder"
+
+#: askmath/templates/askmath/content/question/_render_question.html:49
+msgid "Jump"
+msgstr "Saltar"
+
+#: askmath/templates/askmath/content/question/_render_question.html:56
+msgid "Review Jumps"
+msgstr "Rever Saltos"
+
+#: askmath/templates/askmath/content/question/_render_question.html:63
+msgid "Deficiencies"
+msgstr "Deficiências"
+
 #: askmath/templates/askmath/content/question/view_question.html:21
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:9
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:18
@@ -1986,67 +2010,43 @@ msgstr "Questões Corretas"
 msgid "Skipped Remaining"
 msgstr "Saltos Restantes"
 
-#: askmath/templates/askmath/content/question/view_question.html:46
-msgid "Points"
-msgstr "Pontos"
-
-#: askmath/templates/askmath/content/question/view_question.html:69
-msgid "Not Item Found!!!"
-msgstr "Nenhum item encontrado."
-
-#: askmath/templates/askmath/content/question/view_question.html:77
-msgid "Reply"
-msgstr "Responder"
-
-#: askmath/templates/askmath/content/question/view_question.html:89
-msgid "Jump"
-msgstr "Saltar"
-
-#: askmath/templates/askmath/content/question/view_question.html:96
-msgid "Review Jumps"
-msgstr "Rever Saltos"
-
-#: askmath/templates/askmath/content/question/view_question.html:103
-msgid "Deficiencies"
-msgstr "Deficiências"
-
-#: askmath/templates/askmath/content/question/view_question.html:112
+#: askmath/templates/askmath/content/question/view_question.html:50
 msgid "Congratulations, complete lesson !!!"
 msgstr "Parabéns, você completou esta lição !!!"
 
-#: askmath/templates/askmath/content/question/view_question.html:116
+#: askmath/templates/askmath/content/question/view_question.html:54
 msgid "Reser Lesson"
 msgstr "Reiniciar Lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:122
+#: askmath/templates/askmath/content/question/view_question.html:60
 msgid "Sugestions next lessons:"
 msgstr "Sugestão para próximas lições:"
 
-#: askmath/templates/askmath/content/question/view_question.html:133
+#: askmath/templates/askmath/content/question/view_question.html:71
 msgid "It has no sugestions."
 msgstr "Não existe sugestões."
 
-#: askmath/templates/askmath/content/question/view_question.html:138
+#: askmath/templates/askmath/content/question/view_question.html:76
 msgid "There are no questions for this lesson"
 msgstr "Não há perguntas para esta lição"
 
-#: askmath/templates/askmath/content/question/view_question.html:145
+#: askmath/templates/askmath/content/question/view_question.html:83
 msgid "There was an error loading the questions"
 msgstr "Houve um erro ao carregar as perguntas"
 
-#: askmath/templates/askmath/content/question/view_question.html:156
+#: askmath/templates/askmath/content/question/view_question.html:94
 msgid "Your Progress"
 msgstr "Seu Progresso"
 
-#: askmath/templates/askmath/content/question/view_question.html:159
+#: askmath/templates/askmath/content/question/view_question.html:97
 msgid "You level:"
 msgstr "Seu nível:"
 
-#: askmath/templates/askmath/content/question/view_question.html:176
+#: askmath/templates/askmath/content/question/view_question.html:114
 msgid "New Points:"
 msgstr "Novos pontos:"
 
-#: askmath/templates/askmath/content/question/view_question.html:182
+#: askmath/templates/askmath/content/question/view_question.html:120
 #: askmath/templates/askmath/content/ranking/content_view_ranking.html:115
 msgid "All Points:"
 msgstr "Todos os Pontos:"
@@ -2106,6 +2106,10 @@ msgstr "Vídeos de %(lesson)s"
 #: askmath/templates/askmath/fields/textarea.html:9
 msgid "This field can not be empty"
 msgstr "Este campo não pode estar vazio"
+
+#: askmath/templates/askmath/fields/file.html:8
+msgid "Maximum size"
+msgstr "Tamanho máximo"
 
 #: askmath/templates/askmath/forum/category/view_categories.html:13
 #: askmath/templates/askmath/manager/classe/manager_view_classes.html:22
@@ -2545,6 +2549,12 @@ msgstr "Chave criada"
 msgid "User"
 msgstr "Usuário"
 
+#: askmath/templates/askmath/manager/question/manager_view_question.html:9
+#: askmath/templates/askmath/manager/question/manager_view_question.html:23
+#| msgid "Sort Questions"
+msgid "Show question"
+msgstr "Visualizar questão"
+
 #: askmath/templates/askmath/manager/question/manager_view_questions.html:28
 msgid "Amount of items"
 msgstr "Quantidade de itens"
@@ -2925,11 +2935,11 @@ msgstr "Criar Lição"
 msgid "Edit Lesson"
 msgstr "Editar Lição"
 
-#: askmath/views/manager/question/question.py:60
+#: askmath/views/manager/question/question.py:65
 msgid "Create Question"
 msgstr "Criar Questão"
 
-#: askmath/views/manager/question/question.py:95
+#: askmath/views/manager/question/question.py:100
 msgid "Edit Question"
 msgstr "Editar Questão"
 
@@ -4564,9 +4574,6 @@ msgstr "Erro, tente novamente."
 
 #~ msgid "NULL"
 #~ msgstr "VAZIO"
-
-#~ msgid "Sort Questions"
-#~ msgstr "Ordenar Questões"
 
 #~ msgid " Submit"
 #~ msgstr "Submeter"

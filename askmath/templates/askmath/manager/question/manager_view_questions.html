@@ -96,7 +96,11 @@
 				</td>
 				{% endif %}
 				<td class="sortable-column">{{ question.get_position }}</td>
-				<td class="sortable-column">{{ question.get_description|truncatechars:"255" }}</td>
+				<td class="sortable-column">
+					<a href="{% url 'askmath:manager_question_view' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id  %}">
+					{{ question.get_description|truncatechars:"255" }}
+					</a>
+				</td>
 				<td class="sortable-column">{{ question.get_scores }}</td>
 				<td>
 					{% if question.is_visible %}

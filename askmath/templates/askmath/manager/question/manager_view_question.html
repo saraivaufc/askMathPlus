@@ -1,0 +1,41 @@
+{% extends 'askmath/manager/question/manager_view_questions.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% if lesson %}
+	<li>
+		<a href=".">
+			<span class="icon mif-list-numbered"></span> <span>{% trans "Show question" %}</span>
+		</a>
+	</li>
+	{% endif %}
+{% endblock %}
+
+
+
+{%  block content %}
+
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan10">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title">{% trans "Show question" %}</h3>
+				<div class="padding10">
+					{% include "askmath/content/question/_render_question.html" %}
+				</div>
+			</div>
+		</div>
+		<div class="cell colspan2">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title">{% trans "Informations" %}</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+	{% include 'askmath/latex/support.html' %}
+{% endblock %}

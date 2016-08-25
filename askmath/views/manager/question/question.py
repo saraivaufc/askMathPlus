@@ -11,10 +11,15 @@ from .iquestion import IQuestion
 
 
 class Question(IQuestion):
-	def view_questions(self, request, lesson, discipline):
-		questions = lesson.get_questions()
-		return render(request, "askmath/manager/question/manager_view_questions.html",
-					  {'request': request, 'discipline': discipline, 'lesson': lesson, 'questions': questions})
+	def view_questions(self, request, lesson, discipline, question=None):
+		context = {'request': request, 'discipline': discipline, 'lesson': lesson}
+		if question:
+			context['question'] = question
+			return render(request, "askmath/manager/question/manager_view_question.html",context)
+		else:
+			questions = lesson.get_questions()
+			context['questions'] = questions
+			return render(request, "askmath/manager/question/manager_view_questions.html",context)
 
 	def view_questions_removed(self, request, lesson, discipline):
 		questions = QuestionModel.objects.filter(exists=False, lesson=lesson.id)
