@@ -21,9 +21,18 @@
 	{% for item in question.get_items %}
 	<div class="row">
 		<label class="input-control radio small-check">
-			<input type="radio" name="item" value={{ item.id }} required>
+			<input type="radio" name="item" value={{ item.id }} required {% if perms.askmath.access_manager_question %}{% if item.is_correct %}checked{% endif %}{% endif %}>
 			<span class="check"></span>
-			<span class="caption align-justify">{{ item.get_description|safe|linebreaksbr }}</span>
+			<span class="caption align-justify">
+				{{ item.get_description|safe|linebreaksbr }}
+				{% if perms.askmath.access_manager_question %}
+					{% if item.is_correct %}
+					<span class="tag success mif-checkmark"></span>
+					{% else %}
+					<span class="tag alert mif-cross"></span>
+					{% endif %}
+				{% endif %}
+			</span>
 		</label>
 	</div>
 	{% empty %}
