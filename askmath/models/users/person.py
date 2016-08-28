@@ -40,7 +40,7 @@ class AbstractSystemPerson(models.Model):
 	# is_superuser = models.BooleanField(_('administrator status'), default=False,blank=True )
 	is_moderator = models.BooleanField(_('moderator status'), default=False, blank=True)
 	is_staff = models.BooleanField(_(u'staff status'), default=False,
-								   help_text=_(u'Designates whether the user can log into this admin site.'))
+									 help_text=_(u'Designates whether the user can log into this admin site.'))
 
 	def get_location(self):
 		return self.location
@@ -57,10 +57,10 @@ class AbstractSystemPerson(models.Model):
 
 class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 	first_name = models.CharField(_(u"First Name "), max_length=100, blank=False, null=True,
-								  help_text=_(u'Please enter you first name.'), )
+									help_text=_(u'Please enter you first name.'), )
 	last_name = models.CharField(_(u"Last Name "), max_length=100, blank=False, null=True,
 								 help_text=_(u'Please enter you last name.'), )
-	email = models.EmailField(_(u"Email"), max_length=254, unique=True,  null=True, blank=True, default=None, 
+	email = models.EmailField(_(u"Email"), max_length=254, unique=True,  null=True, blank=True, 
 								help_text=_(u'Please enter you email.'), )
 	is_active = models.BooleanField(_('active'), default=True,
 									help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
@@ -110,12 +110,14 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 
 class Person(AbstractPerson):
 	profile_image = models.ImageField(verbose_name=_(u"Profile Image"), help_text=_(u"Please enter you profile image."),
-									  upload_to='documents/image/profile_image/%Y/%m/%d', null=True, blank=True,
-									  default=None)
+										upload_to='documents/image/profile_image/%Y/%m/%d', null=True, blank=True,
+										default=None)
 	color = models.CharField(verbose_name=_(u'Color'), max_length=50, default=generate_color)
 	exists = models.BooleanField(default=True)
 
 	def save(self, group=None, *args, **kwargs):
+		if not self.email:
+			self.email = None
 		super(Person, self).save(*args, **kwargs)
 
 		if not group and not self.groups.all():
