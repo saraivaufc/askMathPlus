@@ -16,7 +16,6 @@ except:
 class PersonManager(UserManager):
 	def create_user(self, email, password=None, group='student', **extra_fields):
 		print 'create_user with group=', group
-		email = email
 		user = self.model(
 			email=email,
 		)
@@ -61,7 +60,7 @@ class AbstractPerson(AbstractBaseUser, PermissionsMixin, AbstractSystemPerson):
 								  help_text=_(u'Please enter you first name.'), )
 	last_name = models.CharField(_(u"Last Name "), max_length=100, blank=False, null=True,
 								 help_text=_(u'Please enter you last name.'), )
-	email = models.EmailField(_(u"Email"), max_length=254, unique=True,  null=True, blank=True, 
+	email = models.EmailField(_(u"Email"), max_length=254, unique=True,  null=True, blank=True, default=None, 
 								help_text=_(u'Please enter you email.'), )
 	is_active = models.BooleanField(_('active'), default=True,
 									help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
