@@ -19,33 +19,32 @@
 	</div>
 	<div class="content">
 		<div class="flex-grid">
-				<div class="row">
-					<div class="cell colspan1">
-						<div class="profile image-container">
-							<div class="frame">
-								{% if comment.get_person.get_profile_image %}
-								<img class="profile-image"  src="{{ comment.get_person.get_profile_image.url }}">
-								{% else %}
-								<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
-								{% endif %}
-							</div>
-							<label class="profile-name align-center text-small">
-								{{ comment.get_person.get_full_name }}
-							</label>
-						</div>
-					</div>
-					<div class="cell colspan11">
-						<div class="padding10">
-							<p id="comment-{{ comment.id }}" class="post-description">{{ comment.get_description|linebreaksbr }}</p>
-							{% if request.user in comment.get_likes_persons %}
-							<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="image-button success button-like">
+			<div class="row">
+				<div class="cell colspan1">
+					<div class="profile image-container">
+						<div class="frame">
+							{% if comment.get_person.get_profile_image %}
+							<img class="profile-image"  src="{{ comment.get_person.get_profile_image.url }}">
 							{% else %}
-							<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="image-button info button-like">
+							<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 							{% endif %}
-								<span class="icon mif-thumbs-up"></span>
-								<span class="like-count">{{ comment.get_likes|length }}</span>
-							</button>
 						</div>
+						<label class="profile-name align-center text-small">
+							{{ comment.get_person.get_full_name }}
+						</label>
+					</div>
+				</div>
+				<div class="cell colspan11">
+					<div class="padding10">
+						<p id="comment-{{ comment.id }}" class="post-description">{{ comment.get_description|safe|linebreaksbr }}</p>
+						{% if request.user in comment.get_likes_persons %}
+						<button href="{% url 'askmath:forum_comment_unlike' id_comment=comment.id  %}" class="image-button success button-like">
+						{% else %}
+						<button href="{% url 'askmath:forum_comment_like' id_comment=comment.id  %}" class="image-button info button-like">
+						{% endif %}
+							<span class="icon mif-thumbs-up"></span>
+							<span class="like-count">{{ comment.get_likes|length }}</span>
+						</button>
 					</div>
 				</div>
 			</div>

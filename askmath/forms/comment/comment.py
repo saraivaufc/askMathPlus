@@ -11,5 +11,5 @@ class CommentForm(ModelForm):
         widgets = {
             'person': HiddenInput(attrs={'class': 'hidden'}),
             'topic': HiddenInput(attrs={'class': 'hidden'}),
-            'description': Textarea(attrs={'required': 'required', 'rows': '3', 'cols': '100%'}),
+            'description': Textarea(attrs={'required': 'required', 'rows': '3', 'cols': '100%', 'class': 'latex'}),
         }
