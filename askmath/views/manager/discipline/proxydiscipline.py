@@ -41,7 +41,7 @@ class ProxyDiscipline(IDiscipline):
 
 	@method_decorator(login_required)
 	def view_discipline(self, request, id_discipline):
-		if request.user.has_perm("askmath.write_discipline") and request.user.has_perm("askmath.access_manager"):
+		if request.user.has_perm("askmath.read_discipline") and request.user.has_perm("askmath.access_manager"):
 			try:
 				discipline = DisciplineModel.objects.get(id=id_discipline)
 			except Exception, e:
