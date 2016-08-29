@@ -1,5 +1,15 @@
-{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
+{% extends 'askmath/manager/discipline/manager_view_discipline.html' %}
 {% load i18n %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href=".">
+			<span class="icon mif-clipboard"></span> <span>{{ title_form }}</span>
+		</a>
+	</li>
+{% endblock %}
 
 {%  block content %}
 	{% include 'askmath/_form.html' %}

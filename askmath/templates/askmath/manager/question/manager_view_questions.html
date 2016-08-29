@@ -1,4 +1,4 @@
-{% extends 'askmath/manager/lesson/manager_view_lessons.html' %}
+{% extends 'askmath/manager/lesson/manager_view_lesson.html' %}
 {% load i18n %}
 
 {% block breadcrumbs %}
@@ -6,7 +6,7 @@
 	{% if lesson %}
 	<li>
 		<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id  id_discipline=discipline.id %}">
-			<span class="icon mif-list-numbered"></span> <span>{% blocktrans with lesson=lesson.get_title %}Questions of {{ lesson }}{% endblocktrans %}</span>
+			<span class="icon mif-list-numbered"></span> <span>{% trans "Questions" %}</span>
 		</a>
 	</li>
 	{% endif %}
@@ -20,9 +20,9 @@
 	<div class="padding10">
 		{% if perms.askmath.write_question %}
 		<div class="cell">
-				<a class="button success dropdown-toggle">
+				<a class="image-button success dropdown-toggle">
 					<span class="icon mif-plus"></span>
-					{% trans "Create" %}
+					{% trans "New  Question" %}
 				</a>
 				<ul class="d-menu compact" data-role="dropdown" data-no-close="true">
 					<label class="align-center">{% trans "Amount of items" %}</label>
@@ -33,24 +33,9 @@
 				 	<li><a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=6 %}">6</a></li>
 				 	<li><a href="{% url 'askmath:manager_question_add' id_lesson=lesson.id id_discipline=discipline.id quantity_items=7 %}">7</a></li>
 				</ul>
-
-				<a id="button-question-edit" href="#" class="image-button primary">
-					<span class="icon mif-pencil"></span>
-					{% trans "Edit" %}
-				</a>
-				{% if is_removed %}
-				<a id="button-question-restore" href="#" class="image-button info">
-					<span class="icon mif-history"></span>
-					{% trans "Restore" %}
-				</a>
-				{% else %}
-				<a id="button-question-delete" href="#" class="image-button danger">
-					<span class="icon mif-minus"></span>
-					{% trans "Delete" %}
-				</a>
-				{% endif %}
+				
 				{% if perms.askmath.write_question %}
-				<a id="button-question-sort" class="image-button info" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
+				<a class="image-button info" href="{% url 'askmath:manager_question_sort' id_lesson=lesson.id  id_discipline=discipline.id %}" >
 					<span class="icon mif-list-numbered"></span>
 					{% trans "Sort" %}
 				</a>
@@ -75,33 +60,20 @@
 		<table  class="dataTable border bordered">
 			<thead>
 				<tr>
-					{% if perms.askmath.write_question %}
-					<td style="width: 10px"></td>
-					{% endif %}
-					<td>{% trans "Position" %}</td>
+					<td width="5px">{% trans "Position" %}</td>
 					<td>{% trans "Description" %}</td>
-					<td>{% trans "Scores" %}</td>
-					<td>{% trans "Visible" %}</td>
+					<td width="5px">{% trans "Visible" %}</td>
 				</tr>
 			</thead>
 			<tbody>
 			{% for question in questions %}
 			<tr>
-				{% if perms.askmath.write_question %}
+				<td>{{ question.get_position }}</td>
 				<td>
-					<label class="input-control radio small-check no-margin">
-						<input type="radio" question_id="{{ question.id }}" lesson_id="{{ lesson.id }}" discipline_id="{{ discipline.id }}" name="radio_question">
-						<span class="check"></span>
-					</label>
-				</td>
-				{% endif %}
-				<td class="sortable-column">{{ question.get_position }}</td>
-				<td class="sortable-column">
 					<a href="{% url 'askmath:manager_question_view' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id  %}">
 					{{ question.get_description|truncatechars:"255" }}
 					</a>
 				</td>
-				<td class="sortable-column">{{ question.get_scores }}</td>
 				<td>
 					{% if question.is_visible %}
 						<button class="cycle-button mini-button success">

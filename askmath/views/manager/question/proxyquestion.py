@@ -24,14 +24,13 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 			if id_question:
 				try:
@@ -51,7 +50,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect(reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+		return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def view_questions_removed(self, request, id_lesson, id_discipline):
@@ -61,14 +60,13 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				return self.__question.view_questions_removed(request, lesson, discipline)
 			except Exception, e:
@@ -77,8 +75,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect(
-			reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def add_question(self, request, id_lesson, id_discipline, quantity_items=5):
@@ -88,14 +85,13 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				return self.__question.add_question(request, lesson, discipline, int(quantity_items))
 			except Exception, e:
@@ -104,8 +100,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect(
-			reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def remove_question(self, request, id_question, id_lesson, id_discipline):
@@ -115,21 +110,19 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				question = QuestionModel.objects.get(id=id_question)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.QUESTION_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-							kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+				return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 			try:
 				return self.__question.remove_question(request, question, lesson, discipline)
 			except Exception, e:
@@ -138,7 +131,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect( reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def edit_question(self, request, id_question, id_lesson, id_discipline):
@@ -148,21 +141,19 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				question = QuestionModel.objects.get(id=id_question)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.QUESTION_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-							kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+				return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 
 			try:
 				return self.__question.edit_question(request, question, lesson, discipline)
@@ -172,8 +163,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect(reverse('askmath:manager_question_view',
-												kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def restore_question(self, request, id_question, id_lesson, id_discipline):
@@ -183,21 +173,19 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				question = QuestionModel.objects.get(id=id_question)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.QUESTION_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-							kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+				return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 			try:
 				return self.__question.restore_question(request, question, lesson, discipline)
 			except Exception, e:
@@ -206,8 +194,7 @@ class ProxyQuestion(IQuestion):
 		else:
 			messages.error(request, TextMessage.USER_NOT_PERMISSION)
 
-		return HttpResponseRedirect(reverse('askmath:manager_question_view',
-											kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
 
 	@method_decorator(login_required)
 	def sort_questions(self, request, id_lesson, id_discipline):
@@ -217,14 +204,13 @@ class ProxyQuestion(IQuestion):
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
-				return HttpResponseRedirect(reverse('askmath:manager_discipline_view'))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				lesson = LessonModel.objects.get(id=id_lesson)
 			except Exception, e:
 				print e
 				messages.error(request, TextMessage.LESSON_NOT_FOUND)
-				return HttpResponseRedirect(
-					reverse('askmath:manager_lesson_view', kwargs={'id_discipline': id_discipline}))
+				return HttpResponseRedirect( reverse('askmath:manager_lesson_view', kwargs={'id_lesson': id_lesson}))
 			try:
 				if request.method == "POST":
 					new_order = json.loads(request.POST['new_order'])
@@ -235,5 +221,4 @@ class ProxyQuestion(IQuestion):
 				print e
 				messages.error(request, TextMessage.QUESTION_ERROR_SORT)
 
-		return HttpResponseRedirect(reverse('askmath:manager_question_view',
-											kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+		return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))

@@ -62,36 +62,20 @@ class Lesson(models.Model):
 		return self.errors_to_deficiency
 
 	def get_questions(self):
-		questions = Question.objects.filter(exists=True, lesson=self.id)
-		if questions:
-			questions = list(questions)
-			questions.sort()
-		return questions
+		return Question.objects.filter(exists=True, lesson=self.id).order_by('position')
 
 	def get_questions_visibles(self):
-		questions = Question.objects.filter(exists=True, visible=True, lesson=self.id)
-		if questions:
-			questions = list(questions)
-			questions.sort()
-		return questions
+		return Question.objects.filter(exists=True, visible=True, lesson=self.id).order_by('position')
 
 	def get_questions_removed(self):
-		questions = Question.objects.filter(exists=False, lesson=self.id)
-		if questions:
-			questions = list(questions)
-			questions.sort()
-		return questions
+		return Question.objects.filter(exists=False, lesson=self.id).order_by('position')
+		
 
 	def get_videos(self):
-		videos = Video.objects.filter(exists=True, lesson=self.id)
-		if videos:
-			videos = list(videos)
-			videos.sort()
-		return videos
+		return Video.objects.filter(exists=True, lesson=self.id).order_by('position')
 
 	def get_videos_visibles(self):
-		videos = Video.objects.filter(exists=True, visible=True, lesson=self.id)
-		return videos
+		return Video.objects.filter(exists=True, visible=True, lesson=self.id).order_by('position')
 
 	def delete(self):
 		self.exists = False

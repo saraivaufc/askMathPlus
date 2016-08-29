@@ -15,6 +15,7 @@
 <div class="card block-shadow">
 	 <h3 class="align-center page-title"><span>{% trans "Persons" %}</h3>
 	 <div class="padding10">
+
 		<table class="dataTable border bordered">
 			<thead>
 				<tr>
@@ -24,6 +25,8 @@
 				</tr>
 			</thead>
 			<tbody>
+
+
 				{% for type, values in person_types.types.items %}
 					<tr>
 						<td>{{ type|title }}</td>

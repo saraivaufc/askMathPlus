@@ -1,0 +1,131 @@
+{% extends 'askmath/manager/discipline/manager_view_discipline.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="{% url 'askmath:manager_lesson_view' id_lesson=lesson.id %}">
+			<span class="icon mif-clipboard"></span> <span>{{ lesson.title }}</span>
+		</a>
+	</li>
+{% endblock %}
+
+
+{%  block content %}
+
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan9">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title" >{{ lesson.title }}</h3>
+
+				<div class="padding10">
+					<a  href="{% url 'askmath:manager_lesson_edit' id_lesson=lesson.id %}" class="image-button primary">
+						<span class="icon mif-pencil"></span>
+						{% trans "Edit" %}
+					</a>
+					{% if lesson.exists %}
+					<a href="{% url 'askmath:manager_lesson_remove' id_lesson=lesson.id %}" class="image-button danger">
+						<span class="icon mif-minus"></span>
+						{% trans "Delete" %}
+					</a>
+					{% else %}
+					<a href="{% url 'askmath:manager_lesson_restore' id_lesson=lesson.id %}" class="image-button info">
+						<span class="icon mif-history"></span>
+						{% trans "Restore" %}
+					</a>
+					{% endif %}
+				</div>
+				
+				<div class="padding10">
+					<dl>
+						<dt>{% trans "Title" %}:</dt>
+						<dd>{{  lesson.get_title }}</dd>
+
+						<dt>{% trans "Description" %}:</dt>
+						<dd class="align-justify">{{  lesson.get_description }}</dd>
+
+						<dt>{% trans "Requirements" %}:</dt>
+						<dd>
+							{% for requirement in lesson.get_requirements %}
+								<a class="tag {{ requirement.color }} fg-white" href="{% url 'askmath:manager_lesson_view' id_lesson=requirement.id %}">
+									{{ requirement }}
+								</a>
+							{% empty %}
+								<label>{% trans "No requirements" %}</label>
+							{% endfor %}
+						</dd>
+
+						<dt>{% trans "Sugestions" %}:</dt>
+						<dd>
+							{% for sugestion in lesson.get_sugestions %}
+								<a class="tag {{ sugestion.color }} fg-white" href="{% url 'askmath:manager_lesson_view' id_lesson=sugestion.id %}">
+									{{ sugestion }}
+								</a>
+							{% empty %}
+								<label>{% trans "No sugestions" %}</label>
+							{% endfor %}
+						</dd>
+						
+						<dt>{% trans "Maximum Hops" %}:</dt>
+						<dd>{{ lesson.get_maximum_hops }}</dd>
+
+						<dt>{% trans "Errors for obstacle" %}:</dt>
+						<dd>{{ lesson.get_errors_followed_to_obstacle }}</dd>
+						
+						<dt>{% trans "Errors for deficiency" %}:</dt>
+						<dd>{{ lesson.get_errors_to_deficiency}}</dd>
+
+						<dt>{% trans "Visible" %}:</dt>
+						<dd>
+							{% if lesson.is_visible %}
+								<button class="cycle-button mini-button success">
+									<span class="mif mif-checkmark"></span>
+								</button>
+							{% else %}
+								<button class="cycle-button mini-button danger">
+									<span class="mif mif-cross"></span>
+								</button>
+							{% endif %}
+						</dd>
+
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="cell colspan3">
+			<div class="card block-shadow">
+				
+				<h3 class="align-center page-title" >{% trans "Options" %}</h3>
+				
+				<div class="padding10">
+					<a href="{% url 'askmath:manager_question_view' id_lesson=lesson.id id_discipline=discipline.id %}"  class="command-button success width">
+						<span class="icon mif-list-numbered"></span>
+						{% trans "Questions" %}
+						<small>
+						 {% blocktrans with qtd_questions=lesson.get_questions_visibles|length %}
+								 See {{ qtd_questions }} questions.
+						 {% endblocktrans %}
+						 </small>
+					</a>
+					<a href="{% url 'askmath:manager_video_view' id_lesson=lesson.id id_discipline=discipline.id %}"  class="command-button primary width">
+						<span class="icon mif-film"></span>
+						{% trans "Videos" %}
+						<small>
+						 {% blocktrans with qtd_videos=lesson.get_videos_visibles|length %}
+								 See {{ qtd_videos }} videos.
+						 {% endblocktrans %}
+						 </small>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{%  endblock %}
+
+{% block scripts %}
+	{% include 'askmath/latex/support.html' %}
+{% endblock %}

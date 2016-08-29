@@ -19,24 +19,9 @@
 		<div class="cell">
 			<a id="button-classe-create" href="{% url 'askmath:manager_classe_add' %}" class="image-button success">
 				<span class="icon mif-plus"></span>
-				{% trans "Create" %}
+				{% trans "New Classe" %}
 			</a>
-			<a id="button-classe-edit" href="#" class="image-button primary">
-				<span class="icon mif-pencil"></span>
-				{% trans "Edit" %}
-			</a>
-			{% if is_removed %}
-			<a id="button-classe-restore" href="#" class="image-button info">
-				<span class="icon mif-history"></span>
-				{% trans "Restore" %}
-			</a>
-			{% else %}
-			<a id="button-classe-delete" href="#" class="image-button danger">
-				<span class="icon mif-minus"></span>
-				{% trans "Delete" %}
-			</a>
-			{% endif %}
-
+			
 			{% if is_removed %}
 			<a href="{% url 'askmath:manager_classe_view' %}" class="image-button warning">
 				<span class="icon mif-undo"></span>
@@ -51,54 +36,20 @@
 		</div>
 		{% endif %}
 
-		<table  class="dataTable border bordered">
-			<thead>
-				<tr>
-					{% if perms.askmath.write_classe %}
-					<td style="width: 10px"></td>
-					{% endif %}
-					<td>{% trans "Name" %}</td>
-					<td>{% trans "Semester" %}</td>
-					<td>{% trans "Responsible" %}</td>
-					<td>{% trans "Disciplines" %}</td>
-					<td style="width: 20px">{% trans "Visible" %}</td>
-				</tr>
-			</thead>
-			<tbody>
-			{% for classe in classes %}
-			<tr>
-				{% if perms.askmath.write_classe %}
-				<td>
-					<label class="input-control radio small-check no-margin">
-						<input type="radio" classe_id="{{ classe.id }}" name="radio_classe">
-						<span class="check"></span>
-					</label>
-				</td>
-				{% endif %}
-				<td class="sortable-column">{{ classe.get_name }}</td>
-				<td class="sortable-column">{{ classe.get_semester }}</td>
-				<td class="sortable-column">{{ classe.get_responsible }}</td>
-				<td class="sortable-column">
-					{% for discipline in classe.get_disciplines %}
-						<a href="{% url 'askmath:manager_lesson_view' id_discipline=discipline.id %}" class="tag info">{{ discipline.get_title }}</a>
-					{% empty %}
-						{% trans "Empty" %}
-					{% endfor %}
-				</td>
-				<td class="sortable-column">
-					{% if classe.is_visible %}
-						<button class="cycle-button mini-button success">
-							<span class="mif mif-checkmark"></span>
-						</button>
-					{% else %}
-						<button class="cycle-button mini-button danger">
-							<span class="mif mif-cross"></span>
-						</button>
-					{% endif %}
-				</td>
-			{% endfor %}
-			</tbody>
-		</table>
+		<div class="tile-container">
+		{% for classe in classes %}
+			<div class="tile {{ classe.color }}">
+				<a href="{% url 'askmath:manager_classe_view' id_classe=classe.id %}" class="tile-content slide-down iconic">
+					<span class="icon mif-organization"></span>
+					<div class="tile-label">
+					{{ classe.get_name|title }}
+					</div>
+				</a>
+			</div>
+		{% empty %}
+		<h3 class="align-center padding30">{% trans "No classe found" %}</3>
+		{% endfor %}
+
 	</div>
 </div>
 {% endblock %}

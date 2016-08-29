@@ -9,7 +9,6 @@ from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from .iquestion import IQuestion
 
-
 class Question(IQuestion):
 	def view_questions(self, request, lesson, discipline, question=None):
 		context = {'request': request, 'discipline': discipline, 'lesson': lesson}
@@ -53,22 +52,18 @@ class Question(IQuestion):
 			if form_question.is_valid():
 				question = form_question.save()
 				messages.success(request, TextMessage.QUESTION_SUCCESS_ADD)
-				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
+				return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
 			else:
 				messages.error(request, TextMessage.ERROR_FORM)
 		else:
 			form_question = QuestionForm(prefix='question')
 			forms_items = [ItemForm(prefix=i) for i in range(1, quantity_items + 1)]
-		return render(request, "askmath/manager/question/manager_form_question.html",
-					  {'request': request, 'form_question': form_question, 'lesson': lesson, 'discipline': discipline,
-					   'forms_items': forms_items, 'lesson': lesson, 'title_form': _('Create Question')})
+		return render(request, "askmath/manager/question/manager_form_question.html", {'request': request, 'form_question': form_question, 'lesson': lesson, 'discipline': discipline, 'forms_items': forms_items, 'lesson': lesson, 'title_form': _('Create Question')})
 
 	def remove_question(self, request, question, lesson, discipline):
 		question.delete()
 		messages.success(request, TextMessage.QUESTION_SUCCESS_REM)
-		return HttpResponseRedirect(reverse('askmath:manager_question_view',
-											kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+		return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
 	def edit_question(self, request, question, lesson, discipline):
 		if request.method == "POST":
@@ -87,8 +82,7 @@ class Question(IQuestion):
 			if form_question.is_valid():
 				question = form_question.save()
 				messages.success(request, TextMessage.QUESTION_SUCCESS_EDIT)
-				return HttpResponseRedirect(reverse('askmath:manager_question_view',
-													kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
+				return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id, 'id_question': question.id}))
 			else:
 				messages.error(request, TextMessage.QUESTION_ERROR_EDIT)
 		else:
@@ -102,8 +96,7 @@ class Question(IQuestion):
 	def restore_question(self, request, question, lesson, discipline):
 		question.restore()
 		messages.success(request, TextMessage.QUESTION_SUCCESS_RESTORE)
-		return HttpResponseRedirect(reverse('askmath:manager_question_view',
-											kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+		return HttpResponseRedirect(reverse('askmath:manager_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
 
 	def sort_questions(self, request, lesson, discipline, new_order=None):
 		questions = QuestionModel.objects.filter(exists=True, visible=True, lesson=lesson.id)

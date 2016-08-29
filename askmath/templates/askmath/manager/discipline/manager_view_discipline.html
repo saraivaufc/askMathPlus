@@ -1,0 +1,94 @@
+{% extends 'askmath/manager/discipline/manager_view_disciplines.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="{% url 'askmath:manager_discipline_view' id_discipline=discipline.id %}">
+			<span class="icon mif-books"></span> <span>{{ discipline.title }}</span>
+		</a>
+	</li>
+{% endblock %}
+
+
+{%  block content %}
+
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan6">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title" >{{ discipline.title }}</h3>
+
+				<div class="padding10">
+					<a  href="{% url 'askmath:manager_discipline_edit' id_discipline=discipline.id %}" class="image-button primary">
+						<span class="icon mif-pencil"></span>
+						{% trans "Edit" %}
+					</a>
+					{% if discipline.exists %}
+					<a href="{% url 'askmath:manager_discipline_remove' id_discipline=discipline.id %}" class="image-button danger">
+						<span class="icon mif-minus"></span>
+						{% trans "Delete" %}
+					</a>
+					{% else %}
+					<a href="{% url 'askmath:manager_discipline_restore' id_discipline=discipline.id %}" class="image-button info">
+						<span class="icon mif-history"></span>
+						{% trans "Restore" %}
+					</a>
+					{% endif %}
+				</div>
+				
+				<div class="padding10">
+					<dl>
+						<dt>{% trans "Title" %}:</dt>
+						<dd>{{  discipline.get_title }}</dd>
+						
+						<dt>{% trans "Visible" %}:</dt>
+						<dd>
+							{% if discipline.is_visible %}
+								<button class="cycle-button mini-button success">
+									<span class="mif mif-checkmark"></span>
+								</button>
+							{% else %}
+								<button class="cycle-button mini-button danger">
+									<span class="mif mif-cross"></span>
+								</button>
+							{% endif %}
+						</dd>
+
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="cell colspan6">
+			<div class="card block-shadow">
+				
+				<h3 class="align-center page-title" >{% trans "Lessons" %}</h3>
+				
+				<div class="padding10">
+					<a href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="image-button success">
+						<span class="icon mif-plus"></span>
+						{% trans "New lesson" %}
+					</a>
+					
+					<div class="tile-container">
+					{% for lesson in discipline.get_lessons_visibles %}
+						<div class="tile {{ lesson.color }}">
+							<a href="{% url 'askmath:manager_lesson_view' id_lesson=lesson.id %}" class="tile-content slide-down iconic">
+								<span class="icon mif-clipboard"></span>
+								<div class="tile-label">
+								{{ lesson.get_title|title }}
+								</div>
+							</a>
+						</div>
+					{% empty %}
+					<h3 class="align-center padding30">{% trans "Not lesson found" %}</3>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{%  endblock %}

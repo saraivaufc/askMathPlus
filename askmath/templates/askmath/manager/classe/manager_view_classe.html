@@ -1,0 +1,114 @@
+{% extends 'askmath/manager/classe/manager_view_classes.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="{% url 'askmath:manager_classe_view' id_classe=classe.id %}">
+			<span class="icon mif-organization"></span> <span>{{ classe.get_name }}</span>
+		</a>
+	</li>
+{% endblock %}
+
+{%  block content %}
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan9">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title" >{{ classe.name }}</h3>
+
+				<div class="padding10">
+					<a href="{% url 'askmath:manager_classe_edit' id_classe=classe.id %}" class="image-button primary">
+						<span class="icon mif-pencil"></span>
+						{% trans "Edit" %}
+					</a>
+					{% if classe.exists %}
+					<a href="{% url 'askmath:manager_classe_remove' id_classe=classe.id %}" class="image-button danger">
+						<span class="icon mif-minus"></span>
+						{% trans "Delete" %}
+					</a>
+					{% else %}
+					<a href="{% url 'askmath:manager_classe_restore' id_classe=classe.id %}" class="image-button info">
+						<span class="icon mif-history"></span>
+						{% trans "Restore" %}
+					</a>
+					{% endif %}
+
+					<dl>
+						<dt>{% trans "Name" %}:</dt>
+						<dd>{{  classe.get_name }}</dd>
+							
+						<dt>{% trans "Responsible" %}:</dt>
+						<dd>
+							{% if classe.get_responsible %}
+								<div>
+								{% if classe.get_responsible.get_profile_image %}
+								<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ classe.get_responsible.get_profile_image.url }}" />
+								{% else %}
+								<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+								{% endif %}
+								</div>
+								<span class="align-center">{{ classe.get_responsible.get_full_name }}</span>
+							{% else %}
+								{% trans "No responsible" %}
+							{% endif %}
+						</dd>
+						
+						<dt>{% trans "Semester" %}:</dt>
+						<dd>{{ classe.get_semester }}</dd>
+
+						<dt>{% trans "Plan" %}:</dt>
+						<dd>
+							{% if classe.plan %}
+								<a href="{{ classe.plan.url }}" target="_blank">
+									{% trans "Download File" %}
+								</a>
+							{% else %}
+								{% trans "No file" %}
+							{% endif %}
+						</dd>
+
+						<dt>{% trans "Disciplines" %}:</dt>
+						<dd>
+							{% for discipline in classe.get_disciplines %}
+								<a class="tag {{ discipline.color }} fg-white" href="{% url 'askmath:manager_discipline_view' id_discipline=discipline.id %}">
+									{{ discipline.title }}
+								</a>
+							{% empty %}
+								<p>{% trans "No discipline found." %}</p>
+							{% endfor %}
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="cell colspan3">
+			<div class="card block-shadow">
+				
+				<h3 class="align-center page-title" >{% trans "Students" %}</h3>
+
+				<div class="padding10">
+					<div class="listview">   
+					{% for student in classe.get_students %}
+						 <div class="list bg-grayLighter">
+							{% if student.get_profile_image %}
+							<img data-type='bordered'  class="list-icon" src="{{ student.get_profile_image.url }}" />
+							{% else %}
+							<img data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+							{% endif %}
+							<span class="list-title">{{ student.get_full_name }}</span>
+						</div>
+					{% empty %}
+						<div class="padding30">
+							<p class="text-accent align-center">{% trans "No students" %}</p>
+						</div>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

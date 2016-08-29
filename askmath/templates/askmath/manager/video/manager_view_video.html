@@ -1,0 +1,68 @@
+{% extends 'askmath/manager/video/manager_view_videos.html' %}
+{% load i18n %}
+
+{%  block content %}
+
+<div class="flex-grid">
+	<div class="row flex-just-sb">
+		<div class="cell colspan6">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title">{{ video.get_title }}</h3>
+				<div class="padding10">
+					<a href="{% url 'askmath:manager_video_edit' id_discipline=discipline.id id_lesson=lesson.id id_video=video.id %}" class="image-button primary">
+						<span class="icon mif-pencil"></span>
+						{% trans "Edit" %}
+					</a>
+					{% if video.exists %}
+					<a href="{% url 'askmath:manager_video_remove' id_discipline=discipline.id id_lesson=lesson.id id_video=video.id %}" class="image-button danger">
+						<span class="icon mif-minus"></span>
+						{% trans "Delete" %}
+					</a>
+					{% else %}
+					<a href="{% url 'askmath:manager_video_restore' id_discipline=discipline.id id_lesson=lesson.id id_video=video.id %}" class="image-button info">
+						<span class="icon mif-history"></span>
+						{% trans "Restore" %}
+					</a>
+					{% endif %}
+
+					<dl>
+					<dt>{% trans "Title" %}:</dt>
+						<dd>
+							{{  video.get_title }}
+						</dd>
+
+						<dt>{% trans "Description" %}:</dt>
+						<dd>
+							{{  video.get_description|safe|linebreaksbr }}
+						</dd>
+
+						<dt>{% trans "Visible" %}:</dt>
+						<dd>
+							{% if video.is_visible %}
+								<button class="cycle-button mini-button success">
+									<span class="mif mif-checkmark"></span>
+								</button>
+							{% else %}
+								<button class="cycle-button mini-button danger">
+									<span class="mif mif-cross"></span>
+								</button>
+							{% endif %}
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="cell colspan6">
+			<div class="card block-shadow">
+				<h3 class="align-center page-title">{% trans "Preview" %}</h3>
+				{% include "askmath/utils/video/_render_video.html" %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+	{% include 'askmath/latex/support.html' %}
+{% endblock %}

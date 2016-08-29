@@ -1,32 +1,87 @@
 {% extends 'askmath/manager/question/manager_view_questions.html' %}
 {% load i18n %}
 
-{% block breadcrumbs %}
-	{{ block.super }}
-	{% if lesson %}
-	<li>
-		<a href=".">
-			<span class="icon mif-list-numbered"></span> <span>{% trans "Show question" %}</span>
-		</a>
-	</li>
-	{% endif %}
-{% endblock %}
-
-
 
 {%  block content %}
 
 <div class="flex-grid">
 	<div class="row flex-just-sb">
-		<div class="cell colspan10">
+		<div class="cell colspan9">
 			<div class="card block-shadow">
 				<h3 class="align-center page-title">{% trans "Show question" %}</h3>
 				<div class="padding10">
-					{% include "askmath/content/question/_render_question.html" %}
+					<a href="{% url 'askmath:manager_question_edit' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" class="image-button primary">
+						<span class="icon mif-pencil"></span>
+						{% trans "Edit" %}
+					</a>
+					{% if question.exists %}
+					<a href="{% url 'askmath:manager_question_remove' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" class="image-button danger">
+						<span class="icon mif-minus"></span>
+						{% trans "Delete" %}
+					</a>
+					{% else %}
+					<a href="{% url 'askmath:manager_question_restore' id_discipline=discipline.id id_lesson=lesson.id id_question=question.id %}" class="image-button info">
+						<span class="icon mif-history"></span>
+						{% trans "Restore" %}
+					</a>
+					{% endif %}
+
+					<dl>
+						<dt>{% trans "Description" %}:</dt>
+						<dd>
+							{{  question.get_description|safe|linebreaksbr }}
+							{% if question.get_image %}
+							<div class="row flex-just-center">
+								<div class="cell colspan3">
+									<img class="padding10" src="{{ question.get_image.url }}">
+								</div>
+							</div>
+							{% endif %}
+						</dd>
+
+						<dt>{% trans "Items" %}:</dt>
+						<dd>
+							<div class="listview">
+							{% for item in question.get_items %}
+							<div class="list active {% if item.is_correct %}bg-green fg-white{% endif %}">
+								<span class="list-icon mif-list2"></span>
+								<span class="list-title">{{ item.get_description|safe|linebreaksbr }}</span>
+							</div>
+							{% empty %}
+								<p>{% trans "Not Item Found!!!" %}</p>
+							{% endfor %}
+							</div>
+						</dd>
+
+						<dt>{% trans "Help" %}:</dt>
+						<dd>
+							{% if question.get_help %}
+								{{  question.get_help|safe|linebreaksbr }}
+							{% else %}
+								{% trans "Not Help." %}
+							{% endif %}
+						</dd>
+						
+						<dt>{% trans "Scores" %}:</dt>
+						<dd>{{  question.get_scores }}</dd>
+
+						<dt>{% trans "Visible" %}:</dt>
+						<dd>
+							{% if question.is_visible %}
+								<button class="cycle-button mini-button success">
+									<span class="mif mif-checkmark"></span>
+								</button>
+							{% else %}
+								<button class="cycle-button mini-button danger">
+									<span class="mif mif-cross"></span>
+								</button>
+							{% endif %}
+						</dd>
+					</dl>
 				</div>
 			</div>
 		</div>
-		<div class="cell colspan2">
+		<div class="cell colspan3">
 			<div class="card block-shadow">
 				<h3 class="align-center page-title">{% trans "Informations" %}</h3>
 			</div>

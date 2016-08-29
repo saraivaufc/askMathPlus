@@ -6,94 +6,94 @@
 	<li><a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}"><span class="icon mif-organization"></span> <spam>{{ classe.get_name|title }}</spam></a></li>
 {% endblock %}
 
-{%  block tiles %}
-<div class="flex-grid">
-	<div class="row flex-just-sb">
-		<div class="cell colspan8">
-			<div class="card block-shadow">
-				<h3 class="align-center page-title" >{{ classe.name }}</h3>
+{%  block tiles %}	
+	<div class="flex-grid">
+		<div class="row flex-just-sb">
+			<div class="cell colspan8">
+				<div class="card block-shadow">
+					<h3 class="align-center page-title" >{{ classe.name }}</h3>
 
-				<div class="padding10">
-					<div class="align-right">
-						{% if not classe in my_classes %}
-							<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="image-button success">
-								<span class="icon mif-enter"></span>
-								{% trans "Subscribe" %}
-							</a>
-						{% else %}
-							<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button danger">
-								<span class="icon mif-exit"></span>
-								{% trans "Unsubscribe" %}
-							</a>
-						{% endif %}
-					</div>
-
-					<dl>
-						<dt>{% trans "Name" %}:</dt>
-						<dd>{{  classe.get_name }}</dd>
-							
-						<dt>{% trans "Responsible" %}:</dt>
-						<dd>
-							{% if classe.get_responsible %}
-								<div>
-								{% if classe.get_responsible.get_profile_image %}
-								<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ classe.get_responsible.get_profile_image.url }}" />
-								{% else %}
-								<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
-								{% endif %}
-								</div>
-								<span class="align-center">{{ classe.get_responsible.get_full_name }}</span>
-							{% else %}
-								{% trans "No responsible" %}
-							{% endif %}
-						</dd>
-						
-						<dt>{% trans "Semester" %}:</dt>
-						<dd>{{ classe.get_semester }}</dd>
-
-						<dt>{% trans "Plan" %}:</dt>
-						<dd>
-							{% if classe.plan %}
-								<a href="{{ classe.plan.url }}" target="_blank">
-									{% trans "Download File" %}
+					<div class="padding10">
+						<div class="align-right"> 					
+							{% if not classe in my_classes %}
+								<a href="{% url 'askmath:content_classe_join_classe' id_classe=classe.id %}" class="image-button success">
+									<span class="icon mif-enter"></span>
+									{% trans "Subscribe" %}
 								</a>
 							{% else %}
-								{% trans "No file" %}
+								<a href="{% url 'askmath:content_classe_out_classe' id_classe=classe.id %}" class="image-button danger">
+									<span class="icon mif-exit"></span>
+									{% trans "Unsubscribe" %}
+								</a>
 							{% endif %}
-						</dd>
+						</div>
+						<dl>
+							<dt>{% trans "Name" %}:</dt>
+							<dd>{{  classe.get_name }}</dd>
+								
+							<dt>{% trans "Responsible" %}:</dt>
+							<dd>
+								{% if classe.get_responsible %}
+									<div>
+									{% if classe.get_responsible.get_profile_image %}
+									<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ classe.get_responsible.get_profile_image.url }}" />
+									{% else %}
+									<img width="50px" height="50px" data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+									{% endif %}
+									</div>
+									<span class="align-center">{{ classe.get_responsible.get_full_name }}</span>
+								{% else %}
+									{% trans "No responsible" %}
+								{% endif %}
+							</dd>
+							
+							<dt>{% trans "Semester" %}:</dt>
+							<dd>{{ classe.get_semester }}</dd>
 
-						<dt>{% trans "Disciplines" %}:</dt>
-						<dd>
-							{% for discipline in classe.get_disciplines %}
-								<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tag info">{{ discipline.title }}</a>
-							{% endfor %}
-						</dd>
-					</dl>
+							<dt>{% trans "Plan" %}:</dt>
+							<dd>
+								{% if classe.plan %}
+									<a href="{{ classe.plan.url }}" target="_blank">
+										{% trans "Download File" %}
+									</a>
+								{% else %}
+									{% trans "No file" %}
+								{% endif %}
+							</dd>
+
+							<dt>{% trans "Disciplines" %}:</dt>
+							<dd>
+								{% for discipline in classe.get_disciplines %}
+									<a href="{% url 'askmath:content_discipline_view' id_discipline=discipline.id %}" class="tag info">{{ discipline.title }}</a>
+								{% endfor %}
+							</dd>
+						</dl>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="cell colspan4">
-			<div class="card block-shadow">
-				
-				<h3 class="align-center page-title" >{% trans "Students" %}</h3>
+			<div class="cell colspan4">
+				<div class="card block-shadow">
+					
+					<h3 class="align-center page-title" >{% trans "Students" %}</h3>
 
-				<div class="listview">   
-				{% for student in classe.get_students %}
-					 <div class="list">
-						{% if student.get_profile_image %}
-						<img data-type='bordered'  class="list-icon" src="{{ student.get_profile_image.url }}" />
-						{% else %}
-						<img data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
-						{% endif %}
-						<span class="list-title">{{ student.get_full_name }}</span>
+					<div class="listview">   
+					{% for student in classe.get_students %}
+						 <div class="list">
+							{% if student.get_profile_image %}
+							<img data-type='bordered'  class="list-icon" src="{{ student.get_profile_image.url }}" />
+							{% else %}
+							<img data-type='bordered'  class="list-icon" src="{{ STATIC_URL }}askmath/img/metro/profile.png" />
+							{% endif %}
+							<span class="list-title">{{ student.get_full_name }}</span>
+						</div>
+					{% empty %}
+						<p class="align-center">{% trans "No students" %}</p>
+					{% endfor %}
 					</div>
-				{% empty %}
-					<p class="align-center">{% trans "No students" %}</p>
-				{% endfor %}
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
 {% endblock %}
