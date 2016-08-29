@@ -72,8 +72,8 @@
 					</a>
 					
 					<div class="tile-container">
-					{% for lesson in discipline.get_lessons_visibles %}
-						<div class="tile {{ lesson.color }}">
+					{% for lesson in discipline.get_lessons %}
+						<div class="tile {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %} fg-white">
 							<a href="{% url 'askmath:manager_lesson_view' id_lesson=lesson.id %}" class="tile-content slide-down iconic">
 								<span class="icon mif-clipboard"></span>
 								<div class="tile-label">
