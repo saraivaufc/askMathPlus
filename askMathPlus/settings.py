@@ -40,7 +40,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = SITE_CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -165,7 +165,7 @@ LOGOUT_URL = '/authentication/logout/'
 
 # Social Auth
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-SOCIAL_AUTH_USER_MODEL = 'askmath.Person'
+SOCIAL_AUTH_USER_MODEL = 'askmath.Student'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
 SOCIAL_AUTH_LOGIN_URL = '/'
 SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
