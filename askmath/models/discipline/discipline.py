@@ -20,7 +20,7 @@ class Discipline(models.Model):
     def get_title(self):
         return self.title
 
-    def get_lessons(self, visible=None):
+    def get_lessons(self):
         lessons = Lesson.objects.filter(exists=True, discipline=self.id).order_by('title')
         return lessons
 

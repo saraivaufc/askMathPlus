@@ -2,11 +2,14 @@ from askmath.entities import TextMessage
 from askmath.forms import QuestionForm, ItemForm
 from askmath.models.question import Item as ItemModel
 from askmath.models.question import Question as QuestionModel
+from askmath.models import Lesson as LessonModel
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from django.forms import Select
+
 from .iquestion import IQuestion
 
 class Question(IQuestion):
@@ -68,7 +71,7 @@ class Question(IQuestion):
 	def edit_question(self, request, question, lesson, discipline):
 		if request.method == "POST":
 			request.POST = request.POST.copy()
-			request.POST['question-lesson'] = lesson.id
+			#request.POST['question-lesson'] = lesson.id
 
 			forms_items = forms_items = [ItemForm(request.POST, request.FILES, instance=i, prefix=index + 1) for index, i in enumerate(question.get_items())]
 			list_items = []
@@ -87,6 +90,9 @@ class Question(IQuestion):
 				messages.error(request, TextMessage.QUESTION_ERROR_EDIT)
 		else:
 			form_question = QuestionForm(instance=question, prefix='question')
+			#permitir que a questao alterne entre licoes
+			form_question.fields['lesson'].widget = Select()
+			form_question.fields['lesson'].queryset = discipline.get_lessons()
 			forms_items = [ItemForm(instance=i, prefix=index + 1) for index, i in enumerate(question.get_items())]
 		return render(request, "askmath/manager/question/manager_form_question.html",
 					  {'request': request, 'form_question': form_question, 'forms_items': forms_items,
