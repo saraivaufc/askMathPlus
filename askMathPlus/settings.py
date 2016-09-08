@@ -270,7 +270,7 @@ LOGGING = {
 }
 
 ADMINS = (
-	(u'Ciano Saraiva', u'saraiva.ufc@gmail.com'), 
+	(u'Ciano Saraiva', u'saraiva.ufc@gmail.com'),
 	(u'AskMath', u'askmathplus@gmail.com'),
 )
 
