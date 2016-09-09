@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 
 # MODELS
+from askmath.models.users import Student as StudentModel
 from askmath.models.discipline import Discipline as DisciplineModel
 from askmath.models.lesson import Lesson as LessonModel
 from askmath.models.question import Question as QuestionModel
@@ -225,3 +226,34 @@ class ProxyQuestion(IQuestion):
 
 		return HttpResponseRedirect(reverse('askmath:content_question_view',
 											kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))
+
+	@method_decorator(login_required)
+	def view_history(self, request, id_discipline, id_lesson):
+		if request.user.has_perm("askmath.read_question") and request.user.has_perm("askmath.access_content"):
+			try:
+				discipline = DisciplineModel.objects.filter(id=id_discipline, exists=True, visible=True)[0]
+			except Exception, e:
+				print e
+				messages.error(request, TextMessage.DISCIPLINE_NOT_FOUND)
+				return HttpResponseRedirect(reverse('askmath:content_discipline_view'))
+			try:
+				lesson = LessonModel.objects.filter(id=id_lesson, exists=True, visible=True)[0]
+			except Exception, e:
+				print e
+				messages.error(request, TextMessage.LESSON_NOT_FOUND)
+				return HttpResponseRedirect( reverse('askmath:content_discipline_view', kwargs={'id_discipline': id_discipline}))
+
+			try:
+				student = StudentModel.objects.get(id=request.user.id)
+			except Exception, e:
+				print e
+				messages.error(request, TextMessage.USER_NOT_FOUND)
+				return HttpResponseRedirect( reverse('askmath:content_lesson_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
+			try:
+				return self.__question.view_history(request, discipline, lesson, student)
+			except Exception, e:
+				print e
+				messages.error(request, TextMessage.ERROR)
+		else:
+			messages.error(request, TextMessage.USER_NOT_PERMISSION)
+		return HttpResponseRedirect( reverse('askmath:content_lesson_view', kwargs={'id_discipline': id_discipline, 'id_lesson': id_lesson}))

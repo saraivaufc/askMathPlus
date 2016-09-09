@@ -3,6 +3,7 @@ from askmath.entities import TextMessage
 from askmath.models.experience import StudentExperience
 from askmath.models.state import StudentLessonState
 from askmath.models.users import Student as StudentModel
+from askmath.models.historic import StudentHistoric
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -150,7 +151,7 @@ class Question(IQuestion):
 
 		student_experience.down_scores(int( studentlessonstate.get_scores()  * PERCENT_DOWN_SCORES_IN_RESET_LESSON )  )
 		studentlessonstate.delete()
-		
+
 		messages.success(request, TextMessage.LESSON_SUCCESS_RESET)
 		return HttpResponseRedirect(
 			reverse('askmath:content_question_view', kwargs={'id_discipline': discipline.id, 'id_lesson': lesson.id}))
@@ -179,3 +180,14 @@ class Question(IQuestion):
 			print e
 			return HttpResponse("False")
 		return HttpResponse("True")
+
+	def view_history(self, request, discipline, lesson, student):
+
+		try:
+	            student_historic = StudentHistoric.objects.get_or_create(student=student)[0]
+	        except Exception, e:
+	            print e
+	            return
+
+		return render(request, "askmath/content/question/view_history.html",
+			{'request': request, 'discipline': discipline, 'lesson': lesson, 'student_historic': student_historic})

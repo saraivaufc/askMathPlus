@@ -20,18 +20,20 @@
 				<h3 class="align-center page-title no-margin">
 					{% blocktrans with lesson=lesson %}Questions of {{ lesson }}{% endblocktrans %}
 				</h3>
-				
 
-				{% if lesson.get_questions_visibles|length > 0 %}			
+				{% if lesson.get_questions_visibles|length > 0 %}
 
-				<table id="question_status" class="table striped border bordered cell-hovered  no-margin  align-center">
+				<table id="question_status" class="table striped border bordered no-margin  align-center">
 					<tr>
 						<td>{% trans "Lesson Points" %} : {{ studentlessonstate.get_scores }}</td>
 						<td>{% trans "Correct Questions" %} : {{ studentlessonstate.get_answered_correct_questions|length }}/{{ lesson.get_questions_visibles|length }}</td>
 						<td>{% trans "Skipped Remaining" %} : {{ studentlessonstate.get_remaining_jump }}</td>
+						<td>
+							<a href="{% url 'askmath:content_question_history' id_discipline=discipline.id id_lesson=lesson.id %}">{% trans "History" %}</a>
+						</td>
 					</tr>
 				</table>
-				
+
 				<div class="meter  bg-grayLight">
 					<span class="align-center fg-white" style="width: {{ studentlessonstate.get_percentage_completed }}%">{{ studentlessonstate.get_percentage_completed }}%</span>
 				</div>
@@ -41,20 +43,20 @@
 				<div class="padding10">
 
 					{% if question and lesson_complete == False %}
-					
+
 					{% include "askmath/content/question/_render_question.html" %}
-					
+
 					{% elif not question and lesson_complete %}
 					<div class="jumbotron">
-						
+
 						<h2 class="align-center">{% trans "Congratulations, complete lesson !!!" %}</h2>
-						
+
 						<div class="align-center margin30">
 							<a  class="button success" href="{% url 'askmath:content_question_reset_lesson' id_discipline=discipline.id id_lesson=lesson.id %}">
 								{% trans "Reser Lesson" %}
 							</a>
 						</div>
-					
+
 					</div>
 					<hr class="divider bg-grayLight">
 					<h4>{% trans "Sugestions next lessons:" %}</h4>
@@ -87,17 +89,17 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="cell colspan2">
 			<div class="card block-shadow">
 
 				<h3 class="align-center page-title">{% trans "Your Progress" %}</h3>
-				
+
 				<div class="padding10">
 					<label>{% trans "You level:" %}</label>
 					<div class="align-center">
 						<img src="{{ experience_level.get_image_url }}" >
-						
+
 						<div class="rating large" data-size="large">
 							{% for i in 5|range %}
 								{% if forloop.counter <= student_experience.get_stars %}
@@ -154,7 +156,7 @@
 
 {% block scripts %}
 	{% include 'askmath/latex/support.html' %}
-	
+
 	{% if occur_obstacle %}
 		<script>
 			showDialog('#dialog_obstacle');

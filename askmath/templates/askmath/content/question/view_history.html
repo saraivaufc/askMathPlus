@@ -1,0 +1,88 @@
+{% extends 'askmath/content/question/view_question.html' %}
+
+{% load i18n %}
+{% load askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="#">
+				<span class="icon mif-history"></span> <span>{% trans "History" %}</span>
+		</a>
+	</li>
+{% endblock %}
+
+{% block tiles %}
+
+<div class="tabcontrol" data-role="tabcontrol">
+	<ul class="tabs">
+		<li><a href="#frame_1">{% trans "Answered Questions" %}</a></li>
+		<li><a href="#frame_2">{% trans "Skipped Questions" %}</a></li>
+		<li><a href="#frame_3">{% trans "Order Help" %}</a></li>
+	</ul>
+	<div class="frames">
+		<div class="frame bg-white" id="frame_1">
+			<table class="table dataTable border bordered">
+				<thead>
+					<tr>
+						<td>{% trans "Question" %}</td>
+						<td>{% trans "Item" %}</td>
+						<td>{% trans "Hit?" %}</td>
+						<td>{% trans "Date and Time" %}</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for answered_questions in student_historic.get_answered_questions_historic %}
+					<tr>
+						<td>{{ answered_questions.get_question.get_description|truncatechars:"255" }}</td>
+						<td>{{ answered_questions.get_item }}</td>
+						<td>{{ answered_questions.get_hit }}</td>
+						<td>{{ answered_questions.creation }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="frame bg-white" id="frame_2">
+			<table class="table dataTable border bordered">
+				<thead>
+					<tr>
+						<td>{% trans "Question" %}</td>
+						<td>{% trans "Date and Time" %}</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for skipped_questions in student_historic.get_skipped_questions_historic %}
+					<tr>
+						<td>{{ skipped_questions.get_question.get_description|truncatechars:"255" }}</td>
+						<td>{{ answered_questions.creation }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="frame bg-white" id="frame_3">
+			<table class="table dataTable border bordered">
+				<thead>
+					<tr>
+						<td>{% trans "Question" %}</td>
+						<td>{% trans "Date and Time" %}</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for help_questions in student_historic.get_help_questions_historic %}
+					<tr>
+						<td>{{ help_questions.get_question.get_description|truncatechars:"255" }}</td>
+						<td>{{ help_questions.creation }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+		{% include 'askmath/latex/support.html' %}
+{% endblock %}

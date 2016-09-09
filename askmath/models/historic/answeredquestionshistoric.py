@@ -32,6 +32,6 @@ class AnsweredQuestionsHistoric(models.Model):
         return unicode(self.discipline) + ' - ' + unicode(self.lesson) + ' - ' + unicode(self.question)
 
     class Meta:
-        ordering = ['-discipline']
+        ordering = ['-creation']
         verbose_name = _(u"Answered Question Historic")
         verbose_name_plural = _(u"Answered Questions Historic")

@@ -3,7 +3,7 @@ sudo aptitude install libapache2-mod-wsgi
 sudo apt-get install python-dev
 sudo apt-get install libpq-dev
 sudo apt-get install build-essential
-
+sudo apt-get install gettext
 
 #postgres
 sudo apt-get install postgresql
