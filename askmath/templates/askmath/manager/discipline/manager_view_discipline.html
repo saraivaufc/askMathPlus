@@ -15,7 +15,7 @@
 
 <div class="flex-grid">
 	<div class="row flex-just-sb">
-		<div class="cell colspan6">
+		<div class="cell colspan12">
 			<div class="card block-shadow">
 				<h3 class="align-center page-title" >{{ discipline.title }}</h3>
 
@@ -36,12 +36,12 @@
 					</a>
 					{% endif %}
 				</div>
-				
+
 				<div class="padding10">
 					<dl>
 						<dt>{% trans "Title" %}:</dt>
 						<dd>{{  discipline.get_title }}</dd>
-						
+
 						<dt>{% trans "Visible" %}:</dt>
 						<dd>
 							{% if discipline.is_visible %}
@@ -55,36 +55,29 @@
 							{% endif %}
 						</dd>
 
-					</dl>
-				</div>
-			</div>
-		</div>
-
-		<div class="cell colspan6">
-			<div class="card block-shadow">
-				
-				<h3 class="align-center page-title" >{% trans "Lessons" %}</h3>
-				
-				<div class="padding10">
-					<a href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="image-button success">
-						<span class="icon mif-plus"></span>
-						{% trans "New lesson" %}
-					</a>
-					
-					<div class="tile-container">
-					{% for lesson in discipline.get_lessons %}
-						<div class="tile {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %} fg-white">
-							<a href="{% url 'askmath:manager_lesson_view' id_lesson=lesson.id %}" class="tile-content slide-down iconic">
-								<span class="icon mif-clipboard"></span>
-								<div class="tile-label">
-								{{ lesson.get_title|title }}
-								</div>
+						<dt>{% trans "Lessons" %}:</dt>
+						<dd>
+							<a href="{% url 'askmath:manager_lesson_add' id_discipline=discipline.id %}" class="image-button success">
+								<span class="icon mif-plus"></span>
+								{% trans "New lesson" %}
 							</a>
-						</div>
-					{% empty %}
-					<h3 class="align-center padding30">{% trans "Not lesson found" %}</3>
-					{% endfor %}
-					</div>
+
+							<div class="tile-container">
+							{% for lesson in discipline.get_lessons %}
+								<div class="tile {{ lesson.color }} {% if lesson.is_visible %}element-selected{% endif %} fg-white">
+									<a href="{% url 'askmath:manager_lesson_view' id_lesson=lesson.id %}" class="tile-content slide-down iconic">
+										<span class="icon mif-clipboard"></span>
+										<div class="tile-label">
+										{{ lesson.get_title|title }}
+										</div>
+									</a>
+								</div>
+							{% empty %}
+							<h3 class="align-center padding30">{% trans "Not lesson found" %}</3>
+							{% endfor %}
+							</div>
+						</dd>
+					</dl>
 				</div>
 			</div>
 		</div>
