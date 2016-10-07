@@ -40,7 +40,7 @@
 
 	<div class="tile-container">
 		{% for classe in classes %}
-			<div class="tile {{ classe.color }}">
+			<div class="tile-wide {{ classe.color }}">
 				<a href="{% url 'askmath:content_classe_view' id_classe=classe.id %}" class="tile-content slide-down iconic">
 					<span class="icon mif-organization"></span>
 					<div class="tile-label">{{ classe.get_name }}</div>
