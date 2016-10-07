@@ -21,9 +21,9 @@
 				<h3 class="align-center page-title">{% trans "Ranking Round" %}</h3>
 				<div class="padding10">
 					<p class="text-accent">
-						{% trans "This round ends in" %} {{  student_experience.get_date_end_new_round }}.
+						{% trans "This round ends in" %} {{  student_experience.get_date_end_new_round|naturaltime }}.
 						<a href="#me"><span class="text-secondary">{% trans "My current position" %}</span></a>
-					</p>	
+					</p>
 				</div>
 				<div class="listview-outlook padding10" data-role="listview">
 					{% for i in students %}
@@ -38,7 +38,7 @@
 											{% if i.student.get_profile_image %}
 											<img style="float: left; margin-right:10px;" width="60px" src="{{ i.student.get_profile_image.url }}">
 											{% else %}
-											<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+											<img  style="float: left; margin-right:10px;" width="60px" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 											{% endif %}
 											<span>{{ i.student.get_full_name }}</span>
 										</div>
@@ -85,7 +85,7 @@
 							{% if last_winner.student.get_profile_image %}
 							<img class="profile-image" src="{{ last_winner.student.get_profile_image.url }}">
 							{% else %}
-							<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+							<img class="profile-image" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 							{% endif %}
 						</div>
 						<label class="profile-name align-center">
@@ -97,7 +97,7 @@
 						<label>{% trans "Level:" %}</label>
 						<div class="align-center">
 							<img width="50px" src="{{ last_winner.student.get_student_experience.get_experience_level.get_image_url }}"><br>
-						
+
 							<div class="rating small" data-size="small">
 								{% for k in 5|range %}
 									{% if forloop.counter <= last_winner.student.get_student_experience.get_stars %}

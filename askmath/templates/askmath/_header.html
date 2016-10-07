@@ -33,11 +33,14 @@
 			</a>
 		</li>
 
+		{% comment %}
 		<li>
 			<a href="{% url 'askmath:content_ranking_view' %}">
 				<span class="mif-trophy"></span> {% trans "Ranking" %}
 			</a>
 		</li>
+		{% endcomment %}
+
 		{% endif %}
 	</ul>
 
@@ -56,11 +59,11 @@
 					{% if request.user.get_profile_image %}
 					<img class="profile-image img" src="{{ request.user.get_profile_image.url }}">
 					{% else %}
-					<img class="profile-image img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">   
+					<img class="profile-image img" src="{{ STATIC_URL }}askmath/img/metro/profile.png">
 					{% endif %}
 				</div>
 			</div>
-				
+
 			<ul class="v-menu width subdown navy">
 				<li>
 					<a href="{% url 'askmath:person_account_view' %}">
