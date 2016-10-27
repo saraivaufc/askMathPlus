@@ -1,6 +1,7 @@
 {% extends 'askmath/content/content_home.html' %}
 
 {% load i18n %}
+{% load mathfilters %}
 
 {% block header %}
 	{% include 'askmath/_header.html' %}
@@ -20,7 +21,12 @@
 	<h3 class="align-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
 
     	<div class="tile-container">
-	{% for lesson in lessons %}
+    	{% for lesson in lessons %}
+       	{% if forloop.counter0|divisibleby:"4" %}
+		</div>
+		<div class="tile-container">
+		<h3 class="fg-darkBlue padding5">{% trans "Level" %} {{forloop.counter|div:"4"|add:"1"}}</h2>
+		{% endif %}
        	<div class="tile-wide {{ lesson.color }}">
 		    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
 				<span class="icon mif-clipboard"></span>
