@@ -20,7 +20,7 @@
 	<h3 class="align-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
 
     	<div class="tile-container">
-	{% for lesson in discipline.get_lessons_visibles %}
+	{% for lesson in lessons %}
        	<div class="tile-wide {{ lesson.color }}">
 		    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
 				<span class="icon mif-clipboard"></span>
