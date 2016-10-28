@@ -1,16 +1,16 @@
 /*
-	Background sob licence:CCO Public Domain 
+	Background sob licence:CCO Public Domain
 	Original version: http://magdeleine.co/photo-billy-lam-n-1/;
 */
 
 body{
 	font:  none;
-	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif; 
+	font-family: SofiaRegular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: rgb(238, 238, 238);
 	line-height: 1.1;
 	font-weight: 400;
 	font-style: normal;
-	line-height: 1.65; 
+	line-height: 1.65;
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -43,7 +43,7 @@ a.tile-content{
 
 label {
   display: inline-block;
-  width: 100%;	
+  width: 100%;
 }
 
 .errorlist, .error-field{
@@ -78,7 +78,7 @@ label {
 }
 
 .border-small{
-	border: 1px solid #FFF;	
+	border: 1px solid #FFF;
 }
 
 .paragraph{
@@ -129,7 +129,7 @@ button[disabled], html input[disabled] {
 
 input:disabled {
     background: #dddddd;
-} 
+}
 
 
 .select.input-control{
@@ -200,7 +200,7 @@ caption{
 
 /* FORUM */
 
-.equal, .equal > div[class*='col-'] {  
+.equal, .equal > div[class*='col-'] {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -209,7 +209,7 @@ caption{
 
 .thin{
 	background: transparent;
-	background-color: transparent;	
+	background-color: transparent;
 }
 
 #text-about{
@@ -226,7 +226,7 @@ label.caption{
 	margin-bottom: 0px;
 }
 
-.meter { 
+.meter {
 	width: 100%;
 	height: 20px;  /* Can be anything */
 	position: relative;
@@ -245,7 +245,7 @@ label.caption{
     rgb(43,194,83) 37%,
     rgb(84,240,84) 69%
   );
-  box-shadow: 
+  box-shadow:
     inset 0 2px 9px  rgba(255,255,255,0.3),
     inset 0 -2px 6px rgba(0,0,0,0.4);
   position: relative;

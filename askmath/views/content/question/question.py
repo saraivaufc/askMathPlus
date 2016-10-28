@@ -48,10 +48,10 @@ class Question(IQuestion):
 		deficiencies = studentlessonstate.get_deficiencies()
 
 		return render(request, "askmath/content/question/view_question.html",
-					  {'request': request, 'discipline': discipline, 'lesson': lesson,
-					   'studentlessonstate': studentlessonstate, 'lesson_complete': lesson_complete,
-					   'experience_level': experience_level, 'question': question,
-					   'occur_obstacle': occur_obstacle, 'deficiencies': deficiencies, 'student_experience':student_experience})
+						{'request': request, 'discipline': discipline, 'lesson': lesson,
+						 'studentlessonstate': studentlessonstate, 'lesson_complete': lesson_complete,
+						 'experience_level': experience_level, 'question': question,
+						 'occur_obstacle': occur_obstacle, 'deficiencies': deficiencies, 'student_experience':student_experience})
 
 	def answer_question(self, request, discipline, lesson, question, item):
 		if request.method == 'POST':
@@ -182,12 +182,11 @@ class Question(IQuestion):
 		return HttpResponse("True")
 
 	def view_history(self, request, discipline, lesson, student):
-
 		try:
-	            student_historic = StudentHistoric.objects.get_or_create(student=student)[0]
-	        except Exception, e:
-	            print e
-	            return
+			student_historic = StudentHistoric.objects.get_or_create(student=student)[0]
+		except Exception, e:
+			print e
+			return
 
 		return render(request, "askmath/content/question/view_history.html",
 			{'request': request, 'discipline': discipline, 'lesson': lesson, 'student_historic': student_historic})

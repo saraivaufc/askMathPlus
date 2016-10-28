@@ -33,12 +33,14 @@
 				</thead>
 				<tbody>
 					{% for answered_questions in student_historic.get_answered_questions_historic %}
-					<tr>
-						<td>{{ answered_questions.get_question.get_description|truncatechars:"255" }}</td>
-						<td>{{ answered_questions.get_item }}</td>
-						<td>{{ answered_questions.get_hit }}</td>
-						<td>{{ answered_questions.creation }}</td>
-					</tr>
+						{% if answered_questions.get_lesson == lesson %}
+						<tr>
+							<td>{{ answered_questions.get_question.get_description|truncatechars:"255" }}</td>
+							<td>{{ answered_questions.get_item }}</td>
+							<td>{{ answered_questions.get_hit }}</td>
+							<td>{{ answered_questions.creation }}</td>
+						</tr>
+						{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
@@ -53,10 +55,12 @@
 				</thead>
 				<tbody>
 					{% for skipped_questions in student_historic.get_skipped_questions_historic %}
-					<tr>
-						<td>{{ skipped_questions.get_question.get_description|truncatechars:"255" }}</td>
-						<td>{{ answered_questions.creation }}</td>
-					</tr>
+						{% if skipped_questions.get_lesson == lesson %}
+						<tr>
+							<td>{{ skipped_questions.get_question.get_description|truncatechars:"255" }}</td>
+							<td>{{ answered_questions.creation }}</td>
+						</tr>
+						{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
@@ -71,10 +75,12 @@
 				</thead>
 				<tbody>
 					{% for help_questions in student_historic.get_help_questions_historic %}
+					{% if help_questions.get_lesson == lesson %}
 					<tr>
 						<td>{{ help_questions.get_question.get_description|truncatechars:"255" }}</td>
 						<td>{{ help_questions.creation }}</td>
 					</tr>
+					{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
