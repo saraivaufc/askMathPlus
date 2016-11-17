@@ -5,6 +5,8 @@ from django.conf import settings
 from django.forms import CheckboxInput, RadioSelect, ClearableFileInput, Select, SelectMultiple, TextInput, \
 	PasswordInput, EmailInput, Textarea
 from django.utils.translation import ugettext as _
+from askmath.utils.lesson_sorting import LessonSorting
+import collections
 from .. import register
 
 
@@ -57,3 +59,11 @@ def shuffle(arg):
 	tmp = list(arg)[:]
 	random.shuffle(tmp)
 	return tmp
+
+@register.filter(name='lesson_sorting')
+def lesson_sorting(lessons):
+	lessons = LessonSorting(lessons)
+	lessons = lessons.get_result()
+	lessons = collections.OrderedDict(sorted(lessons.items()))
+	lessons = [item for sublist in lessons.values() for item in sublist]
+	return lessons

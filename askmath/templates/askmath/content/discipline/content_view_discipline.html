@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load mathfilters %}
+{% load staticfiles %}
 
 {% block header %}
 	{% include 'askmath/_header.html' %}
@@ -33,6 +34,11 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not forloop.last %}
+			<div class="align-center">
+				<img src="{% static 'askmath/img/icons/arrow.png' %}">
+			</div>
+			{% endif %}
 		{% empty %}
 			<h3 class="align-center">{%trans "Discipline does not have lessons."%}</h3>
 		{% endfor %}
