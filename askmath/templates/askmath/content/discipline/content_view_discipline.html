@@ -20,22 +20,22 @@
 <div class="card block-shadow">
 	<h3 class="align-center page-title" >{% trans "Lessons of" %} {{ discipline.get_title }}</h3>
 
-    	<div class="tile-container">
-    	{% for lesson in lessons %}
-       	{% if forloop.counter0|divisibleby:"4" %}
-		</div>
-		<div class="tile-container">
-		<h3 class="fg-darkBlue padding5">{% trans "Level" %} {{forloop.counter|div:"4"|add:"1"}}</h2>
-		{% endif %}
-       	<div class="tile-wide {{ lesson.color }}">
-		    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
-				<span class="icon mif-clipboard"></span>
-				<div class="tile-label">{{ lesson.get_title }}</div>
-		    	</a>
-		</div>
-	{% empty %}
-		<h3 class="align-center">{%trans "Discipline does not have lessons."%}</h3>
-	{% endfor %}
+	<div class="flex-grid ">
+	    	{% for level, lessons in lessons.iteritems %}
+	    		<h3 class="fg-darkBlue align-center">{% trans "Level" %} {{ level }}</h2>
+			<div class="row flex-just-center ">
+				{% for lesson in lessons %}
+				<div class="tile-wide {{ lesson.color }}">
+				    	<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}" class="tile-content slide-down iconic">
+						<span class="icon mif-clipboard"></span>
+						<div class="tile-label">{{ lesson.get_title }}</div>
+				    	</a>
+				</div>
+				{% endfor %}
+			</div>
+		{% empty %}
+			<h3 class="align-center">{%trans "Discipline does not have lessons."%}</h3>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

@@ -4,26 +4,35 @@ class LessonSorting():
 	"""
 	Class for ordering the lessons using topological sorting.
 	"""
-	def __init__(self, initial_lessons, discipline_filter):
+	def __init__(self, initial_lessons):
 		"""
 		This function takes as a parameter a list of lessons that do not have prerequisites.
 		"""
-		self.__lesson_no_edges = initial_lessons
-		self.__lessons_ordered = []
-		self.__visited_nodes = []
-		self.__discipline_filter = discipline_filter
-
-	def visit(self, lesson):
-		if not lesson.id in self.__visited_nodes:
-			self.__visited_nodes.append(lesson.id)
-			for l in Lesson.objects.filter(requirements=lesson.id, discipline = self.__discipline_filter.id, exists=True, visible=True):
-				self.visit(l)
-			self.__lessons_ordered.insert(0, lesson)
+		self.__lessons = list(initial_lessons)
+		self.__lessons_levels = {}
+		self.__lessons_in_levels = []
 
 	def get_result(self):
-		for i in self.__lesson_no_edges:
-			self.visit(i)
-		return self.__lessons_ordered
+		level = 0
+		while self.__lessons:
+			temp_lessons_level = []
+			temp_lessons_in_levels = []
+			for index, l in enumerate(self.__lessons):
+				if not l in self.__lessons_in_levels:
+					insert = True
+					for r in l.get_requirements():
+						if not r in self.__lessons_in_levels:
+							insert=False
+					if insert:
+						temp_lessons_level.append(l)
+						temp_lessons_in_levels.append(l)
+						self.__lessons.pop(index)
+			self.__lessons_levels[level] = temp_lessons_level
+			self.__lessons_in_levels.extend(temp_lessons_level)
+			level +=1
+		return self.__lessons_levels
+
+
 
 
 
