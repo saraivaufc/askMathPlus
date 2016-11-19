@@ -52,20 +52,17 @@
 					{% endcomment %}
 				</div>
 				<div class="padding10">
-					{% if studentlessonstate.get_percentage_completed < 100 and lesson.get_requirements|length > 0 %}
-						<h5>{% trans "We recommend completing the lessons below before proceeding:" %}</h5>
+					<h4>{% trans "We recommend completing the lessons below before proceeding:" %}</h4>
 
-						<ul>
-						{% for requirement in lesson.get_requirements %}
-							<li>
-								<a  class="tag {{requirement.color}} fg-white" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=requirement.id  %}">
-								{{ requirement }}
-								</a>
-							</li>
-						{% empty %}
-						{% endfor %}
-						</ul>
-					{% endif %}
+					{% for requirement in lesson.get_requirements %}
+						<a  class="command-button {{requirement.color}} fg-white width" href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=requirement.id  %}">
+							<span class="icon mif-clipboard"></span>
+							{{ requirement }}
+							<small>{% trans "Click to start this lesson" %}</small>
+						</a>
+					{% empty %}
+						<h5>{% trans "Lesson does not have requirements" %}</h5>
+					{% endfor %}
 				</div>
 				{% endblock %}
 			</div>

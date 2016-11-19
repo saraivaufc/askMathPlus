@@ -31,9 +31,3 @@ class LessonSorting():
 			self.__lessons_in_levels.extend(temp_lessons_level)
 			level +=1
 		return self.__lessons_levels
-
-
-
-
-
-
