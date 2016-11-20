@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-19 01:23-0300\n"
-"PO-Revision-Date: 2016-11-19 01:24-0234\n"
+"POT-Creation-Date: 2016-11-20 02:44-0300\n"
+"PO-Revision-Date: 2016-11-20 02:46-0234\n"
 "Last-Translator: Ciano Saraiva <saraiva.ufc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -961,9 +961,7 @@ msgid "Perform upload a file."
 msgstr "Realize upload de um arquivo."
 
 #: askmath/models/classe/classe.py:21
-#: askmath/models/discipline/discipline.py:47
 #: askmath/templates/askmath/content/classe/content_view_classe.html:64
-#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:11
 #: askmath/templates/askmath/manager/classe/manager_view_classe.html:71
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:8
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:16
@@ -1051,18 +1049,10 @@ msgid "Choose a color for the discipline."
 msgstr "Escolha uma cor para a disciplina."
 
 #: askmath/models/discipline/discipline.py:46
-#: askmath/models/historic/answeredquestionshistoric.py:7
-#: askmath/models/historic/helpquestionhistoric.py:7
-#: askmath/models/historic/skippedquestionhistoric.py:7
-#: askmath/models/history/answered_questions_historic.py:8
-#: askmath/models/history/help_question_historic.py:7
-#: askmath/models/history/skipped_question_historic.py:7
-#: askmath/models/lesson/lesson.py:12
-#: askmath/models/progress/studentquestionprogress.py:8
-#: askmath/models/progress/studentvideoprogress.py:8
-#: askmath/models/state/studentlessonstate.py:15
-msgid "Discipline"
-msgstr "Disciplina"
+#: askmath/models/discipline/discipline.py:47
+#| msgid "Contents"
+msgid "Content"
+msgstr "Conteúdo"
 
 #: askmath/models/experience/studentexperience.py:12
 #: askmath/models/question/question.py:25
@@ -1139,6 +1129,19 @@ msgstr "Escolha uma cor para este tópico."
 #: askmath/models/forum/topic.py:84 askmath/models/topic/topic.py:84
 msgid "Topics"
 msgstr "Tópicos"
+
+#: askmath/models/historic/answeredquestionshistoric.py:7
+#: askmath/models/historic/helpquestionhistoric.py:7
+#: askmath/models/historic/skippedquestionhistoric.py:7
+#: askmath/models/history/answered_questions_historic.py:8
+#: askmath/models/history/help_question_historic.py:7
+#: askmath/models/history/skipped_question_historic.py:7
+#: askmath/models/lesson/lesson.py:12
+#: askmath/models/progress/studentquestionprogress.py:8
+#: askmath/models/progress/studentvideoprogress.py:8
+#: askmath/models/state/studentlessonstate.py:15
+msgid "Discipline"
+msgstr "Disciplina"
 
 #: askmath/models/historic/answeredquestionshistoric.py:8
 #: askmath/models/historic/helpquestionhistoric.py:8
@@ -1598,7 +1601,6 @@ msgstr "Selecione esta opção para tornar esse vídeo visível à todos."
 
 #: askmath/models/video/video.py:84
 #: askmath/templates/askmath/content/video/view_videos.html:12
-#: askmath/templates/askmath/index/contents_details.html:46
 #: askmath/templates/askmath/manager/lesson/manager_view_lesson.html:114
 #: askmath/templates/askmath/manager/video/manager_view_videos.html:9
 msgid "Videos"
@@ -1946,6 +1948,14 @@ msgstr "Lições de"
 msgid "Discipline does not have lessons."
 msgstr "Disciplina não possui lições."
 
+#: askmath/templates/askmath/content/discipline/content_view_disciplines.html:11
+#: askmath/templates/askmath/index/404.html:78
+#: askmath/templates/askmath/index/500.html:78
+#: askmath/templates/askmath/index/contents.html:9
+#: askmath/templates/askmath/index/home.html:44
+msgid "Contents"
+msgstr "Conteúdos"
+
 #: askmath/templates/askmath/content/discipline/content_view_disciplines.html:24
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:50
 msgid "No discipline found"
@@ -1972,16 +1982,17 @@ msgstr ""
 "\t\t\t        "
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:56
-#: askmath/templates/askmath/index/contents_details.html:56
+#: askmath/templates/askmath/index/contents_details.html:58
 msgid "We recommend completing the lessons below before proceeding:"
 msgstr "Recomendamos concluir as lições abaixo antes de prosseguir:"
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:62
+#: askmath/templates/askmath/index/contents_details.html:64
 msgid "Click to start this lesson"
-msgstr ""
+msgstr "Clique para iniciar a lição"
 
 #: askmath/templates/askmath/content/lesson/content_view_lesson.html:65
-#| msgid "Lesson does not have videos."
+#: askmath/templates/askmath/index/contents_details.html:67
 msgid "Lesson does not have requirements"
 msgstr "Lição não possui requisitos."
 
@@ -2314,13 +2325,6 @@ msgstr "Data"
 msgid "by"
 msgstr "por"
 
-#: askmath/templates/askmath/index/404.html:78
-#: askmath/templates/askmath/index/500.html:78
-#: askmath/templates/askmath/index/contents.html:9
-#: askmath/templates/askmath/index/home.html:44
-msgid "Contents"
-msgstr "Conteúdos"
-
 #: askmath/templates/askmath/index/about.html:9
 #: askmath/templates/askmath/index/about.html:39
 msgid "About"
@@ -2418,17 +2422,6 @@ msgstr ""
 #: askmath/templates/askmath/index/contents.html:36
 msgid "Not Lessons Found"
 msgstr "Nenhuma lição encontrada."
-
-#: askmath/templates/askmath/index/contents_details.html:48
-#, python-format
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their knowledge.\n"
-"\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"Temos %(qtd_videos)s videos-aulas para ampliar seus conhecimentos.\n"
-"\t\t\t        "
 
 #: askmath/templates/askmath/index/credits.html:25
 msgid "homepage"
@@ -2591,8 +2584,8 @@ msgid "CLASSES"
 msgstr "TURMAS"
 
 #: askmath/templates/askmath/manager/manager_home.html:23
-msgid "DISCIPLINES"
-msgstr "DISCIPLINAS"
+msgid "CONTENTS"
+msgstr "CONTEÚDOS"
 
 #: askmath/templates/askmath/manager/manager_home.html:32
 msgid "STATISTICS"
@@ -3028,7 +3021,7 @@ msgstr "Editar Disciplina"
 msgid "New Lesson"
 msgstr "Nova Lição"
 
-#: askmath/views/manager/lesson/lesson.py:51
+#: askmath/views/manager/lesson/lesson.py:50
 msgid "Edit Lesson"
 msgstr "Editar Lição"
 
@@ -4429,12 +4422,10 @@ msgid "periodic tasks"
 msgstr ""
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:301
-#| msgid "Username"
 msgid "hostname"
 msgstr "Nome de Usuário"
 
 #: env/lib/python2.7/site-packages/djcelery/models.py:302
-#| msgid "last seen"
 msgid "last heartbeat"
 msgstr "visto pela última vez"
 
@@ -4539,6 +4530,18 @@ msgstr ""
 #: nocaptcha_recaptcha/fields.py:21
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their knowledge.\n"
+#~ "\t\t\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "Temos %(qtd_videos)s videos-aulas para ampliar seus conhecimentos.\n"
+#~ "\t\t\t        "
+
+#~ msgid "DISCIPLINES"
+#~ msgstr "DISCIPLINAS"
 
 #~ msgid "Empty"
 #~ msgstr "Vazio"

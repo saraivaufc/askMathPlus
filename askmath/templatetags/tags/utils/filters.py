@@ -60,3 +60,10 @@ def shuffle(arg):
 	tmp = list(arg)[:]
 	random.shuffle(tmp)
 	return tmp
+
+
+@register.filter(name='lesson_sorting')
+def lesson_sorting(lessons):
+	lesson_sorting = LessonSorting(lessons)
+	lessons = lesson_sorting.get_lessons_in_level()
+	return lessons

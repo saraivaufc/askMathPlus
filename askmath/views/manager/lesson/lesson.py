@@ -38,7 +38,6 @@ class Lesson(ILesson):
 
 	def edit_lesson(self, request, lesson):
 		if request.method == 'POST':
-			request.POST['discipline'] = lesson.get_discipline().id
 			form = LessonForm(request.POST, instance=lesson)
 			if form.is_valid():
 				lesson = form.save()

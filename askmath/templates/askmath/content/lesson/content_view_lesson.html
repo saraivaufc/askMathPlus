@@ -6,7 +6,7 @@
 	{{ block.super }}
 	<li>
 		<a href="{% url 'askmath:content_lesson_view' id_discipline=discipline.id id_lesson=lesson.id %}">
-			<span class="icon mif-clipboard"></span> <span>{{ lesson.get_title|title }}</span>
+			<span class="icon mif-clipboard"></span> <span>{{ lesson.get_title }}</span>
 		</a>
 	</li>
 {% endblock %}
@@ -17,7 +17,7 @@
 		<div class="cell colspan9">
 			<div class="card block-shadow ">
 				{% block tiles-left %}
-				 <h3 class="align-center page-title">{{ lesson.get_title|title }}</h3>
+				 <h3 class="align-center page-title">{{ lesson.get_title }}</h3>
 				<div class="padding10 align-justify text-accent">
 					{{ lesson.get_description|safe|linebreaksbr }}
 				</div>

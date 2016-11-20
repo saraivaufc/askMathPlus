@@ -15,7 +15,7 @@ class Discipline(IDiscipline):
 
 	def view_discipline(self, request, discipline):
 		lesson_sorting = LessonSorting(discipline.get_lessons())
-		lessons = lesson_sorting.get_result()
+		lessons = lesson_sorting.get_lessons_level()
 		lessons = collections.OrderedDict(sorted(lessons.items()))
 		return render(request, "askmath/content/discipline/content_view_discipline.html",
 					  {'request': request, 'discipline': discipline, 'lessons': lessons})

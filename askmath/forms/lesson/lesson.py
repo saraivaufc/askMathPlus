@@ -1,6 +1,6 @@
 # -*- encoding=utf-8 -*-
 
-from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, NumberInput, HiddenInput
+from django.forms import ModelForm, TextInput, CheckboxInput, Textarea, SelectMultiple, Select, NumberInput, HiddenInput
 
 from askmath.models import Lesson, Discipline
 
@@ -18,7 +18,7 @@ class LessonForm(ModelForm):
         "discipline", "title", "description", "requirements", "sugestions", "maximum_hops", "errors_followed_to_obstacle", "errors_to_deficiency",
         "visible")
         widgets = {
-            'discipline': HiddenInput(attrs={}),
+            'discipline': Select(attrs={'class': 'full-size'}),
             'title': TextInput(attrs={'required': 'required'}),
             'description': Textarea(attrs={'cols': 50, 'rows': 6, 'class': 'latex', 'required': 'required'}),
             'requirements': SelectMultiple(attrs={'class': 'full-size'}),

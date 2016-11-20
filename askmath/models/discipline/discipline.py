@@ -43,5 +43,5 @@ class Discipline(models.Model):
 
 	class Meta:
 		ordering = ['title']
-		verbose_name = _(u"Discipline")
-		verbose_name_plural = _(u"Disciplines")
+		verbose_name = _(u"Content")
+		verbose_name_plural = _(u"Content")
