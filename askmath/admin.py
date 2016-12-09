@@ -53,12 +53,13 @@ class DisciplineAdmin(admin.ModelAdmin):
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-	pass
+	list_filter = ('discipline', )
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('lesson', 'description')
+	list_filter = ('lesson', )
 
 
 @admin.register(Item)
@@ -103,7 +104,7 @@ class SkippedQuestionsHistoricAdmin(admin.ModelAdmin):
 
 @admin.register(StudentLessonState)
 class StudentLessonStateAdmin(admin.ModelAdmin):
-	list_display = ('student', 'discipline', 'lesson', 'exists')
+	list_display = ('student', 'discipline', 'lesson', 'exists', 'percentage_completed')
 	list_filter = ('student', 'discipline', 'lesson', 'exists')
 
 @admin.register(StudentExperience)

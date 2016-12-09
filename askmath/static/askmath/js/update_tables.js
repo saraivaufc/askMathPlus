@@ -5,7 +5,7 @@ $(function () {
 				"url": "/static/askmath/frameworks/jquery/i18n/Portuguese-Brasil.json"
 			},
 			"paging":   false,
-		      "ordering": false,
+		      "ordering": true,
 		      "info": false,
 		});
 	});

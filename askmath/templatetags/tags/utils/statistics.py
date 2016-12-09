@@ -5,7 +5,6 @@ from askmath.models.lesson import Lesson
 from askmath.models.state import StudentLessonState
 from askmath.models.experience import StudentExperience
 
-
 @register.filter(name='student_lesson_complete')
 def student_lesson_complete(student):
 	studentLessonStates = StudentLessonState.objects.filter(student = student.id, percentage_completed=100, exists=True)
