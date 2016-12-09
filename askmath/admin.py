@@ -4,7 +4,7 @@ from askmath.models.comment import Comment
 from askmath.models.discipline import Discipline
 from askmath.models.experience import StudentExperience
 from askmath.models.historic import StudentHistoric, AnsweredQuestionsHistoric, HelpQuestionsHistoric, \
-    SkippedQuestionsHistoric
+	SkippedQuestionsHistoric
 from askmath.models.lesson import Lesson
 from askmath.models.like import Like
 from askmath.models.progress import StudentQuestionProgress, StudentVideoProgress
@@ -18,129 +18,129 @@ from django.contrib import admin
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Administrator)
 class AdministratorAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Assistant)
 class AssistantAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Discipline)
 class DisciplineAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(StudentQuestionProgress)
 class StudentQuestionProgressAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(StudentVideoProgress)
 class StudentVideoProgressAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(StudentHistoric)
 class StudentHistoricAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(AnsweredQuestionsHistoric)
 class AnsweredQuestionsHistoricAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(HelpQuestionsHistoric)
 class HelpQuestionsHistoricAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(SkippedQuestionsHistoric)
 class SkippedQuestionsHistoricAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(StudentLessonState)
 class StudentLessonStateAdmin(admin.ModelAdmin):
-    pass
-
+	list_display = ('student', 'discipline', 'lesson', 'exists')
+	list_filter = ('student', 'discipline', 'lesson', 'exists')
 
 @admin.register(StudentExperience)
 class StudentExperienceAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(AdministratorKey)
 class AdministratorKeyAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(TeacherKey)
 class TeacherKeyAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(AssistantKey)
 class AssistantKeyAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    pass
+	pass
 
 
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
-    pass
+	pass

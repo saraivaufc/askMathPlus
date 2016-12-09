@@ -1,6 +1,6 @@
-from .tags.utils import filters, statistics, custom_tags, fields
+from .tags.utils import filters, custom_tags, fields, statistics
 from .tags import register
 
 __all__ = [
-    'filters', 'statistics', 'custom_tags','fields',
+    'filters', 'custom_tags','statistics', 'fields',
 ]

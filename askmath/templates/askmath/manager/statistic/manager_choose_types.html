@@ -12,30 +12,27 @@
 {% endblock %}
 
 {%  block content %}
+<div class="card block-shadow">
+    <h3 class="align-center page-title">{% trans "Choose Type of Statistic" %}</h3>
 
-<div class="cell padding5">
-	<h2 class="text-dark  align-center">
-        {% trans "Choose Type of Statistic" %}
-    </h2>
-</div>
+    <div class="tile-area no-padding bg-transparent">
+    {% if perms.askmath.access_manager_statistics %}
+    <div class="tile-wide bg-blue  fg-white hide" data-role="tile">
+        <a href="" class="tile-content iconic">
+            <span class="icon mif-organization"></span>
+            <span class="tile-label">{% trans "By class" %}</span>
+        </a>
+    </div>
 
-<div class="tile-area no-padding bg-transparent">
-{% if perms.askmath.access_manager_statistics %}
-<div class="tile-wide bg-blue  fg-white hide" data-role="tile">
-    <a href="/home/manager/statistics/discipline/view_statistics/" class="tile-content iconic">
-        <span class="icon mif-chart-line"></span>
-        <span class="tile-label">{% trans "Disciplines" %}</span>
-    </a>
-</div>
+    <div class="tile-wide bg-green  fg-white" data-role="tile">
+        <a href="{% url 'askmath:manager_statistics_student_list_students' %}" class="tile-content iconic">
+            <span class="icon mif-users"></span>
+            <span class="tile-label">{% trans "By Students" %}</span>
+        </a>
+    </div>
+    {% endif %}
 
-<div class="tile-wide bg-green  fg-white" data-role="tile">
-    <a href="/home/manager/statistics/lesson/choose_lesson/" class="tile-content iconic">
-        <span class="icon mif-chart-line"></span>
-        <span class="tile-label">{% trans "Lessons" %}</span>
-    </a>
-</div>
-{% endif %}
-
+    </div>
 </div>
 {% endblock %}
 

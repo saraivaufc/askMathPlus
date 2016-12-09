@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-20 02:44-0300\n"
-"PO-Revision-Date: 2016-11-20 02:46-0234\n"
+"POT-Creation-Date: 2016-12-09 01:23-0300\n"
+"PO-Revision-Date: 2016-12-09 01:32-0234\n"
 "Last-Translator: Ciano Saraiva <saraiva.ufc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -965,7 +965,6 @@ msgstr "Realize upload de um arquivo."
 #: askmath/templates/askmath/manager/classe/manager_view_classe.html:71
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:8
 #: askmath/templates/askmath/manager/discipline/manager_view_disciplines.html:16
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:27
 msgid "Disciplines"
 msgstr "Disciplinas"
 
@@ -976,6 +975,7 @@ msgstr "Escolha as disciplinas que esta turma terá."
 #: askmath/models/classe/classe.py:24 askmath/models/users/student.py:64
 #: askmath/templates/askmath/content/classe/content_view_classe.html:78
 #: askmath/templates/askmath/manager/classe/manager_view_classe.html:89
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:16
 msgid "Students"
 msgstr "Estudantes"
 
@@ -1050,7 +1050,6 @@ msgstr "Escolha uma cor para a disciplina."
 
 #: askmath/models/discipline/discipline.py:46
 #: askmath/models/discipline/discipline.py:47
-#| msgid "Contents"
 msgid "Content"
 msgstr "Conteúdo"
 
@@ -1058,6 +1057,7 @@ msgstr "Conteúdo"
 #: askmath/models/question/question.py:25
 #: askmath/models/state/studentlessonstate.py:17
 #: askmath/templates/askmath/manager/question/manager_view_question.html:65
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:24
 msgid "Scores"
 msgstr "Pontos"
 
@@ -1140,6 +1140,7 @@ msgstr "Tópicos"
 #: askmath/models/progress/studentquestionprogress.py:8
 #: askmath/models/progress/studentvideoprogress.py:8
 #: askmath/models/state/studentlessonstate.py:15
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:25
 msgid "Discipline"
 msgstr "Disciplina"
 
@@ -1155,6 +1156,7 @@ msgstr "Disciplina"
 #: askmath/models/question/question.py:12
 #: askmath/models/state/studentlessonstate.py:16
 #: askmath/models/video/video.py:11
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:26
 msgid "Lesson"
 msgstr "Lição"
 
@@ -1293,7 +1295,6 @@ msgid "Select this option to leave visible lesson at all."
 msgstr "Escolha esta opção para tornar a lição visível à todos."
 
 #: askmath/models/lesson/lesson.py:97
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:34
 msgid "Lessons"
 msgstr "Lições"
 
@@ -1408,14 +1409,17 @@ msgid "Questions"
 msgstr "Questões"
 
 #: askmath/models/state/studentlessonstate.py:18
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:29
 msgid "Remaining Jump"
 msgstr "Saltos Restantes"
 
 #: askmath/models/state/studentlessonstate.py:19
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:30
 msgid "Hits Followed"
 msgstr "Acertos Seguidos"
 
 #: askmath/models/state/studentlessonstate.py:20
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:31
 msgid "Errors Followed"
 msgstr "Erros Seguidos"
 
@@ -1555,7 +1559,6 @@ msgstr "Por favor, entre com uma imagem de perfil."
 #: askmath/models/users/person.py:157
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:8
 #: askmath/templates/askmath/manager/person/manager_choose_person_types.html:16
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:63
 msgid "Persons"
 msgstr "Pessoas"
 
@@ -2663,49 +2666,77 @@ msgstr "Nenhuma Questão Encontrada."
 msgid "Drag the issues to put them in the order you want."
 msgstr "Arraste as questões para colocá-los na ordem que você quiser."
 
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:7
-msgid "Choose Lessons"
-msgstr "Escolha as lições"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:15
-msgid "Choose Lesson"
-msgstr "Escolha uma lição"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:41
-msgid "All Questions"
-msgstr "Todas as Questões"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:44
-msgid "All Videos"
-msgstr "Todos os Vídeo"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_choose_lesson.html:51
-msgid "Statistics does not have lessons."
-msgstr "Estatísticas não possui lições."
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:83
-msgid "Acerts"
-msgstr "Acertos"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:91
-msgid "Errors"
-msgstr "Erros"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:99
-msgid "Skippeds"
-msgstr "Saltos"
-
-#: askmath/templates/askmath/manager/statistic/lessons/manager_view_statistics.html:107
-msgid "Helps"
-msgstr "Ajudas"
-
 #: askmath/templates/askmath/manager/statistic/manager_choose_types.html:9
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:18
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:16
 msgid "Choose Type of Statistic"
 msgstr "Escolha o Tipo de Estatísticas"
+
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:23
+msgid "By class"
+msgstr "Por Turma"
+
+#: askmath/templates/askmath/manager/statistic/manager_choose_types.html:30
+#| msgid "Students"
+msgid "By Students"
+msgstr "Por Estudantes"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:9
+#| msgid "Lessons"
+msgid "Lessons list"
+msgstr "Lista de Lições"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:17
+#, python-format
+msgid ""
+"\n"
+"\t\t\tLessons %(type)s of  %(student)s\n"
+"\t\t"
+msgstr ""
+"\n"
+"Lições  %(type)s de %(student)s"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:27
+#| msgid "Questions Progress"
+msgid "Lessons progress"
+msgstr "Progresso da lição"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_lessons.html:28
+#| msgid "Continue Lesson"
+msgid "Scores in Lesson"
+msgstr "Pontos da lição"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:9
+#| msgid "Students"
+msgid "See students"
+msgstr "Estudantes"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:20
+#| msgid "Name"
+msgid "Full Name"
+msgstr "Nome Completo"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:21
+#| msgid "Lesson successfully completed."
+msgid "Lessons Completed"
+msgstr "Lições Concluídas"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:22
+#| msgid "Lessons of"
+msgid "Lessons Redone"
+msgstr "Lição Refeitas"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:23
+#| msgid "Questions Progress"
+msgid "Lessons in progress"
+msgstr "Lições em Andamento"
+
+#: askmath/templates/askmath/manager/statistic/student_statistics/list_students.html:51
+#| msgid "Student Experience"
+msgid "Without experience"
+msgstr "Sem experiência"
 
 #: askmath/templates/askmath/manager/video/manager_view_video.html:57
 msgid "Preview"
@@ -3032,6 +3063,20 @@ msgstr "Criar Questão"
 #: askmath/views/manager/question/question.py:100
 msgid "Edit Question"
 msgstr "Editar Questão"
+
+#: askmath/views/manager/statistic/student_statistics.py:23
+#| msgid "Percentage Completed"
+msgid "completed"
+msgstr "concluídas"
+
+#: askmath/views/manager/statistic/student_statistics.py:29
+msgid "redone"
+msgstr "refeitas"
+
+#: askmath/views/manager/statistic/student_statistics.py:38
+#| msgid "Video Progress"
+msgid "in progress"
+msgstr "em andamento"
 
 #: askmath/views/manager/video/video.py:51
 msgid "Create Video"
@@ -4531,6 +4576,33 @@ msgstr ""
 msgid "Incorrect, please try again."
 msgstr "Erro, tente novamente."
 
+#~ msgid "Choose Lessons"
+#~ msgstr "Escolha as lições"
+
+#~ msgid "Choose Lesson"
+#~ msgstr "Escolha uma lição"
+
+#~ msgid "All Questions"
+#~ msgstr "Todas as Questões"
+
+#~ msgid "All Videos"
+#~ msgstr "Todos os Vídeo"
+
+#~ msgid "Statistics does not have lessons."
+#~ msgstr "Estatísticas não possui lições."
+
+#~ msgid "Acerts"
+#~ msgstr "Acertos"
+
+#~ msgid "Errors"
+#~ msgstr "Erros"
+
+#~ msgid "Skippeds"
+#~ msgstr "Saltos"
+
+#~ msgid "Helps"
+#~ msgstr "Ajudas"
+
 #~ msgid ""
 #~ "\n"
 #~ "\t\t\t\t\t\t\t We have %(qtd_videos)s Video lessons to expand their knowledge.\n"
@@ -4894,9 +4966,6 @@ msgstr "Erro, tente novamente."
 
 #~ msgid "Start Lesson"
 #~ msgstr "Iniciar Lição"
-
-#~ msgid "Continue Lesson"
-#~ msgstr "continuar Lição"
 
 #~ msgid "This question worth:"
 #~ msgstr "Esta questão vale:"

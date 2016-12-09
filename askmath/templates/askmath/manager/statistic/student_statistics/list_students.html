@@ -1,0 +1,65 @@
+{% extends 'askmath/manager/statistic/manager_choose_types.html' %}
+
+{% load i18n askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="{% url 'askmath:manager_statistics_student_list_students' %}">
+			<span class="icon mif-chart-line"></span> <span>{% trans "See students" %}</span>
+		</a>
+	</li>
+{% endblock %}
+
+{%  block content %}
+<div class="card block-shadow">
+	<h3 class="align-center page-title">{% trans "Students" %}</h3>
+	<table  class="dataTable border bordered">
+			<thead>
+				<tr>
+					<th>{% trans "Full Name" %}</th>
+					<th>{% trans "Lessons Completed" %}</th>
+					<th>{% trans "Lessons Redone" %}</th>
+					<th>{% trans "Lessons in progress" %}</th>
+					<th>{% trans "Scores" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for student in students %}
+					<tr>
+						<td>{{ student.get_full_name }}</td>
+						<td>
+							<a href="{% url 'askmath:manager_statistics_student_lessons_completed' id_student=student.id %}">
+								{{ student|student_lesson_complete|length }}
+							</a>
+						</td>
+						<td>
+							<a href="{% url 'askmath:manager_statistics_student_lessons_redone' id_student=student.id %}">
+								{{ student|student_lesson_redone|length }}
+							</a>
+						</td>
+						<td>
+							<a href="{% url 'askmath:manager_statistics_student_lessons_in_progress' id_student=student.id %}">
+								{{ student|student_lesson_in_progress|length }}
+							</a>
+						</td>
+						<td>
+							{% with student|student_experience as student_experience %}
+								{% if student_experience %}
+									{{ student_experience.get_full_scores }}
+								{% else %}
+									{% trans "Without experience" %}
+								{% endif %}
+							{% endwith %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+{% endblock %}

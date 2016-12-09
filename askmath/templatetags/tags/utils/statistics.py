@@ -1,35 +1,27 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from askmath.views.manager.statistic.lesson.generatestatistics import GeneratorStatistics as GeneratorStatisticsLesson
 from .. import register
+from askmath.models.lesson import Lesson
+from askmath.models.state import StudentLessonState
+from askmath.models.experience import StudentExperience
 
 
-@register.filter(name='acerts_question')
-def acerts_question(question):
-    generate_statistics_lesson = GeneratorStatisticsLesson()
-    return generate_statistics_lesson.get_acerts_question(question)
+@register.filter(name='student_lesson_complete')
+def student_lesson_complete(student):
+	studentLessonStates = StudentLessonState.objects.filter(student = student.id, percentage_completed=100, exists=True)
+	return studentLessonStates
 
+@register.filter(name='student_lesson_redone')
+def student_lesson_redone(student):
+	studentLessonStates = StudentLessonState.objects.filter(student = student.id, percentage_completed=100, exists=False)
+	return studentLessonStates
 
-@register.filter(name='errors_question')
-def errors_question(question):
-    generate_statistics_lesson = GeneratorStatisticsLesson()
-    return generate_statistics_lesson.get_errors_question(question)
+@register.filter(name='student_lesson_in_progress')
+def student_lesson_in_progress(student):
+	studentLessonStates = StudentLessonState.objects.filter(student = student.id, percentage_completed__in=range(1,100), exists=True)
+	return studentLessonStates
 
-
-@register.filter(name='skippeds_question')
-def skippeds_question(question):
-    generate_statistics_lesson = GeneratorStatisticsLesson()
-    return generate_statistics_lesson.get_skippeds_question(question)
-
-
-@register.filter(name='helps_question')
-def helps_question(question):
-    generate_statistics_lesson = GeneratorStatisticsLesson()
-    return generate_statistics_lesson.get_helps_question(question)
-
-
-@register.filter(name='percentage_answered_questions')
-def percentage_answered_questions(lesson):
-    generate_statistics_lesson = GeneratorStatisticsLesson()
-    return generate_statistics_lesson.get_percentage_answered_questions(lesson)
+@register.filter(name='student_experience')
+def student_scores(student):
+	studentExperience = StudentExperience.objects.filter(student = student.id, exists=True).first()
+	return studentExperience

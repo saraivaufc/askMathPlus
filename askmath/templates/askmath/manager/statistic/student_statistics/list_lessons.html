@@ -1,0 +1,54 @@
+{% extends 'askmath/manager/statistic/student_statistics/list_students.html' %}
+
+{% load i18n askmath_tags %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li>
+		<a href="#">
+			<span class="icon mif-chart-line"></span> <span>{% trans "Lessons list" %}</span>
+		</a>
+	</li>
+{% endblock %}
+
+{%  block content %}
+<div class="card block-shadow">
+	<h3 class="align-center page-title">
+		{% blocktrans  with student=student type=type %}
+			Lessons {{ type }} of  {{ student }}
+		{% endblocktrans %}
+
+	</h3>
+	<table  class="dataTable border bordered">
+			<thead>
+				<tr>
+					<td>{% trans "Discipline" %}</td>
+					<td>{% trans "Lesson" %}</td>
+					<td>{% trans "Lessons progress" %}</td>
+					<td>{% trans "Scores in Lesson" %}</td>
+					<td>{% trans "Remaining Jump" %}</td>
+					<td>{% trans "Hits Followed" %}</td>
+					<td>{% trans "Errors Followed" %}</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for studentLessonState in studentLessonStates %}
+					<tr>
+						<td>{{ studentLessonState.get_discipline }}</td>
+						<td>{{ studentLessonState.get_lesson }}</td>
+						<td>{{ studentLessonState.get_percentage_completed }}%</td>
+						<td>{{ studentLessonState.get_scores }}</td>
+						<td>{{ studentLessonState.get_remaining_jump }}</td>
+						<td>{{ studentLessonState.get_hits_followed }}</td>
+						<td>{{ studentLessonState.get_errors_followed }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+{% endblock %}
