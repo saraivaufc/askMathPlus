@@ -1,15 +1,15 @@
-Install: 
+Install:
 	easy_install Celery
 
 istall Redis:
 	pip install redis
 	sudo apt-get install redis-server
-		
+
 
 celery -A askMathPlus worker -l info
 celery -A askMathPlus beat -l info
 
-or 
+or
 
 python manage.py celery worker -B
 

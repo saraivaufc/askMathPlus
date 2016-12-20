@@ -40,7 +40,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = SITE_CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -93,7 +93,7 @@ DATABASES = {
 """
 Configurations of database to server
 """
-if  not DEBUG:
+if  DEBUG:
 	DATABASES['default'] = {
 		'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
 		'NAME': DATABASE_CONFIG.DATABASE_NAME,

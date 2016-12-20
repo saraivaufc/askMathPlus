@@ -104,7 +104,7 @@ class SkippedQuestionsHistoricAdmin(admin.ModelAdmin):
 
 @admin.register(StudentLessonState)
 class StudentLessonStateAdmin(admin.ModelAdmin):
-	list_display = ('student', 'discipline', 'lesson', 'exists', 'percentage_completed')
+	list_display = ('student', 'discipline', 'lesson', 'exists', 'percentage_completed', 'creation')
 	list_filter = ('student', 'discipline', 'lesson', 'exists')
 
 @admin.register(StudentExperience)
