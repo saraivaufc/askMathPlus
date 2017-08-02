@@ -1,5 +1,0 @@
-import site_config
-import database_config 
-import email_config
-import social_config
-import recaptcha_config
