@@ -2,6 +2,7 @@ sudo apt-get install supervisor
 
 
 >>vim /etc/supervisor/conf.d/celery.conf
+>>vim /etc/supervisor/conf.d/daphne.conf
 
 [program:celery]
 directory=/var/www/askMathPlus

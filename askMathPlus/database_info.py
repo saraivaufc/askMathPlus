@@ -1,5 +1,0 @@
-NAME = 'askmath'                      
-USER = 'postgres'
-PASSWORD = 'macacoaranha'
-HOST = '200.129.39.113'
-PORT = '6969'

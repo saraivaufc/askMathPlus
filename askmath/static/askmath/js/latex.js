@@ -32,10 +32,10 @@ Update: function () {
 	this.timeout = setTimeout(this.callback,this.delay);
 },
 CreatePreview: function () {
-		Preview.timeout = null;
-		if (this.mjRunning) return;
-		var text = document.getElementById("latex_formula").value;
-		if (text === this.oldtext) return;
+	Preview.timeout = null;
+	if (this.mjRunning) return;
+	var text = document.getElementById("latex_formula").value;
+	if (text === this.oldtext) return;
 	this.buffer.innerHTML = this.oldtext = text;
 	this.mjRunning = true;
 	MathJax.Hub.Queue(

@@ -93,7 +93,7 @@ DATABASES = {
 """
 Configurations of database to server
 """
-if  DEBUG:
+if not DEBUG:
 	DATABASES['default'] = {
 		'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
 		'NAME': DATABASE_CONFIG.DATABASE_NAME,
